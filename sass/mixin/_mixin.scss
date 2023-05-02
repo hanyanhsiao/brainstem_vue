@@ -1,0 +1,10 @@
+@each $k , $v in $title {
+   #{$k} {
+      font-size: $v;
+   }
+}
+@each $k , $v in $bg_color {
+    #{$k} {
+       background-color: $v;
+    }
+ }

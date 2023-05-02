@@ -1,0 +1,67 @@
+/*--------------------------------------------------------*/
+h1 {
+  font-size: 35px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+p {
+  font-size: 16px;
+}
+
+span {
+  font-size: 14px;
+}
+
+.title {
+  font-size: 40px;
+}
+
+.purple {
+  background-color: #6511E1;
+}
+
+.orange {
+  background-color: #FF6300;
+}
+
+.bright_green {
+  background-color: #42FF00;
+}
+
+.red {
+  background-color: #BD2323;
+}
+
+.backend_color {
+  background-color: #D3BFFB;
+}
+
+.backend_color_active {
+  background-color: #A289D6;
+}
+
+.about .title {
+  font-size: 20px;
+}
+
+.main .title {
+  font-size: 40px;
+}
+
+h1 {
+  color: #EDE9F2;
+}
+
+.price_original {
+  color: #AFAFAF;
+  text-decoration: line-through;
+}
+
+/*# sourceMappingURL=style.css.map */

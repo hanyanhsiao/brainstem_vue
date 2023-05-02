@@ -1,0 +1,57 @@
+@import './base/var';
+
+@import './mixin/mixin';
+
+@import './component/btn';
+@import './component/card';
+@import './component/from';
+@import './component/body';
+@import './component/title';
+
+@import './layout/footer';
+@import './layout/header';
+@import './layout/login';
+@import './layout/nav';
+
+@import './page/about';
+@import './page/main';
+
+h1{
+    color: $white;
+}
+
+.price_original{
+    color:$price_original;
+    text-decoration: line-through;
+}
+
+
+//  body{
+//      font-size: $fontSize;
+//     background-color: $bgc;
+//  }
+
+// .wrapper{
+//     width: 1000px;
+//     margin: $ma-0a;
+//     h1{
+//         font-size: 30px;
+//         &:hover{
+//             color: #c146d4;
+//         }
+//         &::after{
+//             content: '-----';
+//         }
+//         &:hover::after{
+//             color: aqua;
+//         }
+//     }
+// }
+
+
+// @for $i from 1 through 10{
+//     .col-#{$i}{
+//         // width : $i * 10px;
+//         width : $i * 100/12 + '%';
+//     }
+// }
