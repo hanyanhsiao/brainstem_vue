@@ -7,18 +7,21 @@ $bg_color:(
     '.backend_color_active':#A289D6
     );
 
-
-$price_color:#FF6300;
+$purple:#6511E1;
+$orange:#FF6300;
 $price_original:#AFAFAF;
 $white:#EDE9F2;
 $news_font_colo:#949494;
 
 /*--------------------------------------------------------*/
-$title:(
-    h1: 35px,
-    h2:24px,
-    h3:20px,
-    p: 16px,
-    span : 14px,
-    '.title' : 40px
-    );
+// $title:(
+//     h1: 3.5rem,
+//     h2:2.4rem,
+//     h3:2rem,
+//     p: 1.6rem
+//     );
+$h1:3.5rem;
+$h2:2.4rem;
+$h3:2rem;
+$h4:1.8rem;
+$p: 1.6rem;

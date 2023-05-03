@@ -1,0 +1,27 @@
+.btn{
+    background-color: $purple;
+    color: $white;
+    width: auto;
+    display: inline-block;
+    border-radius: 3px;
+    margin-top: 20px;
+    &:hover{
+        background-color: $orange;
+    }
+}
+.more{
+    padding: 7px 15px;
+}
+.arrow_box{
+    .arrow_left{
+        border-radius: 50%;
+        padding: 5px;
+        display: inline-block;
+        margin-right: 25px;
+    }
+    .arrow_right{
+        border-radius: 50%;
+        padding: 5px;
+        display: inline-block;
+    }
+}
