@@ -46,16 +46,27 @@ h3{
 
 //後台
 h4{
+    font-size: $h1;
+    color: $backend_font;
+    font-weight: 400;
+    text-align: center;
+    line-height: 300%;
+    letter-spacing: 0.05em;
+}
+h5{
     font-size: $h2;
     color: $backend_font;
     font-weight: 500;
+    letter-spacing: 0.05em;
     
 }
-h5{
+h6{
     font-size: $h3;
     color: $backend_font;
     font-weight: 400;
+    letter-spacing: 0.05em;
 }
+<<<<<<< HEAD
 // h6{
 //     font-size: $h3;
 //     color: $white;
@@ -66,3 +77,5 @@ h5{
 .news_num{
     font-size: $news_num;
 }
+=======
+>>>>>>> b9fd6b2950cfb2c0e06a0be3b495a45805688336
