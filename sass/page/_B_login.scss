@@ -1,13 +1,21 @@
-.title::after{
-    content: "";
-    display: block;
-    height: 1px;
-    background-color: black;
-    margin-top: 10px;
-    width: 100%;
-}
 .B_login{
-    // position: relative;
+    .user{
+        border: 1px solid #000;
+        margin: 50px auto;
+        width: 500px;
+        height: 719px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        // height: 100%;
+        .btn{
+            width: 392px;
+            height: 60px;
+        }
+        h6{
+            color: red;
+        }
+    }
 
     
 }

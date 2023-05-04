@@ -285,13 +285,25 @@ main {
   margin: 0 auto;
 }
 
-.title::after {
-  content: "";
-  display: block;
-  height: 1px;
-  background-color: black;
-  margin-top: 10px;
-  width: 100%;
+.B-title {
+  border-bottom: 1px solid black;
+}
+
+.B_login .user {
+  border: 1px solid #000;
+  margin: 50px auto;
+  width: 500px;
+  height: 719px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.B_login .user .btn {
+  width: 392px;
+  height: 60px;
+}
+.B_login .user h6 {
+  color: red;
 }
 
 /*# sourceMappingURL=style.css.map */
