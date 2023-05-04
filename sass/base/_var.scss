@@ -1,18 +1,20 @@
-$bg_color:(
-    '.purple':#6511E1,
-    '.orange':#FF6300,
-    '.bright_green':#42FF00,
-    '.red':#BD2323,
-    '.backend_color':#D3BFFB,
-    '.backend_color_active':#A289D6
-    );
+$bg_color: (
+  ".purple": #6511e1,
+  ".orange": #ff6300,
+  ".bright_green": #42ff00,
+  ".red": #bd2323,
+  ".backend_color": #d3bffb,
+  ".backend_color_active": #a289d6,
+);
 
-$purple:#6511E1;
-$orange:#FF6300;
-$price_original:#AFAFAF;
-$white:#EDE9F2;
-$news_font_colo:#949494;
-$backend_font:#000000;
+$purple: #6511e1;
+$orange: #ff6300;
+$price_original: #afafaf;
+$white: #ede9f2;
+$news_font_colo: #949494;
+$backend_font: #000000;
+$test_button: #ff013c;
+$test_button_shadow: #00e6f6;
 
 /*--------------------------------------------------------*/
 // $title:(
@@ -21,8 +23,8 @@ $backend_font:#000000;
 //     h3:2rem,
 //     p: 1.6rem
 //     );
-$h1:3.5rem;
-$h2:2.4rem;
-$h3:2rem;
-$h4:1.8rem;
+$h1: 3.5rem;
+$h2: 2.4rem;
+$h3: 2rem;
+$h4: 1.8rem;
 $p: 1.6rem;

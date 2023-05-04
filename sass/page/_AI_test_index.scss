@@ -1,4 +1,11 @@
 .AI_test {
+  width: 100%;
+  height: 100%;
+  canvas {
+    display: block;
+    vertical-align: bottom;
+  }
+
   // --------星空背景-----------
   #particles-js {
     width: 100%;
@@ -317,46 +324,6 @@
             clip-path: var(--slice-1);
             transform: translate(0);
           }
-        }
-      }
-    }
-
-    // ==========10題問答===========
-
-    .quiz_block {
-      border: 2px solid white;
-      width: 500px;
-      margin: 0 auto;
-      margin-top: 50px;
-      border-radius: 10px;
-      position: relative;
-      .quiz_number {
-        font-size: 10rem;
-        font-weight: bold;
-        position: absolute;
-        top: 0%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: $orange;
-      }
-      .quiz_question {
-        // font-size: 2rem;
-        line-height: 5;
-        text-align: center;
-        // margin: 50px auto;
-      }
-      .option_block {
-        margin: 0 auto;
-        width: 60%;
-        // border: 1px solid rgb(255, 90, 90);
-        .option {
-          background-color: $purple;
-          border-radius: 20px;
-          padding: 10px 20px;
-          margin-bottom: 20px;
-          font-size: 2rem;
-          color: #fff;
-          // border: 2px solid white;
         }
       }
     }

@@ -1,49 +1,48 @@
-@import '../css/reset.css';
-@import './base/var';
-@import './base/font';
+@import "../css/reset.css";
+@import "./base/var";
+@import "./base/font";
 
-@import './mixin/mixin';
+@import "./mixin/mixin";
 
-@import './component/btn';
-@import './component/card';
-@import './component/from';
-@import './component/body';
+@import "./component/btn";
+@import "./component/card";
+@import "./component/from";
+@import "./component/body";
 
-@import './layout/footer';
-@import './layout/header';
-@import './layout/login';
-@import './layout/nav';
+@import "./layout/footer";
+@import "./layout/header";
+@import "./layout/login";
+@import "./layout/nav";
 
-@import './page/about';
-@import './page/AI_test';
-@import './page/B_coupon_info';
-@import './page/B_coupon';
-@import './page/B_games_info';
-@import './page/B_games';
-@import './page/B_login';
-@import './page/B_member_info';
-@import './page/B_member';
-@import './page/B_order_info';
-@import './page/B_order';
-@import './page/checkout';
-@import './page/frontORback';
-@import './page/game _library';
-@import './page/index';
-@import './page/login ';
-@import './page/member_center';
-@import './page/news_article';
-@import './page/news';
-@import './page/product_information';
-@import './page/product';
-@import './page/terms_of_service';
-
+@import "./page/about";
+@import "./page/AI_test_index";
+@import "./page/AI_test_QA";
+@import "./page/AI_test_results";
+@import "./page/AI_test_share";
+@import "./page/B_coupon_info";
+@import "./page/B_coupon";
+@import "./page/B_games_info";
+@import "./page/B_games";
+@import "./page/B_login";
+@import "./page/B_member_info";
+@import "./page/B_member";
+@import "./page/B_order_info";
+@import "./page/B_order";
+@import "./page/checkout";
+@import "./page/frontORback";
+@import "./page/game _library";
+@import "./page/index";
+@import "./page/login ";
+@import "./page/member_center";
+@import "./page/news_article";
+@import "./page/news";
+@import "./page/product_information";
+@import "./page/product";
+@import "./page/terms_of_service";
 
 // body{
 //     font: 10px;
 // }
-
-
-
 
 //  body{
 //      font-size: $fontSize;
@@ -66,6 +65,3 @@
 //         }
 //     }
 // }
-
-
-
