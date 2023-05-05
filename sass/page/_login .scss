@@ -1,3 +1,44 @@
 .login{
-    
+    .logo{
+        width: 130px;
+        height: 130px;
+        background-color: rebeccapurple;
+        margin-bottom: 10px;
+    }
+    .margin{
+        margin: 10px 0;
+    }
+    .title h2{
+        text-align: center;
+        // border: 1px solid red;
+    }
+    .login_block{
+        @include flex-container(column, nowrap, space-around, center);
+        padding: 30px 0;
+        margin: 100px auto;
+        // border: 1px solid red;
+        background: rgba(43, 43, 43, 0.35);
+        backdrop-filter: blur(15px);
+        border-radius: 5px;
+    }
+    .flex{
+        @include flex-container();
+        border-bottom: 1px solid $white;
+        padding-bottom: 10px;
+        width: 80%;
+    }
+    .register a{
+        color: $green;
+    }
+    .quick_login{
+        width: 80%;
+        h3{
+            text-align: center;
+            width: 100%;
+            border: 1px solid #FF6300;
+            padding: 8px 0;
+            border-radius: 5px;
+            font-size: $p;
+        }
+    }
 }
