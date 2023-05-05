@@ -293,7 +293,6 @@ main {
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
-  border: 1px solid saddlebrown;
 }
 .AI_test #particles-js .AI_test_container {
   position: absolute;
