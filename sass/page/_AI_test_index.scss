@@ -1,6 +1,7 @@
 .AI_test {
   width: 100%;
   height: 100%;
+
   canvas {
     display: block;
     vertical-align: bottom;
@@ -15,7 +16,7 @@
     background-size: cover;
     background-position: 50% 50%;
     background-repeat: no-repeat;
-    /* border: 1px solid saddlebrown; */
+    border: 1px solid saddlebrown;
 
     .AI_test_container {
       position: absolute;
@@ -23,11 +24,14 @@
       bottom: 0;
       left: 0;
       right: 0;
-      color: rgb(0, 0, 0);
       margin: 0 auto;
-      /* border: 1px solid saddlebrown; */
+      max-width: 90%;
+      overflow-x: hidden;
+      padding: 20px;
 
-      /* ----------------3D方塊------------------ */
+      // border: 2px solid saddlebrown;
+
+      //  ----------------3D方塊------------------
 
       .cube {
         transform-style: preserve-3d;
@@ -49,7 +53,7 @@
           background: #000000;
           /* opacity: .8; */
           &:hover {
-            background: #ffffff;
+            background: $white;
           }
           img {
             width: 100%;
@@ -94,7 +98,7 @@
         }
       }
 
-      /* ----------------文字區塊------------------ */
+      // ----------------文字區塊------------------
       .AI_test_text_block {
         // border: 1px solid rgb(255, 255, 255);
         border-radius: 5px;
@@ -113,7 +117,7 @@
           .text-magic {
             position: absolute;
             top: 20%;
-            left: 52%;
+            left: 50%;
             transform: translate(-50%, -50%);
             transform: scale(2.5);
             font-size: 30px;
@@ -123,16 +127,18 @@
             white-space: pre-wrap;
             text-align: center;
             line-height: 1.2;
+            max-width: 200px;
+
             &::before {
               content: attr(data-word);
               position: absolute;
               top: 0;
               left: 0;
-              color: red;
+              color: $test_button;
               overflow: hidden;
               z-index: 2;
               filter: contrast(200%);
-              text-shadow: 1px 0 0 red;
+              text-shadow: 1px 0 0 $test_button;
               line-height: 1.2;
 
               animation: move 1s infinite;
@@ -147,9 +153,9 @@
               color: rgba(255, 255, 255, 0.8);
               overflow: hidden;
               z-index: 3;
-              color: cyan;
+              color: $test_button_shadow;
               filter: contrast(200%);
-              text-shadow: -1px 0 0 cyan;
+              text-shadow: -1px 0 0 $test_button_shadow;
               mix-blend-mode: lighten;
               line-height: 1.2;
 
@@ -207,18 +213,18 @@
         }
         // 分析適合你的遊戲風格
         .second_title {
-          color: #6511e1;
+          color: $purple;
           margin: 0 auto;
           width: 300px;
-          background-color: #fff;
-          box-shadow: 5px 5px #ff6300;
+          background-color: $white;
+          box-shadow: 5px 5px $orange;
           line-height: 40px;
-          font-size: 20px;
+          font-size: $h3;
           margin: 30px auto;
         }
         .contents {
           line-height: 30px;
-          color: white;
+          color: $white;
           font-size: $h3;
           margin-bottom: 30px;
         }
@@ -229,12 +235,12 @@
           // margin-top: 20px;
           width: 150px;
           height: 50px;
-          font-size: 20px;
-          background: linear-gradient(45deg, transparent 5%, #ff013c 5%);
+          font-size: $h3;
+          background: linear-gradient(45deg, transparent 5%, $test_button 5%);
           border: 0;
-          color: #fff;
+          color: $white;
           letter-spacing: 3px;
-          box-shadow: 6px 0px 0px #00e6f6;
+          box-shadow: 6px 0px 0px $test_button_shadow;
           outline: transparent;
           position: relative;
           cursor: pointer;
@@ -256,17 +262,16 @@
           background: linear-gradient(
             45deg,
             transparent 3%,
-            #00e6f6 3%,
-            #00e6f6 5%,
-            #ff013c 5%
+            $test_button_shadow 3%,
+            $test_button_shadow 5%,
+            $test_button 5%
           );
-          text-shadow: -3px -3px 0px #f8f005, 3px 3px 0px #00e6f6;
+          text-shadow: -3px -3px 0px #f8f005, 3px 3px 0px $test_button_shadow;
           clip-path: var(--slice-0);
         }
 
         button:hover::after {
-          animation: 1s glitch;
-          animation-timing-function: steps(2, end);
+          animation: glitch 1s steps(2, end) infinite;
         }
 
         @keyframes glitch {

@@ -1,6 +1,20 @@
+//共用按鈕
+%AI_test_button {
+  display: block;
+  margin: 30px auto;
+  font-size: $h3;
+  font-weight: 700;
+  padding: 10px 40px;
+  color: $white;
+  background-color: $test_button;
+  box-shadow: 5px 5px $test_button_shadow;
+  border: 0;
+  cursor: pointer;
+}
+
 .results_text {
   //   border: 2px solid saddlebrown;
-  width: 60%;
+  // max-width: 70%;
   margin: 0 auto;
   margin-top: 50px;
 
@@ -10,9 +24,11 @@
   .results_game_name {
     text-align: center;
     color: $orange;
-    line-height: 2;
+    line-height: 3;
   }
   .results_contents {
+    max-width: 800px;
+    margin: 0 auto;
     color: $white;
     font-size: $p;
   }
@@ -23,8 +39,8 @@
 
   //   border: 2px solid saddlebrown;
   margin: 0 auto;
-  margin-top: 50px;
-  width: 70%;
+  margin-top: 100px;
+  max-width: 70%;
   position: relative;
 
   .game_top_block {
@@ -63,14 +79,5 @@
 }
 
 .share_img_button {
-  display: block;
-  margin: 30px auto;
-  font-size: $h2;
-  font-weight: 700;
-  padding: 10px 60px;
-  color: $white;
-  background-color: $test_button;
-  box-shadow: 5px 5px $test_button_shadow;
-  border: 0;
-  cursor: pointer;
+  @extend %AI_test_button;
 }
