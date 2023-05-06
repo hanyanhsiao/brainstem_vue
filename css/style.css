@@ -1,9 +1,13 @@
-/* Error: Can't find stylesheet to import.
- *    ,
- * 11 | @import './component/icon&logo';
- *    |         ^^^^^^^^^^^^^^^^^^^^^^^
- *    '
- *   sass/style.scss 11:9  root stylesheet */
+@import '../css/reset.css';
+/*--------------------------------------------------------*/
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap");
+html {
+  font-size: 10px;
+  font-family: "Inter", sans-serif;
+  font-family: "Noto Sans TC", sans-serif;
+  letter-spacing: 0.05em;
+}
 
 h1 {
   font-size: 3.5rem;
@@ -29,6 +33,9 @@ a {
   font-size: 1.2rem;
   padding: 5px;
   cursor: pointer;
+}
+a:hover {
+  text-decoration: underline;
 }
 
 .price {
@@ -208,7 +215,6 @@ h6 {
   width: auto;
   display: inline-block;
   border-radius: 3px;
-  margin-top: 10px;
   cursor: pointer;
 }
 .btn:hover {
@@ -275,8 +281,9 @@ form {
 label {
   color: #EDE9F2;
   display: block;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   margin-bottom: 10px;
+  letter-spacing: 0.5rem;
 }
 
 input {
@@ -284,8 +291,8 @@ input {
   box-sizing: border-box;
   outline: none;
   font-family: "Inter", sans-serif, "Noto Sans TC", sans-serif;
-  font-size: 2rem;
-  padding: 5px;
+  font-size: 1.6rem;
+  padding: 10px;
   background-color: rgba(13, 13, 13, 0.7);
   border: 1px solid #FF6300;
   border-radius: 5px;
@@ -398,6 +405,9 @@ i {
   padding: 8px 0;
   border-radius: 5px;
   font-size: 1.6rem;
+}
+.login .quick_login .FB_login {
+  margin-bottom: 10px;
 }
 
 /*# sourceMappingURL=style.css.map */
