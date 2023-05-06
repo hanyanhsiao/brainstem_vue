@@ -24,6 +24,9 @@ a{
     font-size: $a;
     padding: 5px;
     cursor: pointer;
+    &:hover{
+        text-decoration: underline;
+    }
 }
 .price{
     font-size: $h2;

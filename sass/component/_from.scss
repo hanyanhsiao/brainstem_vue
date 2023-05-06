@@ -5,16 +5,17 @@ form{
 label{
     color: $white;
     display: block;
-    font-size: $h4;
+    font-size: $p;
     margin-bottom: 10px;
+    letter-spacing: 0.5rem;
 }
 input{
     width: 100%;
     box-sizing: border-box;
     outline: none;
     font-family: 'Inter', sans-serif , 'Noto Sans TC', sans-serif;
-    font-size: $h3;
-    padding: 5px;
+    font-size: $p;
+    padding: 10px;
     background-color: rgba(13, 13, 13, 0.7);
     border: 1px solid #FF6300;
     border-radius: 5px;
