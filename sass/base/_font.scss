@@ -19,6 +19,15 @@ h3{
     font-weight: 400;
     line-height: 140%;
 }
+a{
+    color: $white;
+    font-size: $a;
+    padding: 5px;
+    cursor: pointer;
+    &:hover{
+        text-decoration: underline;
+    }
+}
 .price{
     font-size: $h2;
     color:$orange;
@@ -46,19 +55,23 @@ h3{
 
 //後台
 h4{
+    font-size: $h1;
+    color: $backend_font;
+    font-weight: 400;
+    text-align: center;
+    line-height: 300%;
+    letter-spacing: 0.05em;
+}
+h5{
     font-size: $h2;
     color: $backend_font;
     font-weight: 500;
+    letter-spacing: 0.05em;
     
 }
-h5{
+h6{
     font-size: $h3;
     color: $backend_font;
     font-weight: 400;
+    letter-spacing: 0.05em;
 }
-// h6{
-//     font-size: $h3;
-//     color: $white;
-//     font-weight: 400;
-//     line-height: 140%;
-// }
