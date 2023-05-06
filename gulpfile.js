@@ -21,21 +21,16 @@ const autoprefixer = require("gulp-autoprefixer");
 const sourcemaps = require("gulp-sourcemaps");
 
 function sassstyle() {
-    return (
-        src("./sass/style.scss")
-            .pipe(sourcemaps.init())
-            //編譯 sass
-            .pipe(sass.sync().on("error", sass.logError))
-            .pipe(sourcemaps.write())
-            //css 壓縮
-            // .pipe(cleanCSS())
-            // 跨瀏覽器
-            .pipe(
-                autoprefixer({
-                    cascade: false,
-                })
-            )
-            .pipe(dest("./dist/css"))
+    return (src("./sass/style.scss")
+        .pipe(sourcemaps.init())
+        //編譯 sass
+        .pipe(sass.sync().on("error", sass.logError))
+        .pipe(sourcemaps.write())
+        //css 壓縮
+        // .pipe(cleanCSS())
+        // 跨瀏覽器
+        .pipe(autoprefixer({ cascade: false, }))
+        .pipe(dest("./dist/css"))
     );
 }
 
@@ -55,12 +50,10 @@ const fileinclude = require("gulp-file-include");
 
 function html() {
     return src("./*.html")
-        .pipe(
-            fileinclude({
-                prefix: "@@",
-                basepath: "@file",
-            })
-        )
+        .pipe(fileinclude({
+            prefix: "@@",
+            basepath: "@file",
+        }))
         .pipe(dest("./dist/"));
 }
 
@@ -80,15 +73,10 @@ function layoutHTml() {
 }
 
 //===========沒有壓縮過的圖片 開發用==========
-function img_backend() {
-    return src(['pic/img/backend/*.*']).pipe(dest('dist/pic/img/backend'))
+function img_orgin() {
+    return src(['pic/img/*.*']).pipe(dest('dist/pic/img'))
 }
-function img_icon() {
-    return src(['pic/img/icon/*.*']).pipe(dest('dist/pic/img/icon'))
-}
-function img_LOGO() {
-    return src(['pic/img/LOGO/*.*']).pipe(dest('dist/pic/img/LOGO'))
-}
+
 
 // ============ 壓縮js檔 ============
 
@@ -126,7 +114,7 @@ function vue() {
     return src(['./vendors/vue/*.js']).pipe(dest('dist/venders/vue'))
 }
 
-// ============ 要新增資料夾複製我!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ============
+// ============ 要在外層新增資料夾複製我!!!!!!!!!!!!!!!!!! ============
 
 // function 自訂義檔名() {
 //     return src(['來源路徑']).pipe(dest('dist/ 打包後路徑'))
@@ -147,11 +135,7 @@ function browser(done) {
     });
     watch(["./sass/*.scss", "./sass/**/*.scss"], sassstyle).on("change", reload);
     watch(["./*.html", "./layout/*.html"], html).on("change", reload);
-
-    watch(["./pic/img/backend/*.*"], img_backend).on("change", reload);
-    watch(["./pic/img/icon/*.*"], img_icon).on("change", reload);
-    watch(["./pic/img/LOGO/*.*"], img_LOGO).on("change", reload);
-
+    watch(["./pic/img/backend/*.*"], img_orgin).on("change", reload);
     watch(["./config/*.json"], jjson).on("change", reload);
     watch(["./js/*.js", "./js/**/*.js"], ugjs).on("change", reload);
     done();
@@ -160,7 +144,7 @@ function browser(done) {
 exports.default = browser;
 
 // 開發用
-exports.dev = series(parallel(html, layoutHTml, sassstyle, resetCss, img_backend, img_icon, img_LOGO, ugjs, jjson, vue), browser)
+exports.dev = series(parallel(html, layoutHTml, sassstyle, resetCss, img_orgin, ugjs, jjson, vue), browser)
 //如有新增資料夾，parallel內也要新增!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 // 上線用
