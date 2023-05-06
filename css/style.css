@@ -274,4 +274,12 @@ main {
   margin: 0 auto;
 }
 
+.product .banner {
+  margin-top: 45px;
+  margin-bottom: 120px;
+}
+.product .banner img {
+  width: 100%;
+}
+
 /*# sourceMappingURL=style.css.map */
