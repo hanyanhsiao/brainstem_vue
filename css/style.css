@@ -344,18 +344,63 @@ i {
 .B_login .user {
   border: 1px solid #000;
   margin: 50px auto;
-  width: 500px;
   height: 719px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.B_login .user .btn {
-  width: 392px;
-  height: 60px;
+.B_login .user img {
+  margin-top: 50px;
+  border-radius: 50%;
 }
-.B_login .user h6 {
+.B_login .user form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.B_login .user form input {
+  height: 50px;
+  margin-top: 40px;
+  font-size: 24px;
+  width: 100%;
+}
+.B_login .user .btn {
+  height: 60px;
+  cursor: pointer;
+}
+.B_login .user a {
+  text-decoration: none;
   color: red;
+  margin-top: 50px;
+  font-size: 20px;
+}
+
+.B_member_info .B_nav a {
+  text-decoration: none;
+}
+.B_member_info .B_nav .B_nav_top {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #000;
+}
+.B_member_info .B_nav .B_nav_top img {
+  margin-top: 50px;
+  border-radius: 50%;
+}
+.B_member_info .B_nav .B_nav_top .test {
+  text-align: left;
+  margin-left: 20px;
+  margin-bottom: 50px;
+}
+.B_member_info .B_nav .B_nav_top .test h4 {
+  margin-top: 70px;
+  line-height: 200%;
+}
+.B_member_info .B_nav li {
+  border-bottom: 1px solid #000;
+}
+.B_member_info .B_nav .exit {
+  color: #bd2323;
 }
 
 .login .logo {

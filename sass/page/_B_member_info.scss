@@ -1,3 +1,45 @@
-.B_member_info{
-    
+.B_member_info {
+    .B_nav {
+        a {
+            text-decoration: none;
+        }
+
+        .B_nav_top {
+            img {
+                margin-top: 50px;
+                border-radius: 50%;
+            }
+
+            display: flex;
+            align-items: center;
+
+            .test{
+                text-align: left;
+                margin-left: 20px;
+                h4{
+                    margin-top: 70px;
+                    line-height: 200%;
+                }
+                margin-bottom: 50px;
+            }
+            border-bottom: 1px solid #000;
+        }
+
+        li {
+            border-bottom: 1px solid #000;
+        }
+        h4:hover{
+            $bg_color:('.backend_color':#D3BFFB)
+        }
+
+        
+
+
+
+
+        .exit {
+            color: #bd2323;
+        }
+
+    }
 }
