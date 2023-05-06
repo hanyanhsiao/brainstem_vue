@@ -1,0 +1,44 @@
+{
+  "name": "brainstem",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "安裝套件": "npm i",
+    "開發": "gulp dev",
+    "上線": "gulp online"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/s3602te/ilovernumber2teams.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/s3602te/ilovernumber2teams/issues"
+  },
+  "homepage": "https://github.com/s3602te/ilovernumber2teams#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "gsap": "^3.11.5",
+    "jquery": "^3.6.4",
+    "vue": "^3.2.47"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.8",
+    "@babel/preset-env": "^7.21.5",
+    "browser-sync": "^2.29.1",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-file-include": "^2.3.0",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-uglify": "^3.0.2",
+    "sass": "^1.62.1"
+  }
+}
