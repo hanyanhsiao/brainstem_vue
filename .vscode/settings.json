@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   "liveServer.settings.port": 5501
 }
@@ -11,3 +12,7 @@
 }
 >>>>>>> origin/dev
 >>>>>>> Stashed changes
+=======
+    "liveServer.settings.port": 5501
+}
+>>>>>>> dev
