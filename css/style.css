@@ -34,6 +34,9 @@ a {
   padding: 5px;
   cursor: pointer;
 }
+a:hover {
+  text-decoration: underline;
+}
 
 .price {
   font-size: 2.4rem;
@@ -212,7 +215,6 @@ h6 {
   width: auto;
   display: inline-block;
   border-radius: 3px;
-  margin-top: 10px;
   cursor: pointer;
 }
 .btn:hover {
@@ -279,8 +281,9 @@ form {
 label {
   color: #EDE9F2;
   display: block;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   margin-bottom: 10px;
+  letter-spacing: 0.5rem;
 }
 
 input {
@@ -288,8 +291,8 @@ input {
   box-sizing: border-box;
   outline: none;
   font-family: "Inter", sans-serif, "Noto Sans TC", sans-serif;
-  font-size: 2rem;
-  padding: 5px;
+  font-size: 1.6rem;
+  padding: 10px;
   background-color: rgba(13, 13, 13, 0.7);
   border: 1px solid #FF6300;
   border-radius: 5px;
@@ -402,6 +405,9 @@ i {
   padding: 8px 0;
   border-radius: 5px;
   font-size: 1.6rem;
+}
+.login .quick_login .FB_login {
+  margin-bottom: 10px;
 }
 
 /*# sourceMappingURL=style.css.map */
