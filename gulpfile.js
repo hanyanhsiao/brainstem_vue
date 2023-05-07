@@ -74,7 +74,7 @@ function layoutHTml() {
 
 //===========沒有壓縮過的圖片 開發用==========
 function img_orgin() {
-    return src(['pic/img/**/*.*']).pipe(dest('dist/pic/img'))
+    return src(['pic/img/*.*', 'pic/img/**/*.*']).pipe(dest('dist/pic/img'))
 }
 
 
@@ -135,7 +135,7 @@ function browser(done) {
     });
     watch(["./sass/*.scss", "./sass/**/*.scss"], sassstyle).on("change", reload);
     watch(["./*.html", "./layout/*.html"], html).on("change", reload);
-    watch(["./pic/img/**/*.*'"], img_orgin).on("change", reload);
+    watch(["./pic/img/*.*", "./pic/img/**/*.*"], img_orgin).on("change", reload);
     watch(["./config/*.json"], jjson).on("change", reload);
     watch(["./js/*.js", "./js/**/*.js"], ugjs).on("change", reload);
     done();
