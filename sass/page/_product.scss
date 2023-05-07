@@ -1,4 +1,6 @@
 .product{
+    color: $white;
+    
     .banner{
         margin-top: 45px;
         margin-bottom: 120px;
@@ -6,10 +8,50 @@
         img{
             width: 100%;
         }
+
+        .carousel-control-next-icon, .carousel-control-prev-icon{
+            width: 6rem;
+            height: 6rem;            
+        }
     }
 
-    .carousel-control-next, .carousel-control-prev{
-        width: 6rem;
-        height: 6rem;
+    .product_main{
+        display: flex;
+
+        .product_sidebar{
+            height: 100vh;
+            background-color: #fff;
+        }
+
+        .game_part{
+
+            .hot_game{
+
+                .hot_game_title{
+                    @include flex-container(row, nowrap, space-between, center);
+                    
+                    p{
+                        font-size: $h3;
+                    }
+                }
+    
+                .hot_game_cate{
+                    display: flex;
+
+                    .hot_game_list{
+                        width: 369px;
+                        height: 269px;
+                        background-color: #01072B;
+                        .hot_game_container{
+                            
+                            @include flex-container(column, nowrap, center, center);
+                        }
+                    }
+                    
+                }
+
+            }
+            
+        }
     }
 }

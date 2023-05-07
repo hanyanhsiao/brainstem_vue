@@ -475,7 +475,8 @@ body.B .B_nav .exit {
   padding: 30px 0;
   margin: 100px auto;
   background: rgba(43, 43, 43, 0.35);
-  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+          backdrop-filter: blur(15px);
   border-radius: 5px;
 }
 .login .flex {
@@ -519,6 +520,7 @@ body.B .B_nav .exit {
 .product .banner .carousel-control-next-icon, .product .banner .carousel-control-prev-icon {
   width: 6rem;
   height: 6rem;
+  color: black;
 }
 .product .product_main {
   display: flex;
@@ -527,30 +529,13 @@ body.B .B_nav .exit {
   height: 100vh;
   background-color: #fff;
 }
-.product .product_main .game_part .hot_game .hot_game_title {
+.product .product_main .game_part .hot_game_title {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
 }
-.product .product_main .game_part .hot_game .hot_game_title p {
+.product .product_main .game_part .hot_game_title p {
   font-size: 2rem;
-}
-.product .product_main .game_part .hot_game .hot_game_cate {
-  display: flex;
-}
-.product .product_main .game_part .hot_game .hot_game_cate .hot_game_list {
-  width: 369px;
-  height: 269px;
-  background-color: #01072B;
-}
-.product .product_main .game_part .hot_game .hot_game_cate .hot_game_list .hot_game_container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-}
-
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
