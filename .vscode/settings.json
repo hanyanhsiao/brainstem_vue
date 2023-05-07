@@ -1,18 +1,5 @@
 {
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-  "liveServer.settings.port": 5501
+    "liveServer.settings.port": 5502,
+    "workbench.tree.indent": 8
 }
-=======
-<<<<<<< HEAD
-  "liveServer.settings.port": 5501
-}
-=======
-    "liveServer.settings.port": 5501
-}
->>>>>>> origin/dev
->>>>>>> Stashed changes
-=======
-    "liveServer.settings.port": 5501
-}
->>>>>>> dev
+

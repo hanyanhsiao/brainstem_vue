@@ -77,7 +77,6 @@ function img_orgin() {
     return src(['pic/img/**/*.*']).pipe(dest('dist/pic/img'))
 }
 
-exports.i = img_orgin;
 
 // ============ 壓縮js檔 ============
 
