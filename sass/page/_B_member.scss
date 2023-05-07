@@ -1,3 +1,8 @@
 .B_member{
-    
+    display: flex;
+    .right-top{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }

@@ -1,5 +1,11 @@
+body.BF{
+    background-image: url("/pic/img/backend/bgc.png");
+}
+
 .B_login {
+
     .user {
+        background-color: #fff;
         border: 1px solid #000;
         margin: 50px auto;
         height: 719px;
@@ -10,6 +16,7 @@
         img {
             margin-top: 50px;
             border-radius: 50%;
+            width: 150px;
         }
 
         form {
@@ -23,6 +30,7 @@
                 height: 50px;
                 // padding-left: 20px;
                 margin-top: 40px;
+                filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
                 
             }
         }
