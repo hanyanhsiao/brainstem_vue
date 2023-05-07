@@ -1,6 +1,7 @@
 .AI_test {
   width: 100%;
   height: 100%;
+  overflow: visible;
 
   canvas {
     display: block;
@@ -16,8 +17,8 @@
     background-size: cover;
     background-position: 50% 50%;
     background-repeat: no-repeat;
-    // position: relative;
-    // border: 1px solid saddlebrown;
+    position: relative;
+    // border: 5px solid saddlebrown;
 
     .AI_test_container {
       position: absolute;
@@ -26,19 +27,17 @@
       left: 0;
       right: 0;
       margin: 0 auto;
-      // max-width: 90%;
-      padding: 20px;
-
-      // border: 2px solid saddlebrown;
+      max-width: 90%;
+      // padding: 20px;
+      border: 2px solid saddlebrown;
 
       //  ----------------3D方塊------------------
-
       .cube {
         transform-style: preserve-3d;
         width: 100px;
         height: 100px;
         position: relative;
-        margin: 150px auto 80px auto;
+        margin: 100px auto 80px auto;
         animation: xz 10s infinite linear;
         &:hover {
           animation-play-state: paused;
@@ -50,7 +49,8 @@
           width: 100px;
           height: 100px;
           line-height: 100px;
-          background: #000000;
+          background: #160046;
+          padding: 10px;
           /* opacity: .8; */
           &:hover {
             background: $white;
@@ -64,27 +64,27 @@
           }
         }
         .top {
-          transform: rotateX(90deg) translateZ(50px);
+          transform: rotateX(90deg) translateZ(60px);
         }
 
         .bottom {
-          transform: rotateX(90deg) translateZ(-50px);
+          transform: rotateX(90deg) translateZ(-60px);
         }
 
         .left {
-          transform: rotateY(90deg) translateZ(50px);
+          transform: rotateY(90deg) translateZ(60px);
         }
 
         .right {
-          transform: rotateY(90deg) translateZ(-50px);
+          transform: rotateY(90deg) translateZ(-60px);
         }
 
         .front {
-          transform: translateZ(50px);
+          transform: translateZ(60px);
         }
 
         .back {
-          transform: translateZ(-50px);
+          transform: translateZ(-60px);
         }
 
         @keyframes xz {
