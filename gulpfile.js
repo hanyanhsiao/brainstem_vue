@@ -74,8 +74,14 @@ function layoutHTml() {
 
 //===========沒有壓縮過的圖片 開發用==========
 function img_orgin() {
-    return src(['pic/img/*.*']).pipe(dest('dist/pic/img'))
+    return src(['pic/img/**/*.*']).pipe(dest('dist/pic/img'))
+    .pipe(sass.sync().on("error", sass.logError))
 }
+
+// function createPicFolder() {
+//     return src('*.*', {read: false})
+//       .pipe(dest('./dist/pic'));
+//   }
 
 
 // ============ 壓縮js檔 ============
