@@ -315,31 +315,20 @@ body.B form {
   width: 80%;
 }
 body.B label {
-  color: #ede9f2;
+  color: #000000;
   display: block;
   font-size: 1.8rem;
   margin-bottom: 10px;
 }
 body.B input {
-  width: 100%;
-  box-sizing: border-box;
-  outline: auto;
-  font-family: "Inter", sans-serif, "Noto Sans TC", sans-serif;
   font-size: 2.4rem;
   padding: 5px;
   background-color: #ede9f2;
   border: 1px solid black;
-  border-radius: 5px;
   color: #000000;
-  margin-bottom: 20px;
 }
-body.B input button.btn {
-  display: block;
+body.B button.btn {
   font-size: 2.4rem;
-  width: 100%;
-  padding: 5px;
-  box-sizing: border-box;
-  outline: none;
 }
 body.B i {
   color: #bd2323;
@@ -424,6 +413,7 @@ body.B .B_nav .B_nav_top {
 body.B .B_nav .B_nav_top img {
   margin-top: 50px;
   border-radius: 50%;
+  width: 100px;
 }
 body.B .B_nav .B_nav_top .test {
   text-align: left;
@@ -457,7 +447,12 @@ body.B .B_nav .exit {
 }
 
 .B-title {
-  color: rgb(255, 0, 0);
+  border-bottom: 1px solid black;
+  background-color: #fff;
+}
+
+.B-title.new {
+  background-image: url(/pic/img/backend/header.png);
 }
 
 .AI_test {
@@ -943,7 +938,12 @@ body.B .B_nav .exit {
   color: #ff6300;
 }
 
+body.BF {
+  background-image: url("/pic/img/backend/bgc.png");
+}
+
 .B_login .user {
+  background-color: #fff;
   border: 1px solid #000;
   margin: 50px auto;
   height: 719px;
@@ -954,6 +954,8 @@ body.B .B_nav .exit {
 .B_login .user img {
   margin-top: 50px;
   border-radius: 50%;
+  width: 150px;
+  height: 150px;
 }
 .B_login .user form {
   display: flex;
@@ -963,6 +965,7 @@ body.B .B_nav .exit {
 .B_login .user form input {
   height: 50px;
   margin-top: 40px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 .B_login .user .btn {
   height: 60px;
@@ -973,6 +976,15 @@ body.B .B_nav .exit {
   color: #FF013C;
   margin-top: 50px;
   font-size: 20px;
+}
+
+.B_member {
+  display: flex;
+}
+.B_member .right-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .login .logo {
@@ -1025,53 +1037,4 @@ body.B .B_nav .exit {
 }
 .login .quick_login .FB_login {
   margin-bottom: 10px;
-}
-
-.product {
-  color: #ede9f2;
-}
-.product .banner {
-  margin-top: 45px;
-  margin-bottom: 120px;
-}
-.product .banner img {
-  width: 100%;
-}
-.product .banner .carousel-control-next-icon, .product .banner .carousel-control-prev-icon {
-  width: 6rem;
-  height: 6rem;
-}
-.product .product_main {
-  display: flex;
-}
-.product .product_main .product_sidebar {
-  height: 100vh;
-  background-color: #fff;
-}
-.product .product_main .game_part .hot_game .hot_game_title {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: center;
-}
-.product .product_main .game_part .hot_game .hot_game_title p {
-  font-size: 2rem;
-}
-.product .product_main .game_part .hot_game .hot_game_cate {
-  display: flex;
-}
-.product .product_main .game_part .hot_game .hot_game_cate .hot_game_list {
-  width: 369px;
-  height: 269px;
-  background-color: #01072B;
-}
-.product .product_main .game_part .hot_game .hot_game_cate .hot_game_list .hot_game_container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-}
-
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
