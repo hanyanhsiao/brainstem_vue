@@ -74,7 +74,7 @@ function layoutHTml() {
 
 //===========沒有壓縮過的圖片 開發用==========
 function img_orgin() {
-    return src(['pic/img/*.*']).pipe(dest('dist/pic/img'))
+    return src(['pic/img/**/*.*']).pipe(dest('dist/pic/img'))
 }
 
 
