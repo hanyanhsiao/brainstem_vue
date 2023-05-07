@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,8 +13,13 @@
     <link rel="stylesheet" href="css/style.css">
 
     <title>Brainstem | 商品</title>
+    @@include('./layout/style.html')
+    <!-- 以下可以放自己的link -->
 </head>
+
 <body>
+    <!-- header -->
+    @@include('./layout/header.html')
     <main class="product">
         <div id="carouselExampleIndicators" class="carousel slide banner col-13" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -116,5 +122,14 @@
       
 
     </script>
+        請從這邊開始寫
+
+    </main>
+    <!-- footer -->
+    @@include('./layout/footer.html')
+    <!-- javascript -->
+    @@include('./layout/js.html')
+    <!-- 以下可以放自己的js -->
 </body>
+
 </html>
