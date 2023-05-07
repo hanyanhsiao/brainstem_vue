@@ -69,7 +69,9 @@
     .coupon_block_text {
       line-height: 2;
       a {
+        font-size: 2rem;
         color: $orange;
+        text-decoration: underline;
       }
     }
     // 優惠碼區

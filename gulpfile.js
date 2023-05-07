@@ -59,12 +59,12 @@ function html() {
 
 exports.t = html;
 
-function watchTask() {
-    watch(["./sass/*.scss", "./sass/**/*.scss"], sassstyle);
-    watch(["./*.html", "./layout/*.html"], html);
-}
+// function watchTask() {
+//     watch(["./sass/*.scss", "./sass/**/*.scss"], sassstyle);
+//     watch(["./*.html", "./layout/*.html"], html);
+// }
 
-exports.w = watchTask;
+// exports.w = watchTask;
 
 
 //============ layout html  ====================

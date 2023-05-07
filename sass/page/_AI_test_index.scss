@@ -16,6 +16,7 @@
     background-size: cover;
     background-position: 50% 50%;
     background-repeat: no-repeat;
+    // position: relative;
     // border: 1px solid saddlebrown;
 
     .AI_test_container {
@@ -26,7 +27,6 @@
       right: 0;
       margin: 0 auto;
       // max-width: 90%;
-      overflow-x: hidden;
       padding: 20px;
 
       // border: 2px solid saddlebrown;
@@ -38,7 +38,7 @@
         width: 100px;
         height: 100px;
         position: relative;
-        margin: 100px auto 20px auto;
+        margin: 150px auto 80px auto;
         animation: xz 10s infinite linear;
         &:hover {
           animation-play-state: paused;
@@ -111,8 +111,9 @@
           display: block;
           height: 300px;
           // border: 2px solid rgb(192, 86, 10);
-          margin-top: 50px;
+          // margin-top: 50px;
           position: relative;
+          overflow-x: hidden;
 
           .text-magic {
             position: absolute;
@@ -220,7 +221,7 @@
           box-shadow: 5px 5px $orange;
           line-height: 40px;
           font-size: $h3;
-          margin: 30px auto;
+          margin: 0 auto 30px;
         }
         .contents {
           line-height: 30px;
