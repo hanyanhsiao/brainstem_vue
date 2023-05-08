@@ -2,7 +2,10 @@
     .logo{
         width: 130px;
         height: 130px;
-        background-color: rebeccapurple;
+        background-image: url(../../pic/img/LOGO/WEB\ LOGO.png);
+        background-size: 90% 90%;
+        background-repeat: no-repeat;
+        background-position: center center;
         margin-bottom: 10px;
     }
     .margin{
@@ -14,7 +17,7 @@
     }
     .login_block{
         @include flex-container(column, nowrap, space-around, center);
-        padding: 30px 0;
+        padding: 10px 0;
         margin: 100px auto;
         // border: 1px solid red;
         background: rgba(43, 43, 43, 0.35);
@@ -26,6 +29,9 @@
         border-bottom: 1px solid $white;
         padding-bottom: 10px;
         width: 80%;
+        a:hover{
+            text-decoration: underline;
+        }
     }
     .register a{
         color: $green;
@@ -39,7 +45,11 @@
             padding: 8px 0;
             border-radius: 5px;
             font-size: $p;
+            &:hover{
+                background-color: #ff62009c;
+            }
         }
+        
         .FB_login{
             margin-bottom: 10px;
         }
