@@ -1,3 +1,28 @@
-.B-title{
-    border-bottom: 1px solid black;
+.header {
+  display: flex;
+  max-width: 1920px;
+  background-color: orange;
+  .logo {
+    width: 100px;
+    height: 100px;
+    img {
+      width: 100%;
+    }
+  }
+  .menu {
+    display: flex;
+    ul {
+      display: flex;
+      align-items: center;
+      color: white;
+      li {
+        width: 200px;
+        cursor: pointer;
+
+        a {
+          color: white;
+        }
+      }
+    }
+  }
 }

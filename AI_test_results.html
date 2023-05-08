@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brainstem | 智能推薦</title>
+    @@include('./layout/style.html')
+    <!-- 以下可以放自己的link -->
+</head>
+
+<body>
+    <!-- header -->
+    @@include('./layout/header.html')
+
+    <main class="AI_test">
+        <!-- 請從這邊開始寫 -->
+        <div id="particles-js">
+            <!-- 內容 -->
+            <section class="AI_test_container">
+
+                <div class="results_text">
+                    <h2 class="results_title">經過偏好診斷，您適合的遊戲類型是...
+                    </h2>
+                    <h1 class="results_game_name">冒險遊戲</h1>
+                    <h3 class="results_contents">
+                        你喜歡挑戰自己、解決難題、探索未知世界，那麼你很可能是一位冒險遊戲玩家。冒險遊戲玩家通常擁有一些特殊的特質，例如強烈的探索欲、敏銳的觀察力、優秀的解謎能力和勇敢的冒險精神。此外，通常具有豐富的創造力，能夠在遊戲中發揮自己的想像力，找到新的解決方案。
+                    </h3>
+                </div>
+                <div class="results_game">
+                    <div class="game_top_block">
+                        <img class="top_game" src="https://dummyimage.com/260X350/949494/fff" alt="top1">
+                        <h1 class="top_game_text"> TOP1 </h1>
+                        <h2 class="top_game_name">雙人成行</h2>
+                    </div>
+                    <div class="game_top_block">
+                        <img class="top_game" src="https://dummyimage.com/260X350/949494/fff" alt="top1">
+                        <h1 class="top_game_text"> TOP2 </h1>
+                        <h2 class="top_game_name">雙人成行</h2>
+
+                    </div>
+                    <div class="game_top_block">
+                        <img class="top_game" src="https://dummyimage.com/260X350/949494/fff" alt="top1">
+                        <h1 class="top_game_text"> TOP3 </h1>
+                        <h2 class="top_game_name">雙人成行</h2>
+                    </div>
+
+                </div>
+                <a href="#"><button class="more_games_button">查看更多此類型的遊戲</button>
+                </a>
+                <a href="./AI_test_share.html"> <button class="share_img_button">取得結果圖</button>
+                </a>
+
+            </section>
+        </div>
+
+    </main>
+    <!-- javascript -->
+    @@include('./layout/js.html')
+    <!-- 以下可以放自己的js -->
+    <script src="./js/particles.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+
+</html>

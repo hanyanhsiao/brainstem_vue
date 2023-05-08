@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brainstem | 智能推薦</title>
+    @@include('./layout/style.html')
+    <!-- 以下可以放自己的link -->
+</head>
+
+<body>
+    <!-- header -->
+    @@include('./layout/header.html')
+
+    <main class="AI_test">
+        <!-- 請從這邊開始寫 -->
+        <div id="particles-js">
+            <!-- 內容 -->
+            <section class="AI_test_container">
+                <!-- 3D方塊 -->
+                <ul class="cube">
+                    <li class="top"><img src="./pic/img/LOGO/LOGO.png"></li>
+                    <li class="bottom"><img src="./pic/img/LOGO/LOGO.png"></li>
+                    <li class="left"><img src="./pic/img/LOGO/LOGO.png"></li>
+                    <li class="right"><img src="./pic/img/LOGO/LOGO.png"></li>
+                    <li class="front"><img src="./pic/img/LOGO/LOGO.png"></li>
+                    <li class="back"><img src="./pic/img/LOGO/LOGO.png"></li>
+                </ul>
+                <!-- 文字區塊 -->
+                <div class="AI_test_text_block">
+                    <div class="AI_test_text_title">
+                        <div class="text-magic" data-word="你的&#xa;遊戲偏好&#xa;診斷">
+
+                        </div>
+                    </div>
+
+                    <h2 class="second_title">分析適合你的遊戲風格</h2>
+                    <h3 class="contents">
+                        尋覓適合的遊戲總是令人頭痛？<br>
+                        讓我們為您量身推薦遊戲類型，<br>
+                        啟航您獨一無二的遊戲之旅。</h3>
+                    <a href="./AI_test_QA.html">
+                        <button> 立即測驗</button>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+    <!-- javascript -->
+    @@include('./layout/js.html')
+    <!-- 以下可以放自己的js -->
+    <script src="./js/particles.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+
+</html>
