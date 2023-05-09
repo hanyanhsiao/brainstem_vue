@@ -11,17 +11,17 @@
   border: 0;
   cursor: pointer;
 }
-.AAA {
-  background-color: none;
-}
+
 .results_text {
   //   border: 2px solid saddlebrown;
   // max-width: 70%;
   margin: 0 auto;
-  margin-top: 50px;
+  // margin-top: 50px;
+  padding: 50px 5px 5px 5px;
 
   .results_title {
     text-align: center;
+    line-height: 1.5;
   }
   .results_game_name {
     text-align: center;
@@ -32,7 +32,7 @@
     max-width: 800px;
     margin: 0 auto;
     color: $white;
-    font-size: $h4;
+    font-size: $h3;
   }
 }
 
