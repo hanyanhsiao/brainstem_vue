@@ -1,21 +1,23 @@
 .login {
   .logo {
-    width: 130px;
-    height: 130px;
-    background-color: rebeccapurple;
-    margin-bottom: 10px;
+    width: 100px;
+    height: 100px;
+    background-image: url(../../pic/img/LOGO/WEB\ LOGO.png);
+        background-size: 90% 90%;
+        background-repeat: no-repeat;
+        background-position: center center;
   }
   .margin {
     margin: 10px 0;
   }
-  .title h2 {
+  h2.margin{
     text-align: center;
-    // border: 1px solid red;
+    margin-bottom: 30px;
   }
   .login_block {
     @include flex-container(column, nowrap, space-around, center);
-    padding: 30px 0;
-    margin: 100px auto;
+    padding: 10px 0;
+    margin: 30px auto;
     // border: 1px solid red;
     background: rgba(43, 43, 43, 0.35);
     backdrop-filter: blur(15px);
@@ -26,6 +28,9 @@
     border-bottom: 1px solid $white;
     padding-bottom: 10px;
     width: 80%;
+        a:hover{
+            text-decoration: underline;
+        }
   }
   .register a {
     color: $green;
@@ -39,9 +44,85 @@
       padding: 8px 0;
       border-radius: 5px;
       font-size: $p;
+            &:hover{
+                background-color: #ff62009c;
+            }
     }
+        
     .FB_login {
       margin-bottom: 10px;
     }
   }
+}
+
+.forget{
+  .login_block{
+    @include flex-container(column, nowrap, flex-start, center);
+    height: 580px;
+  }
+  .verification_code_section{
+    p{
+      color: #ff6300;
+      text-align: center;
+      margin-bottom: 20px;
+      i{
+        color: #ff6300;
+        font-size: $p;
+      }
+    }
+  }
+}
+
+.register{
+  .gender{
+    width: 100%;
+    @include flex-container(row, nowrap, space-between, center);
+    label{
+      display: inline-block;
+    }
+    input{
+      margin-bottom: 0;
+      width: auto;
+    }
+  }
+
+  #dob { /* jsut to demonstrate that some styles will be copied from the input to the dropdowns*/
+    // font: 1.2em sans-serif;
+    // padding: 0.5em 1em;
+  }
+  
+  /*
+  Unfortunately, we have to fake placeholders as they are not supported on select elements
+  */
+  input::placeholder,
+  select.show-placeholder,
+  select option:first-child {
+      color: #ffffff;
+  }
+  
+  select.show-placeholder option {
+      color: #ffffff;
+  }
+  
+  /* Display the dropdowns next to each other */
+  #date-select-wrapper {
+    display: flex;
+    max-width: 300px; /* just for this demo */
+  }
+  
+  #date-select-wrapper > * {
+      flex-grow: 1;
+      width: auto;
+      margin: 0;
+  }
+  element.style{
+    color: $white;
+  }
+  select{
+    color:$white;
+    padding: 5px;
+  }
+  .datepicker-icon {
+    color: #fff;
+}
 }
