@@ -36,12 +36,14 @@
     }
     .share_card_icons {
       //   border: 1px solid saddlebrown;
-      font-size: $h1;
-      line-height: 2;
       width: 80%;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
+      i {
+        font-size: 3rem;
+        line-height: 2;
+      }
     }
     .get_coupon_text {
       //   margin-top: 20px;

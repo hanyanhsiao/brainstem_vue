@@ -10,6 +10,9 @@
   box-shadow: 5px 5px $test_button_shadow;
   border: 0;
   cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .results_text {
@@ -78,6 +81,9 @@
   border-radius: 5px;
   border: 0;
   cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .share_img_button {
