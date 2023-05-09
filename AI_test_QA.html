@@ -17,8 +17,10 @@
     <main class="AI_test">
         <!-- 請從這邊開始寫 -->
         <div id="particles-js">
-            <!-- 內容 -->
-            <section class="AI_test_container">
+        </div>
+        <!-- 內容 -->
+        <section class="AI_test_container">
+            <div class="AI_test_wrapper">
                 <!-- 3D方塊 -->
                 <ul class="cube">
                     <li class="top"><img src="./pic/img/LOGO/LOGO.png"></li>
@@ -36,7 +38,8 @@
                     </div>
                     <h1 class="quiz_question">在你的工作中，你偏好?</h1>
                     <ul class="option_block">
-                        <li class="option">A 獨立工作 </li>
+                        <li class="option"><a href="./AI_test_results.html"> A 獨立工作 </a>
+                        </li>
                         <li class="option">B 與他人合作</li>
                         <li class="option">C 從事具創造性的任務 </li>
                         <li class="option"> D 從事富挑戰性的任務</li>
@@ -47,15 +50,13 @@
                     <p>1/10</p>
                 </div>
 
-            </section>
-        </div>
+            </div>
+        </section>
 
     </main>
     <!-- javascript -->
     @@include('./layout/js.html')
     <!-- 以下可以放自己的js -->
-    <script src="./vendors/vue/vue.global.js"></script>
-
     <script src="./js/particles.js"></script>
     <script src="./js/app.js"></script>
 </body>

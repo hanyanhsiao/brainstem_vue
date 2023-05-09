@@ -12,11 +12,11 @@
   .menu {
     display: flex;
     ul {
+      // max-width: 1920px;
       display: flex;
       align-items: center;
       color: white;
       li {
-        width: 200px;
         cursor: pointer;
 
         a {

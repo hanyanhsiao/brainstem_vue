@@ -12,14 +12,18 @@
 
 
 <body>
-
     <!-- header -->
     @@include('./layout/header.html')
+
     <main class="AI_test">
         <!-- 請從這邊開始寫 -->
+        <!-- 星空背景 -->
         <div id="particles-js">
-            <!-- 內容 -->
-            <section class="AI_test_container">
+        </div>
+
+        <!-- 內容 -->
+        <section class="AI_test_container">
+            <div class="AI_test_wrapper">
                 <!-- 3D方塊 -->
                 <ul class="cube">
                     <li class="top"><img src="./pic/img/LOGO/LOGO.png"></li>
@@ -33,7 +37,6 @@
                 <div class="AI_test_text_block">
                     <div class="AI_test_text_title">
                         <div class="text-magic" data-word="你的&#xa;遊戲偏好&#xa;診斷">
-
                         </div>
                     </div>
 
@@ -46,9 +49,10 @@
                         <button> 立即測驗</button>
                     </a>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
     </main>
+
     <!-- javascript -->
     @@include('./layout/js.html')
     <!-- 以下可以放自己的js -->

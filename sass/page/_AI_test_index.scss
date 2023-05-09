@@ -1,6 +1,7 @@
 .AI_test {
   width: 100%;
-  height: 100%;
+  overflow: visible;
+  position: relative;
 
   canvas {
     display: block;
@@ -16,29 +17,37 @@
     background-size: cover;
     background-position: 50% 50%;
     background-repeat: no-repeat;
-    // position: relative;
-    // border: 1px solid saddlebrown;
+    position: fixed;
+    margin-bottom: 100px;
 
-    .AI_test_container {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      margin: 0 auto;
-      // max-width: 90%;
-      padding: 20px;
+    // border: 5px solid saddlebrown;
+  }
 
-      // border: 2px solid saddlebrown;
+  // --------內容--------
+  .AI_test_container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    max-width: 90%;
+    z-index: 2;
+    // height: 100vh;
+    // padding: 20px;
+    // border: 2px solid saddlebrown;
 
+    .AI_test_wrapper {
+      // padding-bottom: 50px;
+      height: 100vh;
       //  ----------------3D方塊------------------
-
       .cube {
         transform-style: preserve-3d;
-        width: 100px;
-        height: 100px;
+        width: 120px;
+        height: 120px;
         position: relative;
-        margin: 150px auto 80px auto;
+        // border: 2px solid saddlebrown;
+        margin: 80px auto;
         animation: xz 10s infinite linear;
         &:hover {
           animation-play-state: paused;
@@ -50,7 +59,8 @@
           width: 100px;
           height: 100px;
           line-height: 100px;
-          background: #000000;
+          background: #160046;
+          padding: 10px;
           /* opacity: .8; */
           &:hover {
             background: $white;
@@ -58,33 +68,30 @@
           img {
             width: 100%;
             height: 100%;
-            // :hover{
-
-            // }
           }
         }
         .top {
-          transform: rotateX(90deg) translateZ(50px);
+          transform: rotateX(90deg) translateZ(60px);
         }
 
         .bottom {
-          transform: rotateX(90deg) translateZ(-50px);
+          transform: rotateX(90deg) translateZ(-60px);
         }
 
         .left {
-          transform: rotateY(90deg) translateZ(50px);
+          transform: rotateY(90deg) translateZ(60px);
         }
 
         .right {
-          transform: rotateY(90deg) translateZ(-50px);
+          transform: rotateY(90deg) translateZ(-60px);
         }
 
         .front {
-          transform: translateZ(50px);
+          transform: translateZ(60px);
         }
 
         .back {
-          transform: translateZ(-50px);
+          transform: translateZ(-60px);
         }
 
         @keyframes xz {
@@ -102,16 +109,15 @@
       .AI_test_text_block {
         // border: 1px solid rgb(255, 255, 255);
         border-radius: 5px;
-        // max-width: 50%;
         margin: 0 auto;
         text-align: center;
         display: block;
+
         // 你的遊戲偏好診斷
         .AI_test_text_title {
           display: block;
           height: 300px;
           // border: 2px solid rgb(192, 86, 10);
-          // margin-top: 50px;
           position: relative;
           overflow-x: hidden;
 
@@ -141,7 +147,6 @@
               filter: contrast(200%);
               text-shadow: 1px 0 0 $test_button;
               line-height: 1.2;
-
               animation: move 1s infinite;
             }
 
