@@ -1,0 +1,264 @@
+
+[
+    {
+        "questionNum": "1",
+        "question": "當你面對比賽時，你會?",
+        "option": [
+            {
+                "opContent": "感到興奮且努力想贏",
+                "gameType": "1"
+
+            },
+            {
+                "opContent": "感到緊張且想放棄",
+                "gameType": "2"
+
+            },
+            {
+                "opContent": "感到無力但盡力嘗試",
+                "gameType": "3"
+
+            },
+            {
+                "opContent": "感到無所謂",
+                "gameType": "4"
+
+            }
+        ]
+    },
+    {
+        "questionNum": "2",
+        "question": "當你面對比賽時，你會?222",
+        "option": [
+            {
+                "opContent": "222",
+                "gameType": "1"
+
+            },
+            {
+                "opContent": "感到緊張且想放棄",
+                "gameType": "2"
+
+            },
+            {
+                "opContent": "感到無力但盡力嘗試",
+                "gameType": "3"
+
+            },
+            {
+                "opContent": "感到無所謂",
+                "gameType": "4"
+
+            }
+        ]
+    },
+    {
+        "questionNum": "3",
+        "question": "當你面對比賽時，你會?33333",
+        "option": [
+            {
+                "opContent": "333",
+                "gameType": "1"
+
+            },
+            {
+                "opContent": "感到緊張且想放棄",
+                "gameType": "2"
+
+            },
+            {
+                "opContent": "感到無力但盡力嘗試",
+                "gameType": "3"
+
+            },
+            {
+                "opContent": "感到無所謂",
+                "gameType": "4"
+
+            }
+        ]
+    },
+    {
+        "questionNum": "4",
+        "question": "當你面對比賽時，你會?444",
+        "option": [
+            {
+                "opContent": "444",
+                "gameType": "1"
+
+            },
+            {
+                "opContent": "感到緊張且想放棄",
+                "gameType": "2"
+
+            },
+            {
+                "opContent": "感到無力但盡力嘗試",
+                "gameType": "3"
+
+            },
+            {
+                "opContent": "感到無所謂",
+                "gameType": "4"
+
+            }
+        ]
+    },
+    {
+        "questionNum": "5",
+        "question": "當你面對比賽時，你會?555",
+        "option": [
+            {
+                "opContent": "感到興奮且努力想贏",
+                "gameType": "1"
+
+            },
+            {
+                "opContent": "感到緊張且想放棄",
+                "gameType": "2"
+
+            },
+            {
+                "opContent": "感到無力但盡力嘗試",
+                "gameType": "3"
+
+            },
+            {
+                "opContent": "感到無所謂",
+                "gameType": "4"
+
+            }
+        ]
+    },
+    {
+        "questionNum": "6",
+        "question": "當你面對比賽時，你會?666",
+        "option": [
+            {
+                "opContent": "感到興奮且努力想贏",
+                "gameType": "1"
+
+            },
+            {
+                "opContent": "感到緊張且想放棄",
+                "gameType": "2"
+
+            },
+            {
+                "opContent": "感到無力但盡力嘗試",
+                "gameType": "3"
+
+            },
+            {
+                "opContent": "感到無所謂",
+                "gameType": "4"
+
+            }
+        ]
+    },
+    {
+        "questionNum": "7",
+        "question": "當你面對比賽時，你會?777",
+        "option": [
+            {
+                "opContent": "感到興奮且努力想贏",
+                "gameType": "1"
+
+            },
+            {
+                "opContent": "感到緊張且想放棄",
+                "gameType": "2"
+
+            },
+            {
+                "opContent": "感到無力但盡力嘗試",
+                "gameType": "3"
+
+            },
+            {
+                "opContent": "感到無所謂",
+                "gameType": "4"
+
+            }
+        ]
+    },
+    {
+        "questionNum": "8",
+        "question": "當你面對比賽時，你會?888",
+        "option": [
+            {
+                "opContent": "感到興奮且努力想贏",
+                "gameType": "1"
+
+            },
+            {
+                "opContent": "感到緊張且想放棄",
+                "gameType": "2"
+
+            },
+            {
+                "opContent": "感到無力但盡力嘗試",
+                "gameType": "3"
+
+            },
+            {
+                "opContent": "感到無所謂",
+                "gameType": "4"
+
+            }
+        ]
+    },
+    {
+        "questionNum": "9",
+        "question": "當你面對比賽時，你會?999",
+        "option": [
+            {
+                "opContent": "感到興奮且努力想贏",
+                "gameType": "1"
+
+            },
+            {
+                "opContent": "感到緊張且想放棄",
+                "gameType": "2"
+
+            },
+            {
+                "opContent": "感到無力但盡力嘗試",
+                "gameType": "3"
+
+            },
+            {
+                "opContent": "感到無所謂",
+                "gameType": "4"
+
+            }
+        ]
+    },
+    {
+        "questionNum": "10",
+        "question": "當你面對比賽時，你會?10",
+        "option": [
+            {
+                "opContent": "感到興奮且努力想贏",
+                "gameType": "1"
+
+            },
+            {
+                "opContent": "感到緊張且想放棄",
+                "gameType": "2"
+
+            },
+            {
+                "opContent": "感到無力但盡力嘗試",
+                "gameType": "3"
+
+            },
+            {
+                "opContent": "感到無所謂1000",
+                "gameType": "4"
+
+            }
+        ]
+    }
+]
+
