@@ -5,23 +5,23 @@
         "question": "當你面對比賽時，你會?",
         "option": [
             {
-                "opContent": "感到興奮且努力想贏",
+                "opContent": "A  感到興奮且努力想贏",
                 "gameType": "1"
 
             },
             {
-                "opContent": "感到緊張且想放棄",
+                "opContent": "B 感到緊張且想放棄",
                 "gameType": "2"
 
             },
             {
-                "opContent": "感到無力但盡力嘗試",
-                "gameType": "3"
+                "opContent": "C 感到無力但盡力嘗試",
+                "gameType": "4"
 
             },
             {
-                "opContent": "感到無所謂",
-                "gameType": "4"
+                "opContent": "D 感到無所謂",
+                "gameType": "3"
 
             }
         ]
@@ -32,17 +32,17 @@
         "option": [
             {
                 "opContent": "222",
-                "gameType": "1"
-
-            },
-            {
-                "opContent": "感到緊張且想放棄",
                 "gameType": "2"
 
             },
             {
-                "opContent": "感到無力但盡力嘗試",
+                "opContent": "感到緊張且想放棄",
                 "gameType": "3"
+
+            },
+            {
+                "opContent": "感到無力但盡力嘗試",
+                "gameType": "1"
 
             },
             {
@@ -84,22 +84,22 @@
         "option": [
             {
                 "opContent": "444",
-                "gameType": "1"
+                "gameType": "4"
 
             },
             {
                 "opContent": "感到緊張且想放棄",
-                "gameType": "2"
-
-            },
-            {
-                "opContent": "感到無力但盡力嘗試",
                 "gameType": "3"
 
             },
             {
+                "opContent": "感到無力但盡力嘗試",
+                "gameType": "2"
+
+            },
+            {
                 "opContent": "感到無所謂",
-                "gameType": "4"
+                "gameType": "1"
 
             }
         ]
@@ -110,12 +110,12 @@
         "option": [
             {
                 "opContent": "感到興奮且努力想贏",
-                "gameType": "1"
+                "gameType": "2"
 
             },
             {
                 "opContent": "感到緊張且想放棄",
-                "gameType": "2"
+                "gameType": "4"
 
             },
             {
@@ -125,7 +125,7 @@
             },
             {
                 "opContent": "感到無所謂",
-                "gameType": "4"
+                "gameType": "1"
 
             }
         ]
@@ -136,17 +136,17 @@
         "option": [
             {
                 "opContent": "感到興奮且努力想贏",
-                "gameType": "1"
+                "gameType": "3"
 
             },
             {
                 "opContent": "感到緊張且想放棄",
-                "gameType": "2"
+                "gameType": "1"
 
             },
             {
                 "opContent": "感到無力但盡力嘗試",
-                "gameType": "3"
+                "gameType": "2"
 
             },
             {
@@ -162,22 +162,22 @@
         "option": [
             {
                 "opContent": "感到興奮且努力想贏",
-                "gameType": "1"
+                "gameType": "4"
 
             },
             {
                 "opContent": "感到緊張且想放棄",
-                "gameType": "2"
-
-            },
-            {
-                "opContent": "感到無力但盡力嘗試",
                 "gameType": "3"
 
             },
             {
+                "opContent": "感到無力但盡力嘗試",
+                "gameType": "2"
+
+            },
+            {
                 "opContent": "感到無所謂",
-                "gameType": "4"
+                "gameType": "1"
 
             }
         ]
@@ -193,7 +193,7 @@
             },
             {
                 "opContent": "感到緊張且想放棄",
-                "gameType": "2"
+                "gameType": "4"
 
             },
             {
@@ -203,7 +203,7 @@
             },
             {
                 "opContent": "感到無所謂",
-                "gameType": "4"
+                "gameType": "2"
 
             }
         ]
@@ -214,12 +214,12 @@
         "option": [
             {
                 "opContent": "感到興奮且努力想贏",
-                "gameType": "1"
+                "gameType": "2"
 
             },
             {
                 "opContent": "感到緊張且想放棄",
-                "gameType": "2"
+                "gameType": "4"
 
             },
             {
@@ -229,7 +229,7 @@
             },
             {
                 "opContent": "感到無所謂",
-                "gameType": "4"
+                "gameType": "1"
 
             }
         ]
@@ -240,22 +240,22 @@
         "option": [
             {
                 "opContent": "感到興奮且努力想贏",
-                "gameType": "1"
-
-            },
-            {
-                "opContent": "感到緊張且想放棄",
-                "gameType": "2"
-
-            },
-            {
-                "opContent": "感到無力但盡力嘗試",
                 "gameType": "3"
 
             },
             {
-                "opContent": "感到無所謂1000",
+                "opContent": "感到緊張且想放棄",
                 "gameType": "4"
+
+            },
+            {
+                "opContent": "感到無力但盡力嘗試",
+                "gameType": "2"
+
+            },
+            {
+                "opContent": "感到無所謂1000",
+                "gameType": "1"
 
             }
         ]
