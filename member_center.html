@@ -8,15 +8,29 @@
     <title>Brainstem | 會員中心</title>
     @@include('./layout/style.html')
     <!-- 以下可以放自己的link -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <style>
+        body{
+            /* height: 500px; */
+        }
+    </style>
 </head>
 
 <body>
     <!-- header -->
-    @@include('./layout/header.html')
-    <main class="member_center">
-        請從這邊開始寫
-
+    <!-- @@include('./layout/header.html') -->
+    <!-- <main class="member_center">-->
+    <h2>會員中心</h2>
+    <ul class="col-4 select">
+        <li>會員資料</li>
+        <li>訂單記錄</li>
+        <li>遊戲庫</li>
+        <li>會員優惠券</li>
+    </ul>
     </main>
+     
+    
+      
     <!-- footer -->
     @@include('./layout/footer.html')
     <!-- javascript -->
