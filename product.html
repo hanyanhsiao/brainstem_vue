@@ -5,59 +5,134 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css' />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
-    <link rel="stylesheet" href="css/style.css">
-
     <title>Brainstem | 商品</title>
+
     @@include('./layout/style.html')
     <!-- 以下可以放自己的link -->
+
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <!-- swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <!-- slick -->
+    <!-- <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"> -->
+
+    <!-- 自己的css -->
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
     <!-- header -->
     @@include('./layout/header.html')
+
     <main class="product">
-        <div id="carouselExampleIndicators" class="carousel slide banner col-13" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <!-- banner輪播 -->
+        <div class="swiper mySwiper col-13">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="https://placehold.co/1536x665" alt="圖片說明"></div>
+                <div class="swiper-slide"><img src="https://placehold.co/1536x665" alt="圖片說明"></div>
+                <div class="swiper-slide"><img src="https://placehold.co/1536x665" alt="圖片說明"></div>
+                <div class="swiper-slide"><img src="https://placehold.co/1536x665" alt="圖片說明"></div>
+                <div class="swiper-slide"><img src="https://placehold.co/1536x665" alt="圖片說明"></div>
             </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active" >
-                    <img src="https://placehold.co/1536x665" class="d-block w-100" alt="圖片說明">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://placehold.co/1536x665" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://placehold.co/1536x665" class="d-block w-100" alt="...">
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
         </div>
-        
+
+
         <div class="product_main">
-            <div class="product_sidebar col-4">123
-            
 
-            </div>
+            <nav class="product_sidebar col-3">
+                <div class="tag_choose">已選擇的標籤 <span class="clear">清除全部</span></div>
+                <div id="tags_container"></div>
+                <ul>
+                    <li>
+                        <div class="botton">限時促銷活動
+                            <i class="bi bi-caret-down-fill arrow"></i>
+                        </div>
+                        <ul class="sale_list">
+                            <li class="item"><span>燒腦解謎</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>夏季特賣</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>角色扮演</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>射擊遊戲</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>太空探險</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>恐怖遊戲</span><i class="bi bi-check-lg check-icon"></i></li>
+                        </ul>
+                    </li>
 
-            <div class="game_part col-10">
+                    <li>
+                        <div class="botton">遊戲類型
+                            <i class="bi bi-caret-down-fill arrow"></i>
+                        </div>
+                        <ul class="cate_list">
+                            <li class="item"><span>動作</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>冒險</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>角色扮演</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>策略</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>模擬</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>經營</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>城市營造</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>農場模擬</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>戰爭</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>休閒</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>日系</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>運動</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>棒球</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>網球</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>競速</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>賽馬</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>賽車</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>烹飪</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>可愛</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>兒童</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>太空模擬</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>殖民模擬</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>像素風</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>2D格鬥</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>獨立遊戲</span><i class="bi bi-check-lg check-icon"></i></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <div class="botton">遊戲模式
+                            <i class="bi bi-caret-down-fill arrow"></i>
+                        </div>
+                        <ul class="mode_list">
+                            <li class="item"><span>單人</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>多人</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>合作</span><i class="bi bi-check-lg check-icon"></i></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <div class="botton">金額
+                            <i class="bi bi-caret-down-fill arrow"></i>
+                        </div>
+                        <ul class="price_list">
+                            <li class="item price">
+                                <label for="minAmount">最低金額</label>
+                                <input type="text" class="form-control" id="minAmount">
+                            </li>
+                            <li class="item price">
+                                <label for="maxAmount">最高金額</label>
+                                <input type="text" class="form-control" id="maxAmount">
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </nav>
+
+
+
+
+            <div class="game_part col-11">
                 <div class="hot_game">
                     <div class="hot_game_title">
-                        <p>熱門遊戲類型</p>
+                        <h2>熱門遊戲類型</h2>
 
                         <div class="arrow_box">
                             <div class="arrow_left btn">
@@ -69,67 +144,429 @@
                         </div>
                     </div>
                     <div class="hot_game_cate">
-                        <div class="hot_game_list col-4">
-                            <div class="hot_game_container">
-                                <img src="https://placehold.co/123x123" alt="">
-                                <h3>角色扮演</h3>
-                            </div>  
+                        <div class="swiper-wrapper">
+                            <div class="hot_game_list col-5 swiper-slide">
+                                <div class="hot_game_container">
+                                    <img src="https://placehold.co/123x123" alt="">
+                                    <h3>合作</h3>
+                                </div>
+                            </div>
+                            <div class="hot_game_list col-5 swiper-slide">
+                                <div class="hot_game_container">
+                                    <img src="https://placehold.co/123x123" alt="">
+                                    <h3>單人</h3>
+                                </div>
+                            </div>
+                            <div class="hot_game_list col-5 swiper-slide">
+                                <div class="hot_game_container">
+                                    <img src="https://placehold.co/123x123" alt="">
+                                    <h3>解謎</h3>
+                                </div>
+                            </div>
+                            <div class="hot_game_list col-5 swiper-slide">
+                                <div class="hot_game_container">
+                                    <img src="https://placehold.co/123x123" alt="">
+                                    <h3>解謎</h3>
+                                </div>
+                            </div>
+                            <div class="hot_game_list col-5 swiper-slide">
+                                <div class="hot_game_container">
+                                    <img src="https://placehold.co/123x123" alt="">
+                                    <h3>休閒</h3>
+                                </div>
+                            </div>
+                            <div class="hot_game_list col-5 swiper-slide">
+                                <div class="hot_game_container">
+                                    <img src="https://placehold.co/123x123" alt="">
+                                    <h3>冒險</h3>
+                                </div>
+                            </div>
+                            <div class="hot_game_list col-5 swiper-slide">
+                                <div class="hot_game_container">
+                                    <img src="https://placehold.co/123x123" alt="">
+                                    <h3>科幻</h3>
+                                </div>
+                            </div>
+                            <div class="hot_game_list col-5 swiper-slide">
+                                <div class="hot_game_container">
+                                    <img src="https://placehold.co/123x123" alt="">
+                                    <h3>角色扮演</h3>
+                                </div>
+                            </div>
                         </div>
-                        <div class="hot_game_list col-4">
-                            <div class="hot_game_container">
-                                <img src="https://placehold.co/123x123" alt="">
-                                <h3>運動大會</h3>
-                            </div>  
+                        <div class="swiper-button-next hot_game_next">
+
                         </div>
-                        <div class="hot_game_list col-4">
-                            <div class="hot_game_container">
-                                <img src="https://placehold.co/123x123" alt="">
-                                <h3>解謎遊戲</h3>
-                            </div>  
+                        <div class="swiper-button-prev hot_game_prev">
+
                         </div>
+                        <!-- <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div> -->
+
                     </div>
 
                 </div>
-            
+
+                <div class="product">
+                    <!-- <div class="product_order">
+                        <h2>排序：</h2>
+                        <div class="order_btn">
+                            <span class>選擇排序方式</span>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+
+                        <ul class="order_options">
+                            <li class="option">
+                                <span class="option_text">全部</span>
+                            </li>
+                            <li class="option">
+                                <span class="option_text">最受歡迎</span>
+                            </li>
+                            <li class="option">
+                                <span class="option_text">價格：高到低</span>
+                            </li>
+                            <li class="option">
+                                <span class="option_text">價格：低到高</span>
+                            </li>
+                        </ul>
+                    </div> -->
+                    <div id="app" class="product_order">
+                        <h2>排序：</h2>
+                        <div class="order_btn" @click="toggleOptions">
+                            <span class="option_text">{{ selectedOption }}</span>
+                            <i :class="{'bi': true, 'bi-chevron-down': !isOpen, 'bi-chevron-up': isOpen}"></i>
+                        </div>
+                        <ul class="order_options" v-show="isOpen">
+                            <li class="option" v-for="option in options" :key="option.text"
+                                @click="selectOption(option)">
+                                <span class="option_text">{{ option.text }}</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="product_goods">
+                        <!-- <div class="each_good col">
+                            <div class="goods_top" style="background-image: url({{url}});">
+                                <span class="discount">-{{discount*100}}%</span>
+                                <i class="bi bi-suit-heart-fill"></i>
+                            </div>
+                            <div class="goods_text">
+                                <h3>{{goods_name}}</h3>
+                                <span class="price">${{afterDiscount}}</span>
+                                <span class="price_original">${{orinalPrice}}</span>
+                            </div>
+                        </div> -->
+                        <div class="each_good">
+                            <div class="goods_top" style="background-image: url(https://placehold.co/260x350);">
+                                <span class="discount">-40%</span>
+                                <i class="bi bi-suit-heart-fill heart"></i>
+                            </div>
+                            <div class="goods_text">
+                                <h3>王國之心3</h3>
+                                <span class="price">$900</span>
+                                <span class="price_original">$1500</span>
+                            </div>
+                        </div>
+                        <div class="each_good">
+                            <div class="goods_top" style="background-image: url(https://placehold.co/260x350);">
+                                <span class="discount">-40%</span>
+                                <i class="bi bi-suit-heart-fill"></i>
+                            </div>
+                            <div class="goods_text">
+                                <h3>王國之心3</h3>
+                                <span class="price">$900</span>
+                                <span class="price_original">$1500</span>
+                            </div>
+                        </div>
+                        <div class="each_good">
+                            <div class="goods_top" style="background-image: url(https://placehold.co/260x350);">
+                                <span class="discount">-40%</span>
+                                <i class="bi bi-suit-heart-fill"></i>
+                            </div>
+                            <div class="goods_text">
+                                <h3>王國之心3</h3>
+                                <span class="price">$900</span>
+                                <span class="price_original">$1500</span>
+                            </div>
+                        </div>
+                        <div class="each_good">
+                            <div class="goods_top" style="background-image: url(https://placehold.co/260x350);">
+                                <span class="discount">-40%</span>
+                                <i class="bi bi-suit-heart-fill"></i>
+                            </div>
+                            <div class="goods_text">
+                                <h3>王國之心3</h3>
+                                <span class="price">$900</span>
+                                <span class="price_original">$1500</span>
+                            </div>
+                        </div>
+                        <div class="each_good">
+                            <div class="goods_top" style="background-image: url(https://placehold.co/260x350);">
+                                <span class="discount">-40%</span>
+                                <i class="bi bi-suit-heart-fill"></i>
+                            </div>
+                            <div class="goods_text">
+                                <h3>王國之心3</h3>
+                                <span class="price">$900</span>
+                                <span class="price_original">$1500</span>
+                            </div>
+                        </div>
+                        <div class="each_good">
+                            <div class="goods_top" style="background-image: url(https://placehold.co/260x350);">
+                                <span class="discount">-40%</span>
+                                <i class="bi bi-suit-heart-fill"></i>
+                            </div>
+                            <div class="goods_text">
+                                <h3>王國之心3</h3>
+                                <span class="price">$900</span>
+                                <span class="price_original">$1500</span>
+                            </div>
+                        </div>
+                        <!-- <div class="each_good col">
+                            <img src="https://placehold.co/260x350" alt="">
+                            <h3>王國之心3</h3>
+                            <span class="price">$900</span>
+                            <span class="price_original">$1500</span>
+
+                        </div>
+                        <div class="each_good col">
+                            <img src="https://placehold.co/260x350" alt="">
+                            <h3>王國之心3</h3>
+                            <span class="price">$900</span>
+                            <span class="price_original">$1500</span>
+
+                        </div>
+                        <div class="each_good col">
+                            <img src="https://placehold.co/260x350" alt="">
+                            <h3>王國之心3</h3>
+                            <span class="price">$900</span>
+                            <span class="price_original">$1500</span>
+
+                        </div>
+                        <div class="each_good col">
+                            <img src="https://placehold.co/260x350" alt="">
+                            <h3>王國之心3</h3>
+                            <span class="price">$900</span>
+                            <span class="price_original">$1500</span>
+
+                        </div>
+
+                        <div class="each_good col">
+                            <img src="https://placehold.co/260x350" alt="">
+                            <h3>王國之心3</h3>
+                            <span class="price">$900</span>
+                            <span class="price_original">$1500</span>
+
+                        </div> -->
+                    </div>
+
+                </div>
+
+
+
             </div>
-            
+
 
         </div>
 
-        
-    </main>
-
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script>
-
-        $('.carousel').carousel({
-        interval: 1000
-        });
-
-        
-        $(document).ready(function(){
-            $('.hot_game_cate').slick({
-                infinite: true,
-                speed:500,
-                slidesToShow: 3,
-                slidesToScroll: 1
-            });
-        });
-
-      
-
-    </script>
-        請從這邊開始寫
 
     </main>
     <!-- footer -->
     @@include('./layout/footer.html')
+
     <!-- javascript -->
     @@include('./layout/js.html')
     <!-- 以下可以放自己的js -->
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.1/vue.global.prod.js"></script>
+
+    <!-- <script src="./vendors/vue/vue.global.js"></script> -->
+    <!-- <script src="./js/product.js"></script> -->
+
+    <script>
+
+        const app = Vue.createApp({
+
+            data() {
+                return {
+
+                    isOpen: true,
+                    selectedOption: '選擇排序方式',
+                    options: {
+                        text: '最受歡迎',
+                        text: '發行日期：由新到舊',
+                        text: '發行日期：由舊到新',
+                        text: '價格：由高到低',
+                        text: '',
+                    }
+                };
+            },
+            methods: {
+
+
+                toggleOptions() {
+                    this.isOpen = !this.isOpen;
+
+                },
+                selectOption(option) {
+                    this.selectedOption = option.text;
+                    this.isOpen = false;
+                }
+
+            }
+        });
+
+
+        app.mount('#app'); // 將Vue應用程序掛載到具有id="app"的元素上   
+
+        $(document).ready(function () {
+
+            //==============全域變數開始==============
+
+            let tag_list = [];
+            let tagsContainer = $("#tags_container");
+
+            //==============全域變數結束==============
+
+
+
+            //==============事件綁定開始==============
+
+            $('.product_sidebar div').on('click', function () {
+                product_sidebar_collapse($(this))
+            });
+
+            //宣告動作
+            $(".botton").on('click', function () {
+                arrorw_rotate($(this))
+            })
+
+            $(".item").on("click", function () {
+
+                tag = get_tag_text($(this))
+                item_check_or_not($(this))
+                tags_container_info(tag)
+                is_tag_choose_show(tag_list.length)
+
+            })
+
+            $(".tag_choose").on('click', '.clear', function () {
+                clear_tags_container();
+            });
+
+            $("#tags_container").on('click', '.bi-x-lg', function () {
+                remove_item_checked($(this))
+            });
+
+            //==============事件綁定結束==============
+
+
+
+            //==============funtcion宣告開始==============
+
+            function arrorw_rotate(dom) {
+                dom.next().toggleClass("show");
+                dom.children().toggleClass("rotate")
+            }
+
+            function product_sidebar_collapse(dom) {
+                dom.toggleClass("active");
+            }
+
+            function item_check_or_not(dom) {
+                dom.toggleClass("checked");
+            }
+
+            function get_tag_text(dom) {
+                return dom.find(">:first-child").text()
+            }
+
+            function add_tagsContainer_tag(tag) {
+                tagsContainer.append(
+                    $('<span/>').addClass('tag').append(tag + '<i class="bi bi-x-lg"></i>')
+                )
+            }
+
+            function remove_tagsContainer_tag(tag) {
+                target = $(".tag:contains('" + tag + "')")
+                target.remove()
+            }
+
+            function refresh_tag_list(tag) {
+                if (tag_list.includes(tag)) {
+                    tag_list.splice(tag_list.indexOf(tag), 1)
+                    remove_tagsContainer_tag(tag)
+                } else {
+                    tag_list.push(tag)
+                    add_tagsContainer_tag(tag)
+                }
+            }
+
+            function tags_container_info(tag) {
+                refresh_tag_list(tag)
+            }
+
+            function clear_tags_container() {
+                $("#tags_container").empty();
+                $(".checked").removeClass("checked");
+                $(".tag_choose").removeClass("show");
+                tag_list = [];
+            }
+
+            function remove_item_checked(dom) {
+
+                $(dom).parent().remove();
+                tag = dom.parent().text();
+                $(".checked:contains('" + tag + "')").removeClass("checked");
+                tag_list.splice(tag_list.indexOf(tag), 1)
+                is_tag_choose_show(tag_list.length)
+
+            }
+
+            function is_tag_choose_show(length) {
+                if (length == 0) {
+                    $(".tag_choose").removeClass("show");
+                } else {
+                    $(".tag_choose").addClass("show");
+                }
+            }
+
+            //==============funtcion宣告結束==============
+
+        
+
+        var banner = new Swiper(".mySwiper", {
+            cssMode: true,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            pagination: {
+                el: ".swiper-pagination",
+            },
+
+            mousewheel: true,
+            keyboard: true,
+        });
+
+        var cate = new Swiper(".hot_game_cate", {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            navigation: {
+                nextEl: ".hot_game_next",
+                prevEl: ".hot_game_prev",
+            },
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: true,
+            },
+        });
+
+        });
+
+    </script>
 </body>
 
 </html>
