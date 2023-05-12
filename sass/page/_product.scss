@@ -1,57 +1,350 @@
-.product{
+.product {
+
     color: $white;
-    
-    .banner{
+
+
+    .swiper {
+        width: 100%;
+        height: 100%;
+
         margin-top: 45px;
         margin-bottom: 120px;
-        
-        img{
-            width: 100%;
+
+        .swiper-button-next {
+            right: 30px;
         }
 
-        .carousel-control-next-icon, .carousel-control-prev-icon{
-            width: 6rem;
-            height: 6rem;            
+        .swiper-button-prev {
+            left: 30px;
         }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+
     }
 
-    .product_main{
+    .product_main {
         display: flex;
+        height: auto;
 
-        .product_sidebar{
-            height: 100vh;
-            background-color: #fff;
-        }
+        .product_sidebar {
 
-        .game_part{
+            background-color: #1b1b1b;
 
-            .hot_game{
+            .tag_choose {
+                color: #fff;
+                padding: 10px 20px;
+                overflow: hidden;
+                display: none;
 
-                .hot_game_title{
-                    @include flex-container(row, nowrap, space-between, center);
-                    
-                    p{
-                        font-size: $h3;
-                    }
+                &.show {
+                    display: block;
                 }
-    
-                .hot_game_cate{
-                    display: flex;
 
-                    .hot_game_list{
-                        width: 369px;
-                        height: 269px;
-                        background-color: #01072B;
-                        .hot_game_container{
-                            
-                            @include flex-container(column, nowrap, center, center);
+                .clear {
+                    float: right;
+                }
+            }
+
+            #tags_container {
+                padding: 0 20px;
+
+                .tag {
+                    display: inline-block;
+                    padding: 0.3rem 0.8rem;
+                    background-color: lightblue;
+                    color: #fff;
+                    border-radius: 1rem;
+                    margin-right: 0.5rem;
+                    margin-bottom: 0.5rem;
+                }
+
+
+
+
+            }
+
+
+            ul {
+                li {
+                    line-height: 60px;
+                    border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+                    .botton {
+                        position: relative;
+                        color: white;
+                        text-decoration: none;
+                        font-size: 18px;
+                        padding-left: 20px;
+                        font-weight: 500;
+                        display: block;
+                        width: 100%;
+                        border-left: 3px solid transparent;
+
+                        &.active {
+
+                            color: cyan;
+                            background: #1e1e1e;
+                            border-left-color: cyan;
+
+                        }
+
+                        i {
+                            position: absolute;
+                            top: 50%;
+                            right: 20px;
+                            transform: translateY(-50%);
+                            font-size: 22px;
+                            transition: transform 0.4s;
+
+                            &.rotate {
+                                transform: translateY(-50%) rotate(-180deg);
+                            }
                         }
                     }
-                    
+
+                }
+
+                ul {
+                    display: none;
+
+                    &.show {
+                        display: block;
+                    }
+
+                    .item {
+
+                        .check-icon {
+                            color: cyan;
+                            /* font-size: 11px; */
+                            transform: scale(0);
+                            transition: all 0.2s ease-in-out;
+                        }
+
+                        &:hover {
+                            color: cyan;
+                        }
+
+                        &.checked {
+                            background-color: #333;
+                            color: cyan;
+
+                            .check-icon {
+                                transform: scale(1);
+                            }
+
+
+                        }
+
+                        li {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+
+                            font-size: 16px;
+                            color: #e6e6e6;
+                            text-align: center;
+                            padding: 0 30px;
+
+                            .price {
+                                display: flex;
+                                color: white;
+                                align-items: center;
+                                padding-left: 20px;
+                            }
+
+
+
+                        }
+                    }
+                }
+            }
+
+
+
+
+        }
+
+        .game_part {
+
+            .hot_game {
+
+                padding-bottom: 70px;
+                overflow: hidden;
+
+                .hot_game_title {
+                    @include flex-container(row, nowrap, space-between, center);
+                    padding-bottom: 30px;
+
+                }
+
+                .hot_game_cate {
+                    display: flex;
+                    height: 269px;
+
+                    .col-5 {
+                        margin-right: 30px;
+
+                        &:last-child {
+                            margin-right: 0;
+                        }
+                    }
+
+                    .hot_game_list {
+                        position: relative;
+
+                        background-color: #01072B;
+
+                        .hot_game_next {
+                            position: absolute;
+
+                            background-color: $purple;
+                            color: $white;
+                            width: auto;
+                            display: inline-block;
+                            border-radius: 3px;
+                            cursor: pointer;
+
+                            &:hover {
+                                background-color: $orange;
+                            }
+                        }
+
+                        .hot_game_container {
+
+                            position: absolute;
+                            left: 50%;
+                            top: 50%;
+                            transform: translate(-50%, -50%);
+
+                            img {
+                                padding-bottom: 15px;
+                            }
+
+                            h3 {
+                                font-size: 2.4rem;
+                                text-align: center;
+                            }
+                        }
+                    }
+
                 }
 
             }
-            
+
+            .product {
+                .product_order {
+                    display: flex;
+                    align-items: center;
+                    padding-bottom: 30px;
+
+                    .order_btn {
+
+                        width: 200px;
+                        display: flex;
+                        justify-content: space-between;
+                        vertical-align: middle;
+
+
+                        span {
+                            font-size: 2.4rem;
+                        }
+                    }
+
+                }
+
+                .product_goods {
+                    display: flex;
+                    flex-wrap: wrap;
+
+                    
+                    // justify-content: space-between;
+
+
+                    .each_good {
+
+                        background-color: #01072B;
+                        flex-basis: calc((100% - 30px * 3)/4);
+                        margin-right: 30px;
+                        margin-bottom: 50px;
+
+                        .goods_top{
+                            height: 350px;
+                            position: relative;
+
+                            .discount{
+                                border-radius: 0;
+                                position: absolute;
+                                font-size: $h3;
+                                padding: 10px 20px;
+                            }
+
+                            .heart{
+                                position: absolute;
+                                // border: 1px solid red;
+                                color: red;
+                                right: 10px;
+                                top: 10px;
+                                font-size: 30px;
+                            }
+                        }
+
+                        .goods_text{
+                            padding-bottom: 20px;
+                            h3{
+                                padding: 20px 0;
+                            }
+                            .price{
+                                padding-right: 20px;
+                            }
+                        }
+                    }
+
+                    .each_good:nth-child(4n) {
+                        margin-right: 0;
+                    }
+
+
+                }
+            }
+
         }
+
     }
+
+}
+
+:root {
+
+    --swiper-navigation-size: 60px;
+    // --swiper-navigation-color:gray;
+    --swiper-theme-color: orange;
+}
+
+.swiper-horizontal>.swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+    bottom: var(--swiper-pagination-bottom, 20px);
+}
+
+.swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet,
+.swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+    width: 60px;
+    height: 6px;
+    border-radius: 1px;
 }
