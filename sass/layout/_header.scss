@@ -3,8 +3,8 @@
   max-width: 1920px;
   background-color: orange;
   .logo {
-    width: 100px;
-    height: 100px;
+    width: 130px;
+    height: 130px;
     img {
       width: 100%;
     }
@@ -12,11 +12,11 @@
   .menu {
     display: flex;
     ul {
+      // max-width: 1920px;
       display: flex;
       align-items: center;
       color: white;
       li {
-        width: 200px;
         cursor: pointer;
 
         a {
