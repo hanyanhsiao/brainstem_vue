@@ -11,55 +11,96 @@
 </head>
 
 <body class="B">
-        <!-- header -->
-        @@include('./layout/B_header.html')
+    <!-- header -->
+    @@include('./layout/B_header.html')
     <main class="B_coupon">
-         <!-- 左側選單列 -->
-         <div class="col-2 B_nav">
-            <div class="B_nav_top">
-                <img src="/pic/img/backend/people.png">
-                <div class="test">
-                    <h5>管理者A</h5>
-                    <p>職稱、權限</p>
-                </div>
-            </div>
-
-            <ul>
-                <li>
-                    <a href="">
-                        <h5>會員資料</h5>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <h5>遊戲管理</h5>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <h5>訂單管理</h5>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <h5>優惠券管理</h5>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <h5>新聞管理</h5>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <h5 class="exit">登出<i class="bi bi-box-arrow-right"></i></h5>
-                    </a>
-                </li>
-            </ul>
-        </div>
+        <!-- 左側選單列 -->
+        @@include('./layout/B_nav.html')
 
         <!-- 右側 -->
-        
+        <div class="right col-12">
+            <!-- 右側上 -->
+            <div class="right-top backend_color">
+                <form action="" method="">
+                    <label for="couponID">查詢類型：</label>
+                    <input type="text" name="" id="couponID" placeholder="優惠券編號">
+                    <label for="coupon">查詢優惠券：</label>
+                    <input type="text" name="" id="coupon">
+                    <button type="submit" class="btn">查詢</button>
+                    <button type="submit" class="btn bi bi-plus-lg">增加優惠券</button>
+                </form>
+            </div>
+
+            <!-- 右側下 -->
+            <div class="right-bottom">
+                <table>
+                    <thead class="backend_color">
+                        <tr>
+                            <th>
+                                <h5>優惠券編號</h5>
+                            </th>
+                            <th>
+                                <h5>優惠券標題、內容</h5>
+                            </th>
+                            <th>
+                                <h5>優惠時間</h5>
+                            </th>
+                            <th>
+                                <h5>優惠內容</h5>
+                            </th>
+                            <th>
+                                <h5>顯示狀態</h5>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <h6>TK666</h6>
+                            </td>
+                            <td>
+                                <h6>青銅會員每月9折優惠券</h6>
+                                <p>使用期限：2023/4/1~2023/4/30<br>
+                                    使用規則：不能於其他優惠商品重複使用、每次優惠券只能選擇一張。</p>
+                            </td>
+                            <td>
+                                <h6>2023/4/1~2023/4/30</h6>
+                            </td>
+                            <td>
+                                <h6>9折</h6>
+                            </td>
+                            <td>
+                                <h6>開啟</h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h6>TK666</h6>
+                            </td>
+                            <td>
+                                <div>
+                                    <h6>生日優惠券$300元</h6>
+                                    <p>使用期限：2023/4/1~2023/4/30<br>
+                                    使用規則：不能於其他優惠商品重複使用、每次優惠券只能選擇一張。</p>
+                                </div>
+                            </td>
+                            <td>
+                                <h6>2023/4/1~2023/4/30</h6>
+                            </td>
+                            <td>
+                                <h6>$300元抵用券</h6>
+                            </td>
+                            <td>
+                                <h6>開啟</h6>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 分頁 -->
+            @@include('./layout/B_changepage.html')
+        </div>
+
     </main>
 </body>
 

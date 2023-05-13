@@ -76,6 +76,11 @@ h5{
 h6{
     font-size: $h3;
     color: $backend_font;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 0.05em;
+}
+.B{
+    p{
+        color: $backend_font;
+    }
 }

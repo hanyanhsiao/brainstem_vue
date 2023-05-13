@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="html-b">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -10,7 +10,7 @@
     <title>Brainstem | 會員管理</title>
 </head>
 
-<body class="B ">
+<body class="B">
     <!-- header -->
     @@include('./layout/B_header.html')
     <main class="B_member">
@@ -296,16 +296,7 @@
                 </table>
             </div>
             <!-- 分頁 -->
-            <div class="changepage">
-                <ul>
-                    <li class="page">1</li>
-                    <li class="page">2</li>
-                    <li class="page">3</li>
-                    <li class="page">4</li>
-                    <li class="page">5</li>
-                    <li class="next">next</li>
-                </ul>
-            </div>
+            @@include('./layout/B_changepage.html')
         </div>
 
     </main>

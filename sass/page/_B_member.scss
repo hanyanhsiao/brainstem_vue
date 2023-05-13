@@ -1,9 +1,5 @@
-.html-b{
-    background-color: white;
-}
 .B_member {
     display: flex;
-
     .right {
 
         .right-top {
@@ -27,7 +23,7 @@
                 }
 
                 select {
-                    width: 40%;
+                    width: 30%;
                     font-size: 1.8rem;
                 }
 
@@ -83,27 +79,6 @@
 
                 }
             }
-        }
-
-        .changepage {
-            margin-top: 20px;
-            width: 14%;
-            line-height: 1.4;
-            margin-left: 1248px;
-            ul{
-                display: flex;
-                border: 1px solid #000;
-                font-size: 20px;
-                li{
-                    border-right: 1px solid #000;
-                    width: 50px;
-                    text-align: center;
-                }
-                li:nth-last-child(1) {
-                    border-right: none;
-                }
-            }
-            margin-bottom: 50px;
         }
     }
 }

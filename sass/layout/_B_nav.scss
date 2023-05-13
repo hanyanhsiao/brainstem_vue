@@ -24,6 +24,7 @@ body.B {
                     margin-top: 70px;
                     line-height: 200%;
                 }
+           
             }
 
             margin-bottom: 30px;
@@ -31,7 +32,11 @@ body.B {
 
         li {
             border-bottom: 1px solid #000;
-            line-height: 1.6;
+            line-height: 3;
+
+            a{
+                display: block;
+            }
         }
 
         li:nth-child(1) {
@@ -55,6 +60,7 @@ body.B {
         .exit {
             color: $red;
         }
+        
 
     }
 }

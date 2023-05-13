@@ -1,3 +1,90 @@
 .B_games{
-    
+    display: flex;
+
+    .right {
+
+        .right-top {
+            border: 1px solid #000;
+            height: 90px;
+            margin: 20px auto;
+
+            form {
+                display: flex;
+                text-align: center;
+                margin-top: 21px;
+
+                width: 100%;
+
+                label {
+                    width: 20%;
+                    margin: auto 10px;
+                }
+
+                select {
+                    width: 30%;
+                    font-size: 1.8rem;
+                }
+
+                input {
+                    margin: auto;
+                }
+
+                button {
+                    margin: auto 20px;
+                    width: 30%;
+                }
+            }
+        }
+
+        .right-bottom {
+            border: 1px solid #000;
+
+            // width: 100%;
+            table {
+                width: 100%;
+                text-align: center;
+                line-height: 2.6;
+
+                thead {
+                    border-bottom: 1px solid #000;
+
+                    tr {
+                        th {
+                            border-right: 1px solid #000;
+                        }
+
+                        th:nth-last-child(1) {
+                            border-right: none;
+                        }
+                        th:nth-child(2) {
+                            width: 55%;
+                        }
+
+                    }
+                }
+
+                tbody {
+
+                    tr {
+                        border-bottom: 1px solid #000;
+
+                        td {
+                            h6 {
+                                line-height: 4;
+                            }
+                        }
+                        td:nth-child(2){
+                            text-align: left;
+                            transform: translateX(2%);
+                        }
+                    }
+
+                    tr:nth-last-child(1) {
+                        border-bottom: none;
+                    }
+
+                }
+            }
+        }
+    }
 }
