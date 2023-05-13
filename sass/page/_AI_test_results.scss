@@ -10,8 +10,12 @@
   box-shadow: 5px 5px $test_button_shadow;
   border: 0;
   cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
+// 適合的遊戲類型及描述
 .results_text {
   //   border: 2px solid saddlebrown;
   // max-width: 70%;
@@ -35,14 +39,14 @@
     font-size: $h3;
   }
 }
-
+//推薦的三款遊戲內容
 .results_game {
   @include flex-container(row, wrap, space-between, center);
 
-  //   border: 2px solid saddlebrown;
+  // border: 2px solid saddlebrown;
   margin: 0 auto;
   margin-top: 100px;
-  max-width: 70%;
+  max-width: 75%;
   position: relative;
 
   .game_top_block {
@@ -78,6 +82,9 @@
   border-radius: 5px;
   border: 0;
   cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .share_img_button {

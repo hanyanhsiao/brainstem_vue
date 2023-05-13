@@ -9,7 +9,6 @@
   position: relative;
   padding: 20px;
   .quiz_number {
-    font-size: 10rem;
     font-weight: bold;
     position: absolute;
     top: 0%;
@@ -17,7 +16,8 @@
     transform: translate(-50%, -50%);
     background-color: black;
     width: 200px;
-    p {
+    h1 {
+      font-size: 10rem;
       text-align: center;
       color: $orange;
     }
