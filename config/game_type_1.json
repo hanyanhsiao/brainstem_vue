@@ -1,0 +1,25 @@
+
+    {
+        "gameType":"冒險遊戲",
+        "gameTypeContent":"你喜歡挑戰自己、解決難題、探索未知世界，那麼你很可能是一位冒險遊戲玩家。冒險遊戲玩家通常擁有一些特殊的特質，例如強烈的探索欲、敏銳的觀察力、優秀的解謎能力和勇敢的冒險精神。此外，通常具有豐富的創造力，能夠在遊戲中發揮自己的想像力，找到新的解決方案。",
+        "game":[
+         {  
+            "id":"11",
+            "name":"薩爾達傳說",
+            "image":"https://dummyimage.com/260X350/949494/fff",
+            "url":"https://www.google.com.tw/"
+         },
+         {            
+            "id":"22",
+            "name":"雙人成行",
+            "image":"https://dummyimage.com/260X350/949494/fff",
+            "url":"https://www.google.com.tw/"
+         },
+         {
+            "id":"33",
+            "name":"惡靈古堡",
+            "image":"https://dummyimage.com/260X350/949494/fff",
+            "url":"https://www.google.com.tw/"
+         }
+        ]
+    }

@@ -38,7 +38,7 @@
                     </div>
                     <h1 class="quiz_question">{{quiz.question}}</h1>
                     <ul class="option_block">
-                        <li class="option" v-for="single_option in quiz.option" @click="ChangeOption(single_option)">
+                        <li class="option" v-for="single_option in quiz.option" @click=" changeQuiz(single_option)">
                             {{single_option.opContent}}</li>
                     </ul>
                 </div>
@@ -46,24 +46,26 @@
                 <div class="AI_test_page">
                     <p>{{quiz.questionNum}} / {{question_length}}</p>
                 </div>
-                <a href="./AI_test_results.html">下一頁</a>
             </div>
         </section>
 
     </main>
     <!-- javascript -->
-    @@include('./layout/js.html')
-    <!-- 以下可以放自己的js -->
+
     <script src="./js/particles.js"></script>
     <script src="./js/app.js"></script>
     <script src="./vendors/vue/vue.global.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.6/axios.min.js"
         integrity="sha512-06NZg89vaTNvnFgFTqi/dJKFadQ6FIglD6Yg1HHWAUtVFFoXli9BZL4q4EO1UTKpOfCfW5ws2Z6gw49Swsilsg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         Vue.createApp({
             data() {
                 return {
+                    allQuizs: [],
                     quiz: {
                         "questionNum": "1",
                         "question": "",
@@ -86,48 +88,76 @@
                             {
                                 "opContent": "",
                                 "gameType": ""
-
                             }
                         ]
                     },
-                    question_length: ""
+                    question_length: "",
+                    answer: []
                 }
             },
             methods: {
-                ChangeOption(single_option) {
-                    console.log(this.quiz.questionNum);
-                    console.log(this.question_length);
+                changeQuiz(single_option) {
+                    this.cacheGameType(single_option.gameType);
+
                     if (this.quiz.questionNum == this.question_length) {
+
+                        this.guessrGameType();
+                        // console.log(this.answer);
                         location.href = "./AI_test_results.html";
-                        return false
                     } else {
                         this.quiz.questionNum++
-                        this.changeQuiz();
-                        this.storeGameType(single_option)
+                        this.loadingQuiz();
                     }
 
                 },
-                changeQuiz() {
-                    let AllQuizs = JSON.parse(localStorage.getItem("AllQuizs"));
-                    this.quiz = AllQuizs[this.quiz.questionNum - 1];
+                // 載入題目
+                loadingQuiz() {
+                    this.quiz = this.allQuizs[this.quiz.questionNum - 1];
                 },
-                storeGameType(single_option) {
-                    let totalOp = JSON.parse(localStorage.getItem("options"));
-                    if (totalOp) {
-                        totalOp.push(single_option.gameType);
-                        localStorage.setItem("options", JSON.stringify(totalOp));
-                    } else {
-                        totalOp = [single_option.gameType];
+                // 儲存所選的選項對應的遊戲類別
+                cacheGameType(gameType) {
+                    this.answer.push(gameType);
+                    // this.answer[gameType - 1]++;
+                },
+                guessrGameType() {
+                    // 初始值都0票
+                    let type = [0, 0, 0, 0];
+                    // let type = new Array(this.question_length);
+                    // type.fill(0);
+
+                    for (let i of this.answer) {
+                        // console.log(i);
+                        //i為4種類型
+
+                        //類型票數加總
+                        type[i - 1]++;
+                        console.log(this.answer);
+                        // console.log(type);
+
+                        //取出最高票
+                        let maxNumber = Math.max(...type)
+                        // console.log(maxNumber);
+
+                        //取出最高票的索引(如相同將返回最早出現的)
+                        let maxIndex = type.indexOf(maxNumber);
+                        // console.log(maxIndex);
+
+                        //取得遊戲類型
+                        let resultsType = maxIndex + 1;
+                        console.log(resultsType);
+
+                        //存入localStorage
+                        localStorage.setItem("options", JSON.stringify(resultsType));
                     }
                 }
-
             },
             mounted() {
+                // 取得API資源
                 axios.get('./config/quizs.json')
                     .then((response) => {
-                        localStorage.setItem("AllQuizs", JSON.stringify(response.data));
+                        this.allQuizs = response.data;
                         this.question_length = response.data.length;
-                        this.changeQuiz();
+                        this.loadingQuiz();
                     })
             }
         }).mount("#app");

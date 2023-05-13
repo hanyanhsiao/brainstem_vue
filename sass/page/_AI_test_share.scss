@@ -31,6 +31,7 @@
         font-size: $h4;
         line-height: 2;
         padding: 0 5px;
+        text-align: justify;
       }
       .get_coupon_button {
         @extend %AI_test_button;
@@ -67,17 +68,14 @@
     height: 100%;
     z-index: 10;
     background-color: $mask;
+    cursor: pointer;
     // border: 5px solid salmon;
     .coupon_block {
-      // i {
-      //   color: $white;
-      //   display: flex;
-      //   justify-content: flex-end;
-      // }
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      cursor: auto;
       // max-width: 1000px;
 
       border: 2px solid $orange;

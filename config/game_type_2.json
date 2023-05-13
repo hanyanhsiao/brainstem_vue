@@ -1,0 +1,25 @@
+
+    {
+        "gameType":"角色扮演遊戲",
+        "gameTypeContent":"角色扮演遊戲通常吸引那些喜愛故事和角色發展的玩家。對於那些喜歡探索未知世界和解決問題的玩家，這款遊戲也提供了豐富的冒險和謎題。此外，這款遊戲也適合那些喜歡競技對決的玩家，可以通過PvP模式與其他玩家進行激烈的對抗。對於想要體驗不同角色類型和能力的玩家，這款遊戲也提供了多種角色選擇和升級系統。總之，這款遊戲非常適合那些喜歡探索和發展角色的玩家，以及想要與其他玩家進行交互和競技對決的玩家。",
+        "game":[
+         {  
+            "id":"44",
+            "name":"龍與地下城",
+            "image":"https://dummyimage.com/260X350/949494/fff",
+            "url":"https://www.google.com.tw/"
+         },
+         {
+            "id":"55",
+            "name":"創世紀",
+            "image":"https://dummyimage.com/260X350/949494/fff",
+            "url":"https://www.google.com.tw/"
+         },
+         {
+            "id":"66",
+            "name":"巫術",
+            "image":"https://dummyimage.com/260X350/949494/fff",
+            "url":"https://www.google.com.tw/"
+         }
+        ]
+    }
