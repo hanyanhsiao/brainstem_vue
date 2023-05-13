@@ -114,6 +114,11 @@
                 ul:first-child{
                     border-bottom: none;
                 }
+                ul:nth-child(2){
+                    li:first-child{
+                        margin-right: -20px;
+                    }
+                }
 
             }
             .B_order_info_down{

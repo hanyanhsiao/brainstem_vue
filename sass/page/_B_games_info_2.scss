@@ -203,14 +203,19 @@
                         }
                         li:last-child{
                             width: 300px;
+                            i{
+                                color: #000;
+                            }
                             h6{
                                 outline: none;
-                                // margin: auto;
                                 padding: 0;
+                                width: 100%;
+                                line-height: 1;
                             }
                             text-align: center;
                             margin-top: 20px;
                             border: 1px dashed #000;
+                            height: 170px;
                         }
 
                     }
