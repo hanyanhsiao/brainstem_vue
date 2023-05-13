@@ -4,13 +4,11 @@
 .quiz_block {
   border: 2px solid white;
   max-width: 500px;
-  margin: 0 auto;
-  margin-top: 100px;
+  margin: 100px auto 20px;
   border-radius: 20px;
   position: relative;
   padding: 20px;
   .quiz_number {
-    font-size: 10rem;
     font-weight: bold;
     position: absolute;
     top: 0%;
@@ -18,7 +16,8 @@
     transform: translate(-50%, -50%);
     background-color: black;
     width: 200px;
-    p {
+    h1 {
+      font-size: 10rem;
       text-align: center;
       color: $orange;
     }
@@ -40,7 +39,7 @@
       padding: 10px 20px;
       margin-bottom: 30px;
 
-      font-size: $h2;
+      font-size: $h3;
       color: #fff;
       // border: 2px solid white;
       &:hover {
@@ -56,7 +55,7 @@
   background-color: $white;
   width: 80px;
   margin: 0 auto;
-  margin-top: 20px;
+  // margin-top: 20px;
   border-radius: 10px;
   p {
     color: $orange;
