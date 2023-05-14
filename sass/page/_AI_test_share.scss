@@ -37,7 +37,7 @@
         @extend %AI_test_button;
       }
       .share_card_icons {
-        //   border: 1px solid saddlebrown;
+        // border: 1px solid saddlebrown;
         width: 80%;
         margin: 0 auto;
         display: flex;
@@ -49,6 +49,7 @@
           line-height: 1.2;
           i {
             font-size: 3rem;
+            padding: 0;
           }
         }
       }
