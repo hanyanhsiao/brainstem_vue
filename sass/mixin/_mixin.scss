@@ -14,9 +14,12 @@
   .col-#{$i} {
     width: calc((100% - #{$column-gap * 11}) / 12 * #{$i});
     margin-right: $column-gap;
-    // float: left;
     
     &:last-child {
+      margin-right: 0;
+    }
+    @media (max-width: 414px) {
+      width: 100%;
       margin-right: 0;
     }
   }
@@ -30,3 +33,20 @@
   justify-content: $justify-content;
   align-items: $align-items;
 }
+
+@mixin breakpoint-1440 {
+  @media (min-width: 1440px) {
+    @content;
+  }
+}
+
+@mixin breakpoint-414 {
+  @media (min-width: 414px) {
+    @content;
+  }
+}
+
+
+// @include breakpoint-414 {
+//   使用方式
+// }

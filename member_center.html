@@ -8,26 +8,160 @@
     <title>Brainstem | 會員中心</title>
     @@include('./layout/style.html')
     <!-- 以下可以放自己的link -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
-    <style>
-        body{
-            /* height: 500px; */
-        }
-    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/bootstrap-icons.min.css">
 </head>
 
 <body>
     <!-- header -->
-    <!-- @@include('./layout/header.html') -->
-    <!-- <main class="member_center">-->
+    @@include('./layout/header.html')
+    
+    <main class="member_center">
     <h2>會員中心</h2>
-    <ul class="col-4 select">
-        <li>會員資料</li>
-        <li>訂單記錄</li>
-        <li>遊戲庫</li>
-        <li>會員優惠券</li>
+    <section class="col-4 left">
+    <ul class=" select">
+        <li><i class="bi bi-person-circle"></i>會員資料</li>
+        <li><i class="order_icon"></i>訂單記錄</li>
+        <li><i class="bi bi-joystick"></i>遊戲庫</li>
+        <li><i class="ticket_icon"></i>會員優惠券</li>
     </ul>
+    </section>
+    <!-- 會員訂單 -->
+    <!-- <section class="col-10 right">
+        <div class="describe">
+            <h2>我的檔案</h2>
+            <p>管理你的檔案以保護你的帳戶</p>
+        </div>
+        <div class="member_info">
+            <div class="img">
+                <i class="bi bi-person-circle"></i>
+                <div class="btn">選擇圖片</div>
+                <p>檔案大小：最大1MB<br>
+                    檔案限制：JPEG、PNG</p>
+            </div>
+            <div class="info">
+                <div class="info_left">
+                    <div class="mail">
+                    <p>使用者帳號：</p>
+                    <p>THD101@gmail.com</p>
+                </div>
+                <div class="name">
+                    <p>姓名：</p>
+                    <p>THD101</p>
+                </div>
+                <div class="nickname">
+                    <p>暱稱：</p>
+                    <p>二柱子</p>
+                </div>
+                </div>
+                <div class="info_right">
+                    <div class="phone">
+                    <p>手機號碼：</p>
+                    <p>09******92</p>
+                </div>
+                <div class="birth">
+                    <p>生日：</p>
+                    <p>2000/02/21</p>
+                </div>
+                <div class="gender">
+                    <p>性別：</p>
+                    <p>男生</p>
+                </div>
+                <div class="btn revise">修改</div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <!-- 訂單修改 -->
+    <!-- <section class="col-10 right">
+        <div class="revise_member_info">
+
+        </div>
+    </section> -->
+    <!-- 訂單記錄 -->
+    <!-- <section class="col-10 right">
+        <div class="order">
+            <h3>訂單記錄</h3>
+            <div class="form_title">
+                <p>訂單編號</p>
+                <p>購買日期</p>
+                <p>購買金額</p>
+                <p>訂單狀態</p>
+            </div>
+            <div class="order_info">
+                <i class="bi bi-dash-lg"></i>
+                <p>ak4l79e3k68sly</p>
+                <p>2023/1/15</p>
+                <p>$2,059</p>
+                <p>已完成</p>
+            </div>
+            <div class="detail_order">
+                <div class="detail_order_title">
+                    <p>訂單內容</p>
+                    <p>商品折扣</p>
+                    <p>購買金額</p>
+                </div>
+                <div class="detail_order_info">
+                    <div class="item">
+                        <div class="item_info">
+                        <img src="https://placehold.co/95x125" alt="">
+                        <p>遊戲名稱遊戲名稱遊戲名稱遊戲名稱</p>
+                        </div>
+                        <div class="dis">
+                        <div class="discount">75%</div>
+                        </div>
+                        <div class="price_box">
+                        <div class="price">$660</div>
+                        <div class="price_original">$1,099</div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item_info">
+                        <img src="https://placehold.co/95x125" alt="">
+                        <p>遊戲名稱遊戲名稱遊戲名稱遊戲名稱</p>
+                        </div>
+                        <div class="dis">
+                        <div class="discount">75%</div>
+                        </div>
+                        <div class="price_box">
+                        <div class="price_original">$1,399</div>
+                        </div>
+                    </div>
+                    <div class="settlement">
+                        <div class="coupon">
+                        <p>優惠券使用</p>
+                        <p class="settlement_right">春季特賣優惠商品 -40%</p>
+                        </div>
+                        <div class="dis">
+                            <p>折扣</p>
+                            <p class="settlement_right">-439元</p>
+                        </div>
+                        <div class="sum">
+                            <p>總金額</p>
+                            <p class="settlement_right">2059 元</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="order_info">
+                <i class="bi bi-dash-lg"></i>
+                <p>ak4l79e3k68sly</p>
+                <p>2023/1/15</p>
+                <p>$2,059</p>
+                <p>已完成</p>
+            </div>
+        </div>
+    </section> -->
+    <!-- 遊戲庫 -->
+    <section class="col-10 right">
+        <div class="game_library">
+            
+        </div>
+    </section>
+
+
     </main>
+    
      
     
       
