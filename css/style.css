@@ -405,16 +405,16 @@ body.B .B_nav a {
 body.B .B_nav .B_nav_top {
   display: flex;
   align-items: center;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 body.B .B_nav .B_nav_top img {
-  margin-top: 50px;
+  margin-top: 20px;
   border-radius: 50%;
   width: 100px;
 }
 body.B .B_nav .B_nav_top .test {
   text-align: left;
-  margin-left: 20px;
+  margin-left: 5px;
 }
 body.B .B_nav .B_nav_top .test h5 {
   margin-top: 70px;
@@ -975,13 +975,84 @@ body.BF {
   font-size: 20px;
 }
 
+.html-b {
+  background-color: white;
+}
+
 .B_member {
   display: flex;
 }
-.B_member .right-top {
+.B_member .right .right-top {
+  border: 1px solid #000;
+  height: 90px;
+  margin: 20px auto;
+}
+.B_member .right .right-top form {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
+  margin-top: 21px;
+  width: 100%;
+}
+.B_member .right .right-top form label {
+  width: 20%;
+  margin: auto 10px;
+}
+.B_member .right .right-top form select {
+  width: 40%;
+  font-size: 1.8rem;
+}
+.B_member .right .right-top form input {
+  margin: auto;
+}
+.B_member .right .right-top form button {
+  margin: auto 20px;
+  width: 30%;
+}
+.B_member .right .right-bottom {
+  border: 1px solid #000;
+}
+.B_member .right .right-bottom table {
+  width: 100%;
+  text-align: center;
+  line-height: 2.6;
+}
+.B_member .right .right-bottom table thead {
+  border-bottom: 1px solid #000;
+}
+.B_member .right .right-bottom table thead tr th {
+  border-right: 1px solid #000;
+}
+.B_member .right .right-bottom table thead tr th:nth-last-child(1) {
+  border-right: none;
+}
+.B_member .right .right-bottom table tbody tr {
+  border-bottom: 1px solid #000;
+}
+.B_member .right .right-bottom table tbody tr td h6 {
+  line-height: 4;
+}
+.B_member .right .right-bottom table tbody tr:nth-last-child(1) {
+  border-bottom: none;
+}
+.B_member .right .changepage {
+  margin-top: 20px;
+  width: 14%;
+  line-height: 1.4;
+  margin-left: 1248px;
+  margin-bottom: 50px;
+}
+.B_member .right .changepage ul {
+  display: flex;
+  border: 1px solid #000;
+  font-size: 20px;
+}
+.B_member .right .changepage ul li {
+  border-right: 1px solid #000;
+  width: 50px;
+  text-align: center;
+}
+.B_member .right .changepage ul li:nth-last-child(1) {
+  border-right: none;
 }
 
 .login .logo {

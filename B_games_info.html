@@ -11,57 +11,201 @@
 </head>
 
 <body class="B">
-        <!-- header -->
-        @@include('./layout/B_header.html')
+    <!-- header -->
+    @@include('./layout/B_header.html')
     <main class="B_games_info">
-         <!-- 左側選單列 -->
-         <div class="col-2 B_nav">
-            <div class="B_nav_top">
-                <img src="/pic/img/backend/people.png">
-                <div class="test">
-                    <h5>管理者A</h5>
-                    <p>職稱、權限</p>
-                </div>
-            </div>
-
-            <ul>
-                <li>
-                    <a href="">
-                        <h5>會員資料</h5>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <h5>遊戲管理</h5>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <h5>訂單管理</h5>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <h5>優惠券管理</h5>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <h5>新聞管理</h5>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <h5 class="exit">登出<i class="bi bi-box-arrow-right"></i></h5>
-                    </a>
-                </li>
-            </ul>
-        </div>
+        <!-- 左側選單列 -->
+        @@include('./layout/B_nav.html')
 
         <!-- 右側 -->
-        
+        <div class="right col-12">
+            <a href="">
+                <h6>回上一頁</h6>
+            </a>
+            <div class="right_main">
+                <form action="" method="">
+                    <ul class="firstul">
+                        <li>
+                            <h4>遊戲內容</h4>
+                        </li>
+                        <li><button class="btn">修改內容</button></li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h6>遊戲名稱</h6>
+                        </li>
+                        <li>
+                            <h6>王國之心3</h6>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h6>遊戲編號</h6>
+                        </li>
+                        <li>
+                            <h6>123456789000</h6>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h6>遊戲類型</h6>
+                        </li>
+                        <li>
+                            <h6>單人</h6>
+                        </li>
+                        <li>
+                            <h6>冒險</h6>
+                        </li>
+                        <li>
+                            <h6>開放世界</h6>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h6>活動類型</h6>
+                        </li>
+                        <li>
+                            <h6>夏季特賣</h6>
+                        </li>
+                        <li>
+                            <h6>活動時間：2023/04/01 ~ 2023/04/30</h6>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h6>開發商</h6>
+                        </li>
+                        <li>
+                            <h6>SQUARE ENIX</h6>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h6>開發人員</h6>
+                        </li>
+                        <li>
+                            <h6>LBJ</h6>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h6>遊戲級別</h6>
+                        </li>
+                        <li>
+                            <h6>保護級</h6>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h6>商品金額</h6>
+                        </li>
+                        <li>
+                            <h6>$1,399</h6>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h6>商品折扣</h6>
+                        </li>
+                        <li>
+                            <h6>-30%</h6>
+                        </li>
+                        <li>
+                            <h6>折扣時間：2023/04/01 ~ 2023/04/30 </h6>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h6>商品折扣後金額</h6>
+                        </li>
+                        <li>
+                            <h6>$979</h6>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h6>遊戲說明</h6>
+                        </li>
+                        <li>
+                            <h6>《王國之心》系列是迪士尼與 SQUARE ENIX 聯手打造的角色扮演遊戲。自從 2002 年 3 月推出第 1 部作品《王國之心》（支援平台：PlayStation
+                                2）以來，已公開 13 部作品（包含 Final Mix 版則為 20 部作品），是全球出貨、銷售量超過 3,500 萬套（※）的熱門系列遊戲。</h6>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h6>系統需求</h6>
+                        </li>
+                        <li>
+                            <h6>
+                                最低配備:<br>
+                                <span>需要 64 位元的處理器及作業系統<br></span>
+                                <span>作業系統: Windows 10<br></span>
+                                <span>處理器: Intel Core i3-4160T<br></span>
+                                <span>記憶體: 8 GB 記憶體<br></span>
+                                <span>顯示卡: NVIDIA GeForce GT 740<br></span>
+                                <span>VR 支援: SteamVR<br></span>
+                                <span>備註: Not for VR. For PC only.<br></span>
+                                建議配備:<br>
+                                <span>需要 64 位元的處理器及作業系統<br></span>
+                                <span>作業系統: Windows 10<br></span>
+                                <span>處理器: Intel Core i5-4590、AMD FX 8350<br></span>
+                                <span>記憶體: 8 GB 記憶體<br></span>
+                                <span>顯示卡: NVIDIA GeForce GTX 1060、AMD Radeon RX 480<br></span>
+                                <span>備註: For VR.<br></span>
+                            </h6>
+                        </li>
+                    </ul>
+                    <div class="games_info_down">
+                        <h6>遊戲圖片</h6>
+                        <ul>
+                            <li>
+                                <img src="https://fakeimg.pl/300x170/ff0000/" alt="">
+                                <h6>
+                                    圖片說明說明
+                                </h6>
+                            </li>
+                            <li>
+                                <img src="https://fakeimg.pl/300x170/ff0000/" alt="">
+                                <h6>
+                                    圖片說明說明
+                                </h6>
+                            </li>
+                                                        <li>
+                                <img src="https://fakeimg.pl/300x170/ff0000/" alt="">
+                                <h6>
+                                    圖片說明說明
+                                </h6>
+                            </li>
+                            <li>
+                                <img src="https://fakeimg.pl/300x170/ff0000/" alt="">
+                                <h6>
+                                    圖片說明說明
+                                </h6>
+                            </li>
+                            <li>
+                                <img src="https://fakeimg.pl/300x170/ff0000/" alt="">
+                                <h6>
+                                    圖片說明說明
+                                </h6>
+                            </li>
+                            <li>
+                                <img src="https://fakeimg.pl/300x170/ff0000/" alt="">
+                                <h6>
+                                    圖片說明說明
+                                </h6>
+                            </li>
+                            <li>
+                                <img src="https://fakeimg.pl/300x170/ff0000/" alt="">
+                                <h6>
+                                    圖片說明說明
+                                </h6>
+                            </li>
+                        </ul>
 
-
+                    </div>
+                </form>
+            </div>
+        </div>
     </main>
 </body>
 

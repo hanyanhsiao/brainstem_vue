@@ -1,0 +1,90 @@
+.B_coupon_info_2 {
+    display: flex;
+    height: 1080px;
+
+    .right {
+        margin-top: 20px;
+
+        a {
+            display: block;
+            width: 102px;
+
+            h6::before {
+                content: '\003C';
+                margin-right: 5px;
+            }
+        }
+
+        .right_main {
+            border: 1px solid #000;
+            line-height: 4;
+
+            form {
+                width: 90%;
+                margin: 0 auto;
+                margin-bottom: 150px;
+                ul {
+                    display: flex;
+                    border-bottom: 1px solid black;
+
+                    li {
+                        margin: auto 0;
+                        input{
+                            margin-bottom: 0;
+                        }
+                        select{
+                            font-size: $h2;
+                            padding: 5px;
+                            background-color: $white;
+                            border: 1px solid black;
+                            color: $backend_font;
+                            border-radius: 5px;
+                        }
+                        textarea{
+                            padding: 5px;
+                            border-radius: 5px;
+                            font-size: $p;
+                            margin-top: 20px;
+
+                        }
+                    }
+                    li:nth-child(1){
+                        margin-right: 100px;
+                    }
+
+                }
+                ul:nth-child(5){
+                    li{
+                        margin-right: 55px;
+                    }
+                }
+                ul:nth-child(6){
+                    li:nth-child(1){
+                        margin-right: 125px;
+                    }
+                }
+                ul:nth-child(7){
+                    li{
+                        margin-right: 80px;
+                    }
+                }
+                .firstul {
+                    justify-content: space-between;
+
+                    li{
+                        margin-right: 0;
+                    }
+                    button{
+                        width: 100px;             
+                    }
+                }      
+            }
+
+            .right_main>h6 {
+                width: 90%;
+                margin: 0 auto;
+            }
+
+        }
+    }
+}

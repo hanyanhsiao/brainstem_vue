@@ -1,10 +1,184 @@
 .member_center{
-    // ul.select{
+    i{
+        color: $white;
+    }
+    h2{
+        margin: 20px 0;
+    }
+    .left{
+         float: left;
+    ul.select{
+        li{
+            padding-left: 20px;
+            line-height: 80px;
+            border-bottom: 1px solid $orange;
+            .order_icon{
+                background-image: url(../../pic/img/icon/order_icon_.png);
+                background-size: contain;
+                background-position: center center;
+                background-repeat: no-repeat;
+                margin: 0 10px;
+            }
+            .ticket_icon{
+                background-image: url(../../pic/img/icon/ticke_iocn.png);
+                background-size: contain;
+                background-position: center center;
+                background-repeat: no-repeat;
+                margin: 0 10px;
+            }
+        }
+    }
+}
+    .right{
+        float: left;
+        margin-left: 15px;
+        margin-bottom: 60px;
+        .describe{
+            border: 1px solid $orange;
+            padding: 0 0 25px 30px;
+        }
+        .member_info{
+            @include flex-container(row, nowrap, flex-start, flex-start);
+            
+            .img{
+                @include flex-container(column, nowrap, center, center);
+                border: 1px solid $orange;
+                height: 500px;
+                flex-basis: 35%;
+                i{
+                    font-size: 150px;
+                    color: $white;
+                    margin-bottom: 20px;
+                }
+                .btn{
+                    padding: 10px;
+                    border: 1px solid $orange;
+                    background: none;
+                    margin-bottom: 20px;
+                    &:hover{
+                        background-color: $orange;
+                    }
+                }
+                p{
+                    line-height: 1.5;
+                    font-size: 1.2rem;
+                    color: #666666;
+                }
+            }  
+            .info{
+                @include flex-container(row, nowrap, space-around, center);
+                height: 500px;
+                border: 1px solid $orange;
+                flex-grow: 1;
+                p{
+                    margin: 30px 20px;
+                }
+                .info_left,.info_right{
+                    flex-basis: 50%;
+                    padding: 30px 0;
+                    @include flex-container(column, nowrap, flex-start, flex-start);
+                
+                }
+                .revise{
+                    padding: 5px 10px;
+                    margin-left: auto;
+                    margin-right: 20px;
+                }
+            }
+        }
         
-    //     li{
-    //         color: $white;
-    //         height: 50px;
-    //         border-bottom: 1px solid $orange;
-    //     }
-    // }
+    }
+
+    .order{
+        border: 1px solid $orange;
+        padding: 20px;
+        
+        .form_title,.order_info,.detail_order_title{
+            margin-top: 10px;
+            width: 100%;
+            @include flex-container(row, nowrap, flex-start, center);
+            p{
+                padding: 5px 0;
+                border: 1px solid $orange;
+                // display: block;
+                text-align: center;
+                flex-grow: 1;
+                margin-left: 5px;
+                &:first-child{
+                    flex-grow: 3;
+                    margin-left: 0;
+                }
+            }
+        }
+        .order_info{
+            margin: 0;
+            padding: 5px 0;
+            background-color: $purple;
+            border: 1px solid $orange;
+            box-sizing: border-box;
+            i{
+                color: $orange;
+            }
+            p{
+                border: none;
+            }
+        }
+        .detail_order{
+            .detail_order_title{
+                margin: 0;
+                p{
+                    margin: 0;
+                    font-size: $a;
+                    &:first-child{
+                        flex-grow: 5;
+                    }
+                }
+            }
+            .detail_order_info{
+                .item{
+                    border: 1px solid $orange;
+                    @include flex-container(row, nowrap, flex-start, center); 
+                    .item_info{
+                        @include flex-container(row, nowrap, flex-start, center);
+                        flex-basis: 63%;
+                        p{
+                            margin-left: 10px;
+                        }
+                    }
+                    .dis, .price_box{
+                        text-align: center;
+                        flex-basis: 18.5%;
+                    }
+                    .discount{
+                        width: 35px;
+                        margin: 0 auto;
+                    }
+                    .price_box{
+                        .price{
+                            margin-bottom: 10px;
+                        }
+                    }
+                }
+                .settlement{
+                    text-align: right;
+                    p{
+                        display: inline-block;
+                        margin: 15px 5px;
+                    }
+                    .settlement_right{
+                        width: 25%;
+                    }
+                    .coupon .settlement_right{
+                        border: 1px solid $orange;
+                        padding: 5px 10px;
+                        border-radius: 3px;
+                    }
+                    .sum .settlement_right{
+                        color: $orange;
+                    }
+                }
+            }
+        }
+
+    }
 }
