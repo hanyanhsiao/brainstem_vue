@@ -1,0 +1,23 @@
+.changepage {
+    margin: 50px 0;
+    width: 14%;
+    line-height: 1.4;
+    transform: translateX(600%);
+    
+    ul{
+        display: flex;
+        border: 1px solid #000;
+        font-size: 20px;
+        li{
+            border-right: 1px solid #000;
+            width: 50px;
+            text-align: center;
+        }
+        li:nth-last-child(1) {
+            border-right: none;
+        }
+        li:hover{
+            background: #d3bffb;
+        }
+    }
+}
