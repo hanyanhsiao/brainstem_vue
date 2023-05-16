@@ -36,6 +36,11 @@ a {
   cursor: pointer;
 }
 
+p {
+  color: #ede9f2;
+  font-size: 1.6rem;
+}
+
 .price {
   font-size: 2.4rem;
   color: #ff6300;
@@ -272,10 +277,6 @@ h6 {
   margin-bottom: 10px;
 }
 
-form {
-  width: 80%;
-}
-
 label {
   color: #ede9f2;
   display: block;
@@ -335,12 +336,10 @@ body.B i {
 html {
   background-color: #030009;
   max-width: 1920px;
-  height: 100%;
 }
 
 body {
   max-width: 1920px;
-  height: 100%;
   background: linear-gradient(174.31deg, #030009 3.18%, #160046 27.03%, #180505 50.89%, #4f1f00 98.6%);
 }
 
@@ -356,7 +355,6 @@ main {
 }
 
 i {
-  color: #ede9f2;
   font-size: 2rem;
   padding: 0 10px;
 }
@@ -374,8 +372,8 @@ i {
   background-color: orange;
 }
 .header .logo {
-  width: 100px;
-  height: 100px;
+  width: 130px;
+  height: 130px;
 }
 .header .logo img {
   width: 100%;
@@ -389,7 +387,6 @@ i {
   color: white;
 }
 .header .menu ul li {
-  width: 200px;
   cursor: pointer;
 }
 .header .menu ul li a {
@@ -454,7 +451,8 @@ body.B .B_nav .exit {
 
 .AI_test {
   width: 100%;
-  height: 100%;
+  overflow: visible;
+  position: relative;
 }
 .AI_test canvas {
   display: block;
@@ -468,62 +466,68 @@ body.B .B_nav .exit {
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
+  position: fixed;
+  margin-bottom: 100px;
 }
-.AI_test #particles-js .AI_test_container {
+.AI_test .AI_test_container {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   margin: 0 auto;
-  overflow-x: hidden;
-  padding: 20px;
+  max-width: 90%;
+  z-index: 2;
 }
-.AI_test #particles-js .AI_test_container .cube {
+.AI_test .AI_test_container .AI_test_wrapper {
+  height: 100vh;
+}
+.AI_test .AI_test_container .AI_test_wrapper .cube {
   transform-style: preserve-3d;
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   position: relative;
-  margin: 100px auto 20px auto;
+  margin: 80px auto;
   animation: xz 10s infinite linear;
 }
-.AI_test #particles-js .AI_test_container .cube:hover {
+.AI_test .AI_test_container .AI_test_wrapper .cube:hover {
   animation-play-state: paused;
 }
-.AI_test #particles-js .AI_test_container .cube li {
+.AI_test .AI_test_container .AI_test_wrapper .cube li {
   position: absolute;
   left: 0;
   top: 0;
   width: 100px;
   height: 100px;
   line-height: 100px;
-  background: #000000;
+  background: #160046;
+  padding: 10px;
   /* opacity: .8; */
 }
-.AI_test #particles-js .AI_test_container .cube li:hover {
+.AI_test .AI_test_container .AI_test_wrapper .cube li:hover {
   background: #ede9f2;
 }
-.AI_test #particles-js .AI_test_container .cube li img {
+.AI_test .AI_test_container .AI_test_wrapper .cube li img {
   width: 100%;
   height: 100%;
 }
-.AI_test #particles-js .AI_test_container .cube .top {
-  transform: rotateX(90deg) translateZ(50px);
+.AI_test .AI_test_container .AI_test_wrapper .cube .top {
+  transform: rotateX(90deg) translateZ(60px);
 }
-.AI_test #particles-js .AI_test_container .cube .bottom {
-  transform: rotateX(90deg) translateZ(-50px);
+.AI_test .AI_test_container .AI_test_wrapper .cube .bottom {
+  transform: rotateX(90deg) translateZ(-60px);
 }
-.AI_test #particles-js .AI_test_container .cube .left {
-  transform: rotateY(90deg) translateZ(50px);
+.AI_test .AI_test_container .AI_test_wrapper .cube .left {
+  transform: rotateY(90deg) translateZ(60px);
 }
-.AI_test #particles-js .AI_test_container .cube .right {
-  transform: rotateY(90deg) translateZ(-50px);
+.AI_test .AI_test_container .AI_test_wrapper .cube .right {
+  transform: rotateY(90deg) translateZ(-60px);
 }
-.AI_test #particles-js .AI_test_container .cube .front {
-  transform: translateZ(50px);
+.AI_test .AI_test_container .AI_test_wrapper .cube .front {
+  transform: translateZ(60px);
 }
-.AI_test #particles-js .AI_test_container .cube .back {
-  transform: translateZ(-50px);
+.AI_test .AI_test_container .AI_test_wrapper .cube .back {
+  transform: translateZ(-60px);
 }
 @keyframes xz {
   0% {
@@ -533,20 +537,20 @@ body.B .B_nav .exit {
     transform: rotateX(360deg) rotateY(720deg) rotateZ(1080deg);
   }
 }
-.AI_test #particles-js .AI_test_container .AI_test_text_block {
+.AI_test .AI_test_container .AI_test_wrapper .AI_test_text_block {
   border-radius: 5px;
   margin: 0 auto;
   text-align: center;
   display: block;
   /* ------------按鈕-立即測驗------------- */
 }
-.AI_test #particles-js .AI_test_container .AI_test_text_block .AI_test_text_title {
+.AI_test .AI_test_container .AI_test_wrapper .AI_test_text_block .AI_test_text_title {
   display: block;
   height: 300px;
-  margin-top: 50px;
   position: relative;
+  overflow-x: hidden;
 }
-.AI_test #particles-js .AI_test_container .AI_test_text_block .AI_test_text_title .text-magic {
+.AI_test .AI_test_container .AI_test_wrapper .AI_test_text_block .AI_test_text_title .text-magic {
   position: absolute;
   top: 20%;
   left: 50%;
@@ -561,7 +565,7 @@ body.B .B_nav .exit {
   line-height: 1.2;
   max-width: 200px;
 }
-.AI_test #particles-js .AI_test_container .AI_test_text_block .AI_test_text_title .text-magic::before {
+.AI_test .AI_test_container .AI_test_wrapper .AI_test_text_block .AI_test_text_title .text-magic::before {
   content: attr(data-word);
   position: absolute;
   top: 0;
@@ -574,7 +578,7 @@ body.B .B_nav .exit {
   line-height: 1.2;
   animation: move 1s infinite;
 }
-.AI_test #particles-js .AI_test_container .AI_test_text_block .AI_test_text_title .text-magic::after {
+.AI_test .AI_test_container .AI_test_wrapper .AI_test_text_block .AI_test_text_title .text-magic::after {
   content: attr(data-word);
   position: absolute;
   top: 0;
@@ -628,7 +632,7 @@ body.B .B_nav .exit {
     left: -1.2px;
   }
 }
-.AI_test #particles-js .AI_test_container .AI_test_text_block .second_title {
+.AI_test .AI_test_container .AI_test_wrapper .AI_test_text_block .second_title {
   color: #6511e1;
   margin: 0 auto;
   width: 300px;
@@ -636,16 +640,16 @@ body.B .B_nav .exit {
   box-shadow: 5px 5px #ff6300;
   line-height: 40px;
   font-size: 2rem;
-  margin: 30px auto;
+  margin: 0 auto 30px;
 }
-.AI_test #particles-js .AI_test_container .AI_test_text_block .contents {
+.AI_test .AI_test_container .AI_test_wrapper .AI_test_text_block .contents {
   line-height: 30px;
   color: #ede9f2;
   font-size: 2rem;
   margin-bottom: 30px;
 }
-.AI_test #particles-js .AI_test_container .AI_test_text_block button,
-.AI_test #particles-js .AI_test_container .AI_test_text_block button::after {
+.AI_test .AI_test_container .AI_test_wrapper .AI_test_text_block button,
+.AI_test .AI_test_container .AI_test_wrapper .AI_test_text_block button::after {
   width: 150px;
   height: 50px;
   font-size: 2rem;
@@ -658,7 +662,7 @@ body.B .B_nav .exit {
   position: relative;
   cursor: pointer;
 }
-.AI_test #particles-js .AI_test_container .AI_test_text_block button::after {
+.AI_test .AI_test_container .AI_test_wrapper .AI_test_text_block button::after {
   --slice-0: inset(50% 50% 50% 50%);
   --slice-1: inset(80% -6px 0 0);
   --slice-2: inset(50% -6px 30% 0);
@@ -674,7 +678,7 @@ body.B .B_nav .exit {
   text-shadow: -3px -3px 0px #f8f005, 3px 3px 0px #00e6f6;
   clip-path: var(--slice-0);
 }
-.AI_test #particles-js .AI_test_container .AI_test_text_block button:hover::after {
+.AI_test .AI_test_container .AI_test_wrapper .AI_test_text_block button:hover::after {
   animation: glitch 1s steps(2, end) infinite;
 }
 @keyframes glitch {
@@ -727,8 +731,7 @@ body.B .B_nav .exit {
 .quiz_block {
   border: 2px solid white;
   max-width: 500px;
-  margin: 0 auto;
-  margin-top: 100px;
+  margin: 100px auto 20px;
   border-radius: 20px;
   position: relative;
   padding: 20px;
@@ -761,7 +764,7 @@ body.B .B_nav .exit {
   border-radius: 20px;
   padding: 10px 20px;
   margin-bottom: 30px;
-  font-size: 2.4rem;
+  font-size: 2rem;
   color: #fff;
 }
 .quiz_block .option_block .option:hover {
@@ -773,7 +776,6 @@ body.B .B_nav .exit {
   background-color: #ede9f2;
   width: 80px;
   margin: 0 auto;
-  margin-top: 20px;
   border-radius: 10px;
 }
 .AI_test_page p {
@@ -798,10 +800,11 @@ body.B .B_nav .exit {
 
 .results_text {
   margin: 0 auto;
-  margin-top: 50px;
+  padding: 50px 5px 5px 5px;
 }
 .results_text .results_title {
   text-align: center;
+  line-height: 1.5;
 }
 .results_text .results_game_name {
   text-align: center;
@@ -812,7 +815,7 @@ body.B .B_nav .exit {
   max-width: 800px;
   margin: 0 auto;
   color: #ede9f2;
-  font-size: 1.6rem;
+  font-size: 2rem;
 }
 
 .results_game {
@@ -859,9 +862,9 @@ body.B .B_nav .exit {
 
 .share_card {
   margin: 0 auto;
-  margin-top: 80px;
+  margin-top: 50px;
   max-width: 400px;
-  background-color: #6511e1;
+  background-image: linear-gradient(to bottom, #964cdd, #260c4b);
   border-radius: 10px;
   padding: 30px;
 }
@@ -888,7 +891,9 @@ body.B .B_nav .exit {
   line-height: 2;
 }
 .share_card .share_card_content .share_card_contents {
-  line-height: 1.5;
+  font-size: 1.8rem;
+  line-height: 2;
+  padding: 0 5px;
 }
 .share_card .share_card_content .share_card_icons {
   font-size: 3.5rem;
@@ -900,6 +905,7 @@ body.B .B_nav .exit {
 }
 .share_card .share_card_content .get_coupon_text {
   line-height: 2;
+  font-size: 2rem;
 }
 
 .coupon_popover {
@@ -923,7 +929,9 @@ body.B .B_nav .exit {
   line-height: 2;
 }
 .coupon_popover .coupon_block .coupon_block_text a {
+  font-size: 2rem;
   color: #ff6300;
+  text-decoration: underline;
 }
 .coupon_popover .coupon_block .coupon_number_block {
   background-color: #ede9f2;
@@ -984,20 +992,28 @@ body.BF {
   align-items: center;
 }
 
-.login .logo {
-  width: 130px;
-  height: 130px;
+.log_title {
+  text-align: center;
+}
+.log_title .logo {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
   background-image: url(../../pic/img/LOGO/WEB\ LOGO.png);
   background-size: 90% 90%;
   background-repeat: no-repeat;
   background-position: center center;
-  margin-bottom: 10px;
+}
+.log_title h2.margin {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.login form {
+  width: 80%;
 }
 .login .margin {
   margin: 10px 0;
-}
-.login .title h2 {
-  text-align: center;
 }
 .login .login_block {
   display: flex;
@@ -1006,7 +1022,7 @@ body.BF {
   justify-content: space-around;
   align-items: center;
   padding: 10px 0;
-  margin: 100px auto;
+  margin: 30px auto;
   background: rgba(43, 43, 43, 0.35);
   backdrop-filter: blur(15px);
   border-radius: 5px;
@@ -1043,6 +1059,155 @@ body.BF {
 }
 .login .quick_login .FB_login {
   margin-bottom: 10px;
+}
+
+.forget .login_block {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  height: 580px;
+}
+.forget .login_block h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.forget .verification_code_section p {
+  color: #ff6300;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.forget .verification_code_section p i {
+  color: #ff6300;
+  font-size: 1.6rem;
+}
+
+.register {
+  /*
+  Unfortunately, we have to fake placeholders as they are not supported on select elements
+  */
+  /* Display the dropdowns next to each other */
+}
+.register .margin {
+  margin: 20px 0;
+}
+.register .register_block {
+  margin: 100px auto;
+  box-sizing: border-box;
+  background: rgba(43, 43, 43, 0.35);
+  backdrop-filter: blur(15px);
+  border-radius: 5px;
+  padding: 20px;
+}
+.register form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 100%;
+  position: relative;
+}
+.register form .col-7 {
+  margin-right: 0px;
+}
+.register form::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 1px;
+  height: 85%;
+  background-color: #afafaf;
+}
+.register form button {
+  flex-basis: 50%;
+  margin: 20px 0;
+}
+.register .left, .register .right {
+  width: 40%;
+}
+.register .gender {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  /* 設置 radio 的顏色 */
+  /* 設置選中時的顏色 */
+  /* 隱藏原始的 radio 選擇圓點 */
+  /* 設置 radio 選擇圓點的顏色 */
+}
+.register .gender label {
+  vertical-align: middle;
+}
+.register .gender input {
+  vertical-align: middle;
+}
+.register .gender input[type=radio] {
+  appearance: none;
+  width: 5px; /* 設置 radio 寬度 */
+  height: 5px; /* 設置 radio 高度 */
+  border-radius: 50%; /* 設置圓形 */
+  border: 1px solid #ff6300; /* 設置邊框 */
+  outline: none; /* 移除聚焦時的邊框 */
+  transition: border-color 0.3s ease; /* 添加過渡效果 */
+  margin: 0;
+  margin-right: 10px; /* 設置間距 */
+  position: relative;
+}
+.register .gender input[type=radio]::before {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.register .gender input[type=radio]:checked::before {
+  background-color: #ff6300;
+}
+.register p {
+  margin-bottom: 10px;
+}
+.register .birth input {
+  margin-bottom: 10px;
+}
+.register #dob { /* jsut to demonstrate that some styles will be copied from the input to the dropdowns*/ }
+.register select.show-placeholder option {
+  color: #ffffff;
+}
+.register #date-select-wrapper {
+  display: flex;
+  max-width: 100%; /* just for this demo */
+  overflow: hidden;
+}
+.register #date-select-wrapper > * {
+  flex-grow: 1;
+  width: auto;
+  margin: 0;
+  border: 1px solid #ff6300;
+}
+.register #date-select-wrapper > *:first-child {
+  border-radius: 3px 0 0 3px;
+}
+.register #date-select-wrapper > *:last-child {
+  border-radius: 0 3px 3px 0;
+}
+.register element.style {
+  color: #ede9f2;
+}
+.register select {
+  color: #ede9f2;
+  padding: 5px;
+}
+.register .datepicker-icon {
+  color: #fff;
 }
 
 .product {
