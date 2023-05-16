@@ -16,51 +16,154 @@
     <main class="B_member_info">
 
         <!-- 左側選單列 -->
-        <div class="col-2 B_nav">
-            <div class="B_nav_top">
-                <img src="/pic/img/backend/people.png">
-                <div class="test">
-                    <h5>管理者A</h5>
-                    <p>職稱、權限</p>
-                </div>
-            </div>
-
-            <ul>
-                <li>
-                    <a href="">
-                        <h5>會員資料</h5>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <h5>遊戲管理</h5>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <h5>訂單管理</h5>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <h5>優惠券管理</h5>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <h5>新聞管理</h5>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <h5 class="exit">登出<i class="bi bi-box-arrow-right"></i></h5>
-                    </a>
-                </li>
-            </ul>
-        </div>
+        @@include('./layout/B_nav.html')
 
         <!-- 右側 -->
-
+        <div class="right col-12">
+            <a href="">
+                <h6>回上一頁</h6>
+            </a>
+            <div class="right_main">
+                <form action="" method="">
+                    <ul class="firstul">
+                        <li>
+                            <h4>會員資料</h4>
+                        </li>
+                        <li><button class="btn">修改內容</button></li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h6>會員編號</h6>
+                        </li>
+                        <li>
+                            <h6>123456789000</h6>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h6>會員帳號</h6>
+                        </li>
+                        <li>
+                            <h6>THD101@gmail.com</h6>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h6>會員姓名</h6>
+                        </li>
+                        <li>
+                            <h6>剪刀布</h6>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h6>使用者名稱</h6>
+                        </li>
+                        <li>
+                            <h6>剪刀布</h6>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h6>電話號碼</h6>
+                        </li>
+                        <li>
+                            <h6>0900123456</h6>
+                        </li>
+                        <li>
+                            <h6>電話號碼是否驗證通過：是</h6>
+                        </li>
+                        <li>
+                            <button class="btn">重新送驗證碼</button>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h6>註冊日期</h6>
+                        </li>
+                        <li>
+                            <h6>2022/3/25</h6>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h6>帳號狀態</h6>
+                        </li>
+                        <li>
+                            <h6>正常使用中</h6>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <h6>重設密碼</h6>
+                        </li>
+                        <li>
+                            <h6>密碼重置</h6>
+                        </li>
+                    </ul>
+                </form>
+                <h6>訂單記錄</h6>
+                <ul class="down_ul">
+                    <li class="col-10">
+                        <h6>訂單編號</h6>
+                    </li>
+                    <li class="col-2">
+                        <h6>購買日期</h6>
+                    </li>
+                    <li class="col-2">
+                        <h6>購買金額</h6>
+                    </li>
+                </ul>
+                <div class="B_shop">
+                    <ul>
+                        <i class="bi bi-dash-lg col-1"></i>
+                        <li class="col-9">
+                            <h6>ak4l79e3k68sly</h6>
+                        </li>
+                        <li class="col-2">
+                            <h6>2023/1/15</h6>
+                        </li>
+                        <li class="col-2">
+                            <h6>$2,798</h6>
+                        </li>
+                    </ul>
+                    <div class="B-shopitem">
+                        <ul>
+                            <li class="col-2"><img src="https://fakeimg.pl/95x125/ff0000/" alt=""></li>
+                            <li class="col-11">
+                                <h6>遊戲名稱</h6>
+                            </li>
+                            <li class="col-2">
+                                <h6>$1,399</h6>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="col-2"><img src="https://fakeimg.pl/95x125/ff0000/" alt=""></li>
+                            <li class="col-11">
+                                <h6>遊戲名稱</h6>
+                            </li>
+                            <li class="col-2">
+                                <h6>$1,399</h6>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul>
+                        <i class="bi bi-plus-lg col-1"></i>
+                        <li class="col-9">
+                            <h6>ak4l79e3k68sly</h6>
+                        </li>
+                        <li class="col-2">
+                            <h6>2023/1/15</h6>
+                        </li>
+                        <li class="col-2">
+                            <h6>$2,798</h6>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 分頁 -->
+            @@include('./layout/B_changepage.html')
+        </div>
     </main>
 </body>
 
