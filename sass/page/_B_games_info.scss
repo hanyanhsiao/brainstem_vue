@@ -1,3 +1,125 @@
-.B_games_info{
+.B_games_info {
+    display: flex;
+    .right {
+        margin-top: 20px;
+        margin-bottom: 100px;
+        a {
+            display: block;
+            width: 102px;
 
+            h6::before {
+                content: '\003C';
+                margin-right: 5px;
+            }
+        }
+
+        .right_main {
+            border: 1px solid #000;
+            line-height: 4;
+
+            form {
+                width: 90%;
+                margin: 0 auto;
+
+                .firstul {
+                    justify-content: space-between;
+                }
+
+                ul {
+                    display: flex;
+                    border-bottom: 1px solid black;
+
+                    li {
+                        margin: auto 0;
+
+                        h6 {
+                            margin-right: 150px;
+                        }
+                    }
+                }
+
+                ul:nth-child(6) {
+                    h6 {
+                        margin-right: 171px;
+                    }
+                }
+
+                ul:nth-child(10) {
+                    li:nth-child(3) {
+                        margin-left: 40px;
+                    }
+                }
+
+                ul:nth-child(12) {
+                    display: block;
+
+                    li:nth-child(2) {
+                        margin: 0 auto 50px;
+
+                        h6 {
+                            margin: 0 50px;
+                            line-height: 2;
+
+
+                        }
+                    }
+                }
+
+                ul:nth-child(13) {
+                    display: block;
+
+                    li:nth-child(2) {
+                        margin: 0 auto 50px;
+                        h6 {
+                            margin: 0 50px;
+                            line-height: 2;
+                            span {
+                                margin-left: 40px;
+                            }
+                            span::before{
+                                
+                            }
+                        }
+                    }
+                }
+                ul:last-child{
+                    border-bottom: none;
+                }
+                .games_info_down{
+
+                    h6{
+                        
+                    }
+                    ul{
+                        flex-wrap: wrap;
+                        // justify-content: space-between;
+                        margin-bottom: 80px;
+                        li{
+                            margin-right: 34px;
+                            img{}
+                            h6{
+                                width: 96%;
+                                height: 125px;
+                                outline: 1px solid #000;
+                                margin-bottom: 50px;
+                                padding-left: 10px;
+                            }
+                        }
+                        li:nth-child(4n){
+                            margin-right: 0;
+                        }
+
+                    }
+                }
+            }
+
+           
+        }
+        
+        .right_main>h6 {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+    }
 }

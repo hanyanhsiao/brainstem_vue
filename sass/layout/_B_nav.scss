@@ -8,7 +8,7 @@ body.B {
 
         .B_nav_top {
             img {
-                margin-top: 50px;
+                margin-top: 20px;
                 border-radius: 50%;
                 width: 100px;
             }
@@ -18,20 +18,25 @@ body.B {
 
             .test {
                 text-align: left;
-                margin-left: 20px;
+                margin-left: 5px;
 
                 h5 {
                     margin-top: 70px;
                     line-height: 200%;
                 }
+           
             }
 
-            margin-bottom: 50px;
+            margin-bottom: 30px;
         }
 
         li {
             border-bottom: 1px solid #000;
-            line-height: 1.6;
+            line-height: 3;
+
+            a{
+                display: block;
+            }
         }
 
         li:nth-child(1) {
@@ -55,6 +60,7 @@ body.B {
         .exit {
             color: $red;
         }
+        
 
     }
 }
