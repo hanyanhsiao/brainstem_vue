@@ -1,3 +1,359 @@
-.product_information{
-    
+.product_information {
+    color: $white;
+
+    #breadcrumb {
+        margin-top: 70px;
+        margin-bottom: 50px;
+        font-size: 0;
+
+        a {
+            padding: 0;
+            font-size: $p;
+
+            // &:not(:last-child)::after{
+            //     content: ">";
+            //     padding: 0 10px;
+            // }
+
+        }
+
+        i {
+            font-size: $p;
+            color: $white;
+            padding: 0 10px;
+        }
+    }
+
+    .game_name {
+        margin-bottom: 20px;
+    }
+
+    .information_top {
+        @include flex-container($direction: row, $wrap: nowrap, $justify-content: space-between, $align-items: top);
+        margin-bottom: 90px;
+
+        .information_carousel {
+            height: 680px;
+            background-color: gray;
+        }
+
+        .information_detail {
+            img {
+                height: 240px;
+                display: block;
+                background-color: gray;
+            }
+
+            .detail_text {
+                position: relative;
+
+                h2 {
+                    padding-top: 30px;
+                    padding-bottom: 10px;
+                }
+
+                p {
+                    padding-top: 20px;
+                    font-size: 1.8rem;
+                    letter-spacing: 2px;
+
+                    i {
+                        color: $orange;
+                    }
+                }
+
+                .add_to_pay {
+                    padding: 50px 0;
+
+                    @include flex-container($direction: row, $wrap: nowrap, $justify-content: space-between, $align-items: center);
+
+                    .shopcar_btn {
+                        color: $white;
+                        background-color: rgba($color: #ff6300, $alpha: 0.2);
+                        font-size: 1.8rem;
+                        padding: 15px;
+                        border: 1px solid $orange;
+                        border-radius: 8px;
+                    }
+
+                    .purchase_btn {
+                        color: $white;
+                        background-color: #FF013C;
+                        font-size: 1.8rem;
+                        padding: 15px;
+                        border: 0;
+                        border-radius: 8px;
+                    }
+                }
+
+                .heart_and_share {
+                    @include flex-container($direction: column, $wrap: nowrap, $justify-content: space-between, $align-items: center);
+                    position: absolute;
+                    right: 10px;
+                    top: 30px;
+
+                    .heart_btn {
+                        color: #FF013C;
+                        font-size: 30px;
+                        padding-bottom: 20px;
+                    }
+
+                    .share_btn {
+                        color: $orange;
+                        font-size: 30px;
+                    }
+                }
+            }
+        }
+    }
+
+    .introduction_and_system {
+        @include flex-container($direction: row, $wrap: nowrap, $justify-content: space-between, $align-items: top);
+        padding-bottom: 100px;
+
+        .introduction {
+            h2 {
+                padding-bottom: 25px;
+            }
+
+            p {
+                border-top: 1px solid $orange;
+                padding-top: 25px;
+                font-size: 2rem;
+                line-height: 150%;
+                letter-spacing: 2px;
+            }
+        }
+
+        .system {
+            h2 {
+                padding-bottom: 25px;
+            }
+
+            ul {
+                border-top: 1px solid $orange;
+                list-style: disc;
+
+                p {
+                    font-size: 2rem;
+                    line-height: 150%;
+                    padding: 25px 0;
+                }
+
+                li {
+                    margin-left: 20px;
+                    font-size: 2rem;
+                    line-height: 200%;
+                }
+            }
+        }
+    }
+
+    .game_comment {
+        h2 {
+            font-size: 3.2rem;
+            padding-bottom: 35px;
+        }
+
+        p {
+            font-size: 1.8rem;
+            padding-bottom: 35px;
+
+            i {
+                font-size: 40px;
+                color: $orange
+            }
+
+            .star_rating {
+                font-size: 3.6rem;
+                padding-right: 10px;
+            }
+        }
+
+        .comments_range {
+            @include flex-container($direction: row, $wrap: wrap, $justify-content: space-between, $align-items: end);
+            position: relative;
+
+            padding-bottom: 70px;
+
+            .look_more {
+                font-size: 1.6rem;
+                position: absolute;
+                right: 0;
+                top: -70px;
+                color: $white;
+                background-color: #441673;
+                padding: 10px 25px;
+                border: 0;
+                letter-spacing: 2px;
+                border-radius: 3px;
+
+                &:hover {
+                    background-color: $orange;
+                }
+            }
+
+            .each_comment {
+                box-sizing: border-box;
+                border: 1px solid $orange;
+                border-radius: 8px;
+                padding-bottom: 40px;
+                margin-right: 0;
+                margin-bottom: 40px;
+
+                &:hover {
+                    background-color: rgba($color: #ff6300, $alpha: 0.12);
+                }
+
+                .comment_top {
+                    @include flex-container($direction: row, $wrap: nowrap, $justify-content: space-between, $align-items: end);
+                    padding: 10px;
+
+                    .member_pic img {
+                        border-radius: 50%;
+                        padding: 5px;
+                    }
+
+                    .member_info {
+                        padding: 10px;
+
+                        h2 {
+                            font-size: 2.4rem;
+                            padding-bottom: 10px;
+                        }
+
+                        p {
+                            font-size: 1.5rem;
+                            padding-bottom: 10px;
+                        }
+                    }
+
+                    .game_rating {
+                        padding-bottom: 20px;
+                        padding-right: 10px;
+
+                        .member_game_rating {
+                            font-size: 3.6rem;
+                        }
+
+                        i {
+                            font-size: 2rem;
+                            color: $orange;
+                        }
+                    }
+                }
+
+                .comment_text {
+                    @include flex-container($direction: row, $wrap: nowrap, $justify-content: center, $align-items: top);
+                    padding: 5px;
+
+                    i {
+                        margin: 10px;
+                        font-size: 3rem;
+                        color: $orange;
+                        height: 30px
+                    }
+
+                    p {
+                        width: 250px;
+                        height: 290px;
+                        letter-spacing: 2px;
+                        line-height: 150%;
+                        font-size: 2rem;
+                        padding-bottom: 0;
+
+                    }
+                }
+            }
+
+        }
+
+        .comment_pages {
+            margin-bottom: 50px;
+
+            p {
+                padding-bottom: 0;
+            }
+        }
+    }
+
+    .recommendation {
+        box-sizing: border-box;
+        border: 1px solid $orange;
+        border-radius: 5px;
+        margin-bottom: 140px;
+
+        .recommend_range {
+            margin: 0 auto;
+        
+            .recommend_title {
+                @include flex-container($direction: row, $wrap: nowrap, $justify-content: space-between, $align-items: center);
+                padding-top: 60px;
+                padding-bottom: 30px;
+
+                .btn i {
+                    padding: 0;
+                }
+            }
+
+            .recommend_game {
+                // @include flex-container($direction: row, $wrap: wrap, $justify-content: space-between, $align-items: center);
+                overflow: hidden;
+                .swiper-wrapper{
+                @include flex-container($direction: row, $wrap: nowrap, $justify-content: space-between, $align-items: center);
+                // display: flex;
+                // flex-wrap: wrap;
+                // overflow: hidden;
+
+                }
+
+                .each_good {
+
+                    margin-bottom: 50px;
+
+                    .goods_top {
+                        // height: 350px;
+                        position: relative;
+                        // background-position: center center;
+                        // background-size: cover;
+                        .img{
+                            width: 100%;
+                        }
+
+                        .discount {
+                            border-radius: 0;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            font-size: $h3;
+                            padding: 10px 20px;
+                        }
+
+                        i {
+                            position: absolute;
+                            // border: 1px solid red;
+                            color: red;
+                            right: 10px;
+                            top: 10px;
+                            font-size: 30px;
+                        }
+                    }
+
+                    .goods_text {
+                        padding-bottom: 20px;
+
+                        h3 {
+                            padding: 20px 0;
+                        }
+
+                        .price {
+                            padding-right: 20px;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
 }
