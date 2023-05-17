@@ -7,7 +7,7 @@
         "option": [
             {
                 "opContent": "A  感到興奮且努力想贏",
-                "gameType": "1"
+                "gameType": "4"
 
             },
             {
@@ -17,7 +17,7 @@
             },
             {
                 "opContent": "C 感到無力但盡力嘗試",
-                "gameType": "4"
+                "gameType": "1"
 
             },
             {
@@ -34,22 +34,22 @@
         "option": [
             {
                 "opContent": "A 預先規劃與組織",
-                "gameType": "2"
+                "gameType": "4"
 
             },
             {
                 "opContent": "B 勇於探索和冒險",
-                "gameType": "3"
-
-            },
-            {
-                "opContent": "C 維持穩定和平衡",
                 "gameType": "1"
 
             },
             {
+                "opContent": "C 維持穩定和平衡",
+                "gameType": "2"
+
+            },
+            {
                 "opContent": "D 隨遇而安",
-                "gameType": "4"
+                "gameType": "3"
 
             }
         ]
@@ -71,12 +71,12 @@
             },
             {
                 "opContent": "C 喜歡一個人處理問題的人",
-                "gameType": "3"
+                "gameType": "4"
 
             },
             {
                 "opContent": "D 喜歡按照計劃完成工作的人",
-                "gameType": "4"
+                "gameType": "3"
 
             }
         ]
@@ -88,22 +88,22 @@
         "option": [
             {
                 "opContent": "A 動作片",
-                "gameType": "4"
+                "gameType": "1"
 
             },
             {
                 "opContent": "B 劇情片",
-                "gameType": "3"
-
-            },
-            {
-                "opContent": "C 懸疑推理片",
                 "gameType": "2"
 
             },
             {
+                "opContent": "C 懸疑推理片",
+                "gameType": "4"
+
+            },
+            {
                 "opContent": "D 喜劇片",
-                "gameType": "1"
+                "gameType": "3"
 
             }
         ]
@@ -120,17 +120,17 @@
             },
             {
                 "opContent": "B 突破個人極限或挑戰自己",
-                "gameType": "4"
+                "gameType": "1"
 
             },
             {
                 "opContent": "C 獲得一個特殊的成就或榮譽",
-                "gameType": "3"
+                "gameType": "4"
 
             },
             {
                 "opContent": "D  幫助他人或貢獻社會",
-                "gameType": "1"
+                "gameType": "3"
 
             }
         ]
@@ -142,12 +142,12 @@
         "option": [
             {
                 "opContent": "A 操縱巨型機甲或機器人的操縱者",
-                "gameType": "3"
+                "gameType": "1"
 
             },
             {
                 "opContent": "B 擅長武器和戰鬥技能的戰士",
-                "gameType": "1"
+                "gameType": "4"
 
             },
             {
@@ -157,7 +157,7 @@
             },
             {
                 "opContent": "D 能駕駛車輛和船隻的駕駛員或水手",
-                "gameType": "4"
+                "gameType": "3"
 
             }
         ]
@@ -174,7 +174,7 @@
             },
             {
                 "opContent": "B 遊戲畫面和視覺效果",
-                "gameType": "3"
+                "gameType": "1"
 
             },
             {
@@ -184,7 +184,7 @@
             },
             {
                 "opContent": "D 遊戲社交和多人對戰",
-                "gameType": "1"
+                "gameType": "3"
 
             }
         ]
@@ -196,22 +196,22 @@
         "option": [
             {
                 "opContent": "A 卡通風格的畫面",
-                "gameType": "1"
-
-            },
-            {
-                "opContent": "B 寫實風格的畫面",
-                "gameType": "4"
-
-            },
-            {
-                "opContent": "C 科幻未來的畫面",
                 "gameType": "3"
 
             },
             {
-                "opContent": "D 3D畫面",
+                "opContent": "B 寫實風格的畫面",
+                "gameType": "1"
+
+            },
+            {
+                "opContent": "C 科幻未來的畫面",
                 "gameType": "2"
+
+            },
+            {
+                "opContent": "D 暗黑風格的畫面",
+                "gameType": "4"
 
             }
         ]
@@ -223,12 +223,12 @@
         "option": [
             {
                 "opContent": "A 希望有深入且複雜的故事情節",
-                "gameType": "2"
+                "gameType": "4"
 
             },
             {
                 "opContent": "B 偏好有趣且引人入勝的故事情節",
-                "gameType": "4"
+                "gameType": "2"
 
             },
             {
@@ -250,17 +250,17 @@
         "option": [
             {
                 "opContent": "A 不斷嘗試",
-                "gameType": "3"
-
-            },
-            {
-                "opContent": "B 嘗試一段時間後放棄",
                 "gameType": "4"
 
             },
             {
-                "opContent": "C 不玩了不玩了",
+                "opContent": "B 嘗試一段時間後放棄",
                 "gameType": "2"
+
+            },
+            {
+                "opContent": "C 不玩了不玩了",
+                "gameType": "3"
 
             },
             {
