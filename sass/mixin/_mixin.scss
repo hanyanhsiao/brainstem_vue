@@ -3,18 +3,18 @@
 //       font-size: $v;
 //    }
 // }
-@each $k , $v in $bg_color {
-    #{$k} {
-       background-color: $v;
-    }
- }
- $column-gap: 20px;
- 
- @for $i from 1 through 12 {
+@each $k, $v in $bg_color {
+  #{$k} {
+    background-color: $v;
+  }
+}
+$column-gap: 20px;
+
+@for $i from 1 through 12 {
   .col-#{$i} {
     width: calc((100% - #{$column-gap * 11}) / 12 * #{$i});
     margin-right: $column-gap;
-    
+
     &:last-child {
       margin-right: 0;
     }
@@ -24,9 +24,13 @@
     }
   }
 }
- 
 
- @mixin flex-container($direction: row, $wrap: wrap, $justify-content: center, $align-items: center) {
+@mixin flex-container(
+  $direction: row,
+  $wrap: wrap,
+  $justify-content: center,
+  $align-items: center
+) {
   display: flex;
   flex-direction: $direction;
   flex-wrap: $wrap;
@@ -35,17 +39,16 @@
 }
 
 @mixin breakpoint-1440 {
-  @media (min-width: 1440px) {
+  @media (max-width: 1440px) {
     @content;
   }
 }
 
 @mixin breakpoint-414 {
-  @media (min-width: 414px) {
+  @media (max-width: 414px) {
     @content;
   }
 }
-
 
 // @include breakpoint-414 {
 //   使用方式
