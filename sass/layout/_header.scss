@@ -302,6 +302,7 @@
                 }
                 .c_part{
                     display: block;
+                    
                     .fafa{
                         width: 100%;
                         /* background-color: #6070ff; */
@@ -326,9 +327,11 @@
                     .rwd-item{
                         position: absolute;
                         width: 100%;
+                        height: 800px;
                         top: 72px;
                         left: 0;
-                        background-color: #000000f3;
+                        // background-color: #000000ec;
+                        background: linear-gradient(to bottom, #000000, #000000, #000000, #30016d, #4400ff13);
                         flex-direction: column;
                         display: block;
                         z-index: 999;
