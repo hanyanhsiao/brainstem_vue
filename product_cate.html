@@ -13,8 +13,322 @@
 <body>
     <!-- header -->
     @@include('./layout/header.html')
+
     <main class="product_cate">
-        請從這邊開始寫
+        <div class="banner col-12">
+            <div class="banner_main">
+                <img class="game_cate" src="./pic/img/game/cate/coorperate.svg" alt="">
+                <h1>多人合作</h1>
+            </div>
+        </div>
+        <nav id="cate_breadcrumb">
+            <a href="./index.html">首頁</a><i class="bi bi-chevron-right a_after"></i>
+            <a href="./product.html">商品</a><i class="bi bi-chevron-right a_after"></i>
+            <a href="#">多人合作</a>
+        </nav>
+
+        <section class="cate_main col-12">
+
+            <nav class="product_sidebar col-3">
+                <div class="tag_choose">已選擇的標籤 <span class="clear">清除全部</span></div>
+                <div id="tags_container"></div>
+                <ul>
+                    <li>
+                        <div class="botton">限時促銷活動
+                            <i class="bi bi-chevron-down arrow"></i>
+                        </div>
+                        <ul class="sale_list">
+                            <li class="item"><span>燒腦解謎</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>夏季特賣</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>角色扮演</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>射擊遊戲</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>太空探險</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>恐怖遊戲</span><i class="bi bi-check-lg check-icon"></i></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <div class="botton">遊戲類型
+                            <i class="bi bi-chevron-down arrow"></i>
+                        </div>
+                        <ul class="cate_list">
+                            <li class="item"><span>動作</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>冒險</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>角色扮演</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>策略</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>模擬</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>經營</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>城市營造</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>農場模擬</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>戰爭</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>休閒</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>日系</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>運動</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>棒球</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>網球</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>競速</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>賽馬</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>賽車</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>烹飪</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>可愛</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>兒童</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>太空模擬</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>殖民模擬</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>像素風</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>2D格鬥</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>獨立遊戲</span><i class="bi bi-check-lg check-icon"></i></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <div class="botton">遊戲模式
+                            <i class="bi bi-chevron-down arrow"></i>
+
+                        </div>
+                        <ul class="mode_list">
+                            <li class="item"><span>單人</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>多人</span><i class="bi bi-check-lg check-icon"></i></li>
+                            <li class="item"><span>合作</span><i class="bi bi-check-lg check-icon"></i></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <div class="botton">金額
+                            <i class="bi bi-chevron-down arrow"></i>
+
+                        </div>
+                        <ul class="price_list">
+                            <li class="item price">
+                                <label for="minAmount">最低金額</label>
+                                <input type="text" class="form-control" id="minAmount">
+                            </li>
+                            <li class="item price">
+                                <label for="maxAmount">最高金額</label>
+                                <input type="text" class="form-control" id="maxAmount">
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </nav>
+
+            <div class="products col-9">                
+                <div id="app" class="product_order">
+                    <h3>排序：</h3>
+                    <div class="order_btn" @click="toggleOptions">
+                        <span class="option_text">{{ selectedOption }}</span>
+                        <i :class="{'bi': true, 'bi-chevron-down': !isOpen, 'bi-chevron-up': isOpen}"></i>
+                    </div>
+                    <ul class="order_options" v-if="isOpen">
+                        <li class="option" v-for="option in options" :key="option.text"
+                            @click="selectOption(option)">
+                            <span class="option_text">{{ option.text }}</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="product_goods" id="goodsIn">
+                    <!-- <div class="each_good" v-for="(item, index) in goodslist" :key="index">
+                        <div class="goods_top" style="background-image: url({{item.url}});">
+                            <span class="discount">-{{(1-item.discount) * 100}}%</span>
+                            <i class="bi bi-suit-heart-fill"></i>
+                        </div>
+                        <div class="goods_text">
+                            <h3>{{item.name}}</h3>
+                            <span class="price">${{item.originalPrice * (1-item.discount) }}</span>
+                            <span class="price_original">${{item.orinalPrice}}</span>
+                        </div>
+                    </div> -->
+                    <div class="each_good col-3">
+                        <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover1.jpg);">
+                            <span class="discount">-40%</span>
+                            <i class="bi bi-suit-heart"></i>
+                        </div>
+                        <div class="goods_text">
+                            <h3>王國之心3</h3>
+                            <span class="price">$900</span>
+                            <span class="price_original">$1500</span>
+                        </div>
+                    </div>
+                    <div class="each_good col-3">
+                        <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover2.jpg);">
+                            <span class="discount">-40%</span>
+                            <i class="bi bi-suit-heart"></i>
+                        </div>
+                        <div class="goods_text">
+                            <h3>魔物獵人-世界</h3>
+                            <span class="price">$900</span>
+                            <span class="price_original">$1500</span>
+                        </div>
+                    </div>
+                    <div class="each_good col-3">
+                        <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover3.jpg);">
+                            <span class="discount">-40%</span>
+                            <i class="bi bi-suit-heart"></i>
+                        </div>
+                        <div class="goods_text">
+                            <h3>炸彈超人R</h3>
+                            <span class="price">$900</span>
+                            <span class="price_original">$1500</span>
+                        </div>
+                    </div>
+                    <div class="each_good col-3">
+                        <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover4.jpg);">
+                            <span class="discount">-40%</span>
+                            <i class="bi bi-suit-heart"></i>
+                        </div>
+                        <div class="goods_text">
+                            <h3>巫師3-狂獵</h3>
+                            <span class="price">$900</span>
+                            <span class="price_original">$1500</span>
+                        </div>
+                    </div>
+                    <div class="each_good col-3">
+                        <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover1.jpg);">
+                            <span class="discount">-40%</span>
+                            <i class="bi bi-suit-heart"></i>
+                        </div>
+                        <div class="goods_text">
+                            <h3>王國之心3</h3>
+                            <span class="price">$900</span>
+                            <span class="price_original">$1500</span>
+                        </div>
+                    </div>
+                    <div class="each_good col-3">
+                        <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover2.jpg);">
+                            <span class="discount">-40%</span>
+                            <i class="bi bi-suit-heart"></i>
+                        </div>
+                        <div class="goods_text">
+                            <h3>魔物獵人-世界</h3>
+                            <span class="price">$900</span>
+                            <span class="price_original">$1500</span>
+                        </div>
+                    </div>
+                    <div class="each_good col-3">
+                        <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover3.jpg);">
+                            <span class="discount">-40%</span>
+                            <i class="bi bi-suit-heart"></i>
+                        </div>
+                        <div class="goods_text">
+                            <h3>炸彈超人R</h3>
+                            <span class="price">$900</span>
+                            <span class="price_original">$1500</span>
+                        </div>
+                    </div>
+                    <div class="each_good col-3">
+                        <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover4.jpg);">
+                            <span class="discount">-40%</span>
+                            <i class="bi bi-suit-heart"></i>
+                        </div>
+                        <div class="goods_text">
+                            <h3>巫師3-狂獵</h3>
+                            <span class="price">$900</span>
+                            <span class="price_original">$1500</span>
+                        </div>
+                    </div>
+                    <div class="each_good col-3">
+                        <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover1.jpg);">
+                            <span class="discount">-40%</span>
+                            <i class="bi bi-suit-heart"></i>
+                        </div>
+                        <div class="goods_text">
+                            <h3>王國之心3</h3>
+                            <span class="price">$900</span>
+                            <span class="price_original">$1500</span>
+                        </div>
+                    </div>
+                    <div class="each_good col-3">
+                        <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover2.jpg);">
+                            <span class="discount">-40%</span>
+                            <i class="bi bi-suit-heart"></i>
+                        </div>
+                        <div class="goods_text">
+                            <h3>魔物獵人-世界</h3>
+                            <span class="price">$900</span>
+                            <span class="price_original">$1500</span>
+                        </div>
+                    </div>
+                    <div class="each_good col-3">
+                        <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover3.jpg);">
+                            <span class="discount">-40%</span>
+                            <i class="bi bi-suit-heart"></i>
+                        </div>
+                        <div class="goods_text">
+                            <h3>炸彈超人R</h3>
+                            <span class="price">$900</span>
+                            <span class="price_original">$1500</span>
+                        </div>
+                    </div>
+                    <div class="each_good col-3">
+                        <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover4.jpg);">
+                            <span class="discount">-40%</span>
+                            <i class="bi bi-suit-heart"></i>
+                        </div>
+                        <div class="goods_text">
+                            <h3>巫師3-狂獵</h3>
+                            <span class="price">$900</span>
+                            <span class="price_original">$1500</span>
+                        </div>
+                    </div>
+                    <div class="each_good col-3">
+                        <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover1.jpg);">
+                            <span class="discount">-40%</span>
+                            <i class="bi bi-suit-heart"></i>
+                        </div>
+                        <div class="goods_text">
+                            <h3>王國之心3</h3>
+                            <span class="price">$900</span>
+                            <span class="price_original">$1500</span>
+                        </div>
+                    </div>
+                    <div class="each_good col-3">
+                        <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover2.jpg);">
+                            <span class="discount">-40%</span>
+                            <i class="bi bi-suit-heart"></i>
+                        </div>
+                        <div class="goods_text">
+                            <h3>魔物獵人-世界</h3>
+                            <span class="price">$900</span>
+                            <span class="price_original">$1500</span>
+                        </div>
+                    </div>
+                    <div class="each_good col-3">
+                        <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover3.jpg);">
+                            <span class="discount">-40%</span>
+                            <i class="bi bi-suit-heart"></i>
+                        </div>
+                        <div class="goods_text">
+                            <h3>炸彈超人R</h3>
+                            <span class="price">$900</span>
+                            <span class="price_original">$1500</span>
+                        </div>
+                    </div>
+                    <div class="each_good col-3">
+                        <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover4.jpg);">
+                            <span class="discount">-40%</span>
+                            <i class="bi bi-suit-heart"></i>
+                        </div>
+                        <div class="goods_text">
+                            <h3>巫師3-狂獵</h3>
+                            <span class="price">$900</span>
+                            <span class="price_original">$1500</span>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <nav class="pages">
+                    <ul class="product_pages">
+                        <li class="each_page"><a class="active" href="#">1</a></li>
+                        <li class="each_page"><a href="#">2</a></li>
+                        <li class="each_page"><a href="#">3</a></li>
+                        <li class="each_page"><a href="#">4</a></li>
+                        <li class="each_page"><a href="#"><i class="bi bi-chevron-right"></i></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
 
     </main>
     <!-- footer -->
@@ -22,6 +336,195 @@
     <!-- javascript -->
     @@include('./layout/js.html')
     <!-- 以下可以放自己的js -->
+
+    <script src="./vendors/vue/vue.global.js"></script>
+    <script>
+
+        const app = Vue.createApp({
+            data() {
+                return {
+                    isOpen: false,
+                    selectedOption: '選擇排序方式',
+                    options: [
+                        { text: '最受歡迎', value: 'more_popular' },
+                        { text: '日期由新到舊', value: 'new_to_old' },
+                        { text: '日期由舊到新', value: 'old_to_new' },
+                        { text: '價格由高到低', value: 'high_to_low' },
+                        { text: '價格由低到高', value: 'low_to_high' }
+                    ]
+                };
+            },
+            methods: {
+                toggleOptions() {
+                    this.isOpen = !this.isOpen;
+                },
+                selectOption(option) {
+                    this.selectedOption = option.text;
+                    this.isOpen = false;
+                }
+            }
+        });
+        app.mount('#app'); // 將Vue應用程序掛載到具有id="app"的元素上   
+
+        $(document).ready(function () {
+
+            // 以下是側邊欄選單設定
+
+            //==============全域變數開始==============
+
+            let tag_list = [];
+            let tagsContainer = $("#tags_container");
+
+            //==============全域變數結束==============
+
+
+
+            //==============事件綁定開始==============
+
+            $('.product_sidebar div').on('click', function () {
+                product_sidebar_collapse($(this))
+            });
+
+            //宣告動作
+            $(".botton").on('click', function () {
+                arrorw_rotate($(this))
+            })
+
+            $(".item").on("click", function () {
+
+                tag = get_tag_text($(this))
+                item_check_or_not($(this))
+                tags_container_info(tag)
+                is_tag_choose_show(tag_list.length)
+
+            })
+
+            $(".tag_choose").on('click', '.clear', function () {
+                clear_tags_container();
+            });
+
+            $("#tags_container").on('click', '.bi-x-lg', function () {
+                remove_item_checked($(this))
+            });
+
+            //==============事件綁定結束==============
+
+
+
+            //==============funtcion宣告開始==============
+
+            function arrorw_rotate(dom) {
+                dom.next().toggleClass("show");
+                dom.children().toggleClass("rotate")
+            }
+
+            function product_sidebar_collapse(dom) {
+                dom.toggleClass("active");
+            }
+
+            function item_check_or_not(dom) {
+                dom.toggleClass("checked");
+            }
+
+            function get_tag_text(dom) {
+                return dom.find(">:first-child").text()
+            }
+
+            function add_tagsContainer_tag(tag) {
+                tagsContainer.append(
+                    $('<span/>').addClass('tag').append(tag + '<i class="bi bi-x-lg"></i>')
+                )
+            }
+
+            function remove_tagsContainer_tag(tag) {
+                target = $(".tag:contains('" + tag + "')")
+                target.remove()
+            }
+
+            function refresh_tag_list(tag) {
+                if (tag_list.includes(tag)) {
+                    tag_list.splice(tag_list.indexOf(tag), 1)
+                    remove_tagsContainer_tag(tag)
+                } else {
+                    tag_list.push(tag)
+                    add_tagsContainer_tag(tag)
+                }
+            }
+
+            function tags_container_info(tag) {
+                refresh_tag_list(tag)
+            }
+
+            function clear_tags_container() {
+                $("#tags_container").empty();
+                $(".checked").removeClass("checked");
+                $(".tag_choose").removeClass("show");
+                $(".banner").show();
+                tag_list = [];
+            }
+
+            function remove_item_checked(dom) {
+
+                $(dom).parent().remove();
+                tag = dom.parent().text();
+                $(".checked:contains('" + tag + "')").removeClass("checked");
+                tag_list.splice(tag_list.indexOf(tag), 1)
+                is_tag_choose_show(tag_list.length)
+
+            }
+
+            function is_tag_choose_show(length) {
+                if (length == 0) {
+                    $(".tag_choose").removeClass("show");
+                    $(".banner").show();
+                } else {
+                    $(".tag_choose").addClass("show");
+                    $(".banner").hide();
+                }
+            }
+
+        });
+        //==============funtcion宣告結束==============
+
+        // 愛心收藏
+        var heartsList = document.querySelectorAll('.bi-suit-heart');
+
+        heartsList.forEach(function (heart) {
+
+            // 綁定滑鼠懸停事件
+            heart.addEventListener('mouseenter', function (e) {
+                if (!heart.classList.contains("bi-suit-heart-fill") || !heart.classList.contains("bi-suit-heart-clicked")) {
+                    heart.classList.remove("bi-suit-heart");
+                    heart.classList.add("bi-suit-heart-fill");
+                    e.stopPropagation();
+                }
+            });
+
+            // 綁定滑鼠離開事件
+            heart.addEventListener('mouseleave', function (e) {
+                if (!heart.classList.contains("bi-suit-heart-fill") || !heart.classList.contains("bi-suit-heart-clicked")) {
+                    heart.classList.remove("bi-suit-heart-fill");
+                    heart.classList.add("bi-suit-heart");
+                    e.stopPropagation();
+                }
+            });
+
+            heart.addEventListener('click', function (e) {
+                if (!heart.classList.contains("bi-suit-heart-clicked")) {
+                    heart.classList.remove("bi-suit-heart");
+                    heart.classList.add("bi-suit-heart-fill");
+                    heart.classList.add("bi-suit-heart-clicked");
+                    e.stopPropagation();
+                } else {
+                    heart.classList.remove("bi-suit-heart-fill");
+                    heart.classList.add("bi-suit-heart");
+                    heart.classList.remove("bi-suit-heart-clicked");
+                    e.stopPropagation();
+                }
+            });
+
+        });
+    </script>
 </body>
 
 </html>

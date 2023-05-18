@@ -35,13 +35,13 @@
 }
 
 @mixin breakpoint-1440 {
-  @media (min-width: 1440px) {
+  @media (max-width: 1440px) {
     @content;
   }
 }
 
 @mixin breakpoint-414 {
-  @media (min-width: 414px) {
+  @media (max-width: 414px) {
     @content;
   }
 }

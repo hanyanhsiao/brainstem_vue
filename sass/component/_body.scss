@@ -21,4 +21,5 @@ main {
   overflow: hidden;
   width: 80%;
   margin: 0 auto;
+  @include breakpoint-414{width: 90%;}
 }
