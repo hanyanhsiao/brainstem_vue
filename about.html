@@ -1,22 +1,414 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brainstem | 網站理念</title>
-    @@include('./layout/style.html')
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+
+
+
+
+
     <!-- 以下可以放自己的link -->
+    <link rel="stylesheet" href="./css/about.css">
+
+
+
+
+
 </head>
+
 
 <body>
     <!-- header -->
-    @@include('./layout/header.html')
+    <header class="header">
+        <div class="logo"><img src="../pic/img/LOGO/LOGO.png" alt=""></div>
+        <nav class="menu ">
+            <ul>
+                <li><a href="index.html" class="@@index">首頁</a> </li>
+                <li><a href="about.html" class="@@about">關於我們</a> </li>
+                <li><a href="product.html" class="@@product">商品</a> </li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+
+
+
     <main class="about">
-        請從這邊開始寫
+
+
+        <div class="container">
+            <div class="tabs">
+                <div class="tablinks" onclick="openPage(event,'page1')" id="defaultOpen">網站理念</div>
+                <div class="tablinks1" onclick="openPage(event,'page2')">服務條款</div>
+                <div class="tablinks" onclick="openPage(event,'page3')">FAQ</div>
+            </div>
+
+
+
+
+
+
+            <div class="page" id="page1">
+                <div class="article">
+                    <h2>網站理念</h2>
+                    <p>隨著近代網路和硬體的普及發展，消費性遊戲商品購入管道也有更多種的選擇。<br>
+                        從傳統的實體購買商品到現在也能夠透過網路下載數位版，甚至近年 來出現的雲端串流遊戲。這讓消費者在遊戲購買方面更加便利和多元化。<br>
+                        <br>
+                        疫時代來臨後，遊戲廠商開始加速發展雲端平台，並且目前市面上知名遊戲平台多數由外國開發。<br>
+                        然而，考量到我國遊戲開發資源的不足，我們希望能夠建立新模式的遊戲雲端串流平台，以提升我國遊戲業界至國際水平，並吸引國際資源。<br>
+                        <br>
+                        因此，我們的網頁架設理念是建立一個方便且安全的遊戲雲端串流平台，讓玩家可以透過網路即時從平台的雲端資料庫進行遊戲，無需昂貴的硬體設備。這樣的平台不僅能提供多元化的遊戲選擇，也有助於促進正版遊戲的購買和使用，減少盜版和非法下載的風險。<br>
+                        <br>
+                        我們希望這個網站能夠成為國內遊戲愛好者的首選，提供高品質的遊戲體驗和安全的購買管道。透過這個平台，我們也希望能夠促進國內遊戲開產業的發展，吸引更多國際合作機會，提升我國遊戲產業的國際競爭力。<br>
+                    </p>
+                    <br>
+                    <br>
+                    <br>
+
+
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="page" id="page2">
+                <div class="article">
+                    <h2>服務條款</h2>
+                    <h3>接受服務條款</h3>
+                    <p>
+                        以下條款與條件（下稱「條款」）適用您對Brainstem及其關係企業（以下稱「Brainstem」、「我們」或「我們的」）各網站之使用，包括位於或透過該等網站（合稱「網站」）提供之任何內容、功能、產品及服務，無論是您是訪客或是註冊用戶。本條款亦適用您使用其他顯示或包含此等條款之
+                        Brainstem 服務（下稱「其他服務」）。在本條款中，網站及其他服務合稱為「本服務」。<br>
+                        <br>
+                        在您開始使用本服務之前，請仔細閱讀本條款。使用本服務即表示您接受並同意遵守本服務條款並受其約束。若您不想同意本服務條款，則不要使用本服務。
+                        我們希望在本條款中，特別強調某些重要的條款、政策及程序。接受本條款：<br>
+                        <br>
+                        1.您同時同意其他明確納入本條款並作為本條款一部分的 Brainstem 規定與政策。請仔細閱讀：<br>
+                        <br>
+                        我們的隱私權政策 說明我們向您蒐集哪些資訊，以及我們如何保護這些資訊。 我們的玩家內容政策說明您在您建立的內容中，可以如何使用 Brainstem 的智慧財產權。
+                        我們的服務條款說明我們網站的規定。<br>
+                        <br>
+                        2.您與 Brainstem
+                        均同意透過個人仲裁（而非透過法院）解決我們之間的紛爭。我們認為，訴訟外紛爭解決機制的仲裁程序能公正解決任何紛爭，且比正式的法院訴訟更迅速且有效率。我們會在下文詳細說明該程序，但因其重要性，我們把這部分（以大寫）放在前面：<br>
+                        <br>
+                        本條款含具拘束力的個人仲裁及集體訴訟棄權條款。若您接受本條款，您與 Brainstem 均同意透過具拘束力之個人仲裁解決紛爭，並放棄向法院以個人或以集體訴訟成員身分提起訴訟之權利，且
+                        Brainstem
+                        同意就所有善意之紛爭，為您的仲裁費用支付最高 10,000 美元（參見下文）。<br>
+                        <br>
+                        欲締結由本條款建立之契約，您必須是符合您居住國家或地區法定成年年齡之成人。
+                        您在法律上及財務上對所有使用或存取我們軟體之行為負責，包括您允許其存取您帳戶之任何人的行為。您確認您已達成年法定年齡，理解並接受本條款（包括其紛爭解決條款）。
+                        若您未達成年法定年齡，則您的父母或法定監護人必須同意本條款。除本條款外，包含在服務中或以其他方式透過服務提供給您的軟體或服務，也可能會受您與 Brainstem
+                        之間另外的協議所約束，例如終端使用者授權協定。若本條款與該等協議有不一致之處，則以該等協議為準。<br>
+                        <br>
+                    </p>
+                    <h3>隱私權通知</h3><br>
+                    <p>
+                        請至官方網站查看我們的隱私權通知瞭解我們的做法，該通知亦會規範您對本服務之使用。<br>
+                        <br>
+                        <br>
+                    </p>
+                    <h3>服務條款之變更</h3><br>
+                    <br>
+                    <p>
+                        我們可能會不時更新本條款。您應定期查看本頁面瞭解是否有任何變更。在條款修訂公布後繼續使用本服務，代表您接受並同意該等條款變更。<br>
+                        <br>
+                        <br>
+                    </p>
+                    <h3>存取服務與帳戶安全</h3><br>
+                    <br>
+                    <p>
+                        我們得合理酌情決定撤回或修改本服務及任何相關服務或內容，或限制所有或特定使用者（包括您）的存取權（包括透過取消、終止或修改或停用使用者帳戶等方式），恕不另行通知，亦不負任何責任。此外，由於您的地理位置，您可能無法使用本服務或其部分功能、服務或內容。即使本文載有任何相反規定，我們仍得基於您違反本條款而終止或停用您對本服務之存取權。欲存取特定服務，您必須提供詳細的註冊資訊或其他資訊，且為了使用該等資源，您提供的所有資訊應正確、最新且完整。為存取本服務或特定遊戲、服務或功能，Brainstem
+                        可能會不時要求部分或所有使用者下載更新版或其他軟體。該等軟體之使用條款可能受您與 Brainstem
+                        的其他協議所約束。若您選擇或獲得使用者名稱、密碼或其他屬於我們安全程序一部份之資訊，則必須將該等資訊視為機密資訊（使用者名稱除外），且不得向他人披露。任何未經授權使用您的使用者名稱或密碼，或其他違反安全之行為，您都應立即透過本網站通知
+                        Brainstem。透過公用或共用電腦訪問帳戶時，應格外小心，以免他人能查看或記錄您的密碼或其他個人資訊。您只能透過您的個人帳戶存取本服務。使用者不擁有其帳戶，贈與或以其他方式轉移帳戶或存取金鑰乃禁止行為。若我們認為您的顯示名稱冒犯、誤導他人、潛在侵害第三人的權利，或您已超過一年未使用，我們保留變更您的顯示名稱之權利。光敏性警告：當出現特定視覺影像或圖案，包含閃爍光線時，有些人可能會感到不適（無論是否曾被診斷或有此類病史）。症狀可能藉由以下方法改善：在光線充足的房間裡遊玩、避免在精神不佳時遊玩、保持距離或以較小的螢幕觀看遊戲，並控制遊玩時間。<br>
+                        <br>
+                    </p>
+                    <h3>智慧財產權</h3><br>
+                    <br>
+                    <p>
+                        我們得合理酌情決定撤回或修改本服務及任何相關服務或內容，或限制所有或特定使用者（包括您）的存取權（包括透過取消、終止或修改或停用使用者帳戶等方式），恕不另行通知，亦不負任何責任。此外，由於您的地理位置，您可能無法使用本服務或其部分功能、服務或內容。即使本文載有任何相反規定，我們仍得基於您違反本條款而終止或停用您對本服務之存取權。欲存取特定服務，您必須提供詳細的註冊資訊或其他資訊，且為了使用該等資源，您提供的所有資訊應正確、最新且完整。為存取本服務或特定遊戲、服務或功能，Brainstem
+                        可能會不時要求部分或所有使用者下載更新版或其他軟體。該等軟體之使用條款可能受您與 Brainstem
+                        的其他協議所約束。若您選擇或獲得使用者名稱、密碼或其他屬於我們安全程序一部份之資訊，則必須將該等資訊視為機密資訊（使用者名稱除外），且不得向他人披露。任何未經授權使用您的使用者名稱或密碼，或其他違反安全之行為，您都應立即透過本網站通知
+                        Brainstem。透過公用或共用電腦訪問帳戶時，應格外小心，以免他人能查看或記錄您的密碼或其他個人資訊。您只能透過您的個人帳戶存取本服務。使用者不擁有其帳戶，贈與或以其他方式轉移帳戶或存取金鑰乃禁止行為。若我們認為您的顯示名稱冒犯、誤導他人、潛在侵害第三人的權利，或您已超過一年未使用，我們保留變更您的顯示名稱之權利。光敏性警告：當出現特定視覺影像或圖案，包含閃爍光線時，有些人可能會感到不適（無論是否曾被診斷或有此類病史）。症狀可能藉由以下方法改善：在光線充足的房間裡遊玩、避免在精神不佳時遊玩、保持距離或以較小的螢幕觀看遊戲，並控制遊玩時間。<br>
+                        <br>
+                    </p>
+                    <h3>禁止使用</h3><br>
+                    <br>
+                    <p>
+                        您僅能出於合法目的並根據本服務條款使用本服務。您同意不會出於非法或超出本服務預期用途範圍外之目的（由 Brainstem 自行判斷），存取或使用本服務。<br>
+                        <br>
+                        <br>
+                    </p>
+                    <h3>免責聲明與責任限制</h3><br>
+                    <br>
+                    <p>
+                        本條款的所有內容，均不會侵害您身為本服務消費者可能擁有的法定權利。。由於部分國家或地區、州、省或其他司法管轄區不允許排除本節所述之某些保證或責任限制，因此以下條款可能不完全適用於您。反之，在此類司法管轄區，下文的排除與限制事項只在該司法管轄區法律容許範圍內適用。<br>
+                        <br>
+                        <br>
+                    </p>
+                    <h2>本網站為緯育TibaMe前端工程師班THD101團體專題作品，僅供學習、展示用（參考資料）。</h2>
+                    <br>
+                    <br>
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+
+
+            <div class="page" id="page3">
+                <div class="article">
+                    <h2>FAQ</h2>
+                    <br>
+                    <div class="accordion">
+
+
+
+
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">我要如何下載遊戲?</h3>
+                            <div class="accordion-content">
+                                <p>請玩家到BRAINSTEAM GAMES平台，依照對應的裝置下載遊戲。
+                                </p>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">遊戲的裝置最低支援</h3>
+                            <div class="accordion-content">
+                                <p>作業系統：通常需要 Windows 7 或更高版本、macOS 10.9 、iOS 9 、Android 5.0 或更高版本。<br>
+                                    處理器：必須支援 SSE2 指令集，並且至少擁有雙核心處理器。<br>
+                                    記憶體：至少需 2GB RAM。<br>
+                                    顯示卡：必須支援 DirectX 9 或 OpenGL 3.3，並且擁有至少 256MB 的顯示卡記憶體。<br>
+                                    網路連接：需網路連接以進行線上遊戲，最低建議網速為 3 Mbps 下載速度和 1 Mbps 上傳速度。<br>
+                                </p>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">顯示「所在的地區不支援此版本」錯誤訊息</h3>
+                            <div class="accordion-content">
+                                <p>請確認您的地區與所使用的版本相容，或嘗試更新至支援您地區的版本。<br>
+                                    如有任何疑問，請聯繫客服中心以獲得更多協助。謝謝。<br>
+                                </p>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">我嘗試付款，但沒有成功。我現在能做什麼？</h3>
+                            <div class="accordion-content">
+                                <p>
+                                    檢查您的付款資訊是否正確：請確認您輸入的信用卡號碼、到期日期、以及帳單地址是否正確。如果有任何錯誤，請更正並再次嘗試付款。<br>
+                                    1.聯繫您的銀行：您的銀行可能會拒絕交易，因為它們認為該交易存在風險。您可以聯繫您的銀行以確認此事，並要求他們批准付款。<br>
+                                    2.嘗試使用其他付款方式：如果您的信用卡付款未成功，您可以考慮使用其他付款方式。<br>
+                                    如果您嘗試了上述所有步驟並仍然無法完成付款，請聯繫客服提供者以尋求協助。<br>
+                                </p>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">我忘記註冊的帳號</h3>
+                            <div class="accordion-content">
+                                <p>1.檢查您的郵件：如果您在註冊時提供了郵件地址，請檢查您的收件匣或垃圾郵件資料夾。<br>
+                                    2.聯繫客戶支援：您可以聯繫該網站或應用程式的支援。需要您提供一些個人資訊，以驗證您的身份，然後協助您找回帳號。<br>
+                                </p>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">我要如何綁定我的帳號</h3>
+                            <div class="accordion-content">
+                                <p>在選擇要綁定的帳號類型後，請您提供相關的帳號資訊或授權訪問該帳號。<br>
+                                    請按照相關的指示進行操作，以完成綁定過程。<br>
+                                    一旦您提供了相關的資訊或授權，網站或應用程式會進行一些驗證步驟，以確認該帳號屬於您。請按照相關的驗證流程進行操作。<br>
+                                    若您找不到帳號綁定，代表您的帳號已經被綁定過，請您使用相同的帳號登入，就可以恢復您的遊戲進度。<br>
+                                </p>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">不同裝置間的帳號是否可以互通?</h3>
+                            <div class="accordion-content">
+                                <p>是可以互通，只要玩家有綁定帳號，在各個不同的裝置和模擬器之間都可以遊玩同一個遊戲平台帳號。</p>
+                            </div>
+                        </div>
+
+
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">裝置在遊玩時發生閃退的情形</h3>
+                            <div class="accordion-content">
+                                <p>1.更新遊戲和裝置：確保您的遊戲和裝置都是最新版本。有時，遊戲開發者針對裝置的更新問題進行修復，因此更新可能解決一些閃退問題。<br>
+                                    2.清除暫存：在裝置的設置中找到該遊戲的應用程式，然後嘗試清除其暫存。暫存檔可能會堆積並導致遊戲閃退。清除暫存後，重新啟動遊戲並查看是否有改善。<br>
+                                    3.檢查裝置存儲空間：確保您的裝置有足夠的存儲空間可供遊戲運行。如果存儲空間不足，遊戲可能會出現問題並閃退。嘗試清理裝置上的不需要的檔案或應用程式，以釋放存儲空間。<br>
+                                    4.關閉背景應用程式：在遊玩遊戲時，關閉背景執行的其他應用程式。這些應用程式可能占用系統資源並導致遊戲閃退。嘗試在遊玩期間最小化使用其他應用程式。<br>
+                                    5.重新安裝遊戲：如果上述方法都沒有解決問題，嘗試將遊戲從您的裝置上卸載，然後重新下載和安裝遊戲。有時，遊戲檔案可能受損或出現錯誤，重新安裝可以修復這些問題。<br>
+                                    如果上述解決方法都無效，也歡迎提供您的裝置資訊以及系統版本至客服信箱tibame_0304YA@outlook.com可以進一步調查問題並提供相應的技術支援。<br>
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">其他無法開啟的情形</h3>
+                            <div class="accordion-content">
+                                <p>歡迎提供您的資訊至客服信箱 ，聯絡E-mail：tibame_0304YA@outlook.com，謝謝。<br>
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div class="item">
+                            <h3>如遇到無法解決之情形，請至聯絡頁面與我們聯絡</h3>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
 
     </main>
+
+
+
+    <!-- footer -->
+    <footer class="footer">
+        <!-- footer -->
+        <h1>footer</h1>
+        <h1>footer</h1>
+        <h1>footer</h1>
+        <h1>footer</h1>
+        <h1>footer</h1>
+    </footer>
+
+
+    <!-- javascript -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+
+    <!-- 以下可以放自己的js -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <script src="./js/about.js"></script> -->
+
+
+    <script>
+        document.getElementById("defaultOpen").click();
+
+
+        // 頁籤點擊事件
+        function openPage(evt, pageName) {
+            // 宣告變數
+            var i, page, tablinks;
+
+
+            // 取得所有 class 為 page 的元素，並隱藏它們
+            page = document.getElementsByClassName("page");
+            for (i = 0; i < page.length; i++) {
+                page[i].style.display = "none";
+            }
+
+
+            // 取得所有 class 為 tablinks 的元素，並移除它們的 active 狀態
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+
+            // 顯示當前頁籤的內容，並將該頁籤的按鈕設定為 active 狀態
+            document.getElementById(pageName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelector(".tablinks").click();
+        });
+
+        //   ------------------------------------------------------------
+
+        $(function () {
+
+
+            // 當頁面載入完成後執行以下程式碼
+            $('.accordion-header').click(function () {
+
+                // 當點擊折疊面板標題時，執行以下程式碼
+
+                // 先移除所有折疊面板標題的 active class，隱藏所有折疊面板內容
+                $('.accordion-header').removeClass('active');
+                $('.accordion-content').slideUp();
+
+                // 如果點擊的折疊面板內容沒有顯示，則顯示內容，並將該標題的 active class 添加上
+                if (!$(this).next().is(':visible')) {
+                    $(this).addClass('active');
+                    $(this).next().slideDown();
+                }
+            });
+
+            // 預設第一個折疊面板內容顯示
+            $('.accordion-header').first().click();
+        });
+
+
+    </script>
+
+
 </body>
+
 
 </html>
