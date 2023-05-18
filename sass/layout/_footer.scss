@@ -72,7 +72,9 @@
                     box-sizing: border-box;
                     display: block;
                     transition: all ease-in-out .3s;
-                    
+                    @include breakpoint-1440 {
+                        font-size: 15px;
+                      }
                 }
                 &:hover{
                     
@@ -109,6 +111,9 @@
                 text-align: center;
                 font-size: 3.5rem;
                 transition: all ease-in-out .3s;
+                @include breakpoint-1440 {
+                    font-size: 17px;
+                  }
             }
             &:hover>i{
                 color: $orange;
@@ -153,6 +158,9 @@
             line-height: 1.6;
             // padding: 20px 0;
             box-sizing: border-box;
+            @include breakpoint-1440 {
+                font-size: 17px;
+              }
             // padding: 10px;
         }
     }
@@ -162,6 +170,7 @@
 
 @media screen and (max-width: 414px) {
     .footer{
+        font-size: 7px;
         max-width: 414px;
         width: 100%;
         .bottom{
@@ -283,8 +292,3 @@
 }
 
 
-@media screen and (max-width: 1366px) {
-    :root{
-        font-size: 7px;
-    }
-}
