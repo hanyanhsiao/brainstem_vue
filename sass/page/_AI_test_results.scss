@@ -43,21 +43,28 @@
 }
 //推薦的三款遊戲內容
 .results_game {
-  @include flex-container(row, wrap, space-between, center);
+  @include flex-container(row, wrap, space-between, flex-start);
 
   // border: 2px solid saddlebrown;
   margin: 0 auto;
   margin-top: 100px;
-  max-width: 75%;
+  max-width: 80%;
   position: relative;
-  // display: grid;
-  // grid-template-columns: 1fr 1fr 1fr;
 
   .game_top_block {
     // border: 2px solid rgb(13, 210, 245);
     position: relative;
     margin-bottom: 50px;
+    max-width: 300px;
+
     .top_game {
+      padding: 0;
+      // border: 5px solid rgb(13, 210, 245);
+
+      img {
+        width: 100%;
+        box-shadow: 0 0 8px 5px rgba(255, 255, 255, 0.283);
+      }
     }
     .top_game_text {
       position: absolute;
@@ -72,7 +79,7 @@
       color: $white;
       text-align: center;
       line-height: 1.5;
-      padding-top: 10px;
+      padding-top: 20px;
       max-width: 300px;
     }
   }
