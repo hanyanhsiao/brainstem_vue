@@ -111,9 +111,9 @@
                 text-align: center;
                 font-size: 3.5rem;
                 transition: all ease-in-out .3s;
-                @include breakpoint-1440 {
-                    font-size: 17px;
-                  }
+                // @include breakpoint-1440 {
+                //     font-size: 17px;
+                //   }
             }
             &:hover>i{
                 color: $orange;
