@@ -1,3 +1,121 @@
-.frontORback{
+body{
+    // max-width: 1920px;
+    width: 100%;
+    margin: 0 auto;
+   
+   
+
+    .frontORback {
+        max-width: 1920px;
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        background-image: url(/pic/img/backend/Group\ 566.png);
+        // background-size: 50%;
     
+        .logo {
+            margin: 50px auto 0;
+            display: block;
+            
+            img {
+                width: 455px;
+                height: 477px;
+                display: block;
+                margin: 0 auto;
+                
+            }
+        }
+        .btn1{
+            width: 800px;
+            height: 324px;
+            // background-color: blue;
+            margin: 50px auto 0;
+            display: flex;
+            justify-content: space-between;
+    
+            .a{
+                width: 324px;
+                height: 324px;
+                display: block;
+                background-color: rgba(0, 0, 0, 0.742);
+                border: 5px solid #FF6300 ;
+                transition: all ease-in-out .6s;
+                border-radius: 50%;
+                &:hover{
+                    background-color: #f8850195;
+                    border-color: #FFC581;
+                    box-shadow:  0 0 20px 10px rgb(255, 162, 2);
+                    transition: all ease-in-out .6s;
+                }
+                &:hover>a{
+                    transform: scale(1.2);
+                    transition: all ease-in-out .6s;
+                    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+                    
+                }
+    
+                >a{
+                    display: block;
+                    text-decoration: none;
+                    text-align: center;
+                    margin-top: 100px;
+                    transition: all ease-in-out .6s;
+                    .chin{
+                        font-size: 80px;
+                        color: white;
+                        font-family: Inter;
+                        font-weight: bold;
+                    }
+                    .eng{
+                        font-size: $h1;
+                    }
+                    
+                }
+                
+            }
+            .b{
+                width: 324px;
+                height: 324px;
+                display: block;
+                background-color: rgba(0, 0, 0, 0.742);
+                border: 5px solid $purple ;
+                border-radius: 50%;
+                transition: all ease-in-out .6s;
+                &:hover{
+                    background-color: #0c1ab7b7;
+                    border-color: #C9A0FF;
+                    // text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+                    box-shadow:  0 0 20px 10px rgb(23, 2, 255);
+                    // transform: scale(1.05);
+                    transition: all ease-in-out .6s;
+                }
+                &:hover >a{
+                    transform: scale(1.2);
+                    transition: all ease-in-out .6s;
+                    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+                    
+                }
+    
+                >a{
+                    display: block;
+                    text-decoration: none;
+                    text-align: center;
+                    margin-top: 100px;
+                    transition: all ease-in-out .6s;
+                    >.chin{
+                        font-size: 80px;
+                        color: white;
+                        font-family: Inter;
+                        font-weight: bold;
+                    }
+                    .eng{
+                        font-size: $h1;
+                    }
+                }
+            }
+        }
+    
+    }
+
 }
+

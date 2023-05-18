@@ -1,10 +1,149 @@
+<!-- <header class="header">
+
+</header> -->
+
 <header class="header">
-  <div class="logo"><img src="../pic/img/LOGO/LOGO.png" alt=""></div>
-  <nav class="menu ">
-    <ul>
-      <li><a href="index.html" class="@@index">首頁</a> </li>
-      <li><a href="about.html" class="@@about">關於我們</a> </li>
-      <li><a href="product.html" class="@@product">商品</a> </li>
-    </ul>
-  </nav>
+    <div class="top">
+        <div class="logo">
+            <a href="/index.html">
+                <picture>
+                    <source media="(max-width: 414px)" srcset="./pic/img/LOGO/RWD.png" />
+                    <img src="/pic/img/LOGO/WEB LOGO.png" alt="" />
+                </picture>
+            </a>
+        </div>
+
+        <nav class="menu">
+            <ul class="a_part">
+                <li><a href="/product.html" class="@@index">商品</a></li>
+                <li><a href="/news.html" class="@@news">新聞</a></li>
+                <li><a href="/AI_test_index.html" class="@@AI_test">智能推薦</a></li>
+                <li>
+                    <a href="/game_library.html" class="@@game_library">遊戲庫</a>
+                </li>
+            </ul>
+            <ul class="b_part">
+                <form action="/" method="get">
+                    <input type="text" name="search" placeholder="  請輸入關鍵字" />
+                </form>
+
+                <div class="b_2">
+                    <li>
+                        <a href="#">近期預覽</a>
+                        <ul class="b_2-1">
+                            <li>
+                                <a href="/product.html">
+                                    <img src="./pic/img/product/demo/0001552371.jpg" alt="" />
+                                    <div class="p">
+                                        <p class="title">火影忍者 疾風傳 終極風暴 經典傳承</p>
+                                        <p class="price">¥3,205</p>
+                                        <p class="price2">¥3,000</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/product.html">
+                                    <img src="./pic/img/product/demo/Rectangle 729.png" alt="" />
+                                    <div class="p">
+                                        <p class="title">KINGDOM HEARTS III 王國之心3</p>
+                                        <p class="price">¥9,680</p>
+                                        <p class="price2">¥9,000</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/product.html">
+                                    <img src="./pic/img/product/demo/Rectangle 728.png" alt="" />
+                                    <div class="p">
+                                        <p class="title">Rabi-Ribi 拉比哩比</p>
+                                        <p class="price">¥2,700</p>
+                                        <p class="price2">¥2,000</p>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#">註冊</a></li>
+                    <li><a href="#">登入</a></li>
+                    <li>
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                                class="bi bi-cart" viewBox="0 0 16 16">
+                                <path
+                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                            </svg>
+                        </a>
+                    </li>
+                </div>
+            </ul>
+            <ul class="c_part">
+                <li class="fafa">
+                    <!-- <i class="fa fa-bars" aria-hidden="true"></i> -->
+                    <div class="toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </li>
+
+                <div class="rwd-item">
+                    <ul class="r-item">
+                        <form class="search" action="/" method="get">
+                            <input type="text" name="search" placeholder="  請輸入關鍵字" />
+                        </form>
+                        <li><a href="#">登入 </a></li>
+                        <li><a href="#">新聞 </a></li>
+                        <li><a href="#">商品 </a></li>
+                        <li><a href="#">遊戲庫 </a></li>
+                        <li>
+                            <a href="#"><img src="/pic/img/icon/ICON2/PEOPLE.png" alt="" />
+                                會員中心
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="/pic/img/icon/ICON2/shopee.png" alt="" />
+                                購物車</a>
+                        </li>
+                    </ul>
+                </div>
+            </ul>
+        </nav>
+    </div>
 </header>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".rwd-item").hide();
+        $(".r-item2").hide(); // 隱藏 .r-item2
+        $(".fafa").click(function () {
+            $(".rwd-item").slideToggle(500);
+        });
+
+        $("#right, .r-header").click(function () {
+            $(".r-item2").toggle(500)({ width: "toggle" }, 500);
+        });
+
+        $(".r-item2 a").css({
+            margin: 0,
+        });
+
+        $("body").css("overflow", "auto");
+        $(".r-item2 a").css("margin", "initial");
+    });
+
+    $(function () {
+        let is_open = 0;
+        // 一開始讓選單縮上去
+        $(".sear").slideUp();
+        // 點擊menu後slidedown
+        $(".sear2").click(function () {
+            $(".sear").slideToggle(500);
+        });
+    });
+
+    $(".toggle").click(function () {
+        $(this).toggleClass("active");
+    });
+</script>
