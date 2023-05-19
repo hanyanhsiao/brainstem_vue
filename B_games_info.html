@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <title>Brainstem | 遊戲資訊</title>
+    @@include('./layout/style.html')
+    <link rel="shortcut icon" type="image/png" href="./pic/img/LOGO/LOGO.png">
 </head>
 
 <body class="B">
@@ -19,194 +19,157 @@
 
         <!-- 右側 -->
         <div class="right col-12">
-            <a href="">
+            <a href="B_games.html">
                 <h6>回上一頁</h6>
             </a>
             <div class="right_main">
                 <form action="" method="">
-                    <ul class="firstul">
-                        <li>
-                            <h4>遊戲內容</h4>
-                        </li>
-                        <li><button class="btn">修改內容</button></li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <h6>遊戲名稱</h6>
-                        </li>
-                        <li>
-                            <h6>王國之心3</h6>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <h6>遊戲編號</h6>
-                        </li>
-                        <li>
-                            <h6>123456789000</h6>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <h6>遊戲類型</h6>
-                        </li>
-                        <li>
-                            <h6>單人</h6>
-                        </li>
-                        <li>
-                            <h6>冒險</h6>
-                        </li>
-                        <li>
-                            <h6>開放世界</h6>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <h6>活動類型</h6>
-                        </li>
-                        <li>
-                            <h6>夏季特賣</h6>
-                        </li>
-                        <li>
-                            <h6>活動時間：2023/04/01 ~ 2023/04/30</h6>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <h6>開發商</h6>
-                        </li>
-                        <li>
-                            <h6>SQUARE ENIX</h6>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <h6>開發人員</h6>
-                        </li>
-                        <li>
-                            <h6>LBJ</h6>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <h6>遊戲級別</h6>
-                        </li>
-                        <li>
-                            <h6>保護級</h6>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <h6>商品金額</h6>
-                        </li>
-                        <li>
-                            <h6>$1,399</h6>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <h6>商品折扣</h6>
-                        </li>
-                        <li>
-                            <h6>-30%</h6>
-                        </li>
-                        <li>
-                            <h6>折扣時間：2023/04/01 ~ 2023/04/30 </h6>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <h6>商品折扣後金額</h6>
-                        </li>
-                        <li>
-                            <h6>$979</h6>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <h6>遊戲說明</h6>
-                        </li>
-                        <li>
-                            <h6>《王國之心》系列是迪士尼與 SQUARE ENIX 聯手打造的角色扮演遊戲。自從 2002 年 3 月推出第 1 部作品《王國之心》（支援平台：PlayStation
-                                2）以來，已公開 13 部作品（包含 Final Mix 版則為 20 部作品），是全球出貨、銷售量超過 3,500 萬套（※）的熱門系列遊戲。</h6>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <h6>系統需求</h6>
-                        </li>
-                        <li>
-                            <h6>
-                                最低配備:<br>
-                                <span>需要 64 位元的處理器及作業系統<br></span>
-                                <span>作業系統: Windows 10<br></span>
-                                <span>處理器: Intel Core i3-4160T<br></span>
-                                <span>記憶體: 8 GB 記憶體<br></span>
-                                <span>顯示卡: NVIDIA GeForce GT 740<br></span>
-                                <span>VR 支援: SteamVR<br></span>
-                                <span>備註: Not for VR. For PC only.<br></span>
-                                建議配備:<br>
-                                <span>需要 64 位元的處理器及作業系統<br></span>
-                                <span>作業系統: Windows 10<br></span>
-                                <span>處理器: Intel Core i5-4590、AMD FX 8350<br></span>
-                                <span>記憶體: 8 GB 記憶體<br></span>
-                                <span>顯示卡: NVIDIA GeForce GTX 1060、AMD Radeon RX 480<br></span>
-                                <span>備註: For VR.<br></span>
-                            </h6>
-                        </li>
-                    </ul>
+                    <div class="B_button">
+                        <h4>遊戲內容</h4>
+                        <button class="btn" onclick="B_games_info_2(event)">修改內容</button>
+                    </div>
+                    <div class="right_main_top">
+                        <ul>
+                            <li>
+                                <h6>遊戲名稱</h6>
+                                <h6>王國之心3</h6>
+                            </li>
+                            <li>
+                                <h6>遊戲編號</h6>
+                                <h6>123456789000</h6>
+                            </li>
+                            <li class="B_grid_four">
+                                <h6>遊戲類型</h6>
+                                <h6>單人</h6>
+                                <h6>冒險</h6>
+                                <h6>開放世界</h6>
+                            </li>
+                            <li>
+                                <h6>活動類型</h6>
+                                <h6>夏季特賣</h6>
+                                <h6>活動時間：2023/04/01 ~ 2023/04/30</h6>
+                            </li>
+                            <li>
+                                <h6>開發商</h6>
+                                <h6>SQUARE ENIX</h6>
+                            </li>
+                            <li>
+                                <h6>開發人員</h6>
+                                <h6>LBJ</h6>
+                            </li>
+                            <li>
+                                <h6>遊戲級別</h6>
+                                <h6>保護級</h6>
+                            </li>
+                            <li>
+                                <h6>商品金額</h6>
+                                <h6>$1,399</h6>
+                            </li>
+                            <li>
+                                <h6>商品折扣</h6>
+                                <h6>-30%</h6>
+                                <h6>折扣時間：2023/04/01 ~ 2023/04/30 </h6>
+                            </li>
+                            <li>
+                                <h6>商品折扣後金額</h6>
+                                <h6>$979</h6>
+                            </li>
+                        </ul>
+                        <div class="right_main_text">
+                            <ul>
+                                <li>
+                                    <h6>遊戲說明</h6>
+                                </li>
+                                <li>
+                                    <h6>《王國之心》系列是迪士尼與 SQUARE ENIX 聯手打造的角色扮演遊戲。自從 2002 年 3 月推出第 1
+                                        部作品《王國之心》（支援平台：PlayStation
+                                        2）以來，已公開 13 部作品（包含 Final Mix 版則為 20 部作品），是全球出貨、銷售量超過 3,500 萬套（※）的熱門系列遊戲。</h6>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <h6>系統需求</h6>
+                                </li>
+                                <li>
+                                    <h6>
+                                        最低配備:<br>
+                                        <span>需要 64 位元的處理器及作業系統<br></span>
+                                        <span>作業系統: Windows 10<br></span>
+                                        <span>處理器: Intel Core i3-4160T<br></span>
+                                        <span>記憶體: 8 GB 記憶體<br></span>
+                                        <span>顯示卡: NVIDIA GeForce GT 740<br></span>
+                                        <span>VR 支援: SteamVR<br></span>
+                                        <span>備註: Not for VR. For PC only.<br></span>
+                                        建議配備:<br>
+                                        <span>需要 64 位元的處理器及作業系統<br></span>
+                                        <span>作業系統: Windows 10<br></span>
+                                        <span>處理器: Intel Core i5-4590、AMD FX 8350<br></span>
+                                        <span>記憶體: 8 GB 記憶體<br></span>
+                                        <span>顯示卡: NVIDIA GeForce GTX 1060、AMD Radeon RX 480<br></span>
+                                        <span>備註: For VR.<br></span>
+                                    </h6>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                     <div class="games_info_down">
                         <h6>遊戲圖片</h6>
                         <ul>
                             <li>
-                                <img src="https://fakeimg.pl/300x170/ff0000/" alt="">
+                                <img src="./pic/img/cover/9.jpg" alt="">
                                 <h6>
                                     圖片說明說明
                                 </h6>
                             </li>
                             <li>
-                                <img src="https://fakeimg.pl/300x170/ff0000/" alt="">
-                                <h6>
-                                    圖片說明說明
-                                </h6>
-                            </li>
-                                                        <li>
-                                <img src="https://fakeimg.pl/300x170/ff0000/" alt="">
+                                <img src="./pic/img/cover/9.jpg" alt="">
                                 <h6>
                                     圖片說明說明
                                 </h6>
                             </li>
                             <li>
-                                <img src="https://fakeimg.pl/300x170/ff0000/" alt="">
+                                <img src="./pic/img/cover/9.jpg" alt="">
                                 <h6>
                                     圖片說明說明
                                 </h6>
                             </li>
                             <li>
-                                <img src="https://fakeimg.pl/300x170/ff0000/" alt="">
+                                <img src="./pic/img/cover/9.jpg" alt="">
                                 <h6>
                                     圖片說明說明
                                 </h6>
                             </li>
                             <li>
-                                <img src="https://fakeimg.pl/300x170/ff0000/" alt="">
+                                <img src="./pic/img/cover/9.jpg" alt="">
                                 <h6>
                                     圖片說明說明
                                 </h6>
                             </li>
                             <li>
-                                <img src="https://fakeimg.pl/300x170/ff0000/" alt="">
+                                <img src="./pic/img/cover/9.jpg" alt="">
+                                <h6>
+                                    圖片說明說明
+                                </h6>
+                            </li>
+                            <li>
+                                <img src="./pic/img/cover/9.jpg" alt="">
                                 <h6>
                                     圖片說明說明
                                 </h6>
                             </li>
                         </ul>
-
                     </div>
                 </form>
             </div>
         </div>
     </main>
+    <!-- <script src="./vendors/vue/vue.global.js"></script> -->
+    <script>
+        function B_games_info_2(e) {
+            e.preventDefault();
+            window.location.href = "B_games_info_2.html";
+        }
+    </script>
 </body>
 
 </html>

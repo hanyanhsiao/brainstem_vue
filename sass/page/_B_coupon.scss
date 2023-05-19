@@ -20,7 +20,8 @@
 
                 label {
                     width: 20%;
-                    margin: auto 10px;
+                    margin: auto 0;
+                    margin-left: 5px;
                 }
 
 
@@ -71,11 +72,11 @@
 
                     tr {
                         border-bottom: 1px solid #000;
-
+                        cursor: pointer;
                         td {
-                            
+
                             h6 {
-                                // line-height: 2;
+                                margin: auto 0;
                             }
                             p {
                                 line-height: 2;
@@ -89,6 +90,17 @@
                         }
                       
 
+                    }
+                    tr:hover{
+                        background-color: #a289d6;
+                        td{
+                            h6{
+                                color: $white;
+                            }
+                            p{
+                                color: $white;
+                            }
+                        }
                     }
                     tr:nth-last-child(1) {
                         border-bottom: none;

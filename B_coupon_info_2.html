@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <title>Brainstem | 優惠券資訊</title>
+    @@include('./layout/style.html')
+    <link rel="shortcut icon" type="image/png" href="./pic/img/LOGO/LOGO.png">
 </head>
 
 <body class="B">
@@ -20,76 +20,43 @@
 
         <!-- 右側 -->
         <div class="right col-12">
-            <a href="">
+            <a href="B_coupon_info.html">
                 <h6>回上一頁</h6>
             </a>
             <div class="right_main">
                 <form action="" method="">
-                    <ul class="firstul">
-                        <li>
-                            <h4>優惠券內容</h4>
-                        </li>
-                        <li>
-                            <button class="btn">儲存</button>
-                        </li>
-                    </ul>
+                    <div class="B_button">
+                        <h4>優惠券內容</h4>
+                        <button class="btn">儲存</button>
+                    </div>
                     <ul>
                         <li>
-                            <label for="couponID">優惠券編號</label>
-                        </li>
-                        <li>
+                            <label for="couponID"><h6>優惠券編號</h6></label>
                             <input type="text" name="" id="couponID" placeholder="請輸入編號">
                         </li>
-                    </ul>
-                    <ul>
                         <li>
-                            <label for="couponNAME">優惠券標題</label>
-                        </li>
-                        <li>
+                            <label for="couponNAME"><h6>優惠券標題</h6></label>
                             <input type="text" name="" id="couponNAME" placeholder="請輸入優惠券名稱">
                         </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <label for="couponINFO">優惠券內容</label>
-                        </li>
-                        <li>
+                        <li class="B_grid_two">
+                            <label for="couponINFO"><h6>優惠券內容</h6></label>
                             <textarea name="" id="couponINFO" cols="100" rows="10" placeholder="請輸入優惠券內容"></textarea>
                         </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <label for="couponSTART">優惠券開始時間</label>
-                        </li>
-                        <li>
+                        <li class="B_grid_four">
+                            <label for="couponSTART"><h6>優惠券開始時間</h6></label>
                             <input type="date" name="" id="couponSTART">
-                        </li>
-                        <li>
-                            <label for="couponEND">優惠券結束時間</label>
-                        </li>
-                        <li>
+                            <label for="couponEND"><h6>優惠券結束時間</h6></label>
                             <input type="date" name="" id="couponEND">
                         </li>
-                    </ul>
-
-                    <ul>
-                        <li>
-                            <label for="price">折扣類型</label>
-                        </li>
-                        <li>
+                        <li class="B_grid_three">
+                            <label for="price"><h6>折扣類型</h6></label>
                             <select name="" id="type">
                                 <option value="">折扣金額</option>
                             </select>
-                        </li>
-                        <li>
                             <input type="text" name="" id="price" placeholder="請輸入金額">
                         </li>
-                    </ul>
-                    <ul>
                         <li>
-                            <label for="minprice">最低消費金額</label>
-                        </li>
-                        <li>
+                            <label for="minprice"><h6>最低消費金額</h6></label>
                             <input type="text" name="" id="minprice" placeholder="請輸入金額">
                         </li>
                     </ul>

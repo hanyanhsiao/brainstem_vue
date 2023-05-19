@@ -23,61 +23,66 @@
                 width: 90%;
                 margin: 0 auto;
                 margin-bottom: 150px;
-                ul {
+
+                .B_button {
                     display: flex;
+                    justify-content: space-between;
                     border-bottom: 1px solid black;
 
-                    li {
+                    button {
+                        width: 6vw;
+                        height: 50px;
                         margin: auto 0;
-                        input{
-                            margin-bottom: 0;
+                    }
+                }
+
+                ul {
+                    li {
+                        display: grid;
+                        grid-template-columns: .8fr 1.2fr .8fr 1.2fr;
+                        border-bottom: 1px solid black;
+
+                        input {
+                            margin: auto 0;
                         }
-                        select{
+                        label{
+                            margin-bottom: 0;
+                            h6{
+                                margin-left: 5px;
+                            }
+                        }
+
+                        select {
                             font-size: $h2;
                             padding: 5px;
                             background-color: $white;
                             border: 1px solid black;
                             color: $backend_font;
                             border-radius: 5px;
+                            margin: auto 0;
                         }
-                        textarea{
+
+                        textarea {
                             padding: 5px;
                             border-radius: 5px;
                             font-size: $p;
-                            margin-top: 20px;
-
+                            margin: 10px auto;
                         }
                     }
-                    li:nth-child(1){
-                        margin-right: 100px;
+
+                    .B_grid_four {
+                        grid-template-columns: .8fr 1.2fr .8fr 1.2fr;
+                    }
+
+                    .B_grid_two {
+                        grid-template-columns: .8fr 3.2fr;
+                    }
+
+                    .B_grid_three {
+                        grid-template-columns: .8fr .4fr 1.6fr 1.2fr;
                     }
 
                 }
-                ul:nth-child(5){
-                    li{
-                        margin-right: 55px;
-                    }
-                }
-                ul:nth-child(6){
-                    li:nth-child(1){
-                        margin-right: 125px;
-                    }
-                }
-                ul:nth-child(7){
-                    li{
-                        margin-right: 80px;
-                    }
-                }
-                .firstul {
-                    justify-content: space-between;
-
-                    li{
-                        margin-right: 0;
-                    }
-                    button{
-                        width: 100px;             
-                    }
-                }      
             }
 
             .right_main>h6 {
