@@ -335,7 +335,7 @@
         max-width: 414px;
         width: 100%;
         border-bottom: 2px solid;
-        position: fixed;
+        position: sticky;
         z-index: 990;
         background: rgba(0, 0, 0, 0.582);
         -webkit-backdrop-filter: blur(8px);
