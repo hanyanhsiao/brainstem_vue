@@ -1,3 +1,238 @@
 .about {
     
 }
+
+.accordion {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.accordion-item {
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 10px;
+
+}
+
+.accordion-header {
+    padding: 15px 20px;
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 3rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: white;
+    transition: background-color 0.3s ease;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.accordion-header::after {
+    content: '\002B';
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.accordion-header:hover {
+    /* background-color: lightseagreen; */
+    color: white;
+}
+
+.accordion-content {
+    padding: 20px;
+    /* background-color: #fff; */
+    /* border: 2px solid lightseagreen; */
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    // font-size: 5rem;
+    color: black;
+    line-height: 1.5;
+    display: none;
+}
+
+/* 執行js才會有的樣式 */
+.accordion-item.open .accordion-header {
+    background-color: lightseagreen;
+    color: white;
+}
+
+.accordion-item.open .accordion-header.active::after {
+    color: #fff;
+    transform: rotate(45deg);
+}
+
+/* .accordion-item.open .accordion-content { 
+    display: block;}
+     */
+
+
+
+
+/* ------------------------------------------------------------------ */
+
+
+.main {
+    max-width: 1200px;
+    width: 100%;
+    padding-top: 50px;
+    margin: 0 auto;
+    /* background-color: #0044ff; */
+}
+
+.container-f {
+    width: 1200px;
+    /* height: 1000px; */
+    margin: 0 auto;
+    box-sizing: border-box;
+    /* padding: 20px; */
+    /* outline: 5px solid #0e96d1; */
+}
+
+.tabs {
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px auto;
+    /* border: 5px solid red; */
+    margin-top: 40px;
+}
+
+.tabs .tablinks {
+    /* width: 226.6PX; */
+    /* background-color: #ffffff; */
+    /* border-right: 2px solid #FF6300;
+        border-left: 2px solid #FF6300; */
+    /* border-right: 2px solid #FF6300; */
+    /* border-left: 2px solid #FF6300; */
+    border-bottom: 1px solid #FF6300;
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-weight: bolder;
+    padding: 20px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    flex-basis: 0;
+    flex-grow: 1;
+    /* margin-bottom: 80px; */
+}
+
+.tabs .tablinks1 {
+    border-right: 1px solid #FF6300;
+    border-left: 1px solid #FF6300;
+    border-bottom: 1px solid #FF6300;
+    color: white;
+    text-align: center;
+    font-size:2rem;
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-weight: bolder;
+    padding: 20px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    flex-basis: 0;
+    flex-grow: 1;
+    /* margin-bottom: 80px; */
+
+
+}
+
+/* .tabs .tablinks.active { */
+
+    /* color: #ebebeb; */
+/* } */
+
+/* .tabs .tablinks:nth-child(4){ */
+/* border-right: #1e2a2f00; */
+/* } */
+
+.tabs .tablinks:hover {
+    background-color: #FF6300;
+    /* color: #ccc; */
+
+}
+
+.tabs .tablinks1:hover {
+    background-color: #FF6300;
+    /* color: #ccc; */
+
+}
+
+/* .tablinks.active { */
+    /* background-color: #a10000; */
+
+/* } */
+
+.page {
+    display: none;
+    flex-wrap: wrap;
+    margin-top: 100px auto;
+    flex-basis: 0;
+    /* border: 2px solid #0044ff; */
+    /* background-color: #0044ff; */
+}
+
+.container-f .page .app {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+
+}
+
+.page.active {
+    display: block;
+    /* padding: 20px 0; */
+}
+
+.page .article {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    /* padding: 50px; */
+    margin: 50px 0;
+    box-sizing: border-box;
+}
+
+.page h2 {
+   
+    font-weight: bolder;
+    font-size: 4rem;
+    display: block;
+    margin-bottom: 10px;
+    color: white;
+    line-height: 1.6;
+    border-bottom: 2px;
+    /* padding-left: 60px; */
+}
+
+
+
+
+.article p {
+    /* background-color: #0044ff; */
+    color: white;
+    /* font-family: 'Inter', sans-serif; */
+    /* font-weight: bolder; */
+    /* display: block; */
+    font-size: 2rem;
+    line-height: 1.8;
+    letter-spacing: 2PX;
+    text-align: justify;
+    text-justify: distribute-all-lines;
+    box-sizing: border-box;
+}

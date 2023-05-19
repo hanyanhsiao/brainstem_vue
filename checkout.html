@@ -9,19 +9,239 @@
     @@include('./layout/style.html')
     <!-- 以下可以放自己的link -->
 </head>
-
+    
 <body>
     <!-- header -->
     @@include('./layout/header.html')
     <main class="checkout">
-        請從這邊開始寫
-
+        <!-- 基礎確認 -->
+        <section class="check -on">
+        <h2>購物車</h2>
+        <div class="item_box">
+        <div class="item">
+            <img src="https://placehold.co/195x260" alt="">
+            <div class="info">
+                <h3 class="title">遊戲名稱遊戲名稱</h3>
+                <div class="dis_pic">
+                    <div class="discount">-40%</div>
+                    <p>優惠折扣 ~2023/5/25</p>
+                </div>
+            </div> 
+            <div class="price_box">
+                <div class="price">$660</div>
+                <div class="price_original">$1,099</div>
+            </div>
+            <div class="del">
+                <p>移除<i class="bi bi-dash-circle"></i></p>
+            </div>
+        </div>
+    </div>
+    <div class="settlement">
+        <div class="coupon">
+        <p class="t">優惠券使用</p>
+        <p class="settlement_right coupon_on">春季特賣優惠商品 -40%</p>
+        </div>
+        <div class="dis">
+            <p class="t">折扣</p>
+            <p class="settlement_right">-439元</p>
+        </div>
+        <div class="pri">
+            <p class="t">價格</p>
+            <p class="settlement_right">2498</p>
+        </div>
+        <div class="sum">
+            <p class="t">總金額</p>
+            <p class="settlement_right">2059 元</p>
+        </div>
+        <div class="btn next">結帳</div>
+    </section>
+    <!-- 進階確認 -->
+    <section class="confirm">
+        <h2>確認訂單</h2>
+        <div class="item_box">
+            <div class="item">
+                <img src="https://placehold.co/195x260" alt="">
+                <div class="info">
+                    <h3 class="title">遊戲名稱遊戲名稱</h3>
+                    <div class="dis_pic">
+                        <div class="discount">-40%</div>
+                        <p>優惠折扣 ~2023/5/25</p>
+                    </div>
+                </div> 
+                <div class="price_box">
+                    <div class="price">$660</div>
+                    <div class="price_original">$1,099</div>
+                </div>
+            </div>
+        </div>
+        <div class="settlement_con">
+            <div class="coupon">
+                <p class="t">優惠券使用</p>
+                <input type="text" placeholder="請選擇優惠券" class="coupon_on">
+            </div>
+        </div>
+        <div class="pay">
+            <div class="pay_check">
+                <h3>付款方式</h3>
+                <input type="radio" id="card" checked="checked"> 
+                <label for="card" name="card" >信用卡</label>
+        </div>
+        <div class="settlement">
+            <div class="coupon">
+            <p class="t">優惠券使用</p>
+            <p class="settlement_right coupon_on">春季特賣優惠商品 -40%</p>
+            </div>
+            <div class="dis">
+                <p class="t">折扣</p>
+                <p class="settlement_right">-439元</p>
+            </div>
+            <div class="pri">
+                <p class="t">價格</p>
+                <p class="settlement_right">2498</p>
+            </div>
+            <div class="sum">
+                <p class="t">總金額</p>
+                <p class="settlement_right">2059 元</p>
+            </div>
+            <div class="btn next">確認結帳</div>
+        </div>
+    </div>
+    </section>
+    <div class="mask"></div>
+    <div class="coupon_con">
+            <div class="coupon_box">
+                <h3>選擇優惠券</h3>
+                <i class="bi bi-x-lg leave"></i>
+                <div class="add">
+                    <p>新增優惠券</p>
+                    <input type="text" placeholder="輸入優惠券代碼" >
+                    <button class="btn">使用</button>
+                </div>
+                <h3>我的優惠券</h3>
+                <div class="coupon_list">
+                <div class="coupon_item">
+                        <div class="coupon_text">
+                        <p class="title">青銅會員每月9折優惠券</p>
+                        <p>使用期限：2023/4/1~2023/4/30</p>
+                        <p>使用規則：不能於其他優惠商品重複使用、每次優惠券只能選擇一張。</p>
+                    </div>
+                    <div class="coupon_dis">
+                        <p>9折</p>
+                    </div>
+                </div>
+                <div class="coupon_item">
+                    <div class="coupon_text">
+                    <p class="title">青銅會員每月9折優惠券</p>
+                    <p>使用期限：2023/4/1~2023/4/30</p>
+                    <p>使用規則：不能於其他優惠商品重複使用、每次優惠券只能選擇一張。</p>
+                </div>
+                <div class="coupon_dis">
+                    <p>9折</p>
+                </div>
+            </div>
+            <div class="coupon_item">
+                <div class="coupon_text">
+                <p class="title">生日優惠券$300元</p>
+                <p>使用期限：2023/4/1~2023/4/30</p>
+                <p>使用規則：不能於其他優惠商品重複使用、每次優惠券只能選擇一張。</p>
+            </div>
+            <div class="coupon_dis">
+                <p>$300元</p>
+                <p>抵用券</p>
+            </div>
+        </div>
+        </div>
+        </div>
+    </div>
+    <section class="credit_card">
+        <h3>信用卡付款</h3>
+        <form action="">
+            <p>信用卡選擇</p>
+            <select name="credit_card" class="card_select">
+                <option value="visa">VISA</option>
+                <option value="mastercard">Mastercard</option>
+                <option value="jcb">JCB</option>
+              </select>
+              <br>
+              <p>信用卡卡號</p>
+              <div class="card_num">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+              </div>
+              <div class="flex">
+                <div class="date">
+                    <p>有效期限</p>
+                    <input type="text" placeholder="月">
+                    <input type="text" placeholder="年">
+                </div>
+                <div class="num">
+                    <p>安全碼</p>
+                    <input type="text">
+                </div>
+             </div>
+             <div class="conmit">
+                <button type="submit" class="btn next">確認付款</button>
+                <p>回上一步</p>
+            </div>
+        </form>
+    </section>
+    <section class="completed">
+        <div class="flex">
+        <div class="logo"></div>
+        <div class="icon"><i class="bi bi-check2"></i></div>
+        <h3>訂單完成</h3>
+        <div class="btn"><a href="index.html">返回繼續購物</a></div>
+        </div>
+    </section>
     </main>
     <!-- footer -->
     @@include('./layout/footer.html')
     <!-- javascript -->
     @@include('./layout/js.html')
     <!-- 以下可以放自己的js -->
+    <script>
+    //下一步切換
+    $(document).ready(function() {
+        let next = $('.next');
+        let section = $('section');
+        console.log(section);
+        next.on('click', function() {
+            let index = (next.index($(this)) + 1);
+            console.log(index);
+            section.removeClass('-on');
+            section[index].classList.add("-on");
+            event.preventDefault();
+        });
+        
+    });
+    //優惠券視窗
+    $(document).ready(function() {
+        let coupon_on = $(".coupon_on");
+        let coupon_box = $(".coupon_con");
+        let leave = $(".leave");
+        let mask = $(".mask");
+        coupon_on.each(function() {
+            $(this).on('click', function() {
+            coupon_box.addClass('-on');
+            $('body').toggleClass('no-scroll');
+            mask.show();
+        });
+        });
+        leave.on('click',function(){
+            coupon_box.removeClass('-on');
+            $('body').toggleClass('no-scroll');
+            mask.hide();
+        });
+        mask.on('click', function() {
+            coupon_box.removeClass('-on');
+            $('body').toggleClass('no-scroll');
+            mask.hide();
+        });
+    });
+        
+    </script>
 </body>
 
 </html>
