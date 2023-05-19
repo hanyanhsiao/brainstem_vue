@@ -61,7 +61,7 @@
                 @include flex-container($direction: row, $wrap: nowrap, $justify-content: center, $align-items: center);
 
                 width: 100%;
-                height: 300px;
+                height: 570px;
                 margin-left: auto;
                 margin-right: auto;
                 overflow: hidden;
@@ -389,140 +389,138 @@
         }
 
         .comments_range {
-            
+            @include flex-container($direction: row, $wrap: wrap, $justify-content: space-between, $align-items: end);
+            position: relative;
 
             padding-bottom: 70px;
 
             @include breakpoint-414 {
                 padding-bottom: 30px;
+            }
 
-                
-                width: 100%;
-                height: 100%;
-            };
+            ;
 
-            .swiper-wrapper{
-                @include flex-container(row, wrap, space-between, end);
-                position: relative;
-                .look_more {
-                    font-size: 1.6rem;
-                    position: absolute;
-                    right: 0;
-                    top: -70px;
-                    color: $white;
-                    background-color: #441673;
-                    padding: 10px 25px;
-                    border: 0;
-                    letter-spacing: 2px;
-                    border-radius: 3px;
+            .look_more {
+                font-size: 1.6rem;
+                position: absolute;
+                right: 0;
+                top: -70px;
+                color: $white;
+                background-color: #441673;
+                padding: 10px 25px;
+                border: 0;
+                letter-spacing: 2px;
+                border-radius: 3px;
 
-                    @include breakpoint-414 {
-                        display: none;
-                    }
-
-                    &:hover {
-                        background-color: $orange;
-                    }
+                @include breakpoint-414 {
+                    display: none;
                 }
 
-                .each_comment {
-                    box-sizing: border-box;
-                    border: 1px solid $orange;
-                    border-radius: 8px;
-                    padding-bottom: 40px;
-                    margin-right: 0;
-                    margin-bottom: 40px;
+                &:hover {
+                    background-color: $orange;
+                }
+            }
 
-                    @include breakpoint-414 {
-                        padding-bottom: 20px;
-                    };
+            .each_comment {
+                box-sizing: border-box;
+                border: 1px solid $orange;
+                border-radius: 8px;
+                padding-bottom: 40px;
+                margin-right: 0;
+                margin-bottom: 40px;
 
-                    &:hover {
-                        background-color: rgba($color: #ff6300, $alpha: 0.12);
-                    }
+                @include breakpoint-414 {
+                    padding-bottom: 20px;
+                }
 
-                    .comment_top {
-                        @include flex-container($direction: row, $wrap: nowrap, $justify-content: space-between, $align-items: end);
-                        padding: 10px;
+                ;
 
-                        .member_pic img {
-                            border-radius: 50%;
-                            padding: 5px;
+                &:hover {
+                    background-color: rgba($color: #ff6300, $alpha: 0.12);
+                }
 
-                            @include breakpoint-414 {
-                                width: 86px;
-                            }
-                        }
+                .comment_top {
+                    @include flex-container($direction: row, $wrap: nowrap, $justify-content: space-between, $align-items: end);
+                    padding: 10px;
 
-                        .member_info {
-                            padding: 10px;
-
-                            .member_name {
-                                font-size: 2.4rem;
-                                padding-bottom: 10px;
-
-                                @include breakpoint-414 {
-                                    font-size: 20px;
-                                }
-                            }
-
-                            p {
-                                font-size: 1.5rem;
-                                padding-bottom: 10px;
-
-                                @include breakpoint-414 {
-                                    font-size: 12px;
-                                }
-
-                                ;
-                            }
-                        }
-
-                        .game_rating {
-                            padding-bottom: 20px;
-                            padding-right: 10px;
-
-                            .member_game_rating {
-                                font-size: 3.6rem;
-
-                                @include breakpoint-414 {
-                                    font-size: 36px;
-                                }
-
-                                ;
-                            }
-
-                            i {
-                                font-size: 20px;
-                                color: $orange;
-                            }
-                        }
-                    }
-
-                    .comment_text {
-                        @include flex-container($direction: row, $wrap: nowrap, $justify-content: center, $align-items: top);
+                    .member_pic img {
+                        border-radius: 50%;
                         padding: 5px;
 
-                        i {
-                            margin: 10px;
-                            font-size: 30px;
-                            color: $orange;
-                            height: 30px
+                        @include breakpoint-414 {
+                            width: 86px;
+                        }
+                    }
+
+                    .member_info {
+                        padding: 10px;
+
+                        .member_name {
+                            font-size: 2.4rem;
+                            padding-bottom: 10px;
+
+                            @include breakpoint-414 {
+                                font-size: 20px;
+                            }
                         }
 
                         p {
-                            width: 250px;
-                            height: 290px;
-                            letter-spacing: 2px;
-                            line-height: 150%;
+                            font-size: 1.5rem;
+                            padding-bottom: 10px;
+
+                            @include breakpoint-414 {
+                                font-size: 12px;
+                            }
+
+                            ;
+                        }
+                    }
+
+                    .game_rating {
+                        padding-bottom: 20px;
+                        padding-right: 10px;
+
+                        .member_game_rating {
+                            font-size: 3.6rem;
+
+                            @include breakpoint-414 {
+                                font-size: 36px;
+                            }
+
+                            ;
+                        }
+
+                        i {
                             font-size: 20px;
-                            padding-bottom: 0;
-
-
+                            color: $orange;
                         }
                     }
                 }
+
+                .comment_text {
+                    @include flex-container($direction: row, $wrap: nowrap, $justify-content: center, $align-items: top);
+                    padding: 5px;
+
+                    i {
+                        margin: 10px;
+                        font-size: 30px;
+                        color: $orange;
+                        height: 30px
+                    }
+
+                    p {
+                        width: 250px;
+                        height: 290px;
+                        letter-spacing: 2px;
+                        line-height: 150%;
+                        font-size: 20px;
+                        padding-bottom: 0;
+
+
+                    }
+                }
             }
+
         }
 
         .pages {
