@@ -4,7 +4,7 @@
   margin: 30px auto;
   font-size: $h3;
   font-weight: 700;
-  padding: 10px 40px;
+  padding: 10px 0;
   color: $white;
   background-color: $test_button;
   box-shadow: 5px 5px $test_button_shadow;
@@ -18,9 +18,7 @@
 // 適合的遊戲類型及描述
 .results_text {
   //   border: 2px solid saddlebrown;
-  // max-width: 70%;
   margin: 0 auto;
-  // margin-top: 50px;
   padding: 50px 10px 0px 10px;
 
   .results_title {
@@ -45,6 +43,9 @@
 .results_game {
   @include flex-container(row, wrap, space-between, flex-start);
 
+  @include breakpoint-414 {
+    justify-content: center;
+  }
   // border: 2px solid saddlebrown;
   margin: 0 auto;
   margin-top: 100px;
@@ -54,7 +55,7 @@
   .game_top_block {
     // border: 2px solid rgb(13, 210, 245);
     position: relative;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
     max-width: 300px;
 
     .top_game {
@@ -106,5 +107,6 @@
   @extend %AI_test_button;
   a {
     font-size: $h4;
+    padding: 10px 40px;
   }
 }

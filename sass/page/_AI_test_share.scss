@@ -1,11 +1,17 @@
 .AI_test_wrapper {
   position: relative;
+  @include breakpoint-414 {
+    padding-top: 120px;
+  }
   .share_card {
     margin: 0 auto;
     max-width: 400px;
     background-image: linear-gradient(to bottom, #964cdd, #260c4b);
     border-radius: 10px;
     padding: 30px 30px 20px 30px;
+    @include breakpoint-414 {
+      margin-top: 40px;
+    }
     .share_card_logo {
       width: 100px;
       margin: 0 auto;
@@ -35,6 +41,7 @@
       }
       .get_coupon_button {
         @extend %AI_test_button;
+        padding: 10px 40px;
       }
       .share_card_icons {
         // border: 1px solid saddlebrown;
