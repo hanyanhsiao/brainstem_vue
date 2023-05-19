@@ -1,7 +1,8 @@
 .product_activity{
+    color: $white;
     .banner{
         margin-top: 45px;
-        margin-bottom: 65px;
+        
         position: relative;
         h1{
             position: absolute;
@@ -14,15 +15,293 @@
     }
     #activity_breadcrumb{
         font-size: 0;
+        margin-top: 65px;
         margin-bottom: 60px;
         a{
             padding: 0;
-            font-size: $p;
+            font-size: 2rem;
         }
         i {
             font-size: $p;
             color: $white;
             padding: 0 10px;
+        }
+    }
+    .activity_main{
+        // @include flex-container(row, nowrap, space-between, center);
+        display: flex;
+
+        .product_sidebar {
+
+            // background-color: #1b1b1b;
+            .tag_choose {
+                color: $white;
+                font-size: 2.4rem;
+                overflow: hidden;
+                display: none;
+                padding-bottom: 20px;
+
+                &.show {
+                    display: block;
+                }
+
+                .clear {
+                    font-size: 1.8rem;
+                    color: #797676;
+                    float: right;
+
+                    &:hover {
+                        color: $orange;
+                    }
+                }
+            }
+
+            #tags_container {
+                padding-right: 20px;
+
+                .tag {
+                    display: inline-block;
+                    padding: 1rem 1.5rem;
+                    font-size: 1.8rem;
+                    background-color: $purple;
+                    color: $white;
+                    border-radius: 20px;
+                    margin-right: 1.5rem;
+                    margin-bottom: 1.5rem;
+
+                    i {
+                        font-size: 15px;
+                        padding: 5px;
+                    }
+                }
+            }
+
+            ul {
+                li {
+                    line-height: 80px;
+
+
+                    .botton {
+                        border-top: 1px solid rgba($color: $orange, $alpha: 0.5);
+                        box-sizing: border-box;
+                        position: relative;
+                        color: $white;
+                        text-decoration: none;
+                        font-size: 2.4rem;
+                        padding-left: 10px;
+                        font-weight: 400;
+                        display: block;
+                        width: 100%;
+                        border-left: 3px solid transparent;
+                        cursor: pointer;
+
+                        &:last-child {
+                            border-bottom: 0;
+                        }
+
+                        &.active {
+                            color: $orange;
+                            border-left-color: darken($color: $orange, $amount: 10);
+                        }
+
+                        i {
+                            position: absolute;
+                            top: 50%;
+                            right: 0px;
+                            transform: translateY(-50%);
+                            font-size: 22px;
+                            transition: transform 0.4s;
+
+                            &.rotate {
+                                transform: translateY(-50%) rotate(-180deg);
+                            }
+                        }
+                    }
+                }
+
+                ul {
+                    display: none;
+
+                    &.show {
+                        display: block;
+                    }
+
+                    .item {
+                        cursor: pointer;
+                        position: relative;
+                        font-size: 1.8rem;
+                        padding-left: 23px;
+
+                        &:hover {
+                            color: $orange;
+                        }
+
+                        &.checked {
+                            background-color: rgba($color: $orange, $alpha: 0.12);
+                            color: $orange;
+
+                            .check-icon {
+                                transform: scale(1);
+                            }
+                        }
+
+                        .check-icon {
+                            position: absolute;
+                            right: 20px;
+                            color: $orange;
+                            font-size: 1.8rem;
+                            transform: scale(0);
+                            transition: all 0.2s ease-in-out;
+                        }
+                    }
+
+                    .price {
+                        @include flex-container(row, nowrap, space-around, center);
+
+                        label {
+                            font-size: 1.6rem;
+                            display: inline-block;
+                            // padding-left: 20px;
+                            margin: 0;
+                            vertical-align: middle;
+                        }
+
+                        .form-control {
+                            width: 180px;
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+        }
+        .products {
+            .product_order {
+                @include flex-container(row, nowrap, end, center);
+                margin-bottom: 30px;
+
+                position: relative;
+
+                .order_btn {
+                    @include flex-container(row, nowrap, space-between, center);
+                    padding: 10px;
+                    width: 230px;
+                    font-size: 2rem;
+                    cursor: pointer;
+
+                    &:hover {
+                        border: 1px solid $white;
+                        border-radius: 8px;
+                    }
+
+                    i {
+                        padding: 0;
+                        transition: 0.3s;
+                        transform: rotate(0deg);
+                    }
+
+                    &.active i {
+                        transform: rotate(-180deg);
+                    }
+                }
+
+                .order_options {
+                    font-size: 1.6rem;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 210px;
+                    padding: 20px;
+                    margin-top: 60px;
+                    border-radius: 8px;
+                    background: #202020;
+                    z-index: 10;
+
+                    .option {
+                        cursor: pointer;
+                        padding: 10px;
+                        margin: 10px 0;
+                        align-items: center;
+
+                        &:hover {
+                            background-color: #797676;
+                            border-radius: 5px;
+                        }
+                    }
+                }
+
+            }
+
+            .product_goods {
+                display: flex;
+                flex-wrap: wrap;
+
+                .each_good {
+
+                    margin-bottom: 50px;
+
+                    .goods_top {
+                        height: 350px;
+                        position: relative;
+                        background-position: center center;
+                        background-size: cover;
+
+                        .discount {
+                            border-radius: 0;
+                            position: absolute;
+                            font-size: $h3;
+                            padding: 10px 20px;
+                        }
+
+                        i {
+                            position: absolute;
+                            // border: 1px solid red;
+                            color: red;
+                            right: 10px;
+                            top: 10px;
+                            font-size: 30px;
+                        }
+                    }
+
+                    .goods_text {
+                        padding-bottom: 20px;
+                        h3 {
+                            padding: 20px 0;
+                        }
+                        .price {
+                            padding-right: 20px;
+                        }
+                    }
+                }
+                .each_good:nth-child(4n) {
+                    margin-right: 0;
+                }
+            }
+
+            .pages {
+                margin-bottom: 50px;
+                .product_pages {
+                    @include flex-container(row, nowrap, end, center);
+                    .each_page a {
+                        color: #797676;
+                        font-size: 2rem;
+                        margin: 0 5px;
+                        padding: 5px 13px;
+                        &.active {
+                            font-weight: bold;
+                            background-color: $purple;
+                            border-radius: 50%;
+                            color: $white;
+                        }
+                        &:hover {
+                            color: $white;
+                            font-weight: bold;
+                        }
+                        i {
+                            padding: 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }

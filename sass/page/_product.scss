@@ -1,18 +1,20 @@
 .product {
     color: $white;
-
+    
     .swiper {
         width: 100%;
         height: 100%;
         margin-top: 45px;
-        margin-bottom: 120px;
+        
 
         .swiper-button-next {
             right: 30px;
+            @include breakpoint-414{right: 10px;};
         }
 
         .swiper-button-prev {
             left: 30px;
+            @include breakpoint-414{left: 10px;};
         }
 
         .swiper-slide {
@@ -35,6 +37,10 @@
     .product_main {
         display: flex;
         height: auto;
+        margin-top: 120px;
+        @include breakpoint-414{
+            margin-top: 45px;
+        };
 
         .product_sidebar {
 
@@ -136,9 +142,11 @@
                         position: relative;
                         font-size: 1.8rem;
                         padding-left: 23px;
+
                         &:hover {
                             color: $orange;
                         }
+
                         &.checked {
                             background-color: rgba($color: $orange, $alpha: 0.12);
                             color: $orange;
@@ -147,6 +155,7 @@
                                 transform: scale(1);
                             }
                         }
+
                         .check-icon {
                             position: absolute;
                             right: 20px;
@@ -181,19 +190,43 @@
             .hot_game {
                 padding-bottom: 70px;
                 overflow: hidden;
+                @include breakpoint-414{
+                    padding-bottom: 30px;
+                };
 
                 .hot_game_title {
                     @include flex-container(row, nowrap, space-between, center);
                     padding-bottom: 30px;
+                    h2{
+                        @include breakpoint-414{
+                            font-size: 4rem;
+                        }
+                    }
 
-                    .arrow_box i {
-                        padding: 0;
+                    .arrow_box {
+
+                        .btn{
+                            background-color: $purple;
+                            @include breakpoint-414{
+                                background-color: $purple_dark;
+
+                            }
+                            &:hover{
+                                background-color: $orange;
+                            }
+                        }
+                        i {
+                        padding: 0;                        
+                        }
                     }
                 }
 
                 .hot_game_cate {
                     display: flex;
                     height: 269px;
+                    @include breakpoint-414{
+                        height: 130px;
+                    }
 
                     .hot_game_list {
                         position: relative;
@@ -207,14 +240,22 @@
                             left: 50%;
                             top: 50%;
                             transform: translate(-50%, -50%);
+
                             img {
-                                padding-bottom: 15px;
-                                // width: 123px;
+                                padding-bottom: 15px;                                
                                 height: 123px;
+                                @include breakpoint-414{
+                                    height: 65px;
+                                };
+
                             }
+
                             h3 {
                                 font-size: 2.4rem;
                                 text-align: center;
+                                @include breakpoint-414{
+                                    font-size: 4rem;
+                                };
                             }
                         }
                     }
@@ -223,32 +264,39 @@
 
             }
 
-            .product {
+            .products {
                 .product_order {
                     @include flex-container(row, nowrap, end, center);
                     margin-bottom: 30px;
-
                     position: relative;
 
                     .order_btn {
                         @include flex-container(row, nowrap, space-between, center);
                         padding: 10px;
                         width: 230px;
-                        font-size: 2.4rem;
+                        font-size: 2rem;
                         cursor: pointer;
+                        @include breakpoint-414{
+                            width: 130px;
+                            font-size: 14px;
+                        };
+
                         &:hover {
                             border: 1px solid $white;
                             border-radius: 8px;
                         }
+
                         i {
                             padding: 0;
                             transition: 0.3s;
                             transform: rotate(0deg);
                         }
+
                         &.active i {
                             transform: rotate(-180deg);
                         }
                     }
+
                     .order_options {
                         font-size: 1.6rem;
                         position: absolute;
@@ -258,49 +306,59 @@
                         padding: 20px;
                         margin-top: 60px;
                         border-radius: 8px;
-                        background: #202020;                        
+                        background: #202020;
                         z-index: 10;
+
+                        @include breakpoint-414{
+                            width: 110px;  
+                            margin-top: 50px;                 
+                        };
+
                         .option {
-                            cursor: pointer;  
-                            padding: 10px;                          
-                            align-items: center;  
-                            &:hover{
+                            cursor: pointer;
+                            padding: 10px;
+                            margin: 10px 0;
+                            align-items: center;
+
+                            @include breakpoint-414{
+                                margin: 0;
+                            };
+
+                            &:hover {
                                 background-color: #797676;
                                 border-radius: 5px;
-                            }                       
+                            }
                         }
                     }
 
                 }
 
                 .product_goods {
-                    display: flex;
-                    flex-wrap: wrap;
-
-
-                    // justify-content: space-between;
-
-
-                    .each_good {
-
-                        background-color: #01072B;
-                        // flex-basis: calc((100% - 30px * 3)/4);
-                        // margin-right: 30px;
+                    @include flex-container(row, wrap, space-between, center);
+                    .each_good {                        
                         margin-bottom: 50px;
-
+                        @include breakpoint-414{
+                            width: 48%;
+                            margin-bottom: 30px;                           
+                        };
                         .goods_top {
                             height: 350px;
                             position: relative;
                             background-position: center center;
                             background-size: cover;
-
+                            @include breakpoint-414{
+                                height: 240px;
+                            }
                             .discount {
                                 border-radius: 0;
                                 position: absolute;
                                 font-size: $h3;
                                 padding: 10px 20px;
+                                @include breakpoint-414{
+                                    font-size: 16px;
+                                    padding: 5px 10px;
+                                }
                             }
-
                             i {
                                 position: absolute;
                                 // border: 1px solid red;
@@ -308,27 +366,76 @@
                                 right: 10px;
                                 top: 10px;
                                 font-size: 30px;
+                                @include breakpoint-414{
+                                    font-size: 20px;
+                                    right: 5px;
+                                    top: 5px;
+                                }
                             }
                         }
 
                         .goods_text {
-                            padding-bottom: 20px;
-
+                            padding-bottom: 10px;
+                            
                             h3 {
                                 padding: 20px 0;
+                                @include breakpoint-414{
+                                    padding: 5px 0;
+                                    font-size: 16px;
+                                }
                             }
-
                             .price {
                                 padding-right: 20px;
+                                @include breakpoint-414{
+                                    font-size: 16px;
+                                    padding-right: 10px;
+                                }
+                            }
+                            .price_original{
+                                @include breakpoint-414{
+                                    font-size: 14px;
+                                }
                             }
                         }
                     }
-
                     .each_good:nth-child(4n) {
                         margin-right: 0;
                     }
+                }
 
-
+                .pages {
+                    margin-bottom: 50px;
+                    .product_pages {
+                        @include flex-container(row, nowrap, end, center);
+                        @include breakpoint-414{
+                        @include flex-container(row, nowrap, center, center);
+                            
+                        };
+                        .each_page a {
+                            color: #797676;
+                            font-size: 2rem;
+                            margin: 0 5px;
+                            padding: 5px 13px;
+                            @include breakpoint-414{
+                                font-size: 14px;
+                                padding: 1px 7px;
+                                
+                            };
+                            &.active {
+                                font-weight: bold;
+                                background-color: $purple;
+                                border-radius: 50%;
+                                color: $white;
+                            }
+                            &:hover {
+                                color: $white;
+                                font-weight: bold;
+                            }
+                            i {
+                                padding: 0;
+                            }
+                        }
+                    }
                 }
             }
 
@@ -343,6 +450,10 @@
     --swiper-navigation-size: 60px;
     // --swiper-navigation-color:gray;
     --swiper-theme-color: orange;
+    @include breakpoint-414{
+        --swiper-navigation-size: 30px;
+        
+    }
 }
 
 .swiper-horizontal>.swiper-pagination-bullets,
@@ -350,6 +461,9 @@
 .swiper-pagination-custom,
 .swiper-pagination-fraction {
     bottom: var(--swiper-pagination-bottom, 20px);
+    @include breakpoint-414 {
+        --swiper-pagination-bottom: 10px;
+    }
 }
 
 .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet,
@@ -357,4 +471,8 @@
     width: 60px;
     height: 6px;
     border-radius: 1px;
+    @include breakpoint-414{
+        width: 35px;
+        height: 4px;
+    }
 }

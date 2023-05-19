@@ -10,11 +10,9 @@
     @@include('./layout/style.html')
     <!-- 以下可以放自己的link -->
 
-    <!-- icon -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <!-- swiper -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-   
+
     <!-- 自己的css -->
     <link rel="stylesheet" href="css/style.css">
 
@@ -23,10 +21,9 @@
 <body>
     <!-- header -->
     @@include('./layout/header.html')
-
     <main class="product">
         <!-- banner輪播 -->
-        <div class="swiper mySwiper col-12">
+        <div id="banner" class="swiper mySwiper col-12">
             <div class="swiper-wrapper">
                 <div class="swiper-slide"><img src="https://placehold.co/1536x665" alt="圖片說明"></div>
                 <div class="swiper-slide"><img src="https://placehold.co/1536x665" alt="圖片說明"></div>
@@ -144,59 +141,59 @@
                     </div>
                     <div class="hot_game_cate">
                         <div class="swiper-wrapper">
-                            <div class="hot_game_list col-4 swiper-slide">
+                            <a class="hot_game_list col-4 swiper-slide" href="./product_cate.html" >
                                 <div class="hot_game_container">
                                     <img src="./pic/img/game/cate/coorperate.svg" alt="">
                                     <h3>合作</h3>
                                 </div>
-                            </div>
-                            <div class="hot_game_list col-4 swiper-slide">
+                            </a>
+                            <a class="hot_game_list col-4 swiper-slide" href="./product_cate.html">
                                 <div class="hot_game_container">
                                     <img src="./pic/img/game/cate/personal.svg" alt="">
                                     <h3>單人</h3>
                                 </div>
-                            </div>
-                            <div class="hot_game_list col-4 swiper-slide">
+                            </a>
+                            <a class="hot_game_list col-4 swiper-slide" href="./product_cate.html">
                                 <div class="hot_game_container">
                                     <img src="./pic/img/game/cate/puzzle.svg" alt="">
                                     <h3>解謎</h3>
                                 </div>
-                            </div>
-                            <div class="hot_game_list col-4 swiper-slide">
+                            </a>
+                            <a class="hot_game_list col-4 swiper-slide" href="./product_cate.html">
                                 <div class="hot_game_container">
                                     <img src="./pic/img/game/cate/shot.svg" alt="">
                                     <h3>射擊</h3>
                                 </div>
-                            </div>
-                            <div class="hot_game_list col-4 swiper-slide">
+                            </a>
+                            <a class="hot_game_list col-4 swiper-slide" href="./product_cate.html">
                                 <div class="hot_game_container">
                                     <img src="./pic/img/game/cate/casual.svg" alt="">
                                     <h3>休閒</h3>
                                 </div>
-                            </div>
-                            <div class="hot_game_list col-4 swiper-slide">
+                            </a>
+                            <a class="hot_game_list col-4 swiper-slide" href="./product_cate.html">
                                 <div class="hot_game_container">
                                     <img src="./pic/img/game/cate/adventure.svg" alt="">
                                     <h3>冒險</h3>
                                 </div>
-                            </div>
-                            <div class="hot_game_list col-4 swiper-slide">
+                            </a>
+                            <a class="hot_game_list col-4 swiper-slide" href="./product_cate.html">
                                 <div class="hot_game_container">
                                     <img src="./pic/img/game/cate/science_fiction.svg" alt="">
                                     <h3>科幻</h3>
                                 </div>
-                            </div>
-                            <div class="hot_game_list col-4 swiper-slide">
+                            </a>
+                            <a class="hot_game_list col-4 swiper-slide" href="./product_cate.html">
                                 <div class="hot_game_container">
                                     <img src="./pic/img/game/cate/role_play.svg" alt="">
                                     <h3>角色扮演</h3>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <div class="product">
+                <div class="products">
                     <!-- <div class="product_order">
                         <h2>排序：</h2>
                         <div class="order_btn">
@@ -223,13 +220,14 @@
                         </ul>
                     </div> -->
                     <div id="app" class="product_order">
-                        <h2>排序：</h2>
+                        <h3>排序：</h3>
                         <div class="order_btn" @click="toggleOptions">
                             <span class="option_text">{{ selectedOption }}</span>
                             <i :class="{'bi': true, 'bi-chevron-down': !isOpen, 'bi-chevron-up': isOpen}"></i>
                         </div>
                         <ul class="order_options" v-if="isOpen">
-                            <li class="option" v-for="option in options" :key="option.text" @click="selectOption(option)">
+                            <li class="option" v-for="option in options" :key="option.text"
+                                @click="selectOption(option)">
                                 <span class="option_text">{{ option.text }}</span>
                             </li>
                         </ul>
@@ -259,12 +257,34 @@
                             </div>
                         </div>
                         <div class="each_good col-3">
-                            <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover1.jpg);">
+                            <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover2.jpg);">
                                 <span class="discount">-40%</span>
                                 <i class="bi bi-suit-heart"></i>
                             </div>
                             <div class="goods_text">
-                                <h3>王國之心3</h3>
+                                <h3>魔物獵人-世界</h3>
+                                <span class="price">$900</span>
+                                <span class="price_original">$1500</span>
+                            </div>
+                        </div>
+                        <div class="each_good col-3">
+                            <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover3.jpg);">
+                                <span class="discount">-40%</span>
+                                <i class="bi bi-suit-heart"></i>
+                            </div>
+                            <div class="goods_text">
+                                <h3>炸彈超人R</h3>
+                                <span class="price">$900</span>
+                                <span class="price_original">$1500</span>
+                            </div>
+                        </div>
+                        <div class="each_good col-3">
+                            <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover4.jpg);">
+                                <span class="discount">-40%</span>
+                                <i class="bi bi-suit-heart"></i>
+                            </div>
+                            <div class="goods_text">
+                                <h3>巫師3-狂獵</h3>
                                 <span class="price">$900</span>
                                 <span class="price_original">$1500</span>
                             </div>
@@ -281,12 +301,34 @@
                             </div>
                         </div>
                         <div class="each_good col-3">
-                            <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover1.jpg);">
+                            <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover2.jpg);">
                                 <span class="discount">-40%</span>
                                 <i class="bi bi-suit-heart"></i>
                             </div>
                             <div class="goods_text">
-                                <h3>王國之心3</h3>
+                                <h3>魔物獵人-世界</h3>
+                                <span class="price">$900</span>
+                                <span class="price_original">$1500</span>
+                            </div>
+                        </div>
+                        <div class="each_good col-3">
+                            <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover3.jpg);">
+                                <span class="discount">-40%</span>
+                                <i class="bi bi-suit-heart"></i>
+                            </div>
+                            <div class="goods_text">
+                                <h3>炸彈超人R</h3>
+                                <span class="price">$900</span>
+                                <span class="price_original">$1500</span>
+                            </div>
+                        </div>
+                        <div class="each_good col-3">
+                            <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover4.jpg);">
+                                <span class="discount">-40%</span>
+                                <i class="bi bi-suit-heart"></i>
+                            </div>
+                            <div class="goods_text">
+                                <h3>巫師3-狂獵</h3>
                                 <span class="price">$900</span>
                                 <span class="price_original">$1500</span>
                             </div>
@@ -303,6 +345,39 @@
                             </div>
                         </div>
                         <div class="each_good col-3">
+                            <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover2.jpg);">
+                                <span class="discount">-40%</span>
+                                <i class="bi bi-suit-heart"></i>
+                            </div>
+                            <div class="goods_text">
+                                <h3>魔物獵人-世界</h3>
+                                <span class="price">$900</span>
+                                <span class="price_original">$1500</span>
+                            </div>
+                        </div>
+                        <div class="each_good col-3">
+                            <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover3.jpg);">
+                                <span class="discount">-40%</span>
+                                <i class="bi bi-suit-heart"></i>
+                            </div>
+                            <div class="goods_text">
+                                <h3>炸彈超人R</h3>
+                                <span class="price">$900</span>
+                                <span class="price_original">$1500</span>
+                            </div>
+                        </div>
+                        <div class="each_good col-3">
+                            <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover4.jpg);">
+                                <span class="discount">-40%</span>
+                                <i class="bi bi-suit-heart"></i>
+                            </div>
+                            <div class="goods_text">
+                                <h3>巫師3-狂獵</h3>
+                                <span class="price">$900</span>
+                                <span class="price_original">$1500</span>
+                            </div>
+                        </div>
+                        <div class="each_good col-3">
                             <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover1.jpg);">
                                 <span class="discount">-40%</span>
                                 <i class="bi bi-suit-heart"></i>
@@ -313,20 +388,55 @@
                                 <span class="price_original">$1500</span>
                             </div>
                         </div>
-
+                        <div class="each_good col-3">
+                            <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover2.jpg);">
+                                <span class="discount">-40%</span>
+                                <i class="bi bi-suit-heart"></i>
+                            </div>
+                            <div class="goods_text">
+                                <h3>魔物獵人-世界</h3>
+                                <span class="price">$900</span>
+                                <span class="price_original">$1500</span>
+                            </div>
+                        </div>
+                        <div class="each_good col-3">
+                            <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover3.jpg);">
+                                <span class="discount">-40%</span>
+                                <i class="bi bi-suit-heart"></i>
+                            </div>
+                            <div class="goods_text">
+                                <h3>炸彈超人R</h3>
+                                <span class="price">$900</span>
+                                <span class="price_original">$1500</span>
+                            </div>
+                        </div>
+                        <div class="each_good col-3">
+                            <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover4.jpg);">
+                                <span class="discount">-40%</span>
+                                <i class="bi bi-suit-heart"></i>
+                            </div>
+                            <div class="goods_text">
+                                <h3>巫師3-狂獵</h3>
+                                <span class="price">$900</span>
+                                <span class="price_original">$1500</span>
+                            </div>
+                        </div>
                     </div>
 
+                    <nav class="pages">
+                        <ul class="product_pages">
+                            <li class="each_page"><a class="active" href="#">1</a></li>
+                            <li class="each_page"><a href="#">2</a></li>
+                            <li class="each_page"><a href="#">3</a></li>
+                            <li class="each_page"><a href="#">4</a></li>
+                            <li class="each_page"><a href="#"><i class="bi bi-chevron-right"></i></a></li>
+                        </ul>
+                    </nav>
                 </div>
-
-
-
             </div>
-
-
         </div>
-
-
     </main>
+
     <!-- footer -->
     @@include('./layout/footer.html')
 
@@ -336,10 +446,8 @@
 
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.1/vue.global.prod.js"></script> -->
+    <script src="./vendors/vue/vue.global.js"></script>
 
-    <script src="./venders/vue/vue.global.js"></script>
-    <!-- <script src="./js/product.js"></script> -->
 
     <script>
 
@@ -489,6 +597,8 @@
                 $("#tags_container").empty();
                 $(".checked").removeClass("checked");
                 $(".tag_choose").removeClass("show");
+                $("#banner").show();
+                $(".hot_game").show();
                 tag_list = [];
             }
 
@@ -505,8 +615,12 @@
             function is_tag_choose_show(length) {
                 if (length == 0) {
                     $(".tag_choose").removeClass("show");
+                    $("#banner").show();
+                    $(".hot_game").show();
                 } else {
                     $(".tag_choose").addClass("show");
+                    $("#banner").hide();
+                    $(".hot_game").hide();
                 }
             }
 
@@ -516,30 +630,41 @@
 
             // Swiper設定
 
-            var banner = new Swiper(".mySwiper", {
-                cssMode: true,
+            var banner = new Swiper(".mySwiper", {                
                 navigation: {
                     nextEl: ".swiper-button-next",
                     prevEl: ".swiper-button-prev",
                 },
                 pagination: {
                     el: ".swiper-pagination",
+                    clickable:true,
                 },
-
-                mousewheel: true,
+                autoplay: {
+                    delay: 10000,
+                    disableOnInteraction: true,
+                },                
                 keyboard: true,
             });
 
             var cate = new Swiper(".hot_game_cate", {
-                slidesPerView: 3,
-                spaceBetween: 30,
+                
                 navigation: {
                     nextEl: ".arrow_right",
                     prevEl: ".arrow_left",
                 },
                 autoplay: {
-                    delay: 4000,
+                    delay: 5000,
                     disableOnInteraction: true,
+                },
+                breakpoints:{
+                    1920:{
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                    },
+                    414:{
+                        slidesPerView: 2,
+                        spaceBetween: 10,
+                    }
                 },
             });
 

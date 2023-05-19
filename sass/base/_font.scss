@@ -34,13 +34,15 @@ a {
   //     text-decoration: underline;
   // }
 }
-p {
-  color: $white;
-  font-size: $p;
+p{
+    color: $white;
+    font-size: $p;
+    cursor: default;
 }
-li {
-  font-size: $h3;
-  color: $white;
+li{
+    font-size: $h3;
+    color: $white;
+    cursor: default;
 }
 .price {
   font-size: $h2;
