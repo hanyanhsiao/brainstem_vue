@@ -5,10 +5,11 @@
     width: 100px;
     height: 100px;
     margin: 0 auto;
-    background-image: url(../../pic/img/LOGO/WEB\ LOGO.png);
-        background-size: 90% 90%;
-        background-repeat: no-repeat;
-        background-position: center center;
+    img{
+      transform: scale(.9);
+      width: 100%;
+      height: 100%;
+    }
   }
   h2.margin{
     text-align: center;
@@ -17,6 +18,7 @@
 
 }
 .login {
+  // height: calc(100vh - 150px);
   form{
     width: 80%;
   }
@@ -26,6 +28,10 @@
   }
   
   .login_block {
+    // position: fixed;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
     @include flex-container(column, nowrap, space-around, center);
     padding: 10px 0;
     margin: 30px auto;
@@ -63,6 +69,29 @@
     .FB_login {
       margin-bottom: 10px;
     }
+  }
+  .suceesfully{
+    width: 30vw;
+    height: 50vh;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    background: rgba(31, 31, 31, 0.941);
+     backdrop-filter: blur(80px);
+    border-radius: 5px;
+    @include flex-container(column, nowrap, space-around, center);
+    display: none;  
+      i{
+        display: block;
+        padding: 30px;
+        border: 3px solid $green;
+        border-radius: 50%;
+        color: $green;
+        font-size: 4rem;
+      }
+    
   }
 }
 
@@ -107,6 +136,7 @@
     width: 100%;
     // margin: 0 auto;
     position: relative;
+     
     .col-7{
       margin-right: 0px;
     }
@@ -143,12 +173,15 @@
       width: 5px; /* 設置 radio 寬度 */
       height: 5px; /* 設置 radio 高度 */
       border-radius: 50%; /* 設置圓形 */
-      border: 1px solid #ff6300; /* 設置邊框 */
+      border: 1px solid $white; /* 設置邊框 */
       outline: none; /* 移除聚焦時的邊框 */
       transition: border-color 0.3s ease; /* 添加過渡效果 */
       margin: 0;
       margin-right: 10px; /* 設置間距 */
       position: relative;
+      &:focus{
+        border: 1px solid $orange;
+      }
     }
 
     /* 設置選中時的顏色 */
@@ -208,7 +241,6 @@
   #date-select-wrapper {
     display: flex;
     max-width: 100%; /* just for this demo */
-    
     overflow: hidden;
     
   }
@@ -217,7 +249,10 @@
       flex-grow: 1;
       width: auto;
       margin: 0;
-      border: 1px solid #ff6300;
+      border: 1px solid $white;
+      &:focus {
+        border: 1px solid $orange;
+      }
       &:first-child{
         border-radius: 3px 0 0 3px;
       }
@@ -235,6 +270,21 @@
   .datepicker-icon {
     color: #fff;
 }
+@include breakpoint-414 {
+  form{
+     @include flex-container(column, wrap, flex-start, flex-start);
+     &::after{
+      content: '';
+      display: none;
+     }
+     .left, .right{
+      width: 100%;
+    }
+    .gender{
+      margin-bottom: 20px;
+    }
+  }
 
+}
 
 }

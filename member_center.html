@@ -15,17 +15,16 @@
     @@include('./layout/header.html')
     <main class="member_center">
     <h2>會員中心</h2>
-    <section class="col-4 left">
-    <ul class=" select">
-        <li class="-on"><i class="bi bi-person-circle"></i>會員資料</li>
-        <li class=""><i class="order_icon"></i>訂單記錄</li>
-        <li class=""><i class="bi bi-joystick"></i>遊戲庫</li>
-        <li class=""><i class="ticket_icon"></i>會員優惠券</li>
-    </ul>
+    <section class="col-3 left">
+        <ul class=" select">
+            <li class="-on"><i class="bi bi-person-circle"></i>會員資料</li>
+            <li class=""><i class="order_icon"></i>訂單記錄</li>
+            <li class=""><i class="bi bi-joystick"></i>遊戲庫</li>
+            <li class=""><i class="ticket_icon"></i>會員優惠券</li>
+        </ul>
     </section>
     <!-- 會員訂單 -->
-    <section class="col-10 right -oon">
-        
+    <section class="col-9 right -oon">
         <div class="describe">
             <h2>我的檔案</h2>
             <p>管理你的檔案以保護你的帳戶</p>
@@ -65,19 +64,62 @@
                     <p>性別：</p>
                     <p>男生</p>
                 </div>
-                <div class="btn revise">修改</div>
                 </div>
             </div>
+            <div class="btn revise">修改</div>
         </div>
+        
     </section>
-    <!-- 訂單修改 -->
-    <!-- <section class="col-10 right">
-        <div class="revise_member_info">
 
+    <!-- 訂單修改 -->
+        <div class="right col-9 revise_box">
+            <h2>我的檔案</h2>
+        <div class="member_info_revise ">
+            <div class="img">
+                <i class="bi bi-person-circle"></i>
+                <div class="btn">選擇圖片</div>
+                <p>檔案大小：最大1MB<br>
+                    檔案限制：JPEG、PNG</p>
+            </div>
+            <div class="info">
+                <div class="info_left">
+                    <div class="mail">
+                    <p>使用者帳號：</p>
+                    <input type="text">
+                </div>
+                <div class="name">
+                    <p>姓名：</p>
+                    <input type="text">
+                </div>
+                <div class="nickname">
+                    <p>暱稱：</p>
+                    <input type="text">
+                </div>
+                </div>
+                <div class="info_right">
+                    <div class="phone">
+                    <p>手機號碼：</p>
+                    <input type="text">
+                </div>
+                <div class="birth">
+                    <p>生日：</p>
+                    <input type="text" id="dob" placeholder="請選擇下方日期" disabled>
+                </div>
+                <div class="gender_box">
+                    <p>性別：</p>
+                    <div for="gender" class="gender">
+                        <label><input type="radio" name="gender" value="male">男性</label>
+                        <label><input type="radio" name="gender" value="female">女性</label>
+                        <label><input type="radio" name="gender" value="unknow">不公開</label>
+                </div>
+                </div>
+                </div>
+            </div>
+            <div class="btn save">儲存</div>
         </div>
-    </section> -->
+    </div>
     <!-- 訂單記錄 -->
-    <section class="col-10 right">
+    <section class="col-9 right">
         <div class="order">
             <h3>訂單記錄</h3>
             <div class="form_title">
@@ -87,8 +129,10 @@
                 <p>訂單狀態</p>
             </div>
             <div class="order_info">
-                <i class="bi bi-dash-lg"></i>
-                <p>ak4l79e3k68sly</p>
+                <div class="flex_grow">
+                    <i class="bi bi-dash-lg open_btn"></i>
+                    <p class="ID">ak4l79e3k68sly</p>
+                 </div>
                 <p>2023/1/15</p>
                 <p>$2,059</p>
                 <p>已完成</p>
@@ -106,7 +150,7 @@
                         <p>遊戲名稱遊戲名稱遊戲名稱遊戲名稱</p>
                         </div>
                         <div class="dis">
-                        <div class="discount">75%</div>
+                        <div class="discount">-75%</div>
                         </div>
                         <div class="price_box">
                         <div class="price">$660</div>
@@ -119,10 +163,10 @@
                         <p>遊戲名稱遊戲名稱遊戲名稱遊戲名稱</p>
                         </div>
                         <div class="dis">
-                        <div class="discount">75%</div>
+                        <div class="discount">-75%</div>
                         </div>
                         <div class="price_box">
-                        <div class="price_original">$1,399</div>
+                        <div class="price">$1,399</div>
                         </div>
                     </div>
                     <div class="settlement">
@@ -142,16 +186,19 @@
                 </div>
             </div>
             <div class="order_info">
-                <i class="bi bi-dash-lg"></i>
-                <p>ak4l79e3k68sly</p>
+                <div class="flex_grow">
+                    <i class="bi bi-dash-lg"></i>
+                    <p>ak4l79e3k68sly</p>
+                </div>
                 <p>2023/1/15</p>
                 <p>$2,059</p>
                 <p>已完成</p>
             </div>
+            
         </div>
     </section>
     <!-- 遊戲庫 -->
-    <section class="col-10 right">
+    <section class="col-9 right">
         <div class="game_library">
             <h3>遊戲庫</h3>
             <div class="game_box">
@@ -162,7 +209,11 @@
                         <div class="flex">
                             <p>遊玩時數：0.6小時</p>
                             <p>上次遊玩日期：2023/06/01</p>
-                            <p>成就</p>
+                            <div class="ach">
+                                <p>成就</p> 
+                                <div class="line_box"><div class="line"></div></div>
+                                <p>24/30</p>
+                            </div>
                         </div>
                     </div>
                     <div class="btn">開始遊戲</div>
@@ -176,7 +227,11 @@
                         <div class="flex">
                             <p>遊玩時數：0.6小時</p>
                             <p>上次遊玩日期：2023/06/01</p>
-                            <p>成就</p>
+                            <div class="ach">
+                                <p>成就</p> 
+                                <div class="line_box"><div class="line"></div></div>
+                                <p>24/30</p>
+                            </div>
                         </div>
                     </div>
                     <div class="btn">開始遊戲</div>
@@ -190,7 +245,11 @@
                         <div class="flex">
                             <p>遊玩時數：0.6小時</p>
                             <p>上次遊玩日期：2023/06/01</p>
-                            <p>成就</p>
+                            <div class="ach">
+                                <p>成就</p> 
+                                <div class="line_box"><div class="line"></div></div>
+                                <p>24/30</p>
+                            </div>
                         </div>
                     </div>
                     <div class="btn">開始遊戲</div>
@@ -204,7 +263,11 @@
                         <div class="flex">
                             <p>遊玩時數：0.6小時</p>
                             <p>上次遊玩日期：2023/06/01</p>
-                            <p>成就</p>
+                            <div class="ach">
+                                <p>成就</p> 
+                                <div class="line_box"><div class="line"></div></div>
+                                <p>24/30</p>
+                            </div>
                         </div>
                     </div>
                     <div class="btn">開始遊戲</div>
@@ -229,7 +292,7 @@
         </div>
     </section>
     <!-- 優惠券 -->
-    <section class="col-10 right">
+    <section class="col-9 right">
         <div class="coupon">
             <h3>會員優惠券</h3>
             <div class="coupon_box">
@@ -283,10 +346,13 @@
     <!-- javascript -->
     @@include('./layout/js.html')
     <!-- 以下可以放自己的js -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ 
+    <!-- date -->
+    <script src="./js/date.js"></script>
+    <!-- nav的點擊 -->
     <script>
         let nav = $(".select li");
-        let sections = document.querySelectorAll("section.right");
+        let section = document.querySelectorAll("section.right");
         nav.on('click', function(){
             let index = 0;
             if (!$(this).hasClass('-on')) {
@@ -296,8 +362,35 @@
                 index = $(this).index();
 
                 section.removeClass('-oon');
-                sections[index].classList.add("-oon");
+                section[index].classList.add("-oon");
             }
+        });
+    </script>
+
+    <!-- 會員資料修改 -->
+    <script>
+    $(document).ready(function() {
+        let revise = $('.revise');
+        let save = $('.save');
+        let revise_box = $('.revise_box');
+        let section = document.querySelectorAll("section.right");
+            revise.on('click', function() {
+                section.forEach(function(element) {
+                    element.classList.remove('-oon');
+                });
+                revise_box.addClass('-oon');
+            });
+            save.on('click',function(){
+                revise_box.removeClass('-oon');
+                section[0].classList.add("-oon");
+            });
+    });
+    </script>
+
+    <!-- 購買清單的展開 -->
+    <script>
+        $('.open_btn').click(function() {
+            $('.detail_order').slideToggle();
         });
     </script>
 </body>
