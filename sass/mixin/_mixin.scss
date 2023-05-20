@@ -12,7 +12,9 @@ $column-gap: 20px;
 
 @for $i from 1 through 12 {
   .col-#{$i} {
-    width: calc((100% - #{$column-gap * 11}) / 12 * #{$i} + #{$column-gap} * (#{$i} - 1));
+    width: calc(
+      (100% - #{$column-gap * 11}) / 12 * #{$i} + #{$column-gap} * (#{$i} - 1)
+    );
     margin-right: $column-gap;
 
     &:last-child {
@@ -36,12 +38,6 @@ $column-gap: 20px;
   flex-wrap: $wrap;
   justify-content: $justify-content;
   align-items: $align-items;
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-}
-=======
-=======
->>>>>>> dev
 }
 
 @mixin breakpoint-1440 {
@@ -56,14 +52,6 @@ $column-gap: 20px;
   }
 }
 
-<<<<<<< HEAD
-
 // @include breakpoint-414 {
 //   使用方式
 // }
->>>>>>> Stashed changes
-=======
-// @include breakpoint-414 {
-//   使用方式
-// }
->>>>>>> dev
