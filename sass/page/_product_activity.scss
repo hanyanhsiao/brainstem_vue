@@ -1,37 +1,85 @@
-.product_activity{
+.product_activity {
     color: $white;
-    .banner{
+    position: relative;
+
+    .banner {
         margin-top: 45px;
-        
         position: relative;
-        h1{
+        background-image: url(../../pic/img/game/activity/summer.png);
+        background-size: cover;
+        background-position: center center;
+        height: 665px;
+
+        @include breakpoint-414 {
+            height: 200px;
+        }
+
+        h1 {
             position: absolute;
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
             font-size: 10rem;
-            letter-spacing: 40px                  
+            letter-spacing: 40px;
+            text-shadow: 4px 4px 4px black;
+
+            
+            @include breakpoint-1440 {
+                font-size: 6rem;
+            }
+
+            ;
+            @include breakpoint-414 {
+                font-size: 4rem;
+                letter-spacing: 5px;
+                text-shadow: 2px 2px 2px black;
+            }
+
+            ;
+
         }
     }
-    #activity_breadcrumb{
+
+    #activity_breadcrumb {
         font-size: 0;
         margin-top: 65px;
         margin-bottom: 60px;
-        a{
+
+        a {
             padding: 0;
             font-size: 2rem;
         }
+
         i {
             font-size: $p;
             color: $white;
             padding: 0 10px;
         }
     }
-    .activity_main{
+
+    .activity_main {
         // @include flex-container(row, nowrap, space-between, center);
         display: flex;
 
         .product_sidebar {
+            @include breakpoint-414 {
+                // display: none;
+                z-index: 100;
+                max-width: 414px;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: -414px;
+                background: linear-gradient(174.31deg,
+                        #030009 3.18%,
+                        #160046 27.03%,
+                        #180505 50.89%,
+                        #4f1f00 98.6%);
+                transition: 1s;
+            }
+
+            ;
 
             // background-color: #1b1b1b;
             .tag_choose {
@@ -40,6 +88,12 @@
                 overflow: hidden;
                 display: none;
                 padding-bottom: 20px;
+
+
+                @include breakpoint-414 {
+                    font-size: 18px;
+                    padding-top: 50px;
+                }
 
                 &.show {
                     display: block;
@@ -81,7 +135,7 @@
                     line-height: 80px;
 
 
-                    .botton {
+                    .button {
                         border-top: 1px solid rgba($color: $orange, $alpha: 0.5);
                         box-sizing: border-box;
                         position: relative;
@@ -94,6 +148,14 @@
                         width: 100%;
                         border-left: 3px solid transparent;
                         cursor: pointer;
+
+                        @include breakpoint-414 {
+                            font-size: 20px;
+                        }
+
+                        @include breakpoint-1440 {
+                            font-size: 20px;
+                        }
 
                         &:last-child {
                             border-bottom: 0;
@@ -131,6 +193,10 @@
                         position: relative;
                         font-size: 1.8rem;
                         padding-left: 23px;
+
+                        @include breakpoint-414 {
+                            font-size: 16px;
+                        }
 
                         &:hover {
                             color: $orange;
@@ -173,71 +239,160 @@
                     }
                 }
             }
-        }
-        .products {
-            .product_order {
-                @include flex-container(row, nowrap, end, center);
-                margin-bottom: 30px;
 
-                position: relative;
+            .apply_choose {
+                color: $white;
+                background-color: rgba($color: #ff6300, $alpha: 0.2);
+                font-size: 1.8rem;
+                font-weight: bold;
+                padding: 10px 80px;
+                border: 1px solid $orange;
+                border-radius: 8px;
+                margin: 100px auto 0;
 
-                .order_btn {
-                    @include flex-container(row, nowrap, space-between, center);
-                    padding: 10px;
-                    width: 230px;
-                    font-size: 2rem;
-                    cursor: pointer;
+                display: none;
 
-                    &:hover {
-                        border: 1px solid $white;
-                        border-radius: 8px;
-                    }
-
-                    i {
-                        padding: 0;
-                        transition: 0.3s;
-                        transform: rotate(0deg);
-                    }
-
-                    &.active i {
-                        transform: rotate(-180deg);
-                    }
+                @include breakpoint-414 {
+                    display: block;
                 }
 
-                .order_options {
-                    font-size: 1.6rem;
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    width: 210px;
-                    padding: 20px;
-                    margin-top: 60px;
-                    border-radius: 8px;
-                    background: #202020;
-                    z-index: 10;
+                ;
+            }
+        }
 
-                    .option {
-                        cursor: pointer;
-                        padding: 10px;
-                        margin: 10px 0;
-                        align-items: center;
+        .products {
+            .add_filter {
+                @include flex-container(row, wrap, space-between, center);
+                vertical-align: middle;
+                margin-bottom: 30px;
 
-                        &:hover {
-                            background-color: #797676;
-                            border-radius: 5px;
+                .sidebar_btn {
+                    display: none;
+
+                    @include breakpoint-414 {
+                        @include flex-container(row, wrap, space-between, center);
+
+                        display: block;
+                        font-size: 14px;
+                        vertical-align: top;
+                    }
+
+                    ;
+
+                    i {
+
+                        @include breakpoint-414 {
+                            font-size: 14px;
                         }
                     }
                 }
 
+                .product_order {
+                    @include flex-container(row, nowrap, end, center);
+
+                    position: relative;
+
+                    h3 {
+                        @include breakpoint-414 {
+                            font-size: 14px;
+                        }
+                    }
+
+                    .order_btn {
+                        @include flex-container(row, nowrap, space-between, center);
+                        padding: 10px;
+                        width: 230px;
+                        font-size: 2rem;
+                        cursor: pointer;
+
+                        @include breakpoint-414 {
+                            width: 130px;
+                            font-size: 14px;
+                        }
+
+                        ;
+
+                        &:hover {
+                            border: 1px solid $white;
+                            border-radius: 8px;
+                        }
+
+                        i {
+                            padding: 0;
+                            transition: 0.3s;
+                            transform: rotate(0deg);
+
+                            @include breakpoint-414 {
+                                font-size: 14px;
+                            }
+                        }
+
+                        &.active i {
+                            transform: rotate(-180deg);
+                        }
+                    }
+
+                    .order_options {
+                        font-size: 1.6rem;
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        width: 210px;
+                        padding: 20px;
+                        margin-top: 60px;
+                        border-radius: 8px;
+                        background: #202020;
+                        z-index: 10;
+
+                        @include breakpoint-414 {
+                            width: 110px;
+                            margin-top: 50px;
+                        }
+
+                        ;
+
+                        .option {
+                            cursor: pointer;
+                            padding: 10px;
+                            margin: 10px 0;
+                            align-items: center;
+
+                            @include breakpoint-414 {
+                                margin: 0;
+                            }
+
+                            ;
+
+                            .option_text {
+                                @include breakpoint-414 {
+                                    font-size: 14px;
+                                }
+
+                                ;
+                            }
+
+                            &:hover {
+                                background-color: #797676;
+                                border-radius: 5px;
+                            }
+                        }
+                    }
+
+                }
             }
 
             .product_goods {
-                display: flex;
-                flex-wrap: wrap;
+                @include flex-container(row, wrap, space-between, center);
 
                 .each_good {
-
                     margin-bottom: 50px;
+
+                    @include breakpoint-414 {
+                        width: 48%;
+                        margin-bottom: 30px;
+                    }
+
+                    ;
 
                     .goods_top {
                         height: 350px;
@@ -245,11 +400,20 @@
                         background-position: center center;
                         background-size: cover;
 
+                        @include breakpoint-414 {
+                            height: 240px;
+                        }
+
                         .discount {
                             border-radius: 0;
                             position: absolute;
                             font-size: $h3;
                             padding: 10px 20px;
+
+                            @include breakpoint-414 {
+                                font-size: 16px;
+                                padding: 5px 10px;
+                            }
                         }
 
                         i {
@@ -259,19 +423,44 @@
                             right: 10px;
                             top: 10px;
                             font-size: 30px;
+
+                            @include breakpoint-414 {
+                                font-size: 20px;
+                                right: 5px;
+                                top: 5px;
+                            }
                         }
                     }
 
                     .goods_text {
-                        padding-bottom: 20px;
+                        padding-bottom: 10px;
+
                         h3 {
                             padding: 20px 0;
+
+                            @include breakpoint-414 {
+                                padding: 5px 0;
+                                font-size: 16px;
+                            }
                         }
+
                         .price {
                             padding-right: 20px;
+
+                            @include breakpoint-414 {
+                                font-size: 16px;
+                                padding-right: 10px;
+                            }
+                        }
+
+                        .price_original {
+                            @include breakpoint-414 {
+                                font-size: 14px;
+                            }
                         }
                     }
                 }
+
                 .each_good:nth-child(4n) {
                     margin-right: 0;
                 }
@@ -279,25 +468,49 @@
 
             .pages {
                 margin-bottom: 50px;
+
                 .product_pages {
                     @include flex-container(row, nowrap, end, center);
+
+                    @include breakpoint-414 {
+                        @include flex-container(row, nowrap, center, center);
+
+                    }
+
+                    ;
+
                     .each_page a {
                         color: #797676;
                         font-size: 2rem;
                         margin: 0 5px;
                         padding: 5px 13px;
+
+                        @include breakpoint-414 {
+                            font-size: 16px;
+                            padding: 1px 7px;
+
+                        }
+
+                        ;
+
                         &.active {
                             font-weight: bold;
                             background-color: $purple;
                             border-radius: 50%;
                             color: $white;
                         }
+
                         &:hover {
                             color: $white;
                             font-weight: bold;
                         }
+
                         i {
                             padding: 0;
+
+                            @include breakpoint-414 {
+                                font-size: 16px;
+                            }
                         }
                     }
                 }

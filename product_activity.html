@@ -14,14 +14,14 @@
     <!-- header -->
     @@include('./layout/header.html')
     <main class="product_activity">
-        <div class="banner">
-            <img src="./pic/img/game/activity/summer.png" alt="">
+        <div class="banner col-12">
+            <!-- <img src="./pic/img/game/activity/summer.png" alt=""> -->
             <h1>夏季特賣</h1>
         </div>
         <nav id="activity_breadcrumb">
             <a href="./index.html">首頁</a><i class="bi bi-chevron-right a_after"></i>
             <a href="./product.html">商品</a><i class="bi bi-chevron-right a_after"></i>
-            <a href="#">夏季特賣</a>
+            <a href="./product_activity.html">夏季特賣</a>
         </nav>
         <section class="activity_main col-12">
 
@@ -30,7 +30,7 @@
                 <div id="tags_container"></div>
                 <ul>
                     <li>
-                        <div class="botton">限時促銷活動
+                        <div class="button">限時促銷活動
                             <i class="bi bi-chevron-down arrow"></i>
                         </div>
                         <ul class="sale_list">
@@ -44,7 +44,7 @@
                     </li>
 
                     <li>
-                        <div class="botton">遊戲類型
+                        <div class="button">遊戲類型
                             <i class="bi bi-chevron-down arrow"></i>
                         </div>
                         <ul class="cate_list">
@@ -77,7 +77,7 @@
                     </li>
 
                     <li>
-                        <div class="botton">遊戲模式
+                        <div class="button">遊戲模式
                             <i class="bi bi-chevron-down arrow"></i>
 
                         </div>
@@ -89,7 +89,7 @@
                     </li>
 
                     <li>
-                        <div class="botton">金額
+                        <div class="button">金額
                             <i class="bi bi-chevron-down arrow"></i>
 
                         </div>
@@ -104,23 +104,30 @@
                             </li>
                         </ul>
                     </li>
-
                 </ul>
+                <button class="apply_choose">套用</button>
             </nav>
 
-            <div class="products col-9">                
-                <div id="app" class="product_order">
-                    <h3>排序：</h3>
-                    <div class="order_btn" @click="toggleOptions">
-                        <span class="option_text">{{ selectedOption }}</span>
-                        <i :class="{'bi': true, 'bi-chevron-down': !isOpen, 'bi-chevron-up': isOpen}"></i>
+            <div class="products col-9">  
+
+                <div class="add_filter">
+                    <div class="sidebar_btn">
+                        <span>篩選器</span>
+                        <i class="bi bi-filter"></i>
                     </div>
-                    <ul class="order_options" v-if="isOpen">
-                        <li class="option" v-for="option in options" :key="option.text"
-                            @click="selectOption(option)">
-                            <span class="option_text">{{ option.text }}</span>
-                        </li>
-                    </ul>
+                    <div id="app" class="product_order">
+                        <h3>排序：</h3>
+                        <div class="order_btn" @click="toggleOptions">
+                            <span class="option_text">{{ selectedOption }}</span>
+                            <i :class="{'bi': true, 'bi-chevron-down': !isOpen, 'bi-chevron-up': isOpen}"></i>
+                        </div>
+                        <ul class="order_options" v-if="isOpen">
+                            <li class="option" v-for="option in options" :key="option.text"
+                                @click="selectOption(option)">
+                                <span class="option_text">{{ option.text }}</span>
+                            </li>
+                        </ul>
+                    </div>                        
                 </div>
 
                 <div class="product_goods" id="goodsIn">
@@ -136,48 +143,56 @@
                         </div>
                     </div> -->
                     <div class="each_good col-3">
-                        <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover1.jpg);">
-                            <span class="discount">-40%</span>
-                            <i class="bi bi-suit-heart"></i>
-                        </div>
-                        <div class="goods_text">
-                            <h3>王國之心3</h3>
-                            <span class="price">$900</span>
-                            <span class="price_original">$1500</span>
-                        </div>
+                        <a href="./product_information.html">
+                            <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover1.jpg);">
+                                <span class="discount">-40%</span>
+                                <i class="bi bi-suit-heart"></i>
+                            </div>
+                            <div class="goods_text">
+                                <h3>王國之心3</h3>
+                                <span class="price">$900</span>
+                                <span class="price_original">$1500</span>
+                            </div>
+                        </a>
                     </div>
                     <div class="each_good col-3">
-                        <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover2.jpg);">
-                            <span class="discount">-40%</span>
-                            <i class="bi bi-suit-heart"></i>
-                        </div>
-                        <div class="goods_text">
-                            <h3>魔物獵人-世界</h3>
-                            <span class="price">$900</span>
-                            <span class="price_original">$1500</span>
-                        </div>
+                        <a href="./product_information.html">
+                            <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover2.jpg);">
+                                <span class="discount">-40%</span>
+                                <i class="bi bi-suit-heart"></i>
+                            </div>
+                            <div class="goods_text">
+                                <h3>魔物獵人-世界</h3>
+                                <span class="price">$900</span>
+                                <span class="price_original">$1500</span>
+                            </div>
+                        </a>
                     </div>
                     <div class="each_good col-3">
-                        <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover3.jpg);">
-                            <span class="discount">-40%</span>
-                            <i class="bi bi-suit-heart"></i>
-                        </div>
-                        <div class="goods_text">
-                            <h3>炸彈超人R</h3>
-                            <span class="price">$900</span>
-                            <span class="price_original">$1500</span>
-                        </div>
+                        <a href="./product_information.html">
+                            <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover3.jpg);">
+                                <span class="discount">-40%</span>
+                                <i class="bi bi-suit-heart"></i>
+                            </div>
+                            <div class="goods_text">
+                                <h3>炸彈超人R</h3>
+                                <span class="price">$900</span>
+                                <span class="price_original">$1500</span>
+                            </div>
+                        </a>
                     </div>
                     <div class="each_good col-3">
-                        <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover4.jpg);">
-                            <span class="discount">-40%</span>
-                            <i class="bi bi-suit-heart"></i>
-                        </div>
-                        <div class="goods_text">
-                            <h3>巫師3-狂獵</h3>
-                            <span class="price">$900</span>
-                            <span class="price_original">$1500</span>
-                        </div>
+                        <a href="./product_information.html">
+                            <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover4.jpg);">
+                                <span class="discount">-40%</span>
+                                <i class="bi bi-suit-heart"></i>
+                            </div>
+                            <div class="goods_text">
+                                <h3>巫師3-狂獵</h3>
+                                <span class="price">$900</span>
+                                <span class="price_original">$1500</span>
+                            </div>
+                        </a>
                     </div>
                     <div class="each_good col-3">
                         <div class="goods_top" style="background-image: url(./pic/img/game/cover/cover1.jpg);">
@@ -380,7 +395,7 @@
             });
 
             //宣告動作
-            $(".botton").on('click', function () {
+            $(".button").on('click', function () {
                 arrorw_rotate($(this))
             })
 
@@ -479,6 +494,15 @@
 
         });
         //==============funtcion宣告結束==============
+
+        //篩選器出現
+
+        $('.sidebar_btn').click(function(){
+            $('.product_sidebar').css("left","0");
+        })
+        $('.apply_choose').click(function(){
+            $('.product_sidebar').css("left","-414px");
+        })
 
         // 愛心收藏
         var heartsList = document.querySelectorAll('.bi-suit-heart');
