@@ -39,9 +39,9 @@
 
     .AI_test_wrapper {
       padding: 20px 0;
-      @include breakpoint-414 {
-        padding-top: 80px;
-      }
+      // @include breakpoint-414 {
+      //   padding-top: 80px;
+      // }
       //  ----------------3D方塊------------------
       .cube {
         transform-style: preserve-3d;
