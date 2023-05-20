@@ -1,3 +1,206 @@
-.news{
-    
+.news_article {}
+
+.title-news {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25vh;
+}
+
+.header-news {
+    background-image: url("/pic/img/news/Rectangle\ 266.png");
+    margin: 30px auto;
+}
+
+
+.search-news_out {
+    text-align: right;
+}
+
+
+
+.search-news {
+    width: 300px;
+    border-radius: 50px;
+    right: 200px;
+    text-align: right;
+}
+
+
+
+.featured {}
+
+.featured_title {
+    margin-bottom: 3%;
+}
+
+.featured_ul {
+    // border: 2px solid blueviolet;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 5%;
+}
+
+.featured_li {
+    font-size: 50px;
+    // border: 2px solid blue;
+    display: flex;
+    width: 500px;
+    justify-content: space-around;
+
+}
+
+.featured_link {
+    padding: 2px;
+}
+
+.featured_img {
+    width: 100%;
+    height: 280px;
+}
+
+.featured_top {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px auto;
+}
+
+// 精選日期
+.featured_date {
+    color: white;
+    font-size: 1.5rem;
+}
+
+// 精選icon
+.featured_views {
+    font-size: 2rem;
+    color: #FF6300;
+}
+
+.featured_icon {}
+
+// 精選標題
+.featured_title {
+    font-size: 2rem;
+    margin-bottom: 3%;
+}
+
+// 精選內容
+.featured_content {
+    font-size: 1.5rem;
+    margin-bottom: 3%;
+}
+
+
+// ====================down====================
+
+.down {
+    display: flex;
+}
+
+// 最近新聞
+.recent_news_out {
+    // border: 2px solid red;
+    width: 60%;
+    margin-right: 3%;
+}
+
+.recent_news {
+    margin-bottom: 3%;
+}
+
+.recent_ul {
+    // border: 2px solid blue;
+}
+
+.recent_li {
+    border: 2px solid #FF6300;
+    display: flex;
+    position: relative;
+    margin-bottom: 10%;
+}
+
+// 最近圖片
+.recent_img {
+    // border: 2px solid yellow;
+}
+
+// 最近右內容
+.recent_section {
+    // border: 2px solid green;
+    padding: 20px;
+
+}
+
+// 最近日期
+.recent_date {
+    // border: 2px solid greenyellow;
+    font-size: 1.5rem;
+}
+
+// 最近標題
+.recent_title {
+    // border: 2px solid brown;
+    color: white;
+    margin: 5% auto;
+    font-size: 3rem;
+}
+
+// 最近內容
+.recent_content {
+    // border: 2px solid white;
+}
+
+// 最近瀏覽次數
+.recent_views {
+    // border: 2px solid orchid;
+    color: #FF6300;
+    position: absolute;
+    right: 25px;
+    bottom: 5px;
+}
+
+// 最近icon
+.recent_icon {
+    // border: 2px solid pink;
+}
+
+
+// ====================aside====================
+.aside_news {
+    // border: 2px solid red;
+    width: 35%;
+}
+
+.aside_news_title {
+    // border: 2px solid blue;
+    margin-bottom: 3%;
+}
+
+.aside_ul {
+    // border: 2px solid yellow;
+}
+
+.aside_li {
+    border-bottom: 2px solid grey;
+    // margin-bottom: 5%;
+    padding-bottom: 5%;
+}
+
+.aside_section {
+    display: flex;
+}
+
+.aside_number {
+    // border: 2px solid orangered;
+    font-size: 5rem;
+    color: #FF6300;
+}
+
+.aside_title {
+    // border: 2px solid darkorchid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20%;
 }

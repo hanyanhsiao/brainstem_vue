@@ -29,4 +29,25 @@
   flex-wrap: $wrap;
   justify-content: $justify-content;
   align-items: $align-items;
+<<<<<<< Updated upstream
 }
+=======
+}
+
+@mixin breakpoint-1440 {
+  @media (max-width: 1440px) {
+    @content;
+  }
+}
+
+@mixin breakpoint-414 {
+  @media (max-width: 414px) {
+    @content;
+  }
+}
+
+
+// @include breakpoint-414 {
+//   使用方式
+// }
+>>>>>>> Stashed changes
