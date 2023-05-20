@@ -46,6 +46,7 @@
                         color: orange;
                         transition: all ease-in-out .2s;
                         transform: scale(1.5);
+                        cursor: pointer;
                         }
                     }
                 }
@@ -80,10 +81,10 @@
                     }
                 }
                 &:hover{
-                    // cursor: pointer;
+                    cursor: pointer;
                     transition: all ease-in-out .3s;
                     transform: scale(1.5) translateX(10px);
-                    cursor: pointer;
+                  
                     >p{
                         color: orange;
                         transition: all ease-in-out .3s;
