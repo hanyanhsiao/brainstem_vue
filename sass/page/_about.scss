@@ -1,6 +1,4 @@
-.about {
-    
-}
+.about {}
 
 .accordion {
     max-width: 800px;
@@ -138,7 +136,7 @@
     border-bottom: 1px solid #FF6300;
     color: white;
     text-align: center;
-    font-size:2rem;
+    font-size: 2rem;
     display: block;
     font-family: 'Inter', sans-serif;
     font-weight: bolder;
@@ -154,7 +152,7 @@
 
 /* .tabs .tablinks.active { */
 
-    /* color: #ebebeb; */
+/* color: #ebebeb; */
 /* } */
 
 /* .tabs .tablinks:nth-child(4){ */
@@ -174,7 +172,7 @@
 }
 
 /* .tablinks.active { */
-    /* background-color: #a10000; */
+/* background-color: #a10000; */
 
 /* } */
 
@@ -186,6 +184,8 @@
     /* border: 2px solid #0044ff; */
     /* background-color: #0044ff; */
 }
+
+
 
 .container-f .page .app {
     display: flex;
@@ -209,7 +209,7 @@
 }
 
 .page h2 {
-   
+
     font-weight: bolder;
     font-size: 4rem;
     display: block;
@@ -236,3 +236,73 @@
     text-justify: distribute-all-lines;
     box-sizing: border-box;
 }
+
+
+
+.article-about h2 {
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 200px;
+
+}
+
+.article-about p {
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid red;
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-bottom: 40px;
+    font-size: 2rem;
+
+}
+
+
+.page .article-about a {
+    // text-align: center;
+    font-size: 2.5rem;
+    margin: 0 auto;
+    border: 1px solid red;
+    margin-top: 50px;
+    margin-left: 665px;
+    background-color: #6511E1;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top-right-radius: 35px;
+    border-top-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+    border-bottom-left-radius: 35px;
+
+}
+
+
+
+
+.article-cover {
+    border: 2px solid red;
+    // width: 90vw;
+    // margin: 0 auto;
+    // display: flex;
+    // justify-content: center;
+    position: relative;
+}
+
+
+.article_img {
+    width: 20%;
+    position: absolute;
+}
+
+
+
+
+.left img:first-child {
+    left: 10px
+}
+
+
+.left img:nth-child(2) {}
