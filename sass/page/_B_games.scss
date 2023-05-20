@@ -67,7 +67,7 @@
 
                     tr {
                         border-bottom: 1px solid #000;
-
+                        cursor: pointer;
                         td {
                             h6 {
                                 line-height: 4;
@@ -76,6 +76,14 @@
                         td:nth-child(2){
                             text-align: left;
                             transform: translateX(2%);
+                        }
+                    }
+                    tr:hover{
+                        background-color: #a289d6;
+                        td{
+                            h6{
+                                color: $white;
+                            }
                         }
                     }
 

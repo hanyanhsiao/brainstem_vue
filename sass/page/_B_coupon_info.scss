@@ -23,55 +23,35 @@
                 width: 90%;
                 margin: 0 auto;
 
-                .firstul {
+                .B_button {
+                    display: flex;
                     justify-content: space-between;
+                    border-bottom: 1px solid black;
+
+                    button {
+                        width: auto;
+                        height: 50px;
+                        margin: auto 0;
+                    }
                 }
 
                 ul {
-                    display: flex;
-                    border-bottom: 1px solid black;
-
+                    margin-bottom: 150px;
                     li {
                         margin: auto 0;
-
+                        border-bottom: 1px solid black;
+                        display: grid;
+                        grid-template-columns: .8fr .8fr 1.6fr .8fr;
                         h6 {
-                            margin-right: 150px;
+                            margin-left: 5px;
                         }
                     }
-                }
-
-                ul:nth-child(4) {
-                    li:nth-child(2) {
-                        h6 {
-                            line-height: 3;
+                    .B_grid_two{
+                        grid-template-columns: .8fr 3.2fr;
+                        :first-child{
+                            margin: auto 0;
                         }
                     }
-                }
-
-                ul:nth-child(5) {
-                    h6 {
-                        margin-right: 108px;
-                    }
-                }
-
-                ul:nth-child(6) {
-                    h6 {
-                        margin-right: 171px;
-                    }
-
-                    :nth-child(2) {
-                        h6 {
-                            margin-right: 50px;
-                        }
-                    }
-                }
-
-                ul:last-child {
-                    h6 {
-                        margin-right: 129px;
-                    }
-
-                    margin-bottom: 150px;
                 }
             }
 

@@ -1,0 +1,25 @@
+
+{
+    "gameType":"解謎遊戲",
+    "gameTypeContent":"你具有敏銳的觀察力和出色的邏輯思維，擅長尋找線索，善於分析問題並找出隱藏的模式，喜歡挑戰自己的智力和推理能力。解謎遊戲充滿著挑戰與驚喜非常適合你，讓你的觀察力和智力得到充分的展現。透過解謎的過程，你將會體驗到滿滿的成就感。不論是與朋友一起合作或獨自挑戰，解謎遊戲將考驗你的專注力、邏輯思維和解決問題的能力。",
+    "game":[
+     {  
+        "id":"44",
+        "name":"龍與地下城",
+        "image":"https://dummyimage.com/260X350/949494/fff",
+        "url":"https://www.google.com.tw/"
+     },
+     {
+        "id":"55",
+        "name":"創世紀",
+        "image":"https://dummyimage.com/260X350/949494/fff",
+        "url":"https://www.google.com.tw/"
+     },
+     {
+        "id":"66",
+        "name":"巫術",
+        "image":"https://dummyimage.com/260X350/949494/fff",
+        "url":"https://www.google.com.tw/"
+     }
+    ]
+}

@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <title>Brainstem | 遊戲資訊</title>
+    @@include('./layout/style.html')
+    <link rel="shortcut icon" type="image/png" href="./pic/img/LOGO/LOGO.png">
 </head>
 
 <body class="B">
@@ -19,392 +19,269 @@
 
         <!-- 右側 -->
         <div class="right col-12">
-            <a href="">
+            <a href="./B_games_info.html">
                 <h6>回上一頁</h6>
             </a>
             <div class="right_main">
                 <form action="" method="">
-                    <ul class="firstul">
-                        <li>
-                            <h4>遊戲內容</h4>
-                        </li>
-                        <li><button class="btn">儲存</button></li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <label for="gamesID">
-                                <h6>遊戲名稱</h6>
-                            </label>
-                        </li>
-                        <li>
-                            <input type="text" name="" id="gamesID" placeholder="請輸入遊戲名稱">
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <h6>遊戲編號</h6>
-                        </li>
-                        <li>
-                            <h6>123456789000</h6>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <label for="">
+                    <div class="B_button">
+                        <h4>遊戲內容</h4>
+                        <button class="btn">儲存</button>
+                    </div>
+                    <div class="right_main_top">
+                        <ul>
+                            <li>
+                                <label for="gamesID">
+                                    <h6>遊戲名稱</h6>
+                                </label>
+                                <input type="text" name="" id="gamesID" placeholder="請輸入遊戲名稱">
+                            </li>
+                            <li>
+                                <h6>遊戲編號</h6>
+                                <h6>123456789000</h6>
+                            </li>
+                            <li>
+                                <label for="LOGO">
+                                    <h6>遊戲LOGO</h6>
+                                </label>
+                                <img src="./pic/img/cover/1.jpg" alt="">
+                                <a href="">重新上傳</a>
+                            </li>
+                            <li>
+                                <h6>發行日期</h6>
+                                <h6>2023/1/15</h6>
+                            </li>
+                            <li>
+                                <h6>開發商</h6>
+                                <h6>SQUARE ENIX</h6>
+                            </li>
+                            <li>
+                                <h6>開發人員</h6>
+                                <h6>LBJ</h6>
+                            </li>
+                            <li>
+                                <h6>遊戲級別</h6>
+                                <h6>保護級</h6>
+                            </li>
+                            <li class="B_grid_two b_backend_color">
                                 <h6>遊戲類型</h6>
-                            </label>
-                        </li>
-                        <li>
-                            <img src="https://fakeimg.pl/300x170/ff0000/" alt="">
-                        </li>
-                        <li>
-                            <a href="">重新上傳</a>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <h6>發行日期</h6>
-                        </li>
-                        <li>
-                            <h6>2023/1/15</h6>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <h6>開發商</h6>
-                        </li>
-                        <li>
-                            <h6>SQUARE ENIX</h6>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <h6>開發人員</h6>
-                        </li>
-                        <li>
-                            <h6>LBJ</h6>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <h6>遊戲級別</h6>
-                        </li>
-                        <li>
-                            <h6>保護級</h6>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <h6>遊戲類型</h6>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="" id="">
-                        </li>
-                        <li>
-                            <label for="">動作</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="" id="">
-                        </li>
-                        <li>
-                            <label for="">冒險</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="" id="">
-                        </li>
-                        <li>
-                            <label for="">角色扮演</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="" id="">
-                        </li>
-                        <li>
-                            <label for="">策略</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="" id="">
-                        </li>
-                        <li>
-                            <label for="">模擬</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="" id="">
-                        </li>
-                        <li>
-                            <label for="">經營</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="" id="">
-                        </li>
-                        <li>
-                            <label for="">城市營造</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="" id="">
-                        </li>
-                        <li>
-                            <label for="">農場模擬</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="" id="">
-                        </li>
-                        <li>
-                            <label for="">戰爭</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="" id="">
-                        </li>
-                        <li>
-                            <label for="">休閒</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="" id="">
-                        </li>
-                        <li>
-                            <label for="">日系</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="" id="">
-                        </li>
-                        <li>
-                            <label for="">運動</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="" id="">
-                        </li>
-                        <li>
-                            <label for="">棒球</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="" id="">
-                        </li>
-                        <li>
-                            <label for="">網球</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="" id="">
-                        </li>
-                        <li>
-                            <label for="">競速</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="" id="">
-                        </li>
-                        <li>
-                            <label for="">賽馬</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="" id="">
-                        </li>
-                        <li>
-                            <label for="">賽車</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="" id="">
-                        </li>
-                        <li>
-                            <label for="">烹飪</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="" id="">
-                        </li>
-                        <li>
-                            <label for="">可愛</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="" id="">
-                        </li>
-                        <li>
-                            <label for="">兒童</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="" id="">
-                        </li>
-                        <li>
-                            <label for="">太空模擬</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="" id="">
-                        </li>
-                        <li>
-                            <label for="">殖民模擬</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="" id="">
-                        </li>
-                        <li>
-                            <label for="">像素風</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="" id="">
-                        </li>
-                        <li>
-                            <label for="">2D格鬥</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="" id="">
-                        </li>
-                        <li>
-                            <label for="">獨立遊戲</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="" id="">
-                        </li>
-                        <li>
-                            <label for="">待新增</label>
-                        </li>
-                    </ul>
-                    
-                        <ul>
-                            <li>
+                                <div class="B_games">
+                                    <ul>
+                                        <li>
+                                            <input type="checkbox" name="" id="action">
+                                            <label for="action">動作</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" id="adventure">
+                                            <label for="adventure">冒險</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" id="role">
+                                            <label for="role">角色扮演</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" id="tactful">
+                                            <label for="tactful">策略</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" id="simulation
+                                            ">
+                                            <label for="simulation
+                                            ">模擬</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" id="prosecution
+                                            ">
+                                            <label for="prosecution
+                                            ">經營</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" id="building">
+                                            <label for="building">城市營造</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" id="farm simulation">
+                                            <label for="farm simulation">農場模擬</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" id="war">
+                                            <label for="war">戰爭</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" id="casual">
+                                            <label for="casual">休閒</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" id="japanese">
+                                            <label for="japanese">日系</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" id="sports">
+                                            <label for="sports">運動</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" id="baseball">
+                                            <label for="baseball">棒球</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" id="tennis">
+                                            <label for="tennis">網球</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" id="racing">
+                                            <label for="racing">競速</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" id="race">
+                                            <label for="race">賽馬</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" id="racing car">
+                                            <label for="racing car">賽車</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" id="cooking">
+                                            <label for="cooking">烹飪</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" id="cute">
+                                            <label for="cute">可愛</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" id="child">
+                                            <label for="child">兒童</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" id="space simulation">
+                                            <label for="space simulation">太空模擬</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" id="colony simulation">
+                                            <label for="colony simulation">殖民模擬</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" id="pixel wind">
+                                            <label for="pixel wind">像素風</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" id="2D fighting">
+                                            <label for="2D fighting">2D格鬥</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" id="independent game">
+                                            <label for="independent game">獨立遊戲</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" name="" id="">
+                                            <label for="">待新增</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="B_grid_two b_backend_color">
                                 <h6>活動類型</h6>
+                                <div class="B_type">
+                                    <ul>
+                                        <li>
+                                            <input type="radio" name="type" id="summer sale">
+                                            <label for="summer sale">夏季特賣</label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="type" id="Cosplay Promotions">
+                                            <label for="Cosplay Promotions">角色扮演促銷活動</label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="type" id="Shooting Type Promotions">
+                                            <label for="Shooting Type Promotions">射擊類型促銷活動</label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="type" id="Space Adventure Promotions">
+                                            <label for="Space Adventure Promotions">太空探險促銷活動</label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="type" id="Horror Game Promotions">
+                                            <label for="Horror Game Promotions">恐怖遊戲促銷活動</label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="type" id="Cairo Series Promotions">
+                                            <label for="Cairo Series Promotions">開羅系列促銷活動</label>
+                                        </li>
+                                    </ul>
+                                </div>
                             </li>
                             <li>
-                                <input type="radio" name="" id="">
+                                <label for="Event start time">
+                                    <h6>活動開始時間</h6>
+                                </label>
+                                <input type="date" name="" id="Event start time">
+                                <label for="Event end time">
+                                    <h6>活動結束時間</h6>
+                                </label>
+                                <input type="date" name="" id="Event end time">
                             </li>
                             <li>
-                                <label for="">夏季特賣</label>
+                                <label for="commodity price">
+                                    <h6>商品金額</h6>
+                                </label>
+                                <input type="text" name="" id="commodity price" placeholder="請輸入金額">
                             </li>
-                            <li>
-                                <input type="radio" name="" id="">
+                            <li class="B_grid_six">
+                                <label for="Product discount">
+                                    <h6>商品折扣</h6>
+                                </label>
+                                <input type="text" name="" id="Product discount" placeholder="請輸入折扣%數">
+                                <label for="Discount start time">
+                                    <h6>折扣開始時間</h6>
+                                </label>
+                                <input type="date" name="" id="Discount start time">
+                                <label for="Discount end time">
+                                    <h6>折扣結束時間</h6>
+                                </label>
+                                <input type="date" name="" id="Discount end time">
                             </li>
-                            <li>
-                                <label for="">角色扮演促銷活動</label>
+                            <li class="B_grid_two">
+                                <label for="game instructions">
+                                    <h6>遊戲說明</h6>
+                                </label>
+                                <textarea name="" id="game instructions" cols="100" rows="20" placeholder="請輸入遊戲說明"></textarea>
                             </li>
-                            <li>
-                                <input type="radio" name="" id="">
-                            </li>
-                            <li>
-                                <label for="">射擊類型促銷活動</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="" id="">
-                            </li>
-                            <li>
-                                <label for="">太空探險促銷活動</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="" id="">
-                            </li>
-                            <li>
-                                <label for="">恐怖遊戲促銷活動</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="" id="">
-                            </li>
-                            <li>
-                                <label for="">開羅系列促銷活動</label>
+                            <li class="B_grid_two">
+                                <label for="system requirement">
+                                    <h6>系統需求</h6>
+                                </label>
+                                <textarea name="" id="system requirement" cols="100" rows="30" placeholder="請輸入系統需求"></textarea>
                             </li>
                         </ul>
-                        <ul>
-                            <li>
-                                <label for=""><h6>活動開始時間</h6></label>
-                            </li>
-                            <li>
-                                <input type="date" name="" id="">
-                            </li>
-                            <li>
-                                <label for=""><h6>活動結束時間</h6></label>
-                            </li>
-                            <li>
-                                <input type="date" name="" id="">
-                            </li>
-                        </ul>
-                    
- 
-                    <ul>
-                        <li>
-                            <label for=""><h6>商品金額</h6></label>
-                        </li>
-                        <li>
-                            <input type="text" name="" id="" placeholder="請輸入金額">
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <label for=""><h6>商品折扣</h6></label>
-                        </li>
-                        <li>
-                            <input type="text" name="" id="" placeholder="請輸入折扣%數">
-                        </li>
-                        <li>
-                            <label for=""><h6>折扣開始時間</h6></label>
-                        </li>
-                        <li>
-                            <input type="date" name="" id="">
-                        </li>
-                        <li>
-                            <label for=""><h6>折扣結束時間</h6></label>
-                        </li>
-                        <li>
-                            <input type="date" name="" id="">
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <h6>遊戲說明</h6>
-                        </li>
-                        <li>
-                            <h6>
-                                冰我朵東間固前帶上，申他每里息好帽位愛即天，呀假清位室貫元位，肉呀魚兒學未新波給追字，們或去比風入出七詞能裝他汁們物房枝，吹園香才，果方哪故起。
-                                還跳服枝走帶前澡愛好聲春青姊活貓米弟間，洋告者封向急鼻斥夏。牙候內向石杯。結文種福亮音。聲門事國說左民也「的就四平歡」掃怕嗎、斥沒麼。
-                                相者紅足樹明九白字珠十出國海教多士穴巴英，成話早寸世什抱告這奶米跟九愛兌，古女安。
-                            </h6>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <h6>系統需求</h6>
-                        </li>
-                        <li>
-                            <h6>
-                                最低配備:<br>
-                                <span>需要 64 位元的處理器及作業系統<br></span>
-                                <span>作業系統: Windows 10<br></span>
-                                <span>處理器: Intel Core i3-4160T<br></span>
-                                <span>記憶體: 8 GB 記憶體<br></span>
-                                <span>顯示卡: NVIDIA GeForce GT 740<br></span>
-                                <span>VR 支援: SteamVR<br></span>
-                                <span>備註: Not for VR. For PC only.<br></span>
-                                建議配備:<br>
-                                <span>需要 64 位元的處理器及作業系統<br></span>
-                                <span>作業系統: Windows 10<br></span>
-                                <span>處理器: Intel Core i5-4590、AMD FX 8350<br></span>
-                                <span>記憶體: 8 GB 記憶體<br></span>
-                                <span>顯示卡: NVIDIA GeForce GTX 1060、AMD Radeon RX 480<br></span>
-                                <span>備註: For VR.<br></span>
-                            </h6>
-                        </li>
-                    </ul>
+                    </div>
                     <div class="games_info_2_down">
                         <h6>遊戲圖片</h6>
                         <ul>
                             <li>
-                                <img src="https://fakeimg.pl/300x170/ff0000/" alt="">
+                                <img src="./pic/img/cover/10.jpg" alt="">
                                 <h6>
                                     圖片說明
                                 </h6>
                             </li>
                             <li>
-                                <img src="https://fakeimg.pl/300x170/ff0000/" alt="">
+                                <img src="./pic/img/cover/10.jpg" alt="">
                                 <h6>
                                     圖片說明
                                 </h6>
                             </li>
                             <li>
-                                <img src="https://fakeimg.pl/300x170/ff0000/" alt="">
+                                <img src="./pic/img/cover/10.jpg" alt="">
                                 <h6>
                                     圖片說明
                                 </h6>
                             </li>
                             <li>
-                                <img src="https://fakeimg.pl/300x170/ff0000/" alt="">
+                                <img src="./pic/img/cover/10.jpg" alt="">
                                 <h6>
                                     圖片說明
                                 </h6>
                             </li>
                             <li>
-                                <img src="https://fakeimg.pl/300x170/ff0000/" alt="">
+                                <img src="./pic/img/cover/10.jpg" alt="">
                                 <h6>
                                     圖片說明
                                 </h6>
@@ -421,6 +298,9 @@
             </div>
         </div>
     </main>
+    <script>
+        
+    </script>
 </body>
 
 </html>

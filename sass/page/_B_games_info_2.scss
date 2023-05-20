@@ -23,199 +23,160 @@
                 width: 90%;
                 margin: 0 auto;
 
-                .firstul {
-                    justify-content: space-between;
-                }
-
-                ul {
+                .B_button {
                     display: flex;
+                    justify-content: space-between;
                     border-bottom: 1px solid black;
 
-                    li {
+                    button {
+                        width: 6vw;
+                        height: 50px;
                         margin: auto 0;
-
-                        input {
-                            margin-bottom: 0;
-                        }
-
-                        img {
-                            margin-top: 20px;
-                        }
-
-                        a {
-                            color: $backend_font;
-                            font-size: 20px;
-                            font-weight: 500;
-                        }
-
-                        h6 {
-                            margin-right: 150px;
-                        }
                     }
+
                 }
 
-                ul:nth-child(6) {
-                    h6 {
-                        margin-right: 171px;
-                    }
-                }
+                .right_main_top {
+                    ul {
+                        li {
+                            border-bottom: 1px solid black;
+                            display: grid;
+                            grid-template-columns: .8fr 1fr 1fr 1.2fr;
 
-                ul:nth-child(9) {
-                    flex-wrap: wrap;
+                            .B_games {
+                                width: 100%;
 
-                    li {
-                        margin-right: 10px;
-                    }
+                                ul {
+                                    width: 100%;
+                                    display: grid;
+                                    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 
-                    li:nth-child(odd) {
-                        margin-right: 40px;
-                    }
+                                    li {
+                                        display: flex;
+                                        border-bottom: none;
 
-                    li:nth-child(1) {
-                        margin-right: 0;
-                    }
+                                        input {
+                                            width: auto;
+                                        }
 
-                    li:nth-child(18) {
-                        margin-left: 234px;
-                    }
-
-                    li:nth-child(36) {
-                        margin-left: 234px;
-                    }
-
-                    li:nth-child(50) {
-                        margin-left: 234px;
-                    }
-                }
-
-                ul:nth-child(10) {
-                    flex-wrap: wrap;
-
-                    li {
-                        margin-right: 10px;
-                    }
-
-                    li:nth-child(odd) {
-                        margin-right: 40px;
-                    }
-
-                    li:nth-child(1) {
-                        margin-right: 0;
-                    }
-
-                    li:nth-child(10) {
-                        margin-left: 234px;
-                    }
-
-                    border-bottom: none;
-                    background-color: #d9d9d9;
-                }
-
-                ul:nth-child(11) {
-                    background-color: #d9d9d9;
-
-                    li {
-                        margin-right: 55px;
-
-                        h6 {
-                            margin-right: 55px;
-                        }
-                    }
-                }
-
-                ul:nth-child(13) {
-
-                    li {
-                        margin-right: 25px;
-
-                        h6 {
-                            margin-right: 0px;
-                        }
-
-                    }
-
-                    :nth-child(2) {
-                        width: 15%;
-                        margin-right: 150px;
-                    }
-                }
-
-                ul:nth-child(14) {
-                    display: block;
-
-                    li:nth-child(2) {
-                        margin: 0 auto 50px;
-
-                        h6 {
-                            margin: 0 50px;
-                            line-height: 2;
-                        }
-                    }
-                }
-
-                ul:nth-child(15) {
-                    display: block;
-
-                    li:nth-child(2) {
-                        margin: 0 auto 50px;
-
-                        h6 {
-                            margin: 0 50px;
-                            line-height: 2;
-
-                            span {
-                                margin-left: 40px;
+                                        label {
+                                            display: block;
+                                            float: right;
+                                            margin-left: 5px;
+                                        }
+                                    }
+                                }
                             }
 
-                            span::before {}
+                            .B_type {
+                                width: 100%;
+
+                                ul {
+                                    width: 100%;
+                                    display: grid;
+                                    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+                                    li {
+                                        display: flex;
+                                        border-bottom: none;
+
+                                        input {
+                                            width: auto;
+                                        }
+
+                                        label {
+                                            display: block;
+                                            float: right;
+                                            margin-left: 5px;
+                                        }
+                                    }
+                                }
+                            }
+
+                            h6 {
+                                margin-left: 5px;
+                            }
+
+                            img {
+                                width: 100%;
+                                margin: 10px auto;
+                            }
+
+                            a {
+                                color: $purple;
+                                font-size: 20px;
+                                font-weight: 500;
+                            }
+
+                            input {
+                                margin: auto 0;
+                            }
+
+                            label {
+                                margin-bottom: 0;
+                            }
+
+                            textarea {
+                                padding: 5px;
+                                border-radius: 5px;
+                                font-size: $p;
+                                margin: 10px 0;
+                            }
+                        }
+
+                        .B_grid_six {
+                            grid-template-columns: .8fr 1.2fr 1fr 1fr 1fr 1fr;
+                        }
+
+                        .B_grid_two {
+                            grid-template-columns: .8fr 3.2fr;
                         }
                     }
                 }
 
-                ul:last-child {
-                    border-bottom: none;
-                }
 
                 .games_info_2_down {
 
-                    h6 {}
 
                     ul {
-                        flex-wrap: wrap;
                         margin-bottom: 80px;
+                        display: grid;
+                        grid-template-columns: 1fr 1fr 1fr 1fr;
 
                         li {
-                            margin-right: 34px;
+                            margin-right: 5px;
 
-                            img {}
+                            img {
+                                width: 100%;
+                            }
 
                             h6 {
-                                width: 90%;
                                 height: 125px;
                                 outline: 1px solid #000;
                                 margin-bottom: 50px;
-                                padding-left: 30px;
+                                padding-left: 10px;
+                                margin-top: -20px;
                             }
                         }
 
-                        li:nth-child(4n) {
-                            margin-right: 0;
-                        }
-                        li:last-child{
-                            width: 300px;
-                            i{
+                        li:last-child {
+
+                            i {
                                 color: #000;
                             }
-                            h6{
+
+                            h6 {
                                 outline: none;
                                 padding: 0;
                                 width: 100%;
                                 line-height: 1;
+
                             }
+
                             text-align: center;
-                            margin-top: 20px;
                             border: 1px dashed #000;
                             height: 170px;
+
                         }
 
                     }

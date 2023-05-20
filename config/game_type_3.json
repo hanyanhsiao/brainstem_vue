@@ -1,0 +1,25 @@
+
+{
+    "gameType":"休閒遊戲",
+    "gameTypeContent":"你擁有輕鬆愉快的個性特質，樂觀開朗，對生活保持著輕鬆的態度。休閒遊戲以簡單有趣的操作方式為特點，且有著輕鬆愉快的遊戲氛圍，往往不需要太長的遊戲時間，可以在短暫的時間內進行，例如在工作間歇時間、等車時間或閒暇時間中，讓你可以隨時隨地享受遊戲的樂趣。休閒類遊戲包括迷宮解謎、拼圖遊戲、跳躍遊戲、音樂節奏遊戲等，種類多到絕對能滿足你。",
+    "game":[
+     {  
+        "id":"44",
+        "name":"龍與地下城",
+        "image":"https://dummyimage.com/260X350/949494/fff",
+        "url":"https://www.google.com.tw/"
+     },
+     {
+        "id":"55",
+        "name":"創世紀",
+        "image":"https://dummyimage.com/260X350/949494/fff",
+        "url":"https://www.google.com.tw/"
+     },
+     {
+        "id":"66",
+        "name":"巫術",
+        "image":"https://dummyimage.com/260X350/949494/fff",
+        "url":"https://www.google.com.tw/"
+     }
+    ]
+}

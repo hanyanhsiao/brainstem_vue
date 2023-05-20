@@ -19,6 +19,7 @@ body.B {
 }
 main {
   overflow: hidden;
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
+  @include breakpoint-414{width: 90%;}
 }

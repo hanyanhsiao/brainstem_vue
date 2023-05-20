@@ -1,8 +1,7 @@
 @import "../css/reset.css";
 @import "./base/var";
-@import "./base/font";
-
 @import "./mixin/mixin";
+@import "./base/font";
 
 @import "./component/btn";
 @import "./component/card";
@@ -38,13 +37,16 @@
 @import "./page/frontORback";
 @import "./page/game _library";
 @import "./page/index";
-@import "./page/login ";
+@import "./page/login";
 @import "./page/member_center";
 @import "./page/news_article";
 @import "./page/news";
 @import "./page/product_information";
 @import "./page/product";
 @import "./page/terms_of_service";
+@import "./page/product_activity";
+@import "./page/product_cate";
+
 
 // body{
 //     font: 10px;

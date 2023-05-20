@@ -1,3 +1,709 @@
-.product_information{
-    
+.product_information {
+    color: $white;
+
+    #breadcrumb {
+        margin-top: 70px;
+        margin-bottom: 50px;
+        font-size: 0;
+
+        a {
+            padding: 0;
+            font-size: $p;
+
+            @include breakpoint-414 {
+                font-size: 16px;
+            }
+
+            ;
+
+        }
+
+        i {
+            font-size: $p;
+            color: $white;
+            padding: 0 10px;
+
+            @include breakpoint-414 {
+                font-size: 16px;
+            }
+
+            ;
+
+
+        }
+    }
+
+    .game_name {
+        margin-bottom: 20px;
+
+        @include breakpoint-414 {
+            font-size: 24px;
+        }
+    }
+
+    .information_top {
+        @include flex-container($direction: row, $wrap: nowrap, $justify-content: space-between, $align-items: top);
+        margin-bottom: 90px;
+
+        @include breakpoint-414 {
+            @include flex-container(column, nowrap, space-between, top);
+        }
+        ;
+
+        .information_carousel {
+            // position: relative;
+
+            @include breakpoint-414 {
+                order: 2;
+            }
+
+            .swiper {
+                @include flex-container($direction: row, $wrap: nowrap, $justify-content: center, $align-items: center);
+
+                width: 100%;
+                height: 570px;
+                margin-left: auto;
+                margin-right: auto;
+                overflow: hidden;
+
+                .swiper-wrapper {
+                    display: flex;
+
+                    .swiper-slide {
+                        @include flex-container($direction: row, $wrap: nowrap, $justify-content: center, $align-items: center);
+                        text-align: center;
+                        background-size: cover;
+                        background-position: center;
+
+                        img {
+                            display: block;
+                            width: 100%;
+                            // height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                }
+
+            }
+
+            .mySwiper2 {
+                height: 70%;
+                width: 100%;
+            }
+
+            .mySwiper {
+                height: 30%;
+                box-sizing: border-box;
+                padding: 10px 0;
+
+                &.swiper-slide-thumb-active {
+                    opacity: 1;
+                }
+
+                .swiper-slide {
+                    width: 25%;
+                    height: 100%;
+                    opacity: 0.4;
+
+                    img {
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+
+        .information_detail {
+            @include breakpoint-414 {
+                order: 1;
+            }
+
+            ;
+
+            img {
+                height: 240px;
+                display: block;
+                background-color: gray;
+
+                @include breakpoint-414 {
+                    height: 180px;
+                }
+
+                ;
+            }
+
+            .detail_text {
+                position: relative;
+
+                h2 {
+                    padding-top: 30px;
+                    padding-bottom: 10px;
+
+                    @include breakpoint-414 {
+                        font-size: 24px;
+                    }
+
+                    ;
+                }
+
+                p {
+                    padding-top: 20px;
+                    font-size: 1.8rem;
+                    letter-spacing: 2px;
+
+                    @include breakpoint-414 {
+                        font-size: 14px;
+                    }
+
+                    ;
+
+                    i {
+                        color: $orange;
+
+                        @include breakpoint-414 {
+                            font-size: 20px;
+                        }
+                    }
+                }
+
+                .add_to_pay {
+                    padding: 50px 0;
+
+                    @include flex-container(row, nowrap, space-between, center);
+
+                    @include breakpoint-414 {
+                        @include flex-container(column, nowrap, space-between, center);
+                    }
+
+                    .shopcar_btn {
+                        color: $white;
+                        background-color: rgba($color: #ff6300, $alpha: 0.2);
+                        font-size: 1.8rem;
+                        font-weight: bold;
+                        padding: 15px;
+                        border: 1px solid $orange;
+                        border-radius: 8px;
+
+                        @include breakpoint-414 {
+                            order: 2;
+                            font-size: 18px;
+                        }
+
+                        &:hover {
+                            background-color: $orange;
+                        }
+                    }
+
+                    .purchase_btn {
+                        color: $white;
+                        background-color: #FF013C;
+                        font-size: 1.8rem;
+                        font-weight: bold;
+                        padding: 15px;
+                        border: 0;
+                        border-radius: 8px;
+
+                        @include breakpoint-414 {
+                            order: 1;
+                            font-size: 18px;
+                            margin-bottom: 15px;
+                        }
+
+                        &:hover {
+                            background-color: $orange;
+                        }
+                    }
+                }
+
+                .heart_and_share {
+                    @include flex-container(column, nowrap, space-between, center);
+                    position: absolute;
+                    right: 10px;
+                    top: 30px;
+
+                    @include breakpoint-414 {
+                        @include flex-container(row, nowrap, space-between, center);
+                        right: 0;
+                    }
+
+                    ;
+
+                    .heart_btn {
+                        color: #FF013C;
+                        font-size: 30px;
+                        padding-bottom: 20px;
+
+                        @include breakpoint-414 {
+                            padding-bottom: 0;
+                            font-size: 20px;
+                        }
+                    }
+
+                    .share_btn {
+                        color: $orange;
+                        font-size: 30px;
+
+                        @include breakpoint-414 {
+                            font-size: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .introduction_and_system {
+        @include flex-container(row, nowrap, space-between, top);
+        padding-bottom: 100px;
+
+        @include breakpoint-414 {
+            @include flex-container(column, nowrap, space-between, top);
+
+        }
+
+        .introduction {
+            @include breakpoint-414 {
+                padding-bottom: 50px;
+            }
+
+            h2 {
+                padding-bottom: 25px;
+
+                @include breakpoint-414 {
+                    font-size: 20px;
+                }
+
+                ;
+            }
+
+            p {
+                border-top: 1px solid $orange;
+                padding-top: 25px;
+                font-size: 2rem;
+                line-height: 150%;
+                letter-spacing: 2px;
+
+                @include breakpoint-414 {
+                    font-size: 16px;
+                }
+            }
+        }
+
+        .system {
+            h2 {
+                padding-bottom: 25px;
+
+                @include breakpoint-414 {
+                    font-size: 20px;
+                }
+
+                ;
+            }
+
+            ul {
+                border-top: 1px solid $orange;
+                list-style: disc;
+
+                p {
+                    font-size: 2rem;
+                    line-height: 150%;
+                    padding: 25px 0;
+
+                    @include breakpoint-414 {
+                        font-size: 16px;
+                        padding: 10px 0;
+                    }
+                }
+
+                li {
+                    margin-left: 20px;
+                    font-size: 2rem;
+                    line-height: 200%;
+
+                    @include breakpoint-414 {
+                        font-size: 14px;
+
+                    }
+                }
+            }
+        }
+    }
+
+    .game_comment {
+        
+        .comment_title {
+            font-size: 3.2rem;
+            padding-bottom: 35px;
+
+            @include breakpoint-414 {
+                font-size: 20px;
+                border-bottom: 1px solid $orange;
+                padding-bottom: 15px;
+            }
+        }
+
+        .evaluation {
+            @include flex-container(row, nowrap, start, end);
+            padding-bottom: 50px;
+
+            @include breakpoint-414 {
+                @include flex-container(column, nowrap, start, start);
+            }
+
+            p {
+                font-size: 1.8rem;
+                vertical-align: bottom;
+
+                @include breakpoint-414 {
+                    font-size: 18px;
+                    padding: 20px 0;
+                }
+
+            }
+
+            .total_rating {
+                i {
+                    font-size: 40px;
+                    color: $orange
+                }
+
+                .star_rating {
+                    font-size: 3.6rem;
+                    padding-right: 10px;
+
+                    @include breakpoint-414 {
+                        font-size: 36px;
+                    }
+                }
+
+                span {
+                    font-size: 1.6rem;
+
+                    @include breakpoint-414 {
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+
+        .comments_range {
+            @include flex-container($direction: row, $wrap: wrap, $justify-content: space-between, $align-items: end);
+            position: relative;
+
+            padding-bottom: 70px;
+
+            @include breakpoint-414 {
+                padding-bottom: 30px;
+            }
+
+            ;
+
+            .look_more {
+                font-size: 1.6rem;
+                position: absolute;
+                right: 0;
+                top: -70px;
+                color: $white;
+                background-color: #441673;
+                padding: 10px 25px;
+                border: 0;
+                letter-spacing: 2px;
+                border-radius: 3px;
+
+                @include breakpoint-414 {
+                    display: none;
+                }
+
+                &:hover {
+                    background-color: $orange;
+                }
+            }
+
+            .each_comment {
+                box-sizing: border-box;
+                border: 1px solid $orange;
+                border-radius: 8px;
+                padding-bottom: 40px;
+                margin-right: 0;
+                margin-bottom: 40px;
+
+                @include breakpoint-414 {
+                    padding-bottom: 20px;
+                }
+
+                ;
+
+                &:hover {
+                    background-color: rgba($color: #ff6300, $alpha: 0.12);
+                }
+
+                .comment_top {
+                    @include flex-container($direction: row, $wrap: nowrap, $justify-content: space-between, $align-items: end);
+                    padding: 10px;
+
+                    .member_pic img {
+                        border-radius: 50%;
+                        padding: 5px;
+
+                        @include breakpoint-414 {
+                            width: 86px;
+                        }
+                    }
+
+                    .member_info {
+                        padding: 10px;
+
+                        .member_name {
+                            font-size: 2.4rem;
+                            padding-bottom: 10px;
+
+                            @include breakpoint-414 {
+                                font-size: 20px;
+                            }
+                        }
+
+                        p {
+                            font-size: 1.5rem;
+                            padding-bottom: 10px;
+
+                            @include breakpoint-414 {
+                                font-size: 12px;
+                            }
+
+                            ;
+                        }
+                    }
+
+                    .game_rating {
+                        padding-bottom: 20px;
+                        padding-right: 10px;
+
+                        .member_game_rating {
+                            font-size: 3.6rem;
+
+                            @include breakpoint-414 {
+                                font-size: 36px;
+                            }
+
+                            ;
+                        }
+
+                        i {
+                            font-size: 20px;
+                            color: $orange;
+                        }
+                    }
+                }
+
+                .comment_text {
+                    @include flex-container($direction: row, $wrap: nowrap, $justify-content: center, $align-items: top);
+                    padding: 5px;
+
+                    i {
+                        margin: 10px;
+                        font-size: 30px;
+                        color: $orange;
+                        height: 30px
+                    }
+
+                    p {
+                        width: 250px;
+                        height: 290px;
+                        letter-spacing: 2px;
+                        line-height: 150%;
+                        font-size: 20px;
+                        padding-bottom: 0;
+
+
+                    }
+                }
+            }
+
+        }
+
+        .pages {
+            margin-bottom: 80px;
+            display: none;
+
+            .comment_pages {
+                @include flex-container(row, nowrap, end, center);
+
+                .each_page a {
+                    color: #797676;
+                    font-size: 2rem;
+                    margin: 0 5px;
+                    padding: 5px 13px;
+
+                    &.active {
+                        font-weight: bold;
+                        background-color: $purple;
+                        border-radius: 50%;
+                        color: $white;
+                    }
+
+                    &:hover {
+                        color: $white;
+                        font-weight: bold;
+                    }
+
+                    i {
+                        padding: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .recommendation {
+        box-sizing: border-box;
+        border: 1px solid $orange;
+        border-radius: 5px;
+        margin-bottom: 140px;
+
+        @include breakpoint-414 {
+            border: 0;
+            margin-bottom: 50px;
+        }
+
+        ;
+
+        .recommend_range {
+            margin: 0 auto;
+
+            .recommend_title {
+                @include flex-container(row, nowrap, space-between, center);
+                padding-top: 60px;
+                padding-bottom: 30px;
+
+                @include breakpoint-414 {
+                    padding-top: 0;
+
+                }
+
+                h2 {
+                    @include breakpoint-414 {
+                        font-size: 20px;
+                    }
+
+                    ;
+
+                }
+
+                .btn {
+                    @include breakpoint-414 {
+                        background-color: $purple_dark;
+
+                        &:hover {
+                            background-color: $orange;
+                        }
+                    }
+
+                    ;
+
+                    i {
+                        padding: 0;
+
+                    }
+                }
+            }
+
+            .recommend_game {
+
+                overflow: hidden;
+
+                .swiper-wrapper {
+                    @include flex-container(row, nowrap, space-between, center);
+
+                }
+
+                .each_good {
+
+                    margin-bottom: 50px;
+
+                    @include breakpoint-414 {
+                        margin-bottom: 20px;
+                    }
+
+                    ;
+
+                    .goods_top {
+                        position: relative;
+
+                        img {
+
+                            @include breakpoint-414 {
+                                width: 176.5px;
+                                // height: 180px;
+                            }
+
+                            ;
+                        }
+
+                        .discount {
+                            border-radius: 0;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            font-size: $h3;
+                            padding: 10px 20px;
+
+                            @include breakpoint-414 {
+                                font-size: 16px;
+                                padding: 5px 10px;
+                            }
+
+                            ;
+                        }
+
+                        i {
+                            position: absolute;
+                            // border: 1px solid red;
+                            color: red;
+                            right: 10px;
+                            top: 10px;
+                            font-size: 30px;
+
+                            @include breakpoint-414 {
+                                font-size: 20px;
+                                top: 5px;
+                                right: 5px;
+                            }
+                        }
+                    }
+
+                    .goods_text {
+                        padding-bottom: 20px;
+
+                        h3 {
+                            padding: 20px 0;
+
+                            @include breakpoint-414 {
+                                font-size: 16px;
+                                padding: 5px 0;
+                            }
+                        }
+
+                        .price {
+                            padding-right: 20px;
+
+                            @include breakpoint-414 {
+                                font-size: 16px;
+                                padding-right: 10px;
+                            }
+                        }
+
+                        .price_original {
+                            @include breakpoint-414 {
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
 }

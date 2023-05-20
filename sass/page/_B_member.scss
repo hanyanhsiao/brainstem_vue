@@ -65,10 +65,18 @@
 
                     tr {
                         border-bottom: 1px solid #000;
-
+                        cursor: pointer;
                         td {
                             h6 {
                                 line-height: 4;
+                            }
+                        }
+                    }
+                    tr:hover{
+                        background-color: #a289d6;
+                        td{
+                            h6{
+                                color: $white;
                             }
                         }
                     }

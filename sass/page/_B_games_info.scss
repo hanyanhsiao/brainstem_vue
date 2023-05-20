@@ -1,8 +1,10 @@
 .B_games_info {
     display: flex;
+
     .right {
         margin-top: 20px;
         margin-bottom: 100px;
+
         a {
             display: block;
             width: 102px;
@@ -21,101 +23,95 @@
                 width: 90%;
                 margin: 0 auto;
 
-                .firstul {
-                    justify-content: space-between;
-                }
-
-                ul {
+                .B_button {
                     display: flex;
+                    justify-content: space-between;
                     border-bottom: 1px solid black;
 
-                    li {
+                    button {
+                        width: auto;
+                        height: 50px;
                         margin: auto 0;
-
-                        h6 {
-                            margin-right: 150px;
-                        }
                     }
                 }
 
-                ul:nth-child(6) {
-                    h6 {
-                        margin-right: 171px;
-                    }
-                }
-
-                ul:nth-child(10) {
-                    li:nth-child(3) {
-                        margin-left: 40px;
-                    }
-                }
-
-                ul:nth-child(12) {
-                    display: block;
-
-                    li:nth-child(2) {
-                        margin: 0 auto 50px;
-
-                        h6 {
-                            margin: 0 50px;
-                            line-height: 2;
-
-
-                        }
-                    }
-                }
-
-                ul:nth-child(13) {
-                    display: block;
-
-                    li:nth-child(2) {
-                        margin: 0 auto 50px;
-                        h6 {
-                            margin: 0 50px;
-                            line-height: 2;
-                            span {
-                                margin-left: 40px;
-                            }
-                            span::before{
-                                
+                .right_main_top {
+                    ul {
+                        li {
+                            margin: auto 0;
+                            border-bottom: 1px solid black;
+                            display: grid;
+                            grid-template-columns: .8fr .8fr 1.6fr .8fr;
+                            h6 {
+                                margin-left: 5px;
                             }
                         }
-                    }
-                }
-                ul:last-child{
-                    border-bottom: none;
-                }
-                .games_info_down{
-
-                    h6{
                         
+                        .B_grid_four {
+                            display: grid;
+                            grid-template-columns: .8fr .8fr .8fr 1.6fr;
+    
+                            button {
+                                width: 170px;
+                                height: 50px;
+                                margin: auto 0;
+                            }
+                        }
                     }
-                    ul{
-                        flex-wrap: wrap;
-                        // justify-content: space-between;
+
+                    .right_main_text {
+                        ul {
+                            border-bottom: 1px solid #000;
+
+                            li {
+                                border-bottom: none;
+
+                                h6 {
+                                    span {
+                                        margin-left: 50px;
+                                    }
+                                }
+                            }
+                        }
+
+                        li:nth-child(2) {
+                            display: flex;
+                            margin: 0 20px;
+                            line-height: 2;
+                            margin-bottom: 20px;
+                        }
+                    }
+                }
+                .games_info_down {
+
+                    ul {
                         margin-bottom: 80px;
-                        li{
-                            margin-right: 34px;
-                            img{}
-                            h6{
-                                width: 96%;
+                        display: grid;
+                        grid-template-columns: 1fr 1fr 1fr 1fr;
+                        li {
+                            margin-right: 5px;
+                            img {
+                                width: 100%;
+                            }
+
+                            h6 {
+                                // width: 96%;
                                 height: 125px;
                                 outline: 1px solid #000;
                                 margin-bottom: 50px;
                                 padding-left: 10px;
+                                // line-height: 2;
+                                margin-top: -20px;
                             }
-                        }
-                        li:nth-child(4n){
-                            margin-right: 0;
                         }
 
                     }
                 }
             }
 
-           
+
         }
-        
+
         .right_main>h6 {
             width: 90%;
             margin: 0 auto;
