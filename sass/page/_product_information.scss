@@ -44,72 +44,160 @@
     .information_top {
         @include flex-container($direction: row, $wrap: nowrap, $justify-content: space-between, $align-items: top);
         margin-bottom: 90px;
+        position: relative;
 
         @include breakpoint-414 {
             @include flex-container(column, nowrap, space-between, top);
         }
+
         ;
 
         .information_carousel {
-            // position: relative;
-
+            position: relative;
             @include breakpoint-414 {
                 order: 2;
             }
-
-            .swiper {
-                @include flex-container($direction: row, $wrap: nowrap, $justify-content: center, $align-items: center);
-
+            .game_img_big {
+                height: 80%;
                 width: 100%;
-                height: 570px;
                 margin-left: auto;
                 margin-right: auto;
                 overflow: hidden;
-
+                position: relative;
                 .swiper-wrapper {
                     display: flex;
+                    .swiper-slide{
+                        height: 570px;
+                        background-size: cover;
+                        background-position: center;                        
+                        @include breakpoint-414{
+                            height: 210px;
+                        }
+                        img{          
+                        display: block;              
+                        object-fit: cover;                        
+                        }
+                    }
+                }
+                .img_big_next{
+                    width: 100px;
+                    height: 570px;
+                    position: absolute;
+                    top: 50%;
+                    right: 0;
+                    transform: translateY(-50%);
+                    cursor: pointer;
+                    &:hover{
+                    background-image:linear-gradient(to left, #767676, rgba(#d9d9d9,0));
+
+                    }
+                    i{  
+                        padding: 0;
+                        color: $white;
+                        font-size: 60px;                       
+                        position: absolute;
+                        top: 50%;
+                        right: 0;
+                        
+                        transform: translateY(-50%);
+                        &:hover{
+                            color: $orange;
+                        }
+                    }
+                }
+                .img_big_prev{
+                    width: 100px;
+                    height: 570px;
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    transform: translateY(-50%);
+                    cursor: pointer;
+                    &:hover{
+                    background-image:linear-gradient(to right, #767676, rgba(#d9d9d9,0));
+                    }
+                    i{
+                        padding: 0;
+                        color: $white;
+                        font-size: 60px;
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        transform: translateY(-50%);
+                        &:hover{
+                            color: $orange;
+                        }
+                    }
+                }
+            }
+
+            .thumb{
+                @include flex-container($direction: row, $wrap: nowrap, $justify-content: center, $align-items: center);
+                .swiper-wrapper {
+                    display: flex;
+                }
+                @include breakpoint-414{
+                    display: none;
+                }
+                
+                .img_small_prev, .img_small_next{
+                    background-color: $purple_dark;
+                    color: $white;
+                    width: 50px;
+                    height: 50px;
+                    display: inline-block;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    position: relative;
+                    @include breakpoint-414{
+                        width: 30px;
+                        height: 30px;
+                    }
+                    &:hover {
+                        background-color: $orange;
+                    }
+
+                    i{
+                        font-size: 35px;
+                        position: absolute;
+                        top:50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        @include breakpoint-414{
+                            font-size: 20px;
+                        }
+                                              
+                    }
+                    
+                }
+                .game_img_small {
+                    height: 20%;
+                    width: 85%;
+                    box-sizing: border-box;
+                    padding: 10px 0;
+                    margin-left: auto;
+                    margin-right: auto;
+                    @include breakpoint-414{
+                        width: 80%;
+                    }
+
+                    .swiper-slide-thumb-active {
+                        opacity: 1 ; //沒有吃到?
+                    }
 
                     .swiper-slide {
-                        @include flex-container($direction: row, $wrap: nowrap, $justify-content: center, $align-items: center);
-                        text-align: center;
+                        width: 25% ; //沒有吃到?
+                        height: 95px;
+                        opacity: 0.4;
                         background-size: cover;
                         background-position: center;
 
                         img {
                             display: block;
                             width: 100%;
-                            // height: 100%;
+                            height: 100%;
                             object-fit: cover;
                         }
-                    }
-                }
-
-            }
-
-            .mySwiper2 {
-                height: 70%;
-                width: 100%;
-            }
-
-            .mySwiper {
-                height: 30%;
-                box-sizing: border-box;
-                padding: 10px 0;
-
-                &.swiper-slide-thumb-active {
-                    opacity: 1;
-                }
-
-                .swiper-slide {
-                    width: 25%;
-                    height: 100%;
-                    opacity: 0.4;
-
-                    img {
-                        display: block;
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
                     }
                 }
             }
@@ -185,6 +273,7 @@
                         padding: 15px;
                         border: 1px solid $orange;
                         border-radius: 8px;
+                        cursor: pointer;
 
                         @include breakpoint-414 {
                             order: 2;
@@ -204,6 +293,7 @@
                         padding: 15px;
                         border: 0;
                         border-radius: 8px;
+                        cursor: pointer;
 
                         @include breakpoint-414 {
                             order: 1;
@@ -222,7 +312,10 @@
                     position: absolute;
                     right: 10px;
                     top: 30px;
-
+                    @include breakpoint-1440{
+                        @include flex-container(row, nowrap, space-between, center);
+                        right: 0;
+                    }
                     @include breakpoint-414 {
                         @include flex-container(row, nowrap, space-between, center);
                         right: 0;
@@ -234,21 +327,65 @@
                         color: #FF013C;
                         font-size: 30px;
                         padding-bottom: 20px;
+                        cursor: pointer;
 
                         @include breakpoint-414 {
                             padding-bottom: 0;
                             font-size: 20px;
+                        }
+                        @include breakpoint-1440{
+                            padding-bottom: 0;
+
                         }
                     }
 
                     .share_btn {
                         color: $orange;
                         font-size: 30px;
+                        cursor: pointer;
 
                         @include breakpoint-414 {
                             font-size: 20px;
                         }
                     }
+                }
+            }
+        }
+
+        .shopcar_popup {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1.2);
+            max-width: 560px;
+            width: 100%;
+            padding: 50px;
+            border-radius: 10px;
+            background-color: rgb($color: #0d0d0d, $alpha: 0.8);
+            @include flex-container(column, nowrap, center, center);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+
+            &.active {
+                opacity: 1;
+                pointer-events: auto;
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            i {
+                font-size: 225px;
+                color: $green;
+                @include breakpoint-414{
+                    font-size: 150px;
+                }
+            }
+
+            h2 {
+                padding: 50px;
+                font-size: 4rem;
+                @include breakpoint-414{
+                    font-size: 30px;
                 }
             }
         }
@@ -332,7 +469,8 @@
     }
 
     .game_comment {
-        
+        position: relative;
+
         .comment_title {
             font-size: 3.2rem;
             padding-bottom: 35px;
@@ -389,138 +527,144 @@
         }
 
         .comments_range {
-            @include flex-container($direction: row, $wrap: wrap, $justify-content: space-between, $align-items: end);
             position: relative;
-
             padding-bottom: 70px;
-
             @include breakpoint-414 {
                 padding-bottom: 30px;
             }
-
-            ;
-
-            .look_more {
-                font-size: 1.6rem;
-                position: absolute;
-                right: 0;
-                top: -70px;
-                color: $white;
-                background-color: #441673;
-                padding: 10px 25px;
-                border: 0;
-                letter-spacing: 2px;
-                border-radius: 3px;
+            .swiper-wrapper {
+                @include flex-container($direction: row, $wrap: wrap, $justify-content: space-between, $align-items: end);
 
                 @include breakpoint-414 {
-                    display: none;
-                }
-
-                &:hover {
-                    background-color: $orange;
-                }
-            }
-
-            .each_comment {
-                box-sizing: border-box;
-                border: 1px solid $orange;
-                border-radius: 8px;
-                padding-bottom: 40px;
-                margin-right: 0;
-                margin-bottom: 40px;
-
-                @include breakpoint-414 {
-                    padding-bottom: 20px;
-                }
-
-                ;
-
-                &:hover {
-                    background-color: rgba($color: #ff6300, $alpha: 0.12);
-                }
-
-                .comment_top {
                     @include flex-container($direction: row, $wrap: nowrap, $justify-content: space-between, $align-items: end);
-                    padding: 10px;
 
-                    .member_pic img {
-                        border-radius: 50%;
-                        padding: 5px;
 
-                        @include breakpoint-414 {
-                            width: 86px;
+                }
+
+                .look_more {
+                    font-size: 1.6rem;
+                    position: absolute;
+                    right: 0;
+                    top: -70px;
+                    color: $white;
+                    background-color: #441673;
+                    padding: 10px 25px;
+                    border: 0;
+                    letter-spacing: 2px;
+                    border-radius: 3px;
+
+                    @include breakpoint-414 {
+                        display: none;
+                    }
+
+                    &:hover {
+                        background-color: $orange;
+                    }
+                }
+
+                .each_comment {
+                    box-sizing: border-box;
+                    border: 1px solid $orange;
+                    border-radius: 8px;
+                    padding-bottom: 40px;
+                    margin-bottom: 40px;
+                    // margin-right: 0 !important;
+                    max-width: 371px;
+                    @include breakpoint-414 {
+                        padding-bottom: 20px;
+                        margin-right: 20px !important;
+
+                    };
+
+                    &:hover {
+                        background-color: rgba($color: #ff6300, $alpha: 0.12);
+                    }
+
+                    .comment_top {
+                        @include flex-container($direction: row, $wrap: nowrap, $justify-content: space-between, $align-items: end);
+                        padding: 10px;
+                        margin: 0 10px;
+                        
+
+                        .member_pic img {
+                            border-radius: 50%;
+                            padding: 5px;
+
+                            @include breakpoint-414 {
+                                width: 86px;
+                            }
+                        }
+
+                        .member_info {
+                            padding: 10px;
+
+                            .member_name {
+                                font-size: 2.4rem;
+                                padding-bottom: 10px;
+
+                                @include breakpoint-414 {
+                                    font-size: 20px;
+                                }
+                            }
+
+                            p {
+                                font-size: 1.5rem;
+                                padding-bottom: 10px;
+
+                                @include breakpoint-414 {
+                                    font-size: 12px;
+                                }
+
+                                ;
+                            }
+                        }
+
+                        .game_rating {
+                            padding-bottom: 20px;
+                            padding-right: 10px;
+
+                            .member_game_rating {
+                                font-size: 3.6rem;
+
+                                @include breakpoint-414 {
+                                    font-size: 36px;
+                                }
+
+                                ;
+                            }
+
+                            i {
+                                font-size: 20px;
+                                color: $orange;
+                            }
                         }
                     }
 
-                    .member_info {
-                        padding: 10px;
+                    .comment_text {
+                        @include flex-container($direction: row, $wrap: nowrap, $justify-content: center, $align-items: top);
+                        padding: 5px;
 
-                        .member_name {
-                            font-size: 2.4rem;
-                            padding-bottom: 10px;
-
-                            @include breakpoint-414 {
-                                font-size: 20px;
-                            }
+                        i {
+                            margin: 10px;
+                            font-size: 30px;
+                            color: $orange;
+                            height: 30px
                         }
 
                         p {
-                            font-size: 1.5rem;
-                            padding-bottom: 10px;
-
-                            @include breakpoint-414 {
-                                font-size: 12px;
-                            }
-
-                            ;
-                        }
-                    }
-
-                    .game_rating {
-                        padding-bottom: 20px;
-                        padding-right: 10px;
-
-                        .member_game_rating {
-                            font-size: 3.6rem;
-
-                            @include breakpoint-414 {
-                                font-size: 36px;
-                            }
-
-                            ;
-                        }
-
-                        i {
+                            width: 250px;
+                            height: 290px;
+                            letter-spacing: 2px;
+                            line-height: 150%;
                             font-size: 20px;
-                            color: $orange;
+                            padding-bottom: 0;
+
+
                         }
                     }
                 }
-
-                .comment_text {
-                    @include flex-container($direction: row, $wrap: nowrap, $justify-content: center, $align-items: top);
-                    padding: 5px;
-
-                    i {
-                        margin: 10px;
-                        font-size: 30px;
-                        color: $orange;
-                        height: 30px
-                    }
-
-                    p {
-                        width: 250px;
-                        height: 290px;
-                        letter-spacing: 2px;
-                        line-height: 150%;
-                        font-size: 20px;
-                        padding-bottom: 0;
-
-
-                    }
-                }
+                
             }
-
         }
 
         .pages {
@@ -554,6 +698,116 @@
                 }
             }
         }
+        .comment_popup_outer{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            transform: scale(1.2);
+            z-index: 100;
+
+            .comment_popup_box{
+                max-width: 750px;
+                width: 100%;
+                border: 4px solid $orange;
+                border-radius: 10px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0,0,0,0.8);
+                @include flex-container(column, nowrap, space-between, auto);
+                @include breakpoint-414{
+                    border: 2px solid $orange;
+                    max-width: 370px;
+                }
+
+                .popup_box_top{
+                    @include flex-container(row, nowrap, space-between, end);
+                    .member_detail{
+                        padding: 20px;
+                        @include flex-container(row, nowrap, space-between, center);
+                        @include breakpoint-414{padding: 10px;};
+                        img{
+                            border-radius: 50%;
+                            @include breakpoint-414{width: 70px;}
+                        }
+                        .popup_info{
+                            padding-left: 10px;
+                            .member_name {
+                                font-size: 2.4rem;
+                                padding-bottom: 10px;
+
+                                @include breakpoint-414 {
+                                    font-size: 20px;
+                                }
+                            }
+                            p {
+                                font-size: 1.5rem;
+                                padding-bottom: 10px;
+                                @include breakpoint-414 {
+                                    font-size: 12px;
+                                };
+                            }
+                        }                        
+                    }
+                    .game_rating{
+                        padding: 20px;      
+                        @include breakpoint-414{
+                            padding: 5px;
+                            padding-bottom: 15px;
+                        }                 
+                        .member_game_rating {
+                            font-size: 3.6rem;
+                            padding-left: 5px;
+                        }
+                        i {
+                            font-size: 20px;
+                            color: $orange;
+                        }
+                    }
+                }
+                .popup_text{
+                    padding: 20px;
+                    @include flex-container(row, nowrap, space-between, top);
+                    i {
+                        margin: 10px;
+                        font-size: 30px;
+                        color: $orange;
+                    }
+                    p {
+                        max-width: 630px;
+                        letter-spacing: 2px;
+                        line-height: 150%;
+                        font-size: 20px;
+                        padding-bottom: 0;
+                    }
+                }
+                .comment_popup_close{
+                    margin: 20px auto;
+                    padding: 10px 50px;
+                    font-size: 2rem;
+                    color: $white;
+                    background-color: $purple_dark;
+                    border: 0;
+                    border-radius: 5px;
+                    &:hover{
+                        background-color: $orange;
+                    }
+                }
+            }
+            &.active {
+                opacity: 1;
+                pointer-events: auto;
+                transform:scale(1);
+            }
+        }
+        
     }
 
     .recommendation {
@@ -630,12 +884,11 @@
 
                     .goods_top {
                         position: relative;
-
                         img {
 
                             @include breakpoint-414 {
                                 width: 176.5px;
-                                // height: 180px;
+                                // width: 100%;
                             }
 
                             ;

@@ -1,57 +1,53 @@
-<<<<<<< Updated upstream
-.news_article{
-    
+.news_article {
 }
-<<<<<<< HEAD
-=======
-.news {}
+
+.news {
+}
 
 .news_article {
-    width: 100%;
+  width: 100%;
 }
 
 .article_img {
-    margin: 2.5% auto;
+  margin: 2.5% auto;
 }
 
 .article_top {
-    display: flex;
-    justify-content: space-between;
-    margin: 10px auto;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px auto;
 }
 
 .article_date {
-    color: white;
+  color: white;
 }
 
 .article_views {
-    color: #FF6300;
-    display: flex;
-
-
+  color: #ff6300;
+  display: flex;
 }
 
-.article_icon {}
+.article_icon {
+}
 
-.news_article_img {}
+
+.news_article_img {
+}
 
 .news_title {
-    margin: 2% auto;
+  margin: 2% auto;
 }
 
-.news_content {}
->>>>>>> Stashed changes
-=======
-
-.header-news{
+.news_content {
 }
 
-.news_card{
-
+.header-news {
 }
 
-.fakeclass{
-    font-size: 50px;
-    border: 20px solid red;
+.news_card {
 }
->>>>>>> dev
+
+.fakeclass {
+  font-size: 50px;
+  border: 20px solid red;
+}

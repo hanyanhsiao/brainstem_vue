@@ -12,7 +12,9 @@ $column-gap: 20px;
 
 @for $i from 1 through 12 {
   .col-#{$i} {
-    width: calc((100% - #{$column-gap * 11}) / 12 * #{$i} + #{$column-gap} * (#{$i} - 1));
+    width: calc(
+      (100% - #{$column-gap * 11}) / 12 * #{$i} + #{$column-gap} * (#{$i} - 1)
+    );
     margin-right: $column-gap;
 
     &:last-child {
