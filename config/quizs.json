@@ -1,0 +1,274 @@
+
+[
+    {
+        "questionNum": "1",
+        "question": "當你面對比賽時，你會?",
+        "answer":1,
+        "option": [
+            {
+                "opContent": "A  感到興奮且努力想贏",
+                "gameType": "4"
+
+            },
+            {
+                "opContent": "B 感到緊張且想放棄",
+                "gameType": "2"
+
+            },
+            {
+                "opContent": "C 感到無力但盡力嘗試",
+                "gameType": "1"
+
+            },
+            {
+                "opContent": "D 感到無所謂",
+                "gameType": "3"
+
+            }
+        ]
+    },
+    {
+        "questionNum": "2",
+        "question": "在你的生活中，對於未來你傾向於?",
+        "answer":1,
+        "option": [
+            {
+                "opContent": "A 預先規劃與組織",
+                "gameType": "4"
+
+            },
+            {
+                "opContent": "B 勇於探索和冒險",
+                "gameType": "1"
+
+            },
+            {
+                "opContent": "C 維持穩定和平衡",
+                "gameType": "2"
+
+            },
+            {
+                "opContent": "D 隨遇而安",
+                "gameType": "3"
+
+            }
+        ]
+    },
+    {
+        "questionNum": "3",
+        "question": "在學校或工作中，你是?",
+        "answer":1,
+        "option": [
+            {
+                "opContent": "A 非常有創意和想法的人",
+                "gameType": "1"
+
+            },
+            {
+                "opContent": "B 喜歡與他人合作的人",
+                "gameType": "2"
+
+            },
+            {
+                "opContent": "C 喜歡一個人處理問題的人",
+                "gameType": "4"
+
+            },
+            {
+                "opContent": "D 喜歡按照計劃完成工作的人",
+                "gameType": "3"
+
+            }
+        ]
+    },
+    {
+        "questionNum": "4",
+        "question": "你更喜歡哪種類型的電影？",
+        "answer":1,
+        "option": [
+            {
+                "opContent": "A 動作片",
+                "gameType": "1"
+
+            },
+            {
+                "opContent": "B 劇情片",
+                "gameType": "2"
+
+            },
+            {
+                "opContent": "C 懸疑推理片",
+                "gameType": "4"
+
+            },
+            {
+                "opContent": "D 喜劇片",
+                "gameType": "3"
+
+            }
+        ]
+    },
+    {
+        "questionNum": "5",
+        "question": "你認為人生中最大的成就是什麼？",
+        "answer":1,
+        "option": [
+            {
+                "opContent": "A 與夥伴完成一個重大的計畫",
+                "gameType": "2"
+
+            },
+            {
+                "opContent": "B 突破個人極限或挑戰自己",
+                "gameType": "1"
+
+            },
+            {
+                "opContent": "C 獲得一個特殊的成就或榮譽",
+                "gameType": "4"
+
+            },
+            {
+                "opContent": "D  幫助他人或貢獻社會",
+                "gameType": "3"
+
+            }
+        ]
+    },
+    {
+        "questionNum": "6",
+        "question": "你在遊戲中偏好的角色類型是?",
+        "answer":1,
+        "option": [
+            {
+                "opContent": "A 操縱巨型機甲或機器人的操縱者",
+                "gameType": "1"
+
+            },
+            {
+                "opContent": "B 擅長武器和戰鬥技能的戰士",
+                "gameType": "4"
+
+            },
+            {
+                "opContent": "C 能使用魔法和巫術的魔法師或巫師",
+                "gameType": "2"
+
+            },
+            {
+                "opContent": "D 能駕駛車輛和船隻的駕駛員或水手",
+                "gameType": "3"
+
+            }
+        ]
+    },
+    {
+        "questionNum": "7",
+        "question": "玩遊戲時，你重視哪些方面?",
+        "answer":1,
+        "option": [
+            {
+                "opContent": "A 遊戲劇情和故事情節",
+                "gameType": "4"
+
+            },
+            {
+                "opContent": "B 遊戲畫面和視覺效果",
+                "gameType": "1"
+
+            },
+            {
+                "opContent": "C 遊戲玩法和操作感受",  
+                "gameType": "2"
+ 
+            },
+            {
+                "opContent": "D 遊戲社交和多人對戰",
+                "gameType": "3"
+
+            }
+        ]
+    },
+    {
+        "questionNum": "8",
+        "question": "你喜歡哪種類型的遊戲畫面?",
+        "answer":1,
+        "option": [
+            {
+                "opContent": "A 卡通風格的畫面",
+                "gameType": "3"
+
+            },
+            {
+                "opContent": "B 寫實風格的畫面",
+                "gameType": "1"
+
+            },
+            {
+                "opContent": "C 科幻未來的畫面",
+                "gameType": "2"
+
+            },
+            {
+                "opContent": "D 暗黑風格的畫面",
+                "gameType": "4"
+
+            }
+        ]
+    },
+    {
+        "questionNum": "9",
+        "question": "你對於遊戲中的故事情節有何要求?",
+        "answer":1,
+        "option": [
+            {
+                "opContent": "A 希望有深入且複雜的故事情節",
+                "gameType": "4"
+
+            },
+            {
+                "opContent": "B 偏好有趣且引人入勝的故事情節",
+                "gameType": "2"
+
+            },
+            {
+                "opContent": "C 希望有簡單且輕鬆的故事情節",
+                "gameType": "3"
+
+            },
+            {
+                "opContent": "D 不太在意故事情節，重點在遊戲玩法",
+                "gameType": "1"
+
+            }
+        ]
+    },
+    {
+        "questionNum": "10",
+        "question": "當你遇到遊戲中的困難關卡時，你會?",
+        "answer":1,
+        "option": [
+            {
+                "opContent": "A 不斷嘗試",
+                "gameType": "4"
+
+            },
+            {
+                "opContent": "B 嘗試一段時間後放棄",
+                "gameType": "2"
+
+            },
+            {
+                "opContent": "C 不玩了不玩了",
+                "gameType": "3"
+
+            },
+            {
+                "opContent": "D 上網找攻略",
+                "gameType": "1"
+
+            }
+        ]
+    }
+]
+

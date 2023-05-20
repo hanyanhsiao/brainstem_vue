@@ -8,6 +8,9 @@
     <title>Brainstem | 智能推薦</title>
     @@include('./layout/style.html')
     <!-- 以下可以放自己的link -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v16.0"
+        nonce="9d9gnSwC"></script>
 </head>
 
 <body>
@@ -20,31 +23,43 @@
         </div>
         <!-- 內容 -->
         <section class="AI_test_container">
-            <div class="AI_test_wrapper">
+            <div class="AI_test_wrapper" id="app">
+                <!-- ========================結果卡片============================ -->
                 <div class="share_card" style="display: block;">
                     <div class="share_card_logo">
                         <img src="./pic/img/LOGO/ORANGE WEB.png" alt="">
                     </div>
                     <div class="share_card_content">
                         <h2 class="share_card_title">適合你的遊戲類型為 </h2>
-                        <h1 class="share_card_game">冒險遊戲</h1>
-                        <h5 class="share_card_contents">
-                            你喜歡挑戰自己、解決難題、探索未知世界，那麼你很可能是一位冒險遊戲玩家。冒險遊戲玩家通常擁有一些特殊的特質，例如強烈的探索欲、敏銳的觀察力、優秀的解謎能力和勇敢的冒險精神。此外，通常具有豐富的創造力，能夠在遊戲中發揮自己的想像力，找到新的解決方案。
-                        </h5>
-                        <button class="get_coupon_button">取得優惠券</button>
+                        <h1 class="share_card_game">{{gameType}}遊戲</h1>
+                        <h5 class="share_card_contents"> {{gameTypeContent}} </h5>
+                        <button class="get_coupon_button" @click="isShow = true">取得優惠券</button>
                         <div class="share_card_icons">
-                            <i class="bi bi-facebook"></i>
-                            <i class="bi bi-instagram"></i>
-                            <i class="bi bi-twitter"></i>
-                            <i class="bi bi-discord"></i>
+                            <a target="_blank" class="fb-xfbml-parse-ignore"
+                                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhanyanhsiao.github.io%2FFatzai%2F&amp;src=sdkpreparse">
+                                <div class="fb-share-button" data-href="https://hanyanhsiao.github.io/Fatzai/">
+                                    <i class="bi bi-facebook"></i>
+                                </div>
+                            </a>
+                            <a href="https://www.instagram.com/" target="_blank">
+                                <i class="bi bi-instagram"></i>
+                            </a>
+                            <a href="https://twitter.com/?lang=zh-Hant" target="_blank">
+                                <i class="bi bi-twitter"></i>
+                            </a>
+                            <a href="https://discord.com/" target="_blank">
+                                <i class="bi bi-discord"></i>
+                            </a>
                         </div>
-                        <h5 class="get_coupon_text">分享找尋一同遊玩的最佳夥伴</h5>
-                        <h5 class="get_coupon_text">手機長按可儲存圖片</h5>
 
+                        <h5 class="get_coupon_text">分享找尋一同遊玩的最佳夥伴</h5>
                     </div>
                 </div>
+                <!-- ========================結果卡片============================ -->
 
-                <div class="coupon_popover" style="display: none;">
+
+                <!-- ========================優惠碼彈窗============================ -->
+                <div class="coupon_popover" :style="maskStyle" @click.self="toggleMask">
                     <div class="coupon_block">
                         <h2 class="coupon_block_text">恭喜獲得優惠券</h2>
                         <h3 class="coupon_block_text">優惠代碼:</h3>
@@ -52,20 +67,54 @@
                         <div class="coupon_number_block">
                             <h1 class="coupon_number">TK666</h1>
                         </div>
-                        <h3 class="coupon_block_text"> 請至 <a href="">會員中心-會員優惠券</a> 輸入代碼
+                        <h3 class="coupon_block_text"> 請至 <a href="./member_center.html">會員中心-會員優惠券</a> 輸入代碼
                         </h3>
                         <h3 class="coupon_block_text"> (一位會員限領取一次) </h3>
                     </div>
                 </div>
+                <!-- ========================優惠碼彈窗============================ -->
             </div>
         </section>
-
     </main>
+
     <!-- javascript -->
-    @@include('./layout/js.html')
-    <!-- 以下可以放自己的js -->
     <script src="./js/particles.js"></script>
     <script src="./js/app.js"></script>
+    <script src="./vendors/vue/vue.global.js"></script>
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    gameType: "",
+                    gameTypeContent: "",
+                    isShow: false
+                }
+            },
+            computed: {
+                maskStyle() {
+                    return {
+                        'display': this.isShow ? '' : 'none'
+                    };
+                }
+            },
+            methods: {
+                //點擊遮罩關閉
+                toggleMask() {
+                    this.isShow = !this.isShow;
+                },
+                //抓出儲存的遊戲類型及描述
+                getGameType() {
+                    this.gameType = JSON.parse(localStorage.getItem("gameType"));
+                    this.gameTypeContent = JSON.parse(localStorage.getItem("gameTypeContent"));
+                }
+            },
+            mounted() {
+                this.getGameType();
+            }
+        }).mount('#app');
+    </script>
+
+
 </body>
 
 </html>

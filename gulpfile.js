@@ -111,7 +111,7 @@ exports.c = clear
 // ============ vue ============
 
 function vue() {
-    return src(['./vendors/vue/*.js']).pipe(dest('dist/venders/vue'))
+    return src(['./vendors/vue/*.js']).pipe(dest('dist/vendors/vue'))
 }
 
 // ============ 要在外層新增資料夾複製我!!!!!!!!!!!!!!!!!! ============

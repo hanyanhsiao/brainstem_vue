@@ -1,5 +1,6 @@
 body.BF{
     background-image: url("/pic/img/backend/bgc.png");
+    height: 100%;
 }
 
 .B_login {
@@ -8,7 +9,7 @@ body.BF{
         background-color: #fff;
         border: 1px solid #000;
         margin: 50px auto;
-        height: 719px;
+        // height: 719px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -46,7 +47,8 @@ body.BF{
             color:#FF013C;
             margin-top: 50px;
             font-size: 20px;
-            // margin-bottom: 20px;
+            margin-bottom: 20px;
+            display: block;
         }
 
     }

@@ -1,3 +1,143 @@
 .B_member_info {
+    display: flex;
 
+    .right {
+        margin-top: 20px;
+
+        a {
+            display: block;
+            width: 102px;
+
+            h6::before {
+                content: '\003C';
+                margin-right: 5px;
+            }
+        }
+
+        .right_main {
+            border: 1px solid #000;
+            line-height: 4;
+
+            form {
+                width: 90%;
+                margin: 0 auto;
+
+                .B_button {
+                    display: flex;
+                    justify-content: space-between;
+                    border-bottom: 1px solid black;
+
+                    button {
+                        width: auto;
+                        height: 50px;
+                        margin: auto 0;
+                    }
+                }
+
+                ul {
+                    li {
+                        margin: auto 0;
+                        border-bottom: 1px solid black;
+                        display: grid;
+                        grid-template-columns: .8fr .8fr .8fr 1.6fr;
+                        label{
+                            margin: auto 0;
+                        }
+                        h6{
+                            margin-left: 5px;
+                        }
+                        input{
+                            margin: auto;
+                        }
+                    }
+
+                    .B_grid_four {
+                        display: grid;
+                        grid-template-columns: .8fr .8fr 1.6fr .8fr;
+
+                        button {
+                            width: 170px;
+                            height: 50px;
+                            margin: auto 0;
+                        }
+                    }
+                }
+            }
+
+            .right_down {
+                width: 90%;
+                margin: 0 auto;
+
+                ul {
+                    // width: 100%;
+                    li {
+                        text-align: center;
+                        border: 1px solid #000;
+                        display: flex;
+                        margin-bottom: 20px;
+                        i {
+                            font-size: 20px;
+                            color: #000;
+                            margin-right: 0px;
+                        }
+                        :nth-child(2){
+                            text-align: left;
+                        }
+
+                    }
+                    li:nth-child(2){
+                        h6:nth-child(4){
+                            margin-right: 0;
+                        }
+                    }
+
+                }
+                
+                .B-shopitem {
+                    // display: none;
+                    ul {
+                        margin-top: -20px;
+                        margin-bottom: 20px;
+                        
+                        li {
+                            margin: auto 0;
+                            border-top: none;
+                            img {
+                                width: 12%;
+                                margin-right: 25px;
+                            }
+                            h6{
+                                margin: auto 0;
+                            }
+                            :last-child{
+                                text-align: right;
+                            }
+                        }
+                    }
+
+                }
+            }
+            .right_down>ul>li:first-child {
+                background-color: #e9e9e9;
+                text-align: center;
+                border: none;
+                border-bottom: 1px solid #000;
+                display: flex;
+                margin-bottom: 50px;
+                :nth-child(2){
+                    text-align: center;
+                }
+            }
+
+            .right_down>ul:last-child {
+                margin-bottom: 50px;
+            }
+        }
+
+        .right_main>h6 {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+    }
 }

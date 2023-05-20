@@ -1,91 +1,115 @@
-.share_card {
-  margin: 0 auto;
-  margin-top: 50px;
-  max-width: 400px;
-  background-image: linear-gradient(to bottom, #964cdd, #260c4b);
-  border-radius: 10px;
-  padding: 30px;
-  .share_card_logo {
-    width: 100px;
-    margin: 0 auto;
-    margin-bottom: 20px;
-    > img {
-      width: 100%;
-    }
-  }
-  .share_card_content {
-    border-radius: 10px;
-    background-color: $white;
-    text-align: center;
-    padding: 10px;
-    .share_card_title {
-      color: $backend_font;
-      line-height: 1.2;
-    }
-    .share_card_game {
-      color: $orange;
-      line-height: 2;
-    }
-    .share_card_contents {
-      font-size: $h4;
-      line-height: 2;
-      padding: 0 5px;
-    }
-    .get_coupon_button {
-      @extend %AI_test_button;
-    }
-    .share_card_icons {
-      //   border: 1px solid saddlebrown;
-      font-size: $h1;
-      line-height: 2;
-      width: 80%;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-    }
-    .get_coupon_text {
-      //   margin-top: 20px;
-      line-height: 2;
-      font-size: $h3;
-    }
-  }
-}
-
-.coupon_popover {
+.AI_test_wrapper {
   position: relative;
-  width: 100%;
-  height: 100%;
-  background-color: $mask;
-  .coupon_block {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    // max-width: 1000px;
-
-    border: 2px solid $orange;
+  @include breakpoint-414 {
+    padding-top: 120px;
+  }
+  .share_card {
+    margin: 0 auto;
+    max-width: 400px;
+    background-image: linear-gradient(to bottom, #964cdd, #260c4b);
     border-radius: 10px;
-    padding: 30px;
-    text-align: center;
-    background-color: $mask;
-
-    .coupon_block_text {
-      line-height: 2;
-      a {
-        font-size: 2rem;
-        color: $orange;
-        text-decoration: underline;
+    padding: 30px 30px 20px 30px;
+    @include breakpoint-414 {
+      margin-top: 40px;
+    }
+    .share_card_logo {
+      width: 100px;
+      margin: 0 auto;
+      margin-bottom: 20px;
+      > img {
+        width: 100%;
       }
     }
-    // 優惠碼區
-    .coupon_number_block {
+    .share_card_content {
+      border-radius: 10px;
       background-color: $white;
-      width: 200px;
-      margin: 20px auto;
-      line-height: 1.5;
-
-      .coupon_number {
+      text-align: center;
+      padding: 30px;
+      .share_card_title {
+        color: $backend_font;
+        line-height: 1.2;
+      }
+      .share_card_game {
         color: $orange;
+        line-height: 2;
+      }
+      .share_card_contents {
+        font-size: $h4;
+        line-height: 2;
+        padding: 0 5px;
+        text-align: justify;
+      }
+      .get_coupon_button {
+        @extend %AI_test_button;
+        padding: 10px 40px;
+      }
+      .share_card_icons {
+        // border: 1px solid saddlebrown;
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        a {
+          cursor: pointer;
+          color: black;
+          line-height: 1.2;
+          i {
+            font-size: 3rem;
+            padding: 0;
+          }
+        }
+      }
+      .get_coupon_text {
+        //   margin-top: 20px;
+        line-height: 2;
+        font-size: $h3;
+      }
+    }
+  }
+
+  .coupon_popover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: $mask;
+    cursor: pointer;
+    // border: 5px solid salmon;
+    .coupon_block {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      cursor: auto;
+      // max-width: 1000px;
+
+      border: 2px solid $orange;
+      border-radius: 10px;
+      padding: 25px;
+      text-align: center;
+      background-color: $mask;
+
+      .coupon_block_text {
+        line-height: 2;
+        a {
+          font-size: 2rem;
+          color: $orange;
+          text-decoration: underline;
+        }
+      }
+      // 優惠碼區
+      .coupon_number_block {
+        background-color: $white;
+        width: 200px;
+        margin: 20px auto;
+        line-height: 1.5;
+
+        .coupon_number {
+          color: $orange;
+        }
       }
     }
   }

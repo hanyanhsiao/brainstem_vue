@@ -1,6 +1,7 @@
 @import "../css/reset.css";
 @import "./base/var";
 @import "./mixin/mixin";
+@import "./base/font";
 
 @import "./base/font";
 
@@ -16,14 +17,17 @@
 @import "./layout/nav";
 @import "./layout/B_nav";
 @import "./layout/B_header";
+@import "./layout/B_changepage";
 
 @import "./page/about";
 @import "./page/AI_test_index";
 @import "./page/AI_test_QA";
 @import "./page/AI_test_results";
 @import "./page/AI_test_share";
+@import "./page/B_coupon_info_2";
 @import "./page/B_coupon_info";
 @import "./page/B_coupon";
+@import "./page/B_games_info_2";
 @import "./page/B_games_info";
 @import "./page/B_games";
 @import "./page/B_login";
@@ -35,13 +39,16 @@
 @import "./page/frontORback";
 @import "./page/game _library";
 @import "./page/index";
-@import "./page/login ";
+@import "./page/login";
 @import "./page/member_center";
 @import "./page/news_article";
 @import "./page/news";
 @import "./page/product_information";
 @import "./page/product";
 @import "./page/terms_of_service";
+@import "./page/product_activity";
+@import "./page/product_cate";
+
 
 // body{
 //     font: 10px;

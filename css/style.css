@@ -402,16 +402,16 @@ body.B .B_nav a {
 body.B .B_nav .B_nav_top {
   display: flex;
   align-items: center;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 body.B .B_nav .B_nav_top img {
-  margin-top: 50px;
+  margin-top: 20px;
   border-radius: 50%;
   width: 100px;
 }
 body.B .B_nav .B_nav_top .test {
   text-align: left;
-  margin-left: 20px;
+  margin-left: 5px;
 }
 body.B .B_nav .B_nav_top .test h5 {
   margin-top: 70px;
@@ -983,13 +983,185 @@ body.BF {
   font-size: 20px;
 }
 
+.html-b {
+  background-color: white;
+}
+
 .B_member {
   display: flex;
 }
-.B_member .right-top {
+.B_member .right .right-top {
+  border: 1px solid #000;
+  height: 90px;
+  margin: 20px auto;
+}
+.B_member .right .right-top form {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
+  margin-top: 21px;
+  width: 100%;
+}
+.B_member .right .right-top form label {
+  width: 20%;
+  margin: auto 10px;
+}
+.B_member .right .right-top form select {
+  width: 40%;
+  font-size: 1.8rem;
+}
+.B_member .right .right-top form input {
+  margin: auto;
+}
+.B_member .right .right-top form button {
+  margin: auto 20px;
+  width: 30%;
+}
+.B_member .right .right-bottom {
+  border: 1px solid #000;
+}
+.B_member .right .right-bottom table {
+  width: 100%;
+  text-align: center;
+  line-height: 2.6;
+}
+.B_member .right .right-bottom table thead {
+  border-bottom: 1px solid #000;
+}
+.B_member .right .right-bottom table thead tr th {
+  border-right: 1px solid #000;
+}
+.B_member .right .right-bottom table thead tr th:nth-last-child(1) {
+  border-right: none;
+}
+.B_member .right .right-bottom table tbody tr {
+  border-bottom: 1px solid #000;
+}
+.B_member .right .right-bottom table tbody tr td h6 {
+  line-height: 4;
+}
+.B_member .right .right-bottom table tbody tr:nth-last-child(1) {
+  border-bottom: none;
+}
+.B_member .right .changepage {
+  margin-top: 20px;
+  width: 14%;
+  line-height: 1.4;
+  margin-left: 1248px;
+  margin-bottom: 50px;
+}
+.B_member .right .changepage ul {
+  display: flex;
+  border: 1px solid #000;
+  font-size: 20px;
+}
+.B_member .right .changepage ul li {
+  border-right: 1px solid #000;
+  width: 50px;
+  text-align: center;
+}
+.B_member .right .changepage ul li:nth-last-child(1) {
+  border-right: none;
+}
+
+body {
+  width: 100%;
+  margin: 0 auto;
+}
+body .frontORback {
+  max-width: 1920px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  background-image: url(/pic/img/backend/Group\ 566.png);
+}
+body .frontORback .logo {
+  margin: 50px auto 0;
+  display: block;
+}
+body .frontORback .logo img {
+  width: 455px;
+  height: 477px;
+  display: block;
+  margin: 0 auto;
+}
+body .frontORback .btn1 {
+  width: 800px;
+  height: 324px;
+  margin: 50px auto 0;
+  display: flex;
+  justify-content: space-between;
+}
+body .frontORback .btn1 .a {
+  width: 324px;
+  height: 324px;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.742);
+  border: 5px solid #FF6300;
+  transition: all ease-in-out 0.6s;
+  border-radius: 50%;
+}
+body .frontORback .btn1 .a:hover {
+  background-color: rgba(248, 133, 1, 0.5843137255);
+  border-color: #FFC581;
+  box-shadow: 0 0 20px 10px rgb(255, 162, 2);
+  transition: all ease-in-out 0.6s;
+}
+body .frontORback .btn1 .a:hover > a {
+  transform: scale(1.2);
+  transition: all ease-in-out 0.6s;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+}
+body .frontORback .btn1 .a > a {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  margin-top: 100px;
+  transition: all ease-in-out 0.6s;
+}
+body .frontORback .btn1 .a > a .chin {
+  font-size: 80px;
+  color: white;
+  font-family: Inter;
+  font-weight: bold;
+}
+body .frontORback .btn1 .a > a .eng {
+  font-size: 3.5rem;
+}
+body .frontORback .btn1 .b {
+  width: 324px;
+  height: 324px;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.742);
+  border: 5px solid #6511e1;
+  border-radius: 50%;
+  transition: all ease-in-out 0.6s;
+}
+body .frontORback .btn1 .b:hover {
+  background-color: rgba(12, 26, 183, 0.7176470588);
+  border-color: #C9A0FF;
+  box-shadow: 0 0 20px 10px rgb(23, 2, 255);
+  transition: all ease-in-out 0.6s;
+}
+body .frontORback .btn1 .b:hover > a {
+  transform: scale(1.2);
+  transition: all ease-in-out 0.6s;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+}
+body .frontORback .btn1 .b > a {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  margin-top: 100px;
+  transition: all ease-in-out 0.6s;
+}
+body .frontORback .btn1 .b > a > .chin {
+  font-size: 80px;
+  color: white;
+  font-family: Inter;
+  font-weight: bold;
+}
+body .frontORback .btn1 .b > a .eng {
+  font-size: 3.5rem;
 }
 
 .log_title {

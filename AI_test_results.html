@@ -20,45 +20,66 @@
             <!-- 內容 -->
         </div>
         <section class="AI_test_container">
-            <div class="AI_test_wrapper">
+            <div class="AI_test_wrapper" id="app">
                 <div class="results_text">
                     <h2 class="results_title">經過偏好診斷，您適合的遊戲類型是...
                     </h2>
-                    <h1 class="results_game_name">冒險遊戲</h1>
-                    <h3 class="results_contents">
-                        你喜歡挑戰自己、解決難題、探索未知世界，那麼你很可能是一位冒險遊戲玩家。冒險遊戲玩家通常擁有一些特殊的特質，例如強烈的探索欲、敏銳的觀察力、優秀的解謎能力和勇敢的冒險精神。此外，通常具有豐富的創造力，能夠在遊戲中發揮自己的想像力，找到新的解決方案。
-                    </h3>
+                    <h1 class="results_game_name">{{gameType}}遊戲</h1>
+                    <h3 class="results_contents">{{gameTypeContent}} </h3>
                 </div>
+
                 <div class="results_game">
-                    <div class="game_top_block">
-                        <img class="top_game" src="https://dummyimage.com/260X350/949494/fff" alt="top1">
-                        <h1 class="top_game_text"> TOP1 </h1>
-                        <h2 class="top_game_name">雙人成行</h2>
+                    <div class="game_top_block" v-for="(game,index) in games" :key="index">
+                        <a class="top_game" :href="game.url"><img :src="game.image" :alt="'top'+(index+1)"></a>
+                        <h1 class="top_game_text"> {{'TOP'+(index+1)}} </h1>
+                        <h2 class="top_game_name">{{game.name}}</h2>
                     </div>
-                    <div class="game_top_block">
-                        <img class="top_game" src="https://dummyimage.com/260X350/949494/fff" alt="top1">
-                        <h1 class="top_game_text"> TOP2 </h1>
-                        <h2 class="top_game_name">雙人成行</h2>
-
-                    </div>
-                    <div class="game_top_block">
-                        <img class="top_game" src="https://dummyimage.com/260X350/949494/fff" alt="top1">
-                        <h1 class="top_game_text"> TOP3 </h1>
-                        <h2 class="top_game_name">雙人成行</h2>
-                    </div>
-
                 </div>
-                <a href="#"><button class="more_games_button">查看更多此類型的遊戲</button></a>
-                <a href="./AI_test_share.html"> <button class="share_img_button">取得結果圖</button></a>
+                <button class="more_games_button"> <a href="./product_cate.html">查看更多此類型的遊戲</a></button>
+                <button class="share_img_button"><a href="./AI_test_share.html">取得結果圖</a></button>
             </div>
         </section>
 
     </main>
+
     <!-- javascript -->
-    @@include('./layout/js.html')
-    <!-- 以下可以放自己的js -->
     <script src="./js/particles.js"></script>
     <script src="./js/app.js"></script>
+    <script src="./vendors/vue/vue.global.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.6/axios.min.js"
+        integrity="sha512-06NZg89vaTNvnFgFTqi/dJKFadQ6FIglD6Yg1HHWAUtVFFoXli9BZL4q4EO1UTKpOfCfW5ws2Z6gw49Swsilsg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    gameType: "",
+                    gameTypeContent: "",
+                    games: []
+                }
+            },
+            methods: {},
+            mounted() {
+
+                let gameTypeNum = JSON.parse(localStorage.getItem("options"));
+                console.log(gameTypeNum);
+
+                axios.get('http://localhost/brainstem/AI_test_results.php', {
+                    params: { gameTypeNum: gameTypeNum }
+                }).then(
+                    (response) => {
+                        // console.log(response.data[0].gameType);
+                        let data = response.data;
+                        this.gameType = data.gameType;
+                        this.gameTypeContent = data.gameTypeContent;
+                        this.games = data.game;
+                        //存入localStorage
+                        localStorage.setItem("gameType", JSON.stringify(this.gameType));
+                        localStorage.setItem("gameTypeContent", JSON.stringify(this.gameTypeContent));
+                    })
+            }
+        }).mount('#app');
+    </script>
 </body>
 
 </html>

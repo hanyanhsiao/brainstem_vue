@@ -1,0 +1,95 @@
+.B_coupon_info_2 {
+    display: flex;
+    height: 1080px;
+
+    .right {
+        margin-top: 20px;
+
+        a {
+            display: block;
+            width: 102px;
+
+            h6::before {
+                content: '\003C';
+                margin-right: 5px;
+            }
+        }
+
+        .right_main {
+            border: 1px solid #000;
+            line-height: 4;
+
+            form {
+                width: 90%;
+                margin: 0 auto;
+                margin-bottom: 150px;
+
+                .B_button {
+                    display: flex;
+                    justify-content: space-between;
+                    border-bottom: 1px solid black;
+
+                    button {
+                        width: 6vw;
+                        height: 50px;
+                        margin: auto 0;
+                    }
+                }
+
+                ul {
+                    li {
+                        display: grid;
+                        grid-template-columns: .8fr 1.2fr .8fr 1.2fr;
+                        border-bottom: 1px solid black;
+
+                        input {
+                            margin: auto 0;
+                        }
+                        label{
+                            margin-bottom: 0;
+                            h6{
+                                margin-left: 5px;
+                            }
+                        }
+
+                        select {
+                            font-size: $h2;
+                            padding: 5px;
+                            background-color: $white;
+                            border: 1px solid black;
+                            color: $backend_font;
+                            border-radius: 5px;
+                            margin: auto 0;
+                        }
+
+                        textarea {
+                            padding: 5px;
+                            border-radius: 5px;
+                            font-size: $p;
+                            margin: 10px auto;
+                        }
+                    }
+
+                    .B_grid_four {
+                        grid-template-columns: .8fr 1.2fr .8fr 1.2fr;
+                    }
+
+                    .B_grid_two {
+                        grid-template-columns: .8fr 3.2fr;
+                    }
+
+                    .B_grid_three {
+                        grid-template-columns: .8fr .4fr 1.6fr 1.2fr;
+                    }
+
+                }
+            }
+
+            .right_main>h6 {
+                width: 90%;
+                margin: 0 auto;
+            }
+
+        }
+    }
+}

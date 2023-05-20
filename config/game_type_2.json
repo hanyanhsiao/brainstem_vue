@@ -1,0 +1,25 @@
+
+    {
+        "gameType":"角色扮演遊戲",
+        "gameTypeContent":"你想逃離現實的束縛，投入一個全新的世界嗎？那麼角色扮演系列正是為你量身訂製的遊戲！你將有機會扮演著各種不同的角色，探索無盡的可能。在角色扮演遊戲中，你可以成為一個勇敢的騎士，守護正義，保護弱者。或者你可以成為一位神秘的法師，掌握強大的魔法，改變世界的命運。無論你是追求故事劇情、社交互動還是戰鬥競技，這個遊戲將為你提供無盡的樂趣和驚喜。",
+        "game":[
+         {  
+            "id":"44",
+            "name":"龍與地下城",
+            "image":"https://dummyimage.com/260X350/949494/fff",
+            "url":"https://www.google.com.tw/"
+         },
+         {
+            "id":"55",
+            "name":"創世紀",
+            "image":"https://dummyimage.com/260X350/949494/fff",
+            "url":"https://www.google.com.tw/"
+         },
+         {
+            "id":"66",
+            "name":"巫術",
+            "image":"https://dummyimage.com/260X350/949494/fff",
+            "url":"https://www.google.com.tw/"
+         }
+        ]
+    }

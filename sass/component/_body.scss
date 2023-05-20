@@ -11,6 +11,7 @@ body {
     #180505 50.89%,
     #4f1f00 98.6%
   );
+  
 }
 body.B {
   background: none;
@@ -18,6 +19,7 @@ body.B {
 }
 main {
   overflow: hidden;
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
+  @include breakpoint-414{width: 90%;}
 }
