@@ -1,118 +1,178 @@
-.main1-about {
-    /* border: 1px solid rgb(22, 1, 251); */
-    display: flex;
-    justify-content: space-around;
-    /* margin: 50px; */
-    // padding: 10px;
-    max-width: 1080px;
-    margin: 0 auto;
-    position: relative;
+// .main1-about {
+//     /* border: 1px solid rgb(22, 1, 251); */
+//     display: flex;
+//     justify-content: space-around;
+//     /* margin: 50px; */
+//     // padding: 10px;
+//     max-width: 1080px;
+//     margin: 0 auto;
+//     position: relative;
+
+// }
+
+
+
+
+
+// .main1-about img {
+//     width: 50%;
+//     margin-top: 50px;
+//     display: block;
+//     // margin-right: 60px;
+//     // border: 1px solid red;
+//     margin-right: 115px;
+
+
+
+// }
+
+
+// div.top1-about {
+//     margin-top: 0;
+//     ;
+// }
+
+
+
+// .main1-1-about .top1-about img {
+
+//     display: block;
+//     position: relative;
+//     width: 8%;
+//     left: 5px;
+//     bottom: -50px;
+
+
+
+// }
+
+// .main1-1-about .top1-about h2 {
+//     font-size: 2.5rem;
+//     // margin-right: 50px;
+//     display: block;
+//     // margin-top: 30px;
+//     margin-bottom: 20px;
+//     // border: 1px solid red;
+//     padding: 20px;
+//     padding-left: 50px;
+//     background-color: #FF6300;
+
+// }
+
+
+// .main1-about .main1-1-about .text1-about p {
+//     font-size: 2rem;
+//     line-height: 1.8;
+// }
+
+
+
+
+
+
+// .main2-about {
+//     /* border: 1px solid rgb(22, 1, 251); */
+//     display: flex;
+//     justify-content: center;
+//     /* margin: 50px; */
+//     // padding: 10px;
+//     max-width: 1080px;
+//     margin: 0 auto;
+//     width: 50%;
+//     position: relative;
+
+// }
+
+
+
+// .top2-about {
+//     // display: flex;
+//     // justify-content: center;
+//     // max-width: 1080px;
+//     // margin: 0 auto;
+
+
+// }
+
+// .main2-about .top2-about img {
+
+    
+//     position: relative;
+//     width: 15%;
+//     left: -175px;
+//     top: -157px;
+// // display: block;
+// }
+
+
+// .top2-about h2 {
+//     font-size: 2.5rem;
+//     display: block;
+//     padding: 20px;
+//     margin-right: 50px;
+//     margin-top: 20px;
+//     margin-bottom: 20px;
+//     // padding-left: 50px;
+//     padding-right: 50px;
+//     background-color: #FF6300;
+
+    
+// }
+
+
+
+// .main2-about .text2-about p {
+//     font-size: 2rem;
+//     line-height: 1.8;
+//     margin-top: 180px;
+//     // width: 190%;
+// }
+
+
+
+
+
+// .main2-about img {
+//     width: 60%;
+//     display: block;
+//     margin-top: 20px;
+//     margin-left: 286px;
+//     margin-bottom: 20px;
+// }
+
+
+
+
+.section{
+    border: 5px solid red;
+
+}
+
+.section_top{
+
+}
+.contact_img{
+    width: 30%;
+
+}
+
+.contact_article{
+
+}
+
+.contact_icon{
+
+}
+
+h2{
+
+}
+pre{
 
 }
 
 
 
-div.main1-about  img {
-    width: 50%;
-    margin-top: 20px;
-    display: block;
-    // margin-right: 60px;
-    border: 1px solid red;
-   
-
-
-}
 
 
 
-
-.main1-about .main1-1-about .top1-about img {
-
-    display: block;
-    position: absolute;
-    width: 3%;
-    left: 71%;
-
-
-
-}
-
-.main1-about .main1-1-about .top1-about h2 {
-    font-size: 2.5rem;
-    margin-right: 50px;
-    display: block;
-    margin-top: 100px;
-    margin-bottom: 20px;
-    border: 1px solid red;
-}
-
-
-.main1-about .main1-1-about .text1-about p {
-    font-size: 2rem;
-    line-height: 1.8;
-}
-
-
-
-
-
-
-.main2-about {
-    /* border: 1px solid rgb(22, 1, 251); */
-    display: flex;
-    justify-content: center;
-    /* margin: 50px; */
-    // padding: 10px;
-    max-width: 1080px;
-    margin: 0 auto;
-    width: 50%;
-    position: relative;
-
-}
-
-
-
-.main2-about .top2-about {
-    display: block;
-    position: absolute;
-
-}
-
-.main2-about .top2-about img {
-
-    display: block;
-    position: absolute;
-    width: 10%;
-    left: -11%;
-    right: 30%;
-    top: 30px;
-
-}
-
-
-.main2-about .top2-about h2 {
-    font-size: 2.5rem;
-    margin-right: 50px;
-    display: block;
-    padding-right: 50px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-
-
-.main2-about .text2-about p {
-    font-size: 2rem;
-    line-height: 1.8;
-}
-
-
-
-
-
-.main2-about  img {
-    width: 60%;
-    margin-top: 20px;
-    margin-left: 273px;
-    margin-bottom: 20px;
-}
