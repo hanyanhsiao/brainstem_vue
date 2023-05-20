@@ -1,5 +1,7 @@
 .member_center{
-    
+    .btn{
+        padding: 10px 20px;
+    }
     i{
         color: $white;
     }
@@ -10,6 +12,7 @@
          float: left;
     ul.select{
         li{
+            cursor: pointer;
             padding-left: 20px;
             line-height: 80px;
             border-bottom: 1px solid $orange;
@@ -33,15 +36,16 @@
     .right{
         display: none;
         float: left;
-        margin-left: 15px;
+        box-sizing: border-box;
         margin-bottom: 60px;
+        margin-right: 0;
         .describe{
             border: 1px solid $orange;
             padding: 0 0 25px 30px;
         }
-        .member_info{
+        .member_info, .member_info_revise{
             @include flex-container(row, nowrap, flex-start, flex-start);
-            
+            position: relative;
             .img{
                 @include flex-container(column, nowrap, center, center);
                 border: 1px solid $orange;
@@ -68,7 +72,7 @@
                 }
             }  
             .info{
-                @include flex-container(row, nowrap, space-around, center);
+                @include flex-container(row, nowrap, center,flex-start);
                 height: 500px;
                 border: 1px solid $orange;
                 flex-grow: 1;
@@ -79,21 +83,154 @@
                     flex-basis: 50%;
                     padding: 30px 0;
                     @include flex-container(column, nowrap, flex-start, flex-start);
-                
-                }
-                .revise{
-                    padding: 5px 10px;
-                    margin-left: auto;
-                    margin-right: 20px;
                 }
             }
+            .revise{
+                position: absolute;
+                right: 5%;
+                bottom: 5%;
+            }
+        }
+        .member_info_revise{
+            display: none;
+            position: relative;
+            display: block;
+            border: 1px solid $orange;
+            padding: 30px;
+            .img{
+                @include flex-container(row, nowrap, flex-start, center);
+                border: none;
+                height: auto;
+                // flex-basis: ;
+                i{
+                    font-size: 150px;
+                    color: $white;
+                    margin-right: 20px;
+                }
+                .btn{
+                    padding: 10px;
+                    border: 1px solid $orange;
+                    background: none;
+                    margin-right: 20px;
+                    margin-bottom: 0;
+                    &:hover{
+                        background-color: $orange;
+                    }
+                }
+                p{
+                    line-height: 1.5;
+                    font-size: 1.2rem;
+                    color: #666666;
+                }
+            }  
+            .info{
+                @include flex-container(column, nowrap, center,flex-start);
+                height: auto;
+                border: none;
+                p{
+                    margin: 30px 0;
+                    
+                }
+                .info_left,.info_right{
+                    padding: 0;
+                    @include flex-container(column, nowrap, flex-start, flex-start);
+                }
+                select.show-placeholder option {
+                    color: #ffffff;
+                }
+                
+                /* Display the dropdowns next to each other */
+                #date-select-wrapper {
+                  display: flex;
+                  max-width: 100%; /* just for this demo */
+                  overflow: hidden;
+                  
+                }
+                
+                #date-select-wrapper > * {
+                    flex-grow: 1;
+                    width: auto;
+                    margin: 0;
+                    border: 1px solid $white;
+                    &:focus {
+                      border: 1px solid $orange;
+                    }
+                    &:first-child{
+                      border-radius: 3px 0 0 3px;
+                    }
+                    &:last-child{
+                      border-radius: 0 3px 3px 0;
+                    }
+                }
+                element.style{
+                  color: $white;
+                }
+                select{
+                  color:$white;
+                  padding: 5px;
+                }
+                .datepicker-icon {
+                  color: #fff;
+              }
+                .gender{
+                    width: 100%;
+                    @include flex-container(row, nowrap, space-between, center);
+                    margin-bottom: 30px;
+                    label{
+                      vertical-align: middle;
+                    }
+                    input{
+                      vertical-align: middle;
+                    }
+                    /* 設置 radio 的顏色 */
+                    input[type="radio"] {
+                      appearance: none;
+                      width: 5px; /* 設置 radio 寬度 */
+                      height: 5px; /* 設置 radio 高度 */
+                      border-radius: 50%; /* 設置圓形 */
+                      border: 1px solid $white; /* 設置邊框 */
+                      outline: none; /* 移除聚焦時的邊框 */
+                      transition: border-color 0.3s ease; /* 添加過渡效果 */
+                      margin: 0;
+                      margin-right: 10px; /* 設置間距 */
+                      position: relative;
+                      &:focus{
+                        border: 1px solid $orange;
+                      }
+                    }
+                
+                    /* 設置選中時的顏色 */
+                    input[type="radio"]:checked {
+                      //  background-color: #007aff;
+                    }
+                
+                    /* 隱藏原始的 radio 選擇圓點 */
+                    input[type="radio"]::before {
+                      content: '';
+                      display: block;
+                      width: 10px;
+                      height: 10px;
+                      border-radius: 50%;
+                      position: absolute;
+                      left: 50%;
+                      top: 50%;
+                      transform: translate(-50%, -50%);
+                    }
+                
+                    /* 設置 radio 選擇圓點的顏色 */
+                    input[type="radio"]:checked::before {
+                      background-color: #ff6300;
+                    }
+                  }
+            }
+            
         }
         
         .order{
             border: 1px solid $orange;
             padding: 20px;
             
-            .form_title,.order_info,.detail_order_title{
+            .form_title, .detail_order_title{
                 margin-top: 10px;
                 width: 100%;
                 @include flex-container(row, nowrap, flex-start, center);
@@ -116,14 +253,27 @@
                 background-color: $purple;
                 border: 1px solid $orange;
                 box-sizing: border-box;
-                i{
-                    color: $orange;
+                @include flex-container(row, nowrap, flex-start, center);
+                .flex_grow{
+                    flex-grow: 1.7;
+                    i{
+                        color: $orange;
+                    }
+                    p{
+                        display: inline;
+                        text-align: left;
+                    }
                 }
                 p{
                     border: none;
+                    padding: 5px 0;
+                    box-sizing: border-box;
+                    flex-grow: 1;
+                    text-align: center;
                 }
             }
             .detail_order{
+                display: none;
                 .detail_order_title{
                     margin: 0;
                     p{
@@ -135,6 +285,7 @@
                     }
                 }
                 .detail_order_info{
+                    
                     .item{
                         border: 1px solid $orange;
                         @include flex-container(row, nowrap, flex-start, center); 
@@ -182,6 +333,9 @@
     
         }
         .game_library{
+            h3{
+                margin-bottom: 40px;
+            }
             .game_box{
                 .game_info{
                     border: 1px solid $orange;
@@ -198,6 +352,29 @@
                         // border: 1px solid red;
                         height: 230px;
                         @include flex-container(column, nowrap, space-between ,flex-start); 
+                        .flex{
+                            width: 100%;
+                            .ach{
+                            @include flex-container(row, nowrap, flex-start ,center); 
+                            .line_box{
+                                width: 40%;
+                                height: 8px;
+                                border: 1px solid $orange;
+                                border-radius: 8px;
+                                position: relative;
+                                 margin: 0 15px;
+                                .line{
+                                    position: absolute;
+                                    left: 0;
+                                    top: 0;
+                                    width: 60%;
+                                    height: 8px;
+                                    background-color: $orange;
+                                    border-radius: 8px;
+                                }
+                            }
+                            }
+                        }
                     }
                     .btn{
                         font-size: $p;
@@ -209,6 +386,7 @@
                     position: relative;
                     .review, .po_icon{
                         position: absolute;
+                        cursor: pointer;
                     }
                     .review{
                         top: 5%;
@@ -233,6 +411,9 @@
             .review_box{
                 padding: 15px;
                 border: 1px solid $orange;
+                i{
+                    cursor: pointer;
+                }
                 p:first-child{
                     display:inline;
                 }
@@ -304,10 +485,163 @@
         }
     }
 
+    @include breakpoint-414 {
+
+        ul.select{
+           margin-bottom: 40px;
+        }
+        .right{
+            .member_info{
+                border: 1px solid $orange;
+                @include flex-container(column, nowrap, flex-start, flex-start);
+                .info{
+                    flex-basis: 100%;
+                    border: none;
+                    padding: 30px 0 60px;
+                    @include flex-container(column, nowrap, center,flex-start);
+                    .info_left,.info_right{
+                        padding: 0;
+                    }
+                }
+                .revise{
+                    position: absolute;
+                    right: 50%;
+                    bottom: 4%;
+                    transform: translate(50%, 50%);
+                }
+            }
+            .member_info_revise{
+                .img{
+                    @include flex-container(column, nowrap, flex-start, center);
+                }
+            }
+            .img{
+                height: auto;
+                width: 100%;
+                padding: 30px 0;
+            }
+            .order{
+                .form_title, .detail_order_title{
+                     p{
+                         margin-left: 0 ;
+                     }
+                }
+               .order_info{
+                 .flex_grow{
+                     i{
+                         font-size: 1.2rem;
+                         padding: 0 5px;
+                     }
+                 }
+                 p{
+                     font-size: 1.2rem;
+                     
+                 }
+                 font-size: 1.2rem;
+               }  
+               .detail_order{
+                .item{
+                    .item_info{
+                        flex-basis:30%;
+                        img{
+                            width: 30%;
+                        }
+                        p{
+                            font-size: 1.2rem;
+                        }
+                    }
+                    .dis, .price_box{
+                        flex-basis:25%;
+                        padding: 0 10px;
+                    }
+                }
+                .detail_order_info{
+                    .settlement{
+                       .settlement_right{
+                           width: 40%;
+                       }
+                    }
+                   }
+             }
+             }  
+             .price{
+                font-size: 1.4rem;
+             }
+             .price_original{
+                font-size: 1.2rem;
+             }
+             
+             .game_library{
+                .game_box{
+                    .game_info{
+                        img{
+                            width: 25%;
+                        }
+                        .game_text{
+                            height: auto;
+                            .name{
+                                padding-top: 5px;
+                            } 
+                            p{
+                                font-size: 1.4rem;
+                                padding: 3px 0;
+                            }
+                            .flex{
+                                .ach{
+                                    .line_box{
+                                        margin: 0 5px;
+                                    }
+                                }
+                            }
+                        }
+                        .btn{
+                            opacity: 0;
+                        }
+                        .review{
+                            right: 1.5%;
+                            top: 20%;
+                        }
+                    }
+                    .review_box{
+                        i{
+                            padding: 0 3px;
+                        }
+                    }
+                }
+             }
+             .coupon{
+                .coupon_box{
+                .add{
+                    p{
+                        display: block;
+                    }
+                    input{
+                        width: 70%;
+                        
+                    }
+                    .btn{
+                        width: 25%;
+                        margin-left: 8px;
+                    }
+                }
+                }
+                .coupon_item{
+                    padding: 10px;
+                    .coupon_dis{
+                        padding: 0 5px 0 15px;
+                    }
+                }
+            }
+        }
+        
+    }
+
     .-on{
         background-color: $orange;
     }
     .-oon{
         display: block;
     }
+
+
 }

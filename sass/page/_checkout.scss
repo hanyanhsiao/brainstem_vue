@@ -18,6 +18,7 @@
     .item{
         border:  1px solid $orange;
         @include flex-container(row, nowrap, space-between ,center); 
+        
         .info{
             padding: 0 20px;
             flex-grow: 1;
@@ -38,6 +39,7 @@
         .price_box, .del{
             margin: 0 30px;
         }
+        
     }
     .settlement{
         width: 30%;
@@ -322,6 +324,78 @@
             background-repeat: no-repeat;
             background-position: center center;
         }
+    }
+    @include breakpoint-414 {
+        .price{
+            font-size: 1.4rem;
+         }
+         .price_original{
+            font-size: 1.2rem;
+         }
+        .item{
+            height: 200px;
+            img{
+                width: 30%;
+            }
+            p{
+                font-size: 1.2rem;
+            }
+            .dis, .price_box{
+                flex-basis:25%;
+                padding: 0 10px;
+                
+            }
+            .info{
+                
+                padding: 10px;
+                height: 200px;
+                h3{
+                    margin: 20px 0;
+                }
+                .dis_pic{
+                    flex-grow: 1;
+                    padding: 5px 0;
+                    .discount{
+                        
+                    }
+                    p{
+                        margin-top: 20px;
+                        display: block;
+                    }
+                }
+            }
+            .price_box, .del{
+                margin: 0;
+                padding: 3px;
+                i{
+                    display: block;
+                    margin-top: 10px;
+                    padding: 0 3px;
+                }
+            }
+        }
+        .settlement{
+            width: 100%;
+            .settlement_right{
+                width: 40%;
+            }
+         }
+         .credit_card{
+            .card_num{
+                width: 90%;
+            }
+            .flex{
+                .date{
+                    flex-basis: 50%;
+                }
+             }
+         }
+         .completed{
+            .flex{
+                width: 100%;
+            }
+         }
+         
     }
     .-on{
         display: block;
