@@ -38,12 +38,8 @@ $column-gap: 20px;
   flex-wrap: $wrap;
   justify-content: $justify-content;
   align-items: $align-items;
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-}
-=======
-=======
->>>>>>> dev
+
+
 }
 
 @mixin breakpoint-1440 {
@@ -58,14 +54,5 @@ $column-gap: 20px;
   }
 }
 
-<<<<<<< HEAD
 
-// @include breakpoint-414 {
-//   使用方式
-// }
->>>>>>> Stashed changes
-=======
-// @include breakpoint-414 {
-//   使用方式
-// }
->>>>>>> dev
+
