@@ -3,17 +3,24 @@ body{
     max-width: 1920px;
     width: 100%;
     margin: 0 auto;
-    background-image: none;
+    // background-image: none;
    
    
 
     .frontORback {
         max-width: 1920px;
         width: 100%;
-        // height: 100vh;
+        height: 100vh;
         margin: 0 auto;
-        background-image: url(/pic/img/backend/bgc.png);
-        background-size: 50%;
+        background-image: url(/pic/img/backend/bgc.png),linear-gradient(
+            174.31deg,
+            #030009 3.18%,
+            #160046 27.03%,
+            #180505 50.89%,
+            #4f1f00 98.6%
+        );
+        background-repeat: repeat repeat;
+        background-size: 100%;
         .wrapper{
             max-width: 1920px;
             width: 100%;
