@@ -131,8 +131,9 @@
         } else {
             backToTopButton.style.display = "none";
         }
+        console.log(footer.clientTop);
 
-        if (window.pageYOffset + window.innerHeight >= footerTop) {
+        if (window.pageYOffset + window.innerHeight >= footer.top) {
             backToTopButton.style.position = "absolute";
             backToTopButton.style.right = `${footer.offsetWidth - backToTopButton.offsetWidth
                 }px`;
