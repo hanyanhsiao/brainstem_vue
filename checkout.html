@@ -54,6 +54,7 @@
             <p class="settlement_right">2059 元</p>
         </div>
         <div class="btn next">結帳</div>
+    </div>
     </section>
     <!-- 進階確認 -->
     <section class="confirm">
@@ -183,7 +184,7 @@
              </div>
              <div class="conmit">
                 <button type="submit" class="btn next">確認付款</button>
-                <p>回上一步</p>
+                <p class="back">回上一步</p>
             </div>
         </form>
     </section>
@@ -215,6 +216,15 @@
             event.preventDefault();
         });
         
+    });
+    //回上一步
+    $(document).ready(function() {
+        let back = $('.back');
+        let section = $('section');
+        back.on('click', function(){
+        section.removeClass('-on');
+        section[1].classList.add("-on");
+    });
     });
     //優惠券視窗
     $(document).ready(function() {
