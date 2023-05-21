@@ -2225,15 +2225,19 @@
       //     grabCursor: true,
       //   });
       // }
+        // RWD----------
 
-    window.onload = function() {
-    if (window.matchMedia("(max-width: 414px)").matches) {
-    var swiper = new Swiper(".mySwiper11", {
-      effect: "cards",
-      grabCursor: true,
-    });
+window.onload = function() {
+  if (window.matchMedia("(max-width: 414px)").matches) {
+    setTimeout(function() {
+      var swiper = new Swiper(".mySwiper11", {
+        effect: "cards",
+        grabCursor: true,
+      });
+    }, 100); // 设置适当的延迟时间
   }
 };
+
 
 
 
