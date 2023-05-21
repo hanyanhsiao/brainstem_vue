@@ -12,23 +12,15 @@
          float: left;
     ul.select{
         li{
+            width: auto;
             cursor: pointer;
             padding-left: 20px;
             line-height: 80px;
             border-bottom: 1px solid $orange;
-            .order_icon{
-                background-image: url(../../pic/img/icon/order_icon_.png);
-                background-size: contain;
-                background-position: center center;
-                background-repeat: no-repeat;
-                margin: 0 10px;
-            }
-            .ticket_icon{
-                background-image: url(../../pic/img/icon/ticke_iocn.png);
-                background-size: contain;
-                background-position: center center;
-                background-repeat: no-repeat;
-                margin: 0 10px;
+            .order_icon, .ticket_icon{
+                img{
+                    width: 20px;
+                }
             }
         }
     }
