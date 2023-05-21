@@ -59,6 +59,9 @@
                         margin: 0;
                         padding: 0;
                         font-size: 0;
+                        @include breakpoint-1440 {
+                            font-size: 17px;
+                          }
 
                         img{
                             display: block;
@@ -91,6 +94,9 @@
                         font-size: $h2;
                         padding: 20px;
                         text-shadow: 0 0 15px black;
+                        @include breakpoint-1440 {
+                            font-size: 17px;
+                          }
                     }
                     .p2{
                         color:aliceblue ;
@@ -98,11 +104,18 @@
                         padding: 20px;
                         text-shadow: 0 0 15px black;
                         line-height: 1.2;
+                        @include breakpoint-1440 {
+                            font-size: 17px;
+                          }
                     }
                     a{
-                        padding: 20px;
+                        // padding: 20px;
                         
                         button{
+                            @include breakpoint-1440 {
+                                font-size: 17px;
+                              }
+                            margin-left: 15px;
                             color: #ffffff;
                             background-color: #6070ff;
                             width: 35%;
@@ -147,9 +160,10 @@
                     &:hover{
                         background-color: #6070ff43;
                         transition: all ease-in-out .3s;
-                        
+                        cursor: pointer;
                         >a{
                             p{
+                                cursor: pointer;
                                 color:orange;
                                 transition: all ease-in-out .5s;
                                 text-shadow: 3px 2px 2px rgb(0, 0, 0);
@@ -201,6 +215,10 @@
                             box-sizing: border-box;
                             line-height: 1.2;
                             transition: all ease-in-out .5s;
+                            cursor: pointer;
+                            @include breakpoint-1440 {
+                                font-size: 17px;
+                              }
                         }
                     }
                 }
@@ -211,13 +229,7 @@
                     background-size: 200% 100% ;
                     animation: progress-animation 10s linear infinite;
                 }
-                // @keyframes progress-animation {
-                //     0% { background-position: 0% 0; }
-                //     25% { background-position: 25% 0; }
-                //     50% { background-position: 50% 0; }
-                //     75% { background-position: 75% 0; }
-                //     100% { background-position: 100% 0; }
-                // }
+                
                 @keyframes progress-animation {
                     0% { background-position: 0% 0; }
                     100% { background-position: -100% 0; }
@@ -253,7 +265,7 @@
                 justify-content: space-between;
                 cursor: pointer;
                 // outline: 1px solid yellowgreen;
-                a{
+                .box1{
                     width: 15%;
                     // background-color: #fff;
                     text-decoration: none;
@@ -267,6 +279,7 @@
                         transition: all ease-in-out .3s;
                         padding: 10px 0;
                         box-sizing: border-box;
+                        
                         // &:hover{
                         //     color: $orange;
                         //     transition: all ease-in-out .3s;
@@ -473,17 +486,18 @@
                 display: flex;
                 justify-content: space-between;
                 cursor: pointer;
-                // outline: 1px solid yellowgreen;
-                a{
+                // outline: 1px solid rgb(170, 255, 1);
+                .box1{
                     width: 15%;
                     // background-color: #fff;
                     text-decoration: none;
                     box-sizing: border-box;
+                    // outline: 1px solid yellowgreen;
                     p{  
                         // outline: 1px solid blueviolet;
                         width: 100%;
                         display: block;
-                        color: white;
+                        // color: white;
                         font-size: $h2;
                         transition: all ease-in-out .3s;
                         padding: 10px 0;
@@ -545,6 +559,7 @@
             .bpart{
                 width: 100%;
                 // outline: 1px solid yellowgreen;
+                box-sizing: border-box;
                 .row{
                     // outline: 1px solid yellow;
                     width: 100%;
@@ -553,70 +568,43 @@
                     .col-3{
                         border: 3px solid $purple;
                         width: 100%;
-                        // height: 662px;
                         border-radius: 18px;
                         filter: brightness(50%);
-                        position: relative;
                         transition: all ease-in-out .3s;
                         display: flex;
                         flex-wrap: wrap;
                         flex-grow: 0;
                         // flex-basis: 0;
                         justify-content: space-between;
-
-                        img{
-                            display: block;
-                            width: 100%;
-                            border-radius: 15px;
-                        }
-                        .buttom{
-                            width: 100%;
-                            position: absolute;
-                            bottom: 0;
-                            .time{
-                                font-size: $h4;
-                                color: $orange;
-                                display: block;
-                                text-align: center;
-                                padding: 10px;
-                                transition: all ease-in-out .3s;
-                            }
-                            a{  
-                                margin: 0 auto;
+                        a{  
+                            position: relative;
+                            padding: 0;
+                            margin: 0;
+                            img{
                                 display: block;
                                 width: 100%;
-                                text-decoration: none;
-                                // border: 1px solid teal;
-                                // background-color: #6070ff;
-                                padding: 20px;
-                                box-sizing: border-box;
-                                button{
-                                    width: 65%;
-                                    margin: 0 auto;
-                                    display: block;
-                                    border: 2px solid $orange;
-                                    border-radius: 5px;
-                                    color: #fff;
+                                border-radius: 15px;
+                                z-index: 99;
+                            }
+                            .container{
+                                position: absolute;
+                                text-align: center;
+                                bottom: 60px;
+                                width: 100%;
+                                .time{
                                     font-size: $h3;
-                                    padding: 10px 10px;
-                                    background-color: rgba(255, 68, 0, 0.313);
+                                    transition: all ease-in-out .3s;
+                                    @include breakpoint-1440 {
+                                        font-size: 15px;
+                                      }
                                 }
                             }
-                        }
-                        &:hover{
-                            filter: none;
-                            transition: all ease-in-out .3s;
-                            border-color:$orange ;
-                        }
-                        &:hover>.buttom >.time{
-                            transition: all ease-in-out .3s;
-                            color: #fff;
-                            text-shadow: 2px 2px 5px black;
-                        }
-                        &:hover>.buttom >a >button{
-                            transition: all ease-in-out .3s;
-                            background-color: $orange;
-                            cursor: pointer;
+                            
+                            // &:hover>.buttom >a >button{
+                            //     transition: all ease-in-out .3s;
+                            //     background-color: $orange;
+                            //     cursor: pointer;
+                            // }
                         }
                         .a-1{
                             width: 48%;
@@ -637,7 +625,6 @@
                                 a{  
                                     // width: 20%;
                                     // outline: 1px solid goldenrod;
-                                   
                                     z-index: 999;
                                     display: block;
                                     i{  width: 100%;
@@ -670,6 +657,9 @@
                                 color: white;
                                 font-size: $h3;
                                 padding: 5px 0;
+                                @include breakpoint-1440 {
+                                    font-size: 13px;
+                                  }
                             }
                             .money{
                                 box-sizing: border-box;
@@ -680,6 +670,9 @@
                                     box-sizing: border-box;
                                     display: block;
                                     padding: 5px 0;
+                                    @include breakpoint-1440 {
+                                        font-size: 13px;
+                                      }
                                     // outline: 1px solid rgb(53, 10, 2);
                                 }
                                 .price2{
@@ -692,6 +685,9 @@
                                     // outline: 1px solid tomato;
                                     padding: 5px 0;
                                     margin-left: 10px;
+                                    @include breakpoint-1440 {
+                                        font-size: 13px;
+                                      }
                                 }
                             }
                             }
@@ -725,7 +721,18 @@
                         border-radius: 0px;
                         filter: none;
                     }
-                   
+                   .col-3:hover{
+                        filter: none;
+                        transition: all ease-in-out .3s;
+                        border-color:$orange ;
+                        >a>.container>.time{
+                            color: $orange;
+                            transform: scale(1.2);
+                            font-weight: bolder;
+                            text-shadow: 0px 0px 2px rgb(0, 0, 0);
+                            
+                        }
+                   }
                     
                 }
             }
@@ -831,6 +838,9 @@
                                     font-size: $h3;
                                     color: white;
                                     transition: all ease-in-out .9s;
+                                    @include breakpoint-1440 {
+                                        font-size: 15px;
+                                      }
                                 }
                                 .bottom{
                                     width: 100%;
@@ -846,18 +856,27 @@
                                         padding: 5px;
                                         font-size: $h4;
                                         margin: 10px 0 0;
+                                        @include breakpoint-1440 {
+                                            font-size: 13px;
+                                          }
                                     }
                                     .money{
                                         display: flex;
                                         padding: 10px 0 ;
                                         .price{
                                             font-size: $h4;
+                                            @include breakpoint-1440 {
+                                                font-size: 15px;
+                                              }
                                         }
                                         .price2{
                                             font-size: $h4;
                                             color: #AFAFAF;
                                             text-decoration: line-through;
                                             padding: 0px 0 0 10px;
+                                            @include breakpoint-1440 {
+                                                font-size: 15px;
+                                              }
                                         }
                                     }
                                 }
@@ -895,11 +914,7 @@
             
                     
                 }
-                .box:nth-child(1){
-                    >.box2>a>img{
-                        border: none;
-                    }
-                }
+                
                 .box:nth-child(3){
                     border: none;
                 }
@@ -916,7 +931,7 @@
             // outline: 1px solid red;
             .box1{
                 width: 100%;
-                a{
+                div{
                     width: 100%;
                     display: block;
                     // background-color: #fff;
@@ -932,12 +947,6 @@
                         padding: 10px 0;
                         box-sizing: border-box;
                     }
-                    &:hover>p{
-                        color: $orange;
-                        transition: all ease-in-out .3s;
-                        transform: scale(1.05);
-                        // margin-left: 15px;
-                    }
                 }
             }
             .box2{
@@ -951,6 +960,7 @@
                     border: none;
                     .news_card_column{
                         border: none;
+                        box-sizing: border-box;
                         a{
                             width: 100%;
                             padding: 10px ;
@@ -975,22 +985,37 @@
                                 transition: all ease-in-out .3s;
                                 span{
                                     transition: all ease-in-out .3s;
-                                    >i:hover{
-                                        color: $orange;
-                                        transition: all ease-in-out .3s;
-                                    }
-                                }
-                                >i:hover{
-                                    color: $orange;
-                                    transition: all ease-in-out .3s;
-                                
                                 }
                             }
                             .title{
+                                width: 100%;
+                                box-sizing: border-box;
                                 
                                 h3{
+                                    // outline: 1px solid yellow;
                                     transition: all ease-in-out .3s;
+                                    display: block;
+                                    // padding: 0px 0px 20px;
+                                    // letter-spacing: .3rem;
+                                    // padding-bottom: 50px;
+                                    
+                                    // height: 10px;
+                                    box-sizing: border-box;
+                                    @include breakpoint-1440 {
+                                        font-size: 15px;
+                                      }
                                 }
+                            }
+                            .news_text>p{
+                                color: #AFAFAF;
+                                display: block;
+
+                                line-height: 1.5;
+
+                                box-sizing: border-box;
+                                @include breakpoint-1440 {
+                                    font-size: 12px;
+                                  }
                             }
                         
                         }
@@ -1007,7 +1032,7 @@
             width: 100%;
         .box1 {
             width: 100%;
-                a {
+                .a {
                     width: 100%;
                     display: block;
                     // background-color: #fff;
@@ -1022,13 +1047,6 @@
                             transition: all ease-in-out .3s;
                             padding: 10px 0;
                             box-sizing: border-box;
-                        }
-
-                        &:hover>p {
-                            color: $orange;
-                            transition: all ease-in-out .3s;
-                            transform: scale(1.05);
-                            // margin-left: 15px;
                         }
                     }
                 }
@@ -1075,15 +1093,33 @@
                             margin: 0 auto;
                             box-sizing: border-box;
                             img{
-                                width: 45.59%;
+                                // width: 35%;
+                                height: 123px;
                                 display: block;
                                 margin: 0 auto;
                                 transition: all ease-in-out .6s;
+                                
+                            }
+                           
+
+                            h2{  
+                                display: block;
+                                text-align: center;
+                                font-size: $h2;
+                                transition: all ease-in-out .6s;
+                                padding: 10px 0;
+                                
                             }
                             &:hover>img{
                                 transition: all ease-in-out .6s;
                                 transform: scale(1.1);
-                            }
+                                }
+                            &:hover>h2{
+                                transition: all ease-in-out .6s;
+                                transform: scale(1.3) translateY(5px);
+                                }
+                            
+                          
                         }
                         
                     }
@@ -1102,7 +1138,7 @@
             .box1 {
                 width: 100%;
                 padding: 10px 0px;
-                    a {
+                    .a{
                         width: 100%;
                         display: block;
                         // background-color: #fff;
@@ -1118,13 +1154,6 @@
                                 padding: 10px 0;
                                 box-sizing: border-box;
                             }
-    
-                            &:hover>p {
-                                color: $orange;
-                                transition: all ease-in-out .3s;
-                                transform: scale(1.05);
-                                // margin-left: 15px;
-                            }
                         }
                     }
             .box2{
@@ -1133,7 +1162,7 @@
                 outline: 1px solid $orange;
                 background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
                 overflow: hidden;
-                a{
+                .b{
                     // width: 100%;
                     // height: 100%;
                     display:flex;
@@ -1188,6 +1217,7 @@
                             align-items: center;
                             padding: 10px;
                             box-sizing: border-box;
+                           
                             button{
                                 transform: translateX(35%);
                                 display: block;
@@ -1205,7 +1235,16 @@
                                 &:hover{
                                     background-color: $orange;
                                     transition: all ease-in-out .5s;
+                                    cursor: pointer;
                                 }
+                                a{
+                                    width: 100%;
+                                    font-size: $h1;
+                                }
+
+                                @include breakpoint-1440 {
+                                    transform: translateX(50%);
+                                  }
                             }
                         }
                     }
@@ -1303,6 +1342,10 @@
                                     font-weight: bold;
                                     display: block;
                                     margin: 0 auto;
+                                    a{
+                                        width: 100%;
+
+                                    }
                                 }
                             }
                         }
