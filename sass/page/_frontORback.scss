@@ -3,13 +3,14 @@ body{
     max-width: 1920px;
     width: 100%;
     margin: 0 auto;
+    background-image: none;
    
    
 
     .frontORback {
         max-width: 1920px;
         width: 100%;
-        height: 120vh;
+        // height: 100vh;
         margin: 0 auto;
         background-image: url(/pic/img/backend/bgc.png);
         background-size: 50%;
@@ -92,7 +93,7 @@ body{
                                 font-weight: bold;
                                 cursor: pointer;
                                 @include breakpoint-1440 {
-                                    font-size: 50px;
+                                    font-size: 60px;
                                   }
                                 
                             }
@@ -100,8 +101,8 @@ body{
                                 font-size: $h1;
                                 cursor: pointer;
                                 @include breakpoint-1440 {
-
-                                    font-size: 30px;
+                                    padding: 10px 0;
+                                    font-size: 20px;
                                   }
                             }
                             
@@ -154,14 +155,15 @@ body{
                                 font-weight: bold;
                                 cursor: pointer;
                                 @include breakpoint-1440 {
-                                    font-size: 50px;
+                                    font-size: 60px;
                                   }
                             }
                             .eng{
                                 font-size: $h1;
+                                padding: 10px 0;
                                 cursor: pointer;
                                 @include breakpoint-1440 {
-                                    font-size: 30px;
+                                    font-size: 20px;
                                   }
                             }
                         }
