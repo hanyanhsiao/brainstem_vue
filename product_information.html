@@ -114,16 +114,12 @@
                         <i class="bi bi-suit-heart heart_btn"></i>
                         <i class="bi bi-share-fill share_btn"></i>
                     </div>
-
-
                 </div>
-
             </div>
             <div class="shopcar_popup">
                 <i class="bi bi-check-circle"></i>
                 <h2>已加入購物車</h2>
             </div>
-
         </section>
 
 
@@ -176,7 +172,10 @@
             </div>
             <div class="comments_range col-12 swiper">
                 <div class="swiper-wrapper">
-                    <button class="look_more">查看更多</button>
+                    <div class="more_and_less">
+                        <button class="look_more">查看更多</button>
+                        <button class="look_less">收合評論</button>
+                    </div>
                     <div class="each_comment  swiper-slide">
                         <div class="comment_top">
                             <div class="member_pic">
@@ -216,7 +215,7 @@
                             </div>
                         </div>
                         <div class="comment_text">
-                            <i class="bi bi-hand-thumbs-up"></i>
+                            <i class="bi bi-hand-thumbs-up" id="thumb_up"></i>
                             <p class="comment_content">
                                 手書香瓜自食從。旁正民右父門節四圓正。言雄呢兄屋好兌羽隻乙氣金色斗得？發占朋尾飛看新村而動申美胡定牛，河房誰問裏躲草姊波黃才冒園它貝室？火果亮。<br><br>
                                 室友草田拍邊實已葉耍頁青冰功而良媽「喝急能已各寫山穿幫」向干石？豆歌沒具快百辛者晚物畫，屋己民說開雲，背手哭抓。</p>
@@ -503,11 +502,13 @@
                 <div class="recommend_game col-12 swiper myswiper">
                     <div class="swiper-wrapper">
                         <div class="each_good col-3 swiper-slide">
-                            <div class="goods_top">
-                                <img src="./pic/img/game/cover/cover1.jpg" alt="">
-                                <span class="discount">-40%</span>
-                                <i class="bi bi-suit-heart"></i>
-                            </div>
+                            <a href="./product_information.html">
+                                <div class="goods_top">
+                                    <img src="./pic/img/game/cover/cover1.jpg" alt="">
+                                    <span class="discount">-40%</span>
+                                    <i class="bi bi-suit-heart"></i>
+                                </div>
+                            </a>
                             <div class="goods_text">
                                 <h3>王國之心3</h3>
                                 <span class="price">$900</span>
@@ -588,7 +589,8 @@
     @@include('./layout/js.html')
     <!-- 以下可以放自己的js -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.3.2/swiper-bundle.min.js"></script> -->
+    <script src="./js/heart.js"></script>
+
 
     <script>
 
@@ -623,28 +625,41 @@
         document.addEventListener("DOMContentLoaded", function () {
             // 獲取元素
             let lookMoreButton = document.querySelector(".look_more");
+            // let lookLessButton = document.querySelector(".look_less");
             let commentSections = document.querySelectorAll(".each_comment");
             let commentPages = document.querySelectorAll(".pages");
             let screenWidth = window.innerWidth || document.documentElement.clientWidth;
 
             // 點擊 "查看更多" 按鈕時的事件處理程序
             lookMoreButton.addEventListener("click", function () {
-
                 // 顯示所有評論
                 commentSections.forEach(function (section) {
                     section.style.display = "block";
                 });
-
                 // 顯示所有頁碼
                 commentPages.forEach(function (page) {
                     page.style.display = "block";
                 });
+                // lookMoreButton.style.display = "none";
+                // lookLessButton.style.display = "block";
 
             });
+
+            // lookLessButton.addEventListener("click", function(){
+            //     lookMoreButton.style.display = "block";
+            //     lookLessButton.style.display = "none";
+            //     commentPages.forEach(function (page) {
+            //         page.style.display = "none";
+            //     });
+            //     for (var i = 4; i < commentSections.length; i++) {
+            //     commentSections[i].style.display = "none";
+            // }   
+            // });
 
             // 初始化只顯示四則評論
             for (var i = 4; i < commentSections.length; i++) {
                 commentSections[i].style.display = "none";
+                lookLessButton.style.display = "none";
             }
 
             if (screenWidth === 414) {
@@ -706,47 +721,7 @@
                     e.stopPropagation();
                 }
             });
-        });
-
-        //愛心收藏==================================================================================================
-        var heartsList = document.querySelectorAll('.bi-suit-heart');
-
-        heartsList.forEach(function (heart) {
-
-            // 綁定滑鼠懸停事件
-            heart.addEventListener('mouseenter', function (e) {
-                if (!heart.classList.contains("bi-suit-heart-fill") || !heart.classList.contains("bi-suit-heart-clicked")) {
-                    heart.classList.remove("bi-suit-heart");
-                    heart.classList.add("bi-suit-heart-fill");
-                    e.stopPropagation();
-                }
-            });
-
-            // 綁定滑鼠離開事件
-            heart.addEventListener('mouseleave', function (e) {
-                if (!heart.classList.contains("bi-suit-heart-fill") || !heart.classList.contains("bi-suit-heart-clicked")) {
-                    heart.classList.remove("bi-suit-heart-fill");
-                    heart.classList.add("bi-suit-heart");
-                    e.stopPropagation();
-                }
-            });
-
-            heart.addEventListener('click', function (e) {
-                if (!heart.classList.contains("bi-suit-heart-clicked")) {
-                    heart.classList.remove("bi-suit-heart");
-                    heart.classList.add("bi-suit-heart-fill");
-                    heart.classList.add("bi-suit-heart-clicked");
-                    e.stopPropagation();
-                } else {
-                    heart.classList.remove("bi-suit-heart-fill");
-                    heart.classList.add("bi-suit-heart");
-                    heart.classList.remove("bi-suit-heart-clicked");
-                    e.stopPropagation();
-                }
-            });
-
-        });
-
+        });      
 
         //swiper
         $(document).ready(function () {
@@ -810,7 +785,7 @@
 
                         414: {
                             slidesPerView: 1,
-                            spaceBetween: 15,
+                            spaceBetween: 30,
                         }
                     },
                 });
