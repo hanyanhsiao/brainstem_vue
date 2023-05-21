@@ -38,8 +38,6 @@ $column-gap: 20px;
   flex-wrap: $wrap;
   justify-content: $justify-content;
   align-items: $align-items;
-
-
 }
 
 @mixin breakpoint-1440 {
@@ -53,6 +51,6 @@ $column-gap: 20px;
     @content;
   }
 }
-
-
-
+// @include breakpoint-414 {
+//   padding-top: 80px;
+// }

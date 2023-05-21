@@ -107,39 +107,17 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-
 <script>
-    
     $(document).ready(function () {
-        $(".rwd-item").hide();
-        $(".r-item2").hide(); // 隱藏 .r-item2
-        $(".fafa").click(function () {
-            $(".rwd-item").slideToggle(500);
-        });
-
-        $("#right, .r-header").click(function () {
-            $(".r-item2").toggle(500)({ width: "toggle" }, 500);
-        });
-
-        $(".r-item2 a").css({
-            margin: 0,
-        });
-
-        $("body").css("overflow", "auto");
-        $(".r-item2 a").css("margin", "initial");
+        // $(".rwd-item").hide();
+        $('.toggle').click(function () {
+            $(this).toggleClass('active');
+            if ($(this).hasClass('active')) {
+                $('.rwd-item').slideDown();
+            } else {
+                $('.rwd-item').slideUp();
+            }
+        })
     });
 
-    $(function () {
-        let is_open = 0;
-        // 一開始讓選單縮上去
-        $(".sear").slideUp();
-        // 點擊menu後slidedown
-        $(".sear2").click(function () {
-            $(".sear").slideToggle(500);
-        });
-    });
-
-    $(".toggle").click(function () {
-        $(this).toggleClass("active");
-    });
 </script>
