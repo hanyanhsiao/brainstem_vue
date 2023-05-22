@@ -4,13 +4,23 @@ html {
 }
 body {
   max-width: 1920px;
-  background: linear-gradient(
+  // background: linear-gradient(
+  //   174.31deg,
+  //   #030009 3.18%,
+  //   #160046 27.03%,
+  //   #180505 50.89%,
+  //   #4f1f00 98.6%
+  // );
+  background-image: url(../pic/img/backgrandimg/test.png), linear-gradient(
     174.31deg,
     #030009 3.18%,
     #160046 27.03%,
     #180505 50.89%,
     #4f1f00 98.6%
   );
+  background-repeat: repeat;
+  background-size: 100%;
+
 }
 body.B {
   background: none;

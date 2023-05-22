@@ -119,12 +119,34 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 <script>
 
-    const backToTopButton = document.querySelector("#back-to-top-btn");
-    const footer = document.querySelector("footer");
+const backToTopButton = document.querySelector("#back-to-top-btn");
+
+window.addEventListener("scroll", () => {
+  if (window.pageYOffset > 0) {
+    backToTopButton.style.display = "block";
+  } else {
+    backToTopButton.style.display = "none";
+  }
+
+  const scrollPosition = window.pageYOffset + window.innerHeight;
+  const isScrolledToBottom = scrollPosition >= document.documentElement.scrollHeight;
+
+  if (isScrolledToBottom) {
+    backToTopButton.style.bottom = "15px";
+  } else {
+    backToTopButton.style.bottom = "15px";
+  }
+});
 
 
-    window.addEventListener("scroll", () => {
+backToTopButton.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
 
+  backToTopButton.style.display = "none";
+});
 
         if (window.pageYOffset > 0) {
             backToTopButton.style.display = "block";
@@ -143,7 +165,7 @@
             backToTopButton.style.right = "-15px";
             backToTopButton.style.bottom = "15px";
         }
-    });
+    
 
     backToTopButton.addEventListener("click", () => {
         window.scrollTo({

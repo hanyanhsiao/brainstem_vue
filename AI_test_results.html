@@ -62,7 +62,7 @@
             mounted() {
 
                 let gameTypeNum = JSON.parse(localStorage.getItem("options"));
-                console.log(gameTypeNum);
+                // console.log(gameTypeNum);
 
                 axios.get('http://localhost/brainstem/AI_test_results.php', {
                     params: { gameTypeNum: gameTypeNum }

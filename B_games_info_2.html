@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brainstem | 遊戲資訊</title>
+    <title>Brainstem | 遊戲資訊修改頁</title>
     @@include('./layout/style.html')
-    <link rel="shortcut icon" type="image/png" href="./pic/img/LOGO/LOGO.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 
 <body class="B">
@@ -42,10 +42,10 @@
                             </li>
                             <li>
                                 <label for="LOGO">
-                                    <h6>遊戲LOGO</h6>
+                                    <h6>遊戲封面</h6>
                                 </label>
-                                <img src="./pic/img/cover/1.jpg" alt="">
-                                <a href="">重新上傳</a>
+                                <input type="file" name="profile[]" id="LOGO" multiple/>
+                                <input type="submit" value="上傳檔案" />
                             </li>
                             <li>
                                 <h6>發行日期</h6>
@@ -209,15 +209,15 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li>
+                            <li class="B_grid_four">
                                 <label for="Event start time">
                                     <h6>活動開始時間</h6>
                                 </label>
-                                <input type="date" name="" id="Event start time">
+                                <input id="myDatePicker" type="date" name="" id="Event start time" placeholder="年/月/日">
                                 <label for="Event end time">
                                     <h6>活動結束時間</h6>
                                 </label>
-                                <input type="date" name="" id="Event end time">
+                                <input id="myDatePicker" type="date" name="" id="Event end time" placeholder="年/月/日">
                             </li>
                             <li>
                                 <label for="commodity price">
@@ -233,11 +233,11 @@
                                 <label for="Discount start time">
                                     <h6>折扣開始時間</h6>
                                 </label>
-                                <input type="date" name="" id="Discount start time">
+                                <input id="myDatePicker" type="date" name="" id="Discount start time" placeholder="年/月/日">
                                 <label for="Discount end time">
                                     <h6>折扣結束時間</h6>
                                 </label>
-                                <input type="date" name="" id="Discount end time">
+                                <input id="myDatePicker" type="date" name="" id="Discount end time" placeholder="年/月/日">
                             </li>
                             <li class="B_grid_two">
                                 <label for="game instructions">
@@ -288,9 +288,11 @@
                             </li>
                             <li>
                                 <i class="bi bi-upload"></i>
-                                <h6>
-                                    上傳圖片
-                                </h6>
+                                <label for="pic">
+                                    <h6>上傳圖片</h6>
+                                </label>
+                                <input type="file" name="profile[]" id="pic" multiple/>
+                                <input type="submit" value="上傳檔案" />
                             </li>
                         </ul>
                     </div>
@@ -298,9 +300,16 @@
             </div>
         </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
-        
-    </script>
+        //input
+        flatpickr("#myDatePicker", {
+          dateFormat: "Y/m/d",
+          minDate: "today",
+          theme: "light"
+        });
+      </script>
+
 </body>
 
 </html>

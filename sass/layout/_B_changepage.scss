@@ -1,20 +1,22 @@
 .changepage {
     margin: 50px 0;
-    width: 14%;
+    width: 15%;
     line-height: 1.4;
-    transform: translateX(600%);
-    
+    transform: translateX(565%);
+
     ul{
         display: flex;
         border: 1px solid #000;
         font-size: 20px;
         li{
             border-right: 1px solid #000;
-            width: 50px;
+            width: 25px;
             text-align: center;
+            cursor: pointer;
         }
-        li:nth-last-child(1) {
+        li:last-child {
             border-right: none;
+            width: 65px;
         }
         li:hover{
             background: #d3bffb;
