@@ -8,23 +8,47 @@
 
   .header-news {
     background-image: url("../../pic/img/news/Rectangle\ 266.png");
-
     margin: 30px auto;
   }
 
   .search-news_out {
     text-align: right;
+
+    .search-news {
+      width: 300px;
+      border-radius: 50px;
+      right: 200px;
+      text-align: right;
+    }
+
   }
 
-  .search-news {
-    width: 300px;
-    border-radius: 50px;
-    right: 200px;
-    text-align: right;
+  .search_news_out {
+    
+
+    display: flex;
+    justify-content: flex-end;
+    // border: 20px solid red;
+    // display: flex;
+    // // width: 100%;
+    // // align-items: center;
+    // padding: 10px;
+
+    // margin: 10px auto 0;
+    // box-sizing: border-box;
+
+    input {
+      width: 20%;
+      border-radius: 50px;
+      display: block;
+      // margin: 0 auto 10px;
+      justify-content: flex-end;
+    }
   }
 
-  .featured {
-  }
+
+
+  .featured {}
 
   .featured_title {
     margin-bottom: 3%;
@@ -72,8 +96,7 @@
     color: #ff6300;
   }
 
-  .featured_icon {
-  }
+  .featured_icon {}
 
   // 精選標題
   .featured_title {
