@@ -71,37 +71,9 @@
 
     <!-- ===============google登入==================== -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="./js/google_login.js"></script>
+    <!-- ===============google登入==================== -->
 
-    <script>
-
-        function handleCredentialResponse(response) {
-            console.log("Encoded JWT ID token: " + response.credential);
-        }
-
-        window.onload = function () {
-            // 製作假按鈕
-            const googleButton = document.createElement("div");
-            // console.log(googleButton);
-            google.accounts.id.initialize({
-                client_id: "1009962510587-tekusjs8llvchnjikbp26let96r64d6r.apps.googleusercontent.com",
-                callback: handleCredentialResponse
-            });
-            google.accounts.id.renderButton(
-                googleButton,
-                { theme: "outline", size: "large" }  // customization attributes
-            );
-            google.accounts.id.prompt(); // also display the One Tap dialog
-
-            //抓取原本按鈕
-            let googleLogin = document.querySelector('.Google_login');
-            // console.log(googleLogin);
-
-            googleLogin.addEventListener('click', function (e) {
-                e.preventDefault();
-                googleButton.querySelector("div[role=button]").click();
-            })
-        }
-    </script>
 </body>
 
 </html>
