@@ -97,12 +97,13 @@ body{
                             display: block;
                             text-decoration: none;
                             text-align: center;
-                            margin-top: 100px;
+                            margin-top: 65px;
                             transition: all ease-in-out .6s;
                             align-items: center;
                             cursor: pointer;
                             @include breakpoint-1440 {
                                 margin-top: 40px;
+                                // background-color: #FF6300;
                               }
                             .chin{
                                 font-size: 8rem;
@@ -126,6 +127,8 @@ body{
                                 @include breakpoint-1440 {
                                     padding: 10px 0;
                                     font-size: 20px;
+                                    // background-color: #FF6300;
+                                    transform: translateY(-30px);
                                   }
                             }
                             
@@ -174,7 +177,7 @@ body{
                             display: block;
                             text-decoration: none;
                             text-align: center;
-                            margin-top: 100px;
+                            margin-top: 65px;
                             transition: all ease-in-out .6s;
                             @include breakpoint-1440 {
                                 margin-top: 40px;
@@ -200,6 +203,7 @@ body{
                                 cursor: pointer;
                                 @include breakpoint-1440 {
                                     font-size: 20px;
+                                    transform: translateY(-30px);
                                   }
                             }
                         }
