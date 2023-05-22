@@ -1,21 +1,130 @@
 .game_library {
-}
 
-.user {
-  display: flex;
-}
+  // color: red;
+  a {
+    cursor: pointer;
+  }
 
-.user_name {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 2%;
-}
+  .user {
+    display: flex;
+    margin-top: 4%;
 
-.filter {
-  // border: 5px solid red;
-  width: 40%;
-  display: flex;
-  // margin: ;
-  justify-content: space-between;
+    .head_sticker {}
+
+    .user_name {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 2%;
+    }
+
+  }
+
+
+  .filter {
+    // border: 5px solid green;
+    width: 40%;
+    display: flex;
+    margin-top: 4%;
+    justify-content: space-between;
+
+    .filter_text {
+      cursor: pointer;
+    }
+
+  }
+
+
+
+  .game_library_game {
+
+    .game_library_ul {
+
+
+
+      .game_library_li {
+        border: 2px solid #FF6009;
+        display: flex;
+        margin-top: 4%;
+
+
+        // 內容-圖片
+        .game_library_img {
+          // border: 2px solid blueviolet;
+
+        }
+
+        // 內容-名稱、時數
+        .game_library_section {
+
+          letter-spacing: 5px;
+          // border: 2px solid yellow;
+          width: 80%;
+          padding: 3%;
+          line-height: 2;
+          display: flex;
+          flex-direction: column;
+
+
+          // 遊戲名稱
+          .game_library_name {
+            // border: 2px solid brown;
+            // margin-bottom: 5%;
+
+          }
+
+          // 遊戲時數
+          .play_time {
+            padding-top: 5%;
+          }
+
+          // 上次遊玩
+          .last_time {}
+
+          // 成就
+          .achievement {
+            .achievement_img {}
+          }
+        }
+
+        .more {
+          width: 3%;
+
+          &:hover .product_news_btn {
+            display: block;
+
+            .product_ul {
+              background-color: #FF6009;
+              align-items: center;
+            }
+          }
+
+          .product_news_btn {
+            display: none;
+          }
+
+
+        }
+
+        .execution {
+          background-color: #6511E1;
+          padding: .5%;
+          // padding-right: 80%;
+          align-self: self-end;
+          cursor: pointer;
+        }
+
+      }
+
+
+
+
+
+
+
+
+    }
+
+
+  }
 }
