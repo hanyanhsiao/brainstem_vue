@@ -82,6 +82,9 @@
                         img {
                             display: block;
                             object-fit: cover;
+                            @include breakpoint-414{
+                                max-width: 373px;
+                            }
                         }
                     }
                 }
@@ -90,14 +93,18 @@
                     width: 100px;
                     height: 570px;
                     position: absolute;
-                    top: 50%;
+                    top: 0;
                     right: 0;
-                    transform: translateY(-50%);
                     cursor: pointer;
+                    @include breakpoint-414{
+                        height: 220px;
+                    }
 
                     &:hover {
                         background-image: linear-gradient(to left, #767676, rgba(#d9d9d9, 0));
-
+                        i{
+                            color: $orange;
+                        }
                     }
 
                     i {
@@ -107,9 +114,11 @@
                         position: absolute;
                         top: 50%;
                         right: 0;
-
                         transform: translateY(-50%);
 
+                        @include breakpoint-414{
+                            font-size: 40px;
+                        }
                         &:hover {
                             color: $orange;
                         }
@@ -120,15 +129,20 @@
                     width: 100px;
                     height: 570px;
                     position: absolute;
-                    top: 50%;
+                    top: 0;
                     left: 0;
-                    transform: translateY(-50%);
+                    // transform: translateY(-50%);
                     cursor: pointer;
+                    @include breakpoint-414{
+                        height: 220px;
+                    }
 
                     &:hover {
                         background-image: linear-gradient(to right, #767676, rgba(#d9d9d9, 0));
+                        i{
+                            color: $orange;
+                        }
                     }
-
                     i {
                         padding: 0;
                         color: $white;
@@ -137,8 +151,11 @@
                         top: 50%;
                         left: 0;
                         transform: translateY(-50%);
+                        @include breakpoint-414{
+                            font-size: 40px;
+                        }
 
-                        &:hover {
+                        &:hover{
                             color: $orange;
                         }
                     }
@@ -148,10 +165,7 @@
             .thumb {
                 @include flex-container($direction: row, $wrap: nowrap, $justify-content: center, $align-items: center);
 
-                .swiper-wrapper {
-                    display: flex;
-                }
-
+                
                 @include breakpoint-414 {
                     display: none;
                 }
@@ -203,22 +217,27 @@
                         width: 80%;
                     }
 
-                    .swiper-slide-thumb-active {
-                        opacity: 1; //沒有吃到?
-                    }
+                    .swiper-wrapper{
+                        display: flex;
+                        
 
-                    .swiper-slide {
-                        width: 25%; //沒有吃到?
-                        height: 95px;
-                        opacity: 0.4;
-                        background-size: cover;
-                        background-position: center;
+                        .swiper-slide {
+                            width: 25% !important; 
+                            height: 95px;
+                            opacity: 0.4;
+                            background-size: cover;
+                            background-position: center;
 
-                        img {
-                            display: block;
-                            width: 100%;
-                            height: 100%;
-                            object-fit: cover;
+                            &.swiper-slide-thumb-active {
+                                opacity: 1; 
+                            }
+
+                            img {
+                                display: block;
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                            }
                         }
                     }
                 }
@@ -610,6 +629,7 @@
                     padding-bottom: 40px;
                     margin-bottom: 40px;
                     // max-width: 371px;
+                    
 
                     @include breakpoint-414 {
                         padding-bottom: 20px;
@@ -632,6 +652,7 @@
                         .member_pic img {
                             border-radius: 50%;
                             padding: 5px;
+                            max-width: 96px;
 
                             @include breakpoint-414 {
                                 width: 86px;
@@ -698,13 +719,18 @@
                         }
 
                         p {
-                            width: 294px;
-                            // height: 290px;
+                            width: 250px;
+                            height: 290px;
                             letter-spacing: 2px;
                             line-height: 150%;
                             font-size: 20px;
                             padding-bottom: 0;
                             cursor: pointer;
+                            @include breakpoint-414{
+                                width: 290px;
+                                height: auto;
+                                padding: 10px;
+                            }
                         }
                     }
                 }
@@ -940,13 +966,14 @@
                 overflow: hidden;
 
                 .swiper-wrapper {
-                    @include flex-container(row, nowrap, space-between, center);
+                    @include flex-container(row, nowrap, space-between, flex-start);
 
                 }
 
                 .each_good {
 
                     margin-bottom: 50px;
+                    
 
                     @include breakpoint-414 {
                         margin-bottom: 20px;
@@ -956,11 +983,19 @@
 
                     .goods_top {
                         position: relative;
-
+                        overflow: hidden;
                         img {
-
+                            max-width: 258.75px;
+                            max-height: 376px;
+                            transition: all ease-in-out .5s;
+                            
+                            &:hover{
+                                transform: scale(1.1);
+                                transition: all ease-in-out .5s;
+                                filter: brightness(55%);
+                            }
                             @include breakpoint-414 {
-                                // width: 176.5px;
+                                max-width: 176.5px;
                                 // width: 100%;
                             }
 
@@ -990,6 +1025,9 @@
                             right: 10px;
                             top: 10px;
                             font-size: 30px;
+                            &:hover{
+                                text-shadow: 1px 1px 2px black;
+                            }
 
                             @include breakpoint-414 {
                                 font-size: 20px;

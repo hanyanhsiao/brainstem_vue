@@ -1,14 +1,12 @@
 .product {
     color: $white;
-    position: relative;
-    
-    .swiper {
-        // width: 100%;
-        // height: 100%;
+    position: relative;    
+    .productBanner {
         margin-top: 45px;
+        position: relative;
         .swiper-slide{
             @include breakpoint-414{
-            height: 162px;
+            height: 161px;
             }
             img{
                 display: block;
@@ -17,26 +15,107 @@
                 object-fit: cover;
             }
         }
-
-
-        .swiper-button-next {
-            right: 30px;
-
-            @include breakpoint-414 {
-                right: 10px;
+        .product_banner_next {
+            width: 130px;
+            height: 665px;
+            position: absolute;
+            top:0;
+            right: 0;
+            cursor: pointer;
+            z-index:100;
+            @include breakpoint-1440{
+                width: 80px;
+                height: 500px;
+            }
+            @include breakpoint-414{
+                width: 40px;
+                height: 161px;
+            };        
+            &:hover {
+                background-image: linear-gradient(to left, #767676, rgba(#d9d9d9, 0));
+                i{
+                    color: $orange;
+                }
             }
 
-            ;
+            i {
+                padding: 0;
+                color: $white;
+                font-size: 80px;
+                position: absolute;
+                top: 50%;
+                right: 10px;
+                transform: translateY(-50%);
+                @include breakpoint-1440{
+                    font-size: 60px;
+                }
+
+                @include breakpoint-414{
+                    font-size: 30px;
+                    right: 5px;
+                }
+                &:hover {
+                    color: $orange;
+                }
+            }            
         }
 
-        .swiper-button-prev {
-            left: 30px;
-
-            @include breakpoint-414 {
-                left: 10px;
+        .product_banner_prev {
+            width: 130px;
+            height: 665px;
+            position: absolute;
+            top:0;
+            left: 0;
+            cursor: pointer;
+            z-index:100;           
+            @include breakpoint-1440{
+                width: 80px;
+                height: 500px;
+            }
+            @include breakpoint-414{
+                width: 40px;
+                height: 161px;
+            }
+            &:hover {
+                background-image: linear-gradient(to right, #767676, rgba(#d9d9d9, 0));
+                i{
+                    color: $orange;
+                }
             }
 
-            ;
+            i {
+                padding: 0;
+                color: $white;
+                font-size: 80px;
+                position: absolute;
+                top: 50%;
+                left: 10px;
+                transform: translateY(-50%);
+                @include breakpoint-1440{
+                    font-size: 60px;
+                }
+                @include breakpoint-414{
+                    font-size: 30px;
+                    left: 5px;
+                }
+                &:hover {
+                    color: $orange;
+                }
+            }
+        }
+
+        .swiper-pagination{
+            --swiper-navigation-size: 60px;
+            --swiper-theme-color: #FF6300;
+            --swiper-pagination-bottom: 40px;
+            @include breakpoint-1440{
+                --swiper-navigation-size: 40px;
+                --swiper-pagination-bottom: 20px;
+            }
+            @include breakpoint-414 {
+                --swiper-navigation-size: 30px;
+                --swiper-pagination-bottom: 10px;
+            }
         }
 
         .swiper-slide {
@@ -497,8 +576,15 @@
 
                     }
                     .each_good {
-                        margin-bottom: 50px;
+                        margin-bottom: 50px;   
+                        transition: all ease-in-out .5s;
 
+                        &:hover{
+                            transform: translateY(-2%);
+                            transition: all ease-in-out .5s;                                                       
+                                                              
+                        } 
+                        
                         @include breakpoint-414 {
                             width: 48%;
                             margin-bottom: 30px;
@@ -510,9 +596,12 @@
                             height: 350px;
                             position: relative;
                             background-position: center center;
-                            background-size: cover;
+                            background-size: cover;      
                             
 
+                                               
+
+                            
                             @include breakpoint-414 {
                                 height: 240px;
                             }
@@ -636,28 +725,6 @@
 
 }
 
-:root {
-
-    --swiper-navigation-size: 60px;
-    // --swiper-navigation-color:gray;
-    --swiper-theme-color: orange;
-
-    @include breakpoint-414 {
-        --swiper-navigation-size: 30px;
-
-    }
-}
-
-.swiper-horizontal>.swiper-pagination-bullets,
-.swiper-pagination-bullets.swiper-pagination-horizontal,
-.swiper-pagination-custom,
-.swiper-pagination-fraction {
-    bottom: var(--swiper-pagination-bottom, 40px);
-
-    @include breakpoint-414 {
-        --swiper-pagination-bottom: 10px;
-    }
-}
 
 .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet,
 .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
