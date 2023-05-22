@@ -28,6 +28,10 @@
             }
         }
     }
+
+    .back{
+        display: none;
+    }
 }
     .right{
         display: none;
@@ -482,14 +486,26 @@
     }
 
     @include breakpoint-414 {
-
+        .left{
         ul.select{
            margin-bottom: 40px;
            li{
             .right_icon{
+                display: block;
                 float: right;
             }
            }
+        }
+        }
+        .back{
+            display: block;
+            color: $orange;
+            margin: 50px 0 20px;
+            font-size: 3.5rem;
+            display: none;
+            &:hover{
+                color: $white;
+            }
         }
         .right{
             .member_info{
