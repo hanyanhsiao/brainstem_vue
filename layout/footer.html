@@ -148,30 +148,4 @@ backToTopButton.addEventListener("click", () => {
   backToTopButton.style.display = "none";
 });
 
-        if (window.pageYOffset > 0) {
-            backToTopButton.style.display = "block";
-        } else {
-            backToTopButton.style.display = "none";
-        }
-        // console.log(footer.clientTop);
-
-        if (window.pageYOffset + window.innerHeight >= footer.top) {
-            backToTopButton.style.position = "absolute";
-            backToTopButton.style.right = `${footer.offsetWidth - backToTopButton.offsetWidth
-                }px`;
-            backToTopButton.style.bottom = `${footer.offsetHeight + 15}px`;
-        } else {
-            backToTopButton.style.position = "fixed";
-            backToTopButton.style.right = "-15px";
-            backToTopButton.style.bottom = "15px";
-        }
-    
-
-    backToTopButton.addEventListener("click", () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-        });
-    });
-
 </script>
