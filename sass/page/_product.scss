@@ -593,23 +593,26 @@
                         ;
 
                         .goods_top {
-                            height: 350px;
+                            // height: 350px;
+                            // width: 100%;
                             position: relative;
-                            background-position: center center;
-                            background-size: cover;      
-                            
-
-                                               
-
+                            // background-position: center center;
+                            // background-size: cover;     
                             
                             @include breakpoint-414 {
                                 height: 240px;
                             }
-                            
+                            img{
+                                // object-fit: cover;
+                                width: 100%;
+                                display: block;
+                            }
 
                             .discount {
                                 border-radius: 0;
                                 position: absolute;
+                                top: 0;
+                                left: 0;
                                 font-size: $h3;
                                 padding: 10px 20px;
 
@@ -667,6 +670,7 @@
                             }
                         }
                     }
+                    
 
                     .each_good:nth-child(4n) {
                         margin-right: 0;
