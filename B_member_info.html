@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brainstem | 會員管理</title>
+    <title>Brainstem | 會員資訊</title>
     @@include('./layout/style.html')
-    <link rel="shortcut icon" type="image/png" href="./pic/img/LOGO/LOGO.png">
 </head>
 
 <body class="B">
@@ -27,7 +26,8 @@
                 <form action="" method="">
                     <div class="B_button">
                         <h4>會員資料</h4>
-                        <button class="btn">修改內容</button>
+                        <button class="btn" id="button"
+                            onclick="toggleEditSave(this); event.preventDefault();">修改內容</button>
                     </div>
                     <ul>
                         <li>
@@ -46,15 +46,15 @@
                             <label for="name">
                                 <h6>使用者名稱</h6>
                             </label>
-                            <input type="text" name="" id="name" value="剪刀布">
+                            <h6 id="content1">剪刀布</h6>
                         </li>
                         <li class="B_grid_four">
                             <label for="phone">
                                 <h6>電話號碼</h6>
                             </label>
-                            <input type="text" name="" id="phone" value="0900123456">
+                            <h6 id="content2">0900123456</h6>
                             <h6>電話號碼是否驗證通過：是</h6>
-                            <button class="btn">重新送驗證碼</button>
+                            <button class="btn" onclick="">重新送驗證碼</button>
                         </li>
                         <li>
                             <h6>註冊日期</h6>
@@ -79,101 +79,135 @@
                             <h6 class="col-2">購買日期</h6>
                             <h6 class="col-2">購買金額</h6>
                         </li>
-                        <li>
-                            <i class="bi bi-dash-lg col-1"></i>
-                            <h6 class="col-7">ak4l79e3k68sly</h6>
-                            <h6 class="col-2">2023/1/15</h6>
-                            <h6 class="col-2">$2,798</h6>
-                        </li>
-                        <div class="B-shopitem">
-                            <ul>
-                                <li>
-                                    <img src="./pic/img/cover/7.jpg" alt="">
-                                    <h6 class="col-8">遊戲名稱</h6>
-                                    <h6 class="col-2">$1,399</h6>
-                                </li>
-                                <li>
-                                    <img src="./pic/img/cover/7.jpg" alt="">
-                                    <h6 class="col-8">遊戲名稱</h6>
-                                    <h6 class="col-2">$1,399</h6>
-                                </li>
-                            </ul>
-                        </div>
-                        <li>
-                            <i class="bi bi-plus-lg col-1"></i>
-                            <h6 class="col-7">ak4l79e3k68sly</h6>
-                            <h6 class="col-2">2023/1/15</h6>
-                            <h6 class="col-2">$2,798</h6>
-                        </li>
                     </ul>
-                </div>
-                <!-- <div class="right_down">
-                    <ul class="B_accordion">
-                        <li>
-                            <h6 class="col-8">訂單編號</h6>
-                            <h6 class="col-2">購買日期</h6>
-                            <h6 class="col-2">購買金額</h6>
-                        </li>
-                        <li class="B_accordion-item">
-                            <i class="bi bi-dash-lg col-1"></i>
-                            <h6 class="col-7">ak4l79e3k68sly</h6>
-                            <h6 class="col-2">2023/1/15</h6>
-                            <h6 class="col-2">$2,798</h6>
-                            <div class="B-shopitem">
+                    <div class="B_accordion">
+                        <div class="B_accordion-item">
+                            <div class="B_accordion-header">
+                                <i class="bi-plus-lg col-1"></i>
+                                <h6 class="col-7">ak4l79e3k68sly</h6>
+                                <h6 class="col-2">2023/1/15</h6>
+                                <h6 class="col-2">$2,798</h6>
+                            </div>
+                            <div class="B_accordion-content B-shopitem">
                                 <ul>
                                     <li>
-                                        <img src="./pic/img/cover/7.jpg" alt="">
-                                        <h6 class="col-8">遊戲名稱</h6>
+                                        <img class="" src="./pic/img/cover/7.jpg" alt="">
+                                        <h6 class="col-9">遊戲名稱</h6>
                                         <h6 class="col-2">$1,399</h6>
                                     </li>
                                     <li>
                                         <img src="./pic/img/cover/7.jpg" alt="">
-                                        <h6 class="col-8">遊戲名稱</h6>
+                                        <h6 class="col-9">遊戲名稱</h6>
                                         <h6 class="col-2">$1,399</h6>
                                     </li>
                                 </ul>
                             </div>
-
-                        <li class="B_accordion-item">
-                            <i class="bi bi-plus-lg col-1"></i>
-                            <h6 class="col-7">ak4l79e3k68sly</h6>
-                            <h6 class="col-2">2023/1/15</h6>
-                            <h6 class="col-2">$2,798</h6>
-                        </li>
-                    </ul>
-                </div> -->
-
+                        </div>
+                        <div class="B_accordion-item">
+                            <div class="B_accordion-header">
+                                <i class="bi-plus-lg col-1"></i>
+                                <h6 class="col-7">ak4l79e3k68sly</h6>
+                                <h6 class="col-2">2023/1/15</h6>
+                                <h6 class="col-2">$2,798</h6>
+                            </div>
+                            <div class="B_accordion-content B-shopitem">
+                                <ul>
+                                    <li>
+                                        <img src="./pic/img/cover/7.jpg" alt="">
+                                        <h6 class="col-9">遊戲名稱</h6>
+                                        <h6 class="col-2">$1,399</h6>
+                                    </li>
+                                    <li>
+                                        <img src="./pic/img/cover/7.jpg" alt="">
+                                        <h6 class="col-9">遊戲名稱</h6>
+                                        <h6 class="col-2">$1,399</h6>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="B_accordion-item">
+                            <div class="B_accordion-header">
+                                <i class="bi-plus-lg col-1"></i>
+                                <h6 class="col-7">ak4l79e3k68sly</h6>
+                                <h6 class="col-2">2023/1/15</h6>
+                                <h6 class="col-2">$2,798</h6>
+                            </div>
+                            <div class="B_accordion-content B-shopitem">
+                                <ul>
+                                    <li>
+                                        <img src="./pic/img/cover/7.jpg" alt="">
+                                        <h6 class="col-9">遊戲名稱</h6>
+                                        <h6 class="col-2">$1,399</h6>
+                                    </li>
+                                    <li>
+                                        <img src="./pic/img/cover/7.jpg" alt="">
+                                        <h6 class="col-9">遊戲名稱</h6>
+                                        <h6 class="col-2">$1,399</h6>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- 分頁 -->
             @@include('./layout/B_changepage.html')
         </div>
     </main>
+    @@include('./layout/js.html')
     <script>
+        //alert密碼
         function password() {
             // alert("默認密碼aaaa8888")
         }
-    </script>
-    <script>
-        // 获取所有手风琴项
-        const accordionItems = document.querySelectorAll('.right_down .B_accordion-item');
-
-        // 为每个手风琴项添加点击事件
-        accordionItems.forEach(item => {
-            item.addEventListener('click', () => {
-                // 切换当前手风琴项的状态
-                item.classList.toggle('active');
-
-                // 获取当前手风琴项下的内容项
-                const content = item.querySelector('.B-shopitem');
-
-                // 切换内容项的显示状态
-                if (content.style.display == 'block') {
-                    content.style.display = 'none';
-                } else {
-                    content.style.display = 'block';
-                }
+        //手風琴
+        $(function () {
+            $('.B_accordion-content').slideUp();
+            $('.B_accordion-header').click(function () {
+                $('.B_accordion-header').removeClass('active');
+                let icon = $(this).find('i');
+                icon.toggleClass('bi-plus-lg bi-dash-lg');
+                $(this).next().slideToggle();
             });
-        });
+        })
+        // 點擊button修改
+        function toggleEditSave(button) {
+            let element1 = document.getElementById("content1");
+            let element2 = document.getElementById("content2");
+
+            if (button.innerHTML === "修改內容") {
+                // name
+                let input1 = document.createElement("input");
+                input1.type = "text";
+                input1.id = "name";
+                input1.value = element1.innerHTML;
+                element1.innerHTML = "";
+                element1.appendChild(input1);
+
+                // phone
+                let input2 = document.createElement("input");
+                input2.type = "text";
+                input2.id = "phone";
+                input2.value = element2.innerHTML;
+                element2.innerHTML = "";
+                element2.appendChild(input2);
+
+                button.innerHTML = "儲存";
+            } else {
+                // 取输入框的值
+                let input1 = element1.querySelector("input");
+                let input2 = element2.querySelector("input");
+                let newValue1 = input1.value;
+                let newValue2 = input2.value;
+
+                // 更新内容
+                element1.innerHTML = newValue1;
+                element2.innerHTML = newValue2;
+
+                button.innerHTML = "修改內容";
+            }
+        }
+    </script>
     </script>
 </body>
 
