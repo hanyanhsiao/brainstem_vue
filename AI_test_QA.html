@@ -51,15 +51,11 @@
 
     </main>
     <!-- javascript -->
-
     <script src="./js/particles.js"></script>
     <script src="./js/app.js"></script>
     <script src="./vendors/vue/vue.global.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.6/axios.min.js"
         integrity="sha512-06NZg89vaTNvnFgFTqi/dJKFadQ6FIglD6Yg1HHWAUtVFFoXli9BZL4q4EO1UTKpOfCfW5ws2Z6gw49Swsilsg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
-        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         Vue.createApp({
@@ -121,6 +117,7 @@
                     this.answer.push(gameType);
                     // this.answer[gameType - 1]++;
                 },
+                // 票數計算
                 guessrGameType() {
                     // 初始值都0票
                     let type = [0, 0, 0, 0];
@@ -133,7 +130,7 @@
 
                         //類型票數加總
                         type[i - 1]++;
-                        console.log(this.answer);
+                        // console.log(this.answer);
                         // console.log(type);
 
                         //取出最高票
@@ -146,7 +143,7 @@
 
                         //取得遊戲類型
                         let resultsType = maxIndex + 1;
-                        console.log(resultsType);
+                        // console.log(resultsType);
 
                         //存入localStorage
                         localStorage.setItem("options", JSON.stringify(resultsType));
@@ -159,7 +156,7 @@
                     .then((response) => {
                         // console.log(response.data);
                         this.allQuizs = response.data;
-                        console.log(this.allQuizs);
+                        // console.log(this.allQuizs);
 
                         this.question_length = response.data.length;
                         // console.log(this.question_length);

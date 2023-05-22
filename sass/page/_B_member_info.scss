@@ -1,6 +1,5 @@
 .B_member_info {
     display: flex;
-
     .right {
         margin-top: 20px;
 
@@ -40,13 +39,16 @@
                         border-bottom: 1px solid black;
                         display: grid;
                         grid-template-columns: .8fr .8fr .8fr 1.6fr;
-                        label{
+
+                        label {
                             margin: auto 0;
                         }
-                        h6{
+
+                        h6 {
                             margin-left: 5px;
                         }
-                        input{
+
+                        input {
                             margin: auto;
                         }
                     }
@@ -54,6 +56,9 @@
                     .B_grid_four {
                         display: grid;
                         grid-template-columns: .8fr .8fr 1.6fr .8fr;
+                        :nth-child(3){
+                            margin-left: 10px;
+                        }
 
                         button {
                             width: 170px;
@@ -67,71 +72,59 @@
             .right_down {
                 width: 90%;
                 margin: 0 auto;
-
                 ul {
-                    // width: 100%;
                     li {
                         text-align: center;
                         border: 1px solid #000;
                         display: flex;
+                        margin-bottom: 50px;
+                    }
+                }
+                .B_accordion{
+                    margin-bottom: 50px;
+                    .B_accordion-item{
                         margin-bottom: 20px;
+                        .B_accordion-header{
+                            display: flex;
+                            text-align: center;
+                            border: 1px solid #000;
+                            .col-7{
+                                margin-left: -40px;
+                                margin-right: 60px;
+                            }
                         i {
                             font-size: 20px;
                             color: #000;
                             margin-right: 0px;
                         }
-                        :nth-child(2){
-                            text-align: left;
                         }
+                        .B_accordion-content {
+                            ul {
+                                margin-bottom: 20px;
+                                li {
+                                    margin: auto 0;
+                                    border-top: none;
+                                    img {
+                                        width: 14%;
+                                        margin-right: 5px;
+                                    }
+                                    h6 {
+                                        margin: auto 0;
+                                    }
+                                    :nth-child(2) {
+                                        text-align: left;
+                                    }
 
-                    }
-                    li:nth-child(2){
-                        h6:nth-child(4){
-                            margin-right: 0;
-                        }
-                    }
-
-                }
-                
-                .B-shopitem {
-                    // display: none;
-                    ul {
-                        margin-top: -20px;
-                        margin-bottom: 20px;
-                        
-                        li {
-                            margin: auto 0;
-                            border-top: none;
-                            img {
-                                width: 12%;
-                                margin-right: 25px;
-                            }
-                            h6{
-                                margin: auto 0;
-                            }
-                            :last-child{
-                                text-align: right;
+                                }
                             }
                         }
+                        .B_accordion-content .active {
+                            // display: block;
+                        }
                     }
-
-                }
-            }
-            .right_down>ul>li:first-child {
-                background-color: #e9e9e9;
-                text-align: center;
-                border: none;
-                border-bottom: 1px solid #000;
-                display: flex;
-                margin-bottom: 50px;
-                :nth-child(2){
-                    text-align: center;
                 }
             }
 
-            .right_down>ul:last-child {
-                margin-bottom: 50px;
-            }
         }
 
         .right_main>h6 {

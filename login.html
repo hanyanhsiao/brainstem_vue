@@ -8,28 +8,28 @@
     <title>Brainstem | 登入</title>
     @@include('./layout/style.html')
     <!-- 以下可以放自己的link -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/bootstrap-icons.min.css">
 </head>
 
 <body>
     <!-- header -->
     @@include('./layout/header.html')
     <main class="login">
-        <section class="login_block col-5">
+        <section class="login_block col-4">
             <div class="log_title">
-            <div class="logo"></div>
-            <h2>登入</h2>
+                <div class="logo"><img src="./pic/img/LOGO/WEB LOGO.png" alt=""></div>
+                <h2>登入</h2>
             </div>
             <form action="" class="margin">
                 <label for="account">帳號</label>
                 <input type="text" id="account" placeholder="請輸入帳號 或 電子信箱">
                 <label for="password">密碼</label>
                 <input type="password" id="password" placeholder="請輸入密碼">
-                <button type="submit" class="btn">登入</button>
+                <button type="submit" class="btn login_btn">登入</button>
             </form>
             <div class="flex margin">
                 <div class="forget"><a href="forget.html">忘記密碼</a></div>
                 <div class="register"><a href="register.html">建立新帳號</a></div>
+                <div class="member_center"><a href="member_center.html">會員中心</a></div>
             </div>
             <div class="quick_login margin">
                 <a class="FB_login" href="#">
@@ -37,14 +37,46 @@
                 </a>
                 <a class="Google_login" href="#">
                     <h3><i class="bi bi-google"></i>使用Google登入</h3>
-                </div>
-                </div>
+                </a>
+            </div>
+            <div id="buttonDiv" style="display: block;"></div>
+            </div>
+            <div class="suceesfully">
+                <i class="bi bi-check-lg"></i>
+                <h2>登入成功</h2>
+            </div>
+            </div>
         </section>
-
     </main>
+
+
     <!-- javascript -->
     @@include('./layout/js.html')
     <!-- 以下可以放自己的js -->
+    <script>
+        $(document).ready(function () {
+            let login = $('.login_btn');
+            let suceesfully = $('.suceesfully');
+            login.on('click', function () {
+                event.preventDefault();
+                suceesfully.css('display', 'flex');
+                setTimeout(function () {
+                    window.location.href = 'index.html';
+                }, 2000);
+            });
+        });
+
+    </script>
+
+
+    <!-- ===============google登入==================== -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.6/axios.min.js"
+        integrity="sha512-06NZg89vaTNvnFgFTqi/dJKFadQ6FIglD6Yg1HHWAUtVFFoXli9BZL4q4EO1UTKpOfCfW5ws2Z6gw49Swsilsg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./js/google_login.js"></script>
+
+    <!-- ===============google登入==================== -->
 
 </body>
 

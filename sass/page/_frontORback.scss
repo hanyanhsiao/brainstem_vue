@@ -3,16 +3,24 @@ body{
     max-width: 1920px;
     width: 100%;
     margin: 0 auto;
+    // background-image: none;
    
    
 
     .frontORback {
         max-width: 1920px;
         width: 100%;
-        height: 120vh;
+        height: 100vh;
         margin: 0 auto;
-        background-image: url(/pic/img/backend/bgc.png);
-        // background-size: 50%;
+        background-image: url(../pic/img/backend/bgc.png),linear-gradient(
+            174.31deg,
+            #030009 3.18%,
+            #160046 27.03%,
+            #180505 50.89%,
+            #4f1f00 98.6%
+        );
+        background-repeat: repeat repeat;
+        background-size: 100%;
         .wrapper{
             max-width: 1920px;
             width: 100%;
@@ -29,26 +37,29 @@ body{
                     @include breakpoint-1440 {
                         width: 15%;
                       }
+                    @include breakpoint-414 {
+                        width: 50%;
+                      }
                     
                 }
             }
             .btn1{
                 width:60%;
-
-                margin: 50px auto 0;
+                // margin: 0px auto 0;
                 display: flex;
                 flex-grow: 1;
                 justify-content: space-between;
                 margin: 0 auto;
-                margin-top: 30px;
+                margin-top: 100px;
+                // background-color: #ff620031;
                 .container{
-                    outline: none;
+                    width: 100%;
+                    // outline: 1px solid red;
                     margin: 0 auto;
-                    padding: 20px;
+                    // padding: 20px;
                     box-sizing: border-box;
-                    // display: none;
                     .a{
-                        width: 40%;
+                        width: 100%;
                         width: 324px;
                         height: 324px;
                         display: block;
@@ -56,9 +67,14 @@ body{
                         border: 5px solid #FF6300 ;
                         transition: all ease-in-out .6s;
                         border-radius: 50%;
+                        margin: 0 auto;
                         @include breakpoint-1440 {
-                            width: 280px;
-                            height: 280px;
+                            width: 480px;
+                            height: 480px;
+                          }
+                        @include breakpoint-1440 {
+                            width: 180px;
+                            height: 180px;
                           }
                         
                         
@@ -85,6 +101,9 @@ body{
                             transition: all ease-in-out .6s;
                             align-items: center;
                             cursor: pointer;
+                            @include breakpoint-1440 {
+                                margin-top: 40px;
+                              }
                             .chin{
                                 font-size: 8rem;
                                 color: white;
@@ -92,7 +111,12 @@ body{
                                 font-weight: bold;
                                 cursor: pointer;
                                 @include breakpoint-1440 {
-                                    font-size: 50px;
+                                    font-size: 60px;
+                                  }
+                                @include breakpoint-414 {
+                                    font-size: 60px;
+                                    // border: 1px solid red;
+                                    // margin-bottom: 50px;
                                   }
                                 
                             }
@@ -100,8 +124,8 @@ body{
                                 font-size: $h1;
                                 cursor: pointer;
                                 @include breakpoint-1440 {
-
-                                    font-size: 30px;
+                                    padding: 10px 0;
+                                    font-size: 20px;
                                   }
                             }
                             
@@ -115,10 +139,15 @@ body{
                         display: block;
                         transition: all ease-in-out .6s;
                         border-radius: 50%;
+                        margin: 0 auto;
                         @include breakpoint-1440 {
                             width: 280px;
                             height: 280px;
                             font-size: 100px;
+                          }
+                        @include breakpoint-1440 {
+                            width: 180px;
+                            height: 180px;
                           }
 
                         background-color: rgba(0, 0, 0, 0.742);
@@ -147,6 +176,9 @@ body{
                             text-align: center;
                             margin-top: 100px;
                             transition: all ease-in-out .6s;
+                            @include breakpoint-1440 {
+                                margin-top: 40px;
+                              }
                             >.chin{
                                 font-size: 8rem;
                                 color: white;
@@ -154,14 +186,20 @@ body{
                                 font-weight: bold;
                                 cursor: pointer;
                                 @include breakpoint-1440 {
-                                    font-size: 50px;
+                                    font-size: 60px;
+                                  }
+                                @include breakpoint-414 {
+                                    font-size: 60px;
+                                    // border: 1px solid red;
+                                    // margin-bottom: 50px;
                                   }
                             }
                             .eng{
                                 font-size: $h1;
+                                padding: 10px 0;
                                 cursor: pointer;
                                 @include breakpoint-1440 {
-                                    font-size: 30px;
+                                    font-size: 20px;
                                   }
                             }
                         }
@@ -175,3 +213,165 @@ body{
 
 }
 
+@media screen and (max-width: 414px) {
+    .frontORback{
+        max-width: 414px;
+        width: 100%;
+        .wrapper{
+            width: 100%;
+            // margin-top: 50px;
+            .logo{
+                // margin: 50px auto 0;
+                // outline: 1px solid red;
+                width: 100%;
+                padding-top: 30px;
+                img{
+                    width: 100%;
+                }
+            }
+            .btn1{
+                width:100%;
+                // outline: 5px solid blue;
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+                justify-content: space-between;
+                // padding-top: 50px;
+                transform: translateY(-50px);
+                .container{
+                    margin: 0 auto;
+                    padding: 20px;
+                    box-sizing: border-box;
+                    // display: none;
+                    .a{
+                        width: 100%;
+                        // width: 124px;
+                        // height: 124px;
+                        display: block;
+                        background-color: rgba(0, 0, 0, 0.742);
+                        border: 5px solid #FF6300 ;
+                        transition: all ease-in-out .6s;
+                        border-radius: 50%;
+                        position: relative;
+                        &:hover{
+                            background-color: #f8850195;
+                            border-color: #FFC581;
+                            box-shadow:  0 0 20px 10px rgb(255, 162, 2);
+                            transition: all ease-in-out .6s;
+                           
+                        }
+                        
+                        &:hover>a{
+                            transform: scale(1.2);
+                            transition: all ease-in-out .6s;
+                            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+                        }
+            
+                        >a{ 
+                            width: 100%;
+                            display: block;
+                            text-decoration: none;
+                            text-align: center;
+                            margin-top: none;
+                            transition: all ease-in-out .6s;
+                            align-items: center;
+                            cursor: pointer;
+                            // background-color: #C9A0FF;
+                            position: absolute;
+                            top: 0px;
+                            left: -5px;
+                           
+                            .chin{
+                                font-size: 8rem;
+                                color: white;
+                                font-family: Inter;
+                                font-weight: bold;
+                                cursor: pointer;
+                                @include breakpoint-1440 {
+                                    font-size: 60px;
+                                  }
+                                
+                            }
+                            .eng{
+                                font-size: $h1;
+                                cursor: pointer;
+                                @include breakpoint-1440 {
+                                    padding: 10px 0;
+                                    font-size: 20px;
+                                  }
+                            }
+                            
+                        }
+                        
+                    }
+                    .b{
+                        width: 40%;
+                        width: 324px;
+                        height: 324px;
+                        display: block;
+                        transition: all ease-in-out .6s;
+                        border-radius: 50%;
+                        position: relative;
+                        @include breakpoint-1440 {
+                            width: 280px;
+                            height: 280px;
+                            font-size: 100px;
+                          }
+
+                        background-color: rgba(0, 0, 0, 0.742);
+                        border: 5px solid $purple ;
+           
+                        &:hover{
+                            background-color: #0c1ab7b7;
+                            border-color: #C9A0FF;
+                            // text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+                            box-shadow:  0 0 20px 10px rgb(23, 2, 255);
+                            // transform: scale(1.05);
+                            transition: all ease-in-out .6s;
+                            cursor: pointer;
+                        }
+                        &:hover >a{
+                            transform: scale(1.2);
+                            transition: all ease-in-out .6s;
+                            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+                            cursor: pointer;
+                            
+                        }
+            
+                        >a{
+                            width: 100%;
+                            display: block;
+                            text-decoration: none;
+                            text-align: center;
+                            margin-top: 100px;
+                            transition: all ease-in-out .6s;
+                            position: absolute;
+                            // outline: 1px solid tomato;
+                            top: 0px;
+                            right: -5px;
+                            >.chin{
+                                font-size: 8rem;
+                                color: white;
+                                font-family: Inter;
+                                font-weight: bold;
+                                cursor: pointer;
+                                @include breakpoint-1440 {
+                                    font-size: 60px;
+                                  }
+                            }
+                            .eng{
+                                font-size: $h1;
+                                padding: 10px 0;
+                                cursor: pointer;
+                                @include breakpoint-1440 {
+                                    font-size: 20px;
+                                  }
+                            }
+                        }
+                    }
+                }
+                }
+
+        }
+    }
+}

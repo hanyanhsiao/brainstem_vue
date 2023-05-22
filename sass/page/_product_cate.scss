@@ -6,7 +6,7 @@
         box-sizing: border-box;
         margin-top: 50px;
         height: 320px;
-        background-color: #01072B;
+        background-color: $purple_dark;
         border: 2px solid black;
         @include breakpoint-414{
             height: 200px;
@@ -22,6 +22,9 @@
             }
 
             img{
+                @include breakpoint-1440{
+                    width: 130px;
+                }
                 @include breakpoint-414{
                     width: 100px;
                 }
@@ -30,6 +33,9 @@
                 font-size: 10rem;
                 padding-left: 30px;
                 letter-spacing: 10px;
+                @include breakpoint-1440{
+                    font-size: 8rem;
+                }
                 @include breakpoint-414{
                     font-size: 40px;
                     padding-left: 0;
@@ -83,22 +89,21 @@
                 font-size: 2.4rem;
                 overflow: hidden;
                 display: none;
-                padding-bottom: 20px;
-                
+                padding-bottom: 20px; 
+                padding-top: 10px;             
 
                 @include breakpoint-414{
                     font-size: 18px;
                     padding-top: 50px;
                 }
-
                 &.show {
                     display: block;
                 }
-
                 .clear {
                     font-size: 1.8rem;
                     color: #797676;
                     float: right;
+                    cursor: pointer;
 
                     &:hover {
                         color: $orange;
@@ -118,6 +123,7 @@
                     border-radius: 20px;
                     margin-right: 1.5rem;
                     margin-bottom: 1.5rem;
+                    cursor: pointer;
 
                     i {
                         font-size: 15px;
@@ -216,15 +222,14 @@
                         }
                     }
 
-                    .price {
+                    .price_range {
                         @include flex-container(row, nowrap, space-around, center);
-
-                        label {
-                            font-size: 1.6rem;
-                            display: inline-block;
-                            // padding-left: 20px;
+                    
+                        span {
+                            font-size: 1.8rem;
                             margin: 0;
                             vertical-align: middle;
+                            letter-spacing: 4px;
                         }
 
                         .form-control {
@@ -297,6 +302,7 @@
                         padding: 10px;
                         width: 230px;
                         font-size: 2rem;
+                        border: 1px solid transparent;
                         cursor: pointer;
 
                         @include breakpoint-414 {
@@ -333,7 +339,7 @@
                         right: 0;
                         width: 210px;
                         padding: 20px;
-                        margin-top: 60px;
+                        margin-top: 50px;
                         border-radius: 8px;
                         background: #202020;
                         z-index: 10;
@@ -376,16 +382,28 @@
             }
 
             .product_goods {
-                @include flex-container(row, wrap, space-between, center);
+                @include flex-container(row, wrap, start, flex-start);
+
+                @include breakpoint-414{
+                    @include flex-container(row, wrap, space-between, flex-start);
+
+                    }
 
                 .each_good {
                     margin-bottom: 50px;
+                    transition: all ease-in-out .5s;
+
+                    &:hover{
+                        transform: translateY(-2%);
+                        transition: all ease-in-out .5s;                                                       
+                                                              
+                    }
 
                     @include breakpoint-414 {
                         width: 48%;
                         margin-bottom: 30px;
                     }
-
+                    
                     ;
 
                     .goods_top {
@@ -393,10 +411,12 @@
                         position: relative;
                         background-position: center center;
                         background-size: cover;
+                        
 
                         @include breakpoint-414 {
                             height: 240px;
                         }
+                        
 
                         .discount {
                             border-radius: 0;
@@ -412,11 +432,14 @@
 
                         i {
                             position: absolute;
-                            // border: 1px solid red;
                             color: red;
                             right: 10px;
                             top: 10px;
                             font-size: 30px;
+                            cursor: pointer;
+                            &:hover{
+                            text-shadow: 1px 1px 2px black;
+                            }
 
                             @include breakpoint-414 {
                                 font-size: 20px;
@@ -428,6 +451,7 @@
 
                     .goods_text {
                         padding-bottom: 10px;
+                        pointer-events: none;
 
                         h3 {
                             padding: 20px 0;

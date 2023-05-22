@@ -1,42 +1,121 @@
 .product {
     color: $white;
-    position: relative;
-
-    .swiper {
-        // width: 100%;
-        // height: 100%;
+    position: relative;    
+    .productBanner {
         margin-top: 45px;
+        position: relative;
         .swiper-slide{
             @include breakpoint-414{
-            height: 162px;
+            height: 161px;
             }
             img{
                 display: block;
-                width: 100%;
-                height: 100%;
+                // width: 100%;
+                // height: 100%;
                 object-fit: cover;
             }
         }
-
-
-        .swiper-button-next {
-            right: 30px;
-
-            @include breakpoint-414 {
-                right: 10px;
+        .product_banner_next {
+            width: 130px;
+            height: 665px;
+            position: absolute;
+            top:0;
+            right: 0;
+            cursor: pointer;
+            z-index:100;
+            @include breakpoint-1440{
+                width: 80px;
+                height: 500px;
+            }
+            @include breakpoint-414{
+                width: 40px;
+                height: 161px;
+            };        
+            &:hover {
+                background-image: linear-gradient(to left, #767676, rgba(#d9d9d9, 0));
+                i{
+                    color: $orange;
+                }
             }
 
-            ;
+            i {
+                padding: 0;
+                color: $white;
+                font-size: 80px;
+                position: absolute;
+                top: 50%;
+                right: 10px;
+                transform: translateY(-50%);
+                @include breakpoint-1440{
+                    font-size: 60px;
+                }
+
+                @include breakpoint-414{
+                    font-size: 30px;
+                    right: 5px;
+                }
+                &:hover {
+                    color: $orange;
+                }
+            }            
         }
 
-        .swiper-button-prev {
-            left: 30px;
-
-            @include breakpoint-414 {
-                left: 10px;
+        .product_banner_prev {
+            width: 130px;
+            height: 665px;
+            position: absolute;
+            top:0;
+            left: 0;
+            cursor: pointer;
+            z-index:100;           
+            @include breakpoint-1440{
+                width: 80px;
+                height: 500px;
+            }
+            @include breakpoint-414{
+                width: 40px;
+                height: 161px;
+            }
+            &:hover {
+                background-image: linear-gradient(to right, #767676, rgba(#d9d9d9, 0));
+                i{
+                    color: $orange;
+                }
             }
 
-            ;
+            i {
+                padding: 0;
+                color: $white;
+                font-size: 80px;
+                position: absolute;
+                top: 50%;
+                left: 10px;
+                transform: translateY(-50%);
+                @include breakpoint-1440{
+                    font-size: 60px;
+                }
+                @include breakpoint-414{
+                    font-size: 30px;
+                    left: 5px;
+                }
+                &:hover {
+                    color: $orange;
+                }
+            }
+        }
+
+        .swiper-pagination{
+            --swiper-navigation-size: 60px;
+            --swiper-theme-color: #FF6300;
+            --swiper-pagination-bottom: 40px;
+            @include breakpoint-1440{
+                --swiper-navigation-size: 40px;
+                --swiper-pagination-bottom: 20px;
+            }
+            @include breakpoint-414 {
+                --swiper-navigation-size: 30px;
+                --swiper-pagination-bottom: 10px;
+            }
         }
 
         .swiper-slide {
@@ -99,22 +178,21 @@
                 font-size: 2.4rem;
                 overflow: hidden;
                 display: none;
-                padding-bottom: 20px;
-                
+                padding-bottom: 20px; 
+                padding-top: 10px;             
 
                 @include breakpoint-414{
                     font-size: 18px;
                     padding-top: 50px;
                 }
-
                 &.show {
                     display: block;
                 }
-
                 .clear {
                     font-size: 1.8rem;
                     color: #797676;
                     float: right;
+                    cursor: pointer;
 
                     &:hover {
                         color: $orange;
@@ -134,6 +212,7 @@
                     border-radius: 20px;
                     margin-right: 1.5rem;
                     margin-bottom: 1.5rem;
+                    cursor: pointer;
 
                     i {
                         font-size: 15px;
@@ -232,15 +311,14 @@
                         }
                     }
 
-                    .price {
+                    .price_range {
                         @include flex-container(row, nowrap, space-around, center);
-
-                        label {
-                            font-size: 1.6rem;
-                            display: inline-block;
-                            // padding-left: 20px;
+                    
+                        span {
+                            font-size: 1.8rem;
                             margin: 0;
                             vertical-align: middle;
+                            letter-spacing: 4px;
                         }
 
                         .form-control {
@@ -327,6 +405,9 @@
                         border: 1px solid $orange;
                         border-radius: 5px;
                         box-sizing: border-box;
+                        &:hover{
+                            background-color: $purple_dark;
+                        }
 
                         .hot_game_container {
                             position: absolute;
@@ -408,6 +489,7 @@
                             padding: 10px;
                             width: 230px;
                             font-size: 2rem;
+                            border: 1px solid transparent;
                             cursor: pointer;
 
                             @include breakpoint-414 {
@@ -444,7 +526,7 @@
                             right: 0;
                             width: 210px;
                             padding: 20px;
-                            margin-top: 60px;
+                            margin-top: 50px;
                             border-radius: 8px;
                             background: #202020;
                             z-index: 10;
@@ -487,27 +569,43 @@
                 }
 
                 .product_goods {
-                    @include flex-container(row, wrap, space-between, center);
+                    @include flex-container(row, wrap, start, flex-start);
 
+                    @include breakpoint-414{
+                    @include flex-container(row, wrap, space-between, flex-start);
+
+                    }
                     .each_good {
-                        margin-bottom: 50px;
+                        margin-bottom: 50px;   
+                        transition: all ease-in-out .5s;
 
+                        &:hover{
+                            transform: translateY(-2%);
+                            transition: all ease-in-out .5s;                                                       
+                                                              
+                        } 
+                        
                         @include breakpoint-414 {
                             width: 48%;
                             margin-bottom: 30px;
                         }
-
+                        
                         ;
 
                         .goods_top {
                             height: 350px;
                             position: relative;
                             background-position: center center;
-                            background-size: cover;
+                            background-size: cover;      
+                            
 
+                                               
+
+                            
                             @include breakpoint-414 {
                                 height: 240px;
                             }
+                            
 
                             .discount {
                                 border-radius: 0;
@@ -523,11 +621,14 @@
 
                             i {
                                 position: absolute;
-                                // border: 1px solid red;
                                 color: red;
                                 right: 10px;
                                 top: 10px;
                                 font-size: 30px;
+                                cursor: pointer;
+                                &:hover{
+                                text-shadow: 1px 1px 2px black;
+                                }
 
                                 @include breakpoint-414 {
                                     font-size: 20px;
@@ -539,6 +640,7 @@
 
                         .goods_text {
                             padding-bottom: 10px;
+                            pointer-events: none;
 
                             h3 {
                                 padding: 20px 0;
@@ -623,28 +725,6 @@
 
 }
 
-:root {
-
-    --swiper-navigation-size: 60px;
-    // --swiper-navigation-color:gray;
-    --swiper-theme-color: orange;
-
-    @include breakpoint-414 {
-        --swiper-navigation-size: 30px;
-
-    }
-}
-
-.swiper-horizontal>.swiper-pagination-bullets,
-.swiper-pagination-bullets.swiper-pagination-horizontal,
-.swiper-pagination-custom,
-.swiper-pagination-fraction {
-    bottom: var(--swiper-pagination-bottom, 20px);
-
-    @include breakpoint-414 {
-        --swiper-pagination-bottom: 10px;
-    }
-}
 
 .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet,
 .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {

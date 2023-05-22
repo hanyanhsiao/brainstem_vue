@@ -43,7 +43,7 @@
                             </li>
                             <li>
                                 <a href="./product.html">
-                                    <img src="./pic/img/product/demo/Rectangle 729.png" alt="" />
+                                    <img src="./pic/img/product/demo/729.jpg" alt="" />
                                     <div class="p">
                                         <p class="title">KINGDOM HEARTS III 王國之心3</p>
                                         <p class="price">¥9,680</p>
@@ -53,7 +53,7 @@
                             </li>
                             <li>
                                 <a href="./product.html">
-                                    <img src="./pic/img/product/demo/Rectangle 728.png" alt="" />
+                                    <img src="./pic/img/product/demo/728.jpg" alt="" />
                                     <div class="p">
                                         <p class="title">Rabi-Ribi 拉比哩比</p>
                                         <p class="price">¥2,700</p>
@@ -109,35 +109,15 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 <script>
     $(document).ready(function () {
-        $(".rwd-item").hide();
-        $(".r-item2").hide(); // 隱藏 .r-item2
-        $(".fafa").click(function () {
-            $(".rwd-item").slideToggle(500);
-        });
-
-        $("#right, .r-header").click(function () {
-            $(".r-item2").toggle(500)({ width: "toggle" }, 500);
-        });
-
-        $(".r-item2 a").css({
-            margin: 0,
-        });
-
-        $("body").css("overflow", "auto");
-        $(".r-item2 a").css("margin", "initial");
+        // $(".rwd-item").hide();
+        $('.toggle').click(function () {
+            $(this).toggleClass('active');
+            if ($(this).hasClass('active')) {
+                $('.rwd-item').slideDown();
+            } else {
+                $('.rwd-item').slideUp();
+            }
+        })
     });
 
-    $(function () {
-        let is_open = 0;
-        // 一開始讓選單縮上去
-        $(".sear").slideUp();
-        // 點擊menu後slidedown
-        $(".sear2").click(function () {
-            $(".sear").slideToggle(500);
-        });
-    });
-
-    $(".toggle").click(function () {
-        $(this).toggleClass("active");
-    });
 </script>
