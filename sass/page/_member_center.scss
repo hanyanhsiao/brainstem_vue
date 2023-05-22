@@ -1,4 +1,7 @@
 .member_center{
+    .back{
+        display: none;
+    }
     .btn{
         padding: 10px 20px;
     }
@@ -29,9 +32,7 @@
         }
     }
 
-    .back{
-        display: none;
-    }
+    
 }
     .right{
         display: none;
