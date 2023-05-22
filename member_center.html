@@ -23,6 +23,7 @@
             <li class=""><i class="ticket_icon "><img src="./pic/img/icon/ticke_iocn.png" alt=""></i>會員優惠券<i class="bi bi-chevron-right right_icon"></i></li>
         </ul>
     </section>
+    <i class="bi bi-arrow-left back"></i>
     <!-- 會員訂單 -->
     <section class="col-9 right -oon">
         <div class="describe">
@@ -392,6 +393,48 @@
         $('.open_btn').click(function() {
             $('.detail_order').slideToggle();
         });
+    </script>
+
+    <!-- RWD的NAV -->
+    <script>
+        function checkBreakpoint() {
+        // 使用媒體查詢檢查視窗寬度是否小於或等於414px
+        var mediaQuery = window.matchMedia("(max-width: 414px)");
+        let section = document.querySelectorAll("section.right");
+        let nav = document.querySelectorAll(".select li");
+        let nav_li = $(".select li");
+        let nav_box = $(".select");
+        let back = $(".back");
+            // 檢查媒體查詢的結果
+            if (mediaQuery.matches) {
+                section.forEach(function(element) {
+                    element.classList.remove('-oon');
+                });
+                nav.forEach(function(element) {
+                    element.classList.remove('-on');
+                });
+
+                nav_li.on('click', function(){
+                    nav_box.css('display','none');
+                    back.css('display','block');
+                });
+
+                back.on('click', function(){
+                    back.css('display','none');
+                    nav_box.css('display','block');
+                    section.forEach(function(element) {
+                    element.classList.remove('-oon');
+                     });
+                });
+            }
+            
+        }
+
+        // 監聽視窗大小變化事件
+        window.addEventListener("resize", checkBreakpoint);
+
+        // 在頁面載入時執行一次檢查
+        checkBreakpoint();
     </script>
 </body>
 
