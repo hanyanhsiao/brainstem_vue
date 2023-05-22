@@ -17,6 +17,9 @@
             padding-left: 20px;
             line-height: 80px;
             border-bottom: 1px solid $orange;
+            .right_icon{
+                display: none;
+            }
             .order_icon, .ticket_icon{
                 img{
                     width: 20px;
@@ -482,6 +485,11 @@
 
         ul.select{
            margin-bottom: 40px;
+           li{
+            .right_icon{
+                float: right;
+            }
+           }
         }
         .right{
             .member_info{
