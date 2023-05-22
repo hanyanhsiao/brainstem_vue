@@ -74,12 +74,14 @@
                         border-bottom: 1px solid #000;
                         cursor: pointer;
                         td {
-
+                            // cursor: pointer;
                             h6 {
                                 margin: auto 0;
                             }
                             p {
                                 line-height: 2;
+                                cursor: pointer;
+                                
                             }
 
                         }
@@ -102,6 +104,7 @@
                             }
                         }
                     }
+                   
                     tr:nth-last-child(1) {
                         border-bottom: none;
                     }

@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brainstem | 優惠券資訊</title>
+    <title>Brainstem | 優惠券資訊修改頁</title>
     @@include('./layout/style.html')
-    <link rel="shortcut icon" type="image/png" href="./pic/img/LOGO/LOGO.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 
 <body class="B">
@@ -44,9 +44,9 @@
                         </li>
                         <li class="B_grid_four">
                             <label for="couponSTART"><h6>優惠券開始時間</h6></label>
-                            <input type="date" name="" id="couponSTART">
+                            <input id="myDatePicker" type="date" name="" id="couponSTART" placeholder="年/月/日">
                             <label for="couponEND"><h6>優惠券結束時間</h6></label>
-                            <input type="date" name="" id="couponEND">
+                            <input id="myDatePicker" type="date" name="" id="couponEND" placeholder="年/月/日">
                         </li>
                         <li class="B_grid_three">
                             <label for="price"><h6>折扣類型</h6></label>
@@ -64,6 +64,15 @@
             </div>
         </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        //input
+        flatpickr("#myDatePicker", {
+          dateFormat: "Y/m/d",
+          minDate: "today",
+          theme: "light"
+        });
+      </script>
 </body>
 
 </html>
