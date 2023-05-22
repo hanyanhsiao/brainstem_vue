@@ -381,15 +381,22 @@
             }
 
             .product_goods {
-                @include flex-container(row, wrap, start, center);
+                @include flex-container(row, wrap, start, flex-start);
 
                 @include breakpoint-414{
-                    @include flex-container(row, wrap, space-between, center);
+                    @include flex-container(row, wrap, space-between, flex-start);
 
                     }
 
                 .each_good {
                     margin-bottom: 50px;
+                    transition: all ease-in-out .5s;
+
+                    &:hover{
+                        transform: translateY(-2%);
+                        transition: all ease-in-out .5s;                                                       
+                                                              
+                    }
 
                     @include breakpoint-414 {
                         width: 48%;

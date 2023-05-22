@@ -22,6 +22,9 @@
             }
 
             img{
+                @include breakpoint-1440{
+                    width: 130px;
+                }
                 @include breakpoint-414{
                     width: 100px;
                 }
@@ -30,6 +33,9 @@
                 font-size: 10rem;
                 padding-left: 30px;
                 letter-spacing: 10px;
+                @include breakpoint-1440{
+                    font-size: 8rem;
+                }
                 @include breakpoint-414{
                     font-size: 40px;
                     padding-left: 0;
@@ -376,15 +382,22 @@
             }
 
             .product_goods {
-                @include flex-container(row, wrap, start, center);
+                @include flex-container(row, wrap, start, flex-start);
 
                 @include breakpoint-414{
-                    @include flex-container(row, wrap, space-between, center);
+                    @include flex-container(row, wrap, space-between, flex-start);
 
                     }
 
                 .each_good {
                     margin-bottom: 50px;
+                    transition: all ease-in-out .5s;
+
+                    &:hover{
+                        transform: translateY(-2%);
+                        transition: all ease-in-out .5s;                                                       
+                                                              
+                    }
 
                     @include breakpoint-414 {
                         width: 48%;
