@@ -29,7 +29,7 @@ function handleCredentialResponse(response) {
 
     //首先拿到token码然后以点为分隔符转为数组
     let token = response.credential.split(".")
-    // console.log(token);
+    console.log(token);
 
     // 拿到第二段token也就是负载的那段 进行window.atob方法的 base64的解算，
     // 然后再用decodeURIComponent字符串解码方法 解析出字符串 然后再转成JSON对象
@@ -39,12 +39,12 @@ function handleCredentialResponse(response) {
     // console.log(str);
 
     let responsePayload = JSON.parse(decodeURIComponent(escape(window.atob(str))));
-    console.log("ID: " + responsePayload.sub);
-    console.log('Full Name: ' + responsePayload.name);
-    console.log('Given Name: ' + responsePayload.given_name);
-    console.log('Family Name: ' + responsePayload.family_name);
-    console.log("Image URL: " + responsePayload.picture);
-    console.log("Email: " + responsePayload.email);
+    // console.log("ID: " + responsePayload.sub);
+    // console.log('Full Name: ' + responsePayload.name);
+    // console.log('Given Name: ' + responsePayload.given_name);
+    // console.log('Family Name: ' + responsePayload.family_name);
+    // console.log("Image URL: " + responsePayload.picture);
+    // console.log("Email: " + responsePayload.email);
     let name = responsePayload.name;
     let email = responsePayload.email;
     doSubmit(name, email);
@@ -59,7 +59,7 @@ function doSubmit(name, email) {
         name: name
 
     }).then((response) => {
-        console.log("QQQ", response);
+        // console.log("QQQ", response);
     })
         .catch((error) => console.log(error))
 }
