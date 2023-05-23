@@ -507,13 +507,13 @@
                                     <img src="./pic/img/cover/13.jpg" alt="">
                                     <span class="discount">-40%</span>
                                     <i class="bi bi-suit-heart"></i>
+                                </div>                            
+                                <div class="goods_text">
+                                    <h3>閃耀滑雪場物語 (Shiny Ski Resort)</h3>
+                                    <span class="price">$103</span>
+                                    <span class="price_original">$172</span>
                                 </div>
                             </a>
-                            <div class="goods_text">
-                                <h3>閃耀滑雪場物語 (Shiny Ski Resort)</h3>
-                                <span class="price">$103</span>
-                                <span class="price_original">$172</span>
-                            </div>
                         </div>
                         <div class="each_good col-3 swiper-slide">
                             <a href="./product_information.html">
@@ -521,13 +521,13 @@
                                     <img src="./pic/img/cover/14.jpg" alt="">
                                     <span class="discount">-40%</span>
                                     <i class="bi bi-suit-heart"></i>
+                                </div>                            
+                                <div class="goods_text">
+                                    <h3>森林露營物語 (Forest Camp Story)</h3>
+                                    <span class="price">$103</span>
+                                    <span class="price_original">$172</span>
                                 </div>
                             </a>
-                            <div class="goods_text">
-                                <h3>森林露營物語 (Forest Camp Story)</h3>
-                                <span class="price">$103</span>
-                                <span class="price_original">$172</span>
-                            </div>
                         </div>
                         <div class="each_good col-3 swiper-slide">
                             <a href="./product_information.html">
@@ -535,13 +535,13 @@
                                     <img src="./pic/img/cover/15.jpg" alt="">
                                     <span class="discount">-40%</span>
                                     <i class="bi bi-suit-heart"></i>
+                                </div>                            
+                                <div class="goods_text">
+                                    <h3>百萬樂曲物語 (March to a Million)</h3>
+                                    <span class="price">$103</span>
+                                    <span class="price_original">$172</span>
                                 </div>
                             </a>
-                            <div class="goods_text">
-                                <h3>百萬樂曲物語 (March to a Million)</h3>
-                                <span class="price">$103</span>
-                                <span class="price_original">$172</span>
-                            </div>
                         </div>
                         <div class="each_good col-3 swiper-slide">
                             <a href="./product_information.html">
@@ -549,13 +549,13 @@
                                     <img src="./pic/img/cover/16.jpg" alt="">
                                     <span class="discount">-40%</span>
                                     <i class="bi bi-suit-heart"></i>
+                                </div>                            
+                                <div class="goods_text">
+                                    <h3>像素牧場物語 (8-Bit Farm)</h3>
+                                    <span class="price">$103</span>
+                                    <span class="price_original">$172</span>
                                 </div>
                             </a>
-                            <div class="goods_text">
-                                <h3>像素牧場物語 (8-Bit Farm)</h3>
-                                <span class="price">$103</span>
-                                <span class="price_original">$172</span>
-                            </div>
                         </div>
                         <div class="each_good col-3 swiper-slide">
                             <a href="./product_information.html">
@@ -563,13 +563,13 @@
                                     <img src="./pic/img/cover/17.jpg" alt="">
                                     <span class="discount">-40%</span>
                                     <i class="bi bi-suit-heart"></i>
+                                </div>                            
+                                <div class="goods_text">
+                                    <h3>豪華大郵輪物語 (World Cruise Story)</h3>
+                                    <span class="price">$103</span>
+                                    <span class="price_original">$172</span>
                                 </div>
                             </a>
-                            <div class="goods_text">
-                                <h3>豪華大郵輪物語 (World Cruise Story)</h3>
-                                <span class="price">$103</span>
-                                <span class="price_original">$172</span>
-                            </div>
                         </div>
                         <div class="each_good col-3 swiper-slide">
                             <a href="./product_information.html">
@@ -577,13 +577,21 @@
                                     <img src="./pic/img/cover/18.jpg" alt="">
                                     <span class="discount">-40%</span>
                                     <i class="bi bi-suit-heart"></i>
+                                </div>                            
+                                <div class="goods_text">
+                                    <h3>宇宙探險隊 (Epic Astro Story)</h3>
+                                    <span class="price">$103</span>
+                                    <span class="price_original">$172</span>
                                 </div>
                             </a>
-                            <div class="goods_text">
-                                <h3>宇宙探險隊 (Epic Astro Story)</h3>
-                                <span class="price">$103</span>
-                                <span class="price_original">$172</span>
-                            </div>
+                        </div>
+                        <div class="heart_popup">
+                            <i class="bi bi-check-circle"></i>
+                            <h2>已加入願望清單</h2>
+                        </div>      
+                        <div class="heart_remove">
+                            <i class="bi bi-trash"></i>
+                            <h2>已從願望清單移除</h2>
                         </div>
                     </div>
                 </div>
@@ -617,18 +625,19 @@
 
 
         //點擊評論彈出視窗設定===============================================================================
-        const clickComment = document.getElementsByClassName("each_comment")[0];
+        const clickComment = document.querySelectorAll(".each_comment");
               comment_popup_outer = document.getElementsByClassName("comment_popup_outer")[0];
               comment_popup_close = document.getElementsByClassName("comment_popup_close")[0];
-
-        clickComment.addEventListener("click", function () {
-            // console.log("ccc");
-            comment_popup_outer.classList.add("active");
-            comment_popup_close.addEventListener("click", function(e){
-                comment_popup_outer.classList.remove("active");
+        clickComment.forEach(function (comment) {
+            comment.addEventListener("click", function (e) {
+                console.log("ccc");
+                comment_popup_outer.classList.add("active");
+                comment_popup_close.addEventListener("click", function(e){
+                    comment_popup_outer.classList.remove("active");
+                    
+                });
                 
             });
-            
         });
 
         // 點擊查看更多============================================================================================
@@ -736,7 +745,7 @@
         //swiper
         $(document).ready(function () {
             var recommend = new Swiper(".recommend_game", {
-
+                loop: true,
                 navigation: {
                     nextEl: ".arrow_right",
                     prevEl: ".arrow_left",

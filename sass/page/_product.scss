@@ -570,7 +570,7 @@
 
                 .product_goods {
                     @include flex-container(row, wrap, start, flex-start);
-
+                    position: relative;
                     @include breakpoint-414{
                     @include flex-container(row, wrap, space-between, flex-start);
 
@@ -578,102 +578,148 @@
                     .each_good {
                         margin-bottom: 50px;   
                         transition: all ease-in-out .5s;
+                        
 
                         &:hover{
                             transform: translateY(-2%);
-                            transition: all ease-in-out .5s;                                                       
-                                                              
+                            transition: all ease-in-out .5s;  
+                            >a >.goods_top img{
+                                filter: brightness(55%);
+                            }   
+                            >a >.goods_text h3{
+                                color: orange;
+                            }                                                  
+                                                                
                         } 
-                        
+                            
                         @include breakpoint-414 {
                             width: 48%;
                             margin-bottom: 30px;
-                        }
-                        
-                        ;
-
-                        .goods_top {
-                            // height: 350px;
-                            // width: 100%;
-                            position: relative;
-                            // background-position: center center;
-                            // background-size: cover;     
+                        };
                             
-                            @include breakpoint-414 {
-                                height: 240px;
-                            }
-                            img{
-                                // object-fit: cover;
+                        a{
+                            padding: 0;
+                            .goods_top {
                                 width: 100%;
-                                display: block;
-                            }
+                                position: relative;
+                                
+                                img{
+                                    width: 100%;
+                                    object-fit: cover;
+                                    display: block;
+                                }
 
-                            .discount {
-                                border-radius: 0;
-                                position: absolute;
-                                top: 0;
-                                left: 0;
-                                font-size: $h3;
-                                padding: 10px 20px;
+                                .discount {
+                                    border-radius: 0;
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    font-size: $h3;
+                                    padding: 10px 20px;
 
-                                @include breakpoint-414 {
-                                    font-size: 16px;
-                                    padding: 5px 10px;
+                                    @include breakpoint-414 {
+                                        font-size: 16px;
+                                        padding: 5px 10px;
+                                    }
+                                }
+
+                                i {
+                                    position: absolute;
+                                    color: red;
+                                    right: 10px;
+                                    top: 10px;
+                                    font-size: 30px;
+                                    cursor: pointer;
+                                    &:hover{
+                                    text-shadow: 1px 1px 2px black;
+                                    }
+
+                                    @include breakpoint-414 {
+                                        font-size: 20px;
+                                        right: 5px;
+                                        top: 5px;
+                                    }
                                 }
                             }
 
-                            i {
-                                position: absolute;
-                                color: red;
-                                right: 10px;
-                                top: 10px;
-                                font-size: 30px;
-                                cursor: pointer;
-                                &:hover{
-                                text-shadow: 1px 1px 2px black;
+                            .goods_text {
+                                padding-bottom: 10px;
+                                pointer-events: none;
+
+                                h3 {
+                                    padding: 20px 0;
+
+                                    @include breakpoint-414 {
+                                        padding: 5px 0;
+                                        font-size: 16px;
+                                    }
                                 }
 
-                                @include breakpoint-414 {
-                                    font-size: 20px;
-                                    right: 5px;
-                                    top: 5px;
+                                .price {
+                                    padding-right: 20px;
+
+                                    @include breakpoint-414 {
+                                        font-size: 16px;
+                                        padding-right: 10px;
+                                    }
                                 }
-                            }
-                        }
 
-                        .goods_text {
-                            padding-bottom: 10px;
-                            pointer-events: none;
-
-                            h3 {
-                                padding: 20px 0;
-
-                                @include breakpoint-414 {
-                                    padding: 5px 0;
-                                    font-size: 16px;
+                                .price_original {
+                                    @include breakpoint-414 {
+                                        font-size: 14px;
+                                    }
                                 }
                             }
-
-                            .price {
-                                padding-right: 20px;
-
-                                @include breakpoint-414 {
-                                    font-size: 16px;
-                                    padding-right: 10px;
-                                }
-                            }
-
-                            .price_original {
-                                @include breakpoint-414 {
-                                    font-size: 14px;
-                                }
-                            }
-                        }
+                        }      
                     }
                     
 
                     .each_good:nth-child(4n) {
                         margin-right: 0;
+                    }
+                    .heart_popup, .heart_remove {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%) scale(1.2);
+                        max-width: 560px;
+                        width: 100%;
+                        padding: 50px;
+                        border-radius: 10px;
+                        background-color: rgb($color: #0d0d0d, $alpha: 0.8);
+                        @include flex-container(column, nowrap, center, center);
+                        opacity: 0;
+                        pointer-events: none;
+                        transition: all 0.3s ease;
+            
+                        &.active {
+                            opacity: 1;
+                            pointer-events: auto;
+                            transform: translate(-50%, -50%) scale(1);
+                        }
+            
+                        i {
+                            font-size: 225px;
+                            color: $green;
+                            @include breakpoint-414 {
+                                font-size: 150px;
+                            }
+                        }
+            
+                        h2 {
+                            padding: 50px;
+                            font-size: 4rem;
+            
+                            @include breakpoint-414 {
+                                font-size: 30px;
+                            }
+                        }
+                    }
+                    .heart_remove{
+                        i{
+                            color: red;
+                            font-size: 180px;
+                        }                        
                     }
                 }
 
