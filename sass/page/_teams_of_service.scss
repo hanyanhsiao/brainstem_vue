@@ -48,8 +48,10 @@ h2 {}
     padding: 10%;
 }
 
-p {
-    line-height: 1.5;
+.word p {
+    line-height: 1.8;
+    // border: 1px solid red;
+    font-size: 1.8rem;
 }
 
 
