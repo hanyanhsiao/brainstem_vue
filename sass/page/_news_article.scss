@@ -73,26 +73,18 @@
 
       .article_icon {}
 
-
     }
-
-
-    .return {
-
-      background-color: #6511E1;
-      padding: .5%;
-      // padding-right: 80%;
-      // align-self: self-end;
-      cursor: pointer;
-    }
-
-
-
-
-
   }
 
-
+  .return {
+    display: block;
+    font-size: 4rem;
+    border-radius: 10px;
+    margin: 0 auto;
+    background-color: #6511E1;
+    color: white;
+    cursor: pointer;
+  }
 
 
 
