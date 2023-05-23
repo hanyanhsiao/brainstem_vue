@@ -1,3 +1,39 @@
+.color-8 {
+    background-image: linear-gradient(to right, #01072B, #000e5a94, #260057, #7702e6);
+}
+
+.cube{
+    width: 48.5%;
+    margin: 10px 0;
+    outline: 1px solid $orange;
+    border-radius: 10px;
+    padding: 20px 0;
+    background-size: 300% 100%;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    &:hover {
+        background-position: none;
+        -webkit-transition: none;
+        transition: none;
+        outline: none;
+    }
+    a{  
+        img{
+            width: 60%;
+            display: block;
+            margin: 0 auto;
+            transition: all ease-in-out .6s;
+        }
+        &:hover>img{
+            transition: none;
+            transform: none;
+        }
+    }
+}
+
+
+
 .product {
     color: $white;
     position: relative;    
