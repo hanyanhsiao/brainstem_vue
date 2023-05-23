@@ -93,8 +93,8 @@
                     <ul>
                         <li>
                             <img src="./pic/img/about/002.png" class="people">
-                            <h2>張序亞_02</h2>
-                            <p class="about_text">職稱:組長</p>
+                            <h2>張序亞_02<br>
+                                職稱:組長</h2>
                             <p class="about_text">前期規劃:</p>
                             <p class="about_text">遊戲資料收集、整合</p>
                             <p class="about_text">前台介面:</p>
@@ -158,13 +158,12 @@
                             <p class="about_text">會員管理</p>
                             <p class="about_text">訂單管理</p>
                             <p class="about_text">遊戲管理</p>
-                            <p class="about_text">新聞管理</p>
                             <p class="about_text">優惠卷管理</p>
                         </li>
                         <li>
                             <img src="./pic/img/about/044.png" class="peoole">
-                            <h2>陳釮瀚_44</h2>
-                            <p >職稱:副組長</p>
+                            <h2>陳釮瀚_44<br>
+                                職稱:副組長</h2>
                             <p class="about_text">前期規劃:</p>
                             <p class="about_text">Wireframe製作</p>
                             <p class="about_text">Mockup製作</p>
@@ -421,25 +420,25 @@
 
 
         function openPage(evt, pageName) {
-           
+
             var i, page, tablinks;
 
 
-            
+
             page = document.getElementsByClassName("page");
             for (i = 0; i < page.length; i++) {
                 page[i].style.display = "none";
             }
 
 
-         
+
             tablinks = document.getElementsByClassName("tablinks");
             for (i = 0; i < tablinks.length; i++) {
                 tablinks[i].className = tablinks[i].className.replace(" active", "");
             }
 
 
-           
+
             document.getElementById(pageName).style.display = "block";
             evt.currentTarget.className += " active";
         }
@@ -454,10 +453,10 @@
         $(function () {
 
 
-          
+
             $('.accordion-header').click(function () {
 
-                
+
 
                 // 先移除所有折疊面板標題的 active class，隱藏所有折疊面板內容
                 $('.accordion-header').removeClass('active');
