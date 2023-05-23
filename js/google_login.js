@@ -47,7 +47,7 @@ function handleCredentialResponse(response) {
     console.log("Email: " + responsePayload.email);
     let name = responsePayload.name;
     let email = responsePayload.email;
-    doSubmit(name, email);
+    // doSubmit(name, email);
 }
 
 function doSubmit(name, email) {
