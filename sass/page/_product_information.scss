@@ -425,7 +425,6 @@
             i {
                 font-size: 225px;
                 color: $green;
-
                 @include breakpoint-414 {
                     font-size: 150px;
                 }
@@ -913,6 +912,7 @@
         border: 1px solid $orange;
         border-radius: 5px;
         margin-bottom: 140px;
+        position: relative;
 
         @include breakpoint-414 {
             border: 0;
@@ -923,7 +923,6 @@
 
         .recommend_range {
             margin: 0 auto;
-
             .recommend_title {
                 @include flex-container(row, nowrap, space-between, center);
                 padding-top: 60px;
@@ -964,7 +963,6 @@
             .recommend_game {
 
                 overflow: hidden;
-
                 .swiper-wrapper {
                     @include flex-container(row, nowrap, space-between, flex-start);
 
@@ -973,13 +971,23 @@
                 .each_good {
 
                     margin-bottom: 50px;
-                    
-
                     @include breakpoint-414 {
                         margin-bottom: 20px;
                     }
 
                     ;
+
+                    &:hover{
+
+                        .goods_top img{
+                            transform: scale(1.1);
+                            transition: all ease-in-out .5s;
+                            filter: brightness(55%);
+                        }
+                        .goods_text h3{
+                            color: orange;
+                        } 
+                    }
 
                     .goods_top {
                         position: relative;
@@ -989,11 +997,6 @@
                             max-height: 376px;
                             transition: all ease-in-out .5s;
                             
-                            &:hover{
-                                transform: scale(1.1);
-                                transition: all ease-in-out .5s;
-                                filter: brightness(55%);
-                            }
                             @include breakpoint-414 {
                                 max-width: 176.5px;
                                 // width: 100%;
@@ -1064,6 +1067,50 @@
                             }
                         }
                     }
+                }
+                .heart_popup, .heart_remove {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%) scale(1.2);
+                    max-width: 560px;
+                    width: 100%;
+                    padding: 50px;
+                    border-radius: 10px;
+                    background-color: rgb($color: #0d0d0d, $alpha: 0.8);
+                    @include flex-container(column, nowrap, center, center);
+                    opacity: 0;
+                    pointer-events: none;
+                    transition: all 0.3s ease;
+        
+                    &.active {
+                        opacity: 1;
+                        pointer-events: auto;
+                        transform: translate(-50%, -50%) scale(1);
+                    }
+        
+                    i {
+                        font-size: 225px;
+                        color: $green;
+                        @include breakpoint-414 {
+                            font-size: 150px;
+                        }
+                    }
+        
+                    h2 {
+                        padding: 50px;
+                        font-size: 4rem;
+        
+                        @include breakpoint-414 {
+                            font-size: 30px;
+                        }
+                    }
+                }
+                .heart_remove{
+                    i{
+                        color: red;
+                        font-size: 180px;
+                    }                        
                 }
             }
 
