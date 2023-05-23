@@ -710,11 +710,12 @@
                         padding: 5px;
 
                         i {
-                            margin: 10px;
+                            // margin: 10px;
                             font-size: 30px;
                             color: $orange;
-                            height: 30px;
-                            
+                            height: 30px;                           
+                            padding: 10px 15px;                                                                            
+                               
                         }
 
                         p {
@@ -724,6 +725,7 @@
                             line-height: 150%;
                             font-size: 20px;
                             padding-bottom: 0;
+                            text-align: justify;
                             cursor: pointer;
                             @include breakpoint-414{
                                 width: 290px;

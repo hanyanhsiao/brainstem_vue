@@ -474,7 +474,7 @@
                         </div>
                     </div>
                     <div class="popup_text">
-                        <i class="bi bi-hand-thumbs-up"></i>
+                        <div id="thumb_up"><i class="bi bi-hand-thumbs-up"></i></div>
                         <p class="popup_content">
                             手書香瓜自食從。旁正民右父門節四圓正。言雄呢兄屋好兌羽隻乙氣金色斗得？發占朋尾飛看新村而動申美胡定牛，河房誰問裏躲草姊波黃才冒園它貝室？火果亮。<br><br>
                             室友草田拍邊實已葉耍頁青冰功而良媽「喝急能已各寫山穿幫」向干石？豆歌沒具快百辛者晚物畫，屋己民說開雲，背手哭抓。
@@ -612,6 +612,8 @@
 
     <script>
 
+        
+
         //確認加入購物車彈出視窗設定===============================================================================
         const checkAdd = document.getElementsByClassName("shopcar_btn")[0];
         shopcarPopup = document.getElementsByClassName("shopcar_popup")[0];
@@ -732,7 +734,14 @@
                     thumbsUp.classList.remove("bi-hand-thumbs-up");
                     thumbsUp.classList.add("bi-hand-thumbs-up-fill");
                     thumbsUp.classList.add("bi-hand-thumbs-up-clicked");
+                    thumbsUp.classList.add("animate");
+                    setTimeout(() => {
+                        thumbsUp.classList.remove("animate");
+                    }, 600);
+                    e.preventDefault();
                     e.stopPropagation();
+                    
+
                 } else {
                     thumbsUp.classList.remove("bi-hand-thumbs-up-fill");
                     thumbsUp.classList.add("bi-hand-thumbs-up");
