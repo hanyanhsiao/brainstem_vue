@@ -334,7 +334,7 @@
         color: #FF6300;
     }
 
-    .accordion-content  {
+    .accordion-content {
         padding: 20px;
         /* background-color: #fff; */
         /* border: 2px solid lightseagreen; */
@@ -574,7 +574,8 @@
 
 
     .content {
-        // border: 5px solid red;
+        // outline: 1px solid rebeccapurple;
+        border: 1px solid rgba(255, 0, 0, 0);
         height: 150%;
         // width: 100%;
         // background-color: black;
@@ -602,10 +603,12 @@
 
 
     .content-about p {
-        font-size: 2rem;
+        font-size: 2.2rem;
         margin-bottom: 150px;
         text-align: center;
     }
+
+   
 
 
 
@@ -633,6 +636,7 @@
 
     .img {
         width: 30%;
+
     }
 
 
@@ -726,6 +730,7 @@
 
 
 
+
     .item h3 {
         font-size: 2rem;
         margin-top: 20px;
@@ -762,7 +767,8 @@
     .teams h1 {
         font-size: 4rem;
         text-align: center;
-        margin-top: 150px;
+        margin-top: 160px;
+        margin-bottom: 15px;
 
 
     }
@@ -778,6 +784,7 @@
         padding-left: 100px;
         margin: 0 auto;
         flex-wrap: wrap;
+        margin-bottom: 15px;
     }
 
 
@@ -785,10 +792,11 @@
         // border: 1px solid red;
         margin-right: 50px;
         width: 17%;
+        margin-bottom: 10px;
     }
 
 
-    .teams ul li img {}
+
 
 
     .teams ul li h2 {
@@ -801,10 +809,20 @@
 
 
 
+    .teams img {
+        width: 150;
+        height: 150;
+        border-radius: 50%;
+        margin-bottom: 15px;
+    }
 
 
 
 
+
+    .about_text {
+        font-size: 1.7rem;
+    }
 
 
 
