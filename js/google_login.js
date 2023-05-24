@@ -27,40 +27,46 @@ function handleCredentialResponse(response) {
     // console.log("Encoded JWT ID token: " + response.credential);
     // console.log(response.credential);
 
-    //首先拿到token码然后以点为分隔符转为数组
-    let token = response.credential.split(".")
-    console.log(token);
+    //首先拿到token然後以點為分隔符轉為數組
+    let token = response.credential.split(".");
+    // console.log(token);
 
-    // 拿到第二段token也就是负载的那段 进行window.atob方法的 base64的解算，
-    // 然后再用decodeURIComponent字符串解码方法 解析出字符串 然后再转成JSON对象
-    // 由于atob()方法解码无法对中文解析 所以要再用escape()方法对其重新编码 
-    // 然后再用decodeURI解码方式解析出来
+    // 拿到第二段token也就是负载的那段，
+    // google這個回傳的token是用base64URL編碼
+    // window.atob是base64解碼，有的帳號會不行所以需要先用正則取代
+    // base64URL跟base64差在- +  和   _ /
+    // 进行window.atob方法的 base64的解算，
+    // 由于atob()方法解码无法对中文解析，所以要再用escape()方法对其重新编码 
+    // 然后再用decodeURIComponent字符串解码方法，解析出字符串，然后再转成JSON对象
+
     let str = token[1];
-    // console.log(str);
+    let new_str = str.replace(/\-/g, "+").replace(/\_/g, "/"); //g為全域
+    let responsePayload = JSON.parse(decodeURIComponent(escape(window.atob(new_str))));
 
-    let responsePayload = JSON.parse(decodeURIComponent(escape(window.atob(str))));
-    console.log("ID: " + responsePayload.sub);
-    console.log('Full Name: ' + responsePayload.name);
-    console.log('Given Name: ' + responsePayload.given_name);
-    console.log('Family Name: ' + responsePayload.family_name);
-    console.log("Image URL: " + responsePayload.picture);
-    console.log("Email: " + responsePayload.email);
+
+    // console.log(responsePayload);
+    // console.log("ID: " + responsePayload.sub);
+    // console.log('Family Name: ' + responsePayload.family_name);
+    // console.log("Image URL: " + responsePayload.picture);
+    // console.log("Email: " + responsePayload.email);
     let name = responsePayload.name;
     let email = responsePayload.email;
-    // doSubmit(name, email);
+    doSubmit(name, email);
 }
 
 function doSubmit(name, email) {
-    // var account = document.getElementById('account').value;
-    // var password = document.getElementById('password').value;
 
-    axios.post('http://localhost/brainstem/google.php', {
-        account: email,
+    axios.post('http://localhost/brainstem/google_login.php', {
+        email: email,
         name: name
 
     }).then((response) => {
-        // console.log("QQQ", response);
+        console.log("QQQ", response);
+        alert("登入成功");
+        function google_login_href() {
+            location.href = response.data.redirect;
+        };
+        setTimeout(google_login_href, 2000);
     })
         .catch((error) => console.log(error))
 }
-
