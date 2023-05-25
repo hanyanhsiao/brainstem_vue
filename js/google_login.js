@@ -10,7 +10,7 @@ window.onload = function () {
         googleButton,
         { theme: "outline", size: "large" }  // customization attributes
     );
-    google.accounts.id.prompt(); // also display the One Tap dialog
+    // google.accounts.id.prompt(); // also display the One Tap dialog
 
     //抓取原本按鈕
     let googleLogin = document.querySelector('.Google_login');
@@ -56,17 +56,14 @@ function handleCredentialResponse(response) {
 
 function doSubmit(name, email) {
 
-    axios.post('http://localhost/brainstem/google_login.php', {
+    axios.post(php_url + 'google_login.php', {
         email: email,
         name: name
 
     }).then((response) => {
         console.log("QQQ", response);
         alert("登入成功");
-        function google_login_href() {
-            location.href = response.data.redirect;
-        };
-        setTimeout(google_login_href, 2000);
+        location.href = response.data.redirect;
     })
         .catch((error) => console.log(error))
 }
