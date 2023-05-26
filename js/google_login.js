@@ -49,21 +49,25 @@ function handleCredentialResponse(response) {
     // console.log('Family Name: ' + responsePayload.family_name);
     // console.log("Image URL: " + responsePayload.picture);
     // console.log("Email: " + responsePayload.email);
+    let photo = responsePayload.picture
     let name = responsePayload.name;
     let email = responsePayload.email;
-    doSubmit(name, email);
+    doSubmit(name, email, photo);
 }
 
-function doSubmit(name, email) {
-
+function doSubmit(name, email, photo) {
+    axios.defaults.withCredentials = true;
     axios.post(php_url + 'google_login.php', {
         email: email,
-        name: name
+        name: name,
+        photo: photo
 
     }).then((response) => {
-        console.log("QQQ", response);
+        // console.log("QQQ", response);
         alert("登入成功");
         location.href = response.data.redirect;
+        // console.log(photo);
+
     })
         .catch((error) => console.log(error))
 }
