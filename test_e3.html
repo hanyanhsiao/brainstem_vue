@@ -1,0 +1,30 @@
+<template>
+    <div>
+      <label for="email">電子信箱</label>
+      <input type="text" id="email" v-model="email" @input="validateEmail">
+      <span v-if="emailError" class="error">{{ emailError }}</span>
+    </div>
+  </template>
+  
+  <script src="./js/date.js"></script>
+  <script>
+  export default {
+    data() {
+      return {
+        email: '',
+        emailError: ''
+      };
+    },
+    methods: {
+      validateEmail() {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (this.email && !emailRegex.test(this.email)) {
+          this.emailError = '請輸入有效的電子信箱';
+        } else {
+          this.emailError = '';
+        }
+      }
+    }
+  };
+  </script>
+  
