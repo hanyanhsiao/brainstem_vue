@@ -7,6 +7,7 @@
         <div class="logo">
             <a href="./index.html">
                 <picture>
+                    <source media="(max-width: 912px)" srcset="./pic/img/LOGO/RWD.png" />
                     <source media="(max-width: 414px)" srcset="./pic/img/LOGO/RWD.png" />
                     <img src="./pic/img/LOGO/WEBLOGO.png" alt="" />
                 </picture>
@@ -15,11 +16,11 @@
 
         <nav class="menu">
             <ul class="a_part">
-                <li><a href="./product.html" class="@@index">商品</a></li>
-                <li><a href="./news.html" class="@@news">新聞</a></li>
-                <li><a href="./AI_test_index.html" class="@@AI_test">智能推薦</a></li>
-                <li>
-                    <a href="./game_library.html" class="@@game_library">遊戲庫</a>
+                <li data-index="1"><a href="./product.html" class="@@index active" >商品</a></li>
+                <li data-index="2"><a href="./news.html" class="@@news" >新聞</a></li>
+                <li data-index="3"><a href="./AI_test_index.html" class="@@AI_test" >智能推薦</a></li>
+                <li data-index="4">
+                    <a href="./game_library.html" class="@@game_library" >遊戲庫</a>
                 </li>
             </ul>
             <ul class="b_part">
@@ -28,7 +29,7 @@
                 </form>
 
                 <ul class="b_2">
-                    <li>
+                    <li data-index="5">
                         <a href="#">近期預覽</a>
                         <ul class="b_2-1">
                             <li>
@@ -63,10 +64,10 @@
                             </li>
                         </ul>
                     </li>
-                    <li><a href="./register.html">註冊</a></li>
-                    <li><a href="./login.html">登入</a></li>
-                    <li>
-                        <a href="./checkout.html">
+                    <li data-index="6"><a href="./register.html" data-href="./register.html">註冊</a></li>
+                    <li data-index="7"><a href="./login.html" data-href="./login.html">登入</a></li>
+                    <li data-index="8">
+                        <a href="./checkout.html" data-href="./checkout.html">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                 class="bi bi-cart" viewBox="0 0 16 16">
                                 <path
@@ -119,5 +120,41 @@
             }
         })
     });
+
+    // ------------------------------------
+
+
+    document.addEventListener("click", function(event) {
+  const clickedLi = event.target.closest("li");
+  if (clickedLi) {
+    const isAPart = clickedLi.parentElement.classList.contains("a_part");
+    const isB2 = clickedLi.parentElement.classList.contains("b_2");
+    
+    if (isAPart || isB2) {
+      // 保存點擊的索引或標示到本地存储
+      localStorage.setItem("activeLiIndex", clickedLi.dataset.index);
+    }
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  const activeLiIndex = localStorage.getItem("activeLiIndex");
+  if (activeLiIndex !== null) {
+    const lis = document.querySelectorAll(".a_part li, .b_2 li");
+    lis.forEach(function(li) {
+      if (li.dataset.index === activeLiIndex) {
+        li.classList.add("active");
+      } else {
+        li.classList.remove("active");
+      }
+    });
+  }
+});
+
+
+
+
+
+
 
 </script>
