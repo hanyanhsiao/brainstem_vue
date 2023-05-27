@@ -181,6 +181,12 @@
                 }
               }
             }
+            .google_photo {
+              img {
+                border-radius: 50%;
+                max-width: 60px;
+              }
+            }
 
             .b_2-1 {
               border-radius: 5px;
@@ -286,11 +292,16 @@
           }
         }
       }
-      .a_part li.active a,.b_2 li.active a {
+      .a_part li.active a,
+      .b_2 li.active a {
         color: orange;
       }
 
-      .active{
+      .active {
+        color: orange;
+      }
+
+      .active {
         color: orange;
       }
 
@@ -349,7 +360,7 @@
 
       // background-color: rgba(7, 110, 200, 0.436);
       .logo {
-        width: 45% ;
+        width: 45%;
 
         // border: 1px solid red;
         > a > img {
@@ -358,7 +369,7 @@
       }
 
       .menu {
-        // display: none;
+        display: none;
         // background-color: rgba(240, 255, 255, 0.305);
         .a_part {
           display: none;
@@ -380,13 +391,13 @@
               display: block;
               cursor: pointer;
               top: 70px;
-              right: 0 ;
+              right: 0;
               transform: translate(-50%, -50%);
 
               span {
                 display: block;
                 background: $orange;
-                width: 50px ;
+                width: 50px;
                 height: 3px;
                 border-radius: 3px;
                 transition: 0.25s margin 0.25s, 0.25s transform;
@@ -520,7 +531,7 @@
 
       // background-color: rgba(7, 110, 200, 0.436);
       .logo {
-        width: 45% ;
+        width: 45%;
 
         // border: 1px solid red;
         > a > img {
@@ -551,13 +562,13 @@
               display: block;
               cursor: pointer;
               top: 70px;
-              right: 0 ;
+              right: 0;
               transform: translate(-50%, -50%);
 
               span {
                 display: block;
                 background: $orange;
-                width: 50px ;
+                width: 50px;
                 height: 3px;
                 border-radius: 3px;
                 transition: 0.25s margin 0.25s, 0.25s transform;
@@ -691,7 +702,7 @@
 
       // background-color: rgba(7, 110, 200, 0.436);
       .logo {
-        width: 45% ;
+        width: 45%;
 
         // border: 1px solid red;
         > a > img {
@@ -722,13 +733,13 @@
               display: block;
               cursor: pointer;
               top: 60px;
-              right: 0 ;
+              right: 0;
               transform: translate(-50%, -50%);
 
               span {
                 display: block;
                 background: $orange;
-                width: 40px ;
+                width: 40px;
                 height: 3px;
                 border-radius: 3px;
                 transition: 0.25s margin 0.25s, 0.25s transform;
@@ -862,7 +873,7 @@
 
       // background-color: rgba(7, 110, 200, 0.436);
       .logo {
-        width: 45% ;
+        width: 45%;
 
         // border: 1px solid red;
         > a > img {
@@ -878,28 +889,35 @@
         }
 
         .b_part {
-          display: none;
-        }
+          // border: 1px solid gold;
+          width: 50%;
+          align-items: center;
+          display: flex;
+          justify-content: space-between;
+          position: relative;
 
-        .c_part {
-          display: block;
+          form {
+            width: 33%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            box-sizing: border-box;
 
-          .fafa {
-            width: 100%;
-
-            /* background-color: #6070ff; */
-            .toggle {
+            SVG {
+              color: orangered;
               position: absolute;
               display: block;
               cursor: pointer;
               top: 60px;
-              right: 0 ;
+              right: 0;
               transform: translate(-50%, -50%);
 
               span {
                 display: block;
                 background: $orange;
-                width: 40px ;
+                width: 40px;
                 height: 3px;
                 border-radius: 3px;
                 transition: 0.25s margin 0.25s, 0.25s transform;
@@ -1033,7 +1051,7 @@
 
       // background-color: rgba(7, 110, 200, 0.436);
       .logo {
-        width: 45% ;
+        width: 45%;
 
         // border: 1px solid red;
         > a > img {
@@ -1064,13 +1082,13 @@
               display: block;
               cursor: pointer;
               top: 45px;
-              right: 0 ;
+              right: 0;
               transform: translate(-50%, -50%);
 
               span {
                 display: block;
                 background: $orange;
-                width: 30px ;
+                width: 30px;
                 height: 3px;
                 border-radius: 3px;
                 transition: 0.25s margin 0.25s, 0.25s transform;
@@ -1235,13 +1253,13 @@
               display: block;
               cursor: pointer;
               top: 40px !important;
-              right: 0 ;
+              right: 0;
               transform: translate(-50%, -50%);
 
               span {
                 display: block;
                 background: $orange;
-                width: 30px ;
+                width: 30px;
                 height: 3px;
                 border-radius: 3px;
                 transition: 0.25s margin 0.25s, 0.25s transform;
@@ -1253,7 +1271,7 @@
             position: absolute;
             width: 100%;
             height: 800px;
-            top: 82px ;
+            top: 82px;
             left: 0;
             // background-color: #000000ec;
             background: linear-gradient(
@@ -1406,13 +1424,13 @@
               display: block;
               cursor: pointer;
               top: 40px !important;
-              right: 0 ;
+              right: 0;
               transform: translate(-50%, -50%);
 
               span {
                 display: block;
                 background: $orange;
-                width: 30px ;
+                width: 30px;
                 height: 3px;
                 border-radius: 3px;
                 transition: 0.25s margin 0.25s, 0.25s transform;
@@ -1424,7 +1442,7 @@
             position: absolute;
             width: 100%;
             height: 800px;
-            top: 80px ;
+            top: 80px;
             left: 0;
             // background-color: #000000ec;
             background: linear-gradient(
@@ -1526,12 +1544,3 @@
     }
   }
 }
-
-
-
-
-
-
-
-
-

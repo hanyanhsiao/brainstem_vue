@@ -18,11 +18,11 @@
 
         <nav class="menu">
             <ul class="a_part">
-                <li data-index="1"><a href="./product.html" class="@@product" >商品</a></li>
-                <li data-index="2"><a href="./news.html" class="@@news" >新聞</a></li>
-                <li data-index="3"><a href="./AI_test_index.html" class="@@AI_test" >智能推薦</a></li>
+                <li data-index="1"><a href="./product.html" class="@@product">商品</a></li>
+                <li data-index="2"><a href="./news.html" class="@@news">新聞</a></li>
+                <li data-index="3"><a href="./AI_test_index.html" class="@@AI_test">智能推薦</a></li>
                 <li data-index="4">
-                    <a href="./game_library.html" class="@@game_library" >遊戲庫</a>
+                    <a href="./game_library.html" class="@@game_library">遊戲庫</a>
                 </li>
             </ul>
             <ul class="b_part">
@@ -66,8 +66,21 @@
                             </li>
                         </ul>
                     </li>
-                    <li data-index="6"><a href="./register.html" data-href="./register.html">註冊</a></li>
-                    <li data-index="7"><a href="./login.html" data-href="./login.html">登入</a></li>
+
+                    <template v-if="!isLogin">
+                        <li data-index="6"><a href="./register.html" data-href="./register.html">註冊</a></li>
+                        <li data-index="7"><a href="./login.html" data-href="./login.html">登入</a></li>
+                    </template>
+
+                    <template v-else>
+                        <li data-index="6">
+                            <a href="./member_center.html" class="google_photo">
+                                <img :src="this.photo" alt="">
+                            </a>
+                        </li>
+                        <li data-index="7"><a href="./login.html" data-href="./login.html" @click="logout">登出</a></li>
+                    </template>
+
                     <li data-index="8">
                         <a href="./checkout.html" data-href="./checkout.html">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
@@ -94,11 +107,11 @@
                         <form class="search" action="/" method="get">
                             <input type="text" name="search" placeholder="  請輸入關鍵字" />
                         </form>
-                        <li><a href="./login.html">登入 </a></li>
-                        <li><a href="./news.html">新聞 </a></li>
                         <li><a href="./product.html">商品 </a></li>
-                        <li><a href="./game_library.html">遊戲庫 </a></li>
+                        <li><a href="./news.html">新聞 </a></li>
                         <li><a href="./AI_test_index.html">智能推薦</a></li>
+                        <li><a href="./game_library.html">遊戲庫 </a></li>
+                        <li><a href="./login.html">登入 </a></li>
                         <li><a href="./member_center.html">會員中心</a></li>
                         <li><a href="./checkout.html">購物車</a></li>
                     </ul>
@@ -109,10 +122,15 @@
 </header>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="./vendors/vue/vue.global.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.6/axios.min.js"
+    integrity="sha512-06NZg89vaTNvnFgFTqi/dJKFadQ6FIglD6Yg1HHWAUtVFFoXli9BZL4q4EO1UTKpOfCfW5ws2Z6gw49Swsilsg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="../js/constant.js"></script>
+
 <script>
     $(document).ready(function () {
-        // $(".rwd-item").hide();
         $('.toggle').click(function () {
             $(this).toggleClass('active');
             if ($(this).hasClass('active')) {
@@ -124,49 +142,49 @@
     });
 
     // ------------------------------------
-document.addEventListener("DOMContentLoaded", function() {
-  const activeLiIndex = localStorage.getItem("activeLiIndex");
-  if (activeLiIndex !== null) {
-    const lis = document.querySelectorAll(".a_part li, .b_2 li");
-    lis.forEach(function(li) {
-      const anchor = li.querySelector("a");
-      if (li.dataset.index === activeLiIndex) {
-        anchor.classList.add("active");
-      } else {
-        anchor.classList.remove("active");
-      }
+    document.addEventListener("DOMContentLoaded", function () {
+        const activeLiIndex = localStorage.getItem("activeLiIndex");
+        if (activeLiIndex !== null) {
+            const lis = document.querySelectorAll(".a_part li, .b_2 li");
+            lis.forEach(function (li) {
+                const anchor = li.querySelector("a");
+                if (li.dataset.index === activeLiIndex) {
+                    anchor.classList.add("active");
+                } else {
+                    anchor.classList.remove("active");
+                }
+            });
+        }
     });
-  }
-});
 
-document.addEventListener("click", function(event) {
-  const clickedLi = event.target.closest("li");
-  if (clickedLi) {
-    const isAPart = clickedLi.parentElement.classList.contains("a_part");
-    const isB2 = clickedLi.parentElement.classList.contains("b_2");
+    document.addEventListener("click", function (event) {
+        const clickedLi = event.target.closest("li");
+        if (clickedLi) {
+            const isAPart = clickedLi.parentElement.classList.contains("a_part");
+            const isB2 = clickedLi.parentElement.classList.contains("b_2");
 
-    if (isAPart || isB2) {
-      const lis = document.querySelectorAll(".a_part li, .b_2 li");
-      lis.forEach(function(li) {
-        const anchor = li.querySelector("a");
-        anchor.classList.remove("active");
-      });
+            if (isAPart || isB2) {
+                const lis = document.querySelectorAll(".a_part li, .b_2 li");
+                lis.forEach(function (li) {
+                    const anchor = li.querySelector("a");
+                    anchor.classList.remove("active");
+                });
 
-      const anchor = clickedLi.querySelector("a");
-      anchor.classList.add("active");
+                const anchor = clickedLi.querySelector("a");
+                anchor.classList.add("active");
 
-      // 保存点击的索引或标识到本地存储
-      localStorage.setItem("activeLiIndex", clickedLi.dataset.index);
-    }
-  } else {
-    const lis = document.querySelectorAll(".a_part li, .b_2 li");
-    lis.forEach(function(li) {
-      const anchor = li.querySelector("a");
-      anchor.classList.remove("active");
+                // 保存点击的索引或标识到本地存储
+                localStorage.setItem("activeLiIndex", clickedLi.dataset.index);
+            }
+        } else {
+            const lis = document.querySelectorAll(".a_part li, .b_2 li");
+            lis.forEach(function (li) {
+                const anchor = li.querySelector("a");
+                anchor.classList.remove("active");
+            });
+            localStorage.removeItem("activeLiIndex");
+        }
     });
-    localStorage.removeItem("activeLiIndex");
-  }
-});
 
 
 
@@ -179,9 +197,67 @@ document.addEventListener("click", function(event) {
 
 
 
+    // ===========登入判斷===============
+
+    Vue.createApp({
+        data() {
+            return {
+                isLogin: false,
+                photo: null,
+                nickname: null
+            }
+        },
+        methods: {
+            logout() {
+                axios.defaults.withCredentials = true;
+                axios.post(php_url + 'logout.php')
+                    .then((response) => alert("您已登出"))
+            }
+        },
+        mounted() {
+            axios.defaults.withCredentials = true;
+            axios.post(php_url + 'login_status.php')
+                .then((response) => {
+                    // console.log(response);
+                    this.isLogin = response.data.isLogin;
+                    this.photo = response.data.photo;
+                    this.nickname = response.data.nickname;
+                })
+        }
+    }).mount(".b_2");
 
 
 
 
+
+
+    // ===========登入判斷===============
+
+    Vue.createApp({
+        data() {
+            return {
+                isLogin: false,
+                photo: null,
+                nickname: null
+            }
+        },
+        methods: {
+            logout() {
+                axios.defaults.withCredentials = true;
+                axios.post(php_url + 'logout.php')
+                    .then((response) => alert("您已登出"))
+            }
+        },
+        mounted() {
+            axios.defaults.withCredentials = true;
+            axios.post(php_url + 'login_status.php')
+                .then((response) => {
+                    // console.log(response);
+                    this.isLogin = response.data.isLogin;
+                    this.photo = response.data.photo;
+                    this.nickname = response.data.nickname;
+                })
+        }
+    }).mount(".b_2");
 
 </script>
