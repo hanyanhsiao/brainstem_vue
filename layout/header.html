@@ -8,7 +8,9 @@
             <a href="./index.html">
                 <picture>
                     <source media="(max-width: 912px)" srcset="./pic/img/LOGO/RWD.png" />
+                    <source media="(max-width: 820px)" srcset="./pic/img/LOGO/RWD.png" />
                     <source media="(max-width: 414px)" srcset="./pic/img/LOGO/RWD.png" />
+                    <source media="(max-width: 540px)" srcset="./pic/img/LOGO/RWD.png" />
                     <img src="./pic/img/LOGO/WEBLOGO.png" alt="" />
                 </picture>
             </a>
@@ -16,7 +18,7 @@
 
         <nav class="menu">
             <ul class="a_part">
-                <li data-index="1"><a href="./product.html" class="@@index active" >商品</a></li>
+                <li data-index="1"><a href="./product.html" class="@@product" >商品</a></li>
                 <li data-index="2"><a href="./news.html" class="@@news" >新聞</a></li>
                 <li data-index="3"><a href="./AI_test_index.html" class="@@AI_test" >智能推薦</a></li>
                 <li data-index="4">
@@ -122,34 +124,59 @@
     });
 
     // ------------------------------------
-
-
-    document.addEventListener("click", function(event) {
-  const clickedLi = event.target.closest("li");
-  if (clickedLi) {
-    const isAPart = clickedLi.parentElement.classList.contains("a_part");
-    const isB2 = clickedLi.parentElement.classList.contains("b_2");
-    
-    if (isAPart || isB2) {
-      // 保存點擊的索引或標示到本地存储
-      localStorage.setItem("activeLiIndex", clickedLi.dataset.index);
-    }
-  }
-});
-
 document.addEventListener("DOMContentLoaded", function() {
   const activeLiIndex = localStorage.getItem("activeLiIndex");
   if (activeLiIndex !== null) {
     const lis = document.querySelectorAll(".a_part li, .b_2 li");
     lis.forEach(function(li) {
+      const anchor = li.querySelector("a");
       if (li.dataset.index === activeLiIndex) {
-        li.classList.add("active");
+        anchor.classList.add("active");
       } else {
-        li.classList.remove("active");
+        anchor.classList.remove("active");
       }
     });
   }
 });
+
+document.addEventListener("click", function(event) {
+  const clickedLi = event.target.closest("li");
+  if (clickedLi) {
+    const isAPart = clickedLi.parentElement.classList.contains("a_part");
+    const isB2 = clickedLi.parentElement.classList.contains("b_2");
+
+    if (isAPart || isB2) {
+      const lis = document.querySelectorAll(".a_part li, .b_2 li");
+      lis.forEach(function(li) {
+        const anchor = li.querySelector("a");
+        anchor.classList.remove("active");
+      });
+
+      const anchor = clickedLi.querySelector("a");
+      anchor.classList.add("active");
+
+      // 保存点击的索引或标识到本地存储
+      localStorage.setItem("activeLiIndex", clickedLi.dataset.index);
+    }
+  } else {
+    const lis = document.querySelectorAll(".a_part li, .b_2 li");
+    lis.forEach(function(li) {
+      const anchor = li.querySelector("a");
+      anchor.classList.remove("active");
+    });
+    localStorage.removeItem("activeLiIndex");
+  }
+});
+
+
+
+
+
+
+
+
+
+
 
 
 
