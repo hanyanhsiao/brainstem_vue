@@ -1,7 +1,3 @@
-<!-- <header class="header">
-
-</header> -->
-
 <header class="header">
     <div class="top">
         <div class="logo">
@@ -130,6 +126,7 @@
 <script src="../js/constant.js"></script>
 
 <script>
+    // ==========RWD漢堡選單收合==========
     $(document).ready(function () {
         $('.toggle').click(function () {
             $(this).toggleClass('active');
@@ -186,53 +183,7 @@
         }
     });
 
-
-
-
-
-
-
-
-
-
-
-
     // ===========登入判斷===============
-
-    Vue.createApp({
-        data() {
-            return {
-                isLogin: false,
-                photo: null,
-                nickname: null
-            }
-        },
-        methods: {
-            logout() {
-                axios.defaults.withCredentials = true;
-                axios.post(php_url + 'logout.php')
-                    .then((response) => alert("您已登出"))
-            }
-        },
-        mounted() {
-            axios.defaults.withCredentials = true;
-            axios.post(php_url + 'login_status.php')
-                .then((response) => {
-                    // console.log(response);
-                    this.isLogin = response.data.isLogin;
-                    this.photo = response.data.photo;
-                    this.nickname = response.data.nickname;
-                })
-        }
-    }).mount(".b_2");
-
-
-
-
-
-
-    // ===========登入判斷===============
-
     Vue.createApp({
         data() {
             return {
