@@ -40,12 +40,12 @@
                                 <h6>遊戲編號</h6>
                                 <h6>123456789000</h6>
                             </li>
-                            <li>
-                                <label for="LOGO">
+                            <li id="logo">
+                                <label for="fileInput">
                                     <h6>遊戲封面</h6>
                                 </label>
-                                <input type="file" name="profile[]" id="LOGO" multiple/>
-                                <input type="submit" value="上傳檔案" />
+                                <img :src="imageUrl" alt="">
+                                <input id="fileInput" type="file" @change="handleFileChange">
                             </li>
                             <li>
                                 <h6>發行日期</h6>
@@ -233,7 +233,8 @@
                                 <label for="Discount start time">
                                     <h6>折扣開始時間</h6>
                                 </label>
-                                <input id="myDatePicker" type="date" name="" id="Discount start time" placeholder="年/月/日">
+                                <input id="myDatePicker" type="date" name="" id="Discount start time"
+                                    placeholder="年/月/日">
                                 <label for="Discount end time">
                                     <h6>折扣結束時間</h6>
                                 </label>
@@ -243,73 +244,136 @@
                                 <label for="game instructions">
                                     <h6>遊戲說明</h6>
                                 </label>
-                                <textarea name="" id="game instructions" cols="100" rows="20" placeholder="請輸入遊戲說明"></textarea>
+                                <textarea name="" id="game instructions" cols="100" rows="20"
+                                    placeholder="請輸入遊戲說明"></textarea>
                             </li>
                             <li class="B_grid_two">
                                 <label for="system requirement">
                                     <h6>系統需求</h6>
                                 </label>
-                                <textarea name="" id="system requirement" cols="100" rows="30" placeholder="請輸入系統需求"></textarea>
+                                <textarea name="" id="system requirement" cols="100" rows="30"
+                                    placeholder="請輸入系統需求"></textarea>
                             </li>
                         </ul>
                     </div>
                     <div class="games_info_2_down">
                         <h6>遊戲圖片</h6>
-                        <ul>
-                            <li>
-                                <img src="./pic/img/cover/10.jpg" alt="">
-                                <h6>
-                                    圖片說明
-                                </h6>
-                            </li>
-                            <li>
-                                <img src="./pic/img/cover/10.jpg" alt="">
-                                <h6>
-                                    圖片說明
-                                </h6>
-                            </li>
-                            <li>
-                                <img src="./pic/img/cover/10.jpg" alt="">
-                                <h6>
-                                    圖片說明
-                                </h6>
-                            </li>
-                            <li>
-                                <img src="./pic/img/cover/10.jpg" alt="">
-                                <h6>
-                                    圖片說明
-                                </h6>
-                            </li>
-                            <li>
-                                <img src="./pic/img/cover/10.jpg" alt="">
-                                <h6>
-                                    圖片說明
-                                </h6>
-                            </li>
-                            <li>
-                                <i class="bi bi-upload"></i>
-                                <label for="pic">
-                                    <h6>上傳圖片</h6>
-                                </label>
-                                <input type="file" name="profile[]" id="pic" multiple/>
-                                <input type="submit" value="上傳檔案" />
-                            </li>
-                        </ul>
+                        <div id="B_upload_pic">
+                            <input v-if="!images.length || images[images.length - 1].saved" type="file"
+                                @change="handleFileUpload" multiple>
+                            <ul>
+                                <li v-for="(image, index) in images" :key="index">
+                                    <img :src="image.url" :alt="image.name">
+                                    <input type="text" v-model="image.description" placeholder="輸入圖片說明"
+                                        v-show="!image.saved">
+                                    <h6 v-if="image.saved">{{ image.description }}</h6>
+                                    <template v-if="!image.saved">
+                                        <button @click="saveImage(index, $event)">保存</button>
+                                    </template>
+                                    <template v-else>
+                                        <button @click="startEditing(index, $event)">編輯</button>
+                                        <button @click="deleteImage(index, $event)">刪除</button>
+                                    </template>
+                                    <template v-if="image.editMode">
+                                        <input type="text" v-model="image.description" placeholder="輸入圖片說明">
+                                        <button @click="updateImage(index, $event)">更新</button>
+                                        <button @click="cancelEdit(index, $event)">取消</button>
+                                    </template>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </form>
             </div>
         </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="./layout/js.html"></script>
+    <script src="./vendors/vue/vue.global.js"></script>
     <script>
         //input
         flatpickr("#myDatePicker", {
-          dateFormat: "Y/m/d",
-          minDate: "today",
-          theme: "light"
+            dateFormat: "Y/m/d",
+            minDate: "today",
+            theme: "light"
         });
-      </script>
+    </script>
 
-</body>
+    <script>
+        //圖文說明
+        Vue.createApp({
+            data() {
+                return {
+                    images: []
+                };
+            },
+            methods: {
+                handleFileUpload(event) {
+                    const files = event.target.files;
+                    for (let i = 0; i < files.length; i++) {
+                        const file = files[i];
+                        const reader = new FileReader();
+                        reader.onload = () => {
+                            const newImage = {
+                                url: reader.result,
+                                name: file.name,
+                                description: '',
+                                saved: false,
+                                editMode: false
+                            };
+                            this.images.push(newImage);
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                    event.target.value = ''; // 清除文件选择的输入框的值
+                },
+                saveImage(index, event) {
+                    event.preventDefault();
+                    this.images[index].saved = true;
+                    this.images[index].editMode = false;
+                },
+                startEditing(index, event) {
+                    event.preventDefault();
+                    this.images[index].editMode = true;
+                },
+                updateImage(index, event) {
+                    event.preventDefault();
+                    this.images[index].editMode = false;
+                },
+                cancelEdit(index, event) {
+                    event.preventDefault();
+                    this.images[index].editMode = false;
+                    this.images[index].description = '';
+                },
+                deleteImage(index, event) {
+                    event.preventDefault();
+                    this.images.splice(index, 1);
+                }
+            }
+        }).mount('#B_upload_pic');
+    </script>
+
+
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    imageUrl: ''
+                };
+            },
+            methods: {
+                handleFileChange(event) {
+                    const file = event.target.files[0];
+                    const reader = new FileReader();
+
+                    reader.onload = (e) => {
+                        this.imageUrl = e.target.result;
+                    };
+
+                    reader.readAsDataURL(file);
+                }
+            }
+        }).mount("#logo")
+    </script>
 
 </html>
