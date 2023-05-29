@@ -38,15 +38,15 @@
 
                 .right_main_top {
                     ul {
-                        
+
                         li {
                             border-bottom: 1px solid black;
                             display: grid;
                             grid-template-columns: .8fr 1.1fr 1.1fr 1fr;
-                            input[type="submit"]{
+
+                            input[type="submit"] {
                                 width: 40%;
                             }
-                            
 
                             .B_games {
                                 width: 100%;
@@ -70,7 +70,7 @@
                                             float: right;
                                             margin-left: 5px;
                                         }
-                                        
+
                                     }
                                 }
                             }
@@ -130,7 +130,15 @@
                                 font-size: $p;
                                 margin: 10px 0;
                             }
-                            
+
+                        }
+
+                        #logo {
+                            input {
+                                font-size: 1.6rem;
+                                width: 80%;
+                                margin: auto;
+                            }
                         }
 
                         .B_grid_six {
@@ -140,69 +148,54 @@
                         .B_grid_two {
                             grid-template-columns: .8fr 3.2fr;
                         }
-                        .B_grid_four{
+
+                        .B_grid_four {
                             grid-template-columns: .8fr 1fr 1fr 1fr;
                             column-gap: 20px;
                         }
                     }
                 }
 
-
                 .games_info_2_down {
 
+                    #B_upload_pic {
+                        ul {
+                            margin-bottom: 80px;
+                            display: grid;
+                            grid-template-columns: 1fr 1fr 1fr 1fr;
 
-                    ul {
-                        margin-bottom: 80px;
-                        display: grid;
-                        grid-template-columns: 1fr 1fr 1fr 1fr;
+                            li {
+                                margin-right: 5px;
 
-                        li {
-                            margin-right: 5px;
 
-                            img {
-                                width: 100%;
-                            }
+                                img {
+                                    width: 100%;
+                                }
 
-                            h6 {
-                                height: 125px;
-                                outline: 1px solid #000;
-                                margin-bottom: 50px;
-                                padding-left: 10px;
-                                margin-top: -20px;
-                            }
-                            label{}
-                            input[type="file"]{
-                                // width: 40%;
-                                // height: 10000px;
-                                font-size: 2.2rem;
+                                input {
+                                    font-size: 2rem;
+                                }
+
+                                h6 {
+                                    outline: 1px solid #000;
+                                    padding-left: 10px;
+                                }
+
+                                button {
+                                    width: 30%;
+                                    font-size: 2rem;
+                                }
+
                             }
                         }
+                    }
 
-                        li:last-child {
-
-                            i {
-                                color: #000;
-                            }
-
-                            h6 {
-                                outline: none;
-                                padding: 0;
-                                width: 100%;
-                                line-height: 1;
-
-                            }
-
-                            text-align: center;
-                            border: 1px dashed #000;
-                            height: 170px;
-
-                        }
-
+                    #B_upload_pic>input {
+                        font-size: 2rem;
+                        width: 25%;
                     }
                 }
             }
-
-
         }
 
         .right_main>h6 {
