@@ -118,113 +118,87 @@
     }
   }
 
+  // 所有遊戲
+  .all_game {
+
+    // border: 2px solid green;
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      // width: 100%;
+
+
+
+      li {
+        // 這個用不到
+        width: 20%;
+        display: flex;
+        justify-content: center;
+
+
+
+        a {
+
+          img {}
+
+          h3 {}
+        }
+
+      }
+    }
+
+
+  }
 
   // 願望清單
-  // .product_goods {
-  //   @include flex-container(row, wrap, start, flex-start);
+  .desire_game {
 
-  //   @include breakpoint-414 {
-  //     @include flex-container(row, wrap, space-between, flex-start);
+    .desire_game_ul {
 
-  //   }
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
 
-  //   .each_good {
-  //     margin-bottom: 50px;
-  //     transition: all ease-in-out .5s;
+      .desire_game_li {
 
-  //     &:hover {
-  //       transform: translateY(-2%);
-  //       transition: all ease-in-out .5s;
+        width: 20%;
+        display: flex;
+        justify-content: center;
 
-  //     }
+        a {
+          .desire_picture {
+            position: relative;
 
-  //     @include breakpoint-414 {
-  //       width: 48%;
-  //       margin-bottom: 30px;
-  //     }
+            img {}
 
-  //     ;
+            .discount {
+              position: absolute;
+              top: 0;
+              left: 0;
+              font-size: $h3;
+            }
+          }
 
-  //     .goods_top {
-  //       height: 350px;
-  //       position: relative;
-  //       background-position: center center;
-  //       background-size: cover;
+          .desire_text {
+            h3 {}
+
+            .price {
+              margin-right: 4%;
+            }
+
+            .price_original {}
+          }
+        }
+      }
+    }
+
+  }
 
 
 
 
 
-  //       @include breakpoint-414 {
-  //         height: 240px;
-  //       }
-
-
-  //       .discount {
-  //         border-radius: 0;
-  //         position: absolute;
-  //         font-size: $h3;
-  //         padding: 10px 20px;
-
-  //         @include breakpoint-414 {
-  //           font-size: 16px;
-  //           padding: 5px 10px;
-  //         }
-  //       }
-
-  //       i {
-  //         position: absolute;
-  //         color: red;
-  //         right: 10px;
-  //         top: 10px;
-  //         font-size: 30px;
-  //         cursor: pointer;
-
-  //         &:hover {
-  //           text-shadow: 1px 1px 2px black;
-  //         }
-
-  //         @include breakpoint-414 {
-  //           font-size: 20px;
-  //           right: 5px;
-  //           top: 5px;
-  //         }
-  //       }
-  //     }
-
-  //     .goods_text {
-  //       padding-bottom: 10px;
-  //       pointer-events: none;
-
-  //       h3 {
-  //         padding: 20px 0;
-
-  //         @include breakpoint-414 {
-  //           padding: 5px 0;
-  //           font-size: 16px;
-  //         }
-  //       }
-
-  //       .price {
-  //         padding-right: 20px;
-
-  //         @include breakpoint-414 {
-  //           font-size: 16px;
-  //           padding-right: 10px;
-  //         }
-  //       }
-
-  //       .price_original {
-  //         @include breakpoint-414 {
-  //           font-size: 14px;
-  //         }
-  //       }
-  //     }
-  //   }
-
-  //   .each_good:nth-child(4n) {
-  //     margin-right: 0;
-  //   }
-  // }
 
 }
