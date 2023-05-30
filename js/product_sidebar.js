@@ -122,8 +122,7 @@ $(document).ready(function () {
     //==============funtcion宣告結束==============
 
 
-
-    //篩選器
+    
     $('.sidebar_btn').click(function(){
         $('.product_sidebar').css("left","0");
     })

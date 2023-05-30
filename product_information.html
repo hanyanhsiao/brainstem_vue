@@ -51,9 +51,9 @@
                     <div class="img_big_next"><i class="bi bi-chevron-right"></i></div>                    
                 </div>
                 <div class="thumb">
-                    <div class="img_small_prev">
+                    <!-- <div class="img_small_prev">
                         <i class="bi bi-chevron-left"></i>
-                    </div>
+                    </div> -->
                     <div thumbsSlider="" class="swiper game_img_small">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
@@ -73,9 +73,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="img_small_next">
+                    <!-- <div class="img_small_next">
                         <i class="bi bi-chevron-right"></i>
-                    </div>
+                    </div> -->
                 </div>
 
             </div>
@@ -778,9 +778,8 @@
             // 遊戲圖片輪播
             var Smallimg = new Swiper(".game_img_small", {
                 loop: true,
-                spaceBetween: 30,
+                spaceBetween: 20,
                 slidesPerView: 4,
-                freeMode: false,
                 watchSlidesProgress: true,
                 navigation: {
                     nextEl: ".img_small_next",
