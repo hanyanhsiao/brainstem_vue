@@ -386,7 +386,6 @@
                 position: relative;
                 @include breakpoint-414{
                     @include flex-container(row, wrap, space-between, flex-start);
-
                     }
 
                 .each_good {

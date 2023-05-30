@@ -1,11 +1,12 @@
+// ===============  引首頁類別hover效果 ======================
 .color-8 {
     background-image: linear-gradient(to right, #01072B, #000e5a94, #260057, #7702e6);
 }
 
 .cube{
-    width: 48.5%;
-    margin: 10px 0;
-    outline: 1px solid $orange;
+    // width: 48.5%;
+    // margin: 10px 0;
+    // outline: 1px solid $orange;
     border-radius: 10px;
     padding: 20px 0;
     background-size: 300% 100%;
@@ -31,6 +32,8 @@
         }
     }
 }
+
+//==================================================================
 
 .product {
     color: $white;
@@ -306,11 +309,11 @@
                 }
 
                 ul {
-                    display: none;
+                    // display: none;
 
-                    &.show {
-                        display: block;
-                    }
+                    // &.show {
+                    //     display: block;
+                    // }
 
                     .item {
                         cursor: pointer;
@@ -353,6 +356,11 @@
                             margin: 0;
                             vertical-align: middle;
                             letter-spacing: 4px;
+                        }
+                        input[type=number]::-webkit-outer-spin-button,
+                        input[type=number]::-webkit-inner-spin-button {
+                            -webkit-appearance: none;
+                            margin: 0;
                         }
 
                         .form-control {
@@ -468,7 +476,7 @@
                                 text-align: center;
 
                                 @include breakpoint-414 {
-                                    font-size: 2rem;
+                                    font-size: 1.8rem;
                                 }
 
                                 ;
@@ -768,11 +776,13 @@
 
                         };
 
-                        .each_page a {
+                        .each_page{
                             color: #797676;
                             font-size: 2rem;
                             margin: 0 5px;
-                            padding: 5px 13px;
+                            padding: 5px 10px;
+                            font-weight: bold;
+                            cursor: pointer;
 
                             @include breakpoint-414 {
                                 font-size: 16px;
@@ -781,7 +791,6 @@
                             };
 
                             &.active {
-                                font-weight: bold;
                                 background-color: $purple;
                                 border-radius: 50%;
                                 color: $white;
@@ -789,7 +798,6 @@
 
                             &:hover {
                                 color: $white;
-                                font-weight: bold;
                             }
 
                             i {
