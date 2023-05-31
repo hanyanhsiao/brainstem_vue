@@ -4,7 +4,7 @@
             <a href="./index.html">
                 <picture>
                     <source media="(max-width: 1000px)" srcset="./pic/img/LOGO/RWD.png" />
-       
+
                     <img src="./pic/img/LOGO/WEBLOGO.png" alt="" />
                 </picture>
             </a>
@@ -123,7 +123,7 @@
     integrity="sha512-06NZg89vaTNvnFgFTqi/dJKFadQ6FIglD6Yg1HHWAUtVFFoXli9BZL4q4EO1UTKpOfCfW5ws2Z6gw49Swsilsg=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-<script src="../js/constant.js"></script>
+<script src="./js/constant.js"></script>
 
 <script>
     // ==========RWD漢堡選單收合==========
@@ -140,42 +140,42 @@
 
     // ------------------------------------
     document.addEventListener("DOMContentLoaded", function () {
-    const lis = document.querySelectorAll(".a_part li, .b_2 li");
-    lis.forEach(function (li, index) {
-        const anchor = li.querySelector("a");
-        anchor.addEventListener("click", function (event) {
-            event.preventDefault();
-            const href = anchor.getAttribute("href");
-            const url = new URL(href, window.location.href);
-            url.searchParams.set("activeTab", index);
-            window.location.href = url.toString();
+        const lis = document.querySelectorAll(".a_part li, .b_2 li");
+        lis.forEach(function (li, index) {
+            const anchor = li.querySelector("a");
+            anchor.addEventListener("click", function (event) {
+                event.preventDefault();
+                const href = anchor.getAttribute("href");
+                const url = new URL(href, window.location.href);
+                url.searchParams.set("activeTab", index);
+                window.location.href = url.toString();
+            });
         });
     });
-});
-document.addEventListener("DOMContentLoaded", function () {
-    const activeTab = getActiveTabFromURL();
-    if (activeTab !== null) {
-        activateTab(activeTab);
-    }
-});
-
-function getActiveTabFromURL() {
-    const url = new URL(window.location.href);
-    const activeTab = url.searchParams.get("activeTab");
-    return activeTab !== null ? parseInt(activeTab) : null;
-}
-
-function activateTab(index) {
-    const lis = document.querySelectorAll(".a_part li, .b_2 li");
-    lis.forEach(function (li, i) {
-        const anchor = li.querySelector("a");
-        if (i === index) {
-            anchor.classList.add("active");
-        } else {
-            anchor.classList.remove("active");
+    document.addEventListener("DOMContentLoaded", function () {
+        const activeTab = getActiveTabFromURL();
+        if (activeTab !== null) {
+            activateTab(activeTab);
         }
     });
-}
+
+    function getActiveTabFromURL() {
+        const url = new URL(window.location.href);
+        const activeTab = url.searchParams.get("activeTab");
+        return activeTab !== null ? parseInt(activeTab) : null;
+    }
+
+    function activateTab(index) {
+        const lis = document.querySelectorAll(".a_part li, .b_2 li");
+        lis.forEach(function (li, i) {
+            const anchor = li.querySelector("a");
+            if (i === index) {
+                anchor.classList.add("active");
+            } else {
+                anchor.classList.remove("active");
+            }
+        });
+    }
 
 
     // ===========登入判斷===============

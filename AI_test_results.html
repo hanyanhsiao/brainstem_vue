@@ -64,7 +64,7 @@
                 let gameTypeNum = JSON.parse(localStorage.getItem("options"));
                 // console.log(gameTypeNum);
 
-                axios.get(php_url + '/AI_test_results.php', {
+                axios.get(php_url + 'AI_test_results.php', {
                     params: { gameTypeNum: gameTypeNum }
                 }).then(
                     (response) => {

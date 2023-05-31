@@ -97,8 +97,8 @@
                     if (this.quiz.questionNum == this.question_length) {
 
                         this.guessrGameType();
-                        // console.log(this.answer);
-                        location.href = "./AI_test_results.html";
+                        // 回到上上一頁
+                        location.replace("./AI_test_results.html");
 
                     } else {
                         this.quiz.questionNum++
