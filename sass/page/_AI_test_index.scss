@@ -123,6 +123,7 @@
           // border: 2px solid rgb(192, 86, 10);
           position: relative;
           overflow-x: hidden;
+          margin: 0 auto;
 
           .text-magic {
             position: absolute;
@@ -139,6 +140,10 @@
             line-height: 1.2;
             max-width: 200px;
 
+            // @media screen and (max-width: 390px) {
+            //   max-width: 150px;
+            //   margin: 0 auto;
+            // }
             &::before {
               content: attr(data-word);
               position: absolute;
