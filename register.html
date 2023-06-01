@@ -2,65 +2,196 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brainstem | 會員註冊</title>
-    @@include('./layout/style.html')
-    <!-- 以下可以放自己的link -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brainstem | 會員註冊</title>
+  @@include('./layout/style.html')
+  <!-- 以下可以放自己的link -->
+
 </head>
 
 <body>
-    <!-- header -->
-    @@include('./layout/header.html')
-    <main class="register ">
-        <section class="register_block col-10">
-            <div class="log_title">
-                <div class="logo"><img src="./pic/img/LOGO/WEB LOGO.png" alt=""></div>
-                <h2>會員註冊</h2>
-            </div>
-            <form action="" class="margin ">
-                <div class="left col-7">
-                <label for="name">姓名</label>
-                <input type="text" id="name" placeholder="請輸入姓名">
-                <label for="nickname">暱稱</label>
-                <input type="text" id="nickname" placeholder="請輸入暱稱">
-                <label for="phone">電話號碼</label>
-                <input type="text" id="phone" placeholder="請輸入電話號碼">
-                <label for="birth" class="birth">
-                    <p>生日</p>
-                    <input type="text" id="dob" placeholder="請選擇下方日期" disabled>
-                </label>
-                  <p class="margin"> 性別 </p>
-                <div for="gender" class="gender">
-                    <label><input type="radio" name="gender" value="male">男性</label>
-                    <label><input type="radio" name="gender" value="female">女性</label>
-                    <label><input type="radio" name="gender" value="unknow">不公開</label>
-            </div>
-            </div>
-            <div class="right col-7">
-                <label for="account">會員帳號（電子信箱）</label>
-                <input type="text" id="account" placeholder="請輸入會員帳號（電子信箱）">
-                <label for="password_1">密碼</label>
-                <input type="password" id="password_1" placeholder="請輸入密碼）">
-                <label for="password_2">請再次輸入密碼</label>
-                <input type="password" id="password_2" placeholder="請再次輸入密碼">
-            </div>
-            <button type="submit" class="btn register_btn">註冊</button>
-            </form>
-        </section>
+  <!-- header -->
+  @@include('./layout/header.html')
+  <main class="register ">
+    <section class="register_block col-10">
+      <div class="log_title">
+        <div class="logo"><img src="./pic/img/LOGO/WEB LOGO.png" alt=""></div>
+        <h2>會員註冊</h2>
+      </div>
+      <form id="registerForm" class="margin" @submit.prevent="submitForm">
+        <div class="left col-7">
+          <label for="name">姓名</label>
+          <input type="text" id="name" placeholder="請輸入姓名" v-model="name" @blur="validateName">
+          <p v-if="nameError" class="error">{{ nameError }}</p>
+          <label for="nickname">暱稱</label>
+          <input type="text" id="nickname" placeholder="請輸入暱稱" v-model="nickname" @blur="validateNickname">
+          <p v-if="nicknameError" class="error">{{ nicknameError }}</p>
+          <label for="phone">電話號碼</label>
+          <input type="text" id="phone" placeholder="請輸入電話號碼" v-model="phone" @blur="validatePhone">
+          <p v-if="phoneError" class="error">{{ phoneError }}</p>
+          <label for="birth" class="birth">
+            <p>生日</p>
+            
+            <input type="text" id="dob" placeholder="請選擇下方日期" disabled>
+            <p v-if="dateError" class="error">{{ dateError }}</p>
+          </label>
+          <p class="margin"> 性別 </p>
+          <div for="gender" class="gender">
+            <label><input type="radio" name="gender" value="male" v-model="gender">男性</label>
+            <label><input type="radio" name="gender" value="female" v-model="gender">女性</label>
+            <label><input type="radio" name="gender" value="unknown" v-model="gender">不公開</label>
+          </div>
+        </div>
+        <div class="right col-7">
+          <label for="account">會員帳號（電子信箱）</label>
+          <input type="email" id="account" placeholder="請輸入會員帳號（電子信箱）" v-model="email" @blur="validateEmail" required>
+          <p v-if="emailError" class="error">{{ emailError }}</p>
+          <label for="password_1">密碼</label>
+          <input type="password" id="password_1" placeholder="請輸入密碼" v-model="password1" @blur="validatePassword" required>
+          <p v-if="passwordError" class="error">{{ passwordError }}</p>
+          <label for="password_2">請再次輸入密碼</label>
+          <input type="password" id="password_2" placeholder="請再次輸入密碼" v-model="password2" @blur="validateConfirmPassword" required>
+          <p v-if="confirmPasswordError" class="error">{{ confirmPasswordError }}</p>
+        </div>
+        <button type="submit" class="btn register_btn">註冊</button>
+      </form>
+    </section>
+  </main>
+  <!-- javascript -->
+  @@include('./layout/js.html')
+  <!-- 以下可以放自己的js -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="./js/date.js"></script>
+  <script>
+    
+    const registerForm = new Vue({
+      el: '#registerForm',
+      data: {
+        name: '',
+        nameError: '',
+        nickname: '',
+        nicknameError: '',
+        phone: '',
+        phoneError: '',
+        gender: '',
+        email: '',
+        emailError: '',
+        password1: '',
+        passwordError: '',
+        password2: '',
+        confirmPasswordError: '',
+        dateError: '',
+        dob: ''
+      },
+      methods: {
+        validateName() {
+          this.nameError = '';
+          if (!this.name) {
+            this.nameError = '請填寫姓名';
+          } else if (this.name.length < 3) {
+            this.nameError = '姓名長度不能小於3個字';
+          }
+        },
+        validateNickname() {
+          this.nicknameError = '';
+          if (!this.nickname) {
+            this.nicknameError = '請填寫暱稱';
+          }else if (this.nickname.length < 5) {
+            this.nicknameError = '暱稱長度不能小於5個字';
+          }
+        },
+        validatePhone() {
+          this.phoneError = '';
+          if (!this.phone) {
+            this.phoneError = '請填寫電話號碼';
+          } else if (!this.isValidPhone(this.phone)) {
+            this.phoneError = '請輸入有效的電話號碼';
+          }
+        },
+        validateEmail() {
+          this.emailError = '';
+          if (!this.email) {
+            this.emailError = '請填寫會員帳號（電子信箱）';
+          } else if (!this.isValidEmail(this.email)) {
+            this.emailError = '請輸入有效的電子信箱';
+          }
+        },
+        validatePassword() {
+          this.passwordError = '';
+          if (!this.password1) {
+            this.passwordError = '請輸入密碼';
+          } else if (!this.isValidPassword(this.password1)) {
+            this.passwordError = '密碼需包含英文及數字，且至少8位數';
+          }
+        },
+        validateConfirmPassword() {
+          this.confirmPasswordError = '';
+          if (!this.password2) {
+            this.confirmPasswordError = '請再次輸入密碼';
+          } else if (this.password1 !== this.password2) {
+            this.confirmPasswordError = '兩次輸入的密碼不一致';
+          }
+        },
+        isValidPhone(phone) {
+          // 驗證電話號碼格式
+          const phoneRegex = /^09\d{8}$/;
+          return phoneRegex.test(phone);
+        },
+        isValidEmail(email) {
+          // 驗證電子信箱格式
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          return emailRegex.test(email);
+        },
+        isValidPassword(password) {
+          // 驗證密碼格式
+          const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/;
+          return passwordRegex.test(password);
+        },
+        submitForm() {
+          this.validateName();
+          this.validateNickname();
+          this.validatePhone();
+          this.validateEmail();
+          this.validatePassword();
+          this.validateConfirmPassword();
 
-    </main>
-    <!-- javascript -->
-    @@include('./layout/js.html')
-    <!-- 以下可以放自己的js -->
-    <script>
-        $('.register_btn').click(function(){
-            event.preventDefault();
-            window.location.href = 'login.html';
-        });
-    </script>
-    <script src="./js/date.js"></script>
+          // 新增日期驗證
+          // const day = parseInt(dateFieldDay.value, 10);
+          // const month = parseInt(dateFieldMonth.value, 10);
+          // const year = parseInt(dateFieldYear.value, 10);
+
+          // console.log(day);
+          // console.log(month);
+          // console.log(year);
+
+          // if (!day || !month || !year) {
+          //   this.dateError = '請選擇完整的日期';
+          // } else {
+          //   this.dateError = '';
+          // }
+
+          if (
+            this.nameError ||
+            this.nicknameError ||
+            this.phoneError ||
+            this.emailError ||
+            this.passwordError ||
+            this.confirmPasswordError
+          ) {
+            // 有錯誤，不提交表單
+            return;
+          }
+
+          // 資料驗證通過，可以進行註冊操作
+          console.log('註冊成功！');
+          // 可在此處發送表單資料至後端進行實際註冊
+        }
+      }
+    });
+  </script>
+  
 </body>
 
 </html>

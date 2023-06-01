@@ -91,7 +91,7 @@ dateWrapper.appendChild(dateFieldMonth);
 dateWrapper.appendChild(dateFieldYear);
 
 const dateChangeHandler = function() {
-    // var day = parseInt( dateFieldDay.value, 10 );
+    const day = parseInt( dateFieldDay.value, 10 );
     const month = parseInt( dateFieldMonth.value, 10 );
     const year = parseInt( dateFieldYear.value, 10 );
     let maxDays = 31;
