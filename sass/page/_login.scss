@@ -18,7 +18,7 @@
 
 }
 .login {
-  // height: calc(100vh - 150px);
+   height: calc(100vh - 109px);
   form{
     width: 80%;
   }
@@ -148,7 +148,6 @@
       width: 1px;
       height: 85%;
       background-color: $price_original;
-      
     }
     button{
       flex-basis: 50%;
@@ -158,6 +157,24 @@
   .left, .right{
     width: 40%;
   }
+  .error{
+    background-color: $orange;
+    padding: 8px;
+    position: relative;
+    display: inline-block;
+    border-radius: 5px;
+    &::after{
+      content: '';
+      position: absolute;
+      top: -30%;
+      left: 20px;
+      transform: translateX(-50%);
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid $orange;
+    }
+  }
+  
   .gender{
     width: 100%;
     @include flex-container(row, nowrap, space-between, center);
