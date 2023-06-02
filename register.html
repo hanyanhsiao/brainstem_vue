@@ -23,47 +23,52 @@
       <form id="registerForm" class="margin" @submit.prevent="submitForm">
         <div class="left col-7">
           <label for="name">姓名</label>
-          <input type="text" id="name" placeholder="請輸入姓名" v-model="name" @blur="validateName">
+          <input type="text" id="name" placeholder="請輸入姓名" v-model="name" @blur="validateName" name="name">
           <p v-if="nameError" class="error">{{ nameError }}</p>
           <label for="nickname">暱稱</label>
-          <input type="text" id="nickname" placeholder="請輸入暱稱" v-model="nickname" @blur="validateNickname">
+          <input type="text" id="nickname" placeholder="請輸入暱稱" v-model="nickname" @blur="validateNickname" name="nickname">
           <p v-if="nicknameError" class="error">{{ nicknameError }}</p>
           <label for="phone">電話號碼</label>
-          <input type="text" id="phone" placeholder="請輸入電話號碼" v-model="phone" @blur="validatePhone">
+          <input type="text" id="phone" placeholder="請輸入電話號碼" v-model="phone" @blur="validatePhone" name="phone">
           <p v-if="phoneError" class="error">{{ phoneError }}</p>
           <label for="birth" class="birth">
             <p>生日</p>
-            
-            <input type="text" id="dob" placeholder="請選擇下方日期" disabled>
-            <p v-if="dateError" class="error">{{ dateError }}</p>
+            <input type="text" id="dob" placeholder="請選擇下方日期" disabled name="date">
+
           </label>
           <p class="margin"> 性別 </p>
-          <div for="gender" class="gender">
-            <label><input type="radio" name="gender" value="male" v-model="gender">男性</label>
-            <label><input type="radio" name="gender" value="female" v-model="gender">女性</label>
-            <label><input type="radio" name="gender" value="unknown" v-model="gender">不公開</label>
+          <div for="gender" class="gender" name="gender">
+            <label><input type="radio" name="gender" value="M" v-model="gender">男性</label>
+            <label><input type="radio" name="gender" value="F" v-model="gender">女性</label>
+            <label><input type="radio" name="gender" value="X" v-model="gender">不公開</label>
           </div>
         </div>
         <div class="right col-7">
           <label for="account">會員帳號（電子信箱）</label>
-          <input type="email" id="account" placeholder="請輸入會員帳號（電子信箱）" v-model="email" @blur="validateEmail" required>
+          <input type="email" id="account" placeholder="請輸入會員帳號（電子信箱）" v-model="email" @blur="validateEmail" name="email">
           <p v-if="emailError" class="error">{{ emailError }}</p>
           <label for="password_1">密碼</label>
-          <input type="password" id="password_1" placeholder="請輸入密碼" v-model="password1" @blur="validatePassword" required>
+          <input type="password" id="password_1" placeholder="請輸入密碼" v-model="password1" @blur="validatePassword">
           <p v-if="passwordError" class="error">{{ passwordError }}</p>
           <label for="password_2">請再次輸入密碼</label>
-          <input type="password" id="password_2" placeholder="請再次輸入密碼" v-model="password2" @blur="validateConfirmPassword" required>
+          <input type="password" id="password_2" placeholder="請再次輸入密碼" v-model="password2" @blur="validateConfirmPassword" name="password">
           <p v-if="confirmPasswordError" class="error">{{ confirmPasswordError }}</p>
         </div>
         <button type="submit" class="btn register_btn">註冊</button>
       </form>
+    </section>
+    <section>
+      <div class="suceesfully">
+        <i class="bi bi-check-lg"></i>
+        <h2>註冊成功</h2>
+    </div>
     </section>
   </main>
   <!-- javascript -->
   @@include('./layout/js.html')
   <!-- 以下可以放自己的js -->
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script src="./js/date.js"></script>
+  <!-- <script src="./js/date.js"></script> -->
   <script>
     
     const registerForm = new Vue({
@@ -82,8 +87,175 @@
         passwordError: '',
         password2: '',
         confirmPasswordError: '',
-        dateError: '',
-        dob: ''
+        dateOfBirth: '',
+      },
+      mounted(){
+        // note: this is not a drop-in solution yet, merely a demo, with an id instead of reusable class for the wrapper etc.
+        const showOriginalFieldForDemo = true;
+        const self = this;
+
+        const isAndroid = true;
+        // see https://codepen.io/Connum/pen/xxPVQQO?editors=0010
+        // for detection
+
+
+        const fieldDateOfBirth = document.getElementById('dob');
+        const fieldStyle = window.getComputedStyle(fieldDateOfBirth);
+        let month_names = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ];
+
+        // use localized month names
+        if ( window.Intl && window.Intl.DateTimeFormat ) {
+            try {
+                var formatter = new window.Intl.DateTimeFormat([], { month: 'long', timeZone: 'UTC' });
+                var months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(month => {
+                var mm = month < 10 ? '0' + month : month;
+                return new Date('0000-' + mm + '-01T00:00:00+00:00');
+                });
+                month_names = months.map(date => formatter.format(date));
+            } catch(e) {}
+        }
+
+        if ( isAndroid ) {
+        const dateWrapper = document.createElement('div');
+        dateWrapper.id = 'date-select-wrapper';
+        fieldDateOfBirth.parentNode.appendChild(dateWrapper);
+
+        const dateFieldDay = document.createElement('select');
+        const dateFieldMonth = document.createElement('select');
+        const dateFieldYear = document.createElement('select');
+
+        const dateFields = [dateFieldYear, dateFieldMonth, dateFieldDay];
+
+        // copy over styles from text input
+        if ( fieldStyle ) {
+            var styleOptions = [ 'boxSizing', 'backgroundColor', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'height', 'font', 'verticalAlign' ];
+            styleOptions.forEach( function( s ) {
+            if ( fieldStyle[s] ) {
+                dateFields.forEach( function( f ) {
+                f.style[s] = fieldStyle[s];
+                } );
+            }
+            });
+        }
+
+        const emptyDayOption = document.createElement('option');
+        emptyDayOption.value = '';
+        emptyDayOption.textContent = '日';
+        dateFieldDay.add(emptyDayOption);
+        const emptyMonthOption = document.createElement('option');
+        emptyMonthOption.value = '';
+        emptyMonthOption.textContent = '月';
+        dateFieldMonth.add(emptyMonthOption);
+        const emptyYearOption = document.createElement('option');
+        emptyYearOption.value = '';
+        emptyYearOption.textContent = '年';
+        dateFieldYear.add(emptyYearOption);
+
+        const dayOptions = [emptyDayOption];
+        for ( var i = 1; i <= 31; i++ ) {
+            var newOption = document.createElement('option');
+            newOption.value = ( i < 10 ? '0' : '' ) + i;
+            newOption.textContent = i;
+            dayOptions.push( newOption );
+            dateFieldDay.add( newOption );
+        }
+
+        const monthOptions = [emptyMonthOption];
+        for ( var i = 0; i < month_names.length; i++ ) {
+            var newOption = document.createElement('option');
+            newOption.value = ( i < 9 ? '0' : '' ) + ( i + 1 );
+            newOption.textContent = month_names[i];
+            monthOptions.push(newOption);
+            dateFieldMonth.add(newOption);
+        }
+
+        const yearEnd = new Date().getFullYear();
+        const yearStart = yearEnd - 120;
+        const yearOptions = [emptyYearOption];
+        for (var i = yearEnd; i >= yearStart; i--) {
+            var newOption = document.createElement('option');
+            newOption.value = i;
+            newOption.textContent = i;
+            yearOptions.push(newOption);
+            dateFieldYear.add(newOption);
+        }
+
+        dateWrapper.appendChild(dateFieldDay);
+        dateWrapper.appendChild(dateFieldMonth);
+        dateWrapper.appendChild(dateFieldYear);
+
+        const dateChangeHandler = function() {
+            const day = parseInt( dateFieldDay.value, 10 );
+            const month = parseInt( dateFieldMonth.value, 10 );
+            const year = parseInt( dateFieldYear.value, 10 );
+            let maxDays = 31;
+
+            if ( month === 2 ) {
+            const isLeapYear = ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)
+            maxDays = isLeapYear ? 29 : 28;
+            } else if ( [2, 4, 6, 9, 11].indexOf( month ) >= 0 ) {
+            maxDays = 30;
+            }
+
+            dayOptions.filter(function( o, i ) {
+            o.hidden = i > maxDays;
+            if ( o.hidden && o.selected ) {
+                emptyDayOption.selected = true;
+            }
+            });
+
+            let allSet = true;
+            dateFields.forEach(field => {
+            const isEmpty = ! field.value;
+            if ( isEmpty ) {
+                allSet = false;
+            }
+            field.classList[isEmpty ? 'add' : 'remove']('show-placeholder');
+            });
+
+            if (allSet) {
+              fieldDateOfBirth.value = dateFields.map(function (field) {
+                return field.value;
+              }).join('-');
+
+              const year = dateFieldYear.value;
+              const month = dateFieldMonth.value;
+              const day = dateFieldDay.value;
+
+              // 更新self.dateOfBirth的值
+              self.dateOfBirth = year + '-' + month + '-' + day;
+
+              // ...
+            } else {
+              self.dateOfBirth = ''; // 清空self.dateOfBirth的值
+              fieldDateOfBirth.value = '';
+            }
+
+        };
+
+        // if the original input already has a value, set the selected options accordingly
+        if ( fieldDateOfBirth.value ) {
+            const ymd = fieldDateOfBirth.value.split('-');
+            yearOptions.filter(function(o) {
+            if ( o.value === ymd[0]) {
+                o.selected = true;
+            }
+            });
+            monthOptions[parseInt(ymd[1], 10)].selected = true;
+            dayOptions[parseInt(ymd[2], 10)].selected = true;
+        }
+
+        dateFieldDay.addEventListener( 'change', dateChangeHandler );
+        dateFieldMonth.addEventListener( 'change', dateChangeHandler );
+        dateFieldYear.addEventListener( 'change', dateChangeHandler );
+        dateChangeHandler();
+
+        // do this last, so in case anything throws an error, we still have the input as a fallback
+        if ( ! showOriginalFieldForDemo ) {
+            fieldDateOfBirth.type = 'hidden';
+        }
+        }
+
       },
       methods: {
         validateName() {
@@ -150,27 +322,13 @@
           return passwordRegex.test(password);
         },
         submitForm() {
+          // 執行表單提交時的操作
           this.validateName();
           this.validateNickname();
           this.validatePhone();
           this.validateEmail();
           this.validatePassword();
           this.validateConfirmPassword();
-
-          // 新增日期驗證
-          // const day = parseInt(dateFieldDay.value, 10);
-          // const month = parseInt(dateFieldMonth.value, 10);
-          // const year = parseInt(dateFieldYear.value, 10);
-
-          // console.log(day);
-          // console.log(month);
-          // console.log(year);
-
-          // if (!day || !month || !year) {
-          //   this.dateError = '請選擇完整的日期';
-          // } else {
-          //   this.dateError = '';
-          // }
 
           if (
             this.nameError ||
@@ -182,14 +340,35 @@
           ) {
             // 有錯誤，不提交表單
             return;
-          }
-
-          // 資料驗證通過，可以進行註冊操作
-          console.log('註冊成功！');
-          // 可在此處發送表單資料至後端進行實際註冊
+          }else{
+            const formData = new FormData();
+            formData.append("name" , this.name);
+            formData.append("nickname" , this.nickname);
+            formData.append("phone" , this.phone);
+            formData.append("gender" , this.gender);
+            formData.append("email" , this.email);
+            formData.append("password" , this.password2);
+            formData.append("dateOfBirth", this.dateOfBirth);
+            console.log(this.dateOfBirth);
+           // 將表單資料傳遞給後端 PHP 處理
+           // 可以使用 Ajax 或其他方式發送 POST 請求，將資料傳遞給 PHP 文件
+           // 例如使用 axios 套件發送 POST 請求
+           axios.post(php_url + 'register.php', formData)
+           .then(response => {  
+             // 處理伺服器回應
+             $('.suceesfully').css('display', 'flex');
+                 setTimeout(function () {
+                    window.location.href = 'login.html';
+                 }, 2000);
+           })
+           .catch(error => {
+             // 處理錯誤
+             console.error(error);
+           });
         }
       }
-    });
+      }
+  });
   </script>
   
 </body>

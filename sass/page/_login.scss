@@ -115,6 +115,23 @@
       }
     }
   }
+  .error{
+    background-color: $orange;
+    padding: 8px;
+    position: relative;
+    display: inline-block;
+    border-radius: 5px;
+    &::after{
+      content: '';
+      position: absolute;
+      top: -30%;
+      left: 20px;
+      transform: translateX(-50%);
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid $orange;
+    }
+  }
 }
 
 .register{
@@ -287,6 +304,29 @@
   .datepicker-icon {
     color: #fff;
 }
+.suceesfully{
+  width: 30vw;
+  height: 50vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  background: rgba(44, 44, 44, 0.34);
+   backdrop-filter: blur(10px);
+  border-radius: 5px;
+  @include flex-container(column, nowrap, space-around, center);
+  display: none;  
+    i{
+      display: block;
+      padding: 30px;
+      border: 3px solid $green;
+      border-radius: 50%;
+      color: $green;
+      font-size: 4rem;
+    }
+  
+}
 @include breakpoint-414 {
   form{
      @include flex-container(column, wrap, flex-start, flex-start);
@@ -301,7 +341,9 @@
       margin-bottom: 20px;
     }
   }
-
+  .suceesfully{
+    width: 90vw;
+  }
 }
 
 }
