@@ -30,7 +30,9 @@
 
                 <div class="results_game">
                     <div class="game_top_block" v-for="(game,index) in games" :key="index">
-                        <a class="top_game" :href="game.url"><img :src="game.image" :alt="'top'+(index+1)"></a>
+                        <a class="top_game" href="./product_information.html">
+                            <img :src="game.image" :alt="'top'+(index+1)">
+                        </a>
                         <h1 class="top_game_text"> {{'TOP'+(index+1)}} </h1>
                         <h2 class="top_game_name">{{game.name}}</h2>
                     </div>
