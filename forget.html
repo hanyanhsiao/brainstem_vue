@@ -12,50 +12,144 @@
 <body>
     <!-- header -->
     @@include('./layout/header.html')
-    <main class="login forget">
-        <section class="login_block col-4 ">
-            <div class="log_title">
+    <main class="login forget" id="app">
+        <section class="login_block col-4">
+          <div class="log_title">
             <div class="logo"><img src="./pic/img/LOGO/WEB LOGO.png" alt=""></div>
+          </div>
+          <form action="" class="margin" @submit.prevent="sendVerificationCode">
+            <div class="send" v-show="send_box">
+              <h2 class="margin">忘記密碼</h2>
+              <label for="email">請輸入帳號</label>
+              <input type="email" id="email" name="email" placeholder="請輸入您的電子信箱" v-model="email">
+              <button type="submit" class="btn send_btn">寄送驗證碼</button>
             </div>
-            <form action="" class="margin">
-            <div class="send">
-                <h2 class="margin">忘記密碼</h2>
-                <label for="email">請輸入帳號</label>
-                <input type="email" id="email" name="email" placeholder="請輸入您的電子信箱" required>
-                <button type="submit" class="btn send_btn" >寄送驗證碼</button>
+            <div class="verification_code_section" v-show="verificationCodeSent">
+              <h2 class="margin">忘記密碼</h2>
+              <p><i class="bi bi-check-lg"></i>已發送驗證碼到信箱</p>
+              <label for="verification_code">請輸入您的驗證碼：</label>
+              <input type="text" id="verification_code" name="verification_code" v-model="verificationCodeInput">
+              <button type="button" class="btn verification_btn" @click="verifyCode">驗證</button>
+            </div>            
+          </form>
+            <div id="reset_password_form" v-show="codeVerified">
+              <h2 class="margin">重置密碼</h2>
+              <div @submit.prevent="resetPassword">
+                <label for="new_password">新密碼</label>
+                <input type="password" id="new_password" name="new_password" v-model="newPassword" @blur="validatePassword">
+                <p v-if="passwordError" class="error">{{ passwordError }}</p>
+                <label for="confirm_password">確認新密碼</label>
+                <input type="password" id="confirm_password" name="confirm_password" v-model="confirmPassword" @blur="validateConfirmPassword">
+                <p v-if="confirmPasswordError" class="error">{{ confirmPasswordError }}</p>
+                <button type="submit" class="btn reset_btn">確認</button>
+              </div>
             </div>
-            <div class="verification_code_section" style="display:none;">
-                <h2 class="margin">忘記密碼</h2>
-                <p><i class="bi bi-check-lg"></i>已發送驗證碼到信箱</p>
-                <label for="verification_code">請輸入您的驗證碼：</label>
-                <input type="text" id="verification_code" name="verification_code" required>
-                <button type="button" class="btn verification_btn">驗證</button>
-              </div>
-
-              <div id="reset_password_form" style="display:none;">
-                <h2 class="margin">重置密碼</h2>
-                <form>
-                  <label for="new_password">新密碼</label>
-                  <input type="password" id="new_password" name="new_password" required>
-                  <label for="confirm_password">確認新密碼</label>
-                  <input type="password" id="confirm_password" name="confirm_password" required>
-                  <button type="submit" class="btn reset_btn">確認</button>
-              </form>
-              </div>
-
-
-            </form>
-
-            
-            
         </section>
+      </main>
 
-    </main>
+
     <!-- javascript -->
     @@include('./layout/js.html')
     <!-- 以下可以放自己的js -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
+        // 创建Vue实例
+        var app = new Vue({
+          el: '#app',
+          data: {
+            email: '',
+            verificationCode: '',
+            verificationCodeInput: '',
+            newPassword: '',
+            passwordError: '',
+            confirmPassword: '',
+            confirmPasswordError: '',
+            send_box: true,
+            verificationCodeSent: false,
+            codeVerified: false,
+          },
+          methods: {
+            sendVerificationCode: function () {
+              this.verificationCode = Math.floor(1000 + Math.random() * 9000);
+            console.log(this.verificationCode);
+              // 在此使用axios发送请求到服务器发送验证码的接口
+              // 根据服务器的响应结果来更新verificationCodeSent的值
+              // 如果发送成功，将verificationCodeSent设置为true，显示验证码输入区域
+              // 示例代码：
+              const formData = new FormData();
+              formData.append('email', this.email);
+              formData.append('verificationCode', this.verificationCode);
+
+              axios.post(php_url + 'forget.php', formData)
+                .then(response => {
+                    console.log(response);
+                    if(response.data > 0){
+                        alert("未註冊過的帳號，請重新確認");
+                    }else{
+                        this.send_box = false;
+                        this.verificationCodeSent = true;
+                    }
+                })
+                .catch(error => {
+                  console.error(error);
+                });
+            },
+            verifyCode() {
+              // 比较输入的验证码与this.verificationCode的值
+              const inputCode = parseInt(this.verificationCodeInput);
+              if (inputCode === this.verificationCode) {
+                this.verificationCodeSent = false;
+                this.codeVerified = true;
+              } else {
+                alert('驗證碼不符合，請重新輸入');
+              }
+            },
+            validatePassword() {
+              this.passwordError = '';
+              if (!this.newPassword) {
+                this.passwordError = '請輸入密碼';
+              } else if (!this.isValidPassword(this.newPassword)) {
+                this.passwordError = '密碼需包含英文及數字，且至少8位數';
+              }
+            },
+            validateConfirmPassword() {
+              this.confirmPasswordError = '';
+              if (!this.confirmPassword) {
+                this.confirmPasswordError = '請再次輸入密碼';
+              } else if (this.newPassword !== this.confirmPassword) {
+                this.confirmPasswordError = '兩次輸入的密碼不一致';
+              }
+            },
+            isValidPassword(password) {
+              // 驗證密碼格式
+              const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/;
+              return passwordRegex.test(password);
+            },
+            resetPassword() {
+              if (this.passwordError || this.confirmPasswordError) {
+                // 有錯誤，不提交表單
+                return;
+              } else {
+                const formData = new FormData();
+                formData.append("new_password", this.confirmPassword); // 将键名设为 "new_password"
+                axios
+                  .post(php_url + 'forget.php', formData)
+                  .then(response => {
+                    // 處理伺服器回應
+                    console.log(response.data); // 输出服务器响应的数据
+                  })
+                  .catch(error => {
+                    // 處理錯誤
+                    console.error(error);
+                  });
+              }
+            },
+
+          },
+        });
+      </script>
+    
+    <!-- <script>
         let send = $(".send")[0];
         let send_btn = $(".send_btn")[0];
         let verification = $(".verification_code_section")[0];
@@ -79,6 +173,6 @@
             window.location.href = 'login.html';
         });
     
-    </script>
+    </script> -->
 </body>
 </html>
