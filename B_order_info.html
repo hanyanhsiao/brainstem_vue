@@ -21,7 +21,7 @@
             <a href="./B_order.html">
                 <h6>回上一頁</h6>
             </a>
-            <div class="right_main">
+            <div class="right_main" id="B_order_info">
                 <form action="" method="">
                     <div class="B_button">
                         <h4>訂單內容</h4>
@@ -29,15 +29,15 @@
                     <ul>
                         <li>
                             <h6>訂單編號</h6>
-                            <h6>ak4l79e3k68sly</h6>
+                            <h6>{{order.ORDER_CODE}}</h6>
                         </li>
                         <li>
                             <h6>會員編號</h6>
-                            <h6>123456789000</h6>
+                            <h6>{{order.MEMBERSHIP_NUMBER}}</h6>
                         </li>
                         <li>
                             <h6>會員帳號</h6>
-                            <h6>RRRRRR</h6>
+                            <h6>{{order.MEMBER_ACCOUNT}}</h6>
                         </li>
                     </ul>
                 </form>
@@ -45,20 +45,23 @@
                 <div class="B-shopitem">
                     <ul>
                         <li>
-                            <img src="./pic/img/cover/7.jpg" alt="">
-                            <h6>王國之心3</h6>
-                            <p class="discount backend_color_active">-40%</p>
-                            <div class="B_price">
-                                <h6>$660</h6>
-                                <p>$1,099</p>
-                            </div>
+                            <img :src="order.GAME_COVER" alt="">
+                            <h6>{{order.GAME_NAME}}</h6>
+                            <p class="backend_color_active">{{order.DISCOUNT_PERCENTAGE}}</p>
+                            <template v-if="order.DISCOUNT_PERCENTAGE !== null && order.DISCOUNT_PERCENTAGE > 0">
+                                <h6>${{ order.AFTER_DISCOUNT_PRICE }}</h6>
+                                <p>${{ order.ORIGINAL_PRICE }}</p>
+                            </template>
+                            <template v-else>
+                                <h6>${{ order.ORIGINAL_PRICE }}</h6>
+                            </template>
                         </li>
-                        <li>
+                        <!-- <li>
                             <img src="./pic/img/cover/7.jpg" alt="">
                             <h6>王國之心2.8</h6>
                             <p></p>
                             <h6>$1,399</h6>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
                 <div class="B_order_info_down">
@@ -68,22 +71,51 @@
                             <h6>結算</h6>
                         </li>
                         <li>
-                            <h6>春季特賣優惠商品</h6>
+                            <h6>{{order.COUPON_NAME}}</h6>
                             <h6>折扣</h6>
                             <h6>總金額</h6>
                         </li>
                         <li>
-                            <h6>-40%</h6>
-                            <h6>-439 元</h6>
-                            <h6>2059 元</h6>
+                            <h6>{{order.COUPON_DISCOUNT}}元</h6>
+                            <h6>{{order.COUPON_DISCOUNT}}</h6>
+                            <h6>{{order.SUM_PRICE}}元</h6>
                         </li>
                     </ul>
                 </div>
-
             </div>
-
         </div>
     </main>
+    @@include('./layout/js.html')
+
+    <script>
+        //渲染單獨訂單資料
+        Vue.createApp({
+            data() {
+                return {
+                    order: []
+                }
+            },
+            methods: {
+
+            },
+            mounted() {
+                // 获取URL中的会员ID参数
+                const urlParams = new URLSearchParams(window.location.search);
+                const orderId = urlParams.get('id');
+
+                // 根据会员ID从服务器请求完整的会员数据
+                axios.get(php_url + 'B_order.php?id=' + orderId)
+                    .then((response) => {
+                        this.order = response.data;
+                        console.log(this.order);
+                        // console.log(this.order.GAME_COVER);
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
+            }
+        }).mount('#B_order_info')
+    </script>
 </body>
 
 </html>

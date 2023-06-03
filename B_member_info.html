@@ -22,52 +22,56 @@
             <a href="./B_member.html">
                 <h6>回上一頁</h6>
             </a>
-            <div class="right_main">
-                <form action="" method="">
+            <div class="right_main" id="B_member_info">
+                <form action="" method="" id="">
                     <div class="B_button">
                         <h4>會員資料</h4>
-                        <button class="btn" id="button"
-                            onclick="toggleEditSave(this); event.preventDefault();">修改內容</button>
+                        <button class="btn" id="button" @click="toggleEditSave($event)">{{ editMode ? '保存' :
+                            '修改內容'}}</button>
                     </div>
                     <ul>
                         <li>
                             <h6>會員編號</h6>
-                            <h6>123456789000</h6>
+                            <h6>{{member.MEMBERSHIP_NUMBER}}</h6>
                         </li>
                         <li>
                             <h6>會員帳號</h6>
-                            <h6>THD101@gmail.com</h6>
+                            <h6>{{member.MEMBER_ACCOUNT}}</h6>
                         </li>
                         <li>
                             <h6>會員姓名</h6>
-                            <h6>剪刀布</h6>
+                            <h6>{{member.USERNAME}}</h6>
                         </li>
                         <li>
                             <label for="name">
                                 <h6>使用者名稱</h6>
                             </label>
-                            <h6 id="content1">剪刀布</h6>
+                            <h6 v-if="!editMode" id="content1">{{ member.NICKNAME }}</h6>
+                            <input v-else type="text" v-model="member.NICKNAME" placeholder="{{ member.NICKNAME }}">
                         </li>
                         <li class="B_grid_four">
                             <label for="phone">
                                 <h6>電話號碼</h6>
                             </label>
-                            <h6 id="content2">0900123456</h6>
+                            <h6 v-if="!editMode" id="content2">{{ member.PHONE }}</h6>
+                            <input v-else type="text" v-model="member.PHONE" placeholder="{{member.PHONE}}">
                             <h6>電話號碼是否驗證通過：是</h6>
                             <button class="btn" onclick="">重新送驗證碼</button>
                         </li>
                         <li>
                             <h6>註冊日期</h6>
-                            <h6>2022/3/25</h6>
+                            <h6>{{member.REGISTRATION_DATE}}</h6>
                         </li>
                         <li>
                             <h6>帳號狀態</h6>
-                            <h6>正常使用中</h6>
+                            <h6 v-if="member.MEMBER_STATUS == 1">正常</h6>
+                            <h6 v-else>鎖定</h6>
                         </li>
                         <li>
                             <h6>重設密碼</h6>
-                            <h6 onclick="password(event)"
-                                style="cursor: pointer;width: 100px;color:#a289d6;text-decoration: underline;">密碼重置</h6>
+                            <button class="btn" @click="resetPassword($event)">密碼重置</button>
+                            <input v-if="showResetPassword" type="text" v-model="newPassword" placeholder="新密碼">
+                            <button v-if="showResetPassword" class="btn" @click="updatePassword($event)">確認修改</button>
                         </li>
                     </ul>
                 </form>
@@ -157,9 +161,9 @@
     @@include('./layout/js.html')
     <script>
         //alert密碼
-        function password() {
-            // alert("默認密碼aaaa8888")
-        }
+        // function resetPassword(e) {
+        //     e.preventDefault();
+        // }
         //手風琴
         $(function () {
             $('.B_accordion-content').slideUp();
@@ -171,43 +175,138 @@
             });
         })
         // 點擊button修改
-        function toggleEditSave(button) {
-            let element1 = document.getElementById("content1");
-            let element2 = document.getElementById("content2");
+        // function toggleEditSave(button) {
+        //     let element1 = document.getElementById("content1");
+        //     let element2 = document.getElementById("content2");
 
-            if (button.innerHTML === "修改內容") {
-                // name
-                let input1 = document.createElement("input");
-                input1.type = "text";
-                input1.id = "name";
-                input1.value = element1.innerHTML;
-                element1.innerHTML = "";
-                element1.appendChild(input1);
+        //     if (button.innerHTML === "修改內容") {
+        //         // name
+        //         let input1 = document.createElement("input");
+        //         input1.type = "text";
+        //         input1.id = "name";
+        //         input1.value = element1.innerHTML;
+        //         element1.innerHTML = "";
+        //         element1.appendChild(input1);
 
-                // phone
-                let input2 = document.createElement("input");
-                input2.type = "text";
-                input2.id = "phone";
-                input2.value = element2.innerHTML;
-                element2.innerHTML = "";
-                element2.appendChild(input2);
+        //         // phone
+        //         let input2 = document.createElement("input");
+        //         input2.type = "text";
+        //         input2.id = "phone";
+        //         input2.value = element2.innerHTML;
+        //         element2.innerHTML = "";
+        //         element2.appendChild(input2);
 
-                button.innerHTML = "儲存";
-            } else {
-                // 取输入框的值
-                let input1 = element1.querySelector("input");
-                let input2 = element2.querySelector("input");
-                let newValue1 = input1.value;
-                let newValue2 = input2.value;
+        //         button.innerHTML = "儲存";
+        //     } else {
+        //         // 取输入框的值
+        //         let input1 = element1.querySelector("input");
+        //         let input2 = element2.querySelector("input");
+        //         let newValue1 = input1.value;
+        //         let newValue2 = input2.value;
 
-                // 更新内容
-                element1.innerHTML = newValue1;
-                element2.innerHTML = newValue2;
+        //         // 更新内容
+        //         element1.innerHTML = newValue1;
+        //         element2.innerHTML = newValue2;
 
-                button.innerHTML = "修改內容";
-            }
-        }
+        //         button.innerHTML = "修改內容";
+        //     }
+        // }
     </script>
+
+    <script>
+        //針對單獨會員顯示頁面及修改
+        Vue.createApp({
+            data() {
+                return {
+                    member: {},
+                    showResetPassword: false,
+                    newPassword: '',
+                    editMode: false
+                }
+            },
+            methods: {
+                //修改密碼
+                resetPassword(e) {
+                    e.preventDefault();
+                    this.showResetPassword = true;
+                },
+                updatePassword(e) {
+                    e.preventDefault();
+                    // 获取URL中的会员ID参数
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const memberId = urlParams.get('id');
+
+                    // 创建FormData对象
+                    const formData = new FormData();
+                    formData.append('memberId', memberId);
+                    formData.append('newPassword', this.newPassword);
+
+                    // 更新数据库中的密码和MEMBER_STATUS
+                    axios.post(php_url + 'B_resetpassword.php', formData)
+                        .then((response) => {
+                            // 更新成功后的处理逻辑
+                            // 可以在这里重置输入框和相关数据
+                            this.showResetPassword = false;
+                            this.newPassword = '';
+                            alert("密碼已重置");
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        });
+                },
+                //修改暱稱及電話
+                toggleEditSave(e) {
+                    e.preventDefault();
+                    if (this.editMode) {
+                        // 执行保存操作
+                        this.saveMemberData();
+                    } else {
+                        // 切换到编辑模式
+                        this.editMode = true;
+                    }
+                },
+                saveMemberData() {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const memberId = urlParams.get('id');
+
+                    const formData = new FormData();
+                    formData.append('memberId', memberId);
+                    formData.append('newNickname', this.member.NICKNAME);
+                    formData.append('newPhone', this.member.PHONE);
+
+                    axios.post(php_url + 'B_updatememberinfo.php', formData)
+                        .then((response) => {
+                            // 更新成功后的处理逻辑
+                            // 可以在这里重置输入框和相关数据
+                            this.newNickname = '';
+                            this.newPhone = '';
+                            alert("資料已更新");
+                            this.editMode = false; // 切换回非编辑模式
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        });
+                }
+            },
+            mounted() {
+                // 获取URL中的会员ID参数
+                const urlParams = new URLSearchParams(window.location.search);
+                const memberId = urlParams.get('id');
+
+                // 根据会员ID从服务器请求完整的会员数据
+                axios.all([
+                    axios.get(php_url + 'B_member.php?id=' + memberId),
+                    //   axios.get(php_url + 'B_getMemberData.php?id=' + memberId)
+                ])
+                    .then(axios.spread((memberResponse, memberDataResponse) => {
+                        this.member = memberResponse.data;
+                        // 处理其他请求的响应数据
+                    }))
+                    .catch((error) => {
+                        console.error(error);
+                    });
+            }
+        }).mount('#B_member_info');
     </script>
 </body>
 

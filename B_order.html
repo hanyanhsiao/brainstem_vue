@@ -33,7 +33,7 @@
             </div>
 
             <!-- 右側下 -->
-            <div class="right-bottom">
+            <div class="right-bottom" id="B_order">
                 <table>
                     <thead class="backend_color">
                         <tr>
@@ -54,158 +54,22 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody onclick="B_order_info(event)">
-                        <tr>
+                    <tbody>
+                        <tr v-for="(order,index) in orders" :key="index" @click="vieworder(order.ORDER_ID)">
                             <td>
-                                <h6>ak4l79e3k68sly</h6>
+                                <h6>{{order.ORDER_CODE}}</h6>
                             </td>
                             <td>
-                                <h6>123456789000</h6>
+                                <h6>{{order.MEMBERSHIP_NUMBER}}</h6>
                             </td>
                             <td>
-                                <h6>RRRRRR</h6>
+                                <h6>{{order.MEMBER_ACCOUNT}}</h6>
                             </td>
                             <td>
-                                <h6>2021/2/22</h6>
+                                <h6>{{order.ORDER_DATE}}</h6>
                             </td>
                             <td>
-                                <h6>$1,500</h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6>ak4l79e3k68sly</h6>
-                            </td>
-                            <td>
-                                <h6>123456789000</h6>
-                            </td>
-                            <td>
-                                <h6>RRRRRR</h6>
-                            </td>
-                            <td>
-                                <h6>2021/2/22</h6>
-                            </td>
-                            <td>
-                                <h6>$1,500</h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6>ak4l79e3k68sly</h6>
-                            </td>
-                            <td>
-                                <h6>123456789000</h6>
-                            </td>
-                            <td>
-                                <h6>RRRRRR</h6>
-                            </td>
-                            <td>
-                                <h6>2021/2/22</h6>
-                            </td>
-                            <td>
-                                <h6>$1,500</h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6>ak4l79e3k68sly</h6>
-                            </td>
-                            <td>
-                                <h6>123456789000</h6>
-                            </td>
-                            <td>
-                                <h6>RRRRRR</h6>
-                            </td>
-                            <td>
-                                <h6>2021/2/22</h6>
-                            </td>
-                            <td>
-                                <h6>$1,500</h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6>ak4l79e3k68sly</h6>
-                            </td>
-                            <td>
-                                <h6>123456789000</h6>
-                            </td>
-                            <td>
-                                <h6>RRRRRR</h6>
-                            </td>
-                            <td>
-                                <h6>2021/2/22</h6>
-                            </td>
-                            <td>
-                                <h6>$1,500</h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6>ak4l79e3k68sly</h6>
-                            </td>
-                            <td>
-                                <h6>123456789000</h6>
-                            </td>
-                            <td>
-                                <h6>RRRRRR</h6>
-                            </td>
-                            <td>
-                                <h6>2021/2/22</h6>
-                            </td>
-                            <td>
-                                <h6>$1,500</h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6>ak4l79e3k68sly</h6>
-                            </td>
-                            <td>
-                                <h6>123456789000</h6>
-                            </td>
-                            <td>
-                                <h6>RRRRRR</h6>
-                            </td>
-                            <td>
-                                <h6>2021/2/22</h6>
-                            </td>
-                            <td>
-                                <h6>$1,500</h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6>ak4l79e3k68sly</h6>
-                            </td>
-                            <td>
-                                <h6>123456789000</h6>
-                            </td>
-                            <td>
-                                <h6>RRRRRR</h6>
-                            </td>
-                            <td>
-                                <h6>2021/2/22</h6>
-                            </td>
-                            <td>
-                                <h6>$1,500</h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6>ak4l79e3k68sly</h6>
-                            </td>
-                            <td>
-                                <h6>123456789000</h6>
-                            </td>
-                            <td>
-                                <h6>RRRRRR</h6>
-                            </td>
-                            <td>
-                                <h6>2021/2/22</h6>
-                            </td>
-                            <td>
-                                <h6>$1,500</h6>
+                                <h6>{{order.TOTAL_SUM_PRICE}}</h6>
                             </td>
                         </tr>
                     </tbody>
@@ -216,12 +80,39 @@
             @@include('./layout/B_changepage.html')
         </div>
     </main>
-    <script>
+    @@include('./layout/js.html')
+    <!-- <script>
         function B_order_info(e) {
             e.preventDefault();
             window.location.href = "./B_order_info.html"
         }
-    </script>
+    </script> -->
+
+<script>
+    //渲染全部訂單資料
+    Vue.createApp({
+        data() {
+            return {
+                orders: []
+            }
+        },
+        methods: {
+            vieworder(orderid){
+                    //跳轉info
+                    window.location.href = 'B_order_info.html?id=' + orderid;
+                    // console.log(orderid);
+                }
+        },
+        mounted() {
+            axios.get(php_url + 'B_order.php')
+                .then((response) => {
+                    console.log(response);
+                    this.orders = response.data;
+                })
+        }
+
+    }).mount('#B_order')
+</script>
 </body>
 
 </html>

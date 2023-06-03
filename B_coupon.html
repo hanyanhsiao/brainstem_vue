@@ -31,7 +31,7 @@
             </div>
 
             <!-- 右側下 -->
-            <div class="right-bottom">
+            <div class="right-bottom" id="B_coupon">
                 <table>
                     <thead class="backend_color">
                         <tr>
@@ -45,52 +45,26 @@
                                 <h5>優惠時間</h5>
                             </th>
                             <th>
-                                <h5>優惠內容</h5>
-                            </th>
-                            <th>
                                 <h5>顯示狀態</h5>
                             </th>
                         </tr>
                     </thead>
-                    <tbody onclick="B_coupon_info(event)">
-                        <tr>
+                    <tbody>
+                        <tr v-for="(coupon,index) in coupons" :key="index" @click="vieworder(coupon.COUPON_ID)">
                             <td>
-                                <h6>TK666</h6>
+                                <h6>{{coupon.COUPON_CODE}}</h6>
                             </td>
                             <td>
-                                <h6>青銅會員每月9折優惠券</h6>
-                                <p>使用期限：2023/4/1~2023/4/30<br>
-                                    使用規則：不能於其他優惠商品重複使用、每次優惠券只能選擇一張。</p>
+                                <h6>{{coupon.COUPON_NAME}}<br>
+                                {{coupon.COUPON_DETAIL}}<br>
+                                使用規則:{{coupon.MINIMUM_LIMIT}}</h6>
                             </td>
                             <td>
-                                <h6>2023/4/1~2023/4/30</h6>
+                                <h6>{{coupon.COUPON_BEGIN}}~{{coupon.COUPON_END}}</h6>
                             </td>
                             <td>
-                                <h6>9折</h6>
-                            </td>
-                            <td>
-                                <h6>開啟</h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6>TK666</h6>
-                            </td>
-                            <td>
-                                <div>
-                                    <h6>生日優惠券$300元</h6>
-                                    <p>使用期限：2023/4/1~2023/4/30<br>
-                                    使用規則：不能於其他優惠商品重複使用、每次優惠券只能選擇一張。</p>
-                                </div>
-                            </td>
-                            <td>
-                                <h6>2023/4/1~2023/4/30</h6>
-                            </td>
-                            <td>
-                                <h6>$300元抵用券</h6>
-                            </td>
-                            <td>
-                                <h6>開啟</h6>
+                                <h6 v-if="coupon.COUPON_STATUS == 1">正常</h6>
+                                <h6 v-else>停用</h6>
                             </td>
                         </tr>
                     </tbody>
@@ -100,7 +74,8 @@
             @@include('./layout/B_changepage.html')
         </div>
     </main>
-    <script>
+    @@include('./layout/js.html')
+    <!-- <script>
         function B_coupon_info(e) {
             e.preventDefault();
             window.location.href = "./B_coupon_info.html"
@@ -109,6 +84,31 @@
             e.preventDefault();
             window.location.href = "./B_coupon_info_2.html"
         }
+    </script> -->
+
+    <script>
+        //渲染全部訂單資料
+        Vue.createApp({
+            data() {
+                return {
+                    coupons: []
+                }
+            },
+            methods: {
+                vieworder(couponsid){
+                        //跳轉info
+                        window.location.href = 'B_coupon_info.html?id=' + couponsid;
+                    }
+            },
+            mounted() {
+                axios.get(php_url + 'B_coupon.php')
+                    .then((response) => {
+                        console.log(response);
+                        this.coupons = response.data;
+                    })
+            }
+    
+        }).mount('#B_coupon')
     </script>
 </body>
 
