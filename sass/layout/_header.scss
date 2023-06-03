@@ -229,8 +229,15 @@
                   transition: all ease-in-out .3s;
                 }
               }
-              
             }
+            .notfind{
+              width: 100%;
+              display: none;
+              .p1{
+                padding: 10px;
+              }
+            }
+
 
           }
 
