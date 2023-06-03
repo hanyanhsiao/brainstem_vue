@@ -24,11 +24,14 @@
                 <div class="topser" id="searchapp">
                     <form class="ser" @submit.prevent="search" method="get">
                         <input type="text" v-model="keyword" @input="search" placeholder="  搜尋" />
-                        <button type="submit"><i class="bi bi-search"></i></button>
+                        <button type="submit" onclick="redirectToProductInformation()">
+                            <i class="bi bi-search"></i>
+                        </button>
                     </form>
                     <ul class="result" v-show="displayResults">
                         <li class="rlist" v-for="(item, index2) in searchResults" v-if="index2 < 5">
-                            <a class="alist" :href="item.url">
+
+                            <a href="./product_information.html" class="alist">
                                 <img :src="item.image" alt="">
                                 <p class="gtitle">{{ item.title }}</p>
                             </a>
@@ -120,22 +123,29 @@
                 <div class="rwd-item">
                     <ul class="r-item">
 
-                        <li class="topser">
-                            <form class="ser" action="/" method="get">
-                                <input type="text" name="search" placeholder="  請輸入關鍵字" value="" />
-                                <button><i class="bi bi-search"></i></button>
+                        <div class="topser" id="searchapp">
+                            <form class="ser" @submit.prevent="search" method="get">
+                                <input type="text" v-model="keyword" @input="search" placeholder="  搜尋" />
+                                <button type="submit" onclick="redirectToProductInformation()">
+                                    <i class="bi bi-search"></i>
+                                </button>
                             </form>
-                            <ul class="result">
-
-                                <li class="rlist">
-                                    <a class="alist" href="./product_information.html">
-                                        <img src="./pic/img/cover/24.jpg" alt="">
-                                        <p class="gtitle">靈犀出版社物語 (Magazine Mogul)</p>
+                            <ul class="result" v-show="displayResults">
+                                <li class="rlist" v-for="(item, index2) in searchResults" v-if="index2 < 5">
+        
+                                    <a href="./product_information.html" class="alist">
+                                        <img :src="item.image" alt="">
+                                        <p class="gtitle">{{ item.title }}</p>
                                     </a>
                                 </li>
+                                <li class="notfind" v-show="searchResults.length === 0">
+                                    <p class="p1">找不到相符遊戲</p>
+                                </li>
+                                <li class="more">
+                                    <a class="more2" href="./product.html">顯示更多</a>
+                                </li>
                             </ul>
-
-                        </li>
+                        </div>
 
                         <li><a href="./product.html">商品 </a></li>
                         <li><a href="./news.html">新聞 </a></li>
@@ -248,13 +258,18 @@
 
     // ===========Search Bar===============
 
+    // button轉址
+    function redirectToProductInformation() {
+        window.location.href = "./product.html";
+    }
+    // 串資料庫
     var searchapp = Vue.createApp({
         data() {
             return {
                 keyword: '',
                 searchResults: [],
                 displayResults: false,
-                index2: 0 // 根据报错信息添加的属性
+                index2: 0
             };
         },
         methods: {
@@ -262,9 +277,14 @@
                 axios
                     .get(php_url + 'header_search.php', { params: { keyword: this.keyword } })
                     .then(response => {
-                        this.searchResults = response.data.slice(0, 5);//擷取前五筆資料
+                        this.searchResults = response.data.slice(0, 5);
                         console.log(response.data);
-                        // 其他處理搜索結果的邏輯
+                        this.displayResults = true;
+                        if (this.searchResults.length === 0) {
+                            document.querySelector('.notfind').style.display = 'block';
+                        } else {
+                            document.querySelector('.notfind').style.display = 'none';
+                        }
                     })
                     .catch(error => {
                         console.error(error);
@@ -272,39 +292,29 @@
             }
         },
         mounted() {
-            // 獲取搜索欄元素和結果元素
             var searchInput = document.querySelector('.ser input');
             var result = document.querySelector('.result');
+            var notfind = document.querySelector('.notfind');
 
-            // 初始狀態為隱藏
             result.style.display = 'none';
+            notfind.style.display = 'none';
 
-            // 監聽整個文檔的點擊事件
             document.addEventListener('click', hideResult);
-
-            // 監聽整個文檔的觸摸事件
             document.addEventListener('touchstart', hideResult);
 
-            // 阻止搜索欄點擊事件冒泡到文檔上，以防止立即隱藏結果
             searchInput.addEventListener('click', function (event) {
                 event.stopPropagation();
             });
 
-            // 監聽搜索欄的輸入事件
             searchInput.addEventListener('input', function () {
-                // 檢查輸入框是否有文字
                 if (searchInput.value.trim() !== '') {
-                    // 如果有文字輸入，則顯示結果
                     result.style.display = 'block';
                 } else {
-                    // 如果輸入為空，則隱藏結果
                     result.style.display = 'none';
                 }
             });
 
-            // 隱藏結果的函式
             function hideResult() {
-                // 隱藏結果
                 result.style.display = 'none';
             }
         }
