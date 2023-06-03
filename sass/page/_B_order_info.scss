@@ -108,8 +108,12 @@
 
                 }
 
-                li:first-child {
-                    border-bottom: none;
+                li:last-child {
+                    border-top: none;
+                    margin-bottom: 30px;
+                }
+                li:first-child{
+                    border-top: 1px solid #000;
                 }
 
             }

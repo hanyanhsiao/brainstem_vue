@@ -22,7 +22,7 @@
             <a href="./B_coupon.html">
                 <h6>回上一頁</h6>
             </a>
-            <div class="right_main">
+            <div class="right_main" id="B_coupon_info">
                 <form action="" method="">
                     <div class="B_button">
                         <h4>優惠券內容</h4>
@@ -31,29 +31,28 @@
                     <ul>
                         <li>
                             <h6>優惠券編號</h6>
-                            <h6>TK666</h6>
+                            <h6>{{coupon.COUPON_CODE}}</h6>
                         </li>
                         <li>
                             <h6>優惠券標題 </h6>
-                            <h6>生日優惠券$300元</h6>
+                            <h6>{{coupon.COUPON_NAME}}</h6>
                         </li>
                         <li class="B_grid_two">
                             <h6>優惠券內容</h6>
-                            <h6>使用期限：2023/4/1~2023/4/30<br>
-                                使用規則：不能於其他優惠商品重複使用、每次優惠券只能選擇一張。</h6>
+                            <h6>{{coupon.COUPON_DETAIL}}</h6>
                         </li>
-                        <li>
+                        <li class="B_grid_two">
                             <h6>優惠券使用時間</h6>
-                            <h6>2023/4/1~2023/4/30</h6>
+                            <h6>{{coupon.COUPON_BEGIN}}~{{coupon.COUPON_END}}</h6>
                         </li>
                         <li>
                             <h6>折扣類型</h6>
                             <h6>折扣金額</h6>
-                            <h6>$300元</h6>
+                            <h6>${{coupon.COUPON_DISCOUNT}}元</h6>
                         </li>
                         <li>
-                            <h6>最低消費金額</h6>
-                            <h6>$1000元</h6>
+                            <h6>使用規則</h6>
+                            <h6>{{coupon.MINIMUM_LIMIT}}</h6>
                         </li>
                     </ul>
                 </form>
@@ -62,12 +61,43 @@
         </div>
 
     </main>
+    @@include('./layout/js.html')
     <script>
         function B_coupon_info_2(e) {
             e.preventDefault();
             window.location.href = "./B_coupon_info_2.html"
         }
     </script>
+
+<script>
+    //渲染單獨訂單資料
+    Vue.createApp({
+        data() {
+            return {
+                coupon: []
+            }
+        },
+        methods: {
+
+        },
+        mounted() {
+            // 获取URL中的会员ID参数
+            const urlParams = new URLSearchParams(window.location.search);
+            const couponId = urlParams.get('id');
+
+            // 根据会员ID从服务器请求完整的会员数据
+            axios.get(php_url + 'B_coupon.php?id=' + couponId)
+                .then((response) => {
+                    this.coupon = response.data;
+                    console.log(this.coupon);
+                    // console.log(this.order.GAME_COVER);
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        }
+    }).mount('#B_coupon_info')
+</script>
 </body>
 
 </html>

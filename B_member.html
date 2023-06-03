@@ -47,9 +47,6 @@
                                 <h5>會員姓名</h5>
                             </th>
                             <th>
-                                <h5>電子信箱</h5>
-                            </th>
-                            <th>
                                 <h5>電話號碼</h5>
                             </th>
                             <th>
@@ -60,235 +57,26 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody onclick="B_member_info(event)">
-                        <tr>
+                    <tbody id="B_member">
+                        <tr v-for="(member,index) in members" :key="member.number" @click="viewmember(member.MEMBER_ID)">
                             <td>
-                                <h6>123456789000</h6>
+                                <h6>{{member.MEMBERSHIP_NUMBER}}</h6>
                             </td>
                             <td>
-                                <h6>RRRRRR</h6>
+                                <h6>{{member.MEMBER_ACCOUNT}}</h6>
                             </td>
                             <td>
-                                <h6>剪刀布</h6>
+                                <h6>{{member.USERNAME}}</h6>
                             </td>
                             <td>
-                                <h6>12344@gmail.com</h6>
+                                <h6>{{member.PHONE}}</h6>
                             </td>
                             <td>
-                                <h6>0900123456</h6>
+                                <h6>{{member.REGISTRATION_DATE}}</h6>
                             </td>
                             <td>
-                                <h6>2021/2/22</h6>
-                            </td>
-                            <td>
-                                <h6>正常</h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6>123456789000</h6>
-                            </td>
-                            <td>
-                                <h6>RRRRRR</h6>
-                            </td>
-                            <td>
-                                <h6>剪刀布</h6>
-                            </td>
-                            <td>
-                                <h6>12344@gmail.com</h6>
-                            </td>
-                            <td>
-                                <h6>0900123456</h6>
-                            </td>
-                            <td>
-                                <h6>2021/2/22</h6>
-                            </td>
-                            <td>
-                                <h6>正常</h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6>123456789000</h6>
-                            </td>
-                            <td>
-                                <h6>RRRRRR</h6>
-                            </td>
-                            <td>
-                                <h6>剪刀布</h6>
-                            </td>
-                            <td>
-                                <h6>12344@gmail.com</h6>
-                            </td>
-                            <td>
-                                <h6>0900123456</h6>
-                            </td>
-                            <td>
-                                <h6>2021/2/22</h6>
-                            </td>
-                            <td>
-                                <h6>正常</h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6>123456789000</h6>
-                            </td>
-                            <td>
-                                <h6>RRRRRR</h6>
-                            </td>
-                            <td>
-                                <h6>剪刀布</h6>
-                            </td>
-                            <td>
-                                <h6>12344@gmail.com</h6>
-                            </td>
-                            <td>
-                                <h6>0900123456</h6>
-                            </td>
-                            <td>
-                                <h6>2021/2/22</h6>
-                            </td>
-                            <td>
-                                <h6>正常</h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6>123456789000</h6>
-                            </td>
-                            <td>
-                                <h6>RRRRRR</h6>
-                            </td>
-                            <td>
-                                <h6>剪刀布</h6>
-                            </td>
-                            <td>
-                                <h6>12344@gmail.com</h6>
-                            </td>
-                            <td>
-                                <h6>0900123456</h6>
-                            </td>
-                            <td>
-                                <h6>2021/2/22</h6>
-                            </td>
-                            <td>
-                                <h6>正常</h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6>123456789000</h6>
-                            </td>
-                            <td>
-                                <h6>RRRRRR</h6>
-                            </td>
-                            <td>
-                                <h6>剪刀布</h6>
-                            </td>
-                            <td>
-                                <h6>12344@gmail.com</h6>
-                            </td>
-                            <td>
-                                <h6>0900123456</h6>
-                            </td>
-                            <td>
-                                <h6>2021/2/22</h6>
-                            </td>
-                            <td>
-                                <h6>正常</h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6>123456789000</h6>
-                            </td>
-                            <td>
-                                <h6>RRRRRR</h6>
-                            </td>
-                            <td>
-                                <h6>剪刀布</h6>
-                            </td>
-                            <td>
-                                <h6>12344@gmail.com</h6>
-                            </td>
-                            <td>
-                                <h6>0900123456</h6>
-                            </td>
-                            <td>
-                                <h6>2021/2/22</h6>
-                            </td>
-                            <td>
-                                <h6>正常</h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6>123456789000</h6>
-                            </td>
-                            <td>
-                                <h6>RRRRRR</h6>
-                            </td>
-                            <td>
-                                <h6>剪刀布</h6>
-                            </td>
-                            <td>
-                                <h6>12344@gmail.com</h6>
-                            </td>
-                            <td>
-                                <h6>0900123456</h6>
-                            </td>
-                            <td>
-                                <h6>2021/2/22</h6>
-                            </td>
-                            <td>
-                                <h6>正常</h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6>123456789000</h6>
-                            </td>
-                            <td>
-                                <h6>RRRRRR</h6>
-                            </td>
-                            <td>
-                                <h6>剪刀布</h6>
-                            </td>
-                            <td>
-                                <h6>12344@gmail.com</h6>
-                            </td>
-                            <td>
-                                <h6>0900123456</h6>
-                            </td>
-                            <td>
-                                <h6>2021/2/22</h6>
-                            </td>
-                            <td>
-                                <h6>正常</h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6>123456789000</h6>
-                            </td>
-                            <td>
-                                <h6>RRRRRR</h6>
-                            </td>
-                            <td>
-                                <h6>剪刀布</h6>
-                            </td>
-                            <td>
-                                <h6>12344@gmail.com</h6>
-                            </td>
-                            <td>
-                                <h6>0900123456</h6>
-                            </td>
-                            <td>
-                                <h6>2021/2/22</h6>
-                            </td>
-                            <td>
-                                <h6>正常</h6>
+                                <h6 v-if="member.MEMBER_STATUS == 1">正常</h6>
+                                <h6 v-else>鎖定</h6>
                             </td>
                         </tr>
                     </tbody>
@@ -298,11 +86,32 @@
             @@include('./layout/B_changepage.html')
         </div>
     </main>
+    @@include('./layout/js.html')
+
     <script>
-        function B_member_info(e) {
-            e.preventDefault();
-            window.location.href = "./B_member_info.html"
-        }
+        //渲染全部會員資料
+        Vue.createApp({
+            data() {
+                return {
+                    members: []
+                }
+            },
+            methods: {
+                viewmember(order){
+                    //跳轉info
+                    window.location.href = 'B_member_info.html?id=' + memberid;
+                    // console.log(memberid);
+                }
+            },
+            mounted() {
+                axios.get(php_url + 'B_member.php')
+                    .then((response) => {
+                        this.members = response.data;
+                        // console.log(this.members);
+                    })
+            }
+
+        }).mount('#B_member')
     </script>
 </body>
 

@@ -36,10 +36,10 @@
                                 </label>
                                 <input type="text" name="" id="gamesID" placeholder="請輸入遊戲名稱">
                             </li>
-                            <li>
+                            <!-- <li>
                                 <h6>遊戲編號</h6>
                                 <h6>123456789000</h6>
-                            </li>
+                            </li> -->
                             <li id="logo">
                                 <label for="fileInput">
                                     <h6>遊戲封面</h6>
@@ -48,20 +48,28 @@
                                 <input id="fileInput" type="file" @change="handleFileChange">
                             </li>
                             <li>
-                                <h6>發行日期</h6>
-                                <h6>2023/1/15</h6>
+                                <label for="issue_date">
+                                    <h6>發行日期</h6>
+                                </label>
+                                <input id="myDatePicker" type="date" name="" id="issue_date" placeholder="年/月/日">
                             </li>
                             <li>
-                                <h6>開發商</h6>
-                                <h6>SQUARE ENIX</h6>
+                                <label for="publisher">
+                                    <h6>開發商</h6>
+                                </label>
+                                <input type="text" name="" id="publisher">
                             </li>
                             <li>
-                                <h6>開發人員</h6>
-                                <h6>LBJ</h6>
+                                <label for="developer">
+                                    <h6>開發人員</h6>
+                                </label>
+                                <input type="text" name="" id="developer">
                             </li>
                             <li>
-                                <h6>遊戲級別</h6>
-                                <h6>保護級</h6>
+                                <label for="game_level">
+                                    <h6>遊戲級別</h6>
+                                </label>
+                                <input type="text" name="" id="game_level">
                             </li>
                             <li class="B_grid_two b_backend_color">
                                 <h6>遊戲類型</h6>
@@ -100,8 +108,8 @@
                                             <label for="building">城市營造</label>
                                         </li>
                                         <li>
-                                            <input type="checkbox" name="" id="farm simulation">
-                                            <label for="farm simulation">農場模擬</label>
+                                            <input type="checkbox" name="" id="farm_simulation">
+                                            <label for="farm_simulation">農場模擬</label>
                                         </li>
                                         <li>
                                             <input type="checkbox" name="" id="war">
@@ -136,8 +144,8 @@
                                             <label for="race">賽馬</label>
                                         </li>
                                         <li>
-                                            <input type="checkbox" name="" id="racing car">
-                                            <label for="racing car">賽車</label>
+                                            <input type="checkbox" name="" id="racing_car">
+                                            <label for="racing_car">賽車</label>
                                         </li>
                                         <li>
                                             <input type="checkbox" name="" id="cooking">
@@ -152,29 +160,29 @@
                                             <label for="child">兒童</label>
                                         </li>
                                         <li>
-                                            <input type="checkbox" name="" id="space simulation">
-                                            <label for="space simulation">太空模擬</label>
+                                            <input type="checkbox" name="" id="space_simulation">
+                                            <label for="space_simulation">太空模擬</label>
                                         </li>
                                         <li>
-                                            <input type="checkbox" name="" id="colony simulation">
-                                            <label for="colony simulation">殖民模擬</label>
+                                            <input type="checkbox" name="" id="colony_simulation">
+                                            <label for="colony_simulation">殖民模擬</label>
                                         </li>
                                         <li>
-                                            <input type="checkbox" name="" id="pixel wind">
-                                            <label for="pixel wind">像素風</label>
+                                            <input type="checkbox" name="" id="pixel_wind">
+                                            <label for="pixel_wind">像素風</label>
                                         </li>
                                         <li>
-                                            <input type="checkbox" name="" id="2D fighting">
-                                            <label for="2D fighting">2D格鬥</label>
+                                            <input type="checkbox" name="" id="2D_fighting">
+                                            <label for="2D_fighting">2D格鬥</label>
                                         </li>
                                         <li>
-                                            <input type="checkbox" name="" id="independent game">
-                                            <label for="independent game">獨立遊戲</label>
+                                            <input type="checkbox" name="" id="independent_game">
+                                            <label for="independent_game">獨立遊戲</label>
                                         </li>
-                                        <li>
+                                        <!-- <li>
                                             <input type="checkbox" name="" id="">
                                             <label for="">待新增</label>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </div>
                             </li>
@@ -183,75 +191,75 @@
                                 <div class="B_type">
                                     <ul>
                                         <li>
-                                            <input type="radio" name="type" id="summer sale">
-                                            <label for="summer sale">夏季特賣</label>
+                                            <input type="radio" name="type" id="summer_sale">
+                                            <label for="summer_sale">夏季特賣</label>
                                         </li>
                                         <li>
-                                            <input type="radio" name="type" id="Cosplay Promotions">
-                                            <label for="Cosplay Promotions">角色扮演促銷活動</label>
+                                            <input type="radio" name="type" id="Cosplay_Promotions">
+                                            <label for="Cosplay_Promotions">角色扮演促銷活動</label>
                                         </li>
                                         <li>
-                                            <input type="radio" name="type" id="Shooting Type Promotions">
-                                            <label for="Shooting Type Promotions">射擊類型促銷活動</label>
+                                            <input type="radio" name="type" id="Shooting_Type_Promotions">
+                                            <label for="Shooting_Type_Promotions">射擊類型促銷活動</label>
                                         </li>
                                         <li>
-                                            <input type="radio" name="type" id="Space Adventure Promotions">
-                                            <label for="Space Adventure Promotions">太空探險促銷活動</label>
+                                            <input type="radio" name="type" id="Space_Adventure_Promotions">
+                                            <label for="Space_Adventure_Promotions">太空探險促銷活動</label>
                                         </li>
                                         <li>
-                                            <input type="radio" name="type" id="Horror Game Promotions">
-                                            <label for="Horror Game Promotions">恐怖遊戲促銷活動</label>
+                                            <input type="radio" name="type" id="Horror_Game_Promotions">
+                                            <label for="Horror_Game_Promotions">恐怖遊戲促銷活動</label>
                                         </li>
                                         <li>
-                                            <input type="radio" name="type" id="Cairo Series Promotions">
-                                            <label for="Cairo Series Promotions">開羅系列促銷活動</label>
+                                            <input type="radio" name="type" id="Cairo_Series_Promotions">
+                                            <label for="Cairo_Series_Promotions">開羅系列促銷活動</label>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
                             <li class="B_grid_four">
-                                <label for="Event start time">
+                                <label for="Event_start_time">
                                     <h6>活動開始時間</h6>
                                 </label>
-                                <input id="myDatePicker" type="date" name="" id="Event start time" placeholder="年/月/日">
-                                <label for="Event end time">
+                                <input id="myDatePicker" type="date" name="" id="Event_start_time" placeholder="年/月/日">
+                                <label for="Event_end_time">
                                     <h6>活動結束時間</h6>
                                 </label>
-                                <input id="myDatePicker" type="date" name="" id="Event end time" placeholder="年/月/日">
+                                <input id="myDatePicker" type="date" name="" id="Event_end_time" placeholder="年/月/日">
                             </li>
                             <li>
-                                <label for="commodity price">
+                                <label for="commodity_price">
                                     <h6>商品金額</h6>
                                 </label>
-                                <input type="text" name="" id="commodity price" placeholder="請輸入金額">
+                                <input type="text" name="" id="commodity_price" placeholder="請輸入金額">
                             </li>
                             <li class="B_grid_six">
-                                <label for="Product discount">
+                                <label for="Product_discount">
                                     <h6>商品折扣</h6>
                                 </label>
-                                <input type="text" name="" id="Product discount" placeholder="請輸入折扣%數">
-                                <label for="Discount start time">
+                                <input type="text" name="" id="Product_discount" placeholder="請輸入折扣%數">
+                                <label for="Discount_start_time">
                                     <h6>折扣開始時間</h6>
                                 </label>
-                                <input id="myDatePicker" type="date" name="" id="Discount start time"
+                                <input id="myDatePicker" type="date" name="" id="Discount_start_time"
                                     placeholder="年/月/日">
-                                <label for="Discount end time">
+                                <label for="Discount_end_time">
                                     <h6>折扣結束時間</h6>
                                 </label>
-                                <input id="myDatePicker" type="date" name="" id="Discount end time" placeholder="年/月/日">
+                                <input id="myDatePicker" type="date" name="" id="Discount_end_time" placeholder="年/月/日">
                             </li>
                             <li class="B_grid_two">
-                                <label for="game instructions">
+                                <label for="game_instructions">
                                     <h6>遊戲說明</h6>
                                 </label>
-                                <textarea name="" id="game instructions" cols="100" rows="20"
+                                <textarea name="" id="game_instructions cols="100" rows="20"
                                     placeholder="請輸入遊戲說明"></textarea>
                             </li>
                             <li class="B_grid_two">
-                                <label for="system requirement">
+                                <label for="system_requirement">
                                     <h6>系統需求</h6>
                                 </label>
-                                <textarea name="" id="system requirement" cols="100" rows="30"
+                                <textarea name="" id="system_requirement" cols="100" rows="30"
                                     placeholder="請輸入系統需求"></textarea>
                             </li>
                         </ul>
@@ -288,8 +296,7 @@
         </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="./layout/js.html"></script>
-    <script src="./vendors/vue/vue.global.js"></script>
+    @@include('./layout/js.html')
     <script>
         //input
         flatpickr("#myDatePicker", {
