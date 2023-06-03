@@ -159,7 +159,7 @@
                     })
             }
         },
-        mounted() {
+        beforeCreate() {
             axios.defaults.withCredentials = true;
             axios.post(php_url + 'login_status.php')
                 .then((response) => {
