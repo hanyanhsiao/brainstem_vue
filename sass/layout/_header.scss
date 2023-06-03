@@ -1,3 +1,8 @@
+.topser {
+  border: 1px solid orangered;
+}
+
+
 .header {
   max-width: 1920px;
   margin: 0 auto;
@@ -93,66 +98,140 @@
         justify-content: space-between;
         position: relative;
 
-        form {
+        .topser {
+          
           width: 33%;
-          height: 100%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          position: relative;
-          box-sizing: border-box;
-          // border: 1px solid yellowgreen;
-
-          SVG {
-            color: orangered;
-            position: absolute;
-            top: 52px;
-            right: 20px;
-          }
-
-          input[type="text"] {
-            width: 90%;
-            padding: 5px 10px;
-            // border: 1px solid orangered;
-            border: none;
-            border-radius: 0px;
-            // background-color: transparent;
-            background-color: rgba(255, 68, 0, 0.275);
-            margin: auto 0;
-          }
-
-          button {
-            // width: 20%;
-            // background-color: black;
-            // border: 1px solid orangered;
-            background-color: rgba(255, 68, 0, 0.275);
-            border: none;
-            cursor: pointer;
+          z-index: 90000;
+          .ser {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
             box-sizing: border-box;
-            display: inline-block;
-            padding: 3.5px;
-            transition: all ease-in-out .3s;
-            // border-radius: 50px;
+            
+            // border: 1px solid yellowgreen;
 
-            i {
-              // margin: 0 auto;
+            SVG {
               color: orangered;
-              display: inline-block;
-              // border: 1px solid blue;
-              text-align: center;
-              margin: 0;
-              padding: 0 5px;
+              position: absolute;
+              top: 52px;
+              right: 20px;
             }
 
-            &:hover {
-              background-color: rgb(255, 68, 0);
-              transition: all ease-in-out .3s;
+            input[type="text"] {
+              width: 90%;
+              padding: 5px 10px;
+              // border: 1px solid orangered;
+              border: none;
+              border-radius: 0px;
+              // background-color: transparent;
+              background-color: rgba(255, 68, 0, 0.275);
+              margin: auto 0;
+            }
 
-              >i {
-                color: aliceblue;
+            button {
+              // width: 20%;
+              // background-color: black;
+              // border: 1px solid orangered;
+              background-color: rgba(255, 68, 0, 0.275);
+              border: none;
+              cursor: pointer;
+              box-sizing: border-box;
+              display: inline-block;
+              padding: 3.5px;
+              transition: all ease-in-out .3s;
+              // border-radius: 50px;
+
+              i {
+                // margin: 0 auto;
+                color: orangered;
+                display: inline-block;
+                // border: 1px solid blue;
+                text-align: center;
+                margin: 0;
+                padding: 0 5px;
+              }
+
+              &:hover {
+                background-color: rgb(255, 68, 0);
                 transition: all ease-in-out .3s;
+
+                >i {
+                  color: aliceblue;
+                  transition: all ease-in-out .3s;
+                }
               }
             }
+
+          }
+
+          .result{
+            margin-top: 10px;
+            background-color: rgb(87, 23, 0);
+            position: absolute;
+            width: 50%;
+            padding: 5px;
+            box-sizing: border-box;
+            cursor: pointer;
+            display: none;  //這邊關閉
+            // overflow: hidden;
+            
+
+            .rlist{
+              width: 100%;
+              // background-color: #bb980d76;
+              box-sizing: border-box;
+              transition: all ease-in-out .3s;
+              cursor: pointer;
+              
+              // border: 1px solid orange;
+              .alist{
+                display: flex;
+                width: 100%;
+                // border: 1px solid blueviolet;
+                padding: 5px;
+                margin: 0;
+                box-sizing: border-box;
+                cursor: pointer;
+              
+                img{
+                  width: 15%;
+                }
+                .gtitle{
+                  width: 85%;
+                  padding: 10px;
+                  line-height: 1.2;
+                  cursor: pointer;
+                }
+              }
+              &:hover{
+                background-color: orangered;
+                transition: all ease-in-out .3s;
+                cursor: pointer;
+              }
+              // &:hover>.alist{
+              //   cursor: pointer;
+              //   background-color: #6070ff;
+              // }
+            }
+            &:hover{
+              cursor: pointer;
+            }
+            .more{
+              width: 100%;
+              .more2{
+                font-size: 1.5rem;
+                color: brown;
+                &:hover{
+                  color: orange;
+                  transition: all ease-in-out .3s;
+                }
+              }
+              
+            }
+
           }
 
         }
@@ -440,7 +519,7 @@
             position: absolute;
             width: 100%;
             height: 1300px;
-            top: 142px;
+            top: 152px;
             left: 0;
             // background-color: #000000ec;
             background: linear-gradient(to bottom,
@@ -459,76 +538,137 @@
               width: 100%;
               box-sizing: border-box;
 
-              // background-color: #7e1fcc;
-              // .search {
-              //   width: 100%;
-              //   align-items: center;
-              //   padding: 10px;
-
-              //   margin: 10px auto 0;
-              //   // border-bottom: 1px solid rgb(218, 8, 255);
-              //   box-sizing: border-box;
-
-              //   input {
-              //     width: 80%;
-              //     display: block;
-              //     margin: 0 auto 10px;
-              //   }
-              // }
-              form {
+              .topser {
                 width: 100%;
-                height: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                position: relative;
+                z-index: 90000;
+                border: none;
+                padding: 20px;
                 box-sizing: border-box;
-                // border: 1px solid yellowgreen;
-                margin: 20px auto;
+                
 
-                SVG {
-                  color: orangered;
-                  position: absolute;
-                  top: 52px;
-                  right: 20px;
-                }
-
-                input[type="text"] {
-                  width: 70%;
-                  padding: 10px 10px;
-                  // border: 1px solid orangered;
-                  border: none;
-                  border-radius: 0px;
-                  // background-color: transparent;
-                  background-color: rgba(255, 68, 0, 0.275);
-                  margin: auto 0;
-                }
-
-                button {
-                  // width: 20%;
-                  // background-color: black;
-                  // border: 1px solid orangered;
-                  background-color: rgba(255, 68, 0, 0.275);
-                  border: none;
-                  cursor: pointer;
+                .ser {
+                  width: 100%;
+                  height: 100%;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  position: relative;
                   box-sizing: border-box;
-                  display: inline-block;
-                  padding: 3.5px;
-                  transition: all ease-in-out .3s;
-                  // border-radius: 50px;
-
-                  i {
-                    // margin: 0 auto;
+                  
+                  // border: 1px solid yellowgreen;
+      
+                  SVG {
                     color: orangered;
+                    position: absolute;
+                    top: 52px;
+                    right: 20px;
+                  }
+      
+                  input[type="text"] {
+                    width: 90%;
+                    padding: 5px 10px;
+                    // border: 1px solid orangered;
+                    border: none;
+                    border-radius: 0px;
+                    // background-color: transparent;
+                    background-color: rgba(255, 68, 0, 0.275);
+                    margin: auto 0;
+                  }
+      
+                  button {
+                    // width: 20%;
+                    // background-color: black;
+                    // border: 1px solid orangered;
+                    background-color: rgba(255, 68, 0, 0.275);
+                    border: none;
+                    cursor: pointer;
+                    box-sizing: border-box;
                     display: inline-block;
-                    // border: 1px solid blue;
-                    text-align: center;
-                    margin: 0;
-                    padding: 5px 5px;
+                    padding: 3.5px;
+                    transition: all ease-in-out .3s;
+                    // border-radius: 50px;
+      
+                    i {
+                      // margin: 0 auto;
+                      color: orangered;
+                      display: inline-block;
+                      // border: 1px solid blue;
+                      text-align: center;
+                      margin: 0;
+                      padding: 0 5px;
+                    }
+      
+                    &:hover {
+                      background-color: rgb(255, 68, 0);
+                      transition: all ease-in-out .3s;
+      
+                      >i {
+                        color: aliceblue;
+                        transition: all ease-in-out .3s;
+                      }
+                    }
+                  }
+      
+                }
+      
+                .result{
+                  margin-top: 10px;
+                  background-color: rgb(87, 23, 0);
+                  position: absolute;
+                  width: 90%;
+                  padding: 0 5px;
+                  box-sizing: border-box;
+                  cursor: pointer;
+                  z-index: 999;
+
+                  display: none;  //這邊關閉
+                  // overflow: hidden;
+                  
+      
+                  .rlist{
+                    width: 100%;
+                    box-sizing: border-box;
+                    transition: all ease-in-out .3s;
+                    border: none;
+                    cursor: pointer;
+                    padding: 5px 0;
+                    // border: 1px solid orange;
+                    .alist{
+                      display: flex;
+                      width: 100%;
+                      // border: 1px solid blueviolet;
+                      // padding: 5px;
+                      margin: 0;
+                      box-sizing: border-box;
+                      cursor: pointer;
+                    
+                      img{
+                        width: 25%;
+                      }
+                      .gtitle{
+                        width: 85%;
+                        padding: 5px 0;
+                        line-height: 1.2;
+                        cursor: pointer;
+                      }
+                    }
+                    &:hover{
+                      background-color: orangered;
+                      transition: all ease-in-out .3s;
+                      cursor: pointer;
+                    }
+                    // &:hover>.alist{
+                    //   cursor: pointer;
+                    //   background-color: #6070ff;
+                    // }
+                  }
+                  &:hover{
+                    cursor: pointer;
                   }
                 }
-
+      
               }
+              
 
               li {
                 width: 90%;
@@ -915,7 +1055,7 @@
                 padding: 20px 0px;
                 margin: 0 auto;
                 box-sizing: border-box;
-                
+
                 // background-color: #1f0d00;
                 a {
                   font-size: 15px;
