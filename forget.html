@@ -34,7 +34,7 @@
           </form>
             <div id="reset_password_form" v-show="codeVerified">
               <h2 class="margin">重置密碼</h2>
-              <div @submit.prevent="resetPassword">
+              <form @submit.prevent="resetPassword">
                 <label for="new_password">新密碼</label>
                 <input type="password" id="new_password" name="new_password" v-model="newPassword" @blur="validatePassword">
                 <p v-if="passwordError" class="error">{{ passwordError }}</p>
@@ -42,8 +42,14 @@
                 <input type="password" id="confirm_password" name="confirm_password" v-model="confirmPassword" @blur="validateConfirmPassword">
                 <p v-if="confirmPasswordError" class="error">{{ confirmPasswordError }}</p>
                 <button type="submit" class="btn reset_btn">確認</button>
-              </div>
+              </form>
             </div>
+        </section>
+        <section>
+          <div class="suceesfully">
+            <i class="bi bi-check-lg"></i>
+            <h2>更改成功</h2>
+        </div>
         </section>
       </main>
 
@@ -131,12 +137,16 @@
                 return;
               } else {
                 const formData = new FormData();
-                formData.append("new_password", this.confirmPassword); // 将键名设为 "new_password"
+                formData.append("newPassword", this.confirmPassword); // 将键名设为 "new_password"
+                formData.append('email', this.email);
+                formData.append('verificationCode', this.verificationCode);
                 axios
                   .post(php_url + 'forget.php', formData)
                   .then(response => {
-                    // 處理伺服器回應
-                    console.log(response.data); // 输出服务器响应的数据
+                    $('.suceesfully').css('display', 'flex');
+                    setTimeout(function () {
+                        window.location.href = 'login.html';
+                    }, 2000);
                   })
                   .catch(error => {
                     // 處理錯誤

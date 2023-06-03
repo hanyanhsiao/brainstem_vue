@@ -288,6 +288,19 @@
             this.emailError = '請填寫會員帳號（電子信箱）';
           } else if (!this.isValidEmail(this.email)) {
             this.emailError = '請輸入有效的電子信箱';
+          }else {
+            // 向服务器发送请求来检查电子邮件是否已被注册
+            const formData = new FormData();
+            formData.append('email', this.email);
+            axios.post(php_url + 'register_mail.php', formData)
+              .then(response => {
+                if (response.data.exists) {
+                  this.emailError = '此帳號已被註冊';
+                }
+              })
+              .catch(error => {
+                console.error(error);
+              });
           }
         },
         validatePassword() {
