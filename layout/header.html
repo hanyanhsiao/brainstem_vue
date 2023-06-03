@@ -90,8 +90,12 @@
 
                     <template v-else>
                         <li data-index="6">
-                            <a href="./member_center.html" class="google_photo">
+                            <a v-if="!nickname" href="./member_center.html" class="google_photo">
                                 <img :src="this.photo" alt="">
+                            </a>
+                            <a v-else href="./member_center.html" class="nickname"
+                                style="color:#ff6300;border: 1px solid;">
+                                {{nickname}}
                             </a>
                         </li>
                         <li data-index="7">
@@ -132,7 +136,7 @@
                             </form>
                             <ul class="result" v-show="displayResults">
                                 <li class="rlist" v-for="(item, index2) in searchResults" v-if="index2 < 5">
-        
+
                                     <a href="./product_information.html" class="alist">
                                         <img :src="item.image" alt="">
                                         <p class="gtitle">{{ item.title }}</p>
