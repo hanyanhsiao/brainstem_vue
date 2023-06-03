@@ -17,7 +17,7 @@
     <main class="login">
         <section class="login_block col-4">
             <div class="log_title">
-                <div class="logo"><img src="./pic/img/LOGO/WEB LOGO.png" alt=""></div>
+                <div class="logo"><img src="./pic/img/LOGO/WEBLOGO.png" alt=""></div>
                 <h2>登入</h2>
             </div>
             <form class="margin" >
@@ -71,20 +71,32 @@
         formData.append('password', password);
 
         // 使用 axios 发送 POST 请求
-        axios.post(php_url + 'login.php' , formData)
+        axios.post(php_url + 'login.php', formData)
             .then(response => {
                 console.log(response);
-                if(response.data > 0){
+                if (response.data > 0) {
                     alert("帳號或密碼輸入錯誤，請重新輸入");
-                }else{
-                    $('.suceesfully').css('display', 'flex');
-                    setTimeout(function () {
-                        window.location.href = 'index.html';
-                    }, 2000);
+                } else {
+                    // 登录验证成功，将会员帐号存储到Session中
+                    const sessionData = new FormData();
+                    sessionData.append('account', account);
+                    
+                    // 使用 axios 发送 POST 请求到 session_start.php
+                    axios.post(php_url + 'login_status.php', sessionData)
+                        .then(sessionResponse => {
+                            console.log(sessionResponse);
+                            $('.suceesfully').css('display', 'flex');
+                            setTimeout(function () {
+                                window.location.href = 'index.html';
+                            }, 2000);
+                        })
+                        .catch(sessionError => {
+                            console.error(sessionError);
+                        });
                 }
             })
             .catch(error => {
-                 console.error('失敗');
+                console.error('失敗');
             });
         });
 
