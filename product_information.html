@@ -84,9 +84,9 @@
                 <div class="detail_text">
                     <h2 class="orinalPrice">${{currentGood.ORIGINAL_PRICE}}</h2>
                     <p>遊戲評價：
-                        <i class="bi bi-star-fill"></i>
-                        <span class="star_rating">4.7</span>
-                        <span class="total_comments">(3,101則評論)</span>
+                        <i class="bi bi-star-fill" v-if="gameComments.length > 0"></i>
+                        <span class="star_rating">{{average}}</span>
+                        <span class="total_comments">({{this.gameComments.length}}則評論)</span>
                     </p>
                     <p>發行日期：
                         <span class="releaseDate">{{currentGood.RELEASE_DATE}}</span>
@@ -104,8 +104,8 @@
                         <span class="tag">{{currentGood.game_cate}}</span>
                     </p>
                     <div class="add_to_pay">
-                        <button class="shopcar_btn col-6">加入購物車</button>
-                        <button class="purchase_btn col-6"><a href="./checkout.html">立即購買</a></button>
+                        <button class="shopcar_btn col-6" @click="addAction('toCar')">加入購物車</button>
+                        <button class="purchase_btn col-6" @click="addAction('toPay')">立即購買</button>
                     </div>
                     <div class="heart_and_share">
                         <!-- <i class="bi bi-suit-heart heart_btn"></i> -->
@@ -155,283 +155,37 @@
             <div class="evaluation">
                 <p>遊戲整體評價：</p>
                 <div class="total_rating">
-                    <i class="bi bi-star-fill"></i>
-                    <span class="star_rating">4.7 / 5</span>
-                    <span class="total_comments">(3,101則評論)</span>
+                    <i class="bi bi-star-fill" v-if="gameComments.length > 0"></i>
+                    <span class="star_rating">{{average}}</span>
+                    <span class="total_comments">({{this.gameComments.length}}則評論)</span>
                 </div>
             </div>
             <div class="comments_range col-12 swiper">
                 <div class="swiper-wrapper">
                     <div class="more_and_less">
-                        <button class="look_more">查看更多</button>
-                        <button class="look_less">收合評論</button>
+                        <button class="look_more" v-show="gameComments.length > 4">查看更多</button>
+                        <button class="look_less" v-show="gameComments.length > 4">收合評論</button>
                     </div>
-                    <div class="each_comment  swiper-slide">
+                    <div class="each_comment col-3 swiper-slide" v-for="gamecomment in gameComments">
                         <div class="comment_top">
                             <div class="member_pic">
-                                <img src="./pic/img/game/PEOPLE.jpg" alt="">
+                                <img :src="gamecomment.MEMBER_PHOTO" alt="">
                             </div>
                             <div class="member_info">
-                                <h2 class="member_name">二柱子</h2>
-                                <p class="game_time">遊戲時長：0.8 小時</p>
-                                <p class="comment_date">評論於 2023/2/21</p>
+                                <h2 class="member_name">{{gamecomment.NICKNAME}}</h2>
+                                <p class="game_time">遊戲時長{{numFilter(gamecomment.GAME_TIME)}}小時</p>
+                                <p class="comment_date">評論於{{gamecomment.COMMENT_DATE}}</p>
                             </div>
                             <div class="game_rating">
-                                <span class="member_game_rating">5</span>
+                                <span class="member_game_rating">{{gamecomment.STAR_RATING}}</span>
                                 <i class="bi bi-star-fill"></i>
                             </div>
                         </div>
                         <div class="comment_text">
                             <i class="bi bi-hand-thumbs-up"></i>
-                            <p class="comment_content">
-                                手書香瓜自食從。旁正民右父門節四圓正。言雄呢兄屋好兌羽隻乙氣金色斗得？發占朋尾飛看新村而動申美胡定牛，河房誰問裏躲草姊波黃才冒園它貝室？火果亮。<br><br>
-                                室友草田拍邊實已葉耍頁青冰功而良媽「喝急能已各寫山穿幫」向干石？豆歌沒具快百辛者晚物畫，屋己民說開雲，背手哭抓。</p>
+                            <p class="comment_content">{{gamecomment.COMMENT_CONTENT}}</p>
                         </div>
-                    </div>
-
-                    <div class="each_comment  swiper-slide">
-                        <div class="comment_top">
-                            <div class="member_pic">
-                                <img src="./pic/img/game/PEOPLE.jpg" alt="">
-                            </div>
-                            <div class="member_info">
-                                <h2 class="member_name">二柱子</h2>
-                                <p class="game_time">遊戲時長：0.8 小時</p>
-                                <p class="comment_date">評論於 2023/2/21</p>
-                            </div>
-                            <div class="game_rating">
-                                <span class="member_game_rating">5</span>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                        </div>
-                        <div class="comment_text">
-                            <i class="bi bi-hand-thumbs-up" id="thumb_up"></i>
-                            <p class="comment_content">
-                                手書香瓜自食從。旁正民右父門節四圓正。言雄呢兄屋好兌羽隻乙氣金色斗得？發占朋尾飛看新村而動申美胡定牛，河房誰問裏躲草姊波黃才冒園它貝室？火果亮。<br><br>
-                                室友草田拍邊實已葉耍頁青冰功而良媽「喝急能已各寫山穿幫」向干石？豆歌沒具快百辛者晚物畫，屋己民說開雲，背手哭抓。</p>
-                        </div>
-                    </div>
-                    <div class="each_comment  swiper-slide">
-                        <div class="comment_top">
-                            <div class="member_pic">
-                                <img src="./pic/img/game/PEOPLE.jpg" alt="">
-                            </div>
-                            <div class="member_info">
-                                <h2 class="member_name">二柱子</h2>
-                                <p class="game_time">遊戲時長：0.8 小時</p>
-                                <p class="comment_date">評論於 2023/2/21</p>
-                            </div>
-                            <div class="game_rating">
-                                <span class="member_game_rating">5</span>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                        </div>
-                        <div class="comment_text">
-                            <i class="bi bi-hand-thumbs-up"></i>
-                            <p class="comment_content">
-                                手書香瓜自食從。旁正民右父門節四圓正。言雄呢兄屋好兌羽隻乙氣金色斗得？發占朋尾飛看新村而動申美胡定牛，河房誰問裏躲草姊波黃才冒園它貝室？火果亮。<br><br>
-                                室友草田拍邊實已葉耍頁青冰功而良媽「喝急能已各寫山穿幫」向干石？豆歌沒具快百辛者晚物畫，屋己民說開雲，背手哭抓。</p>
-                        </div>
-                    </div>
-                    <div class="each_comment  swiper-slide">
-                        <div class="comment_top">
-                            <div class="member_pic">
-                                <img src="./pic/img/game/PEOPLE.jpg" alt="">
-                            </div>
-                            <div class="member_info">
-                                <h2 class="member_name">二柱子</h2>
-                                <p class="game_time">遊戲時長：0.8 小時</p>
-                                <p class="comment_date">評論於 2023/2/21</p>
-                            </div>
-                            <div class="game_rating">
-                                <span class="member_game_rating">5</span>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                        </div>
-                        <div class="comment_text">
-                            <i class="bi bi-hand-thumbs-up"></i>
-                            <p class="comment_content">
-                                手書香瓜自食從。旁正民右父門節四圓正。言雄呢兄屋好兌羽隻乙氣金色斗得？發占朋尾飛看新村而動申美胡定牛，河房誰問裏躲草姊波黃才冒園它貝室？火果亮。<br><br>
-                                室友草田拍邊實已葉耍頁青冰功而良媽「喝急能已各寫山穿幫」向干石？豆歌沒具快百辛者晚物畫，屋己民說開雲，背手哭抓。</p>
-                        </div>
-                    </div>
-                    <div class="each_comment  swiper-slide">
-                        <div class="comment_top">
-                            <div class="member_pic">
-                                <img src="./pic/img/game/PEOPLE.jpg" alt="">
-                            </div>
-                            <div class="member_info">
-                                <h2 class="member_name">二柱子</h2>
-                                <p class="game_time">遊戲時長：0.8 小時</p>
-                                <p class="comment_date">評論於 2023/2/21</p>
-                            </div>
-                            <div class="game_rating">
-                                <span class="member_game_rating">5</span>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                        </div>
-                        <div class="comment_text">
-                            <i class="bi bi-hand-thumbs-up"></i>
-                            <p class="comment_content">
-                                手書香瓜自食從。旁正民右父門節四圓正。言雄呢兄屋好兌羽隻乙氣金色斗得？發占朋尾飛看新村而動申美胡定牛，河房誰問裏躲草姊波黃才冒園它貝室？火果亮。<br><br>
-                                室友草田拍邊實已葉耍頁青冰功而良媽「喝急能已各寫山穿幫」向干石？豆歌沒具快百辛者晚物畫，屋己民說開雲，背手哭抓。</p>
-                        </div>
-                    </div>
-                    <div class="each_comment  swiper-slide">
-                        <div class="comment_top">
-                            <div class="member_pic">
-                                <img src="./pic/img/game/PEOPLE.jpg" alt="">
-                            </div>
-                            <div class="member_info">
-                                <h2 class="member_name">二柱子</h2>
-                                <p class="game_time">遊戲時長：0.8 小時</p>
-                                <p class="comment_date">評論於 2023/2/21</p>
-                            </div>
-                            <div class="game_rating">
-                                <span class="member_game_rating">5</span>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                        </div>
-                        <div class="comment_text">
-                            <i class="bi bi-hand-thumbs-up"></i>
-                            <p class="comment_content">
-                                手書香瓜自食從。旁正民右父門節四圓正。言雄呢兄屋好兌羽隻乙氣金色斗得？發占朋尾飛看新村而動申美胡定牛，河房誰問裏躲草姊波黃才冒園它貝室？火果亮。<br><br>
-                                室友草田拍邊實已葉耍頁青冰功而良媽「喝急能已各寫山穿幫」向干石？豆歌沒具快百辛者晚物畫，屋己民說開雲，背手哭抓。</p>
-                        </div>
-                    </div>
-                    <div class="each_comment  swiper-slide">
-                        <div class="comment_top">
-                            <div class="member_pic">
-                                <img src="./pic/img/game/PEOPLE.jpg" alt="">
-                            </div>
-                            <div class="member_info">
-                                <h2 class="member_name">二柱子</h2>
-                                <p class="game_time">遊戲時長：0.8 小時</p>
-                                <p class="comment_date">評論於 2023/2/21</p>
-                            </div>
-                            <div class="game_rating">
-                                <span class="member_game_rating">5</span>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                        </div>
-                        <div class="comment_text">
-                            <i class="bi bi-hand-thumbs-up"></i>
-                            <p class="comment_content">
-                                手書香瓜自食從。旁正民右父門節四圓正。言雄呢兄屋好兌羽隻乙氣金色斗得？發占朋尾飛看新村而動申美胡定牛，河房誰問裏躲草姊波黃才冒園它貝室？火果亮。<br><br>
-                                室友草田拍邊實已葉耍頁青冰功而良媽「喝急能已各寫山穿幫」向干石？豆歌沒具快百辛者晚物畫，屋己民說開雲，背手哭抓。</p>
-                        </div>
-                    </div>
-                    <div class="each_comment  swiper-slide">
-                        <div class="comment_top">
-                            <div class="member_pic">
-                                <img src="./pic/img/game/PEOPLE.jpg" alt="">
-                            </div>
-                            <div class="member_info">
-                                <h2 class="member_name">二柱子</h2>
-                                <p class="game_time">遊戲時長：0.8 小時</p>
-                                <p class="comment_date">評論於 2023/2/21</p>
-                            </div>
-                            <div class="game_rating">
-                                <span class="member_game_rating">5</span>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                        </div>
-                        <div class="comment_text">
-                            <i class="bi bi-hand-thumbs-up"></i>
-                            <p class="comment_content">
-                                手書香瓜自食從。旁正民右父門節四圓正。言雄呢兄屋好兌羽隻乙氣金色斗得？發占朋尾飛看新村而動申美胡定牛，河房誰問裏躲草姊波黃才冒園它貝室？火果亮。<br><br>
-                                室友草田拍邊實已葉耍頁青冰功而良媽「喝急能已各寫山穿幫」向干石？豆歌沒具快百辛者晚物畫，屋己民說開雲，背手哭抓。</p>
-                        </div>
-                    </div>
-                    <div class="each_comment  swiper-slide">
-                        <div class="comment_top">
-                            <div class="member_pic">
-                                <img src="./pic/img/game/PEOPLE.jpg" alt="">
-                            </div>
-                            <div class="member_info">
-                                <h2 class="member_name">二柱子</h2>
-                                <p class="game_time">遊戲時長：0.8 小時</p>
-                                <p class="comment_date">評論於 2023/2/21</p>
-                            </div>
-                            <div class="game_rating">
-                                <span class="member_game_rating">5</span>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                        </div>
-                        <div class="comment_text">
-                            <i class="bi bi-hand-thumbs-up"></i>
-                            <p class="comment_content">
-                                手書香瓜自食從。旁正民右父門節四圓正。言雄呢兄屋好兌羽隻乙氣金色斗得？發占朋尾飛看新村而動申美胡定牛，河房誰問裏躲草姊波黃才冒園它貝室？火果亮。<br><br>
-                                室友草田拍邊實已葉耍頁青冰功而良媽「喝急能已各寫山穿幫」向干石？豆歌沒具快百辛者晚物畫，屋己民說開雲，背手哭抓。</p>
-                        </div>
-                    </div>
-                    <div class="each_comment  swiper-slide">
-                        <div class="comment_top">
-                            <div class="member_pic">
-                                <img src="./pic/img/game/PEOPLE.jpg" alt="">
-                            </div>
-                            <div class="member_info">
-                                <h2 class="member_name">二柱子</h2>
-                                <p class="game_time">遊戲時長：0.8 小時</p>
-                                <p class="comment_date">評論於 2023/2/21</p>
-                            </div>
-                            <div class="game_rating">
-                                <span class="member_game_rating">5</span>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                        </div>
-                        <div class="comment_text">
-                            <i class="bi bi-hand-thumbs-up"></i>
-                            <p class="comment_content">
-                                手書香瓜自食從。旁正民右父門節四圓正。言雄呢兄屋好兌羽隻乙氣金色斗得？發占朋尾飛看新村而動申美胡定牛，河房誰問裏躲草姊波黃才冒園它貝室？火果亮。<br><br>
-                                室友草田拍邊實已葉耍頁青冰功而良媽「喝急能已各寫山穿幫」向干石？豆歌沒具快百辛者晚物畫，屋己民說開雲，背手哭抓。</p>
-                        </div>
-                    </div>
-                    <div class="each_comment  swiper-slide">
-                        <div class="comment_top">
-                            <div class="member_pic">
-                                <img src="./pic/img/game/PEOPLE.jpg" alt="">
-                            </div>
-                            <div class="member_info">
-                                <h2 class="member_name">二柱子</h2>
-                                <p class="game_time">遊戲時長：0.8 小時</p>
-                                <p class="comment_date">評論於 2023/2/21</p>
-                            </div>
-                            <div class="game_rating">
-                                <span class="member_game_rating">5</span>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                        </div>
-                        <div class="comment_text">
-                            <i class="bi bi-hand-thumbs-up"></i>
-                            <p class="comment_content">
-                                手書香瓜自食從。旁正民右父門節四圓正。言雄呢兄屋好兌羽隻乙氣金色斗得？發占朋尾飛看新村而動申美胡定牛，河房誰問裏躲草姊波黃才冒園它貝室？火果亮。<br><br>
-                                室友草田拍邊實已葉耍頁青冰功而良媽「喝急能已各寫山穿幫」向干石？豆歌沒具快百辛者晚物畫，屋己民說開雲，背手哭抓。</p>
-                        </div>
-                    </div>
-                    <div class="each_comment  swiper-slide">
-                        <div class="comment_top">
-                            <div class="member_pic">
-                                <img src="./pic/img/game/PEOPLE.jpg" alt="">
-                            </div>
-                            <div class="member_info">
-                                <h2 class="member_name">二柱子</h2>
-                                <p class="game_time">遊戲時長：0.8 小時</p>
-                                <p class="comment_date">評論於 2023/2/21</p>
-                            </div>
-                            <div class="game_rating">
-                                <span class="member_game_rating">5</span>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                        </div>
-                        <div class="comment_text">
-                            <i class="bi bi-hand-thumbs-up"></i>
-                            <p class="comment_content">
-                                手書香瓜自食從。旁正民右父門節四圓正。言雄呢兄屋好兌羽隻乙氣金色斗得？發占朋尾飛看新村而動申美胡定牛，河房誰問裏躲草姊波黃才冒園它貝室？火果亮。<br><br>
-                                室友草田拍邊實已葉耍頁青冰功而良媽「喝急能已各寫山穿幫」向干石？豆歌沒具快百辛者晚物畫，屋己民說開雲，背手哭抓。</p>
-                        </div>
-                    </div>
-                    
+                    </div>                    
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
@@ -537,8 +291,6 @@
     @@include('./layout/js.html')
     <!-- 以下可以放自己的js -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script src="./js/heart.js"></script>
-
 
     <script>
 
@@ -549,11 +301,13 @@
                     gameImg:[],
                     goodSysEnv:"",
                     recommendGoods:[],
+                    gameComments:[],
                     showPopup:false,
                     showRemove:false                                        
                 }
             },
             created(){
+                //該頁面主要遊戲內容
                 let getUrlString = location.href;
                 let id = new URL(getUrlString).searchParams.get('id');
                 const url = php_url + 'product_list.php?id='+id+'&action=none';
@@ -567,7 +321,7 @@
                         this.goodSysEnv = this.currentGood.SYSTEM_REQUIREMENT;
                                         
                 });
-
+                //推薦遊戲區
                 const url_recommend = php_url + 'product_list.php?id='+id+'&action=recommend';
                 axios.get(`${url_recommend}`)
                     .then((response) => {
@@ -580,7 +334,7 @@
 
                     });
                 
-
+                //遊戲圖片
                 const url_img = php_url + 'product_img.php?id='+id;
                 axios.get(`${url_img}`)
                     .then((response) => {
@@ -590,10 +344,40 @@
                         }                                          
                 });
 
-            },
-            computed:{
+                //遊戲評論
+                const url_comment = php_url + 'game_comment.php?id='+id;
+                axios.get(`${url_comment}`)
+                    .then((response) => {
+                        this.gameComments = response.data;                                                    
+                });
+                
 
             },
+            computed:{
+                numFilter: function(value) {                   
+                    return (value) =>{
+                        let result = (value/60).toFixed(1);
+                        return result;
+                    }                   
+                },
+                average:function(){
+                    let sum = 0;
+                    let avg = 0;
+                    if(this.gameComments.length >0){
+                        for(let gameComment of this.gameComments){
+                            sum += gameComment.STAR_RATING                        
+                        }
+                        avg = (sum / this.gameComments.length) + " / 5";
+                    }else{
+                        avg="尚無評價"
+                    }
+                    
+                    
+                   
+                    return avg;
+                }
+            },
+
             methods: {
                 afterDiscount(i){                            
                     return Math.floor(this.recommendGoods[i].ORIGINAL_PRICE * this.recommendGoods[i].DISCOUNT_PERCENTAGE);                                      
@@ -628,6 +412,12 @@
                 },
                 goProductPage(id){
                     location.href = `/product_information.html?id=${id}`;
+                },
+                addAction(action){
+                    localStorage.setItem("good_" + this.currentGood.GAME_ID, JSON.stringify(this.currentGood));
+                    if(action == "toPay"){
+                        location.href = "./checkout.html";
+                    }
                 },
             },
             mounted(){ 
