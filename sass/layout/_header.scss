@@ -2,7 +2,6 @@
   border: 1px solid orangered;
 }
 
-
 .header {
   max-width: 1920px;
   margin: 0 auto;
@@ -22,7 +21,7 @@
       width: 6.34%;
       // border: 1px solid red;
 
-      >a {
+      > a {
         width: 100%;
 
         img {
@@ -54,7 +53,7 @@
         box-sizing: border-box;
         padding: 10px;
 
-        >li {
+        > li {
           // width: 25%;
           // border: 1px solid red;
           transition: all ease-in-out 0.3s;
@@ -65,7 +64,7 @@
             transition: all ease-in-out 0.5s;
           }
 
-          >a {
+          > a {
             width: 100%;
             // background-color: rgba(233, 233, 0, 0.14);
             display: block;
@@ -99,7 +98,6 @@
         position: relative;
 
         .topser {
-          
           width: 33%;
           z-index: 90000;
           .ser {
@@ -110,7 +108,7 @@
             align-items: center;
             position: relative;
             box-sizing: border-box;
-            
+
             // border: 1px solid yellowgreen;
 
             SVG {
@@ -141,9 +139,9 @@
               box-sizing: border-box;
               display: inline-block;
               padding: 3.5px;
-              transition: all ease-in-out .3s;
+              transition: all ease-in-out 0.3s;
               // border-radius: 50px;
-              
+
               i {
                 // margin: 0 auto;
                 color: orangered;
@@ -156,18 +154,17 @@
 
               &:hover {
                 background-color: rgb(255, 68, 0);
-                transition: all ease-in-out .3s;
+                transition: all ease-in-out 0.3s;
 
-                >i {
+                > i {
                   color: aliceblue;
-                  transition: all ease-in-out .3s;
+                  transition: all ease-in-out 0.3s;
                 }
               }
             }
-
           }
 
-          .result{
+          .result {
             margin-top: 10px;
             background-color: rgb(87, 23, 0);
             position: absolute;
@@ -175,19 +172,18 @@
             padding: 5px;
             box-sizing: border-box;
             cursor: pointer;
-            display: none;  //這邊關閉
+            display: none; //這邊關閉
             // overflow: hidden;
-            
 
-            .rlist{
+            .rlist {
               width: 100%;
               // background-color: #bb980d76;
               box-sizing: border-box;
-              transition: all ease-in-out .3s;
+              transition: all ease-in-out 0.3s;
               cursor: pointer;
-              
+
               // border: 1px solid orange;
-              .alist{
+              .alist {
                 display: flex;
                 width: 100%;
                 // border: 1px solid blueviolet;
@@ -195,20 +191,20 @@
                 margin: 0;
                 box-sizing: border-box;
                 cursor: pointer;
-              
-                img{
+
+                img {
                   width: 15%;
                 }
-                .gtitle{
+                .gtitle {
                   width: 85%;
                   padding: 10px;
                   line-height: 1.2;
                   cursor: pointer;
                 }
               }
-              &:hover{
+              &:hover {
                 background-color: orangered;
-                transition: all ease-in-out .3s;
+                transition: all ease-in-out 0.3s;
                 cursor: pointer;
               }
               // &:hover>.alist{
@@ -216,31 +212,28 @@
               //   background-color: #6070ff;
               // }
             }
-            &:hover{
+            &:hover {
               cursor: pointer;
             }
-            .more{
+            .more {
               width: 100%;
-              .more2{
+              .more2 {
                 font-size: 1.5rem;
                 color: brown;
-                &:hover{
+                &:hover {
                   color: orange;
-                  transition: all ease-in-out .3s;
+                  transition: all ease-in-out 0.3s;
                 }
               }
             }
-            .notfind{
+            .notfind {
               width: 100%;
               display: none;
-              .p1{
+              .p1 {
                 padding: 10px;
               }
             }
-
-
           }
-
         }
 
         .b_2 {
@@ -264,7 +257,7 @@
               transition: all ease-in-out 0.5s;
             }
 
-            &:hover>.b_2-1 {
+            &:hover > .b_2-1 {
               display: block;
               transform: scale(1);
               z-index: 999;
@@ -272,7 +265,7 @@
               transition: all ease-in-out 0.9s;
             }
 
-            &:hover>.b_2-1>li {
+            &:hover > .b_2-1 > li {
               transform: scale(1);
             }
 
@@ -308,11 +301,18 @@
               }
             }
 
+            // google登入顯示頭貼
             .google_photo {
               img {
                 border-radius: 50%;
                 max-width: 60px;
               }
+            }
+
+            // 一般登入顯示暱稱第一個字
+            .nickname {
+              border: 1px solid $orange;
+              color: $orange;
             }
 
             .b_2-1 {
@@ -479,13 +479,12 @@
         width: 45%;
 
         // border: 1px solid red;
-        >a>img {
+        > a > img {
           padding: 0;
         }
       }
 
       .menu {
-
         // display: none;
         // background-color: rgba(240, 255, 255, 0.305);
         .a_part {
@@ -529,12 +528,14 @@
             top: 152px;
             left: 0;
             // background-color: #000000ec;
-            background: linear-gradient(to bottom,
-                #000000,
-                #000000,
-                #000000,
-                #30016d,
-                #4400ff13);
+            background: linear-gradient(
+              to bottom,
+              #000000,
+              #000000,
+              #000000,
+              #30016d,
+              #4400ff13
+            );
             flex-direction: column;
             display: none;
             z-index: 999;
@@ -551,7 +552,6 @@
                 border: none;
                 padding: 20px;
                 box-sizing: border-box;
-                
 
                 .ser {
                   width: 100%;
@@ -561,16 +561,16 @@
                   align-items: center;
                   position: relative;
                   box-sizing: border-box;
-                  
+
                   // border: 1px solid yellowgreen;
-      
+
                   SVG {
                     color: orangered;
                     position: absolute;
                     top: 52px;
                     right: 20px;
                   }
-      
+
                   input[type="text"] {
                     width: 90%;
                     padding: 5px 10px;
@@ -581,7 +581,7 @@
                     background-color: rgba(255, 68, 0, 0.275);
                     margin: auto 0;
                   }
-      
+
                   button {
                     // width: 20%;
                     // background-color: black;
@@ -592,9 +592,9 @@
                     box-sizing: border-box;
                     display: inline-block;
                     padding: 3.5px;
-                    transition: all ease-in-out .3s;
+                    transition: all ease-in-out 0.3s;
                     // border-radius: 50px;
-      
+
                     i {
                       // margin: 0 auto;
                       color: orangered;
@@ -604,21 +604,20 @@
                       margin: 0;
                       padding: 0 5px;
                     }
-      
+
                     &:hover {
                       background-color: rgb(255, 68, 0);
-                      transition: all ease-in-out .3s;
-      
-                      >i {
+                      transition: all ease-in-out 0.3s;
+
+                      > i {
                         color: aliceblue;
-                        transition: all ease-in-out .3s;
+                        transition: all ease-in-out 0.3s;
                       }
                     }
                   }
-      
                 }
-      
-                .result{
+
+                .result {
                   margin-top: 10px;
                   background-color: rgb(87, 23, 0);
                   position: absolute;
@@ -628,19 +627,18 @@
                   cursor: pointer;
                   z-index: 999;
 
-                  display: none;  //這邊關閉
+                  display: none; //這邊關閉
                   // overflow: hidden;
-                  
-      
-                  .rlist{
+
+                  .rlist {
                     width: 100%;
                     box-sizing: border-box;
-                    transition: all ease-in-out .3s;
+                    transition: all ease-in-out 0.3s;
                     border: none;
                     cursor: pointer;
                     padding: 5px 0;
                     // border: 1px solid orange;
-                    .alist{
+                    .alist {
                       display: flex;
                       width: 100%;
                       // border: 1px solid blueviolet;
@@ -648,20 +646,20 @@
                       margin: 0;
                       box-sizing: border-box;
                       cursor: pointer;
-                    
-                      img{
+
+                      img {
                         width: 25%;
                       }
-                      .gtitle{
+                      .gtitle {
                         width: 85%;
                         padding: 5px 0;
                         line-height: 1.2;
                         cursor: pointer;
                       }
                     }
-                    &:hover{
+                    &:hover {
                       background-color: orangered;
-                      transition: all ease-in-out .3s;
+                      transition: all ease-in-out 0.3s;
                       cursor: pointer;
                     }
                     // &:hover>.alist{
@@ -669,13 +667,11 @@
                     //   background-color: #6070ff;
                     // }
                   }
-                  &:hover{
+                  &:hover {
                     cursor: pointer;
                   }
                 }
-      
               }
-              
 
               li {
                 width: 90%;
@@ -764,13 +760,12 @@
         width: 45%;
 
         // border: 1px solid red;
-        >a>img {
+        > a > img {
           padding: 0;
         }
       }
 
       .menu {
-
         // display: none;
         // background-color: rgba(240, 255, 255, 0.305);
         .a_part {
@@ -814,12 +809,14 @@
             top: 132px;
             left: 0;
             // background-color: #000000ec;
-            background: linear-gradient(to bottom,
-                #000000,
-                #000000,
-                #000000,
-                #30016d,
-                #4400ff13);
+            background: linear-gradient(
+              to bottom,
+              #000000,
+              #000000,
+              #000000,
+              #30016d,
+              #4400ff13
+            );
             flex-direction: column;
             display: none;
             z-index: 999;
@@ -831,7 +828,6 @@
               box-sizing: border-box;
 
               // background-color: #7e1fcc;
-
 
               li {
                 width: 90%;
@@ -920,13 +916,12 @@
         width: 45%;
 
         // border: 1px solid red;
-        >a>img {
+        > a > img {
           padding: 0;
         }
       }
 
       .menu {
-
         // display: none;
         // background-color: rgba(240, 255, 255, 0.305);
         .a_part {
@@ -970,12 +965,14 @@
             top: 125px;
             left: 0;
             // background-color: #000000ec;
-            background: linear-gradient(to bottom,
-                #000000,
-                #000000,
-                #000000,
-                #30016d,
-                #4400ff13);
+            background: linear-gradient(
+              to bottom,
+              #000000,
+              #000000,
+              #000000,
+              #30016d,
+              #4400ff13
+            );
             flex-direction: column;
             display: none;
             z-index: 999;
@@ -1040,7 +1037,7 @@
                   box-sizing: border-box;
                   display: inline-block;
                   padding: 3.5px;
-                  transition: all ease-in-out .3s;
+                  transition: all ease-in-out 0.3s;
                   // border-radius: 50px;
 
                   i {
@@ -1053,7 +1050,6 @@
                     padding: 5px 5px;
                   }
                 }
-
               }
 
               li {
@@ -1143,13 +1139,12 @@
         width: 45%;
 
         // border: 1px solid red;
-        >a>img {
+        > a > img {
           padding: 0;
         }
       }
 
       .menu {
-
         // display: none;
         // background-color: rgba(240, 255, 255, 0.305);
         .a_part {
@@ -1193,12 +1188,14 @@
             top: 97px;
             left: 0;
             // background-color: #000000ec;
-            background: linear-gradient(to bottom,
-                #000000,
-                #000000,
-                #000000,
-                #30016d,
-                #4400ff13);
+            background: linear-gradient(
+              to bottom,
+              #000000,
+              #000000,
+              #000000,
+              #30016d,
+              #4400ff13
+            );
             flex-direction: column;
             display: none;
             z-index: 999;
@@ -1263,7 +1260,7 @@
                   box-sizing: border-box;
                   display: inline-block;
                   padding: 3.5px;
-                  transition: all ease-in-out .3s;
+                  transition: all ease-in-out 0.3s;
                   // border-radius: 50px;
 
                   i {
@@ -1278,15 +1275,14 @@
 
                   &:hover {
                     background-color: rgb(255, 68, 0);
-                    transition: all ease-in-out .3s;
+                    transition: all ease-in-out 0.3s;
 
-                    >i {
+                    > i {
                       color: aliceblue;
-                      transition: all ease-in-out .3s;
+                      transition: all ease-in-out 0.3s;
                     }
                   }
                 }
-
               }
 
               li {
@@ -1376,13 +1372,12 @@
         width: 45%;
 
         // border: 1px solid red;
-        >a>img {
+        > a > img {
           padding: 0;
         }
       }
 
       .menu {
-
         // display: none;
         // background-color: rgba(240, 255, 255, 0.305);
         .a_part {
@@ -1426,12 +1421,14 @@
             top: 82px;
             left: 0;
             // background-color: #000000ec;
-            background: linear-gradient(to bottom,
-                #000000,
-                #000000,
-                #000000,
-                #30016d,
-                #4400ff13);
+            background: linear-gradient(
+              to bottom,
+              #000000,
+              #000000,
+              #000000,
+              #30016d,
+              #4400ff13
+            );
             flex-direction: column;
             // display: none;
             z-index: 999;
@@ -1483,7 +1480,6 @@
 
               //   }
 
-
               // }
 
               form {
@@ -1524,7 +1520,7 @@
                   box-sizing: border-box;
                   display: inline-block;
                   padding: 3.5px;
-                  transition: all ease-in-out .3s;
+                  transition: all ease-in-out 0.3s;
                   // border-radius: 50px;
 
                   i {
@@ -1539,15 +1535,14 @@
 
                   &:hover {
                     background-color: rgb(255, 68, 0);
-                    transition: all ease-in-out .3s;
+                    transition: all ease-in-out 0.3s;
 
-                    >i {
+                    > i {
                       color: aliceblue;
-                      transition: all ease-in-out .3s;
+                      transition: all ease-in-out 0.3s;
                     }
                   }
                 }
-
               }
 
               li {
@@ -1637,13 +1632,12 @@
         width: 45%;
 
         // border: 1px solid red;
-        >a>img {
+        > a > img {
           padding: 0;
         }
       }
 
       .menu {
-
         // display: none;
         // background-color: rgba(240, 255, 255, 0.305);
         .a_part {
@@ -1687,12 +1681,14 @@
             top: 80px;
             left: 0;
             // background-color: #000000ec;
-            background: linear-gradient(to bottom,
-                #000000,
-                #000000,
-                #000000,
-                #30016d,
-                #4400ff13);
+            background: linear-gradient(
+              to bottom,
+              #000000,
+              #000000,
+              #000000,
+              #30016d,
+              #4400ff13
+            );
             flex-direction: column;
             display: none;
             z-index: 999;

@@ -83,18 +83,19 @@
                         </ul>
                     </li>
 
+                    <!-- 註冊 / 登入 -->
                     <template v-if="!isLogin">
                         <li data-index="6"><a href="./register.html" data-href="./register.html">註冊</a></li>
                         <li data-index="7"><a href="./login.html" data-href="./login.html">登入</a></li>
                     </template>
 
+                    <!-- 頭貼or暱稱第一個字 / 登出 -->
                     <template v-else>
                         <li data-index="6">
                             <a v-if="!nickname" href="./member_center.html" class="google_photo">
                                 <img :src="this.photo" alt="">
                             </a>
-                            <a v-else href="./member_center.html" class="nickname"
-                                style="color:#ff6300;border: 1px solid;">
+                            <a v-else href="./member_center.html" class="nickname">
                                 {{nickname}}
                             </a>
                         </li>
@@ -207,7 +208,7 @@
                     // console.log(response);
                     this.isLogin = response.data.isLogin;
                     this.photo = response.data.photo;
-                    this.nickname = response.data.nickname;
+                    this.nickname = response.data.nickname.substring(0, 1);
                 })
         }
     }).mount(".b_2");
