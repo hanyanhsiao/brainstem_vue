@@ -1,839 +1,784 @@
-// ===============  引首頁類別hover效果 ======================
-.color-8 {
-    background-image: linear-gradient(to right, #01072B, #000e5a94, #260057, #7702e6);
-}
-
-.cube{
-    // width: 48.5%;
-    // margin: 10px 0;
-    // outline: 1px solid $orange;
-    border-radius: 10px;
-    padding: 20px 0;
-    background-size: 300% 100%;
-    -o-transition: all .4s ease-in-out;
-    -webkit-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out;
-    &:hover {
-        background-position: none;
-        -webkit-transition: none;
-        transition: none;
-        outline: none;
-    }
-    a{  
-        img{
-            width: 60%;
-            display: block;
-            margin: 0 auto;
-            transition: all ease-in-out .6s;
-        }
-        &:hover>img{
-            transition: none;
-            transform: none;
-        }
-    }
-}
-
-//==================================================================
-
 .product {
-    color: $white;
-    position: relative;    
-    .productBanner {
-        margin-top: 45px;
-        position: relative;
-        .swiper-slide{
-            @include breakpoint-414{
-            height: 161px;
-            }
-            img{
-                display: block;
-                // width: 100%;
-                // height: 100%;
-                object-fit: cover;
-            }
-        }
-        .product_banner_next {
-            width: 130px;
-            height: 665px;
-            position: absolute;
-            top:0;
-            right: 0;
-            cursor: pointer;
-            z-index:100;
-            @include breakpoint-1440{
-                width: 80px;
-                height: 500px;
-            }
-            @include breakpoint-414{
-                width: 40px;
-                height: 161px;
-            };        
-            &:hover {
-                background-image: linear-gradient(to left, #767676, rgba(#d9d9d9, 0));
-                i{
-                    color: $orange;
-                }
-            }
-
-            i {
-                padding: 0;
-                color: $white;
-                font-size: 80px;
-                position: absolute;
-                top: 50%;
-                right: 10px;
-                transform: translateY(-50%);
-                @include breakpoint-1440{
-                    font-size: 60px;
-                }
-
-                @include breakpoint-414{
-                    font-size: 30px;
-                    right: 5px;
-                }
-                &:hover {
-                    color: $orange;
-                }
-            }            
-        }
-
-        .product_banner_prev {
-            width: 130px;
-            height: 665px;
-            position: absolute;
-            top:0;
-            left: 0;
-            cursor: pointer;
-            z-index:100;           
-            @include breakpoint-1440{
-                width: 80px;
-                height: 500px;
-            }
-            @include breakpoint-414{
-                width: 40px;
-                height: 161px;
-            }
-            &:hover {
-                background-image: linear-gradient(to right, #767676, rgba(#d9d9d9, 0));
-                i{
-                    color: $orange;
-                }
-            }
-
-            i {
-                padding: 0;
-                color: $white;
-                font-size: 80px;
-                position: absolute;
-                top: 50%;
-                left: 10px;
-                transform: translateY(-50%);
-                @include breakpoint-1440{
-                    font-size: 60px;
-                }
-                @include breakpoint-414{
-                    font-size: 30px;
-                    left: 5px;
-                }
-                &:hover {
-                    color: $orange;
-                }
-            }
-        }
-
-        .swiper-pagination{
-            --swiper-navigation-size: 60px;
-            --swiper-theme-color: #FF6300;
-            --swiper-pagination-bottom: 40px;
-            @include breakpoint-1440{
-                --swiper-navigation-size: 40px;
-                --swiper-pagination-bottom: 20px;
-            }
-            @include breakpoint-414 {
-                --swiper-navigation-size: 30px;
-                --swiper-pagination-bottom: 10px;
-            }
-        }
-
-        .swiper-slide {
-            text-align: center;
-            font-size: 18px;
-            background: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            a{
-                padding: 0;
-                font: 0;
-            }
-
-            img {
-                display: block;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-        }
+  color: $white;
+  position: relative;
+  .productBanner {
+    margin-top: 45px;
+    position: relative;
+    .swiper-slide {
+      @include breakpoint-414 {
+        height: 161px;
+      }
+      img {
+        display: block;
+        // width: 100%;
+        // height: 100%;
+        object-fit: cover;
+      }
     }
+    .product_banner_next {
+      width: 130px;
+      height: 665px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      cursor: pointer;
+      z-index: 100;
+      @include breakpoint-1440 {
+        width: 80px;
+        height: 500px;
+      }
+      @include breakpoint-414 {
+        width: 40px;
+        height: 161px;
+      }
+      &:hover {
+        background-image: linear-gradient(to left, #767676, rgba(#d9d9d9, 0));
+        i {
+          color: $orange;
+        }
+      }
 
-    .product_main {
-        display: flex;
-        height: auto;
-        margin-top: 120px;
+      i {
+        padding: 0;
+        color: $white;
+        font-size: 80px;
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        @include breakpoint-1440 {
+          font-size: 60px;
+        }
 
         @include breakpoint-414 {
-            margin-top: 45px;
-            // position: relative;
+          font-size: 30px;
+          right: 5px;
         }
-
-        ;
-
-        .product_sidebar {
-            @include breakpoint-414 {
-                // display: none;
-                z-index: 100;
-                max-width: 414px;
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                top: 0;
-                left: -414px;
-                background: linear-gradient(174.31deg,
-                        #030009 3.18%,
-                        #160046 27.03%,
-                        #180505 50.89%,
-                        #4f1f00 98.6%);
-                transition: 1s;
-            }
-
-            ;
-
-            // background-color: #1b1b1b;
-            .tag_choose {
-                color: $white;
-                font-size: 2.4rem;
-                overflow: hidden;
-                display: none;
-                padding-bottom: 20px; 
-                padding-top: 10px;             
-
-                @include breakpoint-414{
-                    font-size: 18px;
-                    padding-top: 50px;
-                }
-                &.show {
-                    display: block;
-                }
-                .clear {
-                    font-size: 1.8rem;
-                    color: #797676;
-                    float: right;
-                    cursor: pointer;
-
-                    &:hover {
-                        color: $orange;
-                    }
-                }
-            }
-
-            #tags_container {
-                padding-right: 20px;
-
-                .tag {
-                    display: inline-block;
-                    padding: 1rem 1.5rem;
-                    font-size: 1.8rem;
-                    background-color: $purple;
-                    color: $white;
-                    border-radius: 20px;
-                    margin-right: 1.5rem;
-                    margin-bottom: 1.5rem;
-                    cursor: pointer;
-
-                    i {
-                        font-size: 15px;
-                        padding: 5px;
-                    }
-                }
-            }
-
-            ul {
-                li {
-                    line-height: 80px;
-
-
-                    .button {
-                        border-top: 1px solid rgba($color: $orange, $alpha: 0.5);
-                        box-sizing: border-box;
-                        position: relative;
-                        color: $white;
-                        text-decoration: none;
-                        font-size: 2.4rem;
-                        padding-left: 10px;
-                        font-weight: 400;
-                        display: block;
-                        width: 100%;
-                        border-left: 3px solid transparent;
-                        cursor: pointer;
-
-                        @include breakpoint-414{
-                            font-size: 20px;
-                        }
-                        @include breakpoint-1440{
-                            font-size: 20px;
-                        }
-
-                        &:last-child {
-                            border-bottom: 0;
-                        }
-
-                        &.active {
-                            color: $orange;
-                            border-left-color: darken($color: $orange, $amount: 10);
-                        }
-
-                        i {
-                            position: absolute;
-                            top: 50%;
-                            right: 0px;
-                            transform: translateY(-50%);
-                            font-size: 22px;
-                            transition: transform 0.4s;
-
-                            &.rotate {
-                                transform: translateY(-50%) rotate(-180deg);
-                            }
-                        }
-                    }
-                }
-
-                ul {
-                    // display: none;
-
-                    // &.show {
-                    //     display: block;
-                    // }
-
-                    .item {
-                        cursor: pointer;
-                        position: relative;
-                        font-size: 1.8rem;
-                        padding-left: 23px;
-
-                        @include breakpoint-414{
-                            font-size: 16px;
-                        }
-
-                        &:hover {
-                            color: $orange;
-                        }
-
-                        &.checked {
-                            background-color: rgba($color: $orange, $alpha: 0.12);
-                            color: $orange;
-
-                            .check-icon {
-                                transform: scale(1);
-                            }
-                        }
-
-                        .check-icon {
-                            position: absolute;
-                            right: 20px;
-                            color: $orange;
-                            font-size: 1.8rem;
-                            transform: scale(0);
-                            transition: all 0.2s ease-in-out;
-                        }
-                    }
-
-                    .price_range {
-                        @include flex-container(row, nowrap, space-around, center);
-                    
-                        span {
-                            font-size: 1.8rem;
-                            margin: 0;
-                            vertical-align: middle;
-                            letter-spacing: 4px;
-                        }
-                        input[type=number]::-webkit-outer-spin-button,
-                        input[type=number]::-webkit-inner-spin-button {
-                            -webkit-appearance: none;
-                            margin: 0;
-                        }
-
-                        .form-control {
-                            width: 180px;
-                            margin: 0;
-                        }
-                    }
-                }
-            }
-
-            .apply_choose {
-                color: $white;
-                background-color: rgba($color: #ff6300, $alpha: 0.2);
-                font-size: 1.8rem;
-                font-weight: bold;
-                padding: 10px 80px;
-                border: 1px solid $orange;
-                border-radius: 8px;
-                margin: 100px auto 0;
-
-                display: none;
-
-                @include breakpoint-414 {
-                    display: block;
-                }
-
-                ;
-            }
+        &:hover {
+          color: $orange;
         }
-
-        .game_part {
-            .hot_game {
-                padding-bottom: 70px;
-                overflow: hidden;
-
-                @include breakpoint-414 {
-                    padding-bottom: 30px;
-                }
-
-                ;
-
-                .hot_game_title {
-                    @include flex-container(row, nowrap, space-between, center);
-                    padding-bottom: 30px;
-
-                    h2 {
-                        @include breakpoint-414 {
-                            font-size: 2rem;
-                        }
-                    }
-
-                    .arrow_box {
-
-                        .btn {
-                            background-color: $purple;
-
-                            @include breakpoint-414 {
-                                background-color: $purple_dark;
-
-                            }
-
-                            &:hover {
-                                background-color: $orange;
-                            }
-                        }
-
-                        i {
-                            padding: 0;
-                        }
-                    }
-                }
-
-                .hot_game_cate {
-                    display: flex;
-                    height: 269px;
-
-                    @include breakpoint-414 {
-                        height: 130px;
-                    }
-
-                    .hot_game_list {
-                        position: relative;
-                        background-color: #01072B;
-                        border: 1px solid $orange;
-                        border-radius: 5px;
-                        box-sizing: border-box;
-                        &:hover{
-                            background-color: $purple_dark;
-                        }
-
-                        .hot_game_container {
-                            position: absolute;
-                            left: 50%;
-                            top: 50%;
-                            transform: translate(-50%, -50%);
-                            text-align: center;
-
-                            img {
-                                padding-bottom: 15px;
-                                height: 123px;
-
-                                @include breakpoint-414 {
-                                    height: 65px;
-                                    padding-bottom: 5px;
-                                }
-
-                                ;
-
-                            }
-
-                            h3 {
-                                font-size: 2.4rem;
-                                text-align: center;
-
-                                @include breakpoint-414 {
-                                    font-size: 1.8rem;
-                                }
-
-                                ;
-                            }
-                        }
-                    }
-
-                }
-
-            }
-
-            .products {
-                .add_filter {
-                    @include flex-container(row, wrap, space-between, center);
-                    vertical-align: middle;
-                    margin-bottom: 30px;
-
-                    .sidebar_btn {
-                        display: none;
-
-                        @include breakpoint-414 {
-                            @include flex-container(row, wrap, space-between, center);
-
-                            display: block;
-                            font-size: 14px;
-                            vertical-align: top;
-                        }
-
-                        ;
-
-                        i {
-
-                            @include breakpoint-414 {
-                                font-size: 14px;
-                            }
-                        }
-                    }
-
-                    .product_order {
-                        @include flex-container(row, nowrap, end, center);
-
-                        position: relative;
-
-                        h3 {
-                            @include breakpoint-414 {
-                                font-size: 14px;
-                            }
-                        }
-
-                        .order_btn {
-                            @include flex-container(row, nowrap, space-between, center);
-                            padding: 10px;
-                            width: 230px;
-                            font-size: 2rem;
-                            border: 1px solid transparent;
-                            cursor: pointer;
-
-                            @include breakpoint-414 {
-                                width: 130px;
-                                font-size: 14px;
-                            }
-
-                            ;
-
-                            &:hover {
-                                border: 1px solid $white;
-                                border-radius: 8px;
-                            }
-
-                            i {
-                                padding: 0;
-                                transition: 0.3s;
-                                transform: rotate(0deg);
-
-                                @include breakpoint-414 {
-                                    font-size: 14px;
-                                }
-                            }
-
-                            &.active i {
-                                transform: rotate(-180deg);
-                            }
-                        }
-
-                        .order_options {
-                            font-size: 1.6rem;
-                            position: absolute;
-                            top: 0;
-                            right: 0;
-                            width: 210px;
-                            padding: 20px;
-                            margin-top: 50px;
-                            border-radius: 8px;
-                            background: #202020;
-                            z-index: 10;
-
-                            @include breakpoint-414 {
-                                width: 110px;
-                                margin-top: 50px;
-                            }
-
-                            ;
-
-                            .option {
-                                cursor: pointer;
-                                padding: 10px;
-                                margin: 10px 0;
-                                align-items: center;
-
-                                @include breakpoint-414 {
-                                    margin: 0;
-                                }
-
-                                ;
-
-                                .option_text {
-                                    @include breakpoint-414 {
-                                        font-size: 14px;
-                                    }
-
-                                    ;
-                                }
-
-                                &:hover {
-                                    background-color: #797676;
-                                    border-radius: 5px;
-                                }
-                            }
-                        }
-
-                    }
-                }
-
-                .product_goods {
-                    @include flex-container(row, wrap, start, flex-start);
-                    position: relative;
-                    @include breakpoint-414{
-                    @include flex-container(row, wrap, space-between, flex-start);
-
-                    }
-                    .each_good {
-                        margin-bottom: 50px;   
-                        transition: all ease-in-out .5s;
-
-                        &:hover{
-                            transform: translateY(-2%);
-                            transition: all ease-in-out .5s;  
-                            >a >.goods_top img{
-                                filter: brightness(55%);
-                            }   
-                            >a >.goods_text h3{
-                                color: orange;
-                            }                                                  
-                                                                
-                        } 
-                            
-                        @include breakpoint-414 {
-                            width: 48%;
-                            margin-bottom: 30px;
-                        };
-                            
-                        a{
-                            padding: 0;
-                            .goods_top {
-                                width: 100%;
-                                position: relative;
-                                
-                                img{
-                                    width: 100%;
-                                    object-fit: cover;
-                                    display: block;
-                                }
-
-                                .discount {
-                                    border-radius: 0;
-                                    position: absolute;
-                                    top: 0;
-                                    left: 0;
-                                    font-size: $h3;
-                                    padding: 10px 20px;
-
-                                    @include breakpoint-414 {
-                                        font-size: 16px;
-                                        padding: 5px 10px;
-                                    }
-                                }
-
-                                i {
-                                    position: absolute;
-                                    color: red;
-                                    right: 10px;
-                                    top: 10px;
-                                    font-size: 30px;
-                                    cursor: pointer;
-                                    &:hover{
-                                    text-shadow: 1px 1px 2px black;
-                                    }
-
-                                    @include breakpoint-414 {
-                                        font-size: 20px;
-                                        right: 5px;
-                                        top: 5px;
-                                    }
-                                }
-                            }
-
-                            .goods_text {
-                                padding-bottom: 10px;
-                                pointer-events: none;
-
-                                h3 {
-                                    padding: 20px 0;
-
-                                    @include breakpoint-414 {
-                                        padding: 5px 0;
-                                        font-size: 16px;
-                                    }
-                                }
-
-                                .price {
-                                    padding-right: 20px;
-
-                                    @include breakpoint-414 {
-                                        font-size: 16px;
-                                        padding-right: 10px;
-                                    }
-                                }
-
-                                .price_original {
-                                    font-size: $h2;
-                                    text-decoration: none;
-                                    @include breakpoint-414 {
-                                        font-size: 16px;
-                                    }
-                                }
-                                .line_throught{
-                                    text-decoration: line-through;
-                                    font-size: $h4;
-                                    @include breakpoint-414 {
-                                        font-size: 14px;
-                                    }
-                                }
-                            }
-                        }      
-                    }
-                    
-
-                    .each_good:nth-child(4n) {
-                        margin-right: 0;
-                    }
-                    .heart_popup, .heart_remove {
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%) scale(1.2);
-                        max-width: 560px;
-                        width: 100%;
-                        padding: 50px;
-                        border-radius: 10px;
-                        background-color: rgb($color: #0d0d0d, $alpha: 0.8);
-                        @include flex-container(column, nowrap, center, center);
-                        opacity: 0;
-                        pointer-events: none;
-                        transition: all 0.3s ease;
-            
-                        &.active {
-                            opacity: 1;
-                            pointer-events: auto;
-                            transform: translate(-50%, -50%) scale(1);
-                        }
-            
-                        i {
-                            font-size: 225px;
-                            color: $green;
-                            @include breakpoint-414 {
-                                font-size: 150px;
-                            }
-                        }
-            
-                        h2 {
-                            padding: 50px;
-                            font-size: 4rem;
-            
-                            @include breakpoint-414 {
-                                font-size: 30px;
-                            }
-                        }
-                    }
-                    .heart_remove{
-                        i{
-                            color: red;
-                            font-size: 180px;
-                        }                        
-                    }
-                }
-
-                .pages {
-                    margin-bottom: 50px;
-
-                    .product_pages {
-                        @include flex-container(row, nowrap, end, center);
-
-                        @include breakpoint-414 {
-                            @include flex-container(row, nowrap, center, center);
-
-                        };
-
-                        .each_page{
-                            color: #797676;
-                            font-size: 2rem;
-                            margin: 0 5px;
-                            padding: 5px 10px;
-                            font-weight: bold;
-                            cursor: pointer;
-
-                            @include breakpoint-414 {
-                                font-size: 16px;
-                                padding: 1px 7px;
-
-                            };
-
-                            &.active {
-                                background-color: $purple;
-                                border-radius: 50%;
-                                color: $white;
-                            }
-
-                            &:hover {
-                                color: $white;
-                            }
-
-                            i {
-                                padding: 0;
-                                @include breakpoint-414{
-                                    font-size: 16px;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-        }
-
+      }
     }
 
-}
+    .product_banner_prev {
+      width: 130px;
+      height: 665px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      cursor: pointer;
+      z-index: 100;
+      @include breakpoint-1440 {
+        width: 80px;
+        height: 500px;
+      }
+      @include breakpoint-414 {
+        width: 40px;
+        height: 161px;
+      }
+      &:hover {
+        background-image: linear-gradient(to right, #767676, rgba(#d9d9d9, 0));
+        i {
+          color: $orange;
+        }
+      }
 
+      i {
+        padding: 0;
+        color: $white;
+        font-size: 80px;
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+        @include breakpoint-1440 {
+          font-size: 60px;
+        }
+        @include breakpoint-414 {
+          font-size: 30px;
+          left: 5px;
+        }
+        &:hover {
+          color: $orange;
+        }
+      }
+    }
 
-.swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet,
-.swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
-    width: 60px;
-    height: 6px;
-    border-radius: 1px;
+    .swiper-pagination {
+      --swiper-navigation-size: 60px;
+      --swiper-theme-color: #ff6300;
+      --swiper-pagination-bottom: 40px;
+      @include breakpoint-1440 {
+        --swiper-navigation-size: 40px;
+        --swiper-pagination-bottom: 20px;
+      }
+      @include breakpoint-414 {
+        --swiper-navigation-size: 30px;
+        --swiper-pagination-bottom: 10px;
+      }
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      a {
+        padding: 0;
+        font: 0;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .product_main {
+    display: flex;
+    height: auto;
+    margin-top: 120px;
 
     @include breakpoint-414 {
-        width: 35px;
-        height: 4px;
+      margin-top: 45px;
+      // position: relative;
     }
+
+    .product_sidebar {
+      @include breakpoint-414 {
+        // display: none;
+        z-index: 100;
+        max-width: 414px;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: -414px;
+        background: linear-gradient(
+          174.31deg,
+          #030009 3.18%,
+          #160046 27.03%,
+          #180505 50.89%,
+          #4f1f00 98.6%
+        );
+        transition: 1s;
+      }
+
+      // background-color: #1b1b1b;
+      .tag_choose {
+        color: $white;
+        font-size: 2.4rem;
+        overflow: hidden;
+        display: none;
+        padding-bottom: 20px;
+        padding-top: 10px;
+
+        @include breakpoint-414 {
+          font-size: 18px;
+          padding-top: 50px;
+        }
+        &.show {
+          display: block;
+        }
+        .clear {
+          font-size: 1.8rem;
+          color: #797676;
+          float: right;
+          cursor: pointer;
+
+          &:hover {
+            color: $orange;
+          }
+        }
+      }
+
+      #tags_container {
+        padding-right: 20px;
+
+        .tag {
+          display: inline-block;
+          padding: 1rem 1.5rem;
+          font-size: 1.8rem;
+          background-color: $purple;
+          color: $white;
+          border-radius: 20px;
+          margin-right: 1.5rem;
+          margin-bottom: 1.5rem;
+          cursor: pointer;
+
+          i {
+            font-size: 15px;
+            padding: 5px;
+          }
+        }
+      }
+
+      ul {
+        li {
+          line-height: 80px;
+
+          .button {
+            border-top: 1px solid rgba($color: $orange, $alpha: 0.5);
+            box-sizing: border-box;
+            position: relative;
+            color: $white;
+            text-decoration: none;
+            font-size: 2.4rem;
+            padding-left: 10px;
+            font-weight: 400;
+            display: block;
+            width: 100%;
+            border-left: 3px solid transparent;
+            cursor: pointer;
+
+            @include breakpoint-414 {
+              font-size: 20px;
+            }
+            @include breakpoint-1440 {
+              font-size: 20px;
+            }
+
+            &:last-child {
+              border-bottom: 0;
+            }
+
+            &.active {
+              color: $orange;
+              border-left-color: darken($color: $orange, $amount: 10);
+            }
+
+            i {
+              position: absolute;
+              top: 50%;
+              right: 0px;
+              transform: translateY(-50%);
+              font-size: 22px;
+              transition: transform 0.4s;
+
+              &.rotate {
+                transform: translateY(-50%) rotate(-180deg);
+              }
+            }
+          }
+        }
+
+        ul {
+          // display: none;
+
+          // &.show {
+          //     display: block;
+          // }
+
+          .item {
+            cursor: pointer;
+            position: relative;
+            font-size: 1.8rem;
+            padding-left: 23px;
+
+            @include breakpoint-414 {
+              font-size: 16px;
+            }
+
+            &:hover {
+              color: $orange;
+            }
+
+            &.checked {
+              background-color: rgba($color: $orange, $alpha: 0.12);
+              color: $orange;
+
+              .check-icon {
+                transform: scale(1);
+              }
+            }
+
+            .check-icon {
+              position: absolute;
+              right: 20px;
+              color: $orange;
+              font-size: 1.8rem;
+              transform: scale(0);
+              transition: all 0.2s ease-in-out;
+            }
+          }
+
+          .price_range {
+            @include flex-container(row, nowrap, space-around, center);
+
+            span {
+              font-size: 1.8rem;
+              margin: 0;
+              vertical-align: middle;
+              letter-spacing: 4px;
+            }
+            input[type="number"]::-webkit-outer-spin-button,
+            input[type="number"]::-webkit-inner-spin-button {
+              -webkit-appearance: none;
+              margin: 0;
+            }
+
+            .form-control {
+              width: 180px;
+              margin: 0;
+            }
+          }
+        }
+      }
+
+      .apply_choose {
+        color: $white;
+        background-color: rgba($color: #ff6300, $alpha: 0.2);
+        font-size: 1.8rem;
+        font-weight: bold;
+        padding: 10px 80px;
+        border: 1px solid $orange;
+        border-radius: 8px;
+        margin: 100px auto 0;
+
+        display: none;
+
+        @include breakpoint-414 {
+          display: block;
+        }
+      }
+    }
+
+    .game_part {
+      .hot_game {
+        padding-bottom: 70px;
+        overflow: hidden;
+
+        @include breakpoint-414 {
+          padding-bottom: 30px;
+        }
+
+        .hot_game_title {
+          @include flex-container(row, nowrap, space-between, center);
+          padding-bottom: 30px;
+
+          h2 {
+            @include breakpoint-414 {
+              font-size: 2rem;
+            }
+          }
+
+          .arrow_box {
+            .btn {
+              background-color: $purple;
+
+              @include breakpoint-414 {
+                background-color: $purple_dark;
+              }
+
+              &:hover {
+                background-color: $orange;
+              }
+            }
+
+            i {
+              padding: 0;
+            }
+          }
+        }
+
+        .hot_game_cate {
+          display: flex;
+          height: 269px;
+
+          @include breakpoint-414 {
+            height: 130px;
+          }
+
+          .hot_game_list {
+            background-image: linear-gradient(
+              to right,
+              #01072b,
+              #000e5a94,
+              #260057,
+              #7702e6
+            );
+            background-color: #01072b;
+            border: 1px solid $orange;
+            box-sizing: border-box;
+            border-radius: 10px;
+            background-size: 300% 100%;
+            transition: all 0.4s ease-in-out;
+            @include flex-container(row, nowrap, center, center);
+
+            &:hover {
+              background-position: 100% 0;
+              -o-transition: all 0.4s ease-in-out;
+              -webkit-transition: all 0.4s ease-in-out;
+              transition: all 0.4s ease-in-out;
+            }
+
+            .hot_game_container {
+              //   outline: 2px solid rgb(255, 255, 255);
+              width: 100%;
+              height: 100%;
+              transition: all ease-in-out 0.4s;
+              @include flex-container(column, wrap, center, center);
+              &:hover {
+                transform: scale(1.1);
+                transition: all ease-in-out 0.4s;
+              }
+              @include breakpoint-414 {
+                font-size: 1.8rem;
+              }
+
+              img {
+                padding-bottom: 15px;
+                height: 120px;
+                transition: all ease-in-out 0.4s;
+
+                @include breakpoint-414 {
+                  height: 65px;
+                  padding-bottom: 5px;
+                }
+              }
+
+              h3 {
+                font-size: 2.4rem;
+                transition: all ease-in-out 0.4s;
+              }
+            }
+          }
+        }
+      }
+
+      .products {
+        .add_filter {
+          @include flex-container(row, wrap, space-between, center);
+          vertical-align: middle;
+          margin-bottom: 30px;
+
+          .sidebar_btn {
+            display: none;
+
+            @include breakpoint-414 {
+              @include flex-container(row, wrap, space-between, center);
+
+              display: block;
+              font-size: 14px;
+              vertical-align: top;
+            }
+
+            i {
+              @include breakpoint-414 {
+                font-size: 14px;
+              }
+            }
+          }
+
+          .product_order {
+            @include flex-container(row, nowrap, end, center);
+
+            position: relative;
+
+            h3 {
+              @include breakpoint-414 {
+                font-size: 14px;
+              }
+            }
+
+            .order_btn {
+              @include flex-container(row, nowrap, space-between, center);
+              padding: 10px;
+              width: 230px;
+              font-size: 2rem;
+              border: 1px solid transparent;
+              cursor: pointer;
+
+              @include breakpoint-414 {
+                width: 130px;
+                font-size: 14px;
+              }
+
+              &:hover {
+                border: 1px solid $white;
+                border-radius: 8px;
+              }
+
+              i {
+                padding: 0;
+                transition: 0.3s;
+                transform: rotate(0deg);
+
+                @include breakpoint-414 {
+                  font-size: 14px;
+                }
+              }
+
+              &.active i {
+                transform: rotate(-180deg);
+              }
+            }
+
+            .order_options {
+              font-size: 1.6rem;
+              position: absolute;
+              top: 0;
+              right: 0;
+              width: 210px;
+              padding: 20px;
+              margin-top: 50px;
+              border-radius: 8px;
+              background: #202020;
+              z-index: 10;
+
+              @include breakpoint-414 {
+                width: 110px;
+                margin-top: 50px;
+              }
+
+              .option {
+                cursor: pointer;
+                padding: 10px;
+                margin: 10px 0;
+                align-items: center;
+
+                @include breakpoint-414 {
+                  margin: 0;
+                }
+
+                .option_text {
+                  @include breakpoint-414 {
+                    font-size: 14px;
+                  }
+                }
+
+                &:hover {
+                  background-color: #797676;
+                  border-radius: 5px;
+                }
+              }
+            }
+          }
+        }
+
+        .product_goods {
+          @include flex-container(row, wrap, start, flex-start);
+          position: relative;
+          @include breakpoint-414 {
+            @include flex-container(row, wrap, space-between, flex-start);
+          }
+          .each_good {
+            margin-bottom: 50px;
+            transition: all ease-in-out 0.5s;
+
+            &:hover {
+              transform: translateY(-2%);
+              transition: all ease-in-out 0.5s;
+              > a > .goods_top img {
+                filter: brightness(55%);
+              }
+              > a > .goods_text h3 {
+                color: orange;
+              }
+            }
+
+            @include breakpoint-414 {
+              width: 48%;
+              margin-bottom: 30px;
+            }
+
+            a {
+              padding: 0;
+              .goods_top {
+                width: 100%;
+                position: relative;
+
+                img {
+                  width: 100%;
+                  object-fit: cover;
+                  display: block;
+                }
+
+                .discount {
+                  border-radius: 0;
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  font-size: $h3;
+                  padding: 10px 20px;
+
+                  @include breakpoint-414 {
+                    font-size: 16px;
+                    padding: 5px 10px;
+                  }
+                }
+
+                i {
+                  position: absolute;
+                  color: red;
+                  right: 10px;
+                  top: 10px;
+                  font-size: 30px;
+                  cursor: pointer;
+                  &:hover {
+                    text-shadow: 1px 1px 2px black;
+                  }
+
+                  @include breakpoint-414 {
+                    font-size: 20px;
+                    right: 5px;
+                    top: 5px;
+                  }
+                }
+              }
+
+              .goods_text {
+                padding-bottom: 10px;
+                pointer-events: none;
+
+                h3 {
+                  padding: 20px 0;
+
+                  @include breakpoint-414 {
+                    padding: 5px 0;
+                    font-size: 16px;
+                  }
+                }
+
+                .price {
+                  padding-right: 20px;
+
+                  @include breakpoint-414 {
+                    font-size: 16px;
+                    padding-right: 10px;
+                  }
+                }
+
+                .price_original {
+                  font-size: $h2;
+                  text-decoration: none;
+                  @include breakpoint-414 {
+                    font-size: 16px;
+                  }
+                }
+                .line_throught {
+                  text-decoration: line-through;
+                  font-size: $h4;
+                  @include breakpoint-414 {
+                    font-size: 14px;
+                  }
+                }
+              }
+            }
+          }
+
+          .each_good:nth-child(4n) {
+            margin-right: 0;
+          }
+          .heart_popup,
+          .heart_remove {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1.2);
+            max-width: 560px;
+            width: 100%;
+            padding: 50px;
+            border-radius: 10px;
+            background-color: rgb($color: #0d0d0d, $alpha: 0.8);
+            @include flex-container(column, nowrap, center, center);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+
+            &.active {
+              opacity: 1;
+              pointer-events: auto;
+              transform: translate(-50%, -50%) scale(1);
+            }
+
+            i {
+              font-size: 225px;
+              color: $green;
+              @include breakpoint-414 {
+                font-size: 150px;
+              }
+            }
+
+            h2 {
+              padding: 50px;
+              font-size: 4rem;
+
+              @include breakpoint-414 {
+                font-size: 30px;
+              }
+            }
+          }
+          .heart_remove {
+            i {
+              color: red;
+              font-size: 180px;
+            }
+          }
+        }
+
+        .pages {
+          margin-bottom: 50px;
+
+          .product_pages {
+            @include flex-container(row, nowrap, end, center);
+
+            @include breakpoint-414 {
+              @include flex-container(row, nowrap, center, center);
+            }
+
+            .each_page {
+              color: #797676;
+              font-size: 2rem;
+              margin: 0 5px;
+              padding: 5px 10px;
+              font-weight: bold;
+              cursor: pointer;
+
+              @include breakpoint-414 {
+                font-size: 16px;
+                padding: 1px 7px;
+              }
+
+              &.active {
+                background-color: $purple;
+                border-radius: 50%;
+                color: $white;
+              }
+
+              &:hover {
+                color: $white;
+              }
+
+              i {
+                padding: 0;
+                @include breakpoint-414 {
+                  font-size: 16px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
+.swiper-pagination-horizontal.swiper-pagination-bullets
+  .swiper-pagination-bullet {
+  width: 60px;
+  height: 6px;
+  border-radius: 1px;
+
+  @include breakpoint-414 {
+    width: 35px;
+    height: 4px;
+  }
 }
