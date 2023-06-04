@@ -17,34 +17,34 @@
 <body>
     <!-- header -->
     @@include('./layout/header.html')
-    <main class="product_information">
+    <main class="product_information" id="product_information">
         <nav id="breadcrumb">
             <a href="./index.html">首頁</a><i class="bi bi-chevron-right a_after"></i>
             <a href="./product.html">商品</a><i class="bi bi-chevron-right a_after"></i>
             <a href="./product_cate.html">遊戲類型</a><i class="bi bi-chevron-right a_after"></i>
-            <a href="./product_information.html">王國之心3</a>
+            <a href="./product_information.html">{{currentGood.GAME_NAME}}</a>
         </nav>
 
-        <h1 class="game_name">王國之心3</h1>
+        <h1 class="game_name">{{currentGood.GAME_NAME}}</h1>
 
-        <section class="information_top col-12">
-            <div class="information_carousel col-8">
+        <section class="information_top col-12" >
+            <div class="information_carousel col-8" >
                 <div style="--swiper-navigation-color: white; --swiper-pagination-color: red " class="swiper game_img_big">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <img src="./pic/img/game/K1.jpg" />
+                            <img :src="gameImg[0]" />
+                        </div>                        
+                        <div class="swiper-slide">
+                            <img :src="gameImg[1]" />
                         </div>
                         <div class="swiper-slide">
-                            <img src="./pic/img/game/K2.jpg" />
+                            <img :src="gameImg[2]" />
                         </div>
                         <div class="swiper-slide">
-                            <img src="./pic/img/game/K3.jpg" />
+                            <img :src="gameImg[3]" />
                         </div>
                         <div class="swiper-slide">
-                            <img src="./pic/img/game/K4.jpg" />
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="./pic/img/game/K5.jpg" />
+                            <img :src="gameImg[4]" />
                         </div>
                     </div>
                     <div class="img_big_prev"><i class="bi bi-chevron-left"></i></div>
@@ -57,19 +57,19 @@
                     <div thumbsSlider="" class="swiper game_img_small">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                                <img src="./pic/img/game/K1.jpg" />
+                                <img :src="gameImg[0]" />
+                            </div>                        
+                            <div class="swiper-slide">
+                                <img :src="gameImg[1]" />
                             </div>
                             <div class="swiper-slide">
-                                <img src="./pic/img/game/K2.jpg" />
+                                <img :src="gameImg[2]" />
                             </div>
                             <div class="swiper-slide">
-                                <img src="./pic/img/game/K3.jpg" />
+                                <img :src="gameImg[3]" />
                             </div>
                             <div class="swiper-slide">
-                                <img src="./pic/img/game/K4.jpg" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="./pic/img/game/K5.jpg" />
+                                <img :src="gameImg[4]" />
                             </div>
                         </div>
                     </div>
@@ -80,38 +80,46 @@
 
             </div>
             <div class="information_detail col-4">
-                <img class="logo_cover" src="./pic/img/game/KBAANNER.jpg" alt="">
+                <img class="logo_cover" :src="gameImg[5]" alt="">
                 <div class="detail_text">
-                    <h2 class="orinalPrice">$4,400</h2>
+                    <h2 class="orinalPrice">${{currentGood.ORIGINAL_PRICE}}</h2>
                     <p>遊戲評價：
                         <i class="bi bi-star-fill"></i>
                         <span class="star_rating">4.7</span>
                         <span class="total_comments">(3,101則評論)</span>
                     </p>
                     <p>發行日期：
-                        <span class="releaseDate">2023年1月15日</span>
+                        <span class="releaseDate">{{currentGood.RELEASE_DATE}}</span>
                     </p>
                     <p>發行商：
-                        <span class="publisher">XXXX</span>
+                        <span class="publisher">{{currentGood.PUBLISHER}}</span>
                     </p>
                     <p>開發人員：
-                        <span class="developer">XXXXXXX</span>
+                        <span class="developer">{{currentGood.DEVELOPER}}</span>
                     </p>
                     <p>遊戲級別：
-                        <span class="gameRating">普遍級</span>
+                        <span class="gameRating">{{currentGood.RATING_NAME}}</span>
                     </p>
                     <p>遊戲類型：
-                        <span class="tag">冒險</span>
-                        <span class="tag">單人</span>
-                        <span class="tag">角色扮演</span>
-                        <span class="tag">3D</span>
+                        <span class="tag">{{currentGood.game_cate}}</span>
                     </p>
                     <div class="add_to_pay">
                         <button class="shopcar_btn col-6">加入購物車</button>
                         <button class="purchase_btn col-6"><a href="./checkout.html">立即購買</a></button>
                     </div>
                     <div class="heart_and_share">
-                        <i class="bi bi-suit-heart heart_btn"></i>
+                        <!-- <i class="bi bi-suit-heart heart_btn"></i> -->
+                        <i
+                            class="bi heart_btn"
+                            :class="{
+                            'bi-suit-heart': !currentGood.hovered,
+                            'bi-suit-heart-fill': currentGood.hovered || currentGood.clicked ,
+                            'bi-suit-heart-clicked': currentGood.clicked
+                            }"
+                            @mouseenter="hoverHeart(currentGood)"
+                            @mouseleave="leaveHeart(currentGood)"
+                            @click.stop="toggleHeart(currentGood)"
+                        ></i>
                         <i class="bi bi-share-fill share_btn"></i>
                     </div>
                 </div>
@@ -120,46 +128,28 @@
                 <i class="bi bi-check-circle"></i>
                 <h2>已加入購物車</h2>
             </div>
+            <div class="heart_popup" :class="{'active':currentGood.showPopup}">
+                <i class="bi bi-check-circle"></i>
+                <h2>已加入願望清單</h2>
+            </div>      
+            <div class="heart_remove" :class="{'active':currentGood.showRemove}">
+                <i class="bi bi-trash"></i>
+                <h2>已從願望清單移除</h2>
+            </div>
         </section>
 
 
         <section class="introduction_and_system">
             <div class="introduction col-7">
                 <h2>遊戲介紹</h2>
-                <p>手書香瓜自食從。旁正民右父門節四圓正。言雄呢兄屋好兌羽隻乙氣金色斗得？發占朋尾飛看新村而動申美胡定牛，河房誰問裏躲草姊波黃才冒園它貝室？火果亮。<br><br>
-                    室友草田拍邊實已葉耍頁青冰功而良媽「喝急能已各寫山穿幫」向干石？豆歌沒具快百辛者晚物畫，屋己民說開雲，背手哭抓。<br><br>
-                    法兩夏起陽辛。寸細婆耍、後眼布坡種禾欠枝她麼習媽東去尤，目海西都故信才詞歌每爬目出朵蝴西：道結向共浪字冬追都，枝去且。<br><br>
-                    風福者子條水呀，都卜少實包尼進，房做蝴許兆尾動有「合四林牠」隻戶父晚；亮找個央入苦丁人邊夏登亮和力寺太成，實示面固和者男打央同香秋視左，更吧占中拍。<br><br>
-                    經見魚止金從完告弓黃汗夏穿五時夏。要畫走片因金示故婆細：免開進許三更跑戊怎前寸固乙喜大跳拍就寸樹。空男寺巾六金根跳路耳因喜內姐英雞躲奶沒請，我飛訴植弓休吹用。玉風旁。<br><br>
-                    申雞有害事香三由肉語跑女頁幫，尾前鳥要祖止要誰乾牙哪。活年海神定空「什院隻面波實話」勿才明？福呢多田。<br><br>
-                    秋這光或爬家安少食科衣荷地記巴苦後許，們候澡羊久兆開未鴨停巾民立共止，筆新背停，別眼說過甲是，昔欠麻肖更登掃怪鼻男食只追九五尤知。故司意爪亮國几「自」京的乍今。<br><br>
-                    定娘們中葉古馬。鼻它王海爬常點物很問，火我前生記。</p>
-
+                <p>{{currentGood.GAME_INTRO}}</p>
             </div>
             <div class="system col-4">
                 <h2>系統需求</h2>
-                <ul>
-                    <p>最低配備：</p>
-                    <li>需要 64 位元的處理器及作業系統</li>
-                    <li>作業系統: Windows 10</li>
-                    <li>處理器: Intel Core i3-4160T</li>
-                    <li>記憶體: 8 GB 記憶體</li>
-                    <li>顯示卡: NVIDIA GeForce GT 740</li>
-                    <li>VR 支援: SteamVR</li>
-                    <li>備註: Not for VR. For PC only.</li>
-                    <p>建議配備：</p>
-                    <li>需要 64 位元的處理器及作業系統</li>
-                    <li>作業系統: Windows 10</li>
-                    <li>處理器: Intel Core i5-4590、AMD FX 8350</li>
-                    <li>記憶體: 8 GB 記憶體</li>
-                    <li>顯示卡: NVIDIA GeForce GTX 1060、AMD Radeon RX 480</li>
-                    <li>VR 支援: SteamVR</li>
-                    <li>備註: Not for VR.</li>
-                </ul>
-
-
+                <ul v-html="goodSysEnv"></ul>
             </div>
         </section>
+
         <section class="game_comment col-12">
             <h2 class="comment_title">近期評論</h2>
             <div class="evaluation">
@@ -489,7 +479,7 @@
         <section class="recommendation col-12">
             <div class="recommend_range col-10">
                 <div class="recommend_title">
-                    <h2>相似類型遊戲</h2>
+                    <h2>其他遊戲推薦</h2>
                     <div class="arrow_box">
                         <div class="arrow_left btn">
                             <i class="bi bi-chevron-left"></i>
@@ -501,99 +491,39 @@
                 </div>
                 <div class="recommend_game col-12 swiper myswiper">
                     <div class="swiper-wrapper">
-                        <div class="each_good col-3 swiper-slide">
-                            <a href="./product_information.html">
-                                <div class="goods_top">
-                                    <img src="./pic/img/cover/13.jpg" alt="">
-                                    <span class="discount">-40%</span>
-                                    <i class="bi bi-suit-heart"></i>
+                        <div class="each_good col-3 swiper-slide" v-for="(recommend, index) in recommendGoods" :key="index" @click="goProductPage(recommend.GAME_ID)">
+                            <a>
+                                <div class="goods_top" data-test="{{recommend.GAME_NAME}}" > 
+                                    <img :src="recommend.GAME_COVER" :alt="recommend.GAME_NAME">                                   
+                                    <span v-show="recommend.DISCOUNT_PERCENTAGE > 0 " class="discount">-{{100 - recommend.DISCOUNT_PERCENTAGE * 100}}%</span>
+                                    <i
+                                        class="bi"
+                                        :class="{
+                                        'bi-suit-heart': !recommend.hovered,
+                                        'bi-suit-heart-fill': recommend.hovered || recommend.clicked ,
+                                        'bi-suit-heart-clicked': recommend.clicked
+                                        }"
+                                        @mouseenter="hoverHeart(recommend)"
+                                        @mouseleave="leaveHeart(recommend)"
+                                        @click.stop="toggleHeartRecommend(recommend)"
+                                    ></i>
                                 </div>                            
                                 <div class="goods_text">
-                                    <h3>閃耀滑雪場物語 (Shiny Ski Resort)</h3>
-                                    <span class="price">$103</span>
-                                    <span class="price_original">$172</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="each_good col-3 swiper-slide">
-                            <a href="./product_information.html">
-                                <div class="goods_top">
-                                    <img src="./pic/img/cover/14.jpg" alt="">
-                                    <span class="discount">-40%</span>
-                                    <i class="bi bi-suit-heart"></i>
-                                </div>                            
-                                <div class="goods_text">
-                                    <h3>森林露營物語 (Forest Camp Story)</h3>
-                                    <span class="price">$103</span>
-                                    <span class="price_original">$172</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="each_good col-3 swiper-slide">
-                            <a href="./product_information.html">
-                                <div class="goods_top">
-                                    <img src="./pic/img/cover/15.jpg" alt="">
-                                    <span class="discount">-40%</span>
-                                    <i class="bi bi-suit-heart"></i>
-                                </div>                            
-                                <div class="goods_text">
-                                    <h3>百萬樂曲物語 (March to a Million)</h3>
-                                    <span class="price">$103</span>
-                                    <span class="price_original">$172</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="each_good col-3 swiper-slide">
-                            <a href="./product_information.html">
-                                <div class="goods_top">
-                                    <img src="./pic/img/cover/16.jpg" alt="">
-                                    <span class="discount">-40%</span>
-                                    <i class="bi bi-suit-heart"></i>
-                                </div>                            
-                                <div class="goods_text">
-                                    <h3>像素牧場物語 (8-Bit Farm)</h3>
-                                    <span class="price">$103</span>
-                                    <span class="price_original">$172</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="each_good col-3 swiper-slide">
-                            <a href="./product_information.html">
-                                <div class="goods_top">
-                                    <img src="./pic/img/cover/17.jpg" alt="">
-                                    <span class="discount">-40%</span>
-                                    <i class="bi bi-suit-heart"></i>
-                                </div>                            
-                                <div class="goods_text">
-                                    <h3>豪華大郵輪物語 (World Cruise Story)</h3>
-                                    <span class="price">$103</span>
-                                    <span class="price_original">$172</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="each_good col-3 swiper-slide">
-                            <a href="./product_information.html">
-                                <div class="goods_top">
-                                    <img src="./pic/img/cover/18.jpg" alt="">
-                                    <span class="discount">-40%</span>
-                                    <i class="bi bi-suit-heart"></i>
-                                </div>                            
-                                <div class="goods_text">
-                                    <h3>宇宙探險隊 (Epic Astro Story)</h3>
-                                    <span class="price">$103</span>
-                                    <span class="price_original">$172</span>
-                                </div>
-                            </a>
+                                    <h3>{{recommend.GAME_NAME}}</h3>
+                                    <span class="price" v-show="recommend.DISCOUNT_PERCENTAGE > 0">${{afterDiscount(index)}}</span>
+                                    <span class="price_original" :class="{'line_throught':recommend.DISCOUNT_PERCENTAGE > 0}">${{recommend.ORIGINAL_PRICE}}</span>
+                                </div>              
+                            </a>                         
                         </div>                        
                     </div>
                 </div>
 
             </div>
-            <div class="heart_popup">
+            <div class="heart_popup" :class="{'active':showPopup}">
                 <i class="bi bi-check-circle"></i>
                 <h2>已加入願望清單</h2>
             </div>      
-            <div class="heart_remove">
+            <div class="heart_remove" :class="{'active':showRemove}">
                 <i class="bi bi-trash"></i>
                 <h2>已從願望清單移除</h2>
             </div>
@@ -612,13 +542,111 @@
 
     <script>
 
+        const productInformation = Vue.createApp({
+            data(){
+                return{
+                    currentGood:{},
+                    gameImg:[],
+                    goodSysEnv:"",
+                    recommendGoods:[],
+                    showPopup:false,
+                    showRemove:false
+                    
+                    
+                }
+            },
+            created(){
+                let getUrlString = location.href;
+                let id = new URL(getUrlString).searchParams.get('id');
+                const url = php_url + 'product_list.php?id='+id+'&action=none';
+                axios.get(`${url}`)
+                    .then((response) => {
+                        this.currentGood = response.data[0];
+                        this.currentGood.hovered = false;
+                        this.currentGood.clicked = false;  
+                        this.currentGood.showPopup =false, //顯示加入願望清單
+                        this.currentGood.showRemove =false, //顯示移除願望清單
+                        this.goodSysEnv = this.currentGood.SYSTEM_REQUIREMENT;
+                                        
+                });
+
+                const url_recommend = php_url + 'product_list.php?id='+id+'&action=recommend';
+                axios.get(`${url_recommend}`)
+                    .then((response) => {
+                        this.recommendGoods = response.data;
+
+                        for(let recommendGood of this.recommendGoods){
+                            recommendGood.hovered = false;
+                            recommendGood.clicked = false;  
+                            recommendGood.showPopup =false; //顯示加入願望清單
+                            recommendGood.showRemove =false; //顯示移除願望清單
+                        };
+
+                    });
+                
+
+                const url_img = php_url + 'product_img.php?id='+id;
+                axios.get(`${url_img}`)
+                    .then((response) => {
+
+                        for(let data of response.data){
+                            this.gameImg.push(data["IMG_PATH"])
+                        }                                          
+                });
+
+            },
+            computed:{
+
+            },
+            methods: {
+                afterDiscount(i){                            
+                    return Math.floor(this.recommendGoods[i].ORIGINAL_PRICE * this.recommendGoods[i].DISCOUNT_PERCENTAGE);                                      
+                },
+                hoverHeart(recommend) {
+                    if (!recommend.clicked) {                        
+                        recommend.hovered = true;
+                    }
+                },
+                leaveHeart(recommend) {
+                    if (!recommend.clicked) {
+                        recommend.hovered = false;
+                    }
+                },
+                toggleHeart(currentGood){
+                    currentGood.clicked = !currentGood.clicked;
+                    currentGood.showPopup = currentGood.clicked;
+                    currentGood.showRemove = !currentGood.clicked;
+                    setTimeout(()=>{
+                        currentGood.showPopup = false;
+                        currentGood.showRemove = false;
+                    }, 1500); // 在 1500 毫秒後隱藏，可根據需要進行調整
+                },
+                toggleHeartRecommend(recommend){
+                    recommend.clicked = !recommend.clicked;
+                    this.showPopup = recommend.clicked;
+                    this.showRemove = !recommend.clicked;
+                    setTimeout(()=>{
+                        this.showPopup = false;
+                        this.showRemove = false;
+                    }, 1500); // 在 1500 毫秒後隱藏，可根據需要進行調整
+                },
+                goProductPage(id){
+                    location.href = `/product_information.html?id=${id}`;
+                },
+            },
+            mounted(){ 
+            },
+            
+        });
+
+        productInformation.mount('#product_information');
+
         
 
         //確認加入購物車彈出視窗設定===============================================================================
         const checkAdd = document.getElementsByClassName("shopcar_btn")[0];
         shopcarPopup = document.getElementsByClassName("shopcar_popup")[0];
         checkAdd.addEventListener("click", function () {
-            // console.log("ccc");
             shopcarPopup.classList.add("active");
             setTimeout(() => {
                 shopcarPopup.classList.remove("active");
@@ -632,7 +660,6 @@
               comment_popup_close = document.getElementsByClassName("comment_popup_close")[0];
         clickComment.forEach(function (comment) {
             comment.addEventListener("click", function (e) {
-                console.log("ccc");
                 comment_popup_outer.classList.add("active");
                 comment_popup_close.addEventListener("click", function(e){
                     comment_popup_outer.classList.remove("active");
@@ -816,8 +843,6 @@
                         }
                     },
                 });
-                console.log(swiper);
-
             };
         });
 

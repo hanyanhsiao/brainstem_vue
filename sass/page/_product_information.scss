@@ -394,7 +394,7 @@
             }
         }
 
-        .shopcar_popup {
+        .shopcar_popup, .heart_popup, .heart_remove {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -431,6 +431,12 @@
                     font-size: 30px;
                 }
             }
+        }
+        .heart_remove{
+            i{
+                color: red;
+                font-size: 180px;
+            }                        
         }
     }
 

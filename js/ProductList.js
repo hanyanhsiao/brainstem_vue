@@ -9,9 +9,10 @@ export default{
     props:["goods"],
     methods:{
         afterDiscount(i){                            
-            return Math.floor(this.goods[i].originalPrice * this.goods[i].discount);                                      
+            return Math.floor(this.goods[i].ORIGINAL_PRICE * this.goods[i].DISCOUNT_PERCENTAGE);                                      
         },
         hoverHeart(item) {
+            console.log(item.DISCOUNT_PERCENTAGE);
             if (!item.clicked) {                        
                 item.hovered = true;
             }
@@ -31,14 +32,18 @@ export default{
                 this.showRemove = false;
             }, 1500); // 在 1500 毫秒後隱藏，可根據需要進行調整
         },
+        goProductPage(id){
+            location.href = `/product_information.html?id=${id}`;
+        
+        },
     },
     template:
     `
-    <div class="each_good col-3" v-for="(item, index) in goods" :key="index">
-        <a href="./product_information.html">
-            <div class="goods_top"> 
-                <img :src="item.img" :alt="item.name">                                   
-                <span class="discount">-{{100 - item.discount * 100}}%</span>
+    <div class="each_good col-3" v-for="(item, index) in goods" :key="index" @click="goProductPage(item.GAME_ID)">
+        <a>
+            <div class="goods_top" data-test="{{item.GAME_NAME}}"> 
+                <img :src="item.GAME_COVER" :alt="item.GAME_NAME">                                   
+                <span v-show="item.DISCOUNT_PERCENTAGE > 0 " class="discount">-{{100 - item.DISCOUNT_PERCENTAGE * 100}}%</span>
                 <i
                     class="bi"
                     :class="{
@@ -48,13 +53,13 @@ export default{
                     }"
                     @mouseenter="hoverHeart(item)"
                     @mouseleave="leaveHeart(item)"
-                    @click.prevent="toggleHeart(item)"
+                    @click.stop="toggleHeart(item)"
                 ></i>
             </div>                            
             <div class="goods_text">
-                <h3>{{item.name}}</h3>
-                <span class="price">\${{afterDiscount(index)}}</span>
-                <span class="price_original">\${{item.originalPrice}}</span>
+                <h3>{{item.GAME_NAME}}</h3>
+                <span class="price" v-show="item.DISCOUNT_PERCENTAGE > 0">\${{afterDiscount(index)}}</span>
+                <span class="price_original" :class="{'line_throught':item.DISCOUNT_PERCENTAGE > 0}">\${{item.ORIGINAL_PRICE}}</span>
             </div>              
         </a>                         
     </div>
