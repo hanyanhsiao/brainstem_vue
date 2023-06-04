@@ -12,8 +12,8 @@ export default{
             return Math.floor(this.goods[i].ORIGINAL_PRICE * this.goods[i].DISCOUNT_PERCENTAGE);                                      
         },
         hoverHeart(item) {
-            console.log(item.DISCOUNT_PERCENTAGE);
-            if (!item.clicked) {                        
+            if (!item.clicked) {   
+                console.log(typeof item);      
                 item.hovered = true;
             }
         },
@@ -23,7 +23,6 @@ export default{
             }
         },
         toggleHeart(item){
-            console.log(this)
             item.clicked = !item.clicked;
             this.showPopup = item.clicked;
             this.showRemove = !item.clicked;

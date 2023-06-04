@@ -226,7 +226,6 @@
             },
 
             created() {
-                console.log(php_url + 'product_list.php')
                 // 取得API資源
                 axios.get(php_url + 'product_list.php')
                     .then((response) => {
@@ -234,30 +233,16 @@
                         this.goodListFromDB = response.data;
 
                         for(let good of this.goodListFromDB){
+                            console.log(typeof good);
                             good.hovered = false;
                             good.clicked = false;
                         }                        
 
-                        console.log(this.goodListFromDB);
                        
                 })
                 .catch((error) => {
                     console.error(error);
                 });
-
-                // 改寫下一個資料撈取
-                // axios.get(php_url + 'product_list.php')
-                //     .then((response) => {
-                //         this.goodListFromDB = response.data;
-
-                //         for(let good of this.goodListFromDB){
-                //             good.hovered = false;
-                //             good.clicked = false;
-                //         }                        
-
-                //         console.log(this.goodListFromDB);
-                       
-                // });
 
             },
             
@@ -305,7 +290,6 @@
                 goToPage(page) {
                     if (page >= 1 && page <= this.totalPages()) {
                         this.currentPage = page; // 跳轉到指定頁碼
-                        console.log(this.currentPage);
                     }
                 },
                 totalPages() {
