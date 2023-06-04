@@ -29,47 +29,46 @@
         <div class="describe">
             <h2>我的檔案</h2>
             <p>管理你的檔案以保護你的帳戶</p>
-        </div>
-        <div class="member_info">
+          </div>
+          <div class="member_info">
             <div class="img">
-                <i class="bi bi-person-circle"></i>
-                <div class="btn">選擇圖片</div>
-                <p>檔案大小：最大1MB<br>
-                    檔案限制：JPEG、PNG</p>
+              <i class="bi bi-person-circle"></i>
+              <div class="btn">選擇圖片</div>
+              <p>檔案大小：最大1MB<br>檔案限制：JPEG、PNG</p>
             </div>
             <div class="info">
-                <div class="info_left">
-                    <div class="mail">
-                    <p>使用者帳號：</p>
-                    <p>THD101@gmail.com</p>
+              <div class="info_left">
+                <div class="mail">
+                  <p>使用者帳號：</p>
+                  <p>{{ email }}</p>
                 </div>
                 <div class="name">
-                    <p>姓名：</p>
-                    <p>THD101</p>
+                  <p>姓名：</p>
+                  <p>{{ name }}</p>
                 </div>
                 <div class="nickname">
-                    <p>暱稱：</p>
-                    <p>二柱子</p>
+                  <p>暱稱：</p>
+                  <p>{{ nickname }}</p>
                 </div>
-                </div>
-                <div class="info_right">
-                    <div class="phone">
-                    <p>手機號碼：</p>
-                    <p>09******92</p>
+              </div>
+              <div class="info_right">
+                <div class="phone">
+                  <p>手機號碼：</p>
+                  <p>{{ phone }}</p>
                 </div>
                 <div class="birth">
-                    <p>生日：</p>
-                    <p>2000/02/21</p>
+                  <p>生日：</p>
+                  <p>{{ birthday }}</p>
                 </div>
                 <div class="gender">
-                    <p>性別：</p>
-                    <p>男生</p>
+                  <p>性別：</p>
+                  <p>{{ gender }}</p>
                 </div>
-                </div>
+              </div>
             </div>
             <div class="btn revise">修改</div>
+          </div>
         </div>
-        
     </section>
 
     <!-- 訂單修改 -->
@@ -351,6 +350,8 @@
     <!-- date -->
     <script src="./js/date.js"></script>
     <!-- nav的點擊 -->
+    
+
     <script>
         let nav = $(".select li");
         let section = document.querySelectorAll("section.right");
