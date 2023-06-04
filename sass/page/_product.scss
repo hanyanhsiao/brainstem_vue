@@ -706,6 +706,15 @@
                                 }
 
                                 .price_original {
+                                    font-size: $h2;
+                                    text-decoration: none;
+                                    @include breakpoint-414 {
+                                        font-size: 16px;
+                                    }
+                                }
+                                .line_throught{
+                                    text-decoration: line-through;
+                                    font-size: $h4;
                                     @include breakpoint-414 {
                                         font-size: 14px;
                                     }
