@@ -9,8 +9,11 @@
     <title>Brainstem | 網站理念</title>
     @@include('./layout/style.html')
 
+
     <!-- 以下可以放自己的link -->
     <!-- <link rel="stylesheet" href="./sass/page/_about.scss"> -->
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 
@@ -20,7 +23,6 @@
     <!-- header -->
 
     <main class="about">
-
 
         <div class="container">
             <div class="tabs">
@@ -59,38 +61,102 @@
                     <br>
                 </div>
 
-
-
-
-
                 <div class="content">
                     <div class="content-about">
                         <h2>探索全國最大的遊戲串流平台</h2>
                         <p>在這裡，您可以找到最新、最熱門、最受歡迎的遊戲，以及一系列的貼心服務，包括即時下載、安全付款、客戶服務等。我們的遊戲涵蓋多種類型，包括動作、角色扮演、戰略、模擬、競技、解謎等，能夠滿足各種不同的玩家需求。
                         </p>
-                        <a href="">馬上體驗</a>
+                        <a href="./product.html">馬上體驗</a>
                     </div>
 
 
-                    <!-- <div class="left"> -->
-                    <img src="./pic/img/about/1.png" class="img1">
-                    <img src="./pic/img/cover/44.jpg" class="img2">
-                    <img src="./pic/img/cover/21.jpg" class="img3">
-                    <img src="./pic/img/cover/52.jpg" class="img4">
+
+
+
+
+                    <img src="./pic/img/about/1.png" class="img1" data-aos="fade-up" data-aos-duration="2000">
+
+
+
+
+
+
+                    <img src="./pic/img/cover/44.jpg" class="img2" data-aos="fade-down" data-aos-easing="linear"
+                        data-aos-duration="2000">
+
+
+
+
+
+
+                    <img src="./pic/img/cover/21.jpg" class="img3"
+                    data-aos="fade-up" data-aos-duration="2000">
+
+
+
+
+
+
+                    <img src="./pic/img/cover/52.jpg" class="img4"
+                    data-aos="fade-down" data-aos-easing="linear"
+                        data-aos-duration="2000">
                     <!-- </div> -->
                     <!-- <div class="right"> -->
-                    <img src="./pic/img/cover/33.jpg" class="img5">
-                    <img src="./pic/img/cover/48.jpg" class="img6">
-                    <img src="./pic/img/cover/34.jpg" class="img7">
-                    <img src="./pic/img/about/54.png" class="img8">
+                    <img src="./pic/img/cover/33.jpg" class="img5"
+                    data-aos="fade-down" data-aos-easing="linear"
+                        data-aos-duration="2000">
+
+
+
+
+
+
+                    <img src="./pic/img/cover/48.jpg" class="img6"
+                    data-aos="fade-up" data-aos-duration="2000">
+
+
+
+
+
+
+                    <img src="./pic/img/cover/34.jpg" class="img7"
+                    data-aos="fade-down" data-aos-easing="linear"
+                    data-aos-duration="2000">
+
+
+
+
+
+
+                    <img src="./pic/img/about/54.png" class="img8"
+                    data-aos="fade-up" data-aos-duration="2000">
                     <!-- </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 </div>
-
-
 
                 <div class="teams">
                     <h1>團隊介紹</h1>
-                    <ul>
+                    <img src="./pic/img/about/Group 68.png" class="right_btn" id="right_btn">
+                    <img src="./pic/img/about/Group 67.png" class="left_btn" id="left_btn">
+                    <ul class="slideWrap">
+
+
+
                         <li>
                             <img src="./pic/img/about/002.png" class="people">
                             <h2>張序亞_02<br>
@@ -270,11 +336,9 @@
 
 
             <div class="page" id="page3">
-                <div class="article-main3">
+                <div class="article">
                     <h2>FAQ</h2>
                     <br>
-
-
 
 
 
@@ -286,9 +350,6 @@
                                 </p>
                             </div>
                         </div>
-
-
-
 
                         <div class="accordion-item">
                             <h3 class="accordion-header">遊戲的裝置最低支援</h3>
@@ -302,10 +363,6 @@
                             </div>
                         </div>
 
-
-
-
-
                         <div class="accordion-item">
                             <h3 class="accordion-header">顯示「所在的地區不支援此版本」錯誤訊息</h3>
                             <div class="accordion-content">
@@ -314,7 +371,6 @@
                                 </p>
                             </div>
                         </div>
-
 
                         <div class="accordion-item">
                             <h3 class="accordion-header">我嘗試付款，但沒有成功。我現在能做什麼？</h3>
@@ -328,7 +384,6 @@
                             </div>
                         </div>
 
-
                         <div class="accordion-item">
                             <h3 class="accordion-header">我忘記註冊的帳號</h3>
                             <div class="accordion-content">
@@ -337,7 +392,6 @@
                                 </p>
                             </div>
                         </div>
-
 
                         <div class="accordion-item">
                             <h3 class="accordion-header">我要如何綁定我的帳號</h3>
@@ -350,14 +404,12 @@
                             </div>
                         </div>
 
-
                         <div class="accordion-item">
                             <h3 class="accordion-header">不同裝置間的帳號是否可以互通?</h3>
                             <div class="accordion-content">
                                 <p>是可以互通，只要玩家有綁定帳號，在各個不同的裝置和模擬器之間都可以遊玩同一個遊戲平台帳號。</p>
                             </div>
                         </div>
-
 
                         <div class="accordion-item">
                             <h3 class="accordion-header">裝置在遊玩時發生閃退的情形</h3>
@@ -372,20 +424,19 @@
                             </div>
                         </div>
 
-
                         <div class="accordion-item">
                             <h3 class="accordion-header">其他無法開啟的情形</h3>
                             <div class="accordion-content">
                                 <p>歡迎提供您的資訊至客服信箱 ，聯絡E-mail：tibame_0304YA@outlook.com，謝謝。<br>
                                 </p>
+                                <div class="item">
+                                    <h3>如遇到無法解決之情形，請至<a href="./teams_of_service.html">聯絡頁面</a>
+                                        與我們聯絡</h3>
+                                </div>
                             </div>
                         </div>
 
 
-                        <div class="item">
-                            <h3>如遇到無法解決之情形，請至<a href="./teams_of_service.html">聯絡頁面</a>
-                                與我們聯絡</h3>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -472,8 +523,30 @@
             $('.accordion-header').first().click();
         });
 
+        // slide
+        // let rightBtn = document.getElementsByClassName('right_btn');
+        let rightBtn = document.getElementById('right_btn');
+        let slideWrap
+        rightBtn.addEventListener('click', slide);
+        function slide() {
+            alert("lalala");
+            rightBtn.addClassList('move');
+
+        }
 
     </script>
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
+
+
+    <script>
+        AOS.init();
+    </script>
+
+
 
 
 </body>
