@@ -5,6 +5,7 @@
     cursor: pointer;
   }
 
+  // 使用者資訊
   .user {
     display: flex;
     margin-top: 4%;
@@ -18,40 +19,92 @@
       margin-left: 2%;
     }
 
+    @include breakpoint-1440 {
+      img {
+        width: 50px;
+        margin-top: 10px;
+      }
+    }
+
   }
 
 
+  // tab頁面
   .filter {
     // border: 5px solid green;
     width: 40%;
     display: flex;
     margin-top: 4%;
     justify-content: space-between;
+    cursor: pointer;
+    overflow: hidden;
+    height: 30px;
+
+    @include breakpoint-1440 {
+      font-size: 2rem;
+      width: 100%;
+    }
+
+    @include breakpoint-414 {
+      font-size: 2rem;
+
+    }
 
     .filter_text {
+      color: white;
+      font-size: 2rem;
       cursor: pointer;
+
+      @include breakpoint-1440 {
+        font-size: 2rem;
+
+      }
+
+      @include breakpoint-414 {
+        font-size: 2rem;
+        width: 23%;
+
+      }
+
+      &:hover {
+        color: #FF6009;
+        border-bottom: 2px solid #FF6009;
+
+      }
     }
 
   }
 
 
   // 最近遊玩
-  .game_library_game {
+  #tab1 {
 
     .game_library_ul {
-
-
+      margin-top: 4%;
 
       .game_library_li {
         border: 2px solid #FF6009;
         display: flex;
-        margin-top: 4%;
+        margin-bottom: 4%;
+
+        @include breakpoint-414 {
+          padding-bottom: 50px;
+          position: relative;
+        }
 
 
         // 內容-圖片
         .game_library_img {
-          // border: 2px solid blueviolet;
+          width: 250px;
 
+          // border: 2px solid blueviolet;
+          @include breakpoint-414 {
+            width: 130px;
+            height: 180px;
+            padding: 10px;
+
+
+          }
         }
 
         // 內容-名稱、時數
@@ -65,25 +118,55 @@
           display: flex;
           flex-direction: column;
 
+          @include breakpoint-414 {
+            width: 40%;
+            // position: relative;
+            // font-size: 2rem;
+            // border: 20px solid red;
+          }
 
           // 遊戲名稱
           .game_library_name {
             // border: 2px solid brown;
             // margin-bottom: 5%;
 
+            @include breakpoint-414 {
+              font-size: 1rem;
+            }
+
           }
 
           // 遊戲時數
           .play_time {
             padding-top: 5%;
+
+            @include breakpoint-414 {
+              font-size: 1rem;
+            }
           }
 
           // 上次遊玩
-          .last_time {}
+          .last_time {
+
+            @include breakpoint-414 {
+              font-size: 1rem;
+            }
+          }
 
           // 成就
           .achievement {
-            .achievement_img {}
+
+            @include breakpoint-414 {
+              font-size: 1rem;
+              width: 200px;
+            }
+
+            .achievement_img {
+              @include breakpoint-414 {
+                width: 200px;
+                // font-size: 1rem;
+              }
+            }
           }
         }
 
@@ -112,6 +195,13 @@
           // padding-right: 80%;
           align-self: self-end;
           cursor: pointer;
+
+          @include breakpoint-414 {
+            position: absolute;
+            font-size: 20px;
+            right: 130px;
+            top: 200px;
+          }
         }
 
       }
@@ -119,9 +209,8 @@
   }
 
   // 所有遊戲
-  .all_game {
-
-    // border: 2px solid green;
+  #tab2 {
+    margin: 4% auto;
 
     ul {
       display: flex;
@@ -129,7 +218,7 @@
       justify-content: flex-start;
       // width: 100%;
 
-
+      @include breakpoint-414 {}
 
       li {
         // 這個用不到
@@ -137,13 +226,30 @@
         display: flex;
         justify-content: center;
 
+        @include breakpoint-414 {
+          width: 20%;
+          display: flex;
+          justify-content: center;
+          flex-basis: 160px;
+          margin: auto;
+        }
 
 
         a {
 
-          img {}
+          @include breakpoint-414 {}
 
-          h3 {}
+          img {
+            width: 250px;
+
+            @include breakpoint-414 {
+              width: 150px;
+            }
+          }
+
+          h3 {
+            @include breakpoint-414 {}
+          }
         }
 
       }
@@ -153,7 +259,10 @@
   }
 
   // 願望清單
-  .desire_game {
+  #tab3 {
+    margin: 4% auto;
+
+    @include breakpoint-414 {}
 
     .desire_game_ul {
 
@@ -161,34 +270,64 @@
       flex-wrap: wrap;
       justify-content: flex-start;
 
+      @include breakpoint-414 {}
+
       .desire_game_li {
 
         width: 20%;
         display: flex;
         justify-content: center;
 
+        @include breakpoint-414 {
+          width: 20%;
+          display: flex;
+          justify-content: center;
+          flex-basis: 160px;
+          margin: auto;
+        }
+
         a {
+          @include breakpoint-414 {}
+
           .desire_picture {
             position: relative;
 
-            img {}
+            @include breakpoint-414 {}
+
+            img {
+              width: 250px;
+
+              @include breakpoint-414 {
+                width: 150px;
+              }
+            }
 
             .discount {
               position: absolute;
               top: 0;
               left: 0;
               font-size: $h3;
+
+              @include breakpoint-414 {}
             }
           }
 
           .desire_text {
-            h3 {}
+            @include breakpoint-414 {}
+
+            h3 {
+              @include breakpoint-414 {}
+            }
 
             .price {
               margin-right: 4%;
+
+              @include breakpoint-414 {}
             }
 
-            .price_original {}
+            .price_original {
+              @include breakpoint-414 {}
+            }
           }
         }
       }
