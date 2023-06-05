@@ -367,7 +367,7 @@
                         for(let gameComment of this.gameComments){
                             sum += gameComment.STAR_RATING                        
                         }
-                        avg = (sum / this.gameComments.length) + " / 5";
+                        avg = (sum / this.gameComments.length) + " / 5 ";
                     }else{
                         avg="尚無評價"
                     }
@@ -592,7 +592,7 @@
             var Smallimg = new Swiper(".game_img_small", {
                 loop: true,
                 spaceBetween: 20,
-                slidesPerView: 4,
+                slidesPerView: 5,
                 watchSlidesProgress: true,
                 navigation: {
                     nextEl: ".img_small_next",
