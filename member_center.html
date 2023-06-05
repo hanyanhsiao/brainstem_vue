@@ -13,7 +13,7 @@
 <body>
     <!-- header -->
     @@include('./layout/header.html')
-    <main class="member_center">
+    <main class="member_center" id="member_center">
     <h2>會員中心</h2>
     <section class="col-3 left">
         <ul class=" select">
@@ -24,13 +24,14 @@
         </ul>
     </section>
     <i class="bi bi-arrow-left back"></i>
+    <div id="member_infoo">
     <!-- 會員訂單 -->
-    <section class="col-9 right -oon">
+    <section class="col-9 right -oon" >
         <div class="describe">
             <h2>我的檔案</h2>
             <p>管理你的檔案以保護你的帳戶</p>
           </div>
-          <div class="member_info">
+          <div class="member_info" id="member_info">
             <div class="img">
               <i class="bi bi-person-circle"></i>
               <div class="btn">選擇圖片</div>
@@ -68,11 +69,10 @@
             </div>
             <div class="btn revise">修改</div>
           </div>
-        </div>
     </section>
 
     <!-- 訂單修改 -->
-        <div class="right col-9 revise_box">
+        <div class="right col-9 revise_box" v-show="showForm">
             <h2>我的檔案</h2>
         <div class="member_info_revise ">
             <div class="img">
@@ -81,43 +81,47 @@
                 <p>檔案大小：最大1MB<br>
                     檔案限制：JPEG、PNG</p>
             </div>
-            <div class="info">
+            <div class="info" id="info">
                 <div class="info_left">
                     <div class="mail">
                     <p>使用者帳號：</p>
-                    <input type="text">
+                    <p>{{ email }}</p>
                 </div>
                 <div class="name">
                     <p>姓名：</p>
-                    <input type="text">
+                    <input type="text" id="name" placeholder="請輸入姓名" v-model="name" @blur="validateName" name="name">
+                     <p v-if="nameError" class="error">{{ nameError }}</p>
                 </div>
                 <div class="nickname">
                     <p>暱稱：</p>
-                    <input type="text">
+                    <input type="text" id="nickname" placeholder="請輸入暱稱" v-model="nickname" @blur="validateNickname" name="nickname">
+                    <p v-if="nicknameError" class="error">{{ nicknameError }}</p>
                 </div>
                 </div>
                 <div class="info_right">
                     <div class="phone">
                     <p>手機號碼：</p>
-                    <input type="text">
+                    <input type="text" id="phone" placeholder="請輸入電話號碼" v-model="phone" @blur="validatePhone" name="phone">
+                    <p v-if="phoneError" class="error">{{ phoneError }}</p>
                 </div>
-                <div class="birth">
-                    <p>生日：</p>
-                    <input type="text" id="dob" placeholder="請選擇下方日期" disabled>
-                </div>
-                <div class="gender_box">
-                    <p>性別：</p>
-                    <div for="gender" class="gender">
-                        <label><input type="radio" name="gender" value="male">男性</label>
-                        <label><input type="radio" name="gender" value="female">女性</label>
-                        <label><input type="radio" name="gender" value="unknow">不公開</label>
-                </div>
+                <label for="birth" class="birth">
+                    <p>生日</p>
+                    <p>{{ birthday }}</p>
+                </label>
+                <p class="margin"> 性別 </p>
+                <div for="gender" class="gender" name="gender">
+                    <label><input type="radio" name="gender" value="M" v-model="gender">男性</label>
+                    <label><input type="radio" name="gender" value="F" v-model="gender">女性</label>
+                    <label><input type="radio" name="gender" value="X" v-model="gender">不公開</label>
                 </div>
                 </div>
+                </div>
+                <div class="btn save" @click="showEditForm">儲存</div>
             </div>
-            <div class="btn save">儲存</div>
+            
         </div>
     </div>
+</div>
     <!-- 訂單記錄 -->
     <section class="col-9 right">
         <div class="order">
@@ -295,44 +299,25 @@
     <section class="col-9 right">
         <div class="coupon">
             <h3>會員優惠券</h3>
-            <div class="coupon_box">
+            <div class="coupon_box" id="coupon_box">
                 <div class="add">
                     <p>新增優惠券</p>
-                    <input type="text" placeholder="輸入優惠券代碼">
-                    <button class="btn">使用</button>
+                    <input type="text" placeholder="輸入優惠券代碼" v-model="couponCode">
+                    <button class="btn" @click="applyCoupon">使用</button>
                 </div>
                 <h3>我的優惠券</h3>
-                <div class="coupon_item">
-                        <div class="coupon_text">
-                        <p class="title">青銅會員每月9折優惠券</p>
-                        <p>使用期限：2023/4/1~2023/4/30</p>
-                        <p>使用規則：不能於其他優惠商品重複使用、每次優惠券只能選擇一張。</p>
+                <div v-for="coupon in coupons" :key="coupon.id" class="coupon_item">
+                    <div class="coupon_text">
+                      <p class="title">{{ coupon.title }}</p>
+                      <p>使用期限：{{ coupon.validity }}</p>
+                      <p>使用規則：{{ coupon.rules }}</p>
                     </div>
                     <div class="coupon_dis">
-                        <p>9折</p>
+                      <p>{{ coupon.discount }}</p>
+                      <p>{{ coupon.discounts }}</p>
+                      <p>{{ coupon.type }}</p>
                     </div>
                 </div>
-                <div class="coupon_item">
-                    <div class="coupon_text">
-                    <p class="title">青銅會員每月9折優惠券</p>
-                    <p>使用期限：2023/4/1~2023/4/30</p>
-                    <p>使用規則：不能於其他優惠商品重複使用、每次優惠券只能選擇一張。</p>
-                </div>
-                <div class="coupon_dis">
-                    <p>9折</p>
-                </div>
-            </div>
-            <div class="coupon_item">
-                <div class="coupon_text">
-                <p class="title">生日優惠券$300元</p>
-                <p>使用期限：2023/4/1~2023/4/30</p>
-                <p>使用規則：不能於其他優惠商品重複使用、每次優惠券只能選擇一張。</p>
-            </div>
-            <div class="coupon_dis">
-                <p>$300元</p>
-                <p>抵用券</p>
-            </div>
-        </div>
         </div>
         </div>
     </section>
@@ -347,10 +332,196 @@
     @@include('./layout/js.html')
     <!-- 以下可以放自己的js -->
  
-    <!-- date -->
-    <script src="./js/date.js"></script>
     <!-- nav的點擊 -->
-    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const member_info = new Vue({
+        el: '#member_infoo',
+        data: {
+              email: '',
+              name: '',
+              nickname: '',
+              phone: '',
+              birthday: '',
+              gender: '',
+              showForm: 'flase',
+              nameError: '',
+              nicknameError: '',
+              phoneError: '',
+
+          },
+          mounted() {
+            this.getMemberData();
+          },
+          methods: {
+            getMemberData() {
+            axios.defaults.withCredentials = true;
+            axios.post(php_url + 'login_status.php')
+            .then((response) => {
+                this.email = response.data.account;
+
+                const formData = new FormData();
+                formData.append("email" , this.email);
+
+                axios.post(php_url + 'member_center_get.php', formData )
+                .then((response) => {
+                    const memberData = response.data;
+                    // 更新组件的数据
+                    console.log(memberData);
+                    this.name = memberData.USERNAME;
+                    this.nickname = memberData.NICKNAME;
+                    this.phone = memberData.PHONE;
+                    this.birthday = memberData.BIRTHDAY;
+                    this.gender = memberData.GENDER;
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+            },
+            showEditForm() {
+                this.showForm = true;
+            },
+            validateName(){
+                this.nameError = '';
+                if (!this.name) {
+                    this.nameError = '請填寫姓名';
+                } else if (this.name.length < 3) {
+                    this.nameError = '姓名長度不能小於3個字';
+                }
+            },
+            validatePhone(){
+                this.phoneError = '';
+                if (!this.phone) {
+                    this.phoneError = '請填寫電話號碼';
+                } else if (!this.isValidPhone(this.phone)) {
+                    this.phoneError = '請輸入有效的電話號碼';
+                }
+            },
+            isValidPhone(phone) {
+            // 驗證電話號碼格式
+            const phoneRegex = /^09\d{8}$/;
+            return phoneRegex.test(phone);
+            },
+            validateNickname(){
+                this.nicknameError = '';
+                if (!this.nickname) {
+                    this.nicknameError = '請填寫暱稱';
+                }else if (this.nickname.length < 3) {
+                    this.nicknameError = '暱稱長度不能小於3個字';
+                }
+            },
+            showEditForm(){
+                if (
+                    this.nameError ||
+                    this.nicknameError ||
+                    this.phoneError
+                ) {
+                    // 有錯誤，不提交表單
+                    return;
+                }else{
+                    const formData = new FormData();
+                    formData.append("name" , this.name);
+                    formData.append("nickname" , this.nickname);
+                    formData.append("phone" , this.phone);
+                    formData.append("gender" , this.gender);
+                    formData.append("email" , this.email);
+                
+                axios.post(php_url + 'member_center_edit.php', formData)
+                .then(response => {  
+                    console.log('更改成功');
+                })
+                .catch(error => {
+                    // 處理錯誤
+                    console.error(error);
+                });
+                }
+            }
+        }       
+        });
+        </script>
+
+        <script>
+            const coupons = new Vue({
+                el: '#coupon_box',
+                data: {
+                    couponCode: '',
+                    member_ID : '',
+                    coupons: [
+
+                    ]
+                },
+                mounted() {
+                    this.couponsFunction();
+                },
+                methods: {
+                    couponsFunction(){
+                        axios.post(php_url + 'login_status.php')
+                        .then((response) => {
+                            this.member_ID = response.data.member_ID;
+                            const formData = new FormData();
+                            formData.append("member_ID" , this.member_ID);
+
+                            axios.post( php_url + 'member_center_coupons.php', formData)
+                            .then(response => {
+                                this.coupons = response.data;
+                                this.coupons = response.data.map(item => {
+                                let discount = '';
+                                let discounts = '';
+                                let type = '';
+                                if(parseFloat(item.COUPON_DISCOUNTS) < 1){
+                                    discounts = (item.COUPON_DISCOUNTS * 10).toFixed(0) + '折';
+                                }else{
+                                    discount = parseInt(item.COUPON_DISCOUNT) + '元';
+                                    type = '折扣券';
+                                    discounts = '';
+                                }
+                                
+                                return {
+                                    id: item.id,
+                                    title: item.COUPON_NAME,
+                                    validity: item.COUPON_END,
+                                    rules: item.COUPON_DETAIL,
+                                    discount: `${discount}`,
+                                    discounts: `${discounts}`,
+                                    type: `${type}`
+                                };
+                                });
+                                this.coupons.reverse();
+                                })
+                            .catch(error => {
+                                console.log(error);
+                                });
+                                })
+                        .catch((error) => {
+                            console.error(error);
+                        });
+                    },
+                    applyCoupon(){
+                        const formData = new FormData();
+                        formData.append("couponCode" , this.couponCode);
+                        formData.append("member_ID" , this.member_ID);
+
+                        axios.post( php_url + 'member_coupons_add.php', formData)
+                        .then(response => {
+                            if(response.data.success === true){
+                            this.couponsFunction();
+                            }else{
+                                alert('此代碼無效，請輸入正確優惠券代碼');
+                            }
+                        })
+
+                        .catch(error => {
+                            
+                        });
+                        this.couponCode = '';
+                    }
+                }
+            });
+        </script>
 
     <script>
         let nav = $(".select li");

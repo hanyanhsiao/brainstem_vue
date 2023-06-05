@@ -34,7 +34,6 @@
           <label for="birth" class="birth">
             <p>生日</p>
             <input type="text" id="dob" placeholder="請選擇下方日期" disabled name="date">
-
           </label>
           <p class="margin"> 性別 </p>
           <div for="gender" class="gender" name="gender">
@@ -270,8 +269,8 @@
           this.nicknameError = '';
           if (!this.nickname) {
             this.nicknameError = '請填寫暱稱';
-          }else if (this.nickname.length < 5) {
-            this.nicknameError = '暱稱長度不能小於5個字';
+          }else if (this.nickname.length < 3) {
+            this.nicknameError = '暱稱長度不能小於3個字';
           }
         },
         validatePhone() {
