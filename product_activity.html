@@ -118,6 +118,7 @@
                 //取得活動
                 let activityId = this.activityId;
                 let id = new URL(location.href).searchParams.get('id');
+
                 axios.get(php_url + 'product_activity.php', {
                     params: { activityId: id }
                 }).then((response => {
@@ -130,13 +131,13 @@
 
 
                 // 取得商品
-                axios.get(php_url + 'product_list.php')
-                    .then((response) => {
-                        // console.log(response.data);
-                        this.goodList = response.data;
-                        for (let good of this.goodList) {
-                        }
-                    })
+                axios.get(php_url + 'product_list.php?id=' + id + '&action=activity', {
+                }).then((response) => {
+                    console.log(response.data);
+                    this.goodList = response.data;
+                    for (let good of this.goodList) {
+                    }
+                })
             },
             mounted() {
             },
