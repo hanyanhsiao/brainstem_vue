@@ -45,7 +45,7 @@
         <div class="product_main" id="productIndex">
 
             <!--側邊欄 -->
-            <product-sidebar></product-sidebar>
+            <product-sidebar @filter-list="getFilterGoodList"></product-sidebar>
 
             <!--遊戲區 -->
             <div class="game_part col-9">
@@ -227,17 +227,13 @@
                 // 取得API資源
                 axios.get(php_url + 'product_list.php')
                     .then((response) => {
-                        console.log(response.data);
                         this.goodListFromDB = response.data;
-
                         for (let good of this.goodListFromDB) {
-
                             good.hovered = false;
                             good.clicked = false;
-                        }
+                        }                      
+                })              
 
-                       
-                })
                 .catch((error) => {
                     console.error(error);
                 });
@@ -307,8 +303,14 @@
                 displayedGoods() { //商品呈現功能
                     const start = (this.currentPage - 1) * this.itemsPerPage;
                     const end = start + this.itemsPerPage;
-                    // return this.goodslist.slice(start, end);
                     return this.goodListFromDB.slice(start, end);
+                },
+
+                getFilterGoodList(filterlist){
+                    axios.get(php_url + 'product_sidebar_function.php?filterlist='+filterlist)
+                    .then((response) => {
+                        console.log(response.data);                                            
+                    });
                 },
 
             },

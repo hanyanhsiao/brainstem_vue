@@ -164,11 +164,9 @@
                 <div class="swiper-wrapper">
                     <div class="more_and_less">
                         <button class="look_more" v-show="gameComments.length > 4">查看更多</button>
-                        <button class="look_less" v-show="gameComments.length > 4">收合評論</button>
-                        <!-- <button class="look_more" v-show="showMoreButton" @click="showAllComments">查看更多</button>
-                        <button class="look_less" v-show="showLessButton" @click="showLessComments">收合評論</button> -->
+                        <button class="look_less" >收合評論</button>
                     </div>
-                    <div class="each_comment col-3 swiper-slide" v-for="(gamecomment, index) in gameComments" :key="index" >
+                    <div class="each_comment col-3 swiper-slide" v-for="gamecomment in gameComments">
                         <div class="comment_top">
                             <div class="member_pic">
                                 <img :src="gamecomment.MEMBER_PHOTO" alt="">
@@ -305,9 +303,7 @@
                     recommendGoods:[],
                     gameComments:[],
                     showPopup:false,
-                    showRemove:false,
-                    // showMoreButton: false, // 是否顯示 "查看更多" 按鈕
-                    // showLessButton: false, // 是否顯示 "收合評論" 按鈕                                      
+                    showRemove:false                                        
                 }
             },
             created(){
@@ -371,12 +367,10 @@
                         for(let gameComment of this.gameComments){
                             sum += gameComment.STAR_RATING                        
                         }
-                        avg = (sum / this.gameComments.length) + " / 5 ";
+                        avg = (sum / this.gameComments.length).toFixed(1) + " / 5 ";
                     }else{
                         avg="尚無評價"
-                    }
-                    
-                    
+                    }                                      
                    
                     return avg;
                 }
@@ -390,6 +384,8 @@
                     if (!recommend.clicked) {                        
                         recommend.hovered = true;
                     }
+                    
+                console.log(this.gameComments.length);
                 },
                 leaveHeart(recommend) {
                     if (!recommend.clicked) {
@@ -423,34 +419,8 @@
                         location.href = "./checkout.html";
                     }
                 },
-                // showAllComments() {
-                //     this.gameComments.forEach((gameComment) => {
-                //         gameComment.visible = true;
-                //     });
-                //     this.showMoreButton = false;
-                //     this.showLessButton = true;
-                // },
-                // showLessComments() {
-                //     this.gameComments.forEach((gameComment, index) => {
-                //         gameComment.visible = index < 4;
-                //     });
-                //     this.showMoreButton = true;
-                //     this.showLessButton = false;
-                // },
-                // initializeComments(){
-                //     this.gameComments = this.gameComments.map((gameComment, index) => {
-                //         return {
-                //             visible: index < 4,
-                //         };
-                //     });              
-                                        
-                //     // 設置是否顯示 "查看更多" 和 "收合評論" 按鈕
-                //     this.showMoreButton = gameComments.length > 4;
-                //     this.showLessButton = false;
-                // }
             },
             mounted(){ 
-                // this.initializeComments();
             },
             
         });
