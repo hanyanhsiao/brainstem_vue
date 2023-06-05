@@ -31,15 +31,33 @@
             }
         }
     }
-
+    
     
 }
     .right{
+
         display: none;
         float: left;
         box-sizing: border-box;
         margin-bottom: 60px;
         margin-right: 0;
+        .error{
+            background-color: $orange;
+            padding: 8px;
+            position: relative;
+            display: inline-block;
+            border-radius: 5px;
+            &::after{
+              content: '';
+              position: absolute;
+              top: -30%;
+              left: 20px;
+              transform: translateX(-50%);
+              border-left: 10px solid transparent;
+              border-right: 10px solid transparent;
+              border-bottom: 10px solid $orange;
+            }
+          }
         .describe{
             border: 1px solid $orange;
             padding: 0 0 25px 30px;
@@ -128,6 +146,9 @@
                 @include flex-container(column, nowrap, center,flex-start);
                 height: auto;
                 border: none;
+                input{
+                    margin: 0;
+                }
                 p{
                     margin: 30px 0;
                     
@@ -455,6 +476,7 @@
                 }
             }
             .coupon_item{
+                // cursor: pointer;
                 min-height: 150px;
                 padding: 20px;
                 border: 1px solid $orange;
