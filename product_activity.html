@@ -19,7 +19,7 @@
         <!-- 活動標題 -->
         <div class="banner col-12">
             <h1>{{activityName}}</h1>
-            <h2>-{{discount}}%</h2>
+            <h2>{{discount}}%</h2>
         </div>
 
         <!-- 麵包屑 -->
@@ -70,10 +70,9 @@
                     @next-page="currentPage+= (currentPage < totalPages() ? 1 : 0)">
                 </paginator>
             </div>
-
         </section>
-
     </main>
+
     <!-- footer -->
     @@include('./layout/footer.html')
 
@@ -92,340 +91,11 @@
             data() {
                 return {
                     //活動類型
-                    activityId: 2,
-                    activityName: "夏季特賣",
-                    discount: 20,
+                    activityId: "",
+                    activityName: "",
+                    discount: "",
 
-                    currentPage: 1, // 當前頁碼
-                    itemsPerPage: 8, // 每頁顯示商品數量
-                    goodslist: [ //商品列表
-                        {
-                            id: 1,
-                            name: '籃球熱潮物語 (Basketball Club Story)',
-                            img: './pic/img/cover/1.jpg',
-                            discount: 0.6,
-                            originalPrice: 172,
-                            clicked: false,
-                            hovered: false,
-                            date: "2023-04-01",
-                            purchased: 5,
-                            tagType: [
-                                {
-                                    sale: ["夏季特賣"],
-                                    cate: ["休閒", "獨立製作", "模擬", "運動", "策略"],
-                                    mode: ["單人"]
-                                }
-                            ]
-                        },
-                        {
-                            id: 2,
-                            name: '南國度假島物語 (Tropical Resort Story)',
-                            img: './pic/img/cover/2.jpg',
-                            discount: 0.8,
-                            originalPrice: 172,
-                            clicked: false,
-                            hovered: false,
-                            date: "2023-04-08",
-                            purchased: 100,
-                            tagType: [
-                                {
-                                    sale: ["夏季特賣"],
-                                    cate: ["休閒", "獨立製作", "模擬", "策略"],
-                                    mode: ["單人"]
-                                }
-                            ]
-                        },
-                        {
-                            id: 3,
-                            name: '夢想商店街物語 (Biz Builder Delux)',
-                            img: './pic/img/cover/3.jpg',
-                            discount: 0.5,
-                            originalPrice: 172,
-                            clicked: false,
-                            hovered: false,
-                            date: "2023-05-01",
-                            purchased: 33,
-                            tagType: [
-                                {
-                                    sale: ["角色扮演"],
-                                    cate: ["休閒", "獨立製作", "模擬", "策略"],
-                                    mode: ["單人"]
-                                }
-                            ]
-                        },
-                        {
-                            id: 4,
-                            name: '百貨公司物語2 (Mega Mall Story 2)',
-                            img: './pic/img/cover/4.jpg',
-                            discount: 0.6,
-                            originalPrice: 172,
-                            clicked: false,
-                            hovered: false,
-                            date: "2023-04-22",
-                            purchased: 66,
-                            tagType: [
-                                {
-                                    sale: ["角色扮演"],
-                                    cate: ["休閒", "獨立製作", "模擬", "策略"],
-                                    mode: ["單人"]
-                                }
-                            ]
-                        },
-                        {
-                            id: 5,
-                            name: '風雲拳擊物語 (Boxing Gym Story)',
-                            img: './pic/img/cover/5.jpg',
-                            discount: 0.6,
-                            originalPrice: 172,
-                            clicked: false,
-                            hovered: false,
-                            date: "2023-04-18",
-                            purchased: 41,
-                            tagType: [
-                                {
-                                    sale: ["夏季特賣"],
-                                    cate: ["休閒", "獨立製作", "運動", "模擬", "策略"],
-                                    mode: ["多人"]
-                                }
-                            ]
-                        },
-                        {
-                            id: 6,
-                            name: '金字塔王國物語 (The Pyraplex)',
-                            img: './pic/img/cover/6.jpg',
-                            discount: 0.6,
-                            originalPrice: 172,
-                            clicked: false,
-                            hovered: false,
-                            date: "2023-05-11",
-                            purchased: 99,
-                            tagType: [
-                                {
-                                    sale: ["夏季特賣"],
-                                    cate: ["休閒", "獨立製作", "模擬", "策略"],
-                                    mode: ["單人"]
-                                }
-                            ]
-                        },
-                        {
-                            id: 7,
-                            name: '星之開羅君 (Kairobotica)',
-                            img: './pic/img/cover/7.jpg',
-                            discount: 0.6,
-                            originalPrice: 172,
-                            clicked: false,
-                            hovered: false,
-                            date: "2023-05-13",
-                            purchased: 55,
-                            tagType: [
-                                {
-                                    sale: ["角色扮演"],
-                                    cate: ["休閒", "獨立製作", "角色扮演", "模擬", "策略"],
-                                    mode: ["合作"]
-                                }
-                            ]
-                        },
-                        {
-                            id: 8,
-                            name: '晴空農場物語 (Pocket Harvest)',
-                            img: './pic/img/cover/8.jpg',
-                            discount: 0.6,
-                            originalPrice: 172,
-                            clicked: false,
-                            hovered: false,
-                            date: "2023-04-03",
-                            purchased: 46,
-                            tagType: [
-                                {
-                                    sale: ["夏季特賣"],
-                                    cate: ["休閒", "獨立製作", "模擬", "策略"],
-                                    mode: ["單人"]
-                                }
-                            ]
-                        },
-                        {
-                            id: 9,
-                            name: '創意漢堡物語 (Burger Bistro Story)',
-                            img: './pic/img/cover/9.jpg',
-                            discount: 0.6,
-                            originalPrice: 172,
-                            clicked: false,
-                            hovered: false,
-                            date: "2023-04-09",
-                            purchased: 555,
-                            tagType: [
-                                {
-                                    sale: [""],
-                                    cate: ["休閒", "獨立製作", "模擬", "策略"],
-                                    mode: ["單人"]
-                                }
-                            ]
-                        },
-                        {
-                            id: 10,
-                            name: '溫泉物語2 (Hot Springs Story 2)',
-                            img: './pic/img/cover/10.jpg',
-                            discount: 0.6,
-                            originalPrice: 172,
-                            clicked: false,
-                            hovered: false,
-                            date: "2023-04-16",
-                            purchased: 98,
-                            tagType: [
-                                {
-                                    sale: [""],
-                                    cate: ["休閒", "獨立製作", "模擬", "策略"],
-                                    mode: ["單人"]
-                                }
-                            ]
-                        },
-                        {
-                            id: 11,
-                            name: '開拓神秘島DX (Beastie Bay DX)',
-                            img: './pic/img/cover/4.jpg',
-                            discount: 0.6,
-                            originalPrice: 172,
-                            clicked: false,
-                            hovered: false,
-                            date: "2023-04-23",
-                            purchased: 111,
-                            tagType: [
-                                {
-                                    sale: ["角色扮演"],
-                                    cate: ["休閒", "獨立製作", "角色扮演", "模擬", "策略"],
-                                    mode: ["合作"]
-                                }
-                            ]
-                        },
-                        {
-                            id: 12,
-                            name: '網球俱樂部物語 (Tennis Club Story)',
-                            img: './pic/img/cover/12.jpg',
-                            discount: 0.6,
-                            originalPrice: 172,
-                            clicked: false,
-                            hovered: false,
-                            date: "2023-05-03",
-                            purchased: 334,
-                            tagType: [
-                                {
-                                    sale: ["夏季特賣"],
-                                    cate: ["休閒", "獨立製作", "模擬", "運動", "策略"],
-                                    mode: ["單人"]
-                                }
-                            ]
-                        },
-                        {
-                            id: 13,
-                            name: '閃耀滑雪場物語 (Shiny Ski Resort)',
-                            img: './pic/img/cover/13.jpg',
-                            discount: 0.6,
-                            originalPrice: 172,
-                            clicked: false,
-                            hovered: false,
-                            date: "2023-05-13",
-                            purchased: 26,
-                            tagType: [
-                                {
-                                    sale: ["夏季特賣"],
-                                    cate: ["休閒", "獨立製作", "模擬", "運動", "競速", "策略"],
-                                    mode: ["多人"]
-                                }
-                            ]
-                        },
-                        {
-                            id: 14,
-                            name: '森林露營物語 (Forest Camp Story)',
-                            img: './pic/img/cover/14.jpg',
-                            discount: 0.6,
-                            originalPrice: 172,
-                            clicked: false,
-                            hovered: false,
-                            date: "2023-05-19",
-                            purchased: 666,
-                            tagType: [
-                                {
-                                    sale: [""],
-                                    cate: ["休閒", "獨立製作", "模擬", "策略"],
-                                    mode: ["合作"]
-                                }
-                            ]
-                        },
-                        {
-                            id: 15,
-                            name: '百萬樂曲物語 (March to a Million)',
-                            img: './pic/img/cover/15.jpg',
-                            discount: 0.6,
-                            originalPrice: 1720,
-                            clicked: false,
-                            hovered: false,
-                            date: "2023-05-05",
-                            purchased: 888,
-                            tagType: [
-                                {
-                                    sale: ["夏季特賣"],
-                                    cate: ["休閒", "獨立製作", "模擬", "策略"],
-                                    mode: ["單人"]
-                                }
-                            ]
-                        },
-                        {
-                            id: 16,
-                            name: '像素牧場物語 (8-Bit Farm)',
-                            img: './pic/img/cover/16.jpg',
-                            discount: 0.6,
-                            originalPrice: 1600,
-                            clicked: false,
-                            hovered: false,
-                            date: "2023-04-07",
-                            purchased: 90,
-                            tagType: [
-                                {
-                                    sale: [""],
-                                    cate: ["休閒", "獨立製作", "模擬", "策略"],
-                                    mode: ["單人"]
-                                }
-                            ]
-                        },
-                        {
-                            id: 17,
-                            name: '豪華大郵輪物語 (World Cruise Story)',
-                            img: './pic/img/cover/17.jpg',
-                            discount: 0.6,
-                            originalPrice: 152,
-                            clicked: false,
-                            hovered: false,
-                            date: "2023-04-13",
-                            purchased: 54,
-                            tagType: [
-                                {
-                                    sale: [""],
-                                    cate: ["休閒", "獨立製作", "模擬", "策略"],
-                                    mode: ["單人"]
-                                }
-                            ]
-                        },
-                        {
-                            id: 18,
-                            name: '宇宙探險隊 (Epic Astro Story)',
-                            img: './pic/img/cover/18.jpg',
-                            discount: 0.6,
-                            originalPrice: 1100,
-                            clicked: false,
-                            hovered: false,
-                            date: "2023-05-05",
-                            purchased: 1000,
-                            tagType: [
-                                {
-                                    sale: ["太空探險"],
-                                    cate: ["休閒", "獨立製作", "角色扮演", "模擬", "策略"],
-                                    mode: ["合作"]
-                                }
-                            ]
-                        },
-                    ],
-
-                    //商品排序選擇
+                    //商品排序
                     isOpen: false,
                     selectedOption: '選擇排序方式',
                     selectedOptionValue: '',
@@ -436,32 +106,58 @@
                         { text: '價格由高到低', value: 'high_to_low' },
                         { text: '價格由低到高', value: 'low_to_high' }
                     ],
+
+                    //商品區
+                    currentPage: 1, // 當前頁碼
+                    itemsPerPage: 8, // 每頁顯示商品數量
+                    filterGoodsList: [],
+                    goodList: [],
                 };
+            },
+            created() {
+                //取得活動
+                let activityId = this.activityId;
+                let id = new URL(location.href).searchParams.get('id');
+                axios.get(php_url + 'product_activity.php', {
+                    params: { activityId: id }
+                }).then((response => {
+                    console.log(response.data);
+                    let data = response.data;
+                    this.activityId = data.activityId;
+                    this.activityName = data.activityName;
+                    this.discount = (data.discount * 100) - 100;
+                }))
+
+
+                // 取得商品
+                axios.get(php_url + 'product_list.php')
+                    .then((response) => {
+                        // console.log(response.data);
+                        this.goodList = response.data;
+                        for (let good of this.goodList) {
+                        }
+                    })
             },
             mounted() {
             },
-            computed: {
-            },
             methods: {
-
                 //商品排序選擇功能
                 sortedGoods() {
-                    // console.log(this.selectedOptionValue);
                     switch (this.selectedOptionValue) {
                         case 'more_popular'://最受歡迎
-                            this.goodslist = this.goodslist.slice().sort((a, b) => b.purchased - a.purchased);
+                            this.goodList = this.goodList.slice().sort((a, b) => b.PURCHASED - a.PURCHASED);
                             break;
                         case 'new_to_old'://新到舊
-                            this.goodslist = this.goodslist.slice().sort((a, b) => new Date(b.date) - new Date(a.date));
+                            this.goodList = this.goodList.slice().sort((a, b) => new Date(b.RELEASE_DATE) - new Date(a.RELEASE_DATE));
                             break;
                         case 'old_to_new'://舊到新                                              
-                            this.goodslist = this.goodslist.slice().sort((a, b) => new Date(a.date) - new Date(b.date));
+                            this.goodList = this.goodList.slice().sort((a, b) => new Date(a.RELEASE_DATE) - new Date(b.RELEASE_DATE));
                             break;
                         case 'high_to_low'://價格高到低           
-                            this.goodslist = this.goodslist.slice().sort((a, b) => b.originalPrice - a.originalPrice);
+                            this.goodList = this.goodList.slice().sort((a, b) => b.ORIGINAL_PRICE - a.ORIGINAL_PRICE);
                             break;
                         case 'low_to_high'://價格低到高
-                            this.goodslist = this.goodslist.slice().sort((a, b) => a.originalPrice - b.originalPrice);
+                            this.goodList = this.goodList.slice().sort((a, b) => a.ORIGINAL_PRICE - b.ORIGINAL_PRICE);
                             break;
                         default:
                             return this.goodslist;
@@ -476,33 +172,33 @@
                     this.selectedOption = option.text;
                     this.selectedOptionValue = option.value;
                     this.isOpen = false;
-                    // console.log(this.selectedOptionValue);
                 },
 
                 //頁碼切換
                 goToPage(page) {
                     if (page >= 1 && page <= this.totalPages()) {
                         this.currentPage = page; // 跳轉到指定頁碼
-                        // console.log(this.currentPage);
                     }
                 },
+                //總頁數
                 totalPages() {
-                    return Math.ceil(this.goodslist.length / this.itemsPerPage); // 總頁數
+                    return Math.ceil(this.goodList.length / this.itemsPerPage);
                 },
-                displayedGoods() { //商品呈現功能
+                //商品呈現
+                displayedGoods() {
                     const start = (this.currentPage - 1) * this.itemsPerPage;
                     const end = start + this.itemsPerPage;
                     // slice(自哪個index開始切割, 切割到哪個index) 
-                    return this.goodslist.slice(start, end);
+                    return this.goodList.slice(start, end);
                 },
             },
+            //子元件
             components: {
                 ProductList,
                 Paginator,
                 ProductSidebar,
             },
         }).mount('.product_activity');
-
 
         //手機板篩選器設定
         $('.sidebar_btn').click(function () {
