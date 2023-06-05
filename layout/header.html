@@ -31,7 +31,7 @@
                     <ul class="result" v-show="displayResults">
                         <li class="rlist" v-for="(item, index2) in searchResults" v-if="index2 < 5">
 
-                            <a href="./product_information.html" class="alist">
+                            <a :href="'./product_information.html?id=' + item.id" class="alist">
                                 <img :src="item.image" alt="">
                                 <p class="gtitle">{{ item.title }}</p>
                             </a>
