@@ -122,6 +122,8 @@
 
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
     <!-- <script src="./js/heart.js"></script> -->
     <!-- <script src="./js/product_sidebar.js"></script> -->
 
@@ -140,6 +142,7 @@
                 return {
                     currentPage: 1, // 當前頁碼
                     itemsPerPage: 8, // 每頁顯示商品數量
+                    goodListFromDB_copy:[],
                     filterGoodsList: [],
                     goodListFromDB: [],
                     // goodslist: [ //參考商品列表樣式
@@ -231,12 +234,14 @@
                         for (let good of this.goodListFromDB) {
                             good.hovered = false;
                             good.clicked = false;
-                        }                      
-                })              
+                        }
 
-                .catch((error) => {
-                    console.error(error);
-                });
+                        this.goodListFromDB_copy = response.data;
+                    })
+
+                    .catch((error) => {
+                        console.error(error);
+                    });
 
             },
 
@@ -306,11 +311,28 @@
                     return this.goodListFromDB.slice(start, end);
                 },
 
-                getFilterGoodList(filterlist){
-                    axios.get(php_url + 'product_sidebar_function.php?filterlist='+filterlist)
-                    .then((response) => {
-                        console.log(response.data);                                            
+                getFilterGoodList(filterlist) {
+                    console.log(JSON.stringify(filterlist))
+                    const url_filter = php_url + 'product_sidebar_function.php';
+                    axios.get(url_filter, {                     
+                        params:{
+                            filterlist: filterlist
+                        } 
+                    }).then((response) => {
+                        this.currentPage = 1;
+                        this.filterGoodsList = response.data;
+                        for (let good of this.filterGoodsList) {
+                            good.hovered = false;
+                            good.clicked = false;
+                        }
+
+                        if(filterlist.tag_list.length == 0){
+                            this.goodListFromDB = this.goodListFromDB_copy;
+                        }else{
+                            this.goodListFromDB = this.filterGoodsList;
+                        }
                     });
+                    
                 },
 
             },

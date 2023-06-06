@@ -21,7 +21,7 @@
         <nav id="breadcrumb">
             <a href="./index.html">首頁</a><i class="bi bi-chevron-right a_after"></i>
             <a href="./product.html">商品</a><i class="bi bi-chevron-right a_after"></i>
-            <a href="./product_cate.html">遊戲類型</a><i class="bi bi-chevron-right a_after"></i>
+            <!-- <a href="./product_cate.html">遊戲類型</a><i class="bi bi-chevron-right a_after"></i> -->
             <a href="./product_information.html">{{currentGood.GAME_NAME}}</a>
         </nav>
 
@@ -101,7 +101,7 @@
                         <span class="gameRating">{{currentGood.RATING_NAME}}</span>
                     </p>
                     <p>遊戲類型：
-                        <span class="tag">{{currentGood.game_cate}}</span>
+                        <span class="tag">{{currentGood.GAME_CATE}}</span>
                     </p>
                     <div class="add_to_pay">
                         <button class="shopcar_btn col-6" @click="addAction('toCar')">加入購物車</button>
@@ -411,7 +411,7 @@
                     }, 1500); // 在 1500 毫秒後隱藏，可根據需要進行調整
                 },
                 goProductPage(id){
-                    location.href = `/product_information.html?id=${id}`;
+                    location.href = `./product_information.html?id=${id}`;
                 },
                 addAction(action){
                     localStorage.setItem("good_" + this.currentGood.GAME_ID, JSON.stringify(this.currentGood));

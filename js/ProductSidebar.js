@@ -148,8 +148,10 @@ export default{
                 "saleFilterList": this.saleFilterList,
                 "cateFilterList": this.cateFilterList,
                 "minPrice":this.inputMinPrice,
-                "maxPrice":this.inputMaxPrice
+                "maxPrice":this.inputMaxPrice,
+                "tag_list":this.selectedTags
             }
+            console.log(this.selectedTags)
             this.$emit('filter-list', filterList);
         },
         applySelection() {
