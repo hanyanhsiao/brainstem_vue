@@ -32,7 +32,7 @@ export default{
             }, 1500); // 在 1500 毫秒後隱藏，可根據需要進行調整
         },
         goProductPage(id){
-            location.href = `/product_information.html?id=${id}`;
+            location.href = `./product_information.html?id=${id}`;
         
         },
     },

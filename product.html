@@ -45,7 +45,7 @@
         <div class="product_main" id="productIndex">
 
             <!--側邊欄 -->
-            <product-sidebar></product-sidebar>
+            <product-sidebar @filter-list="getFilterGoodList"></product-sidebar>
 
             <!--遊戲區 -->
             <div class="game_part col-9">
@@ -122,6 +122,8 @@
 
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
     <!-- <script src="./js/heart.js"></script> -->
     <!-- <script src="./js/product_sidebar.js"></script> -->
 
@@ -140,6 +142,7 @@
                 return {
                     currentPage: 1, // 當前頁碼
                     itemsPerPage: 8, // 每頁顯示商品數量
+                    goodListFromDB_copy:[],
                     filterGoodsList: [],
                     goodListFromDB: [],
                     // goodslist: [ //參考商品列表樣式
@@ -227,20 +230,18 @@
                 // 取得API資源
                 axios.get(php_url + 'product_list.php')
                     .then((response) => {
-                        console.log(response.data);
                         this.goodListFromDB = response.data;
-
                         for (let good of this.goodListFromDB) {
-
                             good.hovered = false;
                             good.clicked = false;
                         }
 
-                       
-                })
-                .catch((error) => {
-                    console.error(error);
-                });
+                        this.goodListFromDB_copy = response.data;
+                    })
+
+                    .catch((error) => {
+                        console.error(error);
+                    });
 
             },
 
@@ -307,8 +308,31 @@
                 displayedGoods() { //商品呈現功能
                     const start = (this.currentPage - 1) * this.itemsPerPage;
                     const end = start + this.itemsPerPage;
-                    // return this.goodslist.slice(start, end);
                     return this.goodListFromDB.slice(start, end);
+                },
+
+                getFilterGoodList(filterlist) {
+                    console.log(JSON.stringify(filterlist))
+                    const url_filter = php_url + 'product_sidebar_function.php';
+                    axios.get(url_filter, {                     
+                        params:{
+                            filterlist: filterlist
+                        } 
+                    }).then((response) => {
+                        this.currentPage = 1;
+                        this.filterGoodsList = response.data;
+                        for (let good of this.filterGoodsList) {
+                            good.hovered = false;
+                            good.clicked = false;
+                        }
+
+                        if(filterlist.tag_list.length == 0){
+                            this.goodListFromDB = this.goodListFromDB_copy;
+                        }else{
+                            this.goodListFromDB = this.filterGoodsList;
+                        }
+                    });
+                    
                 },
 
             },

@@ -10,132 +10,18 @@ export default{
             saleFilterList:[],
             cateFilterList:[],
             modeFilterList:[],
-            saleActivities:[ //促銷活動
-                {
-                    id:1,
-                    name:"燒腦解謎"
-                },
-                {
-                    id:2,
-                    name:"夏季特賣"
-                },
-                {
-                    id:3,
-                    name:"角色扮演"
-                },
-                {
-                    id:4,
-                    name:"射擊遊戲"
-                },
-                {
-                    id:5,
-                    name:"太空探險"
-                },
-                {
-                    id:6,
-                    name:"恐怖遊戲"
-                }
-            ],  
-            gameCategories:[ //遊戲類別
-                {
-                    id:1,
-                    name:"動作"
-                },
-                {
-                    id:2,
-                    name:"冒險"
-                },
-                {
-                    id:3,
-                    name:"奇幻"
-                },
-                {
-                    id:4,
-                    name:"休閒"
-                },
-                {
-                    id:5,
-                    name:"恐怖"
-                },
-                {
-                    id:6,
-                    name:"驚悚"
-                },
-                {
-                    id:7,
-                    name:"解謎"
-                },
-                {
-                    id:8,
-                    name:"策略"
-                },
-                {
-                    id:9,
-                    name:"懸疑"
-                },
-                {
-                    id:10,
-                    name:"模擬"
-                },
-                {
-                    id:11,
-                    name:"運動"
-                },
-                {
-                    id:12,
-                    name:"競速"
-                },
-                {
-                    id:13,
-                    name:"成人"
-                },
-                {
-                    id:14,
-                    name:"超現實"
-                },
-                {
-                    id:15,
-                    name:"角色扮演"
-                },
-                {
-                    id:16,
-                    name:"卡牌遊戲"
-                },
-                {
-                    id:17,
-                    name:"開放世界"
-                },
-                {
-                    id:18,
-                    name:"免費遊玩"
-                },
-                {
-                    id:19,
-                    name:"獨立製作"
-                },
-                {
-                    id:20,
-                    name:"彈幕射擊"
-                },
-                
-            ],
-            gameModes:[ //遊戲模式
-                {
-                    id:1,
-                    name:"單人"
-                },
-                {
-                    id:2,
-                    name:"多人"
-                },
-                {
-                    id:3,
-                    name:"合作"
-                },
-            ]
+            activityType:[],
+            categoryType:[]
         };
     },
     props:["goodslist"],
+    created(){
+        axios.get(php_url + 'product_sidebar_data.php')
+            .then((response) => {
+                this.activityType = response.data["activity"];
+                this.categoryType = response.data["category"];
+        })
+    },
     methods:{
         //下拉選單
         toggleList(listName){
@@ -172,30 +58,40 @@ export default{
                         this.cateFilterList.push(tag);
                     }
                     break;
-                case 'mode':                                                
-                    let m_index = this.modeFilterList.indexOf(tag);
-                    if(m_index > -1){
-                        this.modeFilterList.splice(m_index, 1);
-                    }else{
-                        this.modeFilterList.push(tag);
-                    }
-                    break;
-                
+                                
                 default:
                     return
             }
-
-            // console.log(goodslist);
-
-
+            this.passFilterList();
 
         },
         //移除標籤
         removeTag(tag){
+            console.log(tag)
             const index = this.selectedTags.indexOf(tag);
             if(index > -1){
                 this.selectedTags.splice(index, 1);
             }
+
+            let target_index = this.saleFilterList.indexOf(tag);
+            if(target_index > -1){
+                this.saleFilterList.splice(target_index, 1);
+            }
+            target_index = this.cateFilterList.indexOf(tag);
+            if(target_index > -1){
+                this.cateFilterList.splice(target_index, 1);
+            }
+
+            if(tag.startsWith("最低金額")){
+                this.inputMinPrice = null;
+            }
+
+            if(tag.startsWith("最高金額")){
+                this.inputMaxPrice = null;
+            }
+
+
+            this.passFilterList();
         },
 
         //價格選擇推上標籤
@@ -205,79 +101,58 @@ export default{
                 return 
             }
 
-            
-            // if(tag  == 'min'){
-                console.log(this.selectedTags)
-                let targetMin = this.selectedTags.filter(function(tag){
-                    console.log("我是tag" + tag)
-                    console.log(tag.startsWith('最低金額'))
-                    return tag.startsWith('最低金額')
-                })
-                console.log("min")
-               
-                console.log(targetMin[0])
-                console.log(this.selectedTags)
-                let targetMinIndex = this.selectedTags.indexOf(targetMin[0])
-                console.log(targetMinIndex)
-                this.selectedTags.splice(targetMinIndex,1)
-            // }
+            let minTagIdx = 0
+            for(let tag of this.selectedTags){
+                if(tag.startsWith('最低金額')){
+                    break;
+                };
+                minTagIdx++;
+            }
 
-            // if(tag  == 'max'){
-                let targetMax = this.selectedTags.filter(function(tag){
-                    return tag.startsWith('最高金額')
-                })
-    
-                console.log("max")
-                
-    
-                let targetMaxIndex = this.selectedTags.indexOf(targetMax[0])
-                console.log(targetMaxIndex)
-                this.selectedTags.splice(targetMaxIndex,1)
-            // }
-            
-
-            
-            console.log(this.selectedTags)
-
-            
+            if(minTagIdx != (this.selectedTags.length)-1){
+                this.selectedTags.splice(minTagIdx,1);
                 if (this.inputMinPrice!== null && this.inputMinPrice !== '') {
-                    this.minPriceTag = '最低金額：' + this.inputMinPrice + '元';
+                this.minPriceTag = '最低金額：' + this.inputMinPrice + '元';
+                    this.selectedTags.push(this.minPriceTag);
+                } 
+            }
 
-                    
+            let maxTagIdx = 0
+            for(let tag of this.selectedTags){
+                if(tag.startsWith('最高金額')){
+                    break;
+                };
+                maxTagIdx++;
+            }
 
-                    // if(tag  == 'min'){
-                        this.selectedTags.push(this.minPriceTag);
-                        console.log(this.selectedTags)
-                    // }
-                }
-            
-
-
+            if(maxTagIdx != (this.selectedTags.length)-1){
+                this.selectedTags.splice(maxTagIdx,1);
                 if (this.inputMaxPrice !== null && this.inputMaxPrice !== '') {
-
                     this.maxPriceTag = '最高金額：' + this.inputMaxPrice + '元';
-
-                    
-
-                    // if(!this.selectedTags.includes(this.maxPriceTag) && tag  == 'max'){
-                        this.selectedTags.push(this.maxPriceTag);
-                        console.log(this.selectedTags)
-                    // }
+                    this.selectedTags.push(this.maxPriceTag);
                 }
-            
+            }
 
-           
-            // if (this.inputMaxPrice !== null && this.inputMaxPrice !== '') {
-            //     this.maxPriceTag = '最高金額：' + this.inputMaxPrice + '元';
-            //     this.selectedTags.push(this.maxPriceTag);
-            // }
+            this.passFilterList();
+            
         },
         //清除全部標籤
         clearTags() {
-            this.selectedTags = [];
-            
+            this.selectedTags = [];            
             this.inputMaxPrice=null;
             this.inputMinPrice=null;
+            this.passFilterList();
+        },
+        passFilterList(){
+            let filterList = {
+                "saleFilterList": this.saleFilterList,
+                "cateFilterList": this.cateFilterList,
+                "minPrice":this.inputMinPrice,
+                "maxPrice":this.inputMaxPrice,
+                "tag_list":this.selectedTags
+            }
+            console.log(this.selectedTags)
+            this.$emit('filter-list', filterList);
         },
         applySelection() {
         // 執行篩選邏輯
@@ -287,7 +162,7 @@ export default{
     <nav class="product_sidebar col-3">
         <div class="tag_choose" :class="{'show':selectedTags.length > 0}">已選擇的標籤 <span class="clear" @click="clearTags">清除全部</span></div>
         <div id="tags_container">
-            <span class="tag" v-for="tag in selectedTags" :key="tag">
+            <span class="tag" v-for="(tag, index) in selectedTags" :key="index">
                 {{tag}}
                 <i class="bi bi-x-lg" @click="removeTag(tag)"></i>
             </span>
@@ -299,11 +174,11 @@ export default{
                 </div>
                 <ul class="sale_list" v-show="listVisible === 'saleList'">
                     <li class="item" 
-                        v-for="activity in saleActivities" 
+                        v-for="activity in activityType" 
                         :key="activity.id" 
-                        @click="toggleTag(activity.name, 'sale')" 
-                        :class="{'checked':selectedTags.includes(activity.name)}">
-                        <span>{{activity.name}}</span>
+                        @click="toggleTag(activity.ACTIVITY_NAME, 'sale')" 
+                        :class="{'checked':selectedTags.includes(activity.ACTIVITY_NAME)}">
+                        <span>{{activity.ACTIVITY_NAME}}</span>
                         <i class="bi bi-check-lg check-icon" ></i>
                     </li>
                 </ul>
@@ -315,27 +190,11 @@ export default{
                 </div>
                 <ul class="cate_list" v-show="listVisible === 'cateList'">
                     <li class="item" 
-                        v-for="category in gameCategories" 
+                        v-for="category in categoryType" 
                         :key="category.id" 
-                        @click="toggleTag(category.name, 'cate')" 
-                        :class="{'checked':selectedTags.includes(category.name)}">
-                        <span>{{category.name}}</span>
-                        <i class="bi bi-check-lg check-icon"></i>
-                    </li>
-                </ul>
-            </li>
-
-            <li>
-                <div class="button" @click="toggleList('modeList')" :class="{'active':listVisible === 'modeList'}">遊戲模式
-                    <i class="bi bi-chevron-down arrow" :class="{'rotate':listVisible === 'modeList'}"></i>
-                </div>
-                <ul class="mode_list" v-show="listVisible === 'modeList'">
-                    <li class="item" 
-                        v-for="mode in gameModes" 
-                        :key="mode.id" 
-                        @click="toggleTag(mode.name, 'mode')" 
-                        :class="{'checked':selectedTags.includes(mode.name)}">
-                        <span>{{mode.name}}</span>
+                        @click="toggleTag(category.CATEGORY_NAME, 'cate')" 
+                        :class="{'checked':selectedTags.includes(category.CATEGORY_NAME)}">
+                        <span>{{category.CATEGORY_NAME}}</span>
                         <i class="bi bi-check-lg check-icon"></i>
                     </li>
                 </ul>
