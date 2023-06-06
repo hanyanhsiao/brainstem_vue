@@ -24,7 +24,7 @@
                 <div class="topser" id="searchapp">
                     <form class="ser" @submit.prevent="search" method="get">
                         <input type="text" v-model="keyword" @input="search" placeholder="  搜尋" />
-                        <button type="submit" onclick="redirectToProductInformation()">
+                        <button type="submit" @click="redirectToProductInformation">
                             <i class="bi bi-search"></i>
                         </button>
                     </form>
@@ -48,39 +48,7 @@
 
                 <ul class="b_2">
                     <li data-index="5">
-                        <a href="#">近期預覽</a>
-                        <ul class="b_2-1">
-                            <li>
-                                <a href="./product.html">
-                                    <img src="./pic/img/product/demo/0001552371.jpg" alt="" />
-                                    <div class="p">
-                                        <p class="title">火影忍者 疾風傳 終極風暴 經典傳承</p>
-                                        <p class="price">¥3,205</p>
-                                        <p class="price2">¥3,000</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="./product.html">
-                                    <img src="./pic/img/product/demo/729.jpg" alt="" />
-                                    <div class="p">
-                                        <p class="title">KINGDOM HEARTS III 王國之心3</p>
-                                        <p class="price">¥9,680</p>
-                                        <p class="price2">¥9,000</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="./product.html">
-                                    <img src="./pic/img/product/demo/728.jpg" alt="" />
-                                    <div class="p">
-                                        <p class="title">Rabi-Ribi 拉比哩比</p>
-                                        <p class="price">¥2,700</p>
-                                        <p class="price2">¥2,000</p>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
+                        <a href="./about.html">關於</a>
                     </li>
 
                     <!-- 註冊 / 登入 -->
@@ -259,8 +227,12 @@
 
     // button轉址
     function redirectToProductInformation() {
-        window.location.href = "./product.html";
+        if (searchapp.selectedProduct) {
+            const productId = searchapp.selectedProduct.id;
+            window.location.href = "./product_information.html?id=" + productId;
+        }
     }
+
     // 串資料庫
     var searchapp = Vue.createApp({
         data() {
@@ -268,10 +240,18 @@
                 keyword: '',
                 searchResults: [],
                 displayResults: false,
-                index2: 0
+                index2: 0,
+                selectedProduct: null  // 添加选中的物件属性
             };
         },
         methods: {
+            redirectToProductInformation() {
+                if (this.selectedProduct) {
+                    const productId = this.selectedProduct.id;
+                    window.location.href = "./product_information.html?id=" + productId;
+                }
+            },
+
             search() {
                 axios
                     .get(php_url + 'header_search.php', { params: { keyword: this.keyword } })
@@ -283,6 +263,11 @@
                             document.querySelector('.notfind').style.display = 'block';
                         } else {
                             document.querySelector('.notfind').style.display = 'none';
+                        }
+
+                        // 将选中的物件信息存储到selectedProduct中
+                        if (this.searchResults.length > 0) {
+                            this.selectedProduct = this.searchResults[0];  // 这里假设选择第一个物件
                         }
                     })
                     .catch(error => {
@@ -321,7 +306,9 @@
 
     searchapp.mount('#searchapp');
 
+    // ===========近期預覽===============
 
+    
 
 
 
