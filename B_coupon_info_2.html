@@ -20,55 +20,64 @@
 
         <!-- 右側 -->
         <div class="right col-12">
-            <a href="./B_coupon_info.html">
+            <a href="./B_coupon.html">
                 <h6>回上一頁</h6>
             </a>
             <div class="right_main" id="B_coupon_info2">
-                <form>
+                <form @submit="saveCoupon">
                     <div class="B_button">
                         <h4>優惠券內容</h4>
-                        <button class="btn">儲存</button>
+                        <button type="submit" class="btn">儲存</button>
                     </div>
                     <ul>
                         <li>
                             <label for="couponcode">
                                 <h6>優惠券代碼</h6>
                             </label>
-                            <input type="text" name="couponcode" id="couponcode" placeholder="請輸入編號">
+                            <input type="text" v-model="couponCode" id="couponcode" placeholder="請輸入編號">
                         </li>
                         <li>
                             <label for="couponname">
                                 <h6>優惠券標題</h6>
                             </label>
-                            <input type="text" name="couponname" id="couponname" placeholder="請輸入優惠券名稱">
+                            <input type="text" v-model="couponName" id="couponname" placeholder="請輸入優惠券名稱">
                         </li>
                         <li class="B_grid_two">
                             <label for="coupondetail">
                                 <h6>優惠券內容</h6>
                             </label>
-                            <textarea name="coupondetail" id="coupondetail" cols="100" rows="10" placeholder="請輸入優惠券內容"></textarea>
+                            <textarea v-model="couponDetail" id="coupondetail" cols="95" rows="10"
+                                placeholder="請輸入優惠券內容"></textarea>
                         </li>
                         <li class="B_grid_four">
                             <label for="couponbegin">
                                 <h6>優惠券開始時間</h6>
                             </label>
-                            <input id="myDatePicker" type="date" name="couponbegin" id="couponbegin" placeholder="年/月/日">
+                            <input id="beginDate" type="date" v-model="couponBegin" id="couponbegin"
+                                placeholder="年/月/日">
                             <label for="couponend">
                                 <h6>優惠券結束時間</h6>
                             </label>
-                            <input id="myDatePicker" type="date" name="couponend" id="couponend" placeholder="年/月/日">
+                            <input id="endDate" type="date" v-model="couponEnd" id="couponend" placeholder="年/月/日">
                         </li>
                         <li class="B_grid_three">
                             <label for="price">
                                 <h6>折扣金額</h6>
                             </label>
-                            <input type="text" name="price" id="price" placeholder="請輸入金額">
+                            <input type="text" v-model="couponDiscount" id="price" placeholder="請輸入金額">
                         </li>
                         <li>
                             <label for="minprice">
-                                <h6>最低消費金額</h6>
+                                <h6>使用規則</h6>
                             </label>
-                            <input type="text" name="minprice" id="minprice" placeholder="請輸入金額">
+                            <textarea v-model="minimumLimit" id="minprice" cols="95" rows="10"
+                            placeholder="請輸入規則"></textarea>
+                        </li>
+                        <li style="display: none;">
+                            <label for="couponStatus">
+                                <h6>狀態</h6>
+                            </label>
+                            <input type="hidden" name="couponStatus" value="1">
                         </li>
                     </ul>
                 </form>
@@ -77,34 +86,66 @@
     </main>
     @@include('./layout/js.html')
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script>
-        //input
-        flatpickr("#myDatePicker", {
-            dateFormat: "Y/m/d",
-            minDate: "today",
-            theme: "light"
-        });
-    </script>
 
     <script>
         //渲染訂單資料
         Vue.createApp({
             data() {
                 return {
-                    createcoupon: []
+                    couponCode: '',
+                    couponName: '',
+                    couponDetail: '',
+                    couponBegin: '',
+                    couponEnd: '',
+                    couponDiscount: '',
+                    minimumLimit: '',
+                    couponStatus: ''
                 }
             },
             methods: {
+                saveCoupon(event) {
+                    event.preventDefault();
 
+                    if (this.couponEnd && !this.couponEnd.includes(' ')) {
+                        this.couponEnd += ' 23:59:59';
+                    }
+
+                    const formData = new FormData();
+                    formData.append('couponCode', this.couponCode);
+                    formData.append('couponName', this.couponName);
+                    formData.append('couponDetail', this.couponDetail);
+                    formData.append('couponBegin', this.couponBegin);
+                    formData.append('couponEnd', this.couponEnd);
+                    formData.append('couponDiscount', this.couponDiscount);
+                    formData.append('minimumLimit', this.minimumLimit);
+                    formData.append('couponStatus', this.couponStatus);
+
+                    axios.post(php_url + 'B_insert_coupon.php', formData)
+                        .then(response => {
+                            console.log(response);
+                            // 重定向到某個頁面
+                            // alert("新增成功")
+                            window.location.href = "B_coupon.html";
+                        })
+                        .catch(error => {
+                            console.error(error);
+                        });
+                }
             },
             mounted() {
-                axios.get(php_url + 'B_insert_coupon.php')
-                    .then((response) => {
-                        console.log(response);
-                        this.createcoupon = response.data;
-                    })
+                //input
+                flatpickr("#beginDate", {
+                    dateFormat: "Y/m/d",
+                    minDate: "today",
+                    theme: "light"
+                });
+                flatpickr("#endDate", {
+                    dateFormat: "Y/m/d",
+                    minDate: "today",
+                    theme: "light"
+                });
             }
-        }).mount('#B_coupon_info2')
+        }).mount('#B_coupon_info2');
     </script>
 </body>
 

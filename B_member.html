@@ -97,7 +97,7 @@
                 }
             },
             methods: {
-                viewmember(order){
+                viewmember(memberid){
                     //跳轉info
                     window.location.href = 'B_member_info.html?id=' + memberid;
                     // console.log(memberid);
@@ -107,7 +107,8 @@
                 axios.get(php_url + 'B_member.php')
                     .then((response) => {
                         this.members = response.data;
-                        // console.log(this.members);
+                        console.log(this.members);
+                        // console.log(memberid);
                     })
             }
 
