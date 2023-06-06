@@ -27,7 +27,7 @@
                         <h4>遊戲內容</h4>
                         <button class="btn" onclick="B_games_info_2(event)">修改內容</button>
                     </div>
-                    <div class="right_main_top">
+                    <div class="right_main_top" id="B_game_info">
                         <ul>
                             <li>
                                 <h6>遊戲名稱</h6>
@@ -168,6 +168,35 @@
             e.preventDefault();
             window.location.href = "./B_games_info_2.html";
         }
+    </script>
+
+
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    game: []
+                }
+            },
+            methods: {
+                viewgame(gameid) {
+                    //跳轉info
+                    // window.location.href = 'B_games_info.html?id=' + gameid;
+                    // console.log(gameid);
+                }
+            },
+            mounted() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const gameid = urlParams.get('id');
+
+                axios.get(php_url + 'B_games_info.php?id=' + gameid)
+                    .then((response) => {
+                        this.game = response.data;
+                        console.log(this.game);
+                    });
+            }
+
+        }).mount('#B_game_info')
     </script>
 </body>
 

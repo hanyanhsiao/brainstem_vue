@@ -23,81 +23,114 @@
                 <h6>回上一頁</h6>
             </a>
             <div class="right_main" id="B_coupon_info">
-                <form action="" method="">
+                <form>
                     <div class="B_button">
                         <h4>優惠券內容</h4>
-                        <button class="btn" onclick="B_coupon_info_2(event)">修改內容</button>
+                        <button class="btn" v-if="!isEditing" @click="editCoupon">修改內容</button>
+                        <button class="btn" v-else @click="saveCoupon">儲存</button>
                     </div>
                     <ul>
                         <li>
                             <h6>優惠券編號</h6>
-                            <h6>{{coupon.COUPON_CODE}}</h6>
+                            <h6>{{ coupon.COUPON_CODE }}</h6>
                         </li>
                         <li>
-                            <h6>優惠券標題 </h6>
-                            <h6>{{coupon.COUPON_NAME}}</h6>
+                            <h6>優惠券標題</h6>
+                            <input v-if="isEditing" v-model="coupon.COUPON_NAME" type="text">
+                            <h6 v-else>{{ coupon.COUPON_NAME }}</h6>
                         </li>
                         <li class="B_grid_two">
                             <h6>優惠券內容</h6>
-                            <h6>{{coupon.COUPON_DETAIL}}</h6>
+                            <textarea v-if="isEditing" v-model="coupon.COUPON_DETAIL"  cols="95" rows="10"></textarea>
+                            <h6 v-else>{{ coupon.COUPON_DETAIL }}</h6>
                         </li>
-                        <li class="B_grid_two">
+                        <li class="B_grid_two_2">
                             <h6>優惠券使用時間</h6>
-                            <h6>{{coupon.COUPON_BEGIN}}~{{coupon.COUPON_END}}</h6>
+                            <div>
+                                <input v-if="isEditing" v-model="coupon.COUPON_BEGIN" type="datetime-local">
+                                <input v-if="isEditing" v-model="coupon.COUPON_END" type="datetime-local">
+                                <h6 v-else>{{ coupon.COUPON_BEGIN }}~{{ coupon.COUPON_END }}</h6>
+                            </div>
                         </li>
                         <li>
                             <h6>折扣類型</h6>
                             <h6>折扣金額</h6>
-                            <h6>${{coupon.COUPON_DISCOUNT}}元</h6>
+                            <input v-if="isEditing" v-model="coupon.COUPON_DISCOUNT" type="text">
+                            <h6 v-else>${{ coupon.COUPON_DISCOUNT }}元</h6>
                         </li>
                         <li>
                             <h6>使用規則</h6>
-                            <h6>{{coupon.MINIMUM_LIMIT}}</h6>
+                            <textarea v-if="isEditing" v-model="coupon.MINIMUM_LIMIT"  cols="95" rows="10"></textarea>
+                            <h6 v-else>{{ coupon.MINIMUM_LIMIT }}</h6>
                         </li>
                     </ul>
                 </form>
-
             </div>
         </div>
 
     </main>
     @@include('./layout/js.html')
+
     <script>
-        function B_coupon_info_2(e) {
-            e.preventDefault();
-            window.location.href = "./B_coupon_info_2.html"
-        }
-    </script>
+        // 渲染單獨訂單資料
+        Vue.createApp({
+            data() {
+                return {
+                    coupon: [],
+                    isEditing: false
+                }
+            },
+            methods: {
+                editCoupon() {
+                    this.isEditing = true;
 
-<script>
-    //渲染單獨訂單資料
-    Vue.createApp({
-        data() {
-            return {
-                coupon: []
+                },
+                saveCoupon() {
+                    // 创建一个FormData对象
+                    const formData = new FormData();
+
+                    // 将修改后的数据添加到formData
+                    formData.append('id', this.coupon.COUPON_ID); // 添加优惠券ID
+                    formData.append('name', this.coupon.COUPON_NAME); // 添加优惠券名称
+                    formData.append('detail', this.coupon.COUPON_DETAIL); // 添加优惠券内容
+                    formData.append('begin', this.coupon.COUPON_BEGIN); // 添加使用开始时间
+                    formData.append('end', this.coupon.COUPON_END); // 添加使用结束时间
+                    formData.append('discount', this.coupon.COUPON_DISCOUNT); // 添加折扣金额
+                    formData.append('limit', this.coupon.MINIMUM_LIMIT); // 添加使用规则
+
+                    // 发送修改请求
+                    axios.post(php_url + 'B_update_coupon.php', formData)
+                        .then((response) => {
+                            console.log(response.data);
+                            // 处理修改成功后的逻辑
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                            // 处理错误
+                        });
+
+                    this.isEditing = false;
+                }
+            },
+            mounted() {
+                // 获取URL中的会员ID参数
+                const urlParams = new URLSearchParams(window.location.search);
+                const couponId = urlParams.get('id');
+
+                // 根据会员ID从服务器请求完整的会员数据
+                axios.get(php_url + 'B_coupon.php?id=' + couponId)
+                    .then((response) => {
+                        this.coupon = response.data;
+                        console.log(this.coupon);
+                        // console.log(this.order.GAME_COVER);
+                        
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });  
             }
-        },
-        methods: {
-
-        },
-        mounted() {
-            // 获取URL中的会员ID参数
-            const urlParams = new URLSearchParams(window.location.search);
-            const couponId = urlParams.get('id');
-
-            // 根据会员ID从服务器请求完整的会员数据
-            axios.get(php_url + 'B_coupon.php?id=' + couponId)
-                .then((response) => {
-                    this.coupon = response.data;
-                    console.log(this.coupon);
-                    // console.log(this.order.GAME_COVER);
-                })
-                .catch((error) => {
-                    console.error(error);
-                });
-        }
-    }).mount('#B_coupon_info')
-</script>
+        }).mount('#B_coupon_info')
+    </script>
 </body>
 
 </html>
