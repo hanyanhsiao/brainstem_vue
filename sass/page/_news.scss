@@ -1,224 +1,247 @@
-.news_article {
-  .title-news {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 25vh;
-  }
-
+.news {
+  // 標題
   .header-news {
-    background-image: url("../../pic/img/news/Rectangle\ 266.png");
+    background-image: url("../pic/img/news/Rectangle\ 266.png");
     margin: 30px auto;
-  }
-
-  .search-news_out {
-    text-align: right;
-
-    .search-news {
-      width: 300px;
-      border-radius: 50px;
-      right: 200px;
-      text-align: right;
+    margin-bottom: 50px;
+    .title-news {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 25vh;
     }
-
   }
 
+  // 搜尋
   .search_news_out {
-    
-
     display: flex;
     justify-content: flex-end;
-    // border: 20px solid red;
-    // display: flex;
-    // // width: 100%;
-    // // align-items: center;
-    // padding: 10px;
-
-    // margin: 10px auto 0;
-    // box-sizing: border-box;
+    margin-bottom: 10px;
 
     input {
-      width: 20%;
+      width: 300px;
       border-radius: 50px;
       display: block;
       // margin: 0 auto 10px;
       justify-content: flex-end;
+      @include breakpoint-414 {
+        width: 100%;
+      }
     }
   }
 
+  // 精選新聞區塊
+  .featured {
+    // display: flex;
 
+    .featured_title {
+      margin-bottom: 10px;
+    }
 
-  .featured {}
+    .featured_ul {
+      // @include flex-container(row, nowrap, space-between, center);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0 10px;
+      margin-bottom: 50px;
 
-  .featured_title {
-    margin-bottom: 3%;
-  }
+      @include breakpoint-1440 {
+        grid-template-columns: 1fr 1fr;
+      }
+      @include breakpoint-414 {
+        grid-template-columns: 1fr;
+      }
+      .featured_li {
+        a {
+          display: block;
+          padding: 10px;
+          transition: all ease-in-out 0.4s;
+          &:hover {
+            background-color: rgba(255, 68, 0, 0.123);
+            border-radius: 10px;
+            transition: all ease-in-out 0.4s;
+          }
+          &:hover > .title > h3 {
+            color: orange;
+            transition: all ease-in-out 0.4s;
+          }
 
-  .featured_ul {
-    // border: 2px solid blueviolet;
-    display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 5%;
-  }
+          img {
+            width: 100%;
+          }
+          // 日期與按讚分享
+          .featured_top {
+            // outline: 2px solid red;
+            padding: 10px 0;
+            font-size: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            transition: all ease-in-out 0.3s;
 
-  .featured_li {
-    font-size: 50px;
-    // border: 2px solid blue;
-    display: flex;
-    width: 500px;
-    justify-content: space-around;
-  }
+            .featured_views {
+              color: $orange;
+              font-size: 1.8rem;
+              i {
+                padding: 0;
+                padding-left: 5px;
+              }
+            }
+          }
 
-  .featured_link {
-    padding: 2px;
-  }
-
-  .featured_img {
-    width: 100%;
-    height: 280px;
-  }
-
-  .featured_top {
-    display: flex;
-    justify-content: space-between;
-    margin: 10px auto;
-  }
-
-  // 精選日期
-  .featured_date {
-    color: white;
-    font-size: 1.5rem;
-  }
-
-  // 精選icon
-  .featured_views {
-    font-size: 2rem;
-    color: #ff6300;
-  }
-
-  .featured_icon {}
-
-  // 精選標題
-  .featured_title {
-    font-size: 2rem;
-    margin-bottom: 3%;
-  }
-
-  // 精選內容
-  .featured_content {
-    font-size: 1.5rem;
-    margin-bottom: 3%;
+          // 標題
+          .title {
+            margin-bottom: 10px;
+            h3 {
+              transition: all ease-in-out 0.3s;
+              @include breakpoint-1440 {
+                font-size: 15px;
+              }
+            }
+          }
+          // 內文
+          .news_text > p {
+            color: #afafaf;
+            line-height: 1.5;
+            text-align: justify;
+            @include breakpoint-1440 {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
   }
 
   // ====================down====================
 
   .down {
+    // border: 2px solid #ff0000;
     display: flex;
-  }
+    @include breakpoint-1440 {
+      flex-direction: column;
+    }
 
-  // 最近新聞
-  .recent_news_out {
-    // border: 2px solid red;
-    width: 60%;
-    margin-right: 3%;
-  }
+    // 最近新聞區塊
+    .recent_news_out {
+      // border: 2px solid rgb(37, 25, 202);
+      flex-basis: 0;
+      flex-grow: 1.5;
+      margin-right: 3%;
+      .recent_news {
+        margin-bottom: 3%;
+      }
+      .recent_ul {
+        .recent_a {
+          border: 2px solid $orange;
+          margin-bottom: 40px;
+          padding: 0;
+          display: grid;
+          grid-template-columns: 1.5fr 1fr;
 
-  .recent_news {
-    margin-bottom: 3%;
-  }
+          &:hover {
+            background-color: rgba(255, 68, 0, 0.123);
+            transition: all ease-in-out 0.4s;
+          }
+          &:hover > .aside_title {
+            color: $orange;
+            transition: all ease-in-out 0.4s;
+          }
 
-  .recent_ul {
-    // border: 2px solid blue;
-  }
+          @include breakpoint-414 {
+            grid-template-columns: 1fr;
+          }
 
-  .recent_li {
-    border: 2px solid #ff6300;
-    display: flex;
-    position: relative;
-    margin-bottom: 10%;
-  }
-
-  // 最近圖片
-  .recent_img {
-    // border: 2px solid yellow;
-  }
-
-  // 最近右內容
-  .recent_section {
-    // border: 2px solid green;
-    padding: 20px;
-  }
-
-  // 最近日期
-  .recent_date {
-    // border: 2px solid greenyellow;
-    font-size: 1.5rem;
-  }
-
-  // 最近標題
-  .recent_title {
-    // border: 2px solid brown;
-    color: white;
-    margin: 5% auto;
-    font-size: 3rem;
-  }
-
-  // 最近內容
-  .recent_content {
-    // border: 2px solid white;
-    line-height: 1.5;
-  }
-
-  // 最近瀏覽次數
-  .recent_views {
-    // border: 2px solid orchid;
-    color: #ff6300;
-    position: absolute;
-    right: 25px;
-    bottom: 5px;
-  }
-
-  // 最近icon
-  .recent_icon {
-    // border: 2px solid pink;
+          // 左側圖片
+          img {
+            width: 100%;
+            @include breakpoint-414 {
+              // max-width: 100%;
+            }
+          }
+          // 最近右內容
+          .recent_section {
+            padding: 20px;
+            @include flex-container(column, nowrap, space-between, flex-start);
+            // 日期
+            .recent_date {
+              font-size: 1.5rem;
+            }
+            // 標題
+            .recent_title {
+              padding: 5px 0;
+              @include breakpoint-414 {
+                font-size: 15px;
+              }
+            }
+          }
+          // 內容
+          .recent_content {
+            padding: 5px 0;
+            text-align: justify;
+            color: #afafaf;
+            line-height: 1.5;
+            @include breakpoint-1440 {
+              font-size: 12px;
+            }
+          }
+          // 最近瀏覽次數
+          .recent_views {
+            color: $orange;
+            align-self: end;
+            font-size: 1.8rem;
+            i {
+              padding: 0;
+              padding-left: 5px;
+            }
+          }
+        }
+      }
+    }
   }
 
   // ====================aside====================
   .aside_news {
-    // border: 2px solid red;
-    width: 35%;
-  }
+    // border: 2px solid rgb(37, 25, 202);
+    flex-basis: 0;
+    flex-grow: 1;
+    .aside_news_title {
+      // border: 2px solid blue;
+      margin-bottom: 3%;
+    }
+    .aside_ul {
+      // border: 2px solid yellow;
+      .aside_li {
+        border-bottom: 2px solid grey;
+        padding-top: 5%;
 
-  .aside_news_title {
-    // border: 2px solid blue;
-    margin-bottom: 3%;
-  }
-
-  .aside_ul {
-    // border: 2px solid yellow;
-  }
-
-  .aside_li {
-    border-bottom: 2px solid grey;
-    // margin-bottom: 5%;
-    padding-bottom: 5%;
-  }
-
-  .aside_section {
-    display: flex;
-  }
-
-  .aside_number {
-    // border: 2px solid orangered;
-    font-size: 5rem;
-    color: #ff6300;
-  }
-
-  .aside_title {
-    // border: 2px solid darkorchid;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-left: 20%;
+        .aside_section {
+          padding: 5px;
+          display: flex;
+          transition: all ease-in-out 0.4s;
+          &:hover {
+            background-color: rgba(255, 68, 0, 0.123);
+            transition: all ease-in-out 0.4s;
+          }
+          &:hover > .aside_title {
+            color: $orange;
+            transition: all ease-in-out 0.4s;
+          }
+          .aside_number {
+            font-size: 5rem;
+            color: #ff6300;
+          }
+          .aside_title {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            font-size: 2rem;
+            padding-left: 10%;
+            @include breakpoint-414 {
+              font-size: 1.5rem;
+            }
+          }
+        }
+      }
+    }
   }
 }
