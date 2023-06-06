@@ -1,19 +1,19 @@
-export default{
-    data(){
-        return{
+export default {
+    data() {
+        return {
             showPopup: false, //顯示加入願望清單
             showRemove: false, //顯示移除願望清單
         };
 
     },
-    props:["goods"],
-    methods:{
-        afterDiscount(i){                            
-            return Math.floor(this.goods[i].ORIGINAL_PRICE * this.goods[i].DISCOUNT_PERCENTAGE);                                      
+    props: ["goods"],
+    methods: {
+        afterDiscount(i) {
+            return Math.floor(this.goods[i].ORIGINAL_PRICE * this.goods[i].DISCOUNT_PERCENTAGE);
         },
         hoverHeart(item) {
-            if (!item.clicked) {   
-                console.log(typeof item);      
+            if (!item.clicked) {
+                console.log(typeof item);
                 item.hovered = true;
             }
         },
@@ -22,22 +22,21 @@ export default{
                 item.hovered = false;
             }
         },
-        toggleHeart(item){
+        toggleHeart(item) {
             item.clicked = !item.clicked;
             this.showPopup = item.clicked;
             this.showRemove = !item.clicked;
-            setTimeout(()=>{
+            setTimeout(() => {
                 this.showPopup = false;
                 this.showRemove = false;
             }, 1500); // 在 1500 毫秒後隱藏，可根據需要進行調整
         },
-        goProductPage(id){
-            location.href = `/product_information.html?id=${id}`;
-        
+        goProductPage(id) {
+            location.href = `./product_information.html?id=${id}`;
         },
     },
     template:
-    `
+        `
     <div class="each_good col-3" v-for="(item, index) in goods" :key="index" @click="goProductPage(item.GAME_ID)">
         <a>
             <div class="goods_top" data-test="{{item.GAME_NAME}}"> 
