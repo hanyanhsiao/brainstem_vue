@@ -33,10 +33,10 @@
           </div>
           <div class="member_info" id="member_info">
             <div class="img">
-              <i class="bi bi-person-circle"></i>
-              <div class="btn">選擇圖片</div>
-              <p>檔案大小：最大1MB<br>檔案限制：JPEG、PNG</p>
-            </div>
+                <div class="img_box">
+                  <img :src="selectedImage" alt="Selected Image">
+                </div>
+              </div>
             <div class="info">
               <div class="info_left">
                 <div class="mail">
@@ -76,11 +76,13 @@
             <h2>我的檔案</h2>
         <div class="member_info_revise ">
             <div class="img">
-                <i class="bi bi-person-circle"></i>
-                <div class="btn">選擇圖片</div>
-                <p>檔案大小：最大1MB<br>
-                    檔案限制：JPEG、PNG</p>
-            </div>
+                <div class="img_box">
+                  <img :src="selectedImage" alt="Selected Image">
+                </div>
+                <div class="btn" @click="openFileInput">選擇圖片</div>
+                <p>檔案大小：最大1MB<br>檔案限制：JPEG、PNG</p>
+                <input type="file" ref="fileInput" style="display: none" @change="handleFileChange">
+              </div>
             <div class="info" id="info">
                 <div class="info_left">
                     <div class="mail">
@@ -348,12 +350,24 @@
               nameError: '',
               nicknameError: '',
               phoneError: '',
-
+              selectedImage: './pic/img/member_photo/default.png',
+              imageFile: null,
           },
           mounted() {
             this.getMemberData();
           },
           methods: {
+            openFileInput() {
+                this.$refs.fileInput.click();
+                },
+                handleFileChange(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    this.selectedImage = URL.createObjectURL(file);
+                    this.imageFile = file;
+                    console.log(this.imageFile.name);
+                }
+                },
             getMemberData() {
             axios.defaults.withCredentials = true;
             axios.post(php_url + 'login_status.php')
@@ -414,30 +428,29 @@
                     this.nicknameError = '暱稱長度不能小於3個字';
                 }
             },
-            showEditForm(){
-                if (
-                    this.nameError ||
-                    this.nicknameError ||
-                    this.phoneError
-                ) {
-                    // 有錯誤，不提交表單
+            showEditForm() {
+                if (this.nameError || this.nicknameError || this.phoneError) {
                     return;
-                }else{
+                } else {
                     const formData = new FormData();
-                    formData.append("name" , this.name);
-                    formData.append("nickname" , this.nickname);
-                    formData.append("phone" , this.phone);
-                    formData.append("gender" , this.gender);
-                    formData.append("email" , this.email);
-                
-                axios.post(php_url + 'member_center_edit.php', formData)
-                .then(response => {  
-                    console.log('更改成功');
-                })
-                .catch(error => {
-                    // 處理錯誤
-                    console.error(error);
-                });
+                    formData.append('name', this.name);
+                    formData.append('nickname', this.nickname);
+                    formData.append('phone', this.phone);
+                    formData.append('gender', this.gender);
+                    formData.append('email', this.email);
+                    formData.append('image', this.imageFile);
+                    formData.append('image_name', this.imageFile.name);
+
+                    axios
+                    .post(php_url + 'member_center_edit.php', formData, {
+                        headers: { 'Content-Type': 'multipart/form-data' }, // 设置请求头
+                    })
+                    .then(response => {
+                        console.log('更改成功');
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
                 }
             }
         }       
@@ -509,6 +522,7 @@
                         .then(response => {
                             if(response.data.success === true){
                             this.couponsFunction();
+                            alert('新增成功');
                             }else{
                                 alert('此代碼無效，請輸入正確優惠券代碼');
                             }
