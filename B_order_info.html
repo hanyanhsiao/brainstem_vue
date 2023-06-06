@@ -44,24 +44,18 @@
                 <h6>訂單內容</h6>
                 <div class="B-shopitem">
                     <ul>
-                        <li>
-                            <img :src="order.GAME_COVER" alt="">
-                            <h6>{{order.GAME_NAME}}</h6>
-                            <p class="backend_color_active">{{order.DISCOUNT_PERCENTAGE}}</p>
+                        <li v-for="(game,index) in games" :key="index">
+                            <img :src="game.GAME_COVER" alt="">
+                            <h6>{{game.GAME_NAME}}</h6>
+                            <p class="backend_color_active">{{game.DISCOUNT_PERCENTAGE}}</p>
                             <template v-if="order.DISCOUNT_PERCENTAGE !== null && order.DISCOUNT_PERCENTAGE > 0">
-                                <h6>${{ order.AFTER_DISCOUNT_PRICE }}</h6>
-                                <p>${{ order.ORIGINAL_PRICE }}</p>
+                                <h6>${{ game.AFTER_DISCOUNT_PRICE }}</h6>
+                                <p>${{ game.ORIGINAL_PRICE }}</p>
                             </template>
                             <template v-else>
-                                <h6>${{ order.ORIGINAL_PRICE }}</h6>
+                                <h6>${{ game.ORIGINAL_PRICE }}</h6>
                             </template>
                         </li>
-                        <!-- <li>
-                            <img src="./pic/img/cover/7.jpg" alt="">
-                            <h6>王國之心2.8</h6>
-                            <p></p>
-                            <h6>$1,399</h6>
-                        </li> -->
                     </ul>
                 </div>
                 <div class="B_order_info_down">
@@ -92,7 +86,9 @@
         Vue.createApp({
             data() {
                 return {
-                    order: []
+                    order: [],
+                    // orders: []
+                    games:[]
                 }
             },
             methods: {
@@ -106,9 +102,11 @@
                 // 根据会员ID从服务器请求完整的会员数据
                 axios.get(php_url + 'B_order.php?id=' + orderId)
                     .then((response) => {
-                        this.order = response.data;
-                        console.log(this.order);
-                        // console.log(this.order.GAME_COVER);
+                        this.order = response.data.order;
+                        // this.orders = response.data;
+                        this.games = response.data.game
+                        console.log(response.data);
+                        // console.log(this.order);
                     })
                     .catch((error) => {
                         console.error(error);

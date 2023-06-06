@@ -21,9 +21,13 @@
             <!-- 右側上 -->
             <div class="right-top backend_color">
                 <form action="" method="">
-                    <label for="couponID"><h6>查詢類型：</h6></label>
+                    <label for="couponID">
+                        <h6>查詢類型：</h6>
+                    </label>
                     <input type="text" name="" id="couponID" placeholder="優惠券編號">
-                    <label for="coupon"><h6>查詢優惠券：</h6></label>
+                    <label for="coupon">
+                        <h6>查詢優惠券：</h6>
+                    </label>
                     <input type="text" name="" id="coupon">
                     <button type="submit" class="btn">查詢</button>
                     <button type="submit" class="btn bi bi-plus-lg" onclick="B_coupon_info_2(event)">增加優惠券</button>
@@ -50,14 +54,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(coupon,index) in coupons" :key="index" @click="vieworder(coupon.COUPON_ID)">
+                        <tr v-for="(coupon,index) in coupons" :key="index" @click="viewcoupon(coupon.COUPON_ID)">
                             <td>
                                 <h6>{{coupon.COUPON_CODE}}</h6>
                             </td>
                             <td>
                                 <h6>{{coupon.COUPON_NAME}}<br>
-                                {{coupon.COUPON_DETAIL}}<br>
-                                使用規則:{{coupon.MINIMUM_LIMIT}}</h6>
+                                    {{coupon.COUPON_DETAIL}}<br>
+                                    使用規則:{{coupon.MINIMUM_LIMIT}}</h6>
                             </td>
                             <td>
                                 <h6>{{coupon.COUPON_BEGIN}}~{{coupon.COUPON_END}}</h6>
@@ -75,16 +79,12 @@
         </div>
     </main>
     @@include('./layout/js.html')
-    <!-- <script>
-        function B_coupon_info(e) {
-            e.preventDefault();
-            window.location.href = "./B_coupon_info.html"
-        }
+    <script>
         function B_coupon_info_2(e) {
             e.preventDefault();
-            window.location.href = "./B_coupon_info_2.html"
+            window.location.href = "B_coupon_info_2.html"
         }
-    </script> -->
+    </script>
 
     <script>
         //渲染全部訂單資料
@@ -95,10 +95,10 @@
                 }
             },
             methods: {
-                vieworder(couponsid){
-                        //跳轉info
-                        window.location.href = 'B_coupon_info.html?id=' + couponsid;
-                    }
+                viewcoupon(couponsid) {
+                    //跳轉info
+                    location.href = 'B_coupon_info.html?id=' + couponsid;
+                }
             },
             mounted() {
                 axios.get(php_url + 'B_coupon.php')
@@ -107,7 +107,7 @@
                         this.coupons = response.data;
                     })
             }
-    
+
         }).mount('#B_coupon')
     </script>
 </body>

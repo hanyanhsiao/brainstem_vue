@@ -51,117 +51,20 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody onclick="B_games_info(event)">
-                        <tr>
+                    <tbody id="B_game">
+                        <tr v-for="(game,index) in games" :key="index" @click="viewgame(game.GAME_ID)">
                             <td>
-                                <h6>123456789000</h6>
+                                <h6>{{game.GAME_ID}}</h6>
                             </td>
                             <td>
-                                <h6>麥香</h6>
+                                <h6>{{game.GAME_NAME}}</h6>
                             </td>
                             <td>
-                                <h6>2021/2/22</h6>
+                                <h6>{{game.RELEASE_DATE}}</h6>
                             </td>
                             <td>
-                                <h6>正常</h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6>123456789000</h6>
-                            </td>
-                            <td>
-                                <h6>麥香</h6>
-                            </td>
-                            <td>
-                                <h6>2021/2/22</h6>
-                            </td>
-                            <td>
-                                <h6>正常</h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6>123456789000</h6>
-                            </td>
-                            <td>
-                                <h6>麥香</h6>
-                            </td>
-                            <td>
-                                <h6>2021/2/22</h6>
-                            </td>
-                            <td>
-                                <h6>正常</h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6>123456789000</h6>
-                            </td>
-                            <td>
-                                <h6>麥香</h6>
-                            </td>
-                            <td>
-                                <h6>2021/2/22</h6>
-                            </td>
-                            <td>
-                                <h6>正常</h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6>123456789000</h6>
-                            </td>
-                            <td>
-                                <h6>麥香</h6>
-                            </td>
-                            <td>
-                                <h6>2021/2/22</h6>
-                            </td>
-                            <td>
-                                <h6>正常</h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6>123456789000</h6>
-                            </td>
-                            <td>
-                                <h6>麥香</h6>
-                            </td>
-                            <td>
-                                <h6>2021/2/22</h6>
-                            </td>
-                            <td>
-                                <h6>正常</h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6>123456789000</h6>
-                            </td>
-                            <td>
-                                <h6>麥香</h6>
-                            </td>
-                            <td>
-                                <h6>2021/2/22</h6>
-                            </td>
-                            <td>
-                                <h6>正常</h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6>123456789000</h6>
-                            </td>
-                            <td>
-                                <h6>麥香</h6>
-                            </td>
-                            <td>
-                                <h6>2021/2/22</h6>
-                            </td>
-                            <td>
-                                <h6>正常</h6>
+                                <h6 v-if="game.GAME_STATUS == 1">上架</h6>
+                                <h6 v-else>下架</h6>
                             </td>
                         </tr>
                     </tbody>
@@ -175,9 +78,37 @@
     <script>
         function B_games_info(e) {
             e.preventDefault();
-            window.location.href = "./B_games_info.html"
+            // window.location.href = "./B_games_info.html"
         }
     </script>
+
+
+<script>
+    //渲染全部會員資料
+    Vue.createApp({
+        data() {
+            return {
+                games: []
+            }
+        },
+        methods: {
+            viewgame(gameid){
+                    //跳轉info
+                    window.location.href = 'B_games_info.html?id=' + gameid;
+                    // console.log(gameid);
+                }
+        },
+        mounted() {
+            axios.get(php_url + 'B_games.php')
+                .then((response) => {
+                    this.games = response.data;
+                    console.log(this.games);
+                    // console.log(memberid);
+                })
+        }
+
+    }).mount('#B_game')
+</script>
 </body>
 
 </html>
