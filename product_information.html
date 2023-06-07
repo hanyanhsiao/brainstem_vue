@@ -417,18 +417,18 @@
                 },
                 addAction(action) {
                     localStorage.setItem("good_" + this.currentGood.GAME_ID, JSON.stringify(this.currentGood));
+                    // =============購物車小圖示數量===================
+                    const cartItem = document.querySelector('.cart_number');
+                    // console.log(cartItem)
+                    if (cartItem.style.display == 'none')
+                        cartItem.style.display = 'flex';
+                    if (cartItem) {
+                        let keys = Object.keys(localStorage);
+                        let good_key = keys.filter((key) => { return key.startsWith("good_"); });
+                        cartItem.innerHTML = good_key.length;
+                    }
                     if (action == "toPay") {
                         location.href = "./checkout.html";
-                        // =============購物車小圖示數量===================
-                        const cartItem = document.querySelector('.cart_number');
-                        // console.log(cartItem)
-                        if (cartItem.style.display == 'none')
-                            cartItem.style.display = 'flex';
-                        if (cartItem) {
-                            let keys = Object.keys(localStorage);
-                            let good_key = keys.filter((key) => { return key.startsWith("good_"); });
-                            cartItem.innerHTML = good_key.length;
-                        }
                     }
                 },
             },
