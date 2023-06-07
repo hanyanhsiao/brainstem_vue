@@ -420,13 +420,13 @@
                     // =============購物車小圖示數量===================
                     const cartItem = document.querySelector('.cart_number');
                     // console.log(cartItem)
-                    if (cartItem.style.display == 'none')
-                        cartItem.style.display = 'flex';
                     if (cartItem) {
+                        cartItem.style.display = 'flex';
                         let keys = Object.keys(localStorage);
                         let good_key = keys.filter((key) => { return key.startsWith("good_"); });
                         cartItem.innerHTML = good_key.length;
                     }
+                    // =============購物車小圖示數量===================
                     if (action == "toPay") {
                         location.href = "./checkout.html";
                     }
