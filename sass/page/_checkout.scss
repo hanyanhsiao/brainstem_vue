@@ -17,8 +17,12 @@
     }
     .item{
         border:  1px solid $orange;
-        @include flex-container(row, nowrap, space-between ,center); 
-        
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        img{
+            width: 20%;
+        }
         .info{
             padding: 0 20px;
             flex-grow: 1;
@@ -34,10 +38,19 @@
                     display: inline;
                 }
             }
-            @include flex-container(column, nowrap, space-between ,flex-start); 
+            @include flex-container(column, nowrap, space-around ,flex-start); 
         }
         .price_box, .del{
             margin: 0 30px;
+            @include flex-container(column, nowrap, center ,center); 
+            .price_original{
+                margin-top: 20px;
+            }
+        }
+        .del:hover{
+            i, p{
+                color: $orange;
+            }
         }
         
     }
@@ -94,13 +107,17 @@
             .coupon{
                 border:  1px solid $orange;
                 padding: 20px 10px ;
-                p, input{
+                p{
                     display: inline;
                     margin-right: 10px;
                 }
-                input{
+                p.coupon_on{
+                    display: inline-block;
                     width: 50%;
                     margin: 0;
+                    border: 1px solid $orange;
+                    border-radius: 3px;
+                    padding: 10px;
                 }
                 margin-bottom: 40px;
             }
@@ -136,13 +153,13 @@
         width: 100%;
         height: 100%;
         background-color: rgba(0, 0, 0, 0.5);
-        display: none;
+        // display: none;
         pointer-events: all;
       }
     .coupon_con{
         width: 45%;
         height: 90vh;
-        display: none;
+        // display: none;
         background: rgba(43, 43, 43, 0.35);
         backdrop-filter: blur(15px);
         border-radius: 5px;
@@ -173,7 +190,6 @@
                     display: block;
                     padding: 8px;
                     // border: 1px solid $orange;
-                    
                 }
                 input{
                     width: auto;
@@ -191,6 +207,15 @@
             height: 60vh;
             border: 1px solid $orange;
             overflow: auto;
+            position: relative;
+            .coupon_hint{
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 3rem;
+                // margin: 20px auto;
+            }
             .coupon_item{
                 min-height: 150px;
                 padding: 20px;
