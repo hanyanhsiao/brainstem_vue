@@ -308,6 +308,7 @@
                     <button class="btn" @click="applyCoupon">使用</button>
                 </div>
                 <h3>我的優惠券</h3>
+                <p class="coupon_hint">{{ coupon_hint }}</p>
                 <div v-for="coupon in coupons" :key="coupon.id" class="coupon_item">
                     <div class="coupon_text">
                       <p class="title">{{ coupon.title }}</p>
@@ -463,6 +464,7 @@
                 data: {
                     couponCode: '',
                     member_ID : '',
+                    coupon_hint: '',
                     coupons: [
 
                     ]
@@ -472,6 +474,7 @@
                 },
                 methods: {
                     couponsFunction(){
+                        axios.defaults.withCredentials = true;
                         axios.post(php_url + 'login_status.php')
                         .then((response) => {
                             this.member_ID = response.data.member_ID;
@@ -481,6 +484,9 @@
                             axios.post( php_url + 'member_center_coupons.php', formData)
                             .then(response => {
                                 this.coupons = response.data;
+                                if(this.coupons.length <= 0){
+                                    this.coupon_hint = '請新增優惠券';
+                                }else{
                                 this.coupons = response.data.map(item => {
                                 let discount = '';
                                 let discounts = '';
@@ -504,7 +510,7 @@
                                 };
                                 });
                                 this.coupons.reverse();
-                                })
+                        }})
                             .catch(error => {
                                 console.log(error);
                                 });
