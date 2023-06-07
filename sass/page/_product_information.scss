@@ -259,15 +259,27 @@
             .detail_text {
                 position: relative;
 
+                span{
+                    margin-right: 10px;
+                }
+
                 h2 {
                     padding-top: 30px;
                     padding-bottom: 10px;
+                    display: inline-block;
 
                     @include breakpoint-414 {
                         font-size: 24px;
                     }
 
                     ;
+                }
+                .line_throught {
+                    text-decoration: line-through;
+                    font-size: $h4;
+                    @include breakpoint-414 {
+                      font-size: 14px;
+                    }
                 }
 
                 p {

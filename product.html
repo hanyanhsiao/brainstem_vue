@@ -66,7 +66,7 @@
                         <div class="swiper-wrapper">
                             <div class="hot_game_list col-4 swiper-slide" v-for="hotcategory in hotCategories"
                                 :key="hotcategory.id">
-                                <a class="hot_game_container" href="./product_cate.html">
+                                <a class="hot_game_container" :href="'./product_cate.html?cateId='+ hotcategory.id">
                                     <img :src="hotcategory.img" :alt="hotcategory.name">
                                     <h3>{{hotcategory.name}}</h3>
                                 </a>
@@ -123,11 +123,6 @@
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
-    <!-- <script src="./js/heart.js"></script> -->
-    <!-- <script src="./js/product_sidebar.js"></script> -->
-
-
 
     <script type="module">
         import ProductList from "./js/ProductList.js";
@@ -145,26 +140,7 @@
                     goodListFromDB_copy:[],
                     filterGoodsList: [],
                     goodListFromDB: [],
-                    // goodslist: [ //參考商品列表樣式
-                    //     {   
-                    //         id:1,
-                    //         name: '籃球熱潮物語 (Basketball Club Story)',
-                    //         img:'./pic/img/cover/1.jpg',
-                    //         discount: 0.6,
-                    //         originalPrice: 172,
-                    //         clicked:false,
-                    //         hovered:false,
-                    //         date:"2023-04-01",
-                    //         purchased:5,
-                    //         tagType:[
-                    //             {
-                    //                 sale:["夏季特賣"],
-                    //                 cate:["休閒","獨立製作","模擬","運動","策略"],
-                    //                 mode:["單人"]                                
-                    //             }
-                    //         ]
-                    //     },
-                    // ],
+                    
 
                     //商品排序選擇
                     isOpen: false,
@@ -180,36 +156,36 @@
 
                     //熱門類別區塊
                     hotGameList: '熱門遊戲類別',
-                    hotCategories: [
+                    hotCategories: [                        
                         {
                             id: 1,
-                            name: '運動',
-                            img: './pic/img/gameTypeIcon/coorperate.svg'
-                        },
+                            name: '冒險',
+                            img: './pic/img/gameTypeIcon/adventure.svg'
+                        },                        
                         {
                             id: 2,
-                            name: '動作',
-                            img: './pic/img/gameTypeIcon/personal.svg'
+                            name: '角色扮演',
+                            img: './pic/img/gameTypeIcon/role_play.svg'
                         },
                         {
                             id: 3,
-                            name: '解謎',
-                            img: './pic/img/gameTypeIcon/puzzle.svg'
-                        },
-                        {
-                            id: 4,
-                            name: '策略',
-                            img: './pic/img/gameTypeIcon/shot.svg'
-                        },
-                        {
-                            id: 5,
                             name: '休閒',
                             img: './pic/img/gameTypeIcon/casual.svg'
                         },
                         {
+                            id: 4,
+                            name: '解謎',
+                            img: './pic/img/gameTypeIcon/puzzle.svg'
+                        },
+                        {
+                            id: 5,
+                            name: '動作',
+                            img: './pic/img/gameTypeIcon/personal.svg'
+                        },                    
+                        {
                             id: 6,
-                            name: '冒險',
-                            img: './pic/img/gameTypeIcon/adventure.svg'
+                            name: '策略',
+                            img: './pic/img/gameTypeIcon/shot.svg'
                         },
                         {
                             id: 7,
@@ -218,9 +194,9 @@
                         },
                         {
                             id: 8,
-                            name: '角色扮演',
-                            img: './pic/img/gameTypeIcon/role_play.svg'
-                        }
+                            name: '運動',
+                            img: './pic/img/gameTypeIcon/coorperate.svg'
+                        },
 
                     ]
                 };
