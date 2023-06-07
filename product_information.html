@@ -27,13 +27,14 @@
 
         <h1 class="game_name">{{currentGood.GAME_NAME}}</h1>
 
-        <section class="information_top col-12" >
-            <div class="information_carousel col-8" >
-                <div style="--swiper-navigation-color: white; --swiper-pagination-color: red " class="swiper game_img_big">
+        <section class="information_top col-12">
+            <div class="information_carousel col-8">
+                <div style="--swiper-navigation-color: white; --swiper-pagination-color: red "
+                    class="swiper game_img_big">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <img :src="gameImg[0]" />
-                        </div>                        
+                        </div>
                         <div class="swiper-slide">
                             <img :src="gameImg[1]" />
                         </div>
@@ -48,7 +49,7 @@
                         </div>
                     </div>
                     <div class="img_big_prev"><i class="bi bi-chevron-left"></i></div>
-                    <div class="img_big_next"><i class="bi bi-chevron-right"></i></div>                    
+                    <div class="img_big_next"><i class="bi bi-chevron-right"></i></div>
                 </div>
                 <div class="thumb">
                     <!-- <div class="img_small_prev">
@@ -58,7 +59,7 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <img :src="gameImg[0]" />
-                            </div>                        
+                            </div>
                             <div class="swiper-slide">
                                 <img :src="gameImg[1]" />
                             </div>
@@ -82,9 +83,11 @@
             <div class="information_detail col-4">
                 <img class="logo_cover" :src="gameImg[5]" alt="">
                 <div class="detail_text">
-                    <span v-show="currentGood.DISCOUNT_PERCENTAGE > 0 " class="discount">-{{100 - currentGood.DISCOUNT_PERCENTAGE * 100}}%</span>
+                    <span v-show="currentGood.DISCOUNT_PERCENTAGE > 0 " class="discount">-{{100 -
+                        currentGood.DISCOUNT_PERCENTAGE * 100}}%</span>
                     <span class="price" v-show="currentGood.DISCOUNT_PERCENTAGE > 0">${{goodafterDiscount()}}</span>
-                    <h2 class="orinal_price" :class="{'line_throught':currentGood.DISCOUNT_PERCENTAGE > 0}">${{currentGood.ORIGINAL_PRICE}}</h2>
+                    <h2 class="orinal_price" :class="{'line_throught':currentGood.DISCOUNT_PERCENTAGE > 0}">
+                        ${{currentGood.ORIGINAL_PRICE}}</h2>
                     <p>遊戲評價：
                         <i class="bi bi-star-fill" v-if="gameComments.length > 0"></i>
                         <span class="star_rating">{{average}}</span>
@@ -111,17 +114,12 @@
                     </div>
                     <div class="heart_and_share">
                         <!-- <i class="bi bi-suit-heart heart_btn"></i> -->
-                        <i
-                            class="bi heart_btn"
-                            :class="{
+                        <i class="bi heart_btn" :class="{
                             'bi-suit-heart': !currentGood.hovered,
                             'bi-suit-heart-fill': currentGood.hovered || currentGood.clicked ,
                             'bi-suit-heart-clicked': currentGood.clicked
-                            }"
-                            @mouseenter="hoverHeart(currentGood)"
-                            @mouseleave="leaveHeart(currentGood)"
-                            @click.stop="toggleHeart(currentGood)"
-                        ></i>
+                            }" @mouseenter="hoverHeart(currentGood)" @mouseleave="leaveHeart(currentGood)"
+                            @click.stop="toggleHeart(currentGood)"></i>
                         <i class="bi bi-share-fill share_btn"></i>
                     </div>
                 </div>
@@ -133,7 +131,7 @@
             <div class="heart_popup" :class="{'active':currentGood.showPopup}">
                 <i class="bi bi-check-circle"></i>
                 <h2>已加入願望清單</h2>
-            </div>      
+            </div>
             <div class="heart_remove" :class="{'active':currentGood.showRemove}">
                 <i class="bi bi-trash"></i>
                 <h2>已從願望清單移除</h2>
@@ -166,7 +164,7 @@
                 <div class="swiper-wrapper">
                     <div class="more_and_less">
                         <button class="look_more" v-show="gameComments.length > 4">查看更多</button>
-                        <button class="look_less" >收合評論</button>
+                        <button class="look_less">收合評論</button>
                     </div>
                     <div class="each_comment col-3 swiper-slide" v-for="gamecomment in gameComments">
                         <div class="comment_top">
@@ -187,7 +185,7 @@
                             <i class="bi bi-hand-thumbs-up"></i>
                             <p class="comment_content">{{gamecomment.COMMENT_CONTENT}}</p>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
@@ -247,30 +245,29 @@
                 </div>
                 <div class="recommend_game col-12 swiper myswiper">
                     <div class="swiper-wrapper">
-                        <div class="each_good col-3 swiper-slide" v-for="(recommend, index) in recommendGoods" :key="index" @click="goProductPage(recommend.GAME_ID)">
+                        <div class="each_good col-3 swiper-slide" v-for="(recommend, index) in recommendGoods"
+                            :key="index" @click="goProductPage(recommend.GAME_ID)">
                             <a>
-                                <div class="goods_top" data-test="{{recommend.GAME_NAME}}" > 
-                                    <img :src="recommend.GAME_COVER" :alt="recommend.GAME_NAME">                                   
-                                    <span v-show="recommend.DISCOUNT_PERCENTAGE > 0 " class="discount">-{{100 - recommend.DISCOUNT_PERCENTAGE * 100}}%</span>
-                                    <i
-                                        class="bi"
-                                        :class="{
+                                <div class="goods_top" data-test="{{recommend.GAME_NAME}}">
+                                    <img :src="recommend.GAME_COVER" :alt="recommend.GAME_NAME">
+                                    <span v-show="recommend.DISCOUNT_PERCENTAGE > 0 " class="discount">-{{100 -
+                                        recommend.DISCOUNT_PERCENTAGE * 100}}%</span>
+                                    <i class="bi" :class="{
                                         'bi-suit-heart': !recommend.hovered,
                                         'bi-suit-heart-fill': recommend.hovered || recommend.clicked ,
                                         'bi-suit-heart-clicked': recommend.clicked
-                                        }"
-                                        @mouseenter="hoverHeart(recommend)"
-                                        @mouseleave="leaveHeart(recommend)"
-                                        @click.stop="toggleHeartRecommend(recommend)"
-                                    ></i>
-                                </div>                            
+                                        }" @mouseenter="hoverHeart(recommend)" @mouseleave="leaveHeart(recommend)"
+                                        @click.stop="toggleHeartRecommend(recommend)"></i>
+                                </div>
                                 <div class="goods_text">
                                     <h3>{{recommend.GAME_NAME}}</h3>
-                                    <span class="price" v-show="recommend.DISCOUNT_PERCENTAGE > 0">${{afterDiscount(index)}}</span>
-                                    <span class="price_original" :class="{'line_throught':recommend.DISCOUNT_PERCENTAGE > 0}">${{recommend.ORIGINAL_PRICE}}</span>
-                                </div>              
-                            </a>                         
-                        </div>                        
+                                    <span class="price"
+                                        v-show="recommend.DISCOUNT_PERCENTAGE > 0">${{afterDiscount(index)}}</span>
+                                    <span class="price_original"
+                                        :class="{'line_throught':recommend.DISCOUNT_PERCENTAGE > 0}">${{recommend.ORIGINAL_PRICE}}</span>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -278,7 +275,7 @@
             <div class="heart_popup" :class="{'active':showPopup}">
                 <i class="bi bi-check-circle"></i>
                 <h2>已加入願望清單</h2>
-            </div>      
+            </div>
             <div class="heart_remove" :class="{'active':showRemove}">
                 <i class="bi bi-trash"></i>
                 <h2>已從願望清單移除</h2>
@@ -297,142 +294,152 @@
     <script>
 
         const productInformation = Vue.createApp({
-            data(){
-                return{
-                    currentGood:{},
-                    gameImg:[],
-                    goodSysEnv:"",
-                    recommendGoods:[],
-                    gameComments:[],
-                    showPopup:false,
-                    showRemove:false                                        
+            data() {
+                return {
+                    currentGood: {},
+                    gameImg: [],
+                    goodSysEnv: "",
+                    recommendGoods: [],
+                    gameComments: [],
+                    showPopup: false,
+                    showRemove: false
                 }
             },
-            created(){
+            created() {
                 //該頁面主要遊戲內容
                 let getUrlString = location.href;
                 let id = new URL(getUrlString).searchParams.get('id');
-                const url = php_url + 'product_list.php?id='+id+'&action=none';
+                const url = php_url + 'product_list.php?id=' + id + '&action=none';
                 axios.get(`${url}`)
                     .then((response) => {
                         this.currentGood = response.data[0];
                         this.currentGood.hovered = false;
-                        this.currentGood.clicked = false;  
-                        this.currentGood.showPopup =false, //顯示加入願望清單
-                        this.currentGood.showRemove =false, //顯示移除願望清單
-                        this.goodSysEnv = this.currentGood.SYSTEM_REQUIREMENT;
-                                        
-                });
+                        this.currentGood.clicked = false;
+                        this.currentGood.showPopup = false, //顯示加入願望清單
+                            this.currentGood.showRemove = false, //顯示移除願望清單
+                            this.goodSysEnv = this.currentGood.SYSTEM_REQUIREMENT;
+
+                    });
                 //推薦遊戲區
-                const url_recommend = php_url + 'product_list.php?id='+id+'&action=recommend';
+                const url_recommend = php_url + 'product_list.php?id=' + id + '&action=recommend';
                 axios.get(`${url_recommend}`)
                     .then((response) => {
                         this.recommendGoods = response.data;
 
-                        for(let recommendGood of this.recommendGoods){
+                        for (let recommendGood of this.recommendGoods) {
                             recommendGood.hovered = false;
-                            recommendGood.clicked = false; 
+                            recommendGood.clicked = false;
                         };
 
                     });
-                
+
                 //遊戲圖片
-                const url_img = php_url + 'product_img.php?id='+id;
+                const url_img = php_url + 'product_img.php?id=' + id;
                 axios.get(`${url_img}`)
                     .then((response) => {
 
-                        for(let data of response.data){
+                        for (let data of response.data) {
                             this.gameImg.push(data["IMG_PATH"])
-                        }                                          
-                });
+                        }
+                    });
 
                 //遊戲評論
-                const url_comment = php_url + 'game_comment.php?id='+id;
+                const url_comment = php_url + 'game_comment.php?id=' + id;
                 axios.get(`${url_comment}`)
                     .then((response) => {
-                        this.gameComments = response.data;                                                    
-                });
-                
+                        this.gameComments = response.data;
+                    });
+
 
             },
-            computed:{
-                numFilter: function(value) {                   
-                    return (value) =>{
-                        let result = (value/60).toFixed(1);
+            computed: {
+                numFilter: function (value) {
+                    return (value) => {
+                        let result = (value / 60).toFixed(1);
                         return result;
-                    }                   
+                    }
                 },
-                average:function(){
+                average: function () {
                     let sum = 0;
                     let avg = 0;
-                    if(this.gameComments.length >0){
-                        for(let gameComment of this.gameComments){
-                            sum += gameComment.STAR_RATING                        
+                    if (this.gameComments.length > 0) {
+                        for (let gameComment of this.gameComments) {
+                            sum += gameComment.STAR_RATING
                         }
                         avg = (sum / this.gameComments.length).toFixed(1) + " / 5 ";
-                    }else{
-                        avg="尚無評價"
-                    }                                      
-                   
+                    } else {
+                        avg = "尚無評價"
+                    }
+
                     return avg;
                 }
             },
 
             methods: {
-                afterDiscount(i){                            
-                    return Math.floor(this.recommendGoods[i].ORIGINAL_PRICE * this.recommendGoods[i].DISCOUNT_PERCENTAGE);                                      
+                afterDiscount(i) {
+                    return Math.floor(this.recommendGoods[i].ORIGINAL_PRICE * this.recommendGoods[i].DISCOUNT_PERCENTAGE);
                 },
-                goodafterDiscount(){                            
-                    return Math.floor(this.currentGood.ORIGINAL_PRICE * this.currentGood.DISCOUNT_PERCENTAGE);                                      
+                goodafterDiscount() {
+                    return Math.floor(this.currentGood.ORIGINAL_PRICE * this.currentGood.DISCOUNT_PERCENTAGE);
                 },
                 hoverHeart(recommend) {
-                    if (!recommend.clicked) {                        
+                    if (!recommend.clicked) {
                         recommend.hovered = true;
                     }
-                    
-                console.log(this.gameComments.length);
+
+                    console.log(this.gameComments.length);
                 },
                 leaveHeart(recommend) {
                     if (!recommend.clicked) {
                         recommend.hovered = false;
                     }
                 },
-                toggleHeart(currentGood){
+                toggleHeart(currentGood) {
                     currentGood.clicked = !currentGood.clicked;
                     currentGood.showPopup = currentGood.clicked;
                     currentGood.showRemove = !currentGood.clicked;
-                    setTimeout(()=>{
+                    setTimeout(() => {
                         currentGood.showPopup = false;
                         currentGood.showRemove = false;
                     }, 1500); // 在 1500 毫秒後隱藏，可根據需要進行調整
                 },
-                toggleHeartRecommend(recommend){
+                toggleHeartRecommend(recommend) {
                     recommend.clicked = !recommend.clicked;
                     this.showPopup = recommend.clicked;
                     this.showRemove = !recommend.clicked;
-                    setTimeout(()=>{
+                    setTimeout(() => {
                         this.showPopup = false;
                         this.showRemove = false;
                     }, 1500); // 在 1500 毫秒後隱藏，可根據需要進行調整
                 },
-                goProductPage(id){
+                goProductPage(id) {
                     location.href = `./product_information.html?id=${id}`;
                 },
-                addAction(action){
+                addAction(action) {
                     localStorage.setItem("good_" + this.currentGood.GAME_ID, JSON.stringify(this.currentGood));
-                    if(action == "toPay"){
+                    if (action == "toPay") {
                         location.href = "./checkout.html";
+                        // =============購物車小圖示數量===================
+                        const cartItem = document.querySelector('.cart_number');
+                        // console.log(cartItem)
+                        if (cartItem.style.display == 'none')
+                            cartItem.style.display = 'flex';
+                        if (cartItem) {
+                            let keys = Object.keys(localStorage);
+                            let good_key = keys.filter((key) => { return key.startsWith("good_"); });
+                            cartItem.innerHTML = good_key.length;
+                        }
                     }
                 },
             },
-            mounted(){ 
+            mounted() {
             },
-            
+
         });
 
         productInformation.mount('#product_information');
 
-        
+
 
         //確認加入購物車彈出視窗設定===============================================================================
         const checkAdd = document.getElementsByClassName("shopcar_btn")[0];
@@ -447,16 +454,16 @@
 
         //點擊評論彈出視窗設定===============================================================================
         const clickComment = document.querySelectorAll(".each_comment");
-              comment_popup_outer = document.getElementsByClassName("comment_popup_outer")[0];
-              comment_popup_close = document.getElementsByClassName("comment_popup_close")[0];
+        comment_popup_outer = document.getElementsByClassName("comment_popup_outer")[0];
+        comment_popup_close = document.getElementsByClassName("comment_popup_close")[0];
         clickComment.forEach(function (comment) {
             comment.addEventListener("click", function (e) {
                 comment_popup_outer.classList.add("active");
-                comment_popup_close.addEventListener("click", function(e){
+                comment_popup_close.addEventListener("click", function (e) {
                     comment_popup_outer.classList.remove("active");
-                    
+
                 });
-                
+
             });
         });
 
@@ -484,15 +491,15 @@
 
             });
 
-            lookLessButton.addEventListener("click", function(){
+            lookLessButton.addEventListener("click", function () {
                 lookMoreButton.style.display = "block";
                 lookLessButton.style.display = "none";
                 commentPages.forEach(function (page) {
                     page.style.display = "none";
                 });
                 for (var i = 4; i < commentSections.length; i++) {
-                commentSections[i].style.display = "none";
-            }   
+                    commentSections[i].style.display = "none";
+                }
             });
 
             // 初始化只顯示四則評論
@@ -558,7 +565,7 @@
                     }, 600);
                     e.preventDefault();
                     e.stopPropagation();
-                    
+
 
                 } else {
                     thumbsUp.classList.remove("bi-hand-thumbs-up-fill");
@@ -567,7 +574,7 @@
                     e.stopPropagation();
                 }
             });
-        });      
+        });
 
         //swiper
         $(document).ready(function () {

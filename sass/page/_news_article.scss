@@ -34,12 +34,12 @@
     line-height: 2;
   }
 
-  .return {
+  .button_return {
     @include flex-container(row, nowrap, space-between, center);
     text-align: center;
     display: block;
     font-size: 2rem;
-    border-radius: 10px;
+    border-radius: 5px;
     margin: 40px auto;
     background-color: $purple;
     border: 0;

@@ -79,7 +79,11 @@
                                 <path
                                     d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
                             </svg>
+                            <!-- 購物車商品數量 -->
+                            <div class="cart_number" v-show="cartItem!=0 && isLogin==true">{{cartItem}}</div>
+                            <!-- v-show="cartItem!=0" -->
                         </a>
+
                     </li>
                 </ul>
             </ul>
@@ -124,6 +128,7 @@
                         <li><a href="./news.html">新聞 </a></li>
                         <li><a href="./AI_test_index.html">智能推薦</a></li>
                         <li><a href="./game_library.html">遊戲庫 </a></li>
+                        <li><a href="./about.html">關於 </a></li>
                         <li><a href="./login.html">登入 </a></li>
                         <li><a href="./member_center.html">會員中心</a></li>
                         <li><a href="./checkout.html">購物車</a></li>
@@ -157,6 +162,7 @@
                 isLogin: false,
                 photo: null,
                 nickname: null,
+                cartItem: 0
             }
         },
         methods: {
@@ -181,6 +187,14 @@
                         this.nickname = response.data.nickname.substring(0, 1);
                     }
                 })
+        },
+        created() {
+            let keys = Object.keys(localStorage);
+            // console.log(keys);
+            // 找出good_開頭的的key
+            let good_key = keys.filter((key) => { return key.startsWith("good_"); });
+            // console.log(good_key.length);
+            this.cartItem = good_key.length;
         }
     }).mount(".b_2");
 
@@ -308,7 +322,7 @@
 
     // ===========近期預覽===============
 
-    
+
 
 
 
