@@ -14,327 +14,64 @@
     <!-- header -->
     @@include('./layout/header.html')
 
-    <main class="product_cate">
+    <main class="product_cate" id="product_cate" v-if="category">
+
+        <!-- 類別標題 -->
         <div class="banner col-12">
             <div class="banner_main">
-                <img class="game_cate" src="./pic/img/gameTypeIcon/coorperate.svg" alt="">
-                <h1>多人合作</h1>
+                <img class="game_cate" :src="category.img" alt="">
+                <h1>{{ category.name }}</h1>
             </div>
         </div>
+
+        <!-- 麵包屑 -->
         <nav id="cate_breadcrumb">
             <a href="./index.html">首頁</a><i class="bi bi-chevron-right a_after"></i>
             <a href="./product.html">商品</a><i class="bi bi-chevron-right a_after"></i>
-            <a href="./product_cate.html">多人合作</a>
+            <a href="#">{{ category.name }}</a>
         </nav>
 
+        <!-- 主要區域 -->
         <section class="cate_main col-12">
 
-            <nav class="product_sidebar col-3">
-                <div class="tag_choose">已選擇的標籤 <span class="clear">清除全部</span></div>
-                <div id="tags_container"></div>
-                <ul>
-                    <li>
-                        <div class="button">限時促銷活動
-                            <i class="bi bi-chevron-down arrow"></i>
-                        </div>
-                        <ul class="sale_list">
-                            <li class="item"><span>燒腦解謎</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>夏季特賣</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>角色扮演</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>射擊遊戲</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>太空探險</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>恐怖遊戲</span><i class="bi bi-check-lg check-icon"></i></li>
-                        </ul>
-                    </li>
+            <!-- 側邊欄 -->
+            <product-sidebar @filter-list="getFilterGoodList"></product-sidebar>
 
-                    <li>
-                        <div class="button">遊戲類型
-                            <i class="bi bi-chevron-down arrow"></i>
-                        </div>
-                        <ul class="cate_list">
-                            <li class="item"><span>動作</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>冒險</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>角色扮演</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>策略</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>模擬</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>經營</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>城市營造</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>農場模擬</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>戰爭</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>休閒</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>日系</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>運動</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>棒球</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>網球</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>競速</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>賽馬</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>賽車</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>烹飪</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>可愛</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>兒童</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>太空模擬</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>殖民模擬</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>像素風</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>2D格鬥</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>獨立遊戲</span><i class="bi bi-check-lg check-icon"></i></li>
-                        </ul>
-                    </li>
 
-                    <li>
-                        <div class="button">遊戲模式
-                            <i class="bi bi-chevron-down arrow"></i>
-
-                        </div>
-                        <ul class="mode_list">
-                            <li class="item"><span>單人</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>多人</span><i class="bi bi-check-lg check-icon"></i></li>
-                            <li class="item"><span>合作</span><i class="bi bi-check-lg check-icon"></i></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <div class="button">金額
-                            <i class="bi bi-chevron-down arrow"></i>
-
-                        </div>
-                        <ul class="price_list">
-                            <li class="item price_range">
-                                <!-- <label for="minAmount">最低金額</label> -->
-                                <span for="minAmount">最低金額</span>
-                                <input type="text" class="form-control" id="minAmount">
-                            </li>
-                            <li class="item price_range">
-                                <!-- <label for="maxAmount">最高金額</label> -->
-                                <span for="maxAmount">最高金額</span>
-                                <input type="text" class="form-control" id="maxAmount">
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                <button class="apply_choose">套用</button>
-            </nav>
-
+            <!-- 商品列表 -->
             <div class="products col-9">
+
+                <!-- 商品排序下拉選單 -->
                 <div class="add_filter">
                     <div class="sidebar_btn">
                         <span>篩選器</span>
                         <i class="bi bi-filter"></i>
                     </div>
-                    <div id="app" class="product_order">
+                    <div class="product_order">
                         <h3>排序：</h3>
-                        <div class="order_btn" @click="toggleOptions">
+                        <div class="order_btn" @click="toggleOptions" :class="{'active': isOpen}">
                             <span class="option_text">{{ selectedOption }}</span>
-                            <i :class="{'bi': true, 'bi-chevron-down': !isOpen, 'bi-chevron-up': isOpen}"></i>
+                            <i class="bi bi-chevron-down"></i>
                         </div>
-                        <ul class="order_options" v-if="isOpen">
+                        <ul class="order_options" v-show="isOpen === true">
                             <li class="option" v-for="option in options" :key="option.text"
-                                @click="selectOption(option)">
+                                @click="selectOption(option);sortedGoods()">
                                 <span class="option_text">{{ option.text }}</span>
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="product_goods" id="goodsIn">
-                    <!-- <div class="each_good" v-for="(item, index) in goodslist" :key="index">
-                        <div class="goods_top" style="background-image: url({{item.url}});">
-                            <span class="discount">-{{(1-item.discount) * 100}}%</span>
-                            <i class="bi bi-suit-heart-fill"></i>
-                        </div>
-                        <div class="goods_text">
-                            <h3>{{item.name}}</h3>
-                            <span class="price">${{item.originalPrice * (1-item.discount) }}</span>
-                            <span class="price_original">${{item.orinalPrice}}</span>
-                        </div>
-                    </div> -->
-                    <div class="each_good col-3">
-                        <a href="./product_information.html">
-                            <div class="goods_top"> 
-                                <img src="./pic/img/cover/1.jpg" alt="">                                   
-                                <span class="discount">-40%</span>
-                                <i class="bi bi-suit-heart"></i>
-                            </div>                            
-                            <div class="goods_text">
-                                <h3>籃球熱潮物語 (Basketball Club Story)</h3>
-                                <span class="price">$103</span>
-                                <span class="price_original">$172</span>
-                            </div>   
-                        </a>                         
-                    </div>
-                    <div class="each_good col-3">
-                        <a href="./product_information.html">
-                            <div class="goods_top">
-                                <img src="./pic/img/cover/2.jpg" alt="">
-                                <span class="discount">-40%</span>
-                                <i class="bi bi-suit-heart"></i>
-                            </div>                            
-                            <div class="goods_text">
-                                <h3>南國度假島物語 (Tropical Resort Story)</h3>
-                                <span class="price">$103</span>
-                                <span class="price_original">$172</span>
-                            </div>   
-                        </a>                         
-                    </div>
-                    <div class="each_good col-3">
-                        <a href="./product_information.html">
-                            <div class="goods_top">
-                                <img src="./pic/img/cover/3.jpg" alt="">
-                                <span class="discount">-40%</span>
-                                <i class="bi bi-suit-heart"></i>
-                            </div>                            
-                            <div class="goods_text">
-                                <h3>夢想商店街物語 (Biz Builder Delux)</h3>
-                                <span class="price">$103</span>
-                                <span class="price_original">$172</span>
-                            </div>  
-                        </a>                          
-                    </div>
-                    <div class="each_good col-3">
-                        <a href="./product_information.html">
-                            <div class="goods_top">
-                                <img src="./pic/img/cover/4.jpg" alt="">
-                                <span class="discount">-40%</span>
-                                <i class="bi bi-suit-heart"></i>
-                            </div>                            
-                            <div class="goods_text">
-                                <h3>百貨公司物語2 (Mega Mall Story 2)</h3>
-                                <span class="price">$103</span>
-                                <span class="price_original">$172</span>
-                            </div>   
-                        </a>                         
-                    </div>
-                    <div class="each_good col-3">
-                        <a href="./product_information.html">
-                            <div class="goods_top">
-                                <img src="./pic/img/cover/5.jpg" alt="">
-                                <span class="discount">-40%</span>
-                                <i class="bi bi-suit-heart"></i>
-                            </div>                            
-                            <div class="goods_text">
-                                <h3>風雲拳擊物語 (Boxing Gym Story)</h3>
-                                <span class="price">$103</span>
-                                <span class="price_original">$172</span>
-                            </div>    
-                        </a>                        
-                    </div>
-                    <div class="each_good col-3">
-                        <a href="./product_information.html">
-                            <div class="goods_top">
-                                <img src="./pic/img/cover/6.jpg" alt="">
-                                <span class="discount">-40%</span>
-                                <i class="bi bi-suit-heart"></i>
-                            </div>                            
-                            <div class="goods_text">
-                                <h3>金字塔王國物語 (The Pyraplex)</h3>
-                                <span class="price">$103</span>
-                                <span class="price_original">$172</span>
-                            </div>    
-                        </a>                        
-                    </div>
-                    <div class="each_good col-3">
-                        <a href="./product_information.html">
-                            <div class="goods_top">
-                                <img src="./pic/img/cover/7.jpg" alt="">
-                                <span class="discount">-40%</span>
-                                <i class="bi bi-suit-heart"></i>
-                            </div>                            
-                            <div class="goods_text">
-                                <h3>星之開羅君 (Kairobotica)</h3>
-                                <span class="price">$103</span>
-                                <span class="price_original">$172</span>
-                            </div> 
-                        </a>                           
-                    </div>
-                    <div class="each_good col-3">
-                        <a href="./product_information.html">
-                            <div class="goods_top">
-                                <img src="./pic/img/cover/8.jpg" alt="">
-                                <span class="discount">-40%</span>
-                                <i class="bi bi-suit-heart"></i>
-                            </div>                            
-                            <div class="goods_text">
-                                <h3>晴空農場物語 (Pocket Harvest)</h3>
-                                <span class="price">$103</span>
-                                <span class="price_original">$172</span>
-                            </div>  
-                        </a>                          
-                    </div>
-                    <div class="each_good col-3">
-                        <a href="./product_information.html">
-                            <div class="goods_top">
-                                <img src="./pic/img/cover/9.jpg" alt="">
-                                <span class="discount">-40%</span>
-                                <i class="bi bi-suit-heart"></i>
-                            </div>                            
-                            <div class="goods_text">
-                                <h3>創意漢堡物語 (Burger Bistro Story)</h3>
-                                <span class="price">$103</span>
-                                <span class="price_original">$172</span>
-                            </div> 
-                        </a>                           
-                    </div>
-                    <div class="each_good col-3">
-                        <a href="./product_information.html">
-                            <div class="goods_top">
-                                <img src="./pic/img/cover/10.jpg" alt="">
-                                <span class="discount">-40%</span>
-                                <i class="bi bi-suit-heart"></i>
-                            </div>                            
-                            <div class="goods_text">
-                                <h3>溫泉物語2 (Hot Springs Story 2)</h3>
-                                <span class="price">$103</span>
-                                <span class="price_original">$172</span>
-                            </div>
-                        </a>                            
-                    </div>
-                    <div class="each_good col-3">
-                        <a href="./product_information.html">
-                            <div class="goods_top">
-                                <img src="./pic/img/cover/11.jpg" alt="">
-                                <span class="discount">-40%</span>
-                                <i class="bi bi-suit-heart"></i>
-                            </div>                            
-                            <div class="goods_text">
-                                <h3>開拓神秘島DX (Beastie Bay DX)</h3>
-                                <span class="price">$103</span>
-                                <span class="price_original">$172</span>
-                            </div>  
-                        </a>                          
-                    </div>
-                    <div class="each_good col-3">
-                        <a href="./product_information.html">
-                            <div class="goods_top">
-                                <img src="./pic/img/cover/12.jpg" alt="">
-                                <span class="discount">-40%</span>
-                                <i class="bi bi-suit-heart"></i>
-                            </div>                            
-                            <div class="goods_text">
-                                <h3>網球俱樂部物語 (Tennis Club Story)</h3>
-                                <span class="price">$103</span>
-                                <span class="price_original">$172</span>
-                            </div> 
-                        </a>                           
-                    </div>   
-                    <div class="heart_popup">
-                        <i class="bi bi-check-circle"></i>
-                        <h2>已加入願望清單</h2>
-                    </div>      
-                    <div class="heart_remove">
-                        <i class="bi bi-trash"></i>
-                        <h2>已從願望清單移除</h2>
-                    </div>                     
+                <!-- 商品陳列區 -->
+                <div class="product_goods">
+                    <product-list :goods="displayedGoods()"></product-list>
                 </div>
 
+                <!-- 分頁器 -->
+                <paginator :total-pages="totalPages()" :current-page="currentPage" @page-change="goToPage"
+                        @previous-page="previousPage" @next-page="nextPage">
+                </paginator>
 
-                <nav class="pages">
-                    <ul class="product_pages">
-                        <li class="each_page"><a class="active" href="#">1</a></li>
-                        <li class="each_page"><a href="#">2</a></li>
-                        <li class="each_page"><a href="#">3</a></li>
-                        <li class="each_page"><a href="#">4</a></li>
-                        <li class="each_page"><a href="#"><i class="bi bi-chevron-right"></i></a></li>
-                    </ul>
-                </nav>
             </div>
         </section>
 
@@ -345,39 +82,200 @@
     @@include('./layout/js.html')
     <!-- 以下可以放自己的js -->
 
-    <script src="./vendors/vue/vue.global.js"></script>
-    <script src="./js/heart.js"></script>
-    <script src="./js/product_sidebar.js"></script>
+    <script type="module">
 
-    <script>
+        // 引入子元件
+        import ProductList from "./js/ProductList.js";
+        import Paginator from "./js/Paginator.js";
+        import ProductSidebar from "./js/ProductSidebar.js";
 
+        // 主要內容渲染
         const app = Vue.createApp({
             data() {
                 return {
+                    //商品排序
                     isOpen: false,
                     selectedOption: '選擇排序方式',
+                    selectedOptionValue: '',
                     options: [
                         { text: '最受歡迎', value: 'more_popular' },
                         { text: '日期由新到舊', value: 'new_to_old' },
                         { text: '日期由舊到新', value: 'old_to_new' },
                         { text: '價格由高到低', value: 'high_to_low' },
                         { text: '價格由低到高', value: 'low_to_high' }
+                    ],
+
+                    //商品區
+                    currentPage: 1, // 當前頁碼
+                    itemsPerPage: 8, // 每頁顯示商品數量
+                    filterGoodsList: [],
+                    goodListFromDB: [],
+                    hotCategories: [                        
+                        {
+                            id: 1,
+                            name: '冒險',
+                            img: './pic/img/gameTypeIcon/adventure.svg'
+                        },                        
+                        {
+                            id: 2,
+                            name: '角色扮演',
+                            img: './pic/img/gameTypeIcon/role_play.svg'
+                        },
+                        {
+                            id: 3,
+                            name: '休閒',
+                            img: './pic/img/gameTypeIcon/casual.svg'
+                        },
+                        {
+                            id: 4,
+                            name: '解謎',
+                            img: './pic/img/gameTypeIcon/puzzle.svg'
+                        },
+                        {
+                            id: 5,
+                            name: '動作',
+                            img: './pic/img/gameTypeIcon/personal.svg'
+                        },                    
+                        {
+                            id: 6,
+                            name: '策略',
+                            img: './pic/img/gameTypeIcon/shot.svg'
+                        },
+                        {
+                            id: 7,
+                            name: '模擬',
+                            img: './pic/img/gameTypeIcon/science_fiction.svg'
+                        },
+                        {
+                            id: 8,
+                            name: '運動',
+                            img: './pic/img/gameTypeIcon/coorperate.svg'
+                        },
+
                     ]
                 };
             },
+            created() {
+                //取得網址上的ID
+                let id = new URL(location.href).searchParams.get('cateId');
+
+                axios.get(php_url + `product_sidebar_function.php?cateId=${id}`)
+                    .then((response => {
+                        this.goodListFromDB = response.data;
+                        for (let good of this.goodListFromDB) {
+                            good.hovered = false;
+                            good.clicked = false;
+                        }
+                        this.goodListFromDB_copy = response.data;
+                })),
+                this.category = this.hotCategories.find(category => category.id.toString() === id);
+
+            },
             methods: {
+                //商品排序選擇功能
+                sortedGoods() {
+                    switch (this.selectedOptionValue) {
+                        case 'more_popular'://最受歡迎
+                            this.goodListFromDB = this.goodListFromDB.slice().sort((a, b) => b.PURCHASED - a.PURCHASED);
+                            break;
+                        case 'new_to_old'://新到舊
+                            this.goodListFromDB = this.goodListFromDB.slice().sort((a, b) => new Date(b.RELEASE_DATE) - new Date(a.RELEASE_DATE));
+                            break;
+                        case 'old_to_new'://舊到新                                              
+                            this.goodListFromDB = this.goodListFromDB.slice().sort((a, b) => new Date(a.RELEASE_DATE) - new Date(b.RELEASE_DATE));
+                            break;
+                        case 'high_to_low'://價格高到低           
+                            this.goodListFromDB = this.goodListFromDB.slice().sort((a, b) => b.ORIGINAL_PRICE - a.ORIGINAL_PRICE);
+                            break;
+                        case 'low_to_high'://價格低到高
+                            this.goodListFromDB = this.goodListFromDB.slice().sort((a, b) => a.ORIGINAL_PRICE - b.ORIGINAL_PRICE);
+                            break;
+                        default:
+                            return this.goodslist;
+                    }
+                },
+
+                // 下拉選單功能
                 toggleOptions() {
                     this.isOpen = !this.isOpen;
                 },
                 selectOption(option) {
                     this.selectedOption = option.text;
+                    this.selectedOptionValue = option.value;
                     this.isOpen = false;
-                }
-            }
-        });
-        app.mount('#app'); // 將Vue應用程序掛載到具有id="app"的元素上   
+                },
 
-        
+                //頁碼切換
+                goToPage(page) {
+                    if (page >= 1 && page <= this.totalPages()) {
+                        this.currentPage = page; // 跳轉到指定頁碼
+                    }
+                },
+                // 上一頁
+                previousPage() {
+                    if (this.currentPage > 1) {
+                        this.currentPage--; 
+                    }
+                },
+                // 下一頁
+                nextPage() {
+                    if (this.currentPage < this.totalPages()) {
+                        this.currentPage++;
+                    }
+                },
+                // 總頁數
+                totalPages() {
+                    return Math.ceil(this.goodListFromDB.length / this.itemsPerPage); // 總頁數
+                },
+                // 商品呈現
+                displayedGoods() {
+                    const start = (this.currentPage - 1) * this.itemsPerPage;
+                    const end = start + this.itemsPerPage;
+                    return this.goodListFromDB.slice(start, end);
+                },
+                getFilterGoodList(filterlist) {
+                    let id = new URL(location.href).searchParams.get('cateId');
+                    console.log(JSON.stringify(filterlist));
+                    const url_filter = php_url + `product_sidebar_function.php?cateId=${id}`;
+                    axios.get(url_filter, {                     
+                        params:{
+                            filterlist: filterlist
+                        } 
+                    }).then((response) => {
+                        this.currentPage = 1;
+                        console.log(response.data);
+                        this.filterGoodsList = response.data;
+                        for (let good of this.filterGoodsList) {
+                            good.hovered = false;
+                            good.clicked = false;
+                        }
+
+                        if(filterlist.tag_list.length == 0){
+                            this.goodListFromDB = this.goodListFromDB_copy;
+                        }else{
+                            this.goodListFromDB = this.filterGoodsList;
+                        }
+                    });
+                    
+                },
+                
+            },
+            //子元件
+            components: {
+                ProductList,
+                Paginator,
+                ProductSidebar,
+            },
+        });
+        app.mount('#product_cate'); // 將Vue應用程序掛載到具有id="app"的元素上   
+
+        //手機板篩選器設定
+        $('.sidebar_btn').click(function () {
+            $('.product_sidebar').css("left", "0");
+        })
+        $('.apply_choose').click(function () {
+            $('.product_sidebar').css("left", "-414px");
+        })
 
         
     </script>

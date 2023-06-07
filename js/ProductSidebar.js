@@ -11,7 +11,10 @@ export default{
             cateFilterList:[],
             modeFilterList:[],
             activityType:[],
-            categoryType:[]
+            categoryType:[],
+            //在活動頁或類別頁則隱藏同性質之側邊欄
+            hasCateId: false,
+            hasActivityId:false
         };
     },
     props:["goodslist"],
@@ -20,9 +23,19 @@ export default{
             .then((response) => {
                 this.activityType = response.data["activity"];
                 this.categoryType = response.data["category"];
-        })
+        }),
+        this.checkCateId();
+        this.checkActivityId();
     },
     methods:{
+        checkCateId() {
+            const url = window.location.href;
+            this.hasCateId = url.includes('cateId');
+        },
+        checkActivityId() {
+            const url = window.location.href;
+            this.hasActivityId = url.includes('id');
+        },
         //下拉選單
         toggleList(listName){
             if(this.listVisible === listName){
@@ -141,6 +154,8 @@ export default{
             this.selectedTags = [];            
             this.inputMaxPrice=null;
             this.inputMinPrice=null;
+            this.saleFilterList = [];
+            this.cateFilterList = [];
             this.passFilterList();
         },
         passFilterList(){
@@ -168,7 +183,7 @@ export default{
             </span>
         </div>
         <ul>
-            <li>
+            <li v-show="!hasActivityId">
                 <div class="button" @click="toggleList('saleList')" :class="{'active':listVisible === 'saleList'}">限時促銷活動
                     <i class="bi bi-chevron-down arrow" :class="{'rotate':listVisible === 'saleList'}"></i>
                 </div>
@@ -184,7 +199,7 @@ export default{
                 </ul>
             </li>
 
-            <li>
+            <li v-show="!hasCateId">
                 <div class="button" @click="toggleList('cateList')" :class="{'active':listVisible === 'cateList'}">遊戲類型
                     <i class="bi bi-chevron-down arrow" :class="{'rotate':listVisible === 'cateList'}"></i>
                 </div>

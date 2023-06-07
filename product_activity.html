@@ -33,7 +33,7 @@
         <section class="activity_main col-12">
 
             <!--側邊欄 -->
-            <product-sidebar></product-sidebar>
+            <product-sidebar @filter-list="getFilterGoodList"></product-sidebar>
 
             <!-- 商品列表 -->
             <div class="products col-9">
@@ -84,7 +84,7 @@
         // 引入子原件
         import ProductList from "./js/ProductList.js";
         import Paginator from "./js/Paginator.js";
-        import ProductSidebar from "./js/ProductSidebar.js"
+        import ProductSidebar from "./js/ProductSidebar.js";
 
         // 商品列表渲染
         Vue.createApp({
@@ -130,14 +130,28 @@
                 }))
 
 
-                // 取得商品
-                axios.get(php_url + 'product_list.php?id=' + id + '&action=activity', {
-                }).then((response) => {
-                    console.log(response.data);
-                    this.goodList = response.data;
-                    for (let good of this.goodList) {
-                    }
-                })
+                // // 取得商品
+                // axios.get(php_url + 'product_list.php?id=' + id + '&action=activity', {
+                // }).then((response) => {
+                //     console.log(response.data);
+                //     this.goodList = response.data;
+                //     for (let good of this.goodList) {
+                //     }
+                //     this.goodList_copy = response.data;
+                // })
+
+                
+
+                axios.get(php_url + `product_sidebar_function.php?id=${id}`)
+                    .then((response => {
+                        console.log(response.data);
+                        this.goodList = response.data;
+                        for (let good of this.goodList) {
+                            good.hovered = false;
+                            good.clicked = false;
+                        }
+                        this.goodList_copy = response.data;
+                }))
             },
             mounted() {
             },
@@ -191,6 +205,31 @@
                     const end = start + this.itemsPerPage;
                     // slice(自哪個index開始切割, 切割到哪個index) 
                     return this.goodList.slice(start, end);
+                },
+                getFilterGoodList(filterlist) {
+                    let id = new URL(location.href).searchParams.get('id');
+                    console.log(JSON.stringify(filterlist));
+                    const url_filter = php_url + `product_sidebar_function.php?id=${id}`;
+                    axios.get(url_filter, {                     
+                        params:{
+                            filterlist: filterlist
+                        } 
+                    }).then((response) => {
+                        this.currentPage = 1;
+                        console.log(response.data);
+                        this.filterGoodsList = response.data;
+                        for (let good of this.filterGoodsList) {
+                            good.hovered = false;
+                            good.clicked = false;
+                        }
+
+                        if(filterlist.tag_list.length == 0){
+                            this.goodList = this.goodList_copy;
+                        }else{
+                            this.goodList = this.filterGoodsList;
+                        }
+                    });
+                    
                 },
             },
             //子元件

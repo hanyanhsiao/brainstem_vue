@@ -82,7 +82,9 @@
             <div class="information_detail col-4">
                 <img class="logo_cover" :src="gameImg[5]" alt="">
                 <div class="detail_text">
-                    <h2 class="orinalPrice">${{currentGood.ORIGINAL_PRICE}}</h2>
+                    <span v-show="currentGood.DISCOUNT_PERCENTAGE > 0 " class="discount">-{{100 - currentGood.DISCOUNT_PERCENTAGE * 100}}%</span>
+                    <span class="price" v-show="currentGood.DISCOUNT_PERCENTAGE > 0">${{goodafterDiscount()}}</span>
+                    <h2 class="orinal_price" :class="{'line_throught':currentGood.DISCOUNT_PERCENTAGE > 0}">${{currentGood.ORIGINAL_PRICE}}</h2>
                     <p>遊戲評價：
                         <i class="bi bi-star-fill" v-if="gameComments.length > 0"></i>
                         <span class="star_rating">{{average}}</span>
@@ -379,6 +381,9 @@
             methods: {
                 afterDiscount(i){                            
                     return Math.floor(this.recommendGoods[i].ORIGINAL_PRICE * this.recommendGoods[i].DISCOUNT_PERCENTAGE);                                      
+                },
+                goodafterDiscount(){                            
+                    return Math.floor(this.currentGood.ORIGINAL_PRICE * this.currentGood.DISCOUNT_PERCENTAGE);                                      
                 },
                 hoverHeart(recommend) {
                     if (!recommend.clicked) {                        

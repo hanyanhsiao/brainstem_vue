@@ -183,11 +183,7 @@
                 }
 
                 ul {
-                    display: none;
-
-                    &.show {
-                        display: block;
-                    }
+              
 
                     .item {
                         cursor: pointer;
@@ -540,42 +536,40 @@
 
                 .product_pages {
                     @include flex-container(row, nowrap, end, center);
-
+        
                     @include breakpoint-414 {
-                        @include flex-container(row, nowrap, center, center);
-
-                    };
-
-                    .each_page a {
-                        color: #797676;
-                        font-size: 2rem;
-                        margin: 0 5px;
-                        padding: 5px 13px;
-
+                      @include flex-container(row, nowrap, center, center);
+                    }
+        
+                    .each_page {
+                      color: #797676;
+                      font-size: 2rem;
+                      margin: 0 5px;
+                      padding: 5px 10px;
+                      font-weight: bold;
+                      cursor: pointer;
+        
+                      @include breakpoint-414 {
+                        font-size: 16px;
+                        padding: 1px 7px;
+                      }
+        
+                      &.active {
+                        background-color: $purple;
+                        border-radius: 50%;
+                        color: $white;
+                      }
+        
+                      &:hover {
+                        color: $white;
+                      }
+        
+                      i {
+                        padding: 0;
                         @include breakpoint-414 {
-                            font-size: 16px;
-                            padding: 1px 7px;
-
-                        };
-
-                        &.active {
-                            font-weight: bold;
-                            background-color: $purple;
-                            border-radius: 50%;
-                            color: $white;
+                          font-size: 16px;
                         }
-
-                        &:hover {
-                            color: $white;
-                            font-weight: bold;
-                        }
-
-                        i {
-                            padding: 0;
-                            @include breakpoint-414{
-                                font-size: 16px;
-                            }
-                        }
+                      }
                     }
                 }
             }
