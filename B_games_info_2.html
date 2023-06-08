@@ -19,14 +19,14 @@
 
         <!-- 右側 -->
         <div class="right col-12">
-            <a href="./B_games_info.html">
+            <a href="./B_games.html">
                 <h6>回上一頁</h6>
             </a>
-            <div class="right_main">
-                <form action="" method="">
+            <div class="right_main" id="B_insert_game">
+                <form>
                     <div class="B_button">
                         <h4>遊戲內容</h4>
-                        <button class="btn">儲存</button>
+                        <button class="btn" @click="insertGame">儲存</button>
                     </div>
                     <div class="right_main_top">
                         <ul>
@@ -34,155 +34,52 @@
                                 <label for="gamesID">
                                     <h6>遊戲名稱</h6>
                                 </label>
-                                <input type="text" name="" id="gamesID" placeholder="請輸入遊戲名稱">
+                                <input type="text" v-model="gameName" name="" id="gamesID" placeholder="請輸入遊戲名稱">
                             </li>
-                            <!-- <li>
-                                <h6>遊戲編號</h6>
-                                <h6>123456789000</h6>
-                            </li> -->
                             <li id="logo">
                                 <label for="fileInput">
                                     <h6>遊戲封面</h6>
                                 </label>
                                 <img :src="imageUrl" alt="">
-                                <input id="fileInput" type="file" @change="handleFileChange">
+                                <input id="fileInput" name="gameCover" type="file" @change="handleFileChange">
                             </li>
                             <li>
                                 <label for="issue_date">
                                     <h6>發行日期</h6>
                                 </label>
-                                <input id="myDatePicker" type="date" name="" id="issue_date" placeholder="年/月/日">
+                                <input type="date" name="" v-model="releaseDate" id="issue_date" placeholder="年/月/日">
                             </li>
                             <li>
                                 <label for="publisher">
                                     <h6>開發商</h6>
                                 </label>
-                                <input type="text" name="" id="publisher">
+                                <input type="text" name="" v-model="publisher" id="publisher">
                             </li>
                             <li>
                                 <label for="developer">
                                     <h6>開發人員</h6>
                                 </label>
-                                <input type="text" name="" id="developer">
+                                <input type="text" name="" v-model="developer" id="developer">
                             </li>
                             <li>
                                 <label for="game_level">
                                     <h6>遊戲級別</h6>
                                 </label>
-                                <input type="text" name="" id="game_level">
+                                <select name="game_level" id="game_level" v-model="ratingID">
+                                    <option v-for="(rating, index) in ratings" :key="index" :value="rating.RATING_ID">
+                                        {{ rating.RATING_NAME }}
+                                    </option>
+                                </select>
                             </li>
                             <li class="B_grid_two b_backend_color">
                                 <h6>遊戲類型</h6>
                                 <div class="B_games">
                                     <ul>
-                                        <li>
-                                            <input type="checkbox" name="" id="action">
-                                            <label for="action">動作</label>
+                                        <li v-for="(category, index) in categorys" :key="index">
+                                            <input type="checkbox" :name="category.CATEGORY_NAME"
+                                                id="category.CATEGORY_NAME">
+                                            <label :for="category.CATEGORY_NAME">{{category.CATEGORY_NAME}}</label>
                                         </li>
-                                        <li>
-                                            <input type="checkbox" name="" id="adventure">
-                                            <label for="adventure">冒險</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="" id="role">
-                                            <label for="role">角色扮演</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="" id="tactful">
-                                            <label for="tactful">策略</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="" id="simulation
-                                            ">
-                                            <label for="simulation
-                                            ">模擬</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="" id="prosecution
-                                            ">
-                                            <label for="prosecution
-                                            ">經營</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="" id="building">
-                                            <label for="building">城市營造</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="" id="farm_simulation">
-                                            <label for="farm_simulation">農場模擬</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="" id="war">
-                                            <label for="war">戰爭</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="" id="casual">
-                                            <label for="casual">休閒</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="" id="japanese">
-                                            <label for="japanese">日系</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="" id="sports">
-                                            <label for="sports">運動</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="" id="baseball">
-                                            <label for="baseball">棒球</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="" id="tennis">
-                                            <label for="tennis">網球</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="" id="racing">
-                                            <label for="racing">競速</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="" id="race">
-                                            <label for="race">賽馬</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="" id="racing_car">
-                                            <label for="racing_car">賽車</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="" id="cooking">
-                                            <label for="cooking">烹飪</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="" id="cute">
-                                            <label for="cute">可愛</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="" id="child">
-                                            <label for="child">兒童</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="" id="space_simulation">
-                                            <label for="space_simulation">太空模擬</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="" id="colony_simulation">
-                                            <label for="colony_simulation">殖民模擬</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="" id="pixel_wind">
-                                            <label for="pixel_wind">像素風</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="" id="2D_fighting">
-                                            <label for="2D_fighting">2D格鬥</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="" id="independent_game">
-                                            <label for="independent_game">獨立遊戲</label>
-                                        </li>
-                                        <!-- <li>
-                                            <input type="checkbox" name="" id="">
-                                            <label for="">待新增</label>
-                                        </li> -->
                                     </ul>
                                 </div>
                             </li>
@@ -190,29 +87,10 @@
                                 <h6>活動類型</h6>
                                 <div class="B_type">
                                     <ul>
-                                        <li>
-                                            <input type="radio" name="type" id="summer_sale">
-                                            <label for="summer_sale">夏季特賣</label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" name="type" id="Cosplay_Promotions">
-                                            <label for="Cosplay_Promotions">角色扮演促銷活動</label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" name="type" id="Shooting_Type_Promotions">
-                                            <label for="Shooting_Type_Promotions">射擊類型促銷活動</label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" name="type" id="Space_Adventure_Promotions">
-                                            <label for="Space_Adventure_Promotions">太空探險促銷活動</label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" name="type" id="Horror_Game_Promotions">
-                                            <label for="Horror_Game_Promotions">恐怖遊戲促銷活動</label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" name="type" id="Cairo_Series_Promotions">
-                                            <label for="Cairo_Series_Promotions">開羅系列促銷活動</label>
+                                        <li v-for="(activity, index) in activitys" :key="index">
+                                            <input type="radio" name="type" :id="activity.ACTIVITY_NAME"
+                                                @click="selectActivity(activity)">
+                                            <label :for="activity.ACTIVITY_NAME">{{activity.ACTIVITY_NAME}}</label>
                                         </li>
                                     </ul>
                                 </div>
@@ -221,64 +99,49 @@
                                 <label for="Event_start_time">
                                     <h6>活動開始時間</h6>
                                 </label>
-                                <input id="myDatePicker" type="date" name="" id="Event_start_time" placeholder="年/月/日">
+                                <input type="date" name="" id="Event_start_time" v-model="startTime"
+                                    placeholder="年/月/日">
+
                                 <label for="Event_end_time">
                                     <h6>活動結束時間</h6>
                                 </label>
-                                <input id="myDatePicker" type="date" name="" id="Event_end_time" placeholder="年/月/日">
+                                <input type="date" name="" id="Event_end_time" v-model="endTime" placeholder="年/月/日">
                             </li>
                             <li>
                                 <label for="Product_discount">
                                     <h6>活動折扣</h6>
                                 </label>
-                                <input type="text" name="" id="Product_discount" placeholder="請輸入折扣%數">
+                                <input type="text" name="" id="Product_discount" v-model="percentage" placeholder="請輸入折扣%數">
                             </li>
-
                             <li>
                                 <label for="commodity_price">
                                     <h6>商品金額</h6>
                                 </label>
-                                <input type="text" name="" id="commodity_price" placeholder="請輸入金額">
+                                <input type="text" name="" v-model="originalPrice" id="commodity_price" placeholder="請輸入金額">
                             </li>
-                            <!-- <li class="B_grid_six">
-                                <label for="Product_discount">
-                                    <h6>商品折扣</h6>
-                                </label>
-                                <input type="text" name="" id="Product_discount" placeholder="請輸入折扣%數">
-                                <label for="Discount_start_time">
-                                    <h6>折扣開始時間</h6>
-                                </label>
-                                <input id="myDatePicker" type="date" name="" id="Discount_start_time"
-                                    placeholder="年/月/日">
-                                <label for="Discount_end_time">
-                                    <h6>折扣結束時間</h6>
-                                </label>
-                                <input id="myDatePicker" type="date" name="" id="Discount_end_time" placeholder="年/月/日">
-                            </li> -->
-
-
-
-
-
-
-
-
                             <li class="B_grid_two">
                                 <label for="game_instructions">
                                     <h6>遊戲說明</h6>
                                 </label>
-                                <textarea name="" id="game_instructions cols="100" rows="20"
+                                <textarea name="" id="game_instructions" v-model="gameIntro" cols="100" rows="20"
                                     placeholder="請輸入遊戲說明"></textarea>
                             </li>
                             <li class="B_grid_two">
                                 <label for="system_requirement">
                                     <h6>系統需求</h6>
                                 </label>
-                                <textarea name="" id="system_requirement" cols="100" rows="30"
+                                <textarea name="" id="system_requirement" v-model="systemRequirement" cols="100" rows="30"
                                     placeholder="請輸入系統需求"></textarea>
+                            </li>
+                            <li style="display: none;">
+                                <label for="gameStatus">
+                                    <h6>狀態</h6>
+                                </label>
+                                <input type="hidden" name="gameStatus" id="gameStatus" value="1">
                             </li>
                         </ul>
                     </div>
+
                     <div class="games_info_2_down">
                         <h6>遊戲圖片</h6>
                         <div id="B_upload_pic">
@@ -312,24 +175,49 @@
     </main>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     @@include('./layout/js.html')
-    <script>
-        //input
-        flatpickr("#myDatePicker", {
-            dateFormat: "Y/m/d",
-            minDate: "today",
-            theme: "light"
-        });
-    </script>
 
     <script>
-        //圖文說明
+        // 渲染全部資料
         Vue.createApp({
             data() {
                 return {
-                    images: []
-                };
+                    // newgames: [],
+                    ratings: [],
+                    categorys: [],
+                    activitys: [],
+                    startTime: '', // 活動開始時間
+                    endTime: '', // 活動結束時間
+                    percentage:'',
+                    
+
+
+                    imageUrl: '',
+                    images: [],
+                    gameName: '',
+                    gameCover: '',
+                    gameIntro: '',
+                    originalPrice: '',
+                    gameStatus: '',
+                    releaseDate: '',
+                    publisher: '',
+                    developer: '',
+                    ratingID: '',
+                    systemRequirement: '',
+                    totalComments: '0',
+                    purchased: '0'
+                }
             },
             methods: {
+                handleFileChange(event) {
+                    const file = event.target.files[0];
+                    const reader = new FileReader();
+
+                    reader.onload = (e) => {
+                        this.imageUrl = e.target.result;
+                    };
+
+                    reader.readAsDataURL(file);
+                },
                 handleFileUpload(event) {
                     const files = event.target.files;
                     for (let i = 0; i < files.length; i++) {
@@ -370,32 +258,85 @@
                 deleteImage(index, event) {
                     event.preventDefault();
                     this.images.splice(index, 1);
+                },
+                initializeFlatpickr() {
+                    flatpickr("#Event_start_time", {
+                        dateFormat: "Y/m/d",
+                        minDate: "today",
+                        theme: "light"
+                    });
+                    flatpickr("#Event_end_time", {
+                        dateFormat: "Y/m/d",
+                        minDate: "today",
+                        theme: "light"
+                    });
+                    flatpickr("#issue_date", {
+                        dateFormat: "Y/m/d",
+                        minDate: "today",
+                        theme: "light"
+                    });
+                },
+                insertGame(event) {
+                    event.preventDefault();
+                    const formData = new FormData();
+                    formData.append('gameName', this.gameName);
+                    formData.append('gameCover', this.gameCover);
+                    formData.append('gameIntro', this.gameIntro);
+                    formData.append('originalPrice', this.originalPrice);
+                    formData.append('gameStatus', this.gameStatus);;
+                    formData.append('releaseDate', this.releaseDate);
+                    formData.append('publisher', this.publisher);
+                    formData.append('developer', this.developer);
+                    formData.append('ratingID', this.ratingID);
+                    formData.append('systemRequirement', this.systemRequirement);
+                    formData.append('totalComments', this.totalComments);
+                    formData.append('purchased', this.purchased);
+                    console.log(this);
+                    // 发送POST请求并插入游戏数据
+                    axios.post(php_url + 'B_insert_game.php', formData)
+                        .then((response) => {
+                            console.log(response);
+                            // 执行成功后的操作
+                            alert("新增成功");
+                            location.href = "B_games.html";
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                            // 处理错误
+                        });
+                },
+                selectActivity(activity) {
+                    // 發送異步請求獲取該活動的時間資料
+                    axios.get(php_url + 'B_insert_game.php', {
+                        params: {
+                            activityId: activity.ACTIVITY_ID
+                        }
+                    })
+                        .then((response) => {
+                            // 更新開始時間和結束時間
+                            this.startTime = activity.ACTIVITY_BEGIN;
+                            this.endTime = activity.ACTIVITY_END;
+                            this.percentage = activity.DISCOUNT_PERCENTAGE;
+
+                            // console.log(this.endTime);
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                        });
                 }
-            }
-        }).mount('#B_upload_pic');
-    </script>
-
-
-    <script>
-        Vue.createApp({
-            data() {
-                return {
-                    imageUrl: ''
-                };
             },
-            methods: {
-                handleFileChange(event) {
-                    const file = event.target.files[0];
-                    const reader = new FileReader();
-
-                    reader.onload = (e) => {
-                        this.imageUrl = e.target.result;
-                    };
-
-                    reader.readAsDataURL(file);
-                }
+            mounted() {
+                axios.get(php_url + 'B_insert_game.php')
+                    .then((response) => {
+                        // console.log(response);
+                        this.ratings = response.data.rating;
+                        this.categorys = response.data.category;
+                        this.activitys = response.data.activity;
+                        // console.log(response.data);
+                    });
+                this.initializeFlatpickr();
             }
-        }).mount("#logo")
+        }).mount('#B_insert_game');
     </script>
 
 </html>

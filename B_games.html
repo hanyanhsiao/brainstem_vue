@@ -29,6 +29,7 @@
                     <label for="gamesID">查詢遊戲：</label>
                     <input type="text" name="" id="gamesID">
                     <button type="submit" class="btn">查詢</button>
+                    <button type="submit" class="btn bi bi-plus-lg" onclick="B_games_info_2(event)">新增遊戲</button>
                 </form>
             </div>
 
@@ -76,9 +77,9 @@
     </main>
     @@include('./layout/js.html')
     <script>
-        function B_games_info(e) {
+        function B_games_info_2(e) {
             e.preventDefault();
-            // window.location.href = "./B_games_info.html"
+            window.location.href = "./B_games_info_2.html"
         }
     </script>
 

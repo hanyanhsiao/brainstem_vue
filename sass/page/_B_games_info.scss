@@ -1,5 +1,6 @@
 .B_games_info {
     display: flex;
+    // height: 1080px;
 
     .right {
         margin-top: 20px;
@@ -41,7 +42,7 @@
                             margin: auto 0;
                             border-bottom: 1px solid black;
                             display: grid;
-                            grid-template-columns: .8fr .8fr 1.6fr .8fr;
+                            grid-template-columns: .8fr 1.4fr .6fr 1.2fr;
                             h6 {
                                 margin-left: 5px;
                             }
@@ -57,6 +58,59 @@
                                 margin: auto 0;
                             }
                         }
+                        .B_grid_two {
+                            grid-template-columns: .8fr 3.2fr;
+                            .B_games{
+                                width: 100%;
+
+                                ul {
+                                    width: 100%;
+                                    display: grid;
+                                    grid-template-columns: 1.1fr 1fr 1fr 1fr;
+
+                                    li {
+                                        display: flex;
+                                        border-bottom: none;
+
+                                        input {
+                                            margin: 0;
+                                            width: 20px;
+                                        }
+
+                                        label {
+                                            display: block;
+                                            float: right;
+                                            margin-left: 5px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .B_grid_three {
+                            grid-template-columns: .8fr 3.2fr;
+                            .B_activity{
+                                width: 100%;
+                                display: grid;
+                                grid-template-columns: 1fr 1fr 1fr;
+                                .B_activity_main{
+                                    display: flex;
+                                    border-bottom: none;
+                                    input {
+                                        margin: 0;
+                                        width: 20px;
+                                    }
+
+                                    label {
+                                        display: block;
+                                        float: right;
+                                        margin-left: 5px;
+                                    }
+                                }
+                                input{
+                                    width: 90%;
+                                }
+                            }
+                        }
                     }
 
                     .right_main_text {
@@ -70,6 +124,16 @@
                                     span {
                                         margin-left: 50px;
                                     }
+                                }
+                            }
+                            .B_none{
+                                p{
+                                    font-size: 2rem;
+                                }
+                                li{
+                                    display: block;
+                                    margin: 0 20px;
+                                    margin-bottom: 20px;
                                 }
                             }
                         }
@@ -95,14 +159,15 @@
                             }
 
                             h6 {
-                                // width: 96%;
                                 height: 125px;
                                 outline: 1px solid #000;
                                 margin-bottom: 50px;
                                 padding-left: 10px;
-                                // line-height: 2;
                                 margin-top: -20px;
                             }
+                        }
+                        li:last-child img{
+                            height: 161px;
                         }
 
                     }
