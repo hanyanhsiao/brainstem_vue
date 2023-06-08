@@ -308,7 +308,7 @@
                 }
             }
             .detail_order{
-                display: none;
+                // display: none;
                 .detail_order_title{
                     margin: 0;
                     p{
@@ -325,6 +325,9 @@
                         border: 1px solid $orange;
                         @include flex-container(row, nowrap, flex-start, center); 
                         .item_info{
+                            img{
+                                width: 30%
+                            }
                             @include flex-container(row, nowrap, flex-start, center);
                             flex-basis: 63%;
                             p{

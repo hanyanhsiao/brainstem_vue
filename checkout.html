@@ -53,7 +53,7 @@
                     </div>
                     <div class="sum">
                         <p class="t">總金額</p>
-                        <p class="settlement_right">{{ total }}
+                        <p class="settlement_right">$ {{ total }}
                             元</p>
                     </div>
                     <div class="btn check_next" @click="checkNext">結帳</div>
@@ -105,7 +105,7 @@
                         </div>
                         <div class="sum">
                             <p class="t">總金額</p>
-                            <p class="settlement_right">{{ total }}
+                            <p class="settlement_right">$ {{ total }}
                                 元</p>
                         </div>
                         <div class="btn next">確認結帳</div>
@@ -491,6 +491,7 @@
                                     formData.append('price[]', cartItem.price);
                                 }
                                 formData.append('total', this.total);
+                                formData.append('discount_price', this.discount_price);
                                 
                                 axios.post(php_url + 'checkout.php', formData)
                                 .then(response => {  
