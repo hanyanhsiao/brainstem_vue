@@ -3,6 +3,7 @@
     pointer-events: none;
 }
 .checkout{
+    
     .check{
         display: none;
     }
@@ -16,6 +17,7 @@
         margin-bottom: 30px;
     }
     .item{
+        
         border:  1px solid $orange;
         display: flex;
         flex-wrap: nowrap;
@@ -26,10 +28,14 @@
         .info{
             padding: 0 20px;
             flex-grow: 1;
+            position: relative;
             h3{
                 margin: 30px 0 80px 0;
             }
             .dis_pic{
+                position: absolute;
+                left: 20px;
+                bottom: 40px;
                 .discount{
                     display: inline;
                     margin-right: 10px;
@@ -38,7 +44,10 @@
                     display: inline;
                 }
             }
-            @include flex-container(column, nowrap, space-around ,flex-start); 
+            @include flex-container(column, nowrap, flex-start ,flex-start); 
+            .closed{
+                display: none;
+            }
         }
         .price_box, .del{
             margin: 0 30px;
@@ -100,6 +109,7 @@
             bottom: 0;
         }
     }
+    
     .confirm{
         display: none;
         margin: 60px 0;
@@ -186,21 +196,31 @@
             padding: 15px 15px;
             .add{
                 @include flex-container(row, nowrap, space-between ,flex-start); 
+                .flex{
+                    display: flex;
+                    flex-wrap: nowrap;
+                    width: 100%;
+                    // @include flex-container(row, nowrap, space-between ,center); 
+                    input{
+                        width: auto;
+                        flex-grow: 1;
+                        margin-bottom: 0;
+                    }
+                    .btn{
+                        width: auto;
+                        display: block;
+                        margin-left: 15px;
+                        padding: 9px 15px;
+                    }
+                    margin-bottom: 20px;
+                }
                 p{
                     display: block;
                     padding: 8px;
                     // border: 1px solid $orange;
                 }
-                input{
-                    width: auto;
-                    flex-grow: 1;
-                }
-                .btn{
-                    width: auto;
-                    display: block;
-                    margin-left: 15px;
-                    padding: 9px 15px;
-                }
+                
+                
             }
         }
         .coupon_list{
@@ -419,6 +439,18 @@
             .flex{
                 width: 100%;
             }
+         }
+         .coupon_con{
+            width: 90%;
+            height: 80vh;
+            .coupon_box{
+                .add{
+                    @include flex-container(column, nowrap, space-between ,flex-start); 
+                }
+            }
+            .coupon_list{
+                height: 50vh;
+             }
          }
          
     }
