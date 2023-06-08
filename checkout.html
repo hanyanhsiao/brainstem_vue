@@ -23,13 +23,13 @@
                         <img :src="item.image" alt="">
                         <div class="info">
                             <h3 class="title">{{ item.title }}</h3>
-                            <div class="dis_pic">
+                            <div class="dis_pic" :class="{'closed': item.item_discounts_or === null || item.item_discounts_or === ''}">
                                 <div class="discount">{{ item.discountPercentage }}</div>
                                 <p>{{ item.discountExpiration }}</p>
-                            </div>
+                              </div>
                         </div>
                         <div class="price_box">
-                            <div class="price">{{ item.price }}</div>
+                            <div class="price">$ {{ item.price }}</div>
                             <div class="price_original">{{ item.originalPrice }}</div>
                         </div>
                         <div class="del">
@@ -67,7 +67,7 @@
                         <img :src="item.image" alt="">
                         <div class="info">
                             <h3 class="title">{{ item.title }}</h3>
-                            <div class="dis_pic">
+                            <div class="dis_pic" >
                                 <div class="discount">{{ item.discountPercentage }}</div>
                                 <p>{{ item.discountExpiration }}</p>
                             </div>
@@ -120,8 +120,10 @@
                         <div class="leave" @click="leaveCoupon"><i class="bi bi-x-lg"></i></div>
                         <div class="add">
                             <p>新增優惠券</p>
+                            <div class="flex">
                             <input type="text" placeholder="輸入優惠券代碼" v-model="couponCode">
                             <button class="btn" @click="applyCoupon">使用</button>
+                            </div>
                         </div>
                         <h3>我的優惠券</h3>
                         <div class="coupon_list">
@@ -225,99 +227,107 @@
                     select_coupon_id: 0,
                     userGameLibrary: [],
                 },
-                computed: {
-                    // total() {     let sum = 0;     for (let i = 0; i < this.cartItems.length;
-                    // i++) {     sum += parseInt(this.cartItems[i].price);     }     return
-                    // this.price_sum = sum; },
-                },
                 methods: {
                     removeItem(index) {
                         const item = this.cartItems[index];
                         const key = `good_${item.ID}`;
                         this.cartItems.splice(index, 1);
                         localStorage.removeItem(key);
+                         // =============購物車小圖示數量===================
+                        const cartItem = document.querySelector('.cart_number');
+                        // console.log(cartItem)
+                        if (cartItem) {
+                            cartItem.style.display = 'flex';
+                            let keys = Object.keys(localStorage);
+                            let good_key = keys.filter((key) => { return key.startsWith("good_"); });
+                            cartItem.innerHTML = good_key.length;
+                        }
+                        // =============購物車小圖示數量===================
                         this.loadFromLocalStorage();
                         this.discountPrice();
                         this.totalPrice();
                     },
                     loadFromLocalStorage() {
-  this.cartItems = []; // 清空陣列
-  let totalPrice = 0;
-  let hasItems = false;
-  const self = this;
+                        this.cartItems = []; // 清空陣列
+                        let totalPrice = 0;
+                        let hasItems = false;
+                        const self = this;
 
-  const processCartItems = () => {
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      const item = JSON.parse(localStorage.getItem(key));
-      console.log(this.userGameLibrary);
-      if (this.userGameLibrary && this.userGameLibrary.includes(item.GAME_ID.toString())) {
-        // 使用者已擁有該遊戲，顯示提示訊息並從本地存儲中刪除
-        alert("您已擁有遊戲：" + item.GAME_NAME);
-        localStorage.removeItem(key);
-      } else {
-        // 將遊戲資料添加到購物車
-        let price = Math.floor(item.ORIGINAL_PRICE * item.DISCOUNT_PERCENTAGE);
-        let discounts = "-" + Math.round((1 - item.DISCOUNT_PERCENTAGE) * 100) + '%';
-        let activityEnd = new Date(item.ACTIVITY_END);
-        let activityEndDate = "優惠日期到 " + activityEnd.toISOString().split('T')[0];
+                        const processCartItems = () => {
+                            for (let i = 0; i < localStorage.length; i++) {
+                            const key = localStorage.key(i);
+                            if (key.startsWith("good_")) {
+                                const item = JSON.parse(localStorage.getItem(key));
+                                console.log(this.userGameLibrary);
+                                if (this.userGameLibrary && this.userGameLibrary.includes(item.GAME_ID.toString())) {
+                                // 使用者已擁有該遊戲，顯示提示訊息並從本地存儲中刪除
+                                alert("您已擁有遊戲：" + item.GAME_NAME);
+                                localStorage.removeItem(key);
+                                window.location.href = 'checkout.html';
+                                } else {
+                                // 將遊戲資料添加到購物車
+                                let price = item.DISCOUNT_PERCENTAGE !== null ? Math.floor(item.ORIGINAL_PRICE * item.DISCOUNT_PERCENTAGE) : item.ORIGINAL_PRICE;
+                                let originalPrice = item.DISCOUNT_PERCENTAGE !== null ? "$" + item.ORIGINAL_PRICE : '' ;
+                                let discounts = item.DISCOUNT_PERCENTAGE !== null ? "-" + Math.round((1 - item.DISCOUNT_PERCENTAGE) * 100) + '%' : '';
+                                let activityEndDate = item.ACTIVITY_END !== null ? "優惠日期到 " + new Date(item.ACTIVITY_END).toISOString().split('T')[0] : "";
 
-        this.cartItems.push({
-          item_discounts_or: item.DISCOUNT_PERCENTAGE,
-          image: item.GAME_COVER,
-          title: item.GAME_NAME,
-          discountPercentage: `${discounts}`,
-          discountExpiration: activityEndDate,
-          originalPrice: "$" + item.ORIGINAL_PRICE,
-          price: price,
-          ID: item.GAME_ID
-        });
+                                this.cartItems.push({
+                                    item_discounts_or: item.DISCOUNT_PERCENTAGE,
+                                    image: item.GAME_COVER,
+                                    title: item.GAME_NAME,
+                                    discountPercentage: `${discounts}`,
+                                    discountExpiration: activityEndDate,
+                                    originalPrice: `${originalPrice}`,
+                                    price: price,
+                                    ID: item.GAME_ID
+                                });
 
-        totalPrice += price;
-        hasItems = true; // 設置為有資料
-      }
-    }
+                                totalPrice += price;
+                                hasItems = true; // 設置為有資料
+                                }
+                            }
+                            }
 
-    // 更新價格和總計
-    this.price = totalPrice;
-    this.total = this.price - this.discount_price;
+                            // 更新價格和總計
+                            this.price = totalPrice;
+                            this.total = this.price - this.discount_price;
 
-    if (!hasItems) {
-      alert("購物車是空的，請選購商品");
-      window.location.href = 'index.html';
-    }
-  };
+                            if (!hasItems) {
+                            alert("購物車是空的，請選購商品");
+                            window.location.href = 'index.html';
+                            }
+                        };
 
-  axios.defaults.withCredentials = true;
-  axios.post(php_url + 'login_status.php')
-    .then((response) => {
-      if (response.data.isLogin === false) {
-        // 處理未登入的情況，您可以在這裡根據需求添加相應的程式碼
+                        axios.defaults.withCredentials = true;
+                        axios.post(php_url + 'login_status.php')
+                            .then((response) => {
+                            if (response.data.isLogin === false) {
+                                // 處理未登入的情況，您可以在這裡根據需求添加相應的程式碼
+                                processCartItems();
+                            } else {
+                                this.member_ID = response.data.member_ID;
+                                // console.log(this.member_ID);
 
-        processCartItems();
-      } else {
-        this.member_ID = response.data.member_ID;
-        // console.log(this.member_ID);
+                                const formData = new FormData();
+                                formData.append("member_ID", this.member_ID);
 
-        const formData = new FormData();
-        formData.append("member_ID", this.member_ID);
+                                axios.post(php_url + 'getGameLibrary.php', formData)
+                                .then(response => {
+                                    this.userGameLibrary = response.data; // 將資料存入 userGameLibrary 屬性
+                                    console.log(this.userGameLibrary);
+                                    processCartItems();
+                                })
+                                .catch(error => {
+                                    console.error(error);
+                                    processCartItems(); // 資料獲取失敗時也執行處理
+                                });
+                            }
+                            })
+                            .catch(error => {
+                            console.log(error);
+                            });
+                        },
 
-        axios.post(php_url + 'getGameLibrary.php', formData)
-          .then(response => {
-            this.userGameLibrary = response.data; // 將資料存入 userGameLibrary 屬性
-            console.log(this.userGameLibrary);
-            processCartItems();
-          })
-          .catch(error => {
-            console.error(error);
-            processCartItems(); // 資料獲取失敗時也執行處理
-          });
-      }
-    })
-    .catch(error => {
-      console.log(error);
-    });
-},
                     totalPrice(){
                         this.total = this.price - (-this.discount_price);
                     },
