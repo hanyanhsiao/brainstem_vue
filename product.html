@@ -25,15 +25,15 @@
         <!-- banner輪播 -->
         <div id="banner" class="swiper productBanner col-12">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><a href="./product_information.html"><img src="./pic/img/banner/bannr6.jpg"
+                <div class="swiper-slide"><a href="./product_information.html?id=53"><img src="./pic/img/banner/bannr6.jpg"
                             alt="圖片說明"></a></div>
-                <div class="swiper-slide"><a href="./product_information.html"><img src="./pic/img/banner/banner7.jpg"
+                <div class="swiper-slide"><a href="./product_information.html?id=46"><img src="./pic/img/banner/banner7.jpg"
                             alt="圖片說明"></a></div>
-                <div class="swiper-slide"><a href="./product_information.html"><img src="./pic/img/banner/banner8.jpg"
+                <div class="swiper-slide"><a href="./product_information.html?id=27"><img src="./pic/img/banner/banner8.jpg"
                             alt="圖片說明"></a></div>
-                <div class="swiper-slide"><a href="./product_information.html"><img src="./pic/img/banner/banner9.jpg"
+                <div class="swiper-slide"><a href="./product_information.html?id=57"><img src="./pic/img/banner/banner9.jpg"
                             alt="圖片說明"></a></div>
-                <div class="swiper-slide"><a href="./product_activity.html"><img src="./pic/img/banner/banner10.jpg"
+                <div class="swiper-slide"><a href="./product_information.html?id=45"><img src="./pic/img/banner/banner10.jpg"
                             alt="圖片說明"></a></div>
             </div>
             <div class="product_banner_next"><i class="bi bi-chevron-right"></i></div>
@@ -207,12 +207,44 @@
                 axios.get(php_url + 'product_list.php')
                     .then((response) => {
                         this.goodListFromDB = response.data;
-                        for (let good of this.goodListFromDB) {
-                            good.hovered = false;
-                            good.clicked = false;
-                        }
 
-                        this.goodListFromDB_copy = response.data;
+                        // 判斷是否有登入，撈取登入的資料
+                        axios.defaults.withCredentials = true;
+                        axios.post(php_url + 'login_status.php')
+                            .then((response) => {
+                                console.log(response.data);
+                                let isLogin = response.data.isLogin;
+                                // if (response.data.nickname && response.data.nickname.length > 0) {
+                                //     this.nickname = response.data.nickname.substring(0, 1);
+                                // }
+
+                                if(isLogin){
+                                    let id = response.data.member_ID;
+                                        console.log(php_url + `add_to_wishlist.php?id=${id}`);
+                                        axios.get(php_url + `add_to_wishlist.php?id=${id}`)
+                                        .then((response)=>{
+                                            let collectedGoodsList = response.data;
+                                            for(let goodList of this.goodListFromDB){
+                                                for(let collectedGood of collectedGoodsList){
+                                                    if(goodList.GAME_ID == collectedGood.GAME_ID){
+                                                        goodList.collected = true;
+                                                    }else{
+                                                        goodList.collected = false;
+                                                    }
+                                            }                                  
+                                        }
+                                    })
+                                }
+
+                                for (let good of this.goodListFromDB) {
+                                    good.hovered = false;
+                                    good.clicked = false;
+                                }                              
+                            })                      
+                        // this.goodListFromDB_copy = response.data;
+                        this.goodListFromDB_copy = this.goodListFromDB;
+                        console.log(this.goodListFromDB);
+
                     })
 
                     .catch((error) => {
