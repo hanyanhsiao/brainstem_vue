@@ -13,7 +13,6 @@ export default {
         },
         hoverHeart(item) {
             if (!item.clicked) {
-                console.log(typeof item);
                 item.hovered = true;
             }
         },
@@ -22,14 +21,30 @@ export default {
                 item.hovered = false;
             }
         },
-        toggleHeart(item) {
-            item.clicked = !item.clicked;
-            this.showPopup = item.clicked;
-            this.showRemove = !item.clicked;
-            setTimeout(() => {
-                this.showPopup = false;
-                this.showRemove = false;
-            }, 1500); // 在 1500 毫秒後隱藏，可根據需要進行調整
+        toggleHeart(item) {          
+            
+            axios.defaults.withCredentials = true;
+            axios.post(php_url + 'login_status.php')
+                .then((response) => {
+                    let isLogin = response.data.isLogin;
+                    if(isLogin){
+                        let id = response.data.member_ID;
+                        let wishitem = item.GAME_ID;                        
+                        axios.get(php_url + `add_to_wishlist.php?id=${id}&wishitem=${wishitem}`)
+                        
+                        item.clicked = !item.clicked;
+                        this.showPopup = item.clicked;
+                        this.showRemove = !item.clicked;
+                        setTimeout(() => {
+                            this.showPopup = false;
+                            this.showRemove = false;
+                        }, 1500); // 在 1500 毫秒後隱藏，可根據需要進行調整
+                    }else{
+                        alert("請先登入會員");
+                        window.location.href = '../login.html'
+                    }
+                    
+                })
         },
         goProductPage(id) {
             location.href = `./product_information.html?id=${id}`;

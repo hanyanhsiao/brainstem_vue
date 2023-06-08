@@ -111,7 +111,7 @@
                     currentPage: 1, // 當前頁碼
                     itemsPerPage: 8, // 每頁顯示商品數量
                     filterGoodsList: [],
-                    goodList: [],
+                    goodListFromDB: [],
                 };
             },
             created() {
@@ -145,12 +145,33 @@
                 axios.get(php_url + `product_sidebar_function.php?id=${id}`)
                     .then((response => {
                         console.log(response.data);
-                        this.goodList = response.data;
-                        for (let good of this.goodList) {
-                            good.hovered = false;
-                            good.clicked = false;
-                        }
-                        this.goodList_copy = response.data;
+                        this.goodListFromDB = response.data;
+                        axios.defaults.withCredentials = true;
+                        axios.post(php_url + 'login_status.php')
+                            .then((response) => {
+                                let isLogin = response.data.isLogin;
+                                if(isLogin){
+                                    let id = response.data.member_ID;
+                                    axios.get(php_url + `member_wishlist.php?id=${id}`)
+                                    .then((response)=>{
+                                        let collectedGoodsList = response.data;
+                                        for(let goodList of this.goodListFromDB){
+                                            for(let collectedGood of collectedGoodsList){
+                                                if(goodList.GAME_ID == collectedGood.GAME_ID){
+                                                    goodList.clicked = true;
+                                                    goodList.hovered = true;
+                                                }                                                    
+                                            }                                                                             
+                                        }
+                                    })
+                                }                             
+                            })
+                        
+                        // for (let good of this.goodListFromDB) {
+                        //     good.hovered = false;
+                        //     good.clicked = false;
+                        // }
+                        this.goodListFromDB_copy = response.data;
                 }))
             },
             mounted() {
@@ -160,19 +181,19 @@
                 sortedGoods() {
                     switch (this.selectedOptionValue) {
                         case 'more_popular'://最受歡迎
-                            this.goodList = this.goodList.slice().sort((a, b) => b.PURCHASED - a.PURCHASED);
+                            this.goodListFromDB = this.goodListFromDB.slice().sort((a, b) => b.PURCHASED - a.PURCHASED);
                             break;
                         case 'new_to_old'://新到舊
-                            this.goodList = this.goodList.slice().sort((a, b) => new Date(b.RELEASE_DATE) - new Date(a.RELEASE_DATE));
+                            this.goodListFromDB = this.goodListFromDB.slice().sort((a, b) => new Date(b.RELEASE_DATE) - new Date(a.RELEASE_DATE));
                             break;
                         case 'old_to_new'://舊到新                                              
-                            this.goodList = this.goodList.slice().sort((a, b) => new Date(a.RELEASE_DATE) - new Date(b.RELEASE_DATE));
+                            this.goodListFromDB = this.goodListFromDB.slice().sort((a, b) => new Date(a.RELEASE_DATE) - new Date(b.RELEASE_DATE));
                             break;
                         case 'high_to_low'://價格高到低           
-                            this.goodList = this.goodList.slice().sort((a, b) => b.ORIGINAL_PRICE - a.ORIGINAL_PRICE);
+                            this.goodListFromDB = this.goodListFromDB.slice().sort((a, b) => b.ORIGINAL_PRICE - a.ORIGINAL_PRICE);
                             break;
                         case 'low_to_high'://價格低到高
-                            this.goodList = this.goodList.slice().sort((a, b) => a.ORIGINAL_PRICE - b.ORIGINAL_PRICE);
+                            this.goodListFromDB = this.goodListFromDB.slice().sort((a, b) => a.ORIGINAL_PRICE - b.ORIGINAL_PRICE);
                             break;
                         default:
                             return this.goodslist;
@@ -197,14 +218,14 @@
                 },
                 //總頁數
                 totalPages() {
-                    return Math.ceil(this.goodList.length / this.itemsPerPage);
+                    return Math.ceil(this.goodListFromDB.length / this.itemsPerPage);
                 },
                 //商品呈現
                 displayedGoods() {
                     const start = (this.currentPage - 1) * this.itemsPerPage;
                     const end = start + this.itemsPerPage;
                     // slice(自哪個index開始切割, 切割到哪個index) 
-                    return this.goodList.slice(start, end);
+                    return this.goodListFromDB.slice(start, end);
                 },
                 getFilterGoodList(filterlist) {
                     let id = new URL(location.href).searchParams.get('id');
@@ -218,15 +239,35 @@
                         this.currentPage = 1;
                         console.log(response.data);
                         this.filterGoodsList = response.data;
-                        for (let good of this.filterGoodsList) {
-                            good.hovered = false;
-                            good.clicked = false;
-                        }
+                        axios.defaults.withCredentials = true;
+                        axios.post(php_url + 'login_status.php')
+                            .then((response) => {
+                                let isLogin = response.data.isLogin;
+                                if(isLogin){
+                                    let id = response.data.member_ID;
+                                    axios.get(php_url + `member_wishlist.php?id=${id}`)
+                                    .then((response)=>{
+                                        let collectedGoodsList = response.data;
+                                        for(let goodList of this.goodListFromDB){
+                                            for(let collectedGood of collectedGoodsList){
+                                                if(goodList.GAME_ID == collectedGood.GAME_ID){
+                                                    goodList.clicked = true;
+                                                    goodList.hovered = true;
+                                                }                                                    
+                                            }                                                                             
+                                        }
+                                    })
+                                }                             
+                            })
+                        // for (let good of this.filterGoodsList) {
+                        //     good.hovered = false;
+                        //     good.clicked = false;
+                        // }
 
                         if(filterlist.tag_list.length == 0){
-                            this.goodList = this.goodList_copy;
+                            this.goodListFromDB = this.goodListFromDB_copy;
                         }else{
-                            this.goodList = this.filterGoodsList;
+                            this.goodListFromDB = this.filterGoodsList;
                         }
                     });
                     

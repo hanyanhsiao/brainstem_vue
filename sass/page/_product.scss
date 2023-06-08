@@ -694,7 +694,7 @@
             }
 
             i {
-              font-size: 225px;
+              font-size: 150px;
               color: $green;
               @include breakpoint-414 {
                 font-size: 150px;
@@ -713,7 +713,7 @@
           .heart_remove {
             i {
               color: red;
-              font-size: 180px;
+              font-size: 120px;
             }
           }
         }
