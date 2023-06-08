@@ -232,114 +232,47 @@
             <div class="swiper-wrapper">
               <!--第一頁-->
               <div class="swiper-slide" id="b">
-
                 <div class="row" id="app2">
-
-                  <div class="col-2 hoverable" v-for="product in products" :key="product.id">
+                  <div class="col-2 hoverable" v-for="product in productsPage1" :key="product.id"
+                    @mouseenter="setHovered(product, true)" @mouseleave="setHovered(product, false)"
+                    :class="{ 'hovered2': product.hovered, 'hovered2-others': hovered && !product.hovered }">
                     <a :href="'./product_information.html?id=' + product.id">
-                      <span class="discount">-40%</span>
+                      <span class="discount">-{{ product.discount }}%</span>
                       <img :src="product.image" :alt="product.title" />
                       <h3 class="title">{{ product.title }}</h3>
                       <ul class="money">
                         <li class="price">NT {{ product.price }}</li>
-                        <li class="price2">{{ product.price2 }}</li>
+                        <li class="price2">NT {{ product.price2 }}</li>
                       </ul>
                     </a>
                   </div>
-
                 </div>
 
               </div>
               <!--第二頁-->
               <div class="swiper-slide" id="b">
-                <div class="row">
-                  <div class="col-2 hoverable">
-                    <div class="hearts">
-                      <a href="#">
-                        <i class="bi bi-heart"></i>
-                      </a>
-                    </div>
-                    <a href="./product.html">
-                      <span class="discount">-40%</span>
-                      <img src="./pic/img/cover/16.jpg" alt="" />
-                      <h3 class="title">像素牧場物語</h3>
+                <div class="row" id="app3">
+                  <div class="col-2 hoverable" v-for="product in productsPage2" :key="product.id"
+                    @mouseenter="setHovered(product, true)" @mouseleave="setHovered(product, false)"
+                    :class="{ 'hovered': product.hovered, 'hovered-others': hovered && !product.hovered }">
+                    <a :href="'./product_information.html?id=' + product.id">
+                      <span class="discount">-{{ product.discount }}%</span>
+                      <img :src="product.image" :alt="product.title" />
+                      <h3 class="title">{{ product.title }}</h3>
                       <ul class="money">
-                        <li class="price">NT 103</li>
-                        <li class="price2">NT 172</li>
-                      </ul>
-                    </a>
-                  </div>
-                  <div class="col-2 hoverable">
-                    <div class="hearts">
-                      <a href="#">
-                        <i class="bi bi-heart"></i>
-                      </a>
-                    </div>
-                    <a href="./product.html">
-                      <span class="discount">-40%</span>
-                      <img src="./pic/img/cover/28.jpg" alt="" />
-                      <h3 class="title">時尚洋品店物語</h3>
-                      <ul class="money">
-                        <li class="price">NT 103</li>
-                        <li class="price2">NT 172</li>
-                      </ul>
-                    </a>
-                  </div>
-                  <div class="col-2 hoverable">
-                    <div class="hearts">
-                      <a href="#">
-                        <i class="bi bi-heart"></i>
-                      </a>
-                    </div>
-                    <a href="./product.html">
-                      <span class="discount">-40%</span>
-                      <img src="./pic/img/cover/45.jpg" alt="" />
-                      <h3 class="title">Rabi-Ribi</h3>
-                      <ul class="money">
-                        <li class="price">NT 300</li>
-                        <li class="price2">NT 500</li>
-                      </ul>
-                    </a>
-                  </div>
-                  <div class="col-2 hoverable">
-                    <div class="hearts">
-                      <a href="#">
-                        <i class="bi bi-heart"></i>
-                      </a>
-                    </div>
-                    <a href="./product.html">
-                      <span class="discount">-40%</span>
-                      <img src="./pic//img/cover/43.jpg" alt="" />
-                      <h3 class="title">人生畫廊</h3>
-                      <ul class="money">
-                        <li class="price">NT 54</li>
-                        <li class="price2">NT 90</li>
-                      </ul>
-                    </a>
-                  </div>
-                  <div class="col-2 hoverable">
-                    <div class="hearts">
-                      <a href="#">
-                        <i class="bi bi-heart"></i>
-                      </a>
-                    </div>
-                    <a href="./product.html">
-                      <!-- <span class="discount">-40%</span> -->
-                      <img src="./pic/img/cover/55.jpg" alt="" />
-                      <h3 class="title">GWENT: The Witcher Card</h3>
-                      <ul class="money">
-                        <li class="price">FREE</li>
-                        <!-- <li class="price2">0</li> -->
+                        <li class="price">NT {{ product.price }}</li>
+                        <li class="price2">NT {{ product.price2 }}</li>
                       </ul>
                     </a>
                   </div>
                 </div>
-
               </div>
-
             </div>
           </div>
         </div>
+
+
+
         <!-- RWD 頁面 -->
         <div class="cpart">
           <div class="swiper mySwiper2">
@@ -349,51 +282,37 @@
                 <div class="row">
 
                   <div class="col">
-                    <div class="hearts">
-                      <a href="./game_library.html">
-                        <i class="bi bi-heart"></i>
-                      </a>
-                    </div>
-                    <a href="./product.html">
-                      <span class="discount">-40%</span>
-                      <img src="./pic/img/cover/1.jpg" alt="" />
-                      <h3 class="title">籃球熱潮物語</h3>
+                    <a href="./product_information.html?id=48">
+                      <span class="discount">-10%</span>
+                      <img src="./pic/img/cover/48.jpg" alt="" />
+                      <h3 class="title">Crying Pony</h3>
                       <ul class="money">
-                        <li class="price">NT 103</li>
-                        <li class="price2">NT 172</li>
+                        <li class="price">NT 203</li>
+                        <li class="price2">NT 250</li>
                       </ul>
                     </a>
                     </a>
                   </div>
                   <div class="col">
-                    <div class="hearts">
-                      <a href="#">
-                        <i class="bi bi-heart"></i>
-                      </a>
-                    </div>
-                    <a href="./product.html">
-                      <span class="discount">-40%</span>
-                      <img src="./pic/img/cover/2.jpg" alt="" />
-                      <h3 class="title">南國度假島物語</h3>
+                    <a href="./product_information.html>id=24">
+                      <span class="discount">-20%</span>
+                      <img src="./pic/img/cover/24.jpg" alt="" />
+                      <h3 class="title">靈犀出版社物語 (Magazine Mogul)</h3>
                       <ul class="money">
-                        <li class="price">NT 103</li>
+                        <li class="price">NT 110</li>
                         <li class="price2">NT 172</li>
                       </ul>
                     </a>
                   </div>
                   <div class="col">
-                    <div class="hearts">
-                      <a href="#">
-                        <i class="bi bi-heart"></i>
-                      </a>
-                    </div>
-                    <a href="./product.html">
-                      <span class="discount">-40%</span>
-                      <img src="./pic/img/cover/47.jpg" alt="" />
-                      <h3 class="title">最後指令</h3>
+
+                    <a href="./product_information.html?id=55">
+                      <span class="discount">-10%</span>
+                      <img src="./pic/img/cover/55.jpg" alt="" />
+                      <h3 class="title">GWENT: The Witcher Card</h3>
                       <ul class="money">
-                        <li class="price">NT 227</li>
-                        <li class="price2">NT 379</li>
+                        <li class="price">NT 0</li>
+                        <li class="price2">NT 0</li>
                       </ul>
                     </a>
                   </div>
@@ -408,49 +327,34 @@
                 <div class="row">
 
                   <div class="col">
-                    <div class="hearts">
-                      <a href="#">
-                        <i class="bi bi-heart"></i>
-                      </a>
-                    </div>
-                    <a href="./product.html">
-                      <span class="discount">-40%</span>
-                      <img src="./pic/img/cover/57.jpg" alt="" />
-                      <h3 class="title">Cyberpunk 2077</h3>
+                    <a href="./product_information.html?id=41">
+                      <span class="discount">-20%</span>
+                      <img src="./pic/img/cover/41.jpg" alt="" />
+                      <h3 class="title">遊戲發展國++ (Game Dev Story)</h3>
                       <ul class="money">
-                        <li class="price">NT 959</li>
-                        <li class="price2">NT 1,599</li>
+                        <li class="price">NT 110</li>
+                        <li class="price2">NT 172</li>
                       </ul>
                     </a>
                   </div>
                   <div class="col">
-                    <div class="hearts">
-                      <a href="#">
-                        <i class="bi bi-heart"></i>
-                      </a>
-                    </div>
-                    <a href="./product.html">
-                      <span class="discount">-40%</span>
-                      <img src="./pic/img/cover/53.jpg" alt="" />
-                      <h3 class="title">巫師3: Wild Hunt</h3>
+                    <a href="./product_information.html?id=46">
+                      <span class="discount">-10%</span>
+                      <img src="./pic/img/cover/46.jpg" alt="" />
+                      <h3 class="title">夜光</h3>
                       <ul class="money">
-                        <li class="price">NT 521</li>
-                        <li class="price2">NT 868</li>
+                        <li class="price">NT 217</li>
+                        <li class="price2">NT 268</li>
                       </ul>
                     </a>
                   </div>
                   <div class="col">
-                    <div class="hearts">
-                      <a href="#">
-                        <i class="bi bi-heart"></i>
-                      </a>
-                    </div>
-                    <a href="./product.html">
-                      <span class="discount">-40%</span>
-                      <img src="./pic/img/cover/16.jpg" alt="" />
-                      <h3 class="title">像素牧場物語</h3>
+                    <a href="./product_information.html?id=25">
+                      <span class="discount">-20%</span>
+                      <img src="./pic/img/cover/25.jpg" alt="" />
+                      <h3 class="title">開羅拉麵店 (The Ramen Sensei)</h3>
                       <ul class="money">
-                        <li class="price">NT 103</li>
+                        <li class="price">NT 110</li>
                         <li class="price2">NT 172</li>
                       </ul>
                     </a>
@@ -466,50 +370,35 @@
               <div class="swiper-slide">
                 <div class="row">
                   <div class="col">
-                    <div class="hearts">
-                      <a href="#">
-                        <i class="bi bi-heart"></i>
-                      </a>
-                    </div>
-                    <a href="./product.html">
-                      <span class="discount">-40%</span>
-                      <img src="./pic/img/cover/28.jpg" alt="" />
-                      <h3 class="title">時尚洋品店物語</h3>
+                    <a href="./product_information.html?id=49">
+                      <span class="discount">-20%</span>
+                      <img src="./pic/img/cover/49.jpg" alt="" />
+                      <h3 class="title">Hunger Dungeon</h3>
                       <ul class="money">
-                        <li class="price">NT 103</li>
+                        <li class="price">NT 0</li>
+                        <li class="price2">NT 0</li>
+                      </ul>
+                    </a>
+                  </div>
+                  <div class="col">
+                    <a href="./product_information.html?id=35">
+                      <span class="discount">-20%</span>
+                      <img src="./pic/img/cover/35.jpg" alt="" />
+                      <h3 class="title">合戰忍者村物語 (Ninja Village)</h3>
+                      <ul class="money">
+                        <li class="price">NT 110</li>
                         <li class="price2">NT 172</li>
                       </ul>
                     </a>
                   </div>
                   <div class="col">
-                    <div class="hearts">
-                      <a href="#">
-                        <i class="bi bi-heart"></i>
-                      </a>
-                    </div>
-                    <a href="./product.html">
-                      <span class="discount">-40%</span>
-                      <img src="./pic/img/cover/45.jpg" alt="" />
-                      <h3 class="title">Rabi-Ribi</h3>
+                    <a href="./product_information.html?id=34">
+                      <span class="discount">-20%</span>
+                      <img src="./pic//img/cover/34.jpg" alt="" />
+                      <h3 class="title">都市大亨物語 (Venture Towns)</h3>
                       <ul class="money">
-                        <li class="price">NT 300</li>
-                        <li class="price2">NT 500</li>
-                      </ul>
-                    </a>
-                  </div>
-                  <div class="col">
-                    <div class="hearts">
-                      <a href="#">
-                        <i class="bi bi-heart"></i>
-                      </a>
-                    </div>
-                    <a href="./product.html">
-                      <span class="discount">-40%</span>
-                      <img src="./pic//img/cover/43.jpg" alt="" />
-                      <h3 class="title">人生畫廊</h3>
-                      <ul class="money">
-                        <li class="price">NT 54</li>
-                        <li class="price2">NT 90</li>
+                        <li class="price">NT 140</li>
+                        <li class="price2">NT 172</li>
                       </ul>
                     </a>
                   </div>
@@ -542,75 +431,42 @@
         <ul class="bpart">
           <div class="swiper mySwiperz">
             <div class="swiper-wrapper">
-              <!--第一頁-->
+              
+              <!-- 第一頁 -->
               <div class="swiper-slide" id="a">
-                <div class="row">
-                  <div class="col-3 hoverable">
-                    <a href="./product_activity.html?id=1">
-                      <img src="./pic/img/indexsec1/aa.jpg" alt="" />
+                <div class="row" id="app4">
+
+                  <div class="col-3 hoverable" v-for="(item, index) in app4Items" :key="index">
+                    <a :href="'./product_activity.html?id=' + item.id">
+                      <img :src="item.img" alt="" />
                       <div class="container">
-                        <h1 class="preferential">-40%</h1>
-                        <p class="time">剩餘2天14小時25分鐘</p>
+                        <h1 class="preferential">-{{ item.preferential }}%</h1>
+                        <p class="time">{{ item.time }}</p>
                       </div>
                     </a>
                   </div>
-                  <div class="col-3 hoverable">
-                    <a href="./product_activity.html?id=2">
-                      <img src="./pic/img/indexsec1/bb.jpg" alt="" />
-                      <div class="container">
-                        <h1 class="preferential">-40%</h1>
-                        <p class="time">剩餘2天14小時25分鐘</p>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="col-3 hoverable">
-                    <a href="./product_activity.html?id=3">
-                      <img src="./pic/img/indexsec1/cc.jpg" alt="" />
-                      <div class="container">
-                        <h1 class="preferential">-40%</h1>
-                        <p class="time">剩餘2天14小時25分鐘</p>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="col-3 hoverable">
-                    <a href="./product_activity.html?id=4">
-                      <img src="./pic/img/indexsec1/dd.jpg" alt="" />
-                      <div class="container">
-                        <h1 class="preferential">-40%</h1>
-                        <p class="time">剩餘2天14小時25分鐘</p>
-                      </div>
-                    </a>
-                  </div>
+
+
                 </div>
               </div>
               <!---第二頁--->
               <div class="swiper-slide" id="a">
-                <div class="row">
-                  <div class="col-3 hoverable">
-                    <a href="./product_activity.html?id=5">
-                      <img src="./pic/img/indexsec1/ee.jpg" alt="" />
+                <div class="row" id="app5">
+
+                  <div class="col-3 hoverable" v-for="(item, index) in app5Items" :key="index">
+                    <a :href="'./product_activity.html?id=' + item.id">
+                      <img :src="item.img" alt="" />
                       <div class="container">
-                        <h1 class="preferential">-40%</h1>
-                        <p class="time">剩餘2天14小時25分鐘</p>
+                        <h1 class="preferential">-{{ item.preferential }}%</h1>
+                        <p class="time">{{ item.time }}</p>
                       </div>
                     </a>
                   </div>
-                  <div class="col-3 hoverable">
-                    <a href="./product_activity.html?id=6">
-                      <img src="./pic/img/indexsec1/ff.jpg" alt="" />
-                      <div class="container">
-                        <h1 class="preferential">-40%</h1>
-                        <p class="time">剩餘2天14小時25分鐘</p>
-                      </div>
-                    </a>
-                  </div>
+                  
+                  
                   <div class="col-3" id="a">
                     <div class="a-1 hoverable">
-                      <div class="hearts">
-                        <a href="#">
-                          <i class="bi bi-heart"></i>
-                        </a>
-                      </div>
+
                       <a href="./product_information.html">
                         <span class="discount">-40%</span>
                         <img src="./pic/img/cover/16.jpg" alt="" />
@@ -622,11 +478,7 @@
                       </a>
                     </div>
                     <div class="a-1 hoverable">
-                      <div class="hearts">
-                        <a href="#">
-                          <i class="bi bi-heart"></i>
-                        </a>
-                      </div>
+
                       <a href="./product_information.html">
                         <span class="discount">-40%</span>
                         <img src="./pic/img/cover/28.jpg" alt="" />
@@ -638,11 +490,7 @@
                       </a>
                     </div>
                     <div class="a-1 hoverable">
-                      <div class="hearts">
-                        <a href="#">
-                          <i class="bi bi-heart"></i>
-                        </a>
-                      </div>
+
                       <a href="./product_information.html">
                         <span class="discount">-40%</span>
                         <img src="./pic/img/cover/1.jpg" alt="" />
@@ -655,11 +503,7 @@
                       </a>
                     </div>
                     <div class="a-1 hoverable">
-                      <div class="hearts">
-                        <a href="#">
-                          <i class="bi bi-heart"></i>
-                        </a>
-                      </div>
+
                       <a href="./product_information.html">
                         <!-- <span class="discount">-40%</span> -->
                         <img src="./pic/img/cover/2.jpg" alt="" />
@@ -673,11 +517,7 @@
                   </div>
                   <div class="col-3" id="a">
                     <div class="a-1 hoverable">
-                      <div class="hearts">
-                        <a href="./game_library.html">
-                          <i class="bi bi-heart"></i>
-                        </a>
-                      </div>
+
                       <a href="./product_information.html">
                         <span class="discount">-40%</span>
                         <img src="./pic/img/cover/3.jpg" alt="" />
@@ -689,11 +529,7 @@
                       </a>
                     </div>
                     <div class="a-1 hoverable">
-                      <div class="hearts">
-                        <a href="#">
-                          <i class="bi bi-heart"></i>
-                        </a>
-                      </div>
+
                       <a href="./product_information.html">
                         <span class="discount">-40%</span>
                         <img src="./pic/img/cover/4.jpg" alt="" />
@@ -705,11 +541,7 @@
                       </a>
                     </div>
                     <div class="a-1 hoverable">
-                      <div class="hearts">
-                        <a href="#">
-                          <i class="bi bi-heart"></i>
-                        </a>
-                      </div>
+
                       <a href="./product_information.html">
                         <span class="discount">-40%</span>
                         <img src="./pic/img/cover/5.jpg" alt="" />
@@ -721,11 +553,7 @@
                       </a>
                     </div>
                     <div class="a-1 hoverable">
-                      <div class="hearts">
-                        <a href="#">
-                          <i class="bi bi-heart"></i>
-                        </a>
-                      </div>
+
                       <a href="./product_information.html">
                         <span class="discount">-40%</span>
                         <img src="./pic/img/cover/6.jpg" alt="" />
@@ -744,11 +572,7 @@
                 <div class="row">
                   <div class="col-3 hoverable" id="a">
                     <div class="a-1 hoverable">
-                      <div class="hearts">
-                        <a href="./game_library.html">
-                          <i class="bi bi-heart"></i>
-                        </a>
-                      </div>
+
                       <a href="./product_information.html">
                         <span class="discount">-40%</span>
                         <img src="./pic/img/cover/7.jpg" alt="" />
@@ -760,11 +584,7 @@
                       </a>
                     </div>
                     <div class="a-1 hoverable">
-                      <div class="hearts">
-                        <a href="#">
-                          <i class="bi bi-heart"></i>
-                        </a>
-                      </div>
+
                       <a href="./product_information.html">
                         <span class="discount">-40%</span>
                         <img src="./pic/img/cover/8.jpg" alt="" />
@@ -776,11 +596,7 @@
                       </a>
                     </div>
                     <div class="a-1 hoverable">
-                      <div class="hearts">
-                        <a href="#">
-                          <i class="bi bi-heart"></i>
-                        </a>
-                      </div>
+
                       <a href="./product_information.html">
                         <span class="discount">-40%</span>
                         <img src="./pic/img/cover/9.jpg" alt="" />
@@ -792,11 +608,7 @@
                       </a>
                     </div>
                     <div class="a-1 hoverable">
-                      <div class="hearts">
-                        <a href="#">
-                          <i class="bi bi-heart"></i>
-                        </a>
-                      </div>
+
                       <a href="./product_information.html">
                         <span class="discount">-40%</span>
                         <img src="./pic/img/cover/10.jpg" alt="" />
@@ -2123,7 +1935,6 @@
         }, 600);
       }
     };
-    
 
 
 
@@ -2151,36 +1962,138 @@
 
     //---section1 vue3---
     window.addEventListener('DOMContentLoaded', () => {
-      const app = Vue.createApp({
-        data() {
-          return {
-            products: []
-          };
-        },
-        mounted() {
-          this.fetchData();
-        },
-        methods: {
-          fetchData() {
-
-            axios.get(php_url + 'index_section1.php')
-              .then(response => {
-                console.log(response.data);
-                this.products = response.data.slice(0, 5);
-                this.$nextTick(() => {
-                  // 確保資料已經渲染到頁面上後再執行其他操作
-                  // 例如修改 DOM、綁定事件等
+      const createAppInstance = (selector) => {
+        const app = Vue.createApp({
+          data() {
+            return {
+              products: [],
+              pageSize: 5, // 每頁顯示的資料筆數
+              hovered: false // 是否應用hover效果的標誌
+            };
+          },
+          mounted() {
+            this.fetchData();
+          },
+          computed: {
+            productsPage1() {
+              return this.products.slice(0, this.pageSize);
+            },
+            productsPage2() {
+              return this.products.slice(this.pageSize, this.pageSize * 2);
+            }
+          },
+          methods: {
+            fetchData() {
+              axios.get(php_url + 'index_section1.php')
+                .then(response => {
+                  this.products = response.data.map(product => {
+                    const discountPercentage = Math.round(parseFloat(product.discount));
+                    const price1 = Math.round(parseFloat(product.price) * (1 - parseFloat(product.discount) / 100));
+                    return {
+                      ...product,
+                      discount: discountPercentage,
+                      price: price1,
+                      hovered: false // 新增hovered屬性，初始值為false
+                    };
+                  });
+                  this.$nextTick(() => {
+                    // 確保資料已經渲染到頁面上後再執行其他操作
+                    // 例如修改 DOM、綁定事件等
+                  });
+                })
+                .catch(error => {
+                  console.error(error);
                 });
-              })
-              .catch(error => {
-                console.error(error);
-              });
+            },
+            setHovered(product, value) {
+              product.hovered = value;
+              this.hovered = value;
+            }
           }
-        }
-      });
+        });
 
-      app.mount('#app2');
+        app.mount(selector);
+      };
+
+      createAppInstance('#app2');
+      createAppInstance('#app3');
     });
+
+
+    // -------
+    const app4 = Vue.createApp({
+  data() {
+    return {
+      app4Items: [],
+      pageSize: 4,
+    };
+  },
+  mounted() {
+    this.fetchData();
+  },
+  methods: {
+    fetchData() {
+      axios
+        .get(php_url + "index_section2.php")
+        .then((response) => {
+          this.app4Items = response.data.slice(0, this.pageSize);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    },
+  },
+});
+
+const app5 = Vue.createApp({
+  data() {
+    return {
+      app5Items: [],
+      pageSize: 2,
+    };
+  },
+  mounted() {
+    this.fetchData();
+  },
+  methods: {
+    fetchData() {
+      axios
+        .get(php_url + "index_section2.php")
+        .then((response) => {
+          this.app5Items = response.data.slice(this.pageSize * 2, this.pageSize * 3);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    },
+  },
+});
+
+app4.mount("#app4");
+app5.mount("#app5");
+
+
+
+
+
+
+// --------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2239,12 +2152,6 @@
         }
       );
     });
-
-
-
-
-
-
 
 
 
