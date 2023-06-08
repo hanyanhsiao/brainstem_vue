@@ -37,7 +37,9 @@
                         <h2 class="top_game_name">{{game.name}}</h2>
                     </div>
                 </div>
-                <button class="more_games_button"> <a href="./product_cate.html">查看更多此類型的遊戲</a></button>
+                <button class="more_games_button">
+                    <a :href="'./product_cate.html?cateId='+gameTypeNum">查看更多此類型的遊戲</a>
+                </button>
                 <button class="share_img_button"><a href="./AI_test_share.html">取得結果圖</a></button>
             </div>
         </section>
@@ -52,6 +54,7 @@
         Vue.createApp({
             data() {
                 return {
+                    gameTypeNum: "",
                     gameType: "",
                     gameTypeContent: "",
                     games: []
@@ -62,6 +65,7 @@
 
                 let gameTypeNum = JSON.parse(localStorage.getItem("options"));
                 // console.log(gameTypeNum);
+                this.gameTypeNum = gameTypeNum;
 
                 axios.get(php_url + 'AI_test_results.php', {
                     params: { gameTypeNum: gameTypeNum }
