@@ -126,83 +126,65 @@
 </div>
     <!-- 訂單記錄 -->
     <section class="col-9 right">
-        <div class="order">
-            <h3>訂單記錄</h3>
-            <div class="form_title">
-                <p>訂單編號</p>
-                <p>購買日期</p>
+        <div class="order" id="order">
+          <h3>訂單記錄</h3>
+          <div class="form_title">
+            <p>訂單編號</p>
+            <p>購買日期</p>
+            <p>購買金額</p>
+            <p>訂單狀態</p>
+          </div>
+          <div class="order_in" v-for="(order, index) in orders" :key="index">
+            <div class="order_info">
+            <div class="flex_grow">
+              <i class="bi bi-dash-lg open_btn" @click="toggleOrderDetails(index)"></i>
+              <p class="ID">{{ order.orderId }}</p>
+            </div>
+            <p>{{ order.purchaseDate }}</p>
+            <p>{{ order.purchaseAmount }}</p>
+            <p>{{ order.orderStatus }}</p>
+            </div>
+            <div v-if="order.showDetails" class="detail_order">
+              <div class="detail_order_title">
+                <p>訂單內容</p>
+                <p>商品折扣</p>
                 <p>購買金額</p>
-                <p>訂單狀態</p>
-            </div>
-            <div class="order_info">
-                <div class="flex_grow">
-                    <i class="bi bi-dash-lg open_btn"></i>
-                    <p class="ID">ak4l79e3k68sly</p>
-                 </div>
-                <p>2023/1/15</p>
-                <p>$2,059</p>
-                <p>已完成</p>
-            </div>
-            <div class="detail_order">
-                <div class="detail_order_title">
-                    <p>訂單內容</p>
-                    <p>商品折扣</p>
-                    <p>購買金額</p>
+              </div>
+              <div class="detail_order_info">
+                <div class="item" v-for="item in order.items" :key="item.itemId">
+                  <div class="item_info">
+                    <img :src="item.image" alt="">
+                    <p>{{ item.name }}</p>
+                  </div>
+                  <div class="dis">
+                    <div class="discount">{{ item.discount }}</div>
+                  </div>
+                  <div class="price_box">
+                    <div class="price">{{ item.price }}</div>
+                    <div class="price_original">{{ item.originalPrice }}</div>
+                  </div>
                 </div>
-                <div class="detail_order_info">
-                    <div class="item">
-                        <div class="item_info">
-                        <img src="https://placehold.co/95x125" alt="">
-                        <p>遊戲名稱遊戲名稱遊戲名稱遊戲名稱</p>
-                        </div>
-                        <div class="dis">
-                        <div class="discount">-75%</div>
-                        </div>
-                        <div class="price_box">
-                        <div class="price">$660</div>
-                        <div class="price_original">$1,099</div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item_info">
-                        <img src="https://placehold.co/95x125" alt="">
-                        <p>遊戲名稱遊戲名稱遊戲名稱遊戲名稱</p>
-                        </div>
-                        <div class="dis">
-                        <div class="discount">-75%</div>
-                        </div>
-                        <div class="price_box">
-                        <div class="price">$1,399</div>
-                        </div>
-                    </div>
-                    <div class="settlement">
-                        <div class="coupon">
-                        <p>優惠券使用</p>
-                        <p class="settlement_right">春季特賣優惠商品 -40%</p>
-                        </div>
-                        <div class="dis">
-                            <p>折扣</p>
-                            <p class="settlement_right">-439元</p>
-                        </div>
-                        <div class="sum">
-                            <p>總金額</p>
-                            <p class="settlement_right">2059 元</p>
-                        </div>
-                    </div>
+                <div class="settlement">
+                  <div class="coupon">
+                    <p>優惠券使用</p>
+                    <p class="settlement_right">{{ order.coupon }}</p>
+                  </div>
+                  <div class="dis">
+                    <p>折扣</p>
+                    <p class="settlement_right">{{ order.discount }}</p>
+                  </div>
+                  <div class="sum">
+                    <p>總金額</p>
+                    <p class="settlement_right">{{ order.totalAmount }}</p>
+                  </div>
                 </div>
+              </div>
             </div>
-            <div class="order_info">
-                <div class="flex_grow">
-                    <i class="bi bi-dash-lg"></i>
-                    <p>ak4l79e3k68sly</p>
-                </div>
-                <p>2023/1/15</p>
-                <p>$2,059</p>
-                <p>已完成</p>
-            </div>
-            
         </div>
-    </section>
+        </div>
+      </section>
+         
+      
     <!-- 遊戲庫 -->
     <section class="col-9 right">
         <div class="game_library">
@@ -439,22 +421,24 @@
                     formData.append('phone', this.phone);
                     formData.append('gender', this.gender);
                     formData.append('email', this.email);
-                    formData.append('image', this.imageFile);
-                    formData.append('image_name', this.imageFile.name);
-
+                    
+                    if (this.imageFile) {
+                        formData.append('image', this.imageFile);
+                        formData.append('image_name', this.imageFile.name);
+                    }
+                    
                     axios
-                    .post(php_url + 'member_center_edit.php', formData, {
-                        headers: { 'Content-Type': 'multipart/form-data' }, // 设置请求头
-                    })
-                    .then(response => {
-                        console.log('更改成功');
-                    })
-                    .catch(error => {
-                        console.error(error);
-                    });
+                        .post(php_url + 'member_center_edit.php', formData, {
+                            headers: { 'Content-Type': 'multipart/form-data' },
+                        })
+                        .then(response => {
+                            console.log('更改成功');
+                        })
+                        .catch(error => {
+                            console.error(error);
+                        });
                 }
-            }
-        }       
+            }}       
         });
         </script>
 
@@ -542,6 +526,83 @@
                 }
             });
         </script>
+        <script>
+                const order = new Vue({
+    el: '#order',
+
+    data: {
+        orders: [],
+        member_ID: '',
+        activeOrder: null,
+    },
+
+    mounted() {
+  axios.defaults.withCredentials = true;
+  axios.post(php_url + 'login_status.php')
+    .then((response) => {
+      this.member_ID = response.data.member_ID;
+
+      const formData = new FormData();
+      formData.append("member_ID", this.member_ID);
+
+      axios.post(php_url + 'getOrderList.php', formData)
+        .then(response => {
+          let order_length = response.data.length;
+
+          if (order_length > 0) {
+            if (response.data && response.data.length > 0) {
+            this.orders = response.data.map(item => {
+              let items = item.items.map(detail => { // 修改為 item.items
+                return {
+                  itemId: detail.itemId,
+                  name: detail.name,
+                  image: detail.image,
+                  discount: detail.discount,
+                  price: detail.price,
+                  originalPrice: detail.originalPrice,
+                };
+              });
+
+              return {
+                orderId: item.orderId,
+                purchaseDate: item.purchaseDate,
+                purchaseAmount: item.purchaseAmount,
+                orderStatus: '已完成',
+                showDetails: false,
+                items: items,
+                coupon: item.coupon, // 修改為 item.coupon
+                discount: item.discount,
+                totalAmount: item.totalAmount,
+              };
+            });}
+          }
+
+          this.activeOrder = this.orders[0];
+          this.activeOrder.showDetails = true;
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    })
+    .catch(error => {
+      console.log(error);
+    });
+},
+
+
+methods: {
+  toggleOrderDetails(index) {
+    this.orders.forEach((order, i) => {
+      if (i === index) {
+        order.showDetails = !order.showDetails;
+      } else {
+        order.showDetails = false;
+      }
+    });
+  },
+}
+    });
+            </script>
 
     <script>
         let nav = $(".select li");
@@ -581,11 +642,11 @@
     </script>
 
     <!-- 購買清單的展開 -->
-    <script>
+    <!-- <script>
         $('.open_btn').click(function() {
             $('.detail_order').slideToggle();
         });
-    </script>
+    </script> -->
 
     <!-- RWD的NAV -->
     <script>
