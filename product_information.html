@@ -142,7 +142,7 @@
         <section class="introduction_and_system">
             <div class="introduction col-7">
                 <h2>遊戲介紹</h2>
-                <p>{{currentGood.GAME_INTRO}}</p>
+                <p v-html="currentGood.GAME_INTRO"></p>
             </div>
             <div class="system col-4">
                 <h2>系統需求</h2>
@@ -263,7 +263,7 @@
                                     <h3>{{recommend.GAME_NAME}}</h3>
                                     <span class="price"
                                         v-show="recommend.DISCOUNT_PERCENTAGE > 0">${{afterDiscount(index)}}</span>
-                                    <span class="price_original"
+                                    <span class="orinal_price"
                                         :class="{'line_throught':recommend.DISCOUNT_PERCENTAGE > 0}">${{recommend.ORIGINAL_PRICE}}</span>
                                 </div>
                             </a>
@@ -576,7 +576,7 @@
             });
         });
 
-        //swiper
+        //推薦遊戲輪播
         $(document).ready(function () {
             var recommend = new Swiper(".recommend_game", {
                 loop: true,

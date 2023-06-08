@@ -215,6 +215,7 @@
                             // width: 25% !important; 
                             // height: 95px;
                             opacity: 0.4;
+                            cursor: pointer;
                             background-size: cover;
                             background-position: center;   
                             &:last-child{
@@ -424,7 +425,7 @@
             }
 
             i {
-                font-size: 225px;
+                font-size: 150px;
                 color: $green;
                 @include breakpoint-414 {
                     font-size: 150px;
@@ -443,7 +444,7 @@
         .heart_remove{
             i{
                 color: red;
-                font-size: 180px;
+                font-size: 120px;
             }                        
         }
     }
@@ -666,7 +667,8 @@
                         .member_pic img {
                             border-radius: 50%;
                             padding: 5px;
-                            max-width: 96px;
+                            width: 96px;
+                            height: 96px;
 
                             @include breakpoint-414 {
                                 width: 86px;
@@ -1078,9 +1080,17 @@
                             }
                         }
 
-                        .price_original {
+                        .orinal_price {
+                            font-size: $h2;
                             @include breakpoint-414 {
                                 font-size: 14px;
+                            }
+                        }
+                        .line_throught {
+                            text-decoration: line-through;
+                            font-size: $h4;
+                            @include breakpoint-414 {
+                              font-size: 14px;
                             }
                         }
                     }
