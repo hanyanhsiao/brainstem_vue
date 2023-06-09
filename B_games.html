@@ -17,19 +17,19 @@
         @@include('./layout/B_nav.html')
 
         <!-- 右側 -->
-        <div class="right col-12">
+        <div class="right col-12" id="B_game">
             <!-- 右側上 -->
             <div class="right-top backend_color">
-                <form action="" method="">
+                <form @submit.prevent="submitQuery">
                     <label for="type">查詢類型：</label>
-                    <select name="" id="type">
-                        <option value="gamesID">遊戲名稱</option>
-                        <option value="gamesNB">遊戲編號</option>
+                    <select v-model="queryType" id="type">
+                        <option value="gamesid">遊戲編號</option>
+                        <option value="gamesname">遊戲名稱</option>
                     </select>
                     <label for="gamesID">查詢遊戲：</label>
-                    <input type="text" name="" id="gamesID">
+                    <input type="text" v-model="whichgame" id="gamesID">
                     <button type="submit" class="btn">查詢</button>
-                    <button type="submit" class="btn bi bi-plus-lg" onclick="B_games_info_2(event)">新增遊戲</button>
+                    <button type="submit" class="btn bi bi-plus-lg" @click.prevent="B_games_info_2">新增遊戲</button>
                 </form>
             </div>
 
@@ -52,64 +52,138 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody id="B_game">
-                        <tr v-for="(game,index) in games" :key="index" @click="viewgame(game.GAME_ID)">
-                            <td>
+                    <tbody>
+                        <tr v-for="(game,index) in displayedGames" :key="index">
+                            <td @click="viewgame(game.GAME_ID)">
                                 <h6>{{game.GAME_ID}}</h6>
                             </td>
-                            <td>
+                            <td @click="viewgame(game.GAME_ID)">
                                 <h6>{{game.GAME_NAME}}</h6>
                             </td>
-                            <td>
+                            <td @click="viewgame(game.GAME_ID)">
                                 <h6>{{game.RELEASE_DATE}}</h6>
                             </td>
                             <td>
-                                <h6 v-if="game.GAME_STATUS == 1">上架</h6>
-                                <h6 v-else>下架</h6>
+                                <button class="btn" @click="togglegamestatus(game)">{{ game.GAME_STATUS === 1 ? '上架中' :
+                                    '下架' }}</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+
+                <!-- 分頁 -->
+                <ul class="B_pagination" v-if="totalPages > 1">
+                    <li class="B_page-item" :class="{ active: currentPage === page }" v-for="page in totalPages"
+                        :key="page">
+                        <a class="B_page-link" href="#" @click="setCurrentPage(page)">{{ page }}</a>
+                    </li>
+                </ul>
             </div>
-            <!-- 分頁 -->
-            @@include('./layout/B_changepage.html')
         </div>
     </main>
     @@include('./layout/js.html')
+
     <script>
-        function B_games_info_2(e) {
-            e.preventDefault();
-            window.location.href = "./B_games_info_2.html"
-        }
-    </script>
-
-
-<script>
-    //渲染全部會員資料
-    Vue.createApp({
-        data() {
-            return {
-                games: []
-            }
-        },
-        methods: {
-            viewgame(gameid){
+        //渲染全部會員資料
+        Vue.createApp({
+            data() {
+                return {
+                    games: [],
+                    queryType: 'gamesid',
+                    whichgame: '',
+                    currentPage: 1, // 目前顯示的頁面
+                    itemsPerPage: 9, // 每頁顯示的資料筆數
+                }
+            },
+            computed: {
+                displayedGames() {
+                    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+                    const endIndex = startIndex + this.itemsPerPage;
+                    return this.games.slice(startIndex, endIndex);
+                },
+                totalPages() {
+                    return Math.ceil(this.games.length / this.itemsPerPage);
+                },
+            },
+            methods: {
+                viewgame(gameid) {
                     //跳轉info
                     window.location.href = 'B_games_info.html?id=' + gameid;
                     // console.log(gameid);
-                }
-        },
-        mounted() {
-            axios.get(php_url + 'B_games.php')
-                .then((response) => {
-                    this.games = response.data;
-                    console.log(this.games);
-                    // console.log(memberid);
-                })
-        }
+                },
+                B_games_info_2() {
+                    // e.preventDefault();
+                    window.location.href = "./B_games_info_2.html"
+                },
+                submitQuery() {
+                    if (!this.whichgame) {
+                        this.fetchAllgames();
+                        return;
+                    }
+                    const formData = new FormData();
+                    formData.append('queryType', this.queryType);
+                    formData.append('whichgame', this.whichgame);
 
-    }).mount('#B_game')
-</script>
+                    axios.post(php_url + 'B_search_games.php', formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
+                    })
+                        .then((response) => {
+                            this.games = response.data;
+                            console.log(this.games);
+                            // 跳轉到會員資訊頁面
+                            // window.location.href = 'B_member_info.html?id=' + memberid;
+                            if (this.games.length === 0) {
+                                alert('查無資料');
+                                this.fetchAllgames();
+                            }
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        });
+                },
+                togglegamestatus(game) {
+                    game.GAME_STATUS = game.GAME_STATUS === 1 ? 0 : 1;
+
+                    // 将数据发送到服务器进行修改
+                    const formData = new FormData();
+                    formData.append('gameId', game.GAME_ID);
+                    formData.append('gamestatus', game.GAME_STATUS);
+
+                    axios.post(php_url + 'B_update_game_status.php', formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
+                    })
+                        .then((response) => {
+                            // 处理成功响应
+                            console.log(response);
+                            // window.location.href = 'B_games.html';
+                        })
+                        .catch((error) => {
+                            // 处理错误响应
+                            console.error(error);
+                        });
+                },
+                fetchAllgames() {
+                    axios.get(php_url + 'B_games.php')
+                        .then((response) => {
+                            this.games = response.data;
+                            console.log(this.games);
+                            // console.log(memberid);
+                        })
+                },
+                setCurrentPage(page) {
+                    this.currentPage = page;
+                },
+            },
+            mounted() {
+                this.fetchAllgames();
+            }
+
+        }).mount('#B_game')
+    </script>
 </body>
 
 </html>

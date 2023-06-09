@@ -248,6 +248,7 @@
                             // 可以在这里重置输入框和相关数据
                             this.showResetPassword = false;
                             this.newPassword = '';
+                            this.member.MEMBER_STATUS = 1;
                             alert("密碼已重置");
                         })
                         .catch((error) => {

@@ -73,10 +73,10 @@
                             </li>
                             <li class="B_grid_two b_backend_color">
                                 <h6>遊戲類型</h6>
-                                <div class="B_games">
+                                <div class="B_games_type">
                                     <ul>
                                         <li v-for="(category, index) in categorys" :key="index">
-                                            <input type="checkbox" :name="category.CATEGORY_NAME"
+                                            <input type="checkbox" :name="category.CATEGORY_NAME" v-model="categoryid"
                                                 id="category.CATEGORY_NAME">
                                             <label :for="category.CATEGORY_NAME">{{category.CATEGORY_NAME}}</label>
                                         </li>
@@ -111,13 +111,15 @@
                                 <label for="Product_discount">
                                     <h6>活動折扣</h6>
                                 </label>
-                                <input type="text" name="" id="Product_discount" v-model="percentage" placeholder="請輸入折扣%數">
+                                <input type="text" name="" id="Product_discount" v-model="percentage"
+                                    placeholder="請輸入折扣%數">
                             </li>
                             <li>
                                 <label for="commodity_price">
                                     <h6>商品金額</h6>
                                 </label>
-                                <input type="text" name="" v-model="originalPrice" id="commodity_price" placeholder="請輸入金額">
+                                <input type="text" name="" v-model="originalPrice" id="commodity_price"
+                                    placeholder="請輸入金額">
                             </li>
                             <li class="B_grid_two">
                                 <label for="game_instructions">
@@ -130,8 +132,8 @@
                                 <label for="system_requirement">
                                     <h6>系統需求</h6>
                                 </label>
-                                <textarea name="" id="system_requirement" v-model="systemRequirement" cols="100" rows="30"
-                                    placeholder="請輸入系統需求"></textarea>
+                                <textarea name="" id="system_requirement" v-model="systemRequirement" cols="100"
+                                    rows="30" placeholder="請輸入系統需求"></textarea>
                             </li>
                             <li style="display: none;">
                                 <label for="gameStatus">
@@ -187,8 +189,8 @@
                     activitys: [],
                     startTime: '', // 活動開始時間
                     endTime: '', // 活動結束時間
-                    percentage:'',
-                    
+                    percentage: '',
+
 
 
                     imageUrl: '',
@@ -202,6 +204,7 @@
                     publisher: '',
                     developer: '',
                     ratingID: '',
+                    categoryid:[],
                     systemRequirement: '',
                     totalComments: '0',
                     purchased: '0'
@@ -279,8 +282,10 @@
                 insertGame(event) {
                     event.preventDefault();
                     const formData = new FormData();
+
+                    const image_file = document.getElementById('fileInput')
                     formData.append('gameName', this.gameName);
-                    formData.append('gameCover', this.gameCover);
+                    formData.append('gameCover', image_file.files[0]);
                     formData.append('gameIntro', this.gameIntro);
                     formData.append('originalPrice', this.originalPrice);
                     formData.append('gameStatus', this.gameStatus);;
@@ -291,9 +296,14 @@
                     formData.append('systemRequirement', this.systemRequirement);
                     formData.append('totalComments', this.totalComments);
                     formData.append('purchased', this.purchased);
+                    formData.append('categoryid', this.categoryid);
                     console.log(this);
                     // 发送POST请求并插入游戏数据
-                    axios.post(php_url + 'B_insert_game.php', formData)
+                    axios.post(php_url + 'B_insert_game.php', formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
+                    })
                         .then((response) => {
                             console.log(response);
                             // 执行成功后的操作
@@ -332,7 +342,7 @@
                         this.ratings = response.data.rating;
                         this.categorys = response.data.category;
                         this.activitys = response.data.activity;
-                        // console.log(response.data);
+                        console.log(this.categorys);
                     });
                 this.initializeFlatpickr();
             }

@@ -17,17 +17,17 @@
         @@include('./layout/B_nav.html')
 
         <!-- 右側 -->
-        <div class="right col-12">
+        <div class="right col-12" id="B_member">
             <!-- 右側上 -->
             <div class="right-top backend_color">
-                <form action="" method="">
+                <form @submit.prevent="submitQuery">
                     <label for="type">查詢類型：</label>
-                    <select name="" id="type">
-                        <option value="memberID">會員編號</option>
+                    <select v-model="queryType" id="type">
+                        <option value="membership_number">會員編號</option>
                         <option value="phone">會員電話</option>
                     </select>
                     <label for="memberID">查詢會員：</label>
-                    <input type="text" name="" id="memberID">
+                    <input type="text" v-model="membership_number" id="memberID" inputmode="numeric" pattern="[0-9]*">
                     <button type="submit" class="btn">查詢</button>
                 </form>
             </div>
@@ -57,22 +57,23 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody id="B_member">
-                        <tr v-for="(member,index) in members" :key="member.number" @click="viewmember(member.MEMBER_ID)">
+                    <tbody>
+                        <tr v-for="(member,index) in displayedMembers" :key="member.number"
+                            @click="viewmember(member.MEMBER_ID)">
                             <td>
-                                <h6>{{member.MEMBERSHIP_NUMBER}}</h6>
+                                <h6>{{ member.MEMBERSHIP_NUMBER }}</h6>
                             </td>
                             <td>
-                                <h6>{{member.MEMBER_ACCOUNT}}</h6>
+                                <h6>{{ member.MEMBER_ACCOUNT }}</h6>
                             </td>
                             <td>
-                                <h6>{{member.USERNAME}}</h6>
+                                <h6>{{ member.USERNAME }}</h6>
                             </td>
                             <td>
-                                <h6>{{member.PHONE}}</h6>
+                                <h6>{{ member.PHONE }}</h6>
                             </td>
                             <td>
-                                <h6>{{member.REGISTRATION_DATE}}</h6>
+                                <h6>{{ member.REGISTRATION_DATE }}</h6>
                             </td>
                             <td>
                                 <h6 v-if="member.MEMBER_STATUS == 1">正常</h6>
@@ -81,39 +82,93 @@
                         </tr>
                     </tbody>
                 </table>
+
+                <!-- 分頁 -->
+                <ul class="B_pagination" v-if="totalPages > 1">
+                    <li class="B_page-item" :class="{ active: currentPage === page }" v-for="page in totalPages"
+                        :key="page">
+                        <a class="B_page-link" href="#" @click="setCurrentPage(page)">{{ page }}</a>
+                    </li>
+                </ul>
             </div>
-            <!-- 分頁 -->
-            @@include('./layout/B_changepage.html')
-        </div>
     </main>
     @@include('./layout/js.html')
 
     <script>
-        //渲染全部會員資料
+
         Vue.createApp({
             data() {
                 return {
-                    members: []
+                    members: [],
+                    queryType: 'membership_number',
+                    membership_number: '',
+                    currentPage: 1, // 目前顯示的頁面
+                    itemsPerPage: 6, // 每頁顯示的資料筆數
                 }
             },
+            computed: {
+                displayedMembers() {
+                    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+                    const endIndex = startIndex + this.itemsPerPage;
+                    return this.members.slice(startIndex, endIndex);
+                },
+                totalPages() {
+                    return Math.ceil(this.members.length / this.itemsPerPage);
+                },
+            },
             methods: {
-                viewmember(memberid){
+                viewmember(memberid) {
                     //跳轉info
                     window.location.href = 'B_member_info.html?id=' + memberid;
                     // console.log(memberid);
-                }
-            },
-            mounted() {
-                axios.get(php_url + 'B_member.php')
-                    .then((response) => {
-                        this.members = response.data;
-                        console.log(this.members);
-                        // console.log(memberid);
+                },
+                submitQuery() {
+                    if (!this.membership_number) {
+                        this.fetchAllMembers();
+                        return;
+                    }
+                    const formData = new FormData();
+                    formData.append('queryType', this.queryType);
+                    formData.append('membership_number', this.membership_number);
+
+                    axios.post(php_url + 'B_search.php', formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
                     })
+                        .then((response) => {
+                            this.members = response.data;
+                            console.log(this.members);
+                            // 跳轉到會員資訊頁面
+                            // window.location.href = 'B_member_info.html?id=' + memberid;
+                            if (this.members.length === 0) {
+                                alert('查無資料');
+                                this.fetchAllMembers();
+                            }
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        });
+                },
+                fetchAllMembers() {
+                    axios.get(php_url + 'B_member.php')
+                        .then((response) => {
+                            this.members = response.data;
+                            console.log(this.members);
+                        })
+                },
+                setCurrentPage(page) {
+                    this.currentPage = page;
+                },
+            },
+            //渲染全部會員資料
+            mounted() {
+                this.fetchAllMembers();
             }
 
         }).mount('#B_member')
     </script>
+
 </body>
 
 </html>
