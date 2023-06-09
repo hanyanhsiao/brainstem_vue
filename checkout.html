@@ -33,7 +33,7 @@
                         </div>
                         <div class="price_box">
                             <div class="price">$ {{ item.price }}</div>
-                            <div class="price_original">$ {{ item.originalPrice }}</div>
+                            <div class="price_original">{{ item.originalPrice }}</div>
                         </div>
                         <div class="del">
                             <p @click="removeItem(index)">移除<i class="bi bi-dash-circle"></i>
@@ -271,7 +271,7 @@
                                 } else {
                                     // 將遊戲資料添加到購物車
                                     let price = item.DISCOUNT_PERCENTAGE !== null ? Math.floor(item.ORIGINAL_PRICE * item.DISCOUNT_PERCENTAGE) : item.ORIGINAL_PRICE;
-                                    let originalPrice = item.DISCOUNT_PERCENTAGE !== null ? + item.ORIGINAL_PRICE : '';
+                                    let originalPrice = item.DISCOUNT_PERCENTAGE !== null ? "$ " + item.ORIGINAL_PRICE : '';
                                     let discounts = item.DISCOUNT_PERCENTAGE !== null ? "-" + Math.round((1 - item.DISCOUNT_PERCENTAGE) * 100) + '%' : '';
                                     let activityEndDate = item.ACTIVITY_END !== null ? "優惠日期到 " + new Date(item.ACTIVITY_END).toISOString().split('T')[0] : "";
 
