@@ -86,7 +86,7 @@
                     <span v-show="currentGood.DISCOUNT_PERCENTAGE > 0 " class="discount">-{{100 -
                         currentGood.DISCOUNT_PERCENTAGE * 100}}%</span>
                     <span class="price" v-show="currentGood.DISCOUNT_PERCENTAGE > 0">${{goodafterDiscount()}}</span>
-                    <h2 class="orinal_price" :class="{'line_throught':currentGood.DISCOUNT_PERCENTAGE > 0}">
+                    <h2 class="price_original" :class="{'line_throught':currentGood.DISCOUNT_PERCENTAGE > 0}">
                         ${{currentGood.ORIGINAL_PRICE}}</h2>
                     <p>遊戲評價：
                         <i class="bi bi-star-fill" v-if="gameComments.length > 0"></i>
@@ -124,7 +124,7 @@
                     </div>
                 </div>
             </div>
-            <div class="shopcar_popup">
+            <div class="shopcar_popup" :class="{'active':shopcar_popup}">
                 <i class="bi bi-check-circle"></i>
                 <h2>已加入購物車</h2>
             </div>
@@ -150,7 +150,7 @@
             </div>
         </section>
 
-        <section class="game_comment col-12">
+        <section class="game_comment col-12" id="commentList">
             <h2 class="comment_title">近期評論</h2>
             <div class="evaluation">
                 <p>遊戲整體評價：</p>
@@ -160,13 +160,13 @@
                     <span class="total_comments">({{this.gameComments.length}}則評論)</span>
                 </div>
             </div>
-            <div class="comments_range col-12 swiper">
+            <div class="comments_range col-12 swiper" >
                 <div class="swiper-wrapper">
                     <div class="more_and_less">
-                        <button class="look_more" v-show="gameComments.length > 4">查看更多</button>
-                        <button class="look_less">收合評論</button>
+                        <button class="look_more" v-show="gameComments.length > 4 && !showLessButton" @click="showMoreComments">查看更多</button>
+                        <button class="look_less" v-show="showLessButton" @click="showLessComments">收合評論</button>
                     </div>
-                    <div class="each_comment col-3 swiper-slide" v-for="gamecomment in gameComments">
+                    <div class="each_comment col-3 swiper-slide" v-for="gamecomment in displayedComments()" @click="showCommentsPopup(gamecomment)">
                         <div class="comment_top">
                             <div class="member_pic">
                                 <img :src="gamecomment.MEMBER_PHOTO" alt="">
@@ -182,25 +182,50 @@
                             </div>
                         </div>
                         <div class="comment_text">
-                            <i class="bi bi-hand-thumbs-up"></i>
+                            <!-- <i class="bi bi-hand-thumbs-up"></i> -->
                             <p class="comment_content">{{gamecomment.COMMENT_CONTENT}}</p>
                         </div>
                     </div>
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
-            <div class="pages">
+            <!-- 分頁 -->
+            <paginator 
+                v-show="this.showPaginator"
+                :total-pages="totalPages()" 
+                :current-page="currentPage" 
+                @page-change="goToPage"
+                @previous-page="previousPage" 
+                @next-page="nextPage">
+            </paginator>
 
-                <ul class="comment_pages">
-                    <li class="each_page"><a class="active" href="#">1</a></li>
-                    <li class="each_page"><a href="#">2</a></li>
-                    <li class="each_page"><a href="#">3</a></li>
-                    <li class="each_page"><a href="#">4</a></li>
-                    <li class="each_page"><a href="#"><i class="bi bi-chevron-right"></i></a></li>
-                </ul>
-
+            <div class="comment_popup_outer" :class="{'active':showCommentPopup}">
+                <div class="comment_popup_box">
+                    <div class="popup_box_top">
+                        <div class="member_detail">
+                            <img :src="selectedComment.MEMBER_PHOTO" alt="">
+                            <div class="popup_info">
+                                <h2 class="member_name">{{selectedComment.NICKNAME}}</h2>
+                                <p class="game_time">遊戲時長：{{numFilter(selectedComment.GAME_TIME)}}小時</p>
+                                <p class="comment_date">評論於{{selectedComment.COMMENT_DATE}}</p>
+                            </div>
+                        </div>
+                        <div class="game_rating">
+                            <span class="satisfaction">遊戲滿意度：</span>
+                            <span class="member_game_rating">{{selectedComment.STAR_RATING}}</span>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                    </div>
+                        <div class="popup_text">
+                        <!-- <div id="thumb_up"><i class="bi bi-hand-thumbs-up"></i></div> -->
+                            <p class="popup_content">{{selectedComment.COMMENT_CONTENT}}</p>
+                        </div>
+                        <button class="comment_popup_close" @click="closeCommentPopup">關閉</button>
+                    </div>
+                </div>
             </div>
-            <div class="comment_popup_outer">
+
+            <!-- <div class="comment_popup_outer">
                 <div class="comment_popup_box">
                     <div class="popup_box_top">
                         <div class="member_detail">
@@ -228,7 +253,7 @@
                     <button class="comment_popup_close">關閉</button>
                 </div>
 
-            </div>
+            </div> -->
         </section>
         <section class="recommendation col-12">
             <div class="recommend_range col-10">
@@ -263,7 +288,7 @@
                                     <h3>{{recommend.GAME_NAME}}</h3>
                                     <span class="price"
                                         v-show="recommend.DISCOUNT_PERCENTAGE > 0">${{afterDiscount(index)}}</span>
-                                    <span class="orinal_price"
+                                    <span class="price_original"
                                         :class="{'line_throught':recommend.DISCOUNT_PERCENTAGE > 0}">${{recommend.ORIGINAL_PRICE}}</span>
                                 </div>
                             </a>
@@ -291,18 +316,34 @@
     <!-- 以下可以放自己的js -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
-    <script>
+    <script type="module">
+        import Paginator from "./js/Paginator.js";
 
         const productInformation = Vue.createApp({
             data() {
                 return {
+                    // 判斷視窗大小以協助手機版做調整
+                    windowWidth: window.innerWidth || document.documentElement.clientWidth,
+                    // 分頁相關
+                    currentPage: 1, // 當前頁碼
+                    commentPerPage: 4, // 每頁顯示評論數量
+
+                    showMoreButton: false, // 顯示 "查看更多" 按鈕
+                    showLessButton: false, // 顯示 "收合評論" 按鈕
+                    showPaginator: false, // 顯示分頁器
+
                     currentGood: {},
                     gameImg: [],
                     goodSysEnv: "",
                     recommendGoods: [],
                     gameComments: [],
                     showPopup: false,
-                    showRemove: false
+                    showRemove: false,
+                    shopcar_popup:false,
+                    showCommentPopup: false,
+                    selectedComment:[],// 存儲選中的評論對象
+
+
                 }
             },
             created() {
@@ -313,11 +354,29 @@
                 axios.get(`${url}`)
                     .then((response) => {
                         this.currentGood = response.data[0];
-                        this.currentGood.hovered = false;
-                        this.currentGood.clicked = false;
+                        axios.defaults.withCredentials = true;
+                        axios.post(php_url + 'login_status.php')
+                            .then((response) => {
+                                let isLogin = response.data.isLogin;
+                                if(isLogin){
+                                    let id = response.data.member_ID;
+                                    axios.get(php_url + `member_wishlist.php?id=${id}`)
+                                    .then((response)=>{
+                                        let collectedGoodsList = response.data;
+                                        // for(let goodList of this.goodListFromDB){
+                                            for(let collectedGood of collectedGoodsList){
+                                                if(this.currentGood.GAME_ID == collectedGood.GAME_ID){
+                                                    this.currentGood.clicked = true;
+                                                    this.currentGood.hovered = true;
+                                                }                                                    
+                                            }                                                                             
+                                        // }
+                                    })
+                                }                             
+                            })
                         this.currentGood.showPopup = false, //顯示加入願望清單
-                            this.currentGood.showRemove = false, //顯示移除願望清單
-                            this.goodSysEnv = this.currentGood.SYSTEM_REQUIREMENT;
+                        this.currentGood.showRemove = false, //顯示移除願望清單
+                        this.goodSysEnv = this.currentGood.SYSTEM_REQUIREMENT;
 
                     });
                 //推薦遊戲區
@@ -326,11 +385,26 @@
                     .then((response) => {
                         this.recommendGoods = response.data;
 
-                        for (let recommendGood of this.recommendGoods) {
-                            recommendGood.hovered = false;
-                            recommendGood.clicked = false;
-                        };
-
+                        axios.defaults.withCredentials = true;
+                        axios.post(php_url + 'login_status.php')
+                            .then((response) => {
+                                let isLogin = response.data.isLogin;
+                                if(isLogin){
+                                    let id = response.data.member_ID;
+                                    axios.get(php_url + `member_wishlist.php?id=${id}`)
+                                    .then((response)=>{
+                                        let collectedGoodsList = response.data;
+                                        for(let goodList of this.recommendGoods){
+                                            for(let collectedGood of collectedGoodsList){
+                                                if(goodList.GAME_ID == collectedGood.GAME_ID){
+                                                    goodList.clicked = true;
+                                                    goodList.hovered = true;
+                                                }                                                    
+                                            }                                                                             
+                                        }
+                                    })
+                                }                             
+                            })
                     });
 
                 //遊戲圖片
@@ -349,8 +423,6 @@
                     .then((response) => {
                         this.gameComments = response.data;
                     });
-
-
             },
             computed: {
                 numFilter: function (value) {
@@ -370,24 +442,89 @@
                     } else {
                         avg = "尚無評價"
                     }
-
                     return avg;
                 }
             },
 
             methods: {
+
+                showCommentsPopup(comment) {
+                    this.selectedComment = comment; // 將選中的評論存儲到數據中
+                    this.showCommentPopup = true; // 將彈窗顯示狀態設置為 true
+                    console.log(this.selectedComment);
+                    console.log(this.showCommentPopup);
+                },
+                closeCommentPopup() {
+                    this.showCommentPopup = false; // 將彈窗顯示狀態設置為 false，關閉彈窗
+                },
+                goToPage(page) {
+                    if (page >= 1 && page <= this.totalPages()) {
+                        this.currentPage = page; // 跳轉到指定頁碼
+                    }
+                    this.$nextTick(() => {
+                        const commentList = document.getElementById('commentList');
+                        if (commentList) {
+                        window.scrollTo({
+                            top: commentList.offsetTop,
+                            behavior: 'smooth', // 使用平滑滾動效果
+                        });
+                        }
+                    });
+                },
+                totalPages() {
+                    return Math.ceil(this.gameComments.length / this.commentPerPage); // 總頁數
+                },
+                previousPage() {
+                    if (this.currentPage > 1) {
+                        this.currentPage--; //上一頁
+                    }
+                },
+                nextPage() {
+                    if (this.currentPage < this.totalPages()) {
+                        this.currentPage++; //下一頁
+                    }
+                },
+                displayedComments() { //評論呈現功能
+                    let screenWidth = window.innerWidth || document.documentElement.clientWidth;
+                    if(screenWidth > 414){
+                        const start = (this.currentPage - 1) * this.commentPerPage;
+                        const end = start + this.commentPerPage;
+                        return this.gameComments.slice(start, end);
+                    }else if(screenWidth === 414){
+                        return this.gameComments;
+                    }                    
+                },
+                showMoreComments() {
+                // 點擊 "查看更多" 按鈕時顯示更多評論和分頁器
+                    
+                    this.commentPerPage = 8;
+                    this.showMoreButton = false;
+                    this.showLessButton = true;
+                    this.showPaginator = true;                    
+                    
+                },
+                showLessComments() {
+                // 點擊 "收合評論" 按鈕時恢復初始狀態
+                    this.commentPerPage = 4;
+                    this.showMoreButton = true;
+                    this.showLessButton = false;
+                    this.showPaginator = false;
+                    this.currentPage = 1; // 回到第一頁
+                },
+
+                // 推薦遊戲區折扣計算
                 afterDiscount(i) {
                     return Math.floor(this.recommendGoods[i].ORIGINAL_PRICE * this.recommendGoods[i].DISCOUNT_PERCENTAGE);
                 },
+                // 本頁商品折扣計算
                 goodafterDiscount() {
                     return Math.floor(this.currentGood.ORIGINAL_PRICE * this.currentGood.DISCOUNT_PERCENTAGE);
                 },
+
                 hoverHeart(recommend) {
                     if (!recommend.clicked) {
                         recommend.hovered = true;
                     }
-
-                    console.log(this.gameComments.length);
                 },
                 leaveHeart(recommend) {
                     if (!recommend.clicked) {
@@ -395,22 +532,51 @@
                     }
                 },
                 toggleHeart(currentGood) {
-                    currentGood.clicked = !currentGood.clicked;
-                    currentGood.showPopup = currentGood.clicked;
-                    currentGood.showRemove = !currentGood.clicked;
-                    setTimeout(() => {
-                        currentGood.showPopup = false;
-                        currentGood.showRemove = false;
-                    }, 1500); // 在 1500 毫秒後隱藏，可根據需要進行調整
+                    axios.defaults.withCredentials = true;
+                    axios.post(php_url + 'login_status.php')
+                        .then((response) => {
+                            let isLogin = response.data.isLogin;
+                            if(isLogin){
+                                let id = response.data.member_ID;
+                                let wishitem = currentGood.GAME_ID;                        
+                                axios.get(php_url + `add_to_wishlist.php?id=${id}&wishitem=${wishitem}`)
+                                
+                                currentGood.clicked = !currentGood.clicked;
+                                currentGood.showPopup = currentGood.clicked;
+                                currentGood.showRemove = !currentGood.clicked;
+                                setTimeout(() => {
+                                    currentGood.showPopup = false;
+                                    currentGood.showRemove = false;
+                                }, 1500); // 在 1500 毫秒後隱藏，可根據需要進行調整
+                            }else{
+                                alert("請先登入會員");
+                                window.location.href = '../login.html'
+                            }                            
+                        })                    
                 },
                 toggleHeartRecommend(recommend) {
-                    recommend.clicked = !recommend.clicked;
-                    this.showPopup = recommend.clicked;
-                    this.showRemove = !recommend.clicked;
-                    setTimeout(() => {
-                        this.showPopup = false;
-                        this.showRemove = false;
-                    }, 1500); // 在 1500 毫秒後隱藏，可根據需要進行調整
+                    axios.defaults.withCredentials = true;
+                    axios.post(php_url + 'login_status.php')
+                        .then((response) => {
+                            let isLogin = response.data.isLogin;
+                            if(isLogin){
+                                let id = response.data.member_ID;
+                                let wishitem = recommend.GAME_ID;                        
+                                axios.get(php_url + `add_to_wishlist.php?id=${id}&wishitem=${wishitem}`)
+                                
+                                recommend.clicked = !recommend.clicked;
+                                this.showPopup = recommend.clicked;
+                                this.showRemove = !recommend.clicked;
+                                setTimeout(() => {
+                                    this.showPopup = false;
+                                    this.showRemove = false;
+                                }, 1500); // 在 1500 毫秒後隱藏，可根據需要進行調整
+                            }else{
+                                alert("請先登入會員");
+                                window.location.href = '../login.html'
+                            }                            
+                        })       
+                    
                 },
                 goProductPage(id) {
                     location.href = `./product_information.html?id=${id}`;
@@ -425,6 +591,11 @@
                         let keys = Object.keys(localStorage);
                         let good_key = keys.filter((key) => { return key.startsWith("good_"); });
                         cartItem.innerHTML = good_key.length;
+                        this.shopcar_popup = true;
+                        setTimeout(() => {
+                            this.shopcar_popup = false;
+                        }, 1500);
+                        
                     }
                     // =============購物車小圖示數量===================
                     if (action == "toPay") {
@@ -434,147 +605,44 @@
             },
             mounted() {
             },
+            components: {
+                Paginator,
+            },
 
         });
 
         productInformation.mount('#product_information');
 
 
+        // //點擊評論彈出視窗設定===============================================================================
+        // const clickComment = document.querySelectorAll(".each_comment");
+        // comment_popup_outer = document.getElementsByClassName("comment_popup_outer")[0];
+        // comment_popup_close = document.getElementsByClassName("comment_popup_close")[0];
+        // clickComment.forEach(function (comment) {
+        //     comment.addEventListener("click", function (e) {
+        //         comment_popup_outer.classList.add("active");
+        //         comment_popup_close.addEventListener("click", function (e) {
+        //             comment_popup_outer.classList.remove("active");
 
-        //確認加入購物車彈出視窗設定===============================================================================
-        const checkAdd = document.getElementsByClassName("shopcar_btn")[0];
-        shopcarPopup = document.getElementsByClassName("shopcar_popup")[0];
-        checkAdd.addEventListener("click", function () {
-            shopcarPopup.classList.add("active");
-            setTimeout(() => {
-                shopcarPopup.classList.remove("active");
-            }, 1500); // 3000 毫秒後自動隱藏，可以根據需要調整時間
-        });
+        //         });
 
+        //     });
+        // });
 
-        //點擊評論彈出視窗設定===============================================================================
-        const clickComment = document.querySelectorAll(".each_comment");
-        comment_popup_outer = document.getElementsByClassName("comment_popup_outer")[0];
-        comment_popup_close = document.getElementsByClassName("comment_popup_close")[0];
-        clickComment.forEach(function (comment) {
-            comment.addEventListener("click", function (e) {
-                comment_popup_outer.classList.add("active");
-                comment_popup_close.addEventListener("click", function (e) {
-                    comment_popup_outer.classList.remove("active");
-
-                });
-
-            });
-        });
-
-        // 點擊查看更多============================================================================================
-        document.addEventListener("DOMContentLoaded", function () {
-            // 獲取元素
-            let lookMoreButton = document.querySelector(".look_more");
-            let lookLessButton = document.querySelector(".look_less");
-            let commentSections = document.querySelectorAll(".each_comment");
-            let commentPages = document.querySelectorAll(".pages");
-            let screenWidth = window.innerWidth || document.documentElement.clientWidth;
-
-            // 點擊 "查看更多" 按鈕時的事件處理程序
-            lookMoreButton.addEventListener("click", function () {
-                // 顯示所有評論
-                commentSections.forEach(function (section) {
-                    section.style.display = "block";
-                });
-                // 顯示所有頁碼
-                commentPages.forEach(function (page) {
-                    page.style.display = "block";
-                });
-                lookMoreButton.style.display = "none";
-                lookLessButton.style.display = "block";
-
-            });
-
-            lookLessButton.addEventListener("click", function () {
-                lookMoreButton.style.display = "block";
-                lookLessButton.style.display = "none";
-                commentPages.forEach(function (page) {
-                    page.style.display = "none";
-                });
-                for (var i = 4; i < commentSections.length; i++) {
-                    commentSections[i].style.display = "none";
-                }
-            });
-
-            // 初始化只顯示四則評論
-            for (var i = 4; i < commentSections.length; i++) {
-                commentSections[i].style.display = "none";
-                lookLessButton.style.display = "none";
-            }
-
-            if (screenWidth === 414) {
-                // 顯示全部評論                
-                commentSections.forEach(function (section) {
-                    section.style.display = "block";
-                });
-            }
-
-        });
+    
 
 
-        // 評論內容超過長度隱藏======================================================================================
-        var len = 155; // 超過155個字以"..."取代
-        var elements = document.getElementsByClassName("comment_content");
-        Array.prototype.forEach.call(elements, function (element) {
-            if (element.textContent.length > len) {
-                element.setAttribute("title", element.textContent);
-                var text = element.textContent.substring(0, len - 1) + "...";
-                element.textContent = text;
-            }
-        });
+        // // 評論內容超過長度隱藏======================================================================================
+        // var len = 155; // 超過155個字以"..."取代
+        // var elements = document.getElementsByClassName("comment_content");
+        // Array.prototype.forEach.call(elements, function (element) {
+        //     if (element.textContent.length > len) {
+        //         element.setAttribute("title", element.textContent);
+        //         var text = element.textContent.substring(0, len - 1) + "...";
+        //         element.textContent = text;
+        //     }
+        // });
 
-
-        // 評論按讚=================================================================================================
-        var thumbsUpList = document.querySelectorAll('.bi-hand-thumbs-up');
-
-        thumbsUpList.forEach(function (thumbsUp) {
-            // 綁定滑鼠懸停事件
-            thumbsUp.addEventListener('mouseenter', function (e) {
-                // 移除預設圖標的類別，加上懸停圖標的類別
-                if (!thumbsUp.classList.contains("bi-hand-thumbs-up-fill") || !thumbsUp.classList.contains("bi-hand-thumbs-up-clicked")) {
-                    thumbsUp.classList.remove("bi-hand-thumbs-up");
-                    thumbsUp.classList.add("bi-hand-thumbs-up-fill");
-                    e.stopPropagation();
-                }
-            });
-
-            // 綁定滑鼠離開事件
-            thumbsUp.addEventListener('mouseleave', function (e) {
-                // 移除懸停圖標的類別，加上預設圖標的類別
-                if (!thumbsUp.classList.contains("bi-hand-thumbs-up-fill") || !thumbsUp.classList.contains("bi-hand-thumbs-up-clicked")) {
-                    thumbsUp.classList.remove("bi-hand-thumbs-up-fill");
-                    thumbsUp.classList.add("bi-hand-thumbs-up");
-                    e.stopPropagation();
-                }
-            });
-
-            thumbsUp.addEventListener('click', function (e) {
-                if (!thumbsUp.classList.contains("bi-hand-thumbs-up-clicked")) {
-                    thumbsUp.classList.remove("bi-hand-thumbs-up");
-                    thumbsUp.classList.add("bi-hand-thumbs-up-fill");
-                    thumbsUp.classList.add("bi-hand-thumbs-up-clicked");
-                    thumbsUp.classList.add("animate");
-                    setTimeout(() => {
-                        thumbsUp.classList.remove("animate");
-                    }, 600);
-                    e.preventDefault();
-                    e.stopPropagation();
-
-
-                } else {
-                    thumbsUp.classList.remove("bi-hand-thumbs-up-fill");
-                    thumbsUp.classList.add("bi-hand-thumbs-up");
-                    thumbsUp.classList.remove("bi-hand-thumbs-up-clicked");
-                    e.stopPropagation();
-                }
-            });
-        });
 
         //推薦遊戲輪播
         $(document).ready(function () {

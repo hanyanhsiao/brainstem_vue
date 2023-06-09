@@ -63,7 +63,7 @@
                 </div>
 
                 <!-- 商品陳列區 -->
-                <div class="product_goods">
+                <div class="product_goods" id="product-list">
                     <product-list :goods="displayedGoods()"></product-list>
                 </div>
 
@@ -231,6 +231,15 @@
                     if (page >= 1 && page <= this.totalPages()) {
                         this.currentPage = page; // 跳轉到指定頁碼
                     }
+                    this.$nextTick(() => {
+                        const productList = document.getElementById('product-list');
+                        if (productList) {
+                        window.scrollTo({
+                            top: productList.offsetTop,
+                            behavior: 'smooth', // 使用平滑滾動效果
+                        });
+                        }
+                    });
                 },
                 // 上一頁
                 previousPage() {
