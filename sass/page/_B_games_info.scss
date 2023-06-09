@@ -46,6 +46,19 @@
                             h6 {
                                 margin-left: 5px;
                             }
+                            select{
+                                width: 50%;
+                                margin: 15px auto;
+                                font-size: 2.4rem;
+                                margin-left: 0;
+                            }
+                            input{
+                                margin: auto;
+                            }
+                            img{
+                                width: 50%;
+                                margin: 5px 0;
+                            }
                         }
                         
                         .B_grid_four {
@@ -60,9 +73,8 @@
                         }
                         .B_grid_two {
                             grid-template-columns: .8fr 3.2fr;
-                            .B_games{
+                            .B_games_type{
                                 width: 100%;
-
                                 ul {
                                     width: 100%;
                                     display: grid;
@@ -108,6 +120,8 @@
                                 }
                                 input{
                                     width: 90%;
+                                    margin: 0;
+                                    margin-bottom: 10px;
                                 }
                             }
                         }
@@ -124,6 +138,12 @@
                                     span {
                                         margin-left: 50px;
                                     }
+                                }
+                                textarea {
+                                    padding: 5px;
+                                    border-radius: 5px;
+                                    font-size: $p;
+                                    margin: 10px 0;
                                 }
                             }
                             .B_none{

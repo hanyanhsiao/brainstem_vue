@@ -63,6 +63,10 @@
                             <textarea v-if="isEditing" v-model="coupon.MINIMUM_LIMIT"  cols="95" rows="10"></textarea>
                             <h6 v-else>{{ coupon.MINIMUM_LIMIT }}</h6>
                         </li>
+                        <li>
+                            <h6>優惠券狀態</h6>
+                            <h6>{{coupon.COUPON_STATUS === 1 ? '正常' : '停用'}}</h6>
+                        </li>
                     </ul>
                 </form>
             </div>

@@ -28,29 +28,35 @@
                         <div class="B_button">
                             <h4>遊戲內容</h4>
                             <button class="btn" v-if="!isEditing" @click="editgame">修改內容</button>
-                            <button class="btn" v-else @click="savegame">儲存</button>
+                            <button class="btn" v-else @click="savegame($event)">儲存</button>
                         </div>
                         <div class="right_main_top">
                             <ul>
                                 <li>
                                     <h6>遊戲名稱</h6>
                                     <h6 v-if="!isEditing">{{game.GAME_NAME}}</h6>
-                                    <input v-else type="text" v-model="gamename" name="" id="" placeholder="請輸入遊戲名稱">
+                                    <input v-else type="text" v-model="game.GAME_NAME" name="" id="" placeholder="{{game.GAME_NAME}}">
                                 </li>
                                 <li>
                                     <h6>遊戲編號</h6>
                                     <h6>{{game.GAME_ID}}</h6>
                                 </li>
+                                <li>
+                                    <h6>遊戲封面</h6>
+                                    <img :src="game.GAME_COVER" alt="">
+                                </li>
                                 <li class="B_grid_two">
                                     <h6>遊戲類型</h6>
-                                    <div class="B_games">
+                                    <div class="B_games_type">
                                         <ul>
                                             <li v-if="!isEditing">
-                                                <h6>{{ game.CATEGORY_NAMES }}</h6>
+                                                <h6>{{ new_select.length > 0 ? new_select : game.CATEGORY_NAMES }}</h6>
+                                                <h6 v-for="(category, index) in new_select">{{category}}</h6>
                                             </li>
-                                            <li v-else v-for="(category, index) in selectedCategories" :key="index">
+                                            <li v-else v-for="(category, index) in categorys" :key="index">
+                                                <!-- {{category}} -->
                                                 <input type="checkbox" :name="category.CATEGORY_NAME"
-                                                    id="category.CATEGORY_NAME">
+                                                    id="category.CATEGORY_NAME" v-model="new_select" :value="category.CATEGORY_ID">
                                                 <label :for="category.CATEGORY_NAME">{{category.CATEGORY_NAME}}</label>
                                             </li>
                                         </ul>
@@ -59,10 +65,13 @@
                                 <li class="B_grid_three">
                                     <h6>活動類型</h6>
                                     <template v-if="!isEditing">
-                                        <h6>{{game.ACTIVITY_NAME}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;活動時間：{{game.ACTIVITY_BEGIN}}
-                                            ~ {{game.ACTIVITY_END}}</h6>
+                                        <template v-if="!isEditing && game.ACTIVITY_NAME">
+                                            <h6>{{game.ACTIVITY_NAME}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;活動時間：{{game.ACTIVITY_BEGIN}} ~ {{game.ACTIVITY_END}}</h6>
+                                        </template>
+                                        <template v-else>
+                                            <h6>目前無活動</h6>
+                                        </template>
                                     </template>
-
                                     <div v-else class="B_activity">
                                         <div v-for="(activity, index) in activitys" :key="index"
                                             class="B_activity_main">
@@ -76,29 +85,43 @@
                                             placeholder="年/月/日">
                                     </div>
                                 </li>
-                                <li class="B_grid_two">
+                                <li>
                                     <h6>開發商</h6>
-                                    <h6>{{game.PUBLISHER}}</h6>
+                                    <h6 v-if="!isEditing">{{game.PUBLISHER}}</h6>
+                                    <input v-else type="text" v-model="game.PUBLISHER" name="" id="" placeholder="{{game.PUBLISHER}}">
                                 </li>
                                 <li>
                                     <h6>開發人員</h6>
-                                    <h6>{{game.DEVELOPER}}</h6>
+                                    <h6 v-if="!isEditing">{{game.DEVELOPER}}</h6>
+                                    <input v-else type="text" v-model="game.DEVELOPER" name="" id="" placeholder="{{game.DEVELOPER}}">
                                 </li>
                                 <li>
                                     <h6>遊戲級別</h6>
-                                    <h6>{{game.RATING_NAME}}</h6>
+                                    <h6 v-if="!isEditing">{{game.RATING_NAME}}</h6>
+
+                                    <select v-else name="game_level" id="game_level" v-model="ratingID">
+                                        <option v-for="(rating, index) in ratings" :key="index" :value="rating.RATING_ID">
+                                            {{ rating.RATING_NAME }}
+                                        </option>
+                                    </select>
                                 </li>
                                 <li>
                                     <h6>商品金額</h6>
-                                    <h6>${{game.ORIGINAL_PRICE}}</h6>
+                                    <h6 v-if="!isEditing">${{game.ORIGINAL_PRICE}}</h6>
+                                    <input v-else type="text" v-model="game.ORIGINAL_PRICE" name="" id="" placeholder="{{game.ORIGINAL_PRICE}}">
                                 </li>
                                 <li>
                                     <h6>商品折扣</h6>
-                                    <h6>{{game.DISCOUNT_PERCENTAGE}}折</h6>
+                                    <h6 v-if="!isEditing">{{game.DISCOUNT_PERCENTAGE ? game.DISCOUNT_PERCENTAGE + '折' : '目前無折扣'}}</h6>
+                                    <input v-else type="text" v-model="game.DISCOUNT_PERCENTAGE" name="" id="" placeholder="{{game.DISCOUNT_PERCENTAGE}}">
                                 </li>
-                                <li>
+                                <li v-if="!isEditing && game.DISCOUNT_PERCENTAGE">
                                     <h6>商品折扣後金額</h6>
                                     <h6>${{game.DISCOUNTED_PRICE}}</h6>
+                                </li>
+                                <li>
+                                    <h6>遊戲狀態</h6>
+                                    <h6>{{ game.GAME_STATUS === 1 ? '上架中' : '下架' }}</h6>
                                 </li>
                             </ul>
                             <div class="right_main_text">
@@ -107,7 +130,9 @@
                                         <h6>遊戲說明</h6>
                                     </li>
                                     <li>
-                                        <h6>{{game.GAME_INTRO}}</h6>
+                                        <div v-if="!isEditing" v-html="game.GAME_INTRO"></div>
+                                        <textarea v-else name="" id="game_instructions" v-model="game.GAME_INTRO" cols="130" rows="20"
+                                        placeholder="{{game.GAME_INTRO}}"></textarea>
                                     </li>
                                 </ul>
                                 <ul>
@@ -115,7 +140,9 @@
                                         <h6>系統需求</h6>
                                     </li>
                                     <li class="B_none">
-                                        <div v-html="game.SYSTEM_REQUIREMENT"></div>
+                                        <div v-if="!isEditing" v-html="game.SYSTEM_REQUIREMENT"></div>
+                                        <textarea v-else name="" id="system_requirement" v-model="game.SYSTEM_REQUIREMENT" cols="130" rows="30"
+                                        placeholder="{{game.SYSTEM_REQUIREMENT}}"></textarea>
                                     </li>
                                 </ul>
                             </div>
@@ -146,16 +173,20 @@
             data() {
                 return {
                     game: {
-                        CATEGORY_NAMES: [], // 原本的遊戲類型列表
-                        selectedCategories: [], // 存儲選中的遊戲類型
-
+                        GAME_NAME:''
                     },
                     isEditing: false,
+                    categorys:[],
+
+                    new_select:[],//要放CATEGORY_NAMES
+                    
+                    
+                    
                     startTime: '', // 活動開始時間
                     endTime: '', // 活動結束時間
                     ratings: [],
                     activitys: [],
-                    gamename: []
+                    ratingID:[],
 
                 }
             },
@@ -163,9 +194,31 @@
                 editgame() {
                     this.isEditing = true;
                 },
-                savegame() {
+                savegame(e) {
+                    e.preventDefault();
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const gameId = urlParams.get('id');
                     // 创建一个FormData对象
+
+                    // formData.append('RATING_ID',rating.RATING_ID)
+
                     const formData = new FormData();
+                    formData.append('gameId',gameId)
+                    formData.append('gameName',this.game.GAME_NAME)
+                    formData.append('categorys',this.new_select)
+                    console.log(this.new_select);
+
+
+                    formData.append('startTime',this.startTime)
+                    formData.append('endTime',this.endTime)
+                    formData.append('publisher',this.game.PUBLISHER)
+                    formData.append('developer',this.game.DEVELOPER)
+                    formData.append('ratingID',this.ratingID)
+                    formData.append('originalPrice',this.game.ORIGINAL_PRICE)
+                    formData.append('discountPercentage',this.game.DISCOUNT_PERCENTAGE)
+                    formData.append('discountedPrice',this.game.DISCOUNTED_PRICE)
+                    formData.append('gameIntro',this.game.GAME_INTRO)
+                    formData.append('systemRequirement',this.game.SYSTEM_REQUIREMENT)
 
                     // 将修改后的数据添加到formData
 
@@ -175,6 +228,8 @@
                         .then((response) => {
                             console.log(response.data);
                             // 处理修改成功后的逻辑
+
+                            this.editMode = false; // 切换回非编辑模式
                         })
                         .catch((error) => {
                             console.error(error);
@@ -223,9 +278,10 @@
                     .then((response) => {
                         this.game = response.data.game;
                         this.ratings = response.data.rating;
-                        this.selectedCategories = response.data.category;
+                        this.categorys = response.data.category;
                         this.activitys = response.data.activity;
-                        console.log(this.game);
+
+                        console.log(response.data);
                     });
                 this.initializeFlatpickr();
             }

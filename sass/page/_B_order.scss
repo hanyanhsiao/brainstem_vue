@@ -38,7 +38,7 @@
         }
 
         .right-bottom {
-            border: 1px solid #000;
+            // border: 1px solid #000;
 
             // width: 100%;
             table {
@@ -47,7 +47,7 @@
                 line-height: 2.6;
 
                 thead {
-                    border-bottom: 1px solid #000;
+                    border: 1px solid #000;
 
                     tr {
                         th {
@@ -63,7 +63,7 @@
                 tbody {
 
                     tr {
-                        border-bottom: 1px solid #000;
+                        border: 1px solid #000;
                         cursor: pointer;
                         td {
                             h6 {
@@ -84,9 +84,34 @@
                     }
 
                     tr:nth-last-child(1) {
-                        border-bottom: none;
+                        // border-bottom: none;
                     }
 
+                }
+            }
+            .B_pagination{
+                display: flex;
+                // border: 1px solid #000;
+                margin: 50px 0;
+                width: 15%;
+                line-height: 1.4;
+                transform: translateX(585%);
+                li{
+                    border: 1px solid #000;
+                    width: 25px;
+                    text-align: center;
+                    cursor: pointer;
+                    a{
+                        color: #000;
+                        font-size: 2rem;
+                    }
+                }
+                li:last-child {
+                    // border-left: none;
+                    // width: 65px;
+                }
+                li:hover{
+                    background: #d3bffb;
                 }
             }
         }
