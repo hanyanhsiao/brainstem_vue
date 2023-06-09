@@ -134,15 +134,15 @@
             <p>購買金額</p>
             <p>訂單狀態</p>
           </div>
-          <div class="order_in" v-for="(order, index) in orders" :key="index">
+          <div class="order_in" v-for="(order, index) in orders" :key="order.orderId">
             <div class="order_info">
-            <div class="flex_grow">
-              <i class="bi bi-dash-lg open_btn" @click="toggleOrderDetails(index)"></i>
-              <p class="ID">{{ order.orderId }}</p>
-            </div>
-            <p>{{ order.purchaseDate }}</p>
-            <p>{{ order.purchaseAmount }}</p>
-            <p>{{ order.orderStatus }}</p>
+              <div class="flex_grow">
+                <i :class="{'bi bi-dash-lg open_btn': order.showDetails, 'bi bi-plus-lg open_btn': !order.showDetails}" @click="toggleOrderDetails(index)"></i>
+                <p class="ID">{{ order.orderId }}</p>
+              </div>
+              <p>{{ order.purchaseDate }}</p>
+              <p>$ {{ order.purchaseAmount }}</p>
+              <p>{{ order.orderStatus }}</p>
             </div>
             <div v-if="order.showDetails" class="detail_order">
               <div class="detail_order_title">
@@ -156,11 +156,11 @@
                     <img :src="item.image" alt="">
                     <p>{{ item.name }}</p>
                   </div>
-                  <div class="dis">
+                  <div class="dis" :class="{'closed': item.discount === 'None' || item.item_discounts_or === ''}">
                     <div class="discount">{{ item.discount }}</div>
                   </div>
-                  <div class="price_box">
-                    <div class="price">{{ item.price }}</div>
+                  <div class="price_box" >
+                    <div class="price">$ {{ item.price }}</div>
                     <div class="price_original">{{ item.originalPrice }}</div>
                   </div>
                 </div>
@@ -175,7 +175,7 @@
                   </div>
                   <div class="sum">
                     <p>總金額</p>
-                    <p class="settlement_right">{{ order.totalAmount }}</p>
+                    <p class="settlement_right">$ {{ order.totalAmount }}</p>
                   </div>
                 </div>
               </div>
@@ -186,99 +186,34 @@
          
       
     <!-- 遊戲庫 -->
-    <section class="col-9 right">
-        <div class="game_library">
+    <div id="game_library">
+        <section class="col-9 right">
+          <div class="game_library">
             <h3>遊戲庫</h3>
             <div class="game_box">
-                <div class="game_info">
-                    <img src="https://placehold.co/180x240" alt="">
-                    <div class="game_text">
-                        <p class="name">遊戲名稱遊戲名稱遊戲名稱遊戲名稱</p>
-                        <div class="flex">
-                            <p>遊玩時數：0.6小時</p>
-                            <p>上次遊玩日期：2023/06/01</p>
-                            <div class="ach">
-                                <p>成就</p> 
-                                <div class="line_box"><div class="line"></div></div>
-                                <p>24/30</p>
-                            </div>
-                        </div>
+              <div class="game_info" v-for="game in games" :key="game.id">
+                <img :src="game.imageUrl" alt="">
+                <div class="game_text">
+                  <p class="name">{{ game.name }}</p>
+                  <div class="flex">
+                    <p>遊玩時數：{{ game.playTime }}小時</p>
+                    <p>上次遊玩日期：{{ game.lastPlayDate }}</p>
+                    <div class="ach">
+                      <p>成就</p> 
+                      <div class="line_box"><div class="line"></div></div>
+                      <p>{{ game.achievements }}</p>
                     </div>
-                    <div class="btn">開始遊戲</div>
-                    <p class="review">新增評論</p>
-                    <i class="bi bi-three-dots po_icon"></i>
+                  </div>
                 </div>
-                <div class="game_info">
-                    <img src="https://placehold.co/180x240" alt="">
-                    <div class="game_text">
-                        <p class="name">遊戲名稱遊戲名稱遊戲名稱遊戲名稱</p>
-                        <div class="flex">
-                            <p>遊玩時數：0.6小時</p>
-                            <p>上次遊玩日期：2023/06/01</p>
-                            <div class="ach">
-                                <p>成就</p> 
-                                <div class="line_box"><div class="line"></div></div>
-                                <p>24/30</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="btn">開始遊戲</div>
-                    <p class="review">新增評論</p>
-                    <i class="bi bi-three-dots po_icon"></i>
-                </div>
-                <div class="game_info">
-                    <img src="https://placehold.co/180x240" alt="">
-                    <div class="game_text">
-                        <p class="name">遊戲名稱遊戲名稱遊戲名稱遊戲名稱</p>
-                        <div class="flex">
-                            <p>遊玩時數：0.6小時</p>
-                            <p>上次遊玩日期：2023/06/01</p>
-                            <div class="ach">
-                                <p>成就</p> 
-                                <div class="line_box"><div class="line"></div></div>
-                                <p>24/30</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="btn">開始遊戲</div>
-                    <p class="review">新增評論</p>
-                    <i class="bi bi-three-dots po_icon"></i>
-                </div>
-                <div class="game_info">
-                    <img src="https://placehold.co/180x240" alt="">
-                    <div class="game_text">
-                        <p class="name">遊戲名稱遊戲名稱遊戲名稱遊戲名稱</p>
-                        <div class="flex">
-                            <p>遊玩時數：0.6小時</p>
-                            <p>上次遊玩日期：2023/06/01</p>
-                            <div class="ach">
-                                <p>成就</p> 
-                                <div class="line_box"><div class="line"></div></div>
-                                <p>24/30</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="btn">開始遊戲</div>
-                    <p class="review">新增評論</p>
-                    <i class="bi bi-three-dots po_icon"></i>
-                </div>
-                <div class="review_box">
-                    <p>遊戲整理滿意度：</p>
-                    <i class="bi bi-star"></i>
-                    <i class="bi bi-star"></i>
-                    <i class="bi bi-star"></i>
-                    <i class="bi bi-star"></i>
-                    <i class="bi bi-star"></i>
-                    <br>
-                    <br>
-                    <p>評論：</p>
-                    <br>
-                    <input type="textarea">
-                    <button class="btn">送出</button>
-                </div>
+                <div class="btn">開始遊戲</div>
+                <p class="review">新增評論</p>
+                <i class="bi bi-three-dots po_icon"></i>
+              </div>
             </div>
-        </div>
-    </section>
+          </div>
+        </section>
+      </div>
+      
     <!-- 優惠券 -->
     <section class="col-9 right">
         <div class="coupon">
@@ -363,13 +298,23 @@
                 axios.post(php_url + 'member_center_get.php', formData )
                 .then((response) => {
                     const memberData = response.data;
-                    // 更新组件的数据
                     console.log(memberData);
+                    let gender = memberData.GENDER;
+                    if(gender = 'F'){
+                        gender = '女';
+                    }else if(gender = 'M'){
+                        gender = '男';
+                    }else{
+                        gender = '不公開';
+                    }
+
                     this.name = memberData.USERNAME;
                     this.nickname = memberData.NICKNAME;
                     this.phone = memberData.PHONE;
                     this.birthday = memberData.BIRTHDAY;
-                    this.gender = memberData.GENDER;
+                    this.gender = gender;
+                    this.selectedImage = memberData.MEMBER_PHOTO;
+;
                 })
                 .catch((error) => {
                     console.error(error);
@@ -441,6 +386,45 @@
             }}       
         });
         </script>
+
+    <script>
+    const game_library = new Vue({
+      el: '#game_library',
+      data: {
+        games: [], // 游戏数据从PHP传递过来
+      },
+      mounted() {
+        axios.defaults.withCredentials = true;
+        axios.post(php_url + 'login_status.php')
+        .then((response) => {
+            this.member_ID = response.data.member_ID;
+            const formData = new FormData();
+            formData.append("member_ID" , this.member_ID);
+
+            axios.post( php_url + 'getGameLibrary_2.php', formData)
+            .then(response => {
+                console.log(response.data);
+                this.games = response.data;
+                this.games = response.data.map(item => {
+                    return {
+                        imageUrl: item.GAME_COVER,
+                        name: item.GAME_NAME,
+                        playTime: item.GAME_TIME,
+                        lastPlayDate: item.LAST_PLAYED,
+                        achievements: item.ACHIEVEMENT,
+                    };
+                });
+            })
+             .catch((error) => {
+            console.error(error);
+             });
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+      },
+    });
+    </script>
 
         <script>
             const coupons = new Vue({
@@ -527,82 +511,90 @@
             });
         </script>
         <script>
-                const order = new Vue({
-    el: '#order',
-
-    data: {
-        orders: [],
-        member_ID: '',
-        activeOrder: null,
-    },
-
-    mounted() {
-  axios.defaults.withCredentials = true;
-  axios.post(php_url + 'login_status.php')
-    .then((response) => {
-      this.member_ID = response.data.member_ID;
-
-      const formData = new FormData();
-      formData.append("member_ID", this.member_ID);
-
-      axios.post(php_url + 'getOrderList.php', formData)
-        .then(response => {
-          let order_length = response.data.length;
-
-          if (order_length > 0) {
-            if (response.data && response.data.length > 0) {
-            this.orders = response.data.map(item => {
-              let items = item.items.map(detail => { // 修改為 item.items
-                return {
-                  itemId: detail.itemId,
-                  name: detail.name,
-                  image: detail.image,
-                  discount: detail.discount,
-                  price: detail.price,
-                  originalPrice: detail.originalPrice,
-                };
-              });
-
-              return {
-                orderId: item.orderId,
-                purchaseDate: item.purchaseDate,
-                purchaseAmount: item.purchaseAmount,
-                orderStatus: '已完成',
-                showDetails: false,
-                items: items,
-                coupon: item.coupon, // 修改為 item.coupon
-                discount: item.discount,
-                totalAmount: item.totalAmount,
-              };
-            });}
-          }
-
-          this.activeOrder = this.orders[0];
-          this.activeOrder.showDetails = true;
-        })
-        .catch(error => {
-          console.error(error);
-        });
-    })
-    .catch(error => {
-      console.log(error);
-    });
-},
-
-
-methods: {
-  toggleOrderDetails(index) {
-    this.orders.forEach((order, i) => {
-      if (i === index) {
-        order.showDetails = !order.showDetails;
-      } else {
-        order.showDetails = false;
-      }
-    });
-  },
-}
-    });
-            </script>
+            const order = new Vue({
+              el: '#order',
+          
+              data: {
+                orders: [],
+                member_ID: '',
+                activeOrder: null,
+              },
+          
+              mounted() {
+                axios.defaults.withCredentials = true;
+                axios.post(php_url + 'login_status.php')
+                  .then((response) => {
+                    this.member_ID = response.data.member_ID;
+          
+                    const formData = new FormData();
+                    formData.append("member_ID", this.member_ID);
+          
+                    axios.post(php_url + 'getOrderList.php', formData)
+                      .then(response => {
+                        let order_length = response.data.length;
+          
+                        if (order_length > 0) {
+                          if (response.data && response.data.length > 0) {
+                            this.orders = response.data.map(item => {
+                              let items = item.items.map(detail => {
+                                let discounts = detail.discount !== '0.00' ? "-" + Math.round((1 - detail.discount) * 100) + '%' : 'None';
+                                let price = detail.discount !== '0.00' ? Math.floor(detail.price * detail.discount) : detail.price;
+                                let originalPrice = detail.discount !== '0.00' ? "$" + detail.price : '';
+          
+                                return {
+                                  itemId: detail.itemId,
+                                  name: detail.name,
+                                  image: detail.image,
+                                  discount: discounts,
+                                  price: price,
+                                  originalPrice: originalPrice,
+                                  showDetails: false, // 添加showDetails属性并初始化为false
+                                };
+                              });
+          
+                              let coupon = item.coupon !== null ? item.coupon : '未使用優惠券';
+          
+                              return {
+                                orderId: item.orderId,
+                                purchaseDate: item.purchaseDate,
+                                purchaseAmount: item.purchaseAmount,
+                                orderStatus: '已完成',
+                                items: items,
+                                coupon: coupon,
+                                discount: item.discount + '元',
+                                totalAmount: item.totalAmount + '元',
+                                showDetails: false,
+                              };
+                            });
+                          }
+                        }
+          
+                        this.activeOrder = this.orders[0];
+                        this.activeOrder.showDetails = true;
+                      })
+                      .catch(error => {
+                        console.error(error);
+                      });
+                  })
+                  .catch(error => {
+                    console.log(error);
+                  });
+              },
+          
+              methods: {
+                toggleOrderDetails(index) {
+                  this.orders.forEach((order, i) => {
+                    if (i === index) {
+                      order.showDetails = !order.showDetails;
+                    } else {
+                      order.showDetails = false;
+                    }
+                  });
+                },
+              }
+            });
+          </script>
+          
 
     <script>
         let nav = $(".select li");

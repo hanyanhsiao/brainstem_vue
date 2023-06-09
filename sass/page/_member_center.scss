@@ -264,7 +264,7 @@
         .order{
             border: 1px solid $orange;
             padding: 20px;
-            
+            min-height: 100vh;
             .form_title, .detail_order_title{
                 margin-top: 10px;
                 width: 100%;
@@ -306,9 +306,12 @@
                     flex-grow: 1;
                     text-align: center;
                 }
+                
+                  
             }
             .detail_order{
                 // display: none;
+                transition: all 3s ease;
                 .detail_order_title{
                     margin: 0;
                     p{
@@ -323,7 +326,7 @@
                     
                     .item{
                         border: 1px solid $orange;
-                        @include flex-container(row, nowrap, flex-start, center); 
+                        @include flex-container(row, nowrap, space-between, center); 
                         .item_info{
                             img{
                                 width: 30%
@@ -377,7 +380,14 @@
             .game_box{
                 .game_info{
                     border: 1px solid $orange;
-                    @include flex-container(row, nowrap, flex-start, center); 
+                    display: flex;
+                    justify-content: flex-start;
+                    flex-wrap: nowrap;
+                    // @include flex-container(row, nowrap, flex-start, center); 
+                    img{
+                        width: 30%;
+                        padding: 10px;
+                    }
                     .game_text{
                         p{
                             margin-bottom: 10px;
@@ -388,10 +398,11 @@
                         flex-grow: 1;
                         margin-left: 15px;
                         // border: 1px solid red;
-                        height: 230px;
+                        // height: 230px;
                         @include flex-container(column, nowrap, space-between ,flex-start); 
                         .flex{
                             width: 100%;
+                            padding-bottom: 20px;
                             .ach{
                             @include flex-container(row, nowrap, flex-start ,center); 
                             .line_box{
@@ -704,6 +715,10 @@
     }
     .-oon{
         display: block;
+    }
+
+    .closed{
+        display: none;
     }
 
 
