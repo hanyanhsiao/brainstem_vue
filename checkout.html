@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Brainstem | 購物車</title>
-        @@include('./layout/style.html')
-        <!-- 以下可以放自己的link -->
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brainstem | 購物車</title>
+    @@include('./layout/style.html')
+    <!-- 以下可以放自己的link -->
+</head>
 
-    <body>
-        <!-- header -->
-        @@include('./layout/header.html')
-        <main class="checkout" >
-            <!-- 基礎確認 -->
-            <div id="check_out">
+<body>
+    <!-- header -->
+    @@include('./layout/header.html')
+    <main class="checkout">
+        <!-- 基礎確認 -->
+        <div id="check_out">
             <section class="check -on" id="check">
                 <h2>購物車</h2>
                 <div class="item_box">
                     <div class="item" v-for="(item, index) in cartItems" :key="index">
-                        <img :src="item.image" alt="">
+                        <a :href="'./product_information.html?id='+item.ID">
+                            <img :src="item.image" alt="">
+                        </a>
                         <div class="info">
                             <h3 class="title">{{ item.title }}</h3>
-                            <div class="dis_pic" :class="{'closed': item.item_discounts_or === null || item.item_discounts_or === ''}">
+                            <div class="dis_pic"
+                                :class="{'closed': item.item_discounts_or === null || item.item_discounts_or === ''}">
                                 <div class="discount">{{ item.discountPercentage }}</div>
                                 <p>{{ item.discountExpiration }}</p>
-                              </div>
+                            </div>
                         </div>
                         <div class="price_box">
                             <div class="price">$ {{ item.price }}</div>
-                            <div class="price_original">{{ item.originalPrice }}</div>
+                            <div class="price_original">$ {{ item.originalPrice }}</div>
                         </div>
                         <div class="del">
                             <p @click="removeItem(index)">移除<i class="bi bi-dash-circle"></i>
@@ -39,7 +42,7 @@
                     </div>
                 </div>
                 <div class="settlement">
-                    <div class="coupon" >
+                    <div class="coupon">
                         <p class="t">優惠券使用</p>
                         <p class="settlement_right coupon_on" @click="couponchose">{{ coupon }}</p>
                     </div>
@@ -67,7 +70,7 @@
                         <img :src="item.image" alt="">
                         <div class="info">
                             <h3 class="title">{{ item.title }}</h3>
-                            <div class="dis_pic" >
+                            <div class="dis_pic">
                                 <div class="discount">{{ item.discountPercentage }}</div>
                                 <p>{{ item.discountExpiration }}</p>
                             </div>
@@ -116,191 +119,192 @@
             <div class="coupon_con" id="coupon_box" v-show="coupon_box">
                 <div class="coupon_box">
                     <h3>會員優惠券</h3>
-                    <div class="coupon_box" >
+                    <div class="coupon_box">
                         <div class="leave" @click="leaveCoupon"><i class="bi bi-x-lg"></i></div>
                         <div class="add">
                             <p>新增優惠券</p>
                             <div class="flex">
-                            <input type="text" placeholder="輸入優惠券代碼" v-model="couponCode">
-                            <button class="btn" @click="applyCoupon">使用</button>
+                                <input type="text" placeholder="輸入優惠券代碼" v-model="couponCode">
+                                <button class="btn" @click="applyCoupon">使用</button>
                             </div>
                         </div>
                         <h3>我的優惠券</h3>
                         <div class="coupon_list">
                             <p class="coupon_hint">{{ coupon_hint }}</p>
-                        <div v-for="coupon in coupons" :key="coupon.id" class="coupon_item" @click="selectCoupon(coupon)">
-                            <div class="coupon_text">
-                                <p class="title">{{ coupon.title }}</p>
-                                <p>使用期限：{{ coupon.validity }}</p>
-                                <p>使用規則：{{ coupon.rules }}</p>
-                            </div>
-                            <div class="coupon_dis">
-                                <p>{{ coupon.discount }}</p>
-                                <p>{{ coupon.discounts }}</p>
-                                <p>{{ coupon.type }}</p>
+                            <div v-for="coupon in coupons" :key="coupon.id" class="coupon_item"
+                                @click="selectCoupon(coupon)">
+                                <div class="coupon_text">
+                                    <p class="title">{{ coupon.title }}</p>
+                                    <p>使用期限：{{ coupon.validity }}</p>
+                                    <p>使用規則：{{ coupon.rules }}</p>
+                                </div>
+                                <div class="coupon_dis">
+                                    <p>{{ coupon.discount }}</p>
+                                    <p>{{ coupon.discounts }}</p>
+                                    <p>{{ coupon.type }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    </div>
                 </div>
             </div>
-         
+
             <section class="credit_card">
                 <h3>信用卡付款</h3>
                 <form>
-                  <p>信用卡選擇</p>
-                  <select name="credit_card" class="card_select">
-                    <option value="visa">VISA</option>
-                    <option value="mastercard">Mastercard</option>
-                    <option value="jcb">JCB</option>
-                  </select>
-                  <br>
-                  <p>信用卡卡號</p>
-                  <div class="card_num">
-                    <input type="text" v-model="cardNumber[0]" maxlength="4" @input="checkAndFocus(0, $event)">
-                    <input type="text" v-model="cardNumber[1]" maxlength="4" @input="checkAndFocus(1, $event)">
-                    <input type="text" v-model="cardNumber[2]" maxlength="4" @input="checkAndFocus(2, $event)">
-                    <input type="text" v-model="cardNumber[3]" maxlength="4">
-                  </div>
-                  <div class="flex">
-                    <div class="date">
-                      <p>有效期限</p>
-                      <input type="text" v-model="expiryMonth" placeholder="月" maxlength="2">
-                      <input type="text" v-model="expiryYear" placeholder="年" maxlength="2">
+                    <p>信用卡選擇</p>
+                    <select name="credit_card" class="card_select">
+                        <option value="visa">VISA</option>
+                        <option value="mastercard">Mastercard</option>
+                        <option value="jcb">JCB</option>
+                    </select>
+                    <br>
+                    <p>信用卡卡號</p>
+                    <div class="card_num">
+                        <input type="text" v-model="cardNumber[0]" maxlength="4" @input="checkAndFocus(0, $event)">
+                        <input type="text" v-model="cardNumber[1]" maxlength="4" @input="checkAndFocus(1, $event)">
+                        <input type="text" v-model="cardNumber[2]" maxlength="4" @input="checkAndFocus(2, $event)">
+                        <input type="text" v-model="cardNumber[3]" maxlength="4">
                     </div>
-                    <div class="num">
-                      <p>安全碼</p>
-                      <input type="text" v-model="securityCode" maxlength="3">
+                    <div class="flex">
+                        <div class="date">
+                            <p>有效期限</p>
+                            <input type="text" v-model="expiryMonth" placeholder="月" maxlength="2">
+                            <input type="text" v-model="expiryYear" placeholder="年" maxlength="2">
+                        </div>
+                        <div class="num">
+                            <p>安全碼</p>
+                            <input type="text" v-model="securityCode" maxlength="3">
+                        </div>
                     </div>
-                  </div>
-                  <div class="conmit">
-                    <button type="submit" class="btn card_next" @click="submitForm">確認付款</button>
-                    <p class="back">回上一步</p>
-                  </div>
+                    <div class="conmit">
+                        <button type="submit" class="btn card_next" @click="submitForm">確認付款</button>
+                        <p class="back">回上一步</p>
+                    </div>
                 </form>
-              </section>
-              
-        </div>
-            <section class="completed">
-                <div class="flex">
-                    <div class="logo"><img src="./pic/img/LOGO/WEBLOGO.png" alt=""></div>
-                    <div class="icon">
-                        <i class="bi bi-check2"></i>
-                    </div>
-                    <h3>訂單完成</h3>
-                    <div class="btn">
-                        <a href="index.html">返回繼續購物</a>
-                    </div>
-                </div>
             </section>
-        </main>
-        <!-- footer -->
-        @@include('./layout/footer.html')
-        <!-- javascript -->
-        @@include('./layout/js.html')
-        <!-- 以下可以放自己的js -->
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <script>
-            const member_info = new Vue({
-                el: '#check_out',
-                data: {
-                    cartItems: [], // 購物車商品列表
-                    coupon: '請選擇優惠券',
-                    discount_price: 0,
-                    price_sum: 0,
-                    price: 0,
-                    total: 0,
-                    couponCode: '',
-                    member_ID : '',
-                    coupon_box: false,
-                    mask_box: false,
-                    discount: 0,
-                    discounts: 1,
-                    coupon_hint: '',
-                    coupons: [
 
-                    ],
-                    cardNumber: ['', '', '', ''],
-                    expiryMonth: '',
-                    expiryYear: '',
-                    securityCode: '',
-                    select_coupon_id: 0,
-                    userGameLibrary: [],
+        </div>
+        <section class="completed">
+            <div class="flex">
+                <div class="logo"><img src="./pic/img/LOGO/WEBLOGO.png" alt=""></div>
+                <div class="icon">
+                    <i class="bi bi-check2"></i>
+                </div>
+                <h3>訂單完成</h3>
+                <div class="btn">
+                    <a href="index.html">返回繼續購物</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- footer -->
+    @@include('./layout/footer.html')
+    <!-- javascript -->
+    @@include('./layout/js.html')
+    <!-- 以下可以放自己的js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const member_info = new Vue({
+            el: '#check_out',
+            data: {
+                cartItems: [], // 購物車商品列表
+                coupon: '請選擇優惠券',
+                discount_price: 0,
+                price_sum: 0,
+                price: 0,
+                total: 0,
+                couponCode: '',
+                member_ID: '',
+                coupon_box: false,
+                mask_box: false,
+                discount: 0,
+                discounts: 1,
+                coupon_hint: '',
+                coupons: [
+
+                ],
+                cardNumber: ['', '', '', ''],
+                expiryMonth: '',
+                expiryYear: '',
+                securityCode: '',
+                select_coupon_id: 0,
+                userGameLibrary: [],
+            },
+            methods: {
+                removeItem(index) {
+                    const item = this.cartItems[index];
+                    const key = `good_${item.ID}`;
+                    this.cartItems.splice(index, 1);
+                    localStorage.removeItem(key);
+                    // =============購物車小圖示數量===================
+                    const cartItem = document.querySelector('.cart_number');
+                    // console.log(cartItem)
+                    if (cartItem) {
+                        cartItem.style.display = 'flex';
+                        let keys = Object.keys(localStorage);
+                        let good_key = keys.filter((key) => { return key.startsWith("good_"); });
+                        cartItem.innerHTML = good_key.length;
+                    }
+                    // =============購物車小圖示數量===================
+                    this.loadFromgetGameLibrary.phpLocalStorage();
+                    this.discountPrice();
+                    this.totalPrice();
                 },
-                methods: {
-                    removeItem(index) {
-                        const item = this.cartItems[index];
-                        const key = `good_${item.ID}`;
-                        this.cartItems.splice(index, 1);
-                        localStorage.removeItem(key);
-                         // =============購物車小圖示數量===================
-                        const cartItem = document.querySelector('.cart_number');
-                        // console.log(cartItem)
-                        if (cartItem) {
-                            cartItem.style.display = 'flex';
-                            let keys = Object.keys(localStorage);
-                            let good_key = keys.filter((key) => { return key.startsWith("good_"); });
-                            cartItem.innerHTML = good_key.length;
-                        }
-                        // =============購物車小圖示數量===================
-                        this.loadFromgetGameLibrary.phpLocalStorage();
-                        this.discountPrice();
-                        this.totalPrice();
-                    },
-                    loadFromLocalStorage() {
-                        this.cartItems = []; // 清空陣列
-                        let totalPrice = 0;
-                        let hasItems = false;
-                        const self = this;
+                loadFromLocalStorage() {
+                    this.cartItems = []; // 清空陣列
+                    let totalPrice = 0;
+                    let hasItems = false;
+                    const self = this;
 
-                        const processCartItems = () => {
-                            for (let i = 0; i < localStorage.length; i++) {
+                    const processCartItems = () => {
+                        for (let i = 0; i < localStorage.length; i++) {
                             const key = localStorage.key(i);
                             if (key.startsWith("good_")) {
                                 const item = JSON.parse(localStorage.getItem(key));
                                 console.log(this.userGameLibrary);
                                 if (this.userGameLibrary && this.userGameLibrary.includes(item.GAME_ID.toString())) {
-                                // 使用者已擁有該遊戲，顯示提示訊息並從本地存儲中刪除
-                                alert("您已擁有遊戲：" + item.GAME_NAME);
-                                localStorage.removeItem(key);
-                                window.location.href = 'checkout.html';
+                                    // 使用者已擁有該遊戲，顯示提示訊息並從本地存儲中刪除
+                                    alert("您已擁有遊戲：" + item.GAME_NAME);
+                                    localStorage.removeItem(key);
+                                    window.location.href = 'checkout.html';
                                 } else {
-                                // 將遊戲資料添加到購物車
-                                let price = item.DISCOUNT_PERCENTAGE !== null ? Math.floor(item.ORIGINAL_PRICE * item.DISCOUNT_PERCENTAGE) : item.ORIGINAL_PRICE;
-                                let originalPrice = item.DISCOUNT_PERCENTAGE !== null ? "$" + item.ORIGINAL_PRICE : '' ;
-                                let discounts = item.DISCOUNT_PERCENTAGE !== null ? "-" + Math.round((1 - item.DISCOUNT_PERCENTAGE) * 100) + '%' : '';
-                                let activityEndDate = item.ACTIVITY_END !== null ? "優惠日期到 " + new Date(item.ACTIVITY_END).toISOString().split('T')[0] : "";
+                                    // 將遊戲資料添加到購物車
+                                    let price = item.DISCOUNT_PERCENTAGE !== null ? Math.floor(item.ORIGINAL_PRICE * item.DISCOUNT_PERCENTAGE) : item.ORIGINAL_PRICE;
+                                    let originalPrice = item.DISCOUNT_PERCENTAGE !== null ? + item.ORIGINAL_PRICE : '';
+                                    let discounts = item.DISCOUNT_PERCENTAGE !== null ? "-" + Math.round((1 - item.DISCOUNT_PERCENTAGE) * 100) + '%' : '';
+                                    let activityEndDate = item.ACTIVITY_END !== null ? "優惠日期到 " + new Date(item.ACTIVITY_END).toISOString().split('T')[0] : "";
 
-                                this.cartItems.push({
-                                    item_discounts_or: item.DISCOUNT_PERCENTAGE,
-                                    image: item.GAME_COVER,
-                                    title: item.GAME_NAME,
-                                    discountPercentage: `${discounts}`,
-                                    discountExpiration: activityEndDate,
-                                    originalPrice: `${originalPrice}`,
-                                    price: price,
-                                    ID: item.GAME_ID
-                                });
+                                    this.cartItems.push({
+                                        item_discounts_or: item.DISCOUNT_PERCENTAGE,
+                                        image: item.GAME_COVER,
+                                        title: item.GAME_NAME,
+                                        discountPercentage: `${discounts}`,
+                                        discountExpiration: activityEndDate,
+                                        originalPrice: `${originalPrice}`,
+                                        price: price,
+                                        ID: item.GAME_ID
+                                    });
 
-                                totalPrice += price;
-                                hasItems = true; // 設置為有資料
+                                    totalPrice += price;
+                                    hasItems = true; // 設置為有資料
                                 }
                             }
-                            }
+                        }
 
-                            // 更新價格和總計
-                            this.price = totalPrice;
-                            this.total = this.price - this.discount_price;
+                        // 更新價格和總計
+                        this.price = totalPrice;
+                        this.total = this.price - this.discount_price;
 
-                            if (!hasItems) {
+                        if (!hasItems) {
                             alert("購物車是空的，請選購商品");
                             window.location.href = 'index.html';
-                            }
-                        };
+                        }
+                    };
 
-                        axios.defaults.withCredentials = true;
-                        axios.post(php_url + 'login_status.php')
-                            .then((response) => {
+                    axios.defaults.withCredentials = true;
+                    axios.post(php_url + 'login_status.php')
+                        .then((response) => {
                             if (response.data.isLogin === false) {
                                 // 處理未登入的情況，您可以在這裡根據需求添加相應的程式碼
                                 processCartItems();
@@ -312,194 +316,196 @@
                                 formData.append("member_ID", this.member_ID);
 
                                 axios.post(php_url + 'getGameLibrary.php', formData)
-                                .then(response => {
-                                    this.userGameLibrary = response.data; // 將資料存入 userGameLibrary 屬性
-                                    console.log(this.userGameLibrary);
-                                    processCartItems();
-                                })
-                                .catch(error => {
-                                    console.error(error);
-                                    processCartItems(); // 資料獲取失敗時也執行處理
-                                });
+                                    .then(response => {
+                                        this.userGameLibrary = response.data; // 將資料存入 userGameLibrary 屬性
+                                        console.log(this.userGameLibrary);
+                                        processCartItems();
+                                    })
+                                    .catch(error => {
+                                        console.error(error);
+                                        processCartItems(); // 資料獲取失敗時也執行處理
+                                    });
                             }
-                            })
-                            .catch(error => {
+                        })
+                        .catch(error => {
                             console.log(error);
-                            });
-                        },
+                        });
+                },
 
-                    totalPrice(){
-                        this.total = this.price - (-this.discount_price);
-                    },
-                    discountPrice(){
-                        if(this.discount >= this.price){
-                                alert('金額未到達優惠券使用金額，優惠券不可適用');
-                                this.discount_price = 0;
-                                this.discount = 0;
-                                this.coupon = '請選擇優惠券';
-                        }else{
-                            if(this.discount === 0){
-                                this.discount_price = Math.round(this.price * this.discounts - this.price).toFixed(0);
-                            }else{
-                                this.discount_price = - this.discount;
-                            }
+                totalPrice() {
+                    this.total = this.price - (-this.discount_price);
+                },
+                discountPrice() {
+                    if (this.discount >= this.price) {
+                        alert('金額未到達優惠券使用金額，優惠券不可適用');
+                        this.discount_price = 0;
+                        this.discount = 0;
+                        this.coupon = '請選擇優惠券';
+                    } else {
+                        if (this.discount === 0) {
+                            this.discount_price = Math.round(this.price * this.discounts - this.price).toFixed(0);
+                        } else {
+                            this.discount_price = - this.discount;
                         }
-                    },
-                    couponchose(){
-                        this.coupon_box = true;
-                        this.mask_box = true;
-                        $('body').toggleClass('no-scroll');
-                    },
-                    leaveCoupon(){
-                        this.coupon_box = false;
-                        this.mask_box = false;
-                        $('body').toggleClass('no-scroll');
-                    },
-                    selectCoupon(coupon){
-                        // console.log(coupon);
-                        this.coupon_box = false;
-                        this.mask_box = false;
-                        $('body').toggleClass('no-scroll');
-                        
-                        if(coupon.discounts_or >= 1){
-                            // console.log('-300');
-                            if(coupon.discount_or > this.price){
-                                alert('金額未到達優惠券使用金額，優惠券不可適用');
-                            }else{
+                    }
+                },
+                couponchose() {
+                    this.coupon_box = true;
+                    this.mask_box = true;
+                    $('body').toggleClass('no-scroll');
+                },
+                leaveCoupon() {
+                    this.coupon_box = false;
+                    this.mask_box = false;
+                    $('body').toggleClass('no-scroll');
+                },
+                selectCoupon(coupon) {
+                    // console.log(coupon);
+                    this.coupon_box = false;
+                    this.mask_box = false;
+                    $('body').toggleClass('no-scroll');
+
+                    if (coupon.discounts_or >= 1) {
+                        // console.log('-300');
+                        if (coupon.discount_or > this.price) {
+                            alert('金額未到達優惠券使用金額，優惠券不可適用');
+                        } else {
                             this.coupon = coupon.title;
                             this.discount = parseInt(coupon.discount_or);
                             this.discounts = 1;
                             this.select_coupon_id = coupon.id_num;
-                            }
-                        }else{
-                            // console.log('0.8');
-                            this.coupon = coupon.title;
-                            this.discounts = coupon.discounts_or;
-                            this.discount = 0;
-                            this.select_coupon_id = coupon.id_num;
                         }
-                        this.discountPrice();
-                        this.totalPrice();
-                    },
-                    couponsFunction(){
+                    } else {
+                        // console.log('0.8');
+                        this.coupon = coupon.title;
+                        this.discounts = coupon.discounts_or;
+                        this.discount = 0;
+                        this.select_coupon_id = coupon.id_num;
+                    }
+                    this.discountPrice();
+                    this.totalPrice();
+                },
+                couponsFunction() {
                     axios.defaults.withCredentials = true;
                     axios.post(php_url + 'login_status.php')
-                    .then((response) => {
-                        if(response.data.isLogin === false){
-                            this.coupon_hint = '請登入會員，瀏覽優惠券';
-                        }else{
-                            this.member_ID = response.data.member_ID;
-                            console.log(response);
+                        .then((response) => {
+                            if (response.data.isLogin === false) {
+                                this.coupon_hint = '請登入會員，瀏覽優惠券';
+                            } else {
+                                this.member_ID = response.data.member_ID;
+                                console.log(response);
 
-                            const formData = new FormData();
-                            formData.append("member_ID" , this.member_ID);
+                                const formData = new FormData();
+                                formData.append("member_ID", this.member_ID);
 
-                            axios.post( php_url + 'member_center_coupons.php', formData)
-                            .then(response => {
-                                
-                                this.coupons = response.data;
-                                if(this.coupons.length <= 0){
-                                    this.coupon_hint = '請新增優惠券';
-                                }else{
-                                this.coupons = response.data.map(item => {
-                                let discount = '';
-                                let discounts = '';
-                                let type = '';
-                                if(parseFloat(item.COUPON_DISCOUNTS) < 1){
-                                    discounts = (item.COUPON_DISCOUNTS * 10).toFixed(0) + '折';
-                                }else{
-                                    discount = parseInt(item.COUPON_DISCOUNT) + '元';
-                                    type = '折扣券';
-                                    discounts = '';
-                                }
-                                
-                                return {
-                                    id_num: item.COUPON_ID,
-                                    title: item.COUPON_NAME,
-                                    validity: item.COUPON_END,
-                                    rules: item.COUPON_DETAIL,
-                                    discount: `${discount}`,
-                                    discounts: `${discounts}`,
-                                    discount_or: item.COUPON_DISCOUNT,
-                                    discounts_or: item.COUPON_DISCOUNTS,
-                                    type: `${type}`
-                                };
-                                });
-                                this.coupons.reverse();
-                                }})
-                                        .catch(error => {
-                                            console.log(error);
+                                axios.post(php_url + 'member_center_coupons.php', formData)
+                                    .then(response => {
+
+                                        this.coupons = response.data;
+                                        if (this.coupons.length <= 0) {
+                                            this.coupon_hint = '請新增優惠券';
+                                        } else {
+                                            this.coupons = response.data.map(item => {
+                                                let discount = '';
+                                                let discounts = '';
+                                                let type = '';
+                                                if (parseFloat(item.COUPON_DISCOUNTS) < 1) {
+                                                    discounts = (item.COUPON_DISCOUNTS * 10).toFixed(0) + '折';
+                                                } else {
+                                                    discount = parseInt(item.COUPON_DISCOUNT) + '元';
+                                                    type = '折扣券';
+                                                    discounts = '';
+                                                }
+
+                                                return {
+                                                    id_num: item.COUPON_ID,
+                                                    title: item.COUPON_NAME,
+                                                    validity: item.COUPON_END,
+                                                    rules: item.COUPON_DETAIL,
+                                                    discount: `${discount}`,
+                                                    discounts: `${discounts}`,
+                                                    discount_or: item.COUPON_DISCOUNT,
+                                                    discounts_or: item.COUPON_DISCOUNTS,
+                                                    type: `${type}`
+                                                };
                                             });
-                             }})
-                                        
-                            .catch((error) => {
-                                console.error(error);
-                            });
-                        },
-                        applyCoupon(){
-                            const formData = new FormData();
-                            formData.append("couponCode" , this.couponCode);
-                            formData.append("member_ID" , this.member_ID);
+                                            this.coupons.reverse();
+                                        }
+                                    })
+                                    .catch(error => {
+                                        console.log(error);
+                                    });
+                            }
+                        })
 
-                            axios.post( php_url + 'member_coupons_add.php', formData)
-                            .then(response => {
-                                if(response.data.success === true){
+                        .catch((error) => {
+                            console.error(error);
+                        });
+                },
+                applyCoupon() {
+                    const formData = new FormData();
+                    formData.append("couponCode", this.couponCode);
+                    formData.append("member_ID", this.member_ID);
+
+                    axios.post(php_url + 'member_coupons_add.php', formData)
+                        .then(response => {
+                            if (response.data.success === true) {
                                 this.couponsFunction();
                                 alert('新增成功');
                                 this.coupon_hint = '';
-                                }else{
-                                    alert('此代碼無效，請輸入正確優惠券代碼');
-                                }
-                            })
+                            } else {
+                                alert('此代碼無效，請輸入正確優惠券代碼');
+                            }
+                        })
 
-                            .catch(error => {
-                                
-                            });
-                            this.couponCode = '';
-                        },
-                        checkNext(){
-                            axios.defaults.withCredentials = true;
-                            axios.post(php_url + 'login_status.php')
-                            .then((response) => {
-                            if(response.data.isLogin === false){
+                        .catch(error => {
+
+                        });
+                    this.couponCode = '';
+                },
+                checkNext() {
+                    axios.defaults.withCredentials = true;
+                    axios.post(php_url + 'login_status.php')
+                        .then((response) => {
+                            if (response.data.isLogin === false) {
                                 alert("請先登入會員");
                                 window.location.href = 'login.html';
-                            }else{
+                            } else {
                                 let section = document.querySelector('.check');
                                 section.classList.remove('-on');
-                                
+
                                 let completedSection = document.querySelector('.confirm');
                                 completedSection.classList.add('-on');
                             }
-                            })
-                            .catch((error) => {
-                                console.error(error);
-                            });
-                        },
-                        submitForm(event) {
-                            event.preventDefault();
-                            if (this.validateCardNumber() && this.validateExpiryDate()) {
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        });
+                },
+                submitForm(event) {
+                    event.preventDefault();
+                    if (this.validateCardNumber() && this.validateExpiryDate()) {
 
-                                const formData = new FormData();
-                                formData.append('member_ID', this.member_ID);
-                                formData.append('price', this.price);
-                                formData.append('select_coupon_id', this.select_coupon_id);
-                                formData.append('cartItems', JSON.stringify(this.cartItems)); // 將陣列轉換為 JSON 字串
-                                for (let cartItem of this.cartItems) {
-                                    formData.append('ids[]', cartItem.ID);
-                                    formData.append('discount[]', cartItem.item_discounts_or);
-                                    formData.append('price[]', cartItem.price);
-                                }
-                                formData.append('total', this.total);
-                                formData.append('discount_price', this.discount_price);
-                                
-                                axios.post(php_url + 'checkout.php', formData)
-                                .then(response => {  
-                                    // 處理伺服器回應
-                                    if(response.data = '0'){
+                        const formData = new FormData();
+                        formData.append('member_ID', this.member_ID);
+                        formData.append('price', this.price);
+                        formData.append('select_coupon_id', this.select_coupon_id);
+                        formData.append('cartItems', JSON.stringify(this.cartItems)); // 將陣列轉換為 JSON 字串
+                        for (let cartItem of this.cartItems) {
+                            formData.append('ids[]', cartItem.ID);
+                            formData.append('discount[]', cartItem.item_discounts_or);
+                            formData.append('price[]', cartItem.price);
+                        }
+                        formData.append('total', this.total);
+                        formData.append('discount_price', this.discount_price);
+
+                        axios.post(php_url + 'checkout.php', formData)
+                            .then(response => {
+                                // 處理伺服器回應
+                                if (response.data = '0') {
                                     let section = document.querySelector('.credit_card');
                                     section.classList.remove('-on');
-                                    
+
                                     let completedSection = document.querySelector('.completed');
                                     completedSection.classList.add('-on');
 
@@ -511,100 +517,100 @@
                                     // 清空購物車資料
                                     this.cartItems = [];
                                     this.totalPrice();
-                                    }else{
-                                        alert('結帳錯誤');
-                                    }
-                                    })
-                                .catch(error => {
-                                    // 處理錯誤
-                                    console.error(error);
-                                });
-
-
-                            } else {
-                                // 信用卡驗證失敗
-                                alert('信用卡驗證失敗');
-                            }
-                            },
-                            validateCardNumber() {
-                            // 檢查信用卡卡號是否有效
-                            const cardNumber = this.cardNumber.join('');
-                            const regex = /^[0-9]{16}$/; // 16位數字
-                            return regex.test(cardNumber);
-                            },
-                            validateExpiryDate() {
-                                const currentYear = new Date().getFullYear();
-                                const currentYearLastTwoDigits = currentYear.toString().slice(-2);
-                                const currentMonth = new Date().getMonth() + 1;
-                                const expiryYear = parseInt(this.expiryYear);
-                                const expiryMonth = parseInt(this.expiryMonth);
-                                
-                                // 檢查年份是否有效
-                                if (
-                                    isNaN(expiryYear) ||
-                                    expiryYear < currentYearLastTwoDigits ||
-                                    expiryYear > currentYearLastTwoDigits + 10
-                                ) {
-                                    return false;
+                                } else {
+                                    alert('結帳錯誤');
                                 }
-                                
-                                // 檢查月份是否有效
-                                if (
-                                    isNaN(expiryMonth) ||
-                                    expiryYear === currentYearLastTwoDigits && expiryMonth < currentMonth ||
-                                    expiryYear === currentYear + 10 && expiryMonth > 12
-                                ) {
-                                    return false;
-                                }
-                                
-                                return true;
-                        },
-                        checkAndFocus(index, event) {
-                            const input = event.target;
-                            const value = input.value;
-                            const nextInput = input.nextElementSibling;
+                            })
+                            .catch(error => {
+                                // 處理錯誤
+                                console.error(error);
+                            });
 
-                            if (value.length === 4 && nextInput && index < this.cardNumber.length - 1) {
-                            nextInput.focus();
-                            }
-                        },
+
+                    } else {
+                        // 信用卡驗證失敗
+                        alert('信用卡驗證失敗');
+                    }
                 },
-                mounted() {
-                    this.loadFromLocalStorage();
-                    this.couponsFunction();
-                }
-            });
-        </script>
+                validateCardNumber() {
+                    // 檢查信用卡卡號是否有效
+                    const cardNumber = this.cardNumber.join('');
+                    const regex = /^[0-9]{16}$/; // 16位數字
+                    return regex.test(cardNumber);
+                },
+                validateExpiryDate() {
+                    const currentYear = new Date().getFullYear();
+                    const currentYearLastTwoDigits = currentYear.toString().slice(-2);
+                    const currentMonth = new Date().getMonth() + 1;
+                    const expiryYear = parseInt(this.expiryYear);
+                    const expiryMonth = parseInt(this.expiryMonth);
 
-        <script>
-            //下一步切換
-            $(document).ready(function () {
-                let next = $('.next');
-                let section = $('section');
-                // console.log(section);
-                next.on('click', function () {
-                    console.log('aaa');
-                    // console.log(index);
-                    section.removeClass('-on');
-                    section[2]
-                        .classList
-                        .add("-on");
-                    event.preventDefault();
-                });
+                    // 檢查年份是否有效
+                    if (
+                        isNaN(expiryYear) ||
+                        expiryYear < currentYearLastTwoDigits ||
+                        expiryYear > currentYearLastTwoDigits + 10
+                    ) {
+                        return false;
+                    }
 
+                    // 檢查月份是否有效
+                    if (
+                        isNaN(expiryMonth) ||
+                        expiryYear === currentYearLastTwoDigits && expiryMonth < currentMonth ||
+                        expiryYear === currentYear + 10 && expiryMonth > 12
+                    ) {
+                        return false;
+                    }
+
+                    return true;
+                },
+                checkAndFocus(index, event) {
+                    const input = event.target;
+                    const value = input.value;
+                    const nextInput = input.nextElementSibling;
+
+                    if (value.length === 4 && nextInput && index < this.cardNumber.length - 1) {
+                        nextInput.focus();
+                    }
+                },
+            },
+            mounted() {
+                this.loadFromLocalStorage();
+                this.couponsFunction();
+            }
+        });
+    </script>
+
+    <script>
+        //下一步切換
+        $(document).ready(function () {
+            let next = $('.next');
+            let section = $('section');
+            // console.log(section);
+            next.on('click', function () {
+                console.log('aaa');
+                // console.log(index);
+                section.removeClass('-on');
+                section[2]
+                    .classList
+                    .add("-on");
+                event.preventDefault();
             });
-            //回上一步
-            $(document).ready(function () {
-                let back = $('.back');
-                let section = $('section');
-                back.on('click', function () {
-                    section.removeClass('-on');
-                    section[1]
-                        .classList
-                        .add("-on");
-                });
+
+        });
+        //回上一步
+        $(document).ready(function () {
+            let back = $('.back');
+            let section = $('section');
+            back.on('click', function () {
+                section.removeClass('-on');
+                section[1]
+                    .classList
+                    .add("-on");
             });
-        </script>
-    </body>
+        });
+    </script>
+</body>
 
 </html>
