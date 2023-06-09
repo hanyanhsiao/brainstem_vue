@@ -1,460 +1,461 @@
-.no-scroll{
-    overflow: hidden;
-    pointer-events: none;
+.no-scroll {
+  overflow: hidden;
+  pointer-events: none;
 }
-.checkout{
-    
-    .check{
-        display: none;
-    }
-    .btn{
-        padding: 10px 20px;
-    }
-    h2{
-        margin: 30px 0;
-    }
-    .item_box{
-        margin-bottom: 30px;
-    }
-    .item{
-        
-        border:  1px solid $orange;
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: space-between;
-        img{
-            width: 20%;
-        }
-        .info{
-            padding: 0 20px;
-            flex-grow: 1;
-            position: relative;
-            h3{
-                margin: 30px 0 80px 0;
-            }
-            .dis_pic{
-                position: absolute;
-                left: 20px;
-                bottom: 40px;
-                .discount{
-                    display: inline;
-                    margin-right: 10px;
-                }
-                p{
-                    display: inline;
-                }
-            }
-            @include flex-container(column, nowrap, flex-start ,flex-start); 
-            .closed{
-                display: none;
-            }
-        }
-        .price_box, .del{
-            margin: 0 30px;
-            @include flex-container(column, nowrap, center ,center); 
-            .price_original{
-                margin-top: 20px;
-            }
-        }
-        .del:hover{
-            i, p{
-                color: $orange;
-            }
-        }
-        
-    }
-    .settlement{
-        width: 30%;
-        margin-left: auto;
-        display: block;
-        margin-bottom: 60px;
-        padding-bottom: 50px;
-        position: relative;
-        .coupon, .dis, .pri, .sum{
-            @include flex-container(row, nowrap, space-between ,flex-start); 
-
-        }
-        p{
-            display: inline-block;
-            margin: 15px 5px;
-        }
-        .t{
-            flex-basis: 30%;
-        }
-        .settlement_right{
-            width: 20%;
-            box-sizing: border-box;
-            flex-grow: 1;
-            text-align: right;
-        }
-        .coupon .settlement_right{
-            border: 1px solid $orange;
-            padding: 5px 10px;
-            border-radius: 3px;
-        }
-        .pri{
-           padding: 5px 0;
-            border-bottom: 1px solid $orange;
-        }
-        .sum .settlement_right{
-            color: $orange;
-        }
-        .btn{
-            padding: 10px 20px;
-            margin-top: 20px;
-            font-size: $h3;
-            text-align: right;
-            position: absolute;
-            right: 0;
-            bottom: 0;
-        }
-    }
-    
-    .confirm{
-        display: none;
-        margin: 60px 0;
-        .settlement_con{
-            .coupon{
-                border:  1px solid $orange;
-                padding: 20px 10px ;
-                p{
-                    display: inline;
-                    margin-right: 10px;
-                }
-                p.coupon_on{
-                    display: inline-block;
-                    width: 50%;
-                    margin: 0;
-                    border: 1px solid $orange;
-                    border-radius: 3px;
-                    padding: 10px;
-                }
-                margin-bottom: 40px;
-            }
-        }
-        .pay{
-            border:  1px solid $orange;
-            padding: 20px 10px ;
-            margin-bottom: 60px;
-            .pay_check{
-                
-                border-bottom: 1px solid $white;
-                h3{
-                    margin-bottom: 20px;
-                }
-                input, label{
-                    display: inline;
-                    width: auto;
-                    // color: $white;
-                }
-                input{
-                    margin-left: 20px;
-                }
-            }
-            .settlement{
-                margin: 30px 0 20px auto;
-            }
-        }
-    }
-    .mask {
-        position: fixed;
-        top: 0;
-        left: 0;
+.checkout {
+  .check {
+    display: none;
+  }
+  .btn {
+    padding: 10px 20px;
+  }
+  h2 {
+    margin: 30px 0;
+  }
+  .item_box {
+    margin-bottom: 30px;
+  }
+  .item {
+    border: 1px solid $orange;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 20px;
+    a {
+      display: flex;
+      max-width: 15%;
+      img {
         width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        // display: none;
-        pointer-events: all;
       }
-    .coupon_con{
-        width: 45%;
-        height: 90vh;
-        // display: none;
-        background: rgba(43, 43, 43, 0.35);
-        backdrop-filter: blur(15px);
-        border-radius: 5px;
-        position: relative;
-        position: fixed;
-        top: 50%;
+    }
+
+    .info {
+      padding: 0 20px;
+      flex-grow: 1;
+      position: relative;
+      h3 {
+        margin: 30px 0 80px 0;
+      }
+      .dis_pic {
+        position: absolute;
+        left: 20px;
+        bottom: 40px;
+        .discount {
+          display: inline;
+          margin-right: 10px;
+        }
+        p {
+          display: inline;
+        }
+      }
+      @include flex-container(column, nowrap, flex-start, flex-start);
+      .closed {
+        display: none;
+      }
+    }
+    .price_box,
+    .del {
+      margin: 0 30px;
+      @include flex-container(column, nowrap, center, center);
+      .price_original {
+        margin-top: 20px;
+      }
+    }
+    .del {
+      i:hover,
+      p:hover {
+        cursor: pointer;
+        color: $orange;
+      }
+    }
+  }
+  .settlement {
+    width: 30%;
+    margin-left: auto;
+    display: block;
+    margin-bottom: 60px;
+    padding-bottom: 50px;
+    position: relative;
+    .coupon,
+    .dis,
+    .pri,
+    .sum {
+      @include flex-container(row, nowrap, space-between, flex-start);
+    }
+    p {
+      display: inline-block;
+      margin: 15px 5px;
+    }
+    .t {
+      flex-basis: 30%;
+    }
+    .settlement_right {
+      width: 20%;
+      box-sizing: border-box;
+      flex-grow: 1;
+      text-align: right;
+    }
+    .coupon .settlement_right {
+      border: 1px solid $orange;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    .pri {
+      padding: 5px 0;
+      border-bottom: 1px solid $orange;
+    }
+    .sum .settlement_right {
+      color: $orange;
+    }
+    .btn {
+      padding: 10px 20px;
+      margin-top: 20px;
+      font-size: $h3;
+      text-align: right;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+  .confirm {
+    display: none;
+    margin: 60px 0;
+    .settlement_con {
+      .coupon {
+        border: 1px solid $orange;
+        padding: 20px 10px;
+        p {
+          display: inline;
+          margin-right: 10px;
+        }
+        p.coupon_on {
+          display: inline-block;
+          width: 50%;
+          margin: 0;
+          border: 1px solid $orange;
+          border-radius: 3px;
+          padding: 10px;
+        }
+        margin-bottom: 40px;
+      }
+    }
+    .pay {
+      border: 1px solid $orange;
+      padding: 20px 10px;
+      margin-bottom: 60px;
+      .pay_check {
+        border-bottom: 1px solid $white;
+        h3 {
+          margin-bottom: 20px;
+        }
+        input,
+        label {
+          display: inline;
+          width: auto;
+          // color: $white;
+        }
+        input {
+          margin-left: 20px;
+        }
+      }
+      .settlement {
+        margin: 30px 0 20px auto;
+      }
+    }
+  }
+  .mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    // display: none;
+    pointer-events: all;
+  }
+  .coupon_con {
+    width: 45%;
+    height: 90vh;
+    // display: none;
+    background: rgba(43, 43, 43, 0.35);
+    backdrop-filter: blur(15px);
+    border-radius: 5px;
+    position: relative;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    overflow: hidden;
+    pointer-events: all;
+    transform: translate(-50%, -50%);
+    i {
+      color: $orange;
+      position: absolute;
+      right: 4%;
+      top: 4%;
+      &:hover {
+        color: $white;
+      }
+    }
+    .coupon_box {
+      h3 {
+        margin-bottom: 20px;
+      }
+      padding: 15px 15px;
+      .add {
+        @include flex-container(row, nowrap, space-between, flex-start);
+        .flex {
+          display: flex;
+          flex-wrap: nowrap;
+          width: 100%;
+          // @include flex-container(row, nowrap, space-between ,center);
+          input {
+            width: auto;
+            flex-grow: 1;
+            margin-bottom: 0;
+          }
+          .btn {
+            width: auto;
+            display: block;
+            margin-left: 15px;
+            padding: 9px 15px;
+          }
+          margin-bottom: 20px;
+        }
+        p {
+          display: block;
+          padding: 8px;
+          // border: 1px solid $orange;
+        }
+      }
+    }
+    .coupon_list {
+      height: 60vh;
+      border: 1px solid $orange;
+      overflow: auto;
+      position: relative;
+      .coupon_hint {
+        position: absolute;
         left: 50%;
-        overflow: hidden;
-        pointer-events: all;
+        top: 50%;
         transform: translate(-50%, -50%);
-        i{
-            color: $orange;
-            position: absolute;
-            right: 4%;
-            top: 4%;
-            &:hover{
-                color: $white;
-            }
-        }
-        .coupon_box{
-            h3{
-                margin-bottom: 20px ;
-            }
-            padding: 15px 15px;
-            .add{
-                @include flex-container(row, nowrap, space-between ,flex-start); 
-                .flex{
-                    display: flex;
-                    flex-wrap: nowrap;
-                    width: 100%;
-                    // @include flex-container(row, nowrap, space-between ,center); 
-                    input{
-                        width: auto;
-                        flex-grow: 1;
-                        margin-bottom: 0;
-                    }
-                    .btn{
-                        width: auto;
-                        display: block;
-                        margin-left: 15px;
-                        padding: 9px 15px;
-                    }
-                    margin-bottom: 20px;
-                }
-                p{
-                    display: block;
-                    padding: 8px;
-                    // border: 1px solid $orange;
-                }
-                
-                
-            }
-        }
-        .coupon_list{
-            height: 60vh;
-            border: 1px solid $orange;
-            overflow: auto;
-            position: relative;
-            .coupon_hint{
-                position: absolute;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%);
-                font-size: 3rem;
-                // margin: 20px auto;
-            }
-            .coupon_item{
-                min-height: 150px;
-                padding: 20px;
-                border: 1px solid $orange;
-                @include flex-container(row, nowrap, space-between ,center); 
-                &:hover{
-                    background-color: #4F231E;
-                }
-                .coupon_text{
-                    p{
-                        margin: 10px 0;
-                        font-size: 1.2rem;
-                    }
-                    .title{
-                        font-size: $h3;
-                        margin-bottom: 20px;
-                    }
-                }
-                .coupon_dis{
-                    
-                    padding: 0 15px;
-                    p{
-                        text-align: center;
-                        color: $orange;
-                        margin-bottom: 10px;
-                    }
-                    
-                }
-            }
-    }
-    }
-    .credit_card{
-        display: none;
+        font-size: 3rem;
+        // margin: 20px auto;
+      }
+      .coupon_item {
+        min-height: 150px;
+        padding: 20px;
         border: 1px solid $orange;
-        padding: 30px 20px;
-        margin: 60px 0;
-        h3{
-            margin-bottom: 30px;
+        @include flex-container(row, nowrap, space-between, center);
+        &:hover {
+          background-color: #4f231e;
         }
-        // form{
-        //     border: 1px solid $orange;
-        //     padding: 10px 20px;
-        // }
-        p{
-            margin: 40px 0 20px;
-        }
-        .card_select{
-            padding: 10px;
-            background-color: rgba(13, 13, 13, 0.7);
-            border: 1px solid $white;
-            border-radius: 5px;
-            color: $white;
-            outline: none;
-            font-size: $p;
-            &:focus{
-                border: 1px solid $orange;
-            }
-        }
-        .card_num{
-            width: 40%;
-            box-sizing: border-box;
-            @include flex-container(row, nowrap, flex-start ,space-between); 
-            input{
-                width: 20%;
-                margin-right: 10px;
-                margin-bottom: 0;
-            }
-        }
-        .flex{
-            @include flex-container(row, nowrap, flex-start , flex-start); 
-            input{
-                width: 40%;
-                margin-right: 10px;
-                margin-bottom: 0;
-            }
-            p{
-                
-            }
-            .date{
-                // width: auto;
-                flex-basis: 20%;
-            }
-        }
-        .conmit{
-            @include flex-container(row, nowrap, flex-start , flex-end); 
-            
-            .btn{
-                width: auto;
-                margin-top: 60px;
-                margin-right: 20px;
-                padding: 10px 20px;
-            }
-            p{
-                cursor: pointer;
-                text-decoration: underline;
-                margin-bottom: 15px;
-                &:hover{
-                    color: $orange;
-                }
-            }
-        }
-    }
-    .completed{
-        display: none;
-        .flex{
-        @include flex-container(column, nowrap, space-around , center);
-        width: 50%;
-        height: 70vh;
-        border: 1px solid $orange;
-        margin: 0 auto;
-        margin: 60px auto;
-        padding: 30px 0;
-        box-sizing: border-box;
-        text-align: center;
-        }
-        .icon{
-            padding: 20px;
-            i{
-                color: $green;
-                font-size: 5rem;
-                border: 1px solid $green;
-                border-radius: 50%;
-            }
-        } 
-        .logo {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto;
-            background-image: url(../../pic/img/LOGO/WEB\ LOGO.png);
-            background-size: 90% 90%;
-            background-repeat: no-repeat;
-            background-position: center center;
-        }
-    }
-    @include breakpoint-414 {
-        .price{
-            font-size: 1.4rem;
-         }
-         .price_original{
+        .coupon_text {
+          p {
+            margin: 10px 0;
             font-size: 1.2rem;
-         }
-        .item{
-            height: 200px;
-            img{
-                width: 30%;
-            }
-            p{
-                font-size: 1.2rem;
-            }
-            .dis, .price_box{
-                flex-basis:25%;
-                padding: 0 10px;
-                
-            }
-            .info{
-                
-                padding: 10px;
-                height: 200px;
-                h3{
-                    margin: 20px 0;
-                }
-                .dis_pic{
-                    flex-grow: 1;
-                    padding: 5px 0;
-                    .discount{
-                        
-                    }
-                    p{
-                        margin-top: 20px;
-                        display: block;
-                    }
-                }
-            }
-            .price_box, .del{
-                margin: 0;
-                padding: 3px;
-                i{
-                    display: block;
-                    margin-top: 10px;
-                    padding: 0 3px;
-                }
-            }
+          }
+          .title {
+            font-size: $h3;
+            margin-bottom: 20px;
+          }
         }
-        .settlement{
-            width: 100%;
-            .settlement_right{
-                width: 40%;
-            }
-         }
-         .credit_card{
-            .card_num{
-                width: 90%;
-            }
-            .flex{
-                .date{
-                    flex-basis: 50%;
-                }
-             }
-         }
-         .completed{
-            .flex{
-                width: 100%;
-            }
-         }
-         .coupon_con{
-            width: 90%;
-            height: 80vh;
-            .coupon_box{
-                .add{
-                    @include flex-container(column, nowrap, space-between ,flex-start); 
-                }
-            }
-            .coupon_list{
-                height: 50vh;
-             }
-         }
-         
+        .coupon_dis {
+          padding: 0 15px;
+          p {
+            text-align: center;
+            color: $orange;
+            margin-bottom: 10px;
+          }
+        }
+      }
     }
-    .-on{
-        display: block;
+  }
+  .credit_card {
+    display: none;
+    border: 1px solid $orange;
+    padding: 30px 20px;
+    margin: 60px 0;
+    h3 {
+      margin-bottom: 30px;
     }
+    // form{
+    //     border: 1px solid $orange;
+    //     padding: 10px 20px;
+    // }
+    p {
+      margin: 40px 0 20px;
+    }
+    .card_select {
+      padding: 10px;
+      background-color: rgba(13, 13, 13, 0.7);
+      border: 1px solid $white;
+      border-radius: 5px;
+      color: $white;
+      outline: none;
+      font-size: $p;
+      &:focus {
+        border: 1px solid $orange;
+      }
+    }
+    .card_num {
+      width: 40%;
+      box-sizing: border-box;
+      @include flex-container(row, nowrap, flex-start, space-between);
+      input {
+        width: 20%;
+        margin-right: 10px;
+        margin-bottom: 0;
+      }
+    }
+    .flex {
+      @include flex-container(row, nowrap, flex-start, flex-start);
+      input {
+        width: 40%;
+        margin-right: 10px;
+        margin-bottom: 0;
+      }
+      p {
+      }
+      .date {
+        // width: auto;
+        flex-basis: 20%;
+      }
+    }
+    .conmit {
+      @include flex-container(row, nowrap, flex-start, flex-end);
+
+      .btn {
+        width: auto;
+        margin-top: 60px;
+        margin-right: 20px;
+        padding: 10px 20px;
+      }
+      p {
+        cursor: pointer;
+        text-decoration: underline;
+        margin-bottom: 15px;
+        &:hover {
+          color: $orange;
+        }
+      }
+    }
+  }
+  .completed {
+    display: none;
+    .flex {
+      @include flex-container(column, nowrap, space-around, center);
+      width: 50%;
+      height: 70vh;
+      border: 1px solid $orange;
+      margin: 0 auto;
+      margin: 60px auto;
+      padding: 30px 0;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    .icon {
+      padding: 20px;
+      i {
+        color: $green;
+        font-size: 5rem;
+        border: 1px solid $green;
+        border-radius: 50%;
+      }
+    }
+    .logo {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto;
+      background-image: url(../../pic/img/LOGO/WEB\ LOGO.png);
+      background-size: 90% 90%;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+  }
+  @include breakpoint-414 {
+    .price {
+      font-size: 1.4rem;
+    }
+    .price_original {
+      font-size: 1.2rem;
+    }
+    .item {
+      height: 200px;
+      img {
+        width: 30%;
+      }
+      p {
+        font-size: 1.2rem;
+      }
+      .dis,
+      .price_box {
+        flex-basis: 25%;
+        padding: 0 10px;
+      }
+      .info {
+        padding: 10px;
+        height: 200px;
+        h3 {
+          margin: 20px 0;
+        }
+        .dis_pic {
+          flex-grow: 1;
+          padding: 5px 0;
+          .discount {
+          }
+          p {
+            margin-top: 20px;
+            display: block;
+          }
+        }
+      }
+      .price_box,
+      .del {
+        margin: 0;
+        padding: 3px;
+        i {
+          display: block;
+          margin-top: 10px;
+          padding: 0 3px;
+        }
+      }
+    }
+    .settlement {
+      width: 100%;
+      .settlement_right {
+        width: 40%;
+      }
+    }
+    .credit_card {
+      .card_num {
+        width: 90%;
+      }
+      .flex {
+        .date {
+          flex-basis: 50%;
+        }
+      }
+    }
+    .completed {
+      .flex {
+        width: 100%;
+      }
+    }
+    .coupon_con {
+      width: 90%;
+      height: 80vh;
+      .coupon_box {
+        .add {
+          @include flex-container(column, nowrap, space-between, flex-start);
+        }
+      }
+      .coupon_list {
+        height: 50vh;
+      }
+    }
+  }
+  .-on {
+    display: block;
+  }
 }
