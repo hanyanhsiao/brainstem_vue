@@ -67,7 +67,9 @@
                 <h2>確認訂單</h2>
                 <div class="item_box">
                     <div class="item" v-for="(item, index) in cartItems" :key="index">
-                        <img :src="item.image" alt="">
+                        <a :href="'./product_information.html?id='+item.ID">
+                            <img :src="item.image" alt="">
+                        </a>
                         <div class="info">
                             <h3 class="title">{{ item.title }}</h3>
                             <div class="dis_pic">
@@ -76,7 +78,7 @@
                             </div>
                         </div>
                         <div class="price_box">
-                            <div class="price">{{ item.price }}</div>
+                            <div class="price">$ {{ item.price }}</div>
                             <div class="price_original">{{ item.originalPrice }}</div>
                         </div>
                     </div>
