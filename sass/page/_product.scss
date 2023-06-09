@@ -334,9 +334,11 @@
         padding: 10px 80px;
         border: 1px solid $orange;
         border-radius: 8px;
-        margin: 100px auto 0;
+        margin: 50px auto 0;
+        display: flex;
+        align-items: center;
 
-        display: none;
+        // display: none;
 
         @include breakpoint-414 {
           display: block;
@@ -680,7 +682,7 @@
             left: 50%;
             transform: translate(-50%, -50%) scale(1.2);
             max-width: 560px;
-            width: 100%;
+            // width: 100%;
             padding: 50px;
             border-radius: 10px;
             background-color: rgb($color: #0d0d0d, $alpha: 0.8);
