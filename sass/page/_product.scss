@@ -652,14 +652,16 @@
 
                 .price_original {
                   font-size: $h2;
-                  text-decoration: none;
+                  text-decoration: none;                  
+                  color: $white;
                   @include breakpoint-414 {
                     font-size: 16px;
                   }
                 }
                 .line_throught {
                   text-decoration: line-through;
-                  font-size: $h4;
+                  font-size: $h4;                  
+                  color: $price_original;
                   @include breakpoint-414 {
                     font-size: 14px;
                   }
@@ -703,7 +705,7 @@
 
             h2 {
               padding: 50px;
-              font-size: 4rem;
+              font-size: 3rem;
 
               @include breakpoint-414 {
                 font-size: 30px;

@@ -275,11 +275,20 @@
 
                     ;
                 }
+                .price_original {
+                    font-size: $h2;
+                    text-decoration: none;
+                    color: $white;
+                    @include breakpoint-414 {
+                      font-size: 16px;
+                    }
+                }
                 .line_throught {
                     text-decoration: line-through;
                     font-size: $h4;
+                    color: $price_original;
                     @include breakpoint-414 {
-                      font-size: 14px;
+                        font-size: 14px;
                     }
                 }
 
@@ -434,7 +443,7 @@
 
             h2 {
                 padding: 50px;
-                font-size: 4rem;
+                font-size: 3rem;
 
                 @include breakpoint-414 {
                     font-size: 30px;
@@ -459,6 +468,7 @@
         }
 
         .introduction {
+            text-align: justify;
             @include breakpoint-414 {
                 padding-bottom: 50px;
             }
@@ -487,6 +497,7 @@
         }
 
         .system {
+            text-align: justify;
             h2 {
                 padding-bottom: 25px;
 
@@ -586,7 +597,7 @@
 
         .comments_range {
             position: relative;
-            padding-bottom: 70px;
+            padding-bottom: 20px;
 
             @include breakpoint-414 {
                 padding-bottom: 30px;
@@ -627,11 +638,6 @@
                         }
                     }
                 }
-                // .col-3{
-                //     &:nth-child(4n){
-                //         margin-right: 0;
-                //     }
-                // }
                 .each_comment {
                     cursor: pointer;
                     box-sizing: border-box;
@@ -671,7 +677,8 @@
                             height: 96px;
 
                             @include breakpoint-414 {
-                                width: 86px;
+                                width: 80px;
+                                height: 80px;
                             }
                         }
 
@@ -723,8 +730,8 @@
                     }
 
                     .comment_text {
-                        @include flex-container($direction: row, $wrap: nowrap, $justify-content: center, $align-items: top);
-                        padding: 5px;
+                        @include flex-container($direction: row, $wrap: nowrap, $justify-content: start, $align-items: top);
+                        padding: 20px;
 
                         i {
                             // margin: 10px;
@@ -736,7 +743,7 @@
                         }
 
                         p {
-                            width: 250px;
+                            width: 330px;
                             height: 290px;
                             letter-spacing: 2px;
                             line-height: 150%;
@@ -745,8 +752,8 @@
                             text-align: justify;
                             cursor: pointer;
                             @include breakpoint-414{
-                                width: 290px;
-                                height: auto;
+                                width: 350px;
+                                height: 200px;
                                 padding: 10px;
                             }
                         }
@@ -756,20 +763,29 @@
         }
 
         .pages {
-            margin-bottom: 80px;
-            display: none;
+            margin-bottom: 50px;
 
-            .comment_pages {
+            .product_pages {
                 @include flex-container(row, nowrap, end, center);
 
-                .each_page a {
+                @include breakpoint-414 {
+                @include flex-container(row, nowrap, center, center);
+                }
+
+                .each_page {
                     color: #797676;
                     font-size: 2rem;
                     margin: 0 5px;
-                    padding: 5px 13px;
+                    padding: 5px 10px;
+                    font-weight: bold;
+                    cursor: pointer;
+
+                    @include breakpoint-414 {
+                        font-size: 16px;
+                        padding: 1px 7px;
+                    }
 
                     &.active {
-                        font-weight: bold;
                         background-color: $purple;
                         border-radius: 50%;
                         color: $white;
@@ -777,11 +793,13 @@
 
                     &:hover {
                         color: $white;
-                        font-weight: bold;
                     }
 
                     i {
                         padding: 0;
+                        @include breakpoint-414 {
+                        font-size: 16px;
+                        }
                     }
                 }
             }
@@ -832,9 +850,11 @@
 
                         img {
                             border-radius: 50%;
-
+                            width: 80px;
+                            height: 80px;
                             @include breakpoint-414 {
-                                width: 70px;
+                                width: 60px;
+                                height: 60px;
                             }
                         }
 
@@ -955,26 +975,20 @@
                 h2 {
                     @include breakpoint-414 {
                         font-size: 20px;
-                    }
-
-                    ;
+                    };
 
                 }
 
                 .btn {
                     @include breakpoint-414 {
                         background-color: $purple_dark;
-
                         &:hover {
                             background-color: $orange;
                         }
-                    }
-
-                    ;
+                    };
 
                     i {
                         padding: 0;
-
                     }
                 }
             }
@@ -984,7 +998,6 @@
                 overflow: hidden;
                 .swiper-wrapper {
                     @include flex-container(row, nowrap, space-between, flex-start);
-
                 }
 
                 .each_good {
@@ -1080,24 +1093,25 @@
                             }
                         }
 
-                        .orinal_price {
+                        .price_original {
                             font-size: $h2;
+                            text-decoration: none;
+                            color: $white;
                             @include breakpoint-414 {
-                                font-size: 14px;
+                              font-size: 16px;
                             }
                         }
                         .line_throught {
                             text-decoration: line-through;
                             font-size: $h4;
+                            color: $price_original;
                             @include breakpoint-414 {
-                              font-size: 14px;
+                                font-size: 14px;
                             }
                         }
                     }
-                }
-                
+                }                
             }
-
         }
         .heart_popup, .heart_remove {
             position: absolute;
@@ -1121,7 +1135,7 @@
             }
 
             i {
-                font-size: 225px;
+                font-size: 150px;
                 color: $green;
                 @include breakpoint-414 {
                     font-size: 150px;
@@ -1130,7 +1144,7 @@
 
             h2 {
                 padding: 50px;
-                font-size: 4rem;
+                font-size: 3rem;
 
                 @include breakpoint-414 {
                     font-size: 30px;
@@ -1140,7 +1154,7 @@
         .heart_remove{
             i{
                 color: red;
-                font-size: 180px;
+                font-size: 120px;
             }                        
         }
     }

@@ -474,6 +474,17 @@
                                 }
 
                                 .price_original {
+                                    font-size: $h2;
+                                    text-decoration: none;
+                                    color: $white;
+                                    @include breakpoint-414 {
+                                      font-size: 16px;
+                                    }
+                                }
+                                .line_throught {
+                                    text-decoration: line-through;
+                                    font-size: $h4;
+                                    color: $price_original;
                                     @include breakpoint-414 {
                                         font-size: 14px;
                                     }
@@ -507,7 +518,7 @@
                     }
         
                     i {
-                        font-size: 225px;
+                        font-size: 150px;
                         color: $green;
                         @include breakpoint-414 {
                             font-size: 150px;
@@ -516,7 +527,7 @@
         
                     h2 {
                         padding: 50px;
-                        font-size: 4rem;
+                        font-size: 3rem;
         
                         @include breakpoint-414 {
                             font-size: 30px;
@@ -526,7 +537,7 @@
                 .heart_remove{
                     i{
                         color: red;
-                        font-size: 180px;
+                        font-size: 120px;
                     }                        
                 }
             }
