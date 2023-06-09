@@ -23,17 +23,53 @@
   .news_title {
     line-height: 200%;
   }
-
-  .new_article_img {
+  .news_block {
     margin: 50px auto;
-    width: 100%;
-  }
+    // border: 2px solid saddlebrown;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 50px;
+    .new_article_img {
+      width: 50%;
+    }
 
-  .news_content {
-    text-align: justify;
-    line-height: 2;
-  }
+    .news_content {
+      text-align: justify;
+      line-height: 2.5;
+    }
 
+    @include breakpoint-1440 {
+      flex-direction: column;
+      .new_article_img {
+        width: 100%;
+      }
+    }
+  }
+  .news_block_2 {
+    margin: 100px auto;
+    // border: 2px solid saddlebrown;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: start;
+    gap: 50px;
+    .new_article_img {
+      width: 50%;
+    }
+
+    .news_content {
+      text-align: justify;
+      line-height: 2.5;
+    }
+
+    @include breakpoint-1440 {
+      flex-direction: column;
+      .new_article_img {
+        width: 100%;
+      }
+    }
+  }
   .button_return {
     @include flex-container(row, nowrap, space-between, center);
     text-align: center;
