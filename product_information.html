@@ -88,6 +88,7 @@
                     <span class="price" v-show="currentGood.DISCOUNT_PERCENTAGE > 0">${{goodafterDiscount()}}</span>
                     <h2 class="price_original" :class="{'line_throught':currentGood.DISCOUNT_PERCENTAGE > 0}">
                         ${{currentGood.ORIGINAL_PRICE}}</h2>
+                    <p style="color:yellow" v-show="currentGood.DISCOUNT_PERCENTAGE > 0">優惠期限：{{currentGood.ACTIVITY_END}}止</p>
                     <p>遊戲評價：
                         <i class="bi bi-star-fill" v-if="gameComments.length > 0"></i>
                         <span class="star_rating">{{average}}</span>

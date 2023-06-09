@@ -240,7 +240,7 @@ export default{
                 </ul>
             </li>
         </ul>
-        <button class="apply_choose">套用</button>
+        <button class="apply_choose" @click="updateSelectedTags">套用</button>
     </nav>
     `
     
