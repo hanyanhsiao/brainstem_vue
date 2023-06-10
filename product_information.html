@@ -225,36 +225,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- <div class="comment_popup_outer">
-                <div class="comment_popup_box">
-                    <div class="popup_box_top">
-                        <div class="member_detail">
-                            <img src="https://placehold.co/96x96" alt="">
-                            <div class="popup_info">
-                                <h2 class="member_name">二柱子</h2>
-                                <p class="game_time">遊戲時長：0.8 小時</p>
-                                <p class="comment_date">評論於 2023/2/21</p>
-                            </div>
-                        </div>
-                        <div class="game_rating">
-                            <span class="satisfaction">遊戲滿意度：</span>
-                            <span class="member_game_rating">5</span>
-                            <i class="bi bi-star-fill"></i>
-                        </div>
-                    </div>
-                    <div class="popup_text">
-                        <div id="thumb_up"><i class="bi bi-hand-thumbs-up"></i></div>
-                        <p class="popup_content">
-                            手書香瓜自食從。旁正民右父門節四圓正。言雄呢兄屋好兌羽隻乙氣金色斗得？發占朋尾飛看新村而動申美胡定牛，河房誰問裏躲草姊波黃才冒園它貝室？火果亮。<br><br>
-                            室友草田拍邊實已葉耍頁青冰功而良媽「喝急能已各寫山穿幫」向干石？豆歌沒具快百辛者晚物畫，屋己民說開雲，背手哭抓。
-                            手書香瓜自食從。旁正民右父門節四圓正。言雄呢兄屋好兌羽隻乙氣金色斗得？發占朋尾飛看新村而動申美胡定牛，河房誰問裏躲草姊波黃才冒園它貝室？火果亮。<br><br>
-                            室友草田拍邊實已葉耍頁青冰功而良媽「喝急能已各寫山穿幫」向干石？豆歌沒具快百辛者晚物畫，屋己民說開雲，背手哭抓。</p>
-                    </div>
-                    <button class="comment_popup_close">關閉</button>
-                </div>
-
-            </div> -->
         </section>
         <section class="recommendation col-12">
             <div class="recommend_range col-10">
@@ -584,12 +554,15 @@
 
                     const existingKeys = Object.keys(localStorage).filter((key) => key.startsWith("good_"));
                     if (existingKeys.includes("good_" + this.currentGood.GAME_ID)) {
+                        
                         alert("商品已存在於購物車");
+                        console.log("this")
                         return;
                     }
                     localStorage.setItem("good_" + this.currentGood.GAME_ID, JSON.stringify(this.currentGood));
                     // =============購物車小圖示數量===================
                     const cartItem = document.querySelector('.cart_number');
+                    
                     if (cartItem) {
                         cartItem.style.display = 'flex';
                         let keys = Object.keys(localStorage);
@@ -605,9 +578,12 @@
                     if (action == "toPay") {
                         
                         if (existingKeys.includes("good_" + this.currentGood.GAME_ID)) {
-                            alert("商品已存在於購物車");
+                            console.log("bbb");
+                            // alert("商品已存在於購物車");
+                            console.log("aaa");
                             this.$nextTick(() => {
                                 setTimeout(() => {
+                                    
                                     location.href = "./checkout.html";
                                 }, 0);
                             });
