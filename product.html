@@ -212,11 +212,7 @@
                         axios.defaults.withCredentials = true;
                         axios.post(php_url + 'login_status.php')
                             .then((response) => {
-                                console.log(response.data);
                                 let isLogin = response.data.isLogin;
-                                // if (response.data.nickname && response.data.nickname.length > 0) {
-                                //     this.nickname = response.data.nickname.substring(0, 1);
-                                // }
                                 axios.defaults.withCredentials = true;
                                 axios.post(php_url + 'login_status.php')
                                     .then((response) => {
@@ -237,15 +233,9 @@
                                             })
                                         }                             
                                     })
-
-                                // for (let good of this.goodListFromDB) {
-                                //     good.hovered = false;
-                                //     good.clicked = false;
-                                // }                              
+                             
                             })                      
-                        // this.goodListFromDB_copy = response.data;
                         this.goodListFromDB_copy = this.goodListFromDB;
-                        console.log(this.goodListFromDB);
 
                     })
 
@@ -331,7 +321,6 @@
                 },
 
                 getFilterGoodList(filterlist) {
-                    console.log(JSON.stringify(filterlist))
                     const url_filter = php_url + 'product_sidebar_function.php';
                     axios.get(url_filter, {                     
                         params:{

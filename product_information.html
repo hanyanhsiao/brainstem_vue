@@ -452,8 +452,6 @@
                 showCommentsPopup(comment) {
                     this.selectedComment = comment; // 將選中的評論存儲到數據中
                     this.showCommentPopup = true; // 將彈窗顯示狀態設置為 true
-                    console.log(this.selectedComment);
-                    console.log(this.showCommentPopup);
                 },
                 closeCommentPopup() {
                     this.showCommentPopup = false; // 將彈窗顯示狀態設置為 false，關閉彈窗
@@ -583,10 +581,15 @@
                     location.href = `./product_information.html?id=${id}`;
                 },
                 addAction(action) {
+
+                    const existingKeys = Object.keys(localStorage).filter((key) => key.startsWith("good_"));
+                    if (existingKeys.includes("good_" + this.currentGood.GAME_ID)) {
+                        alert("商品已存在於購物車");
+                        return;
+                    }
                     localStorage.setItem("good_" + this.currentGood.GAME_ID, JSON.stringify(this.currentGood));
                     // =============購物車小圖示數量===================
                     const cartItem = document.querySelector('.cart_number');
-                    // console.log(cartItem)
                     if (cartItem) {
                         cartItem.style.display = 'flex';
                         let keys = Object.keys(localStorage);
@@ -600,6 +603,17 @@
                     }
                     // =============購物車小圖示數量===================
                     if (action == "toPay") {
+                        
+                        if (existingKeys.includes("good_" + this.currentGood.GAME_ID)) {
+                            alert("商品已存在於購物車");
+                            this.$nextTick(() => {
+                                setTimeout(() => {
+                                    location.href = "./checkout.html";
+                                }, 0);
+                            });
+                            
+                        }
+
                         location.href = "./checkout.html";
                     }
                 },
@@ -613,22 +627,6 @@
         });
 
         productInformation.mount('#product_information');
-
-
-        // //點擊評論彈出視窗設定===============================================================================
-        // const clickComment = document.querySelectorAll(".each_comment");
-        // comment_popup_outer = document.getElementsByClassName("comment_popup_outer")[0];
-        // comment_popup_close = document.getElementsByClassName("comment_popup_close")[0];
-        // clickComment.forEach(function (comment) {
-        //     comment.addEventListener("click", function (e) {
-        //         comment_popup_outer.classList.add("active");
-        //         comment_popup_close.addEventListener("click", function (e) {
-        //             comment_popup_outer.classList.remove("active");
-
-        //         });
-
-        //     });
-        // });
 
     
 
@@ -661,6 +659,10 @@
                     1920: {
                         slidesPerView: 4,
                         spaceBetween: 80,
+                    },
+                    1440:{
+                        slidesPerView:3,
+                        spaceBetween:100,
                     },
                     414: {
                         slidesPerView: 2,

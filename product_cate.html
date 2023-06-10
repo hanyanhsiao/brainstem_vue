@@ -183,10 +183,6 @@
                                     })
                                 }                             
                             })
-                        // for (let good of this.goodListFromDB) {
-                        //     good.hovered = false;
-                        //     good.clicked = false;
-                        // }
                         this.goodListFromDB_copy = response.data;
                 })),
                 this.category = this.hotCategories.find(category => category.id.toString() === id);
@@ -265,7 +261,6 @@
                 },
                 getFilterGoodList(filterlist) {
                     let id = new URL(location.href).searchParams.get('cateId');
-                    console.log(JSON.stringify(filterlist));
                     const url_filter = php_url + `product_sidebar_function.php?cateId=${id}`;
                     axios.get(url_filter, {                     
                         params:{
@@ -295,10 +290,6 @@
                                     })
                                 }                             
                             })
-                        // for (let good of this.filterGoodsList) {
-                        //     good.hovered = false;
-                        //     good.clicked = false;
-                        // }
 
                         if(filterlist.tag_list.length == 0){
                             this.goodListFromDB = this.goodListFromDB_copy;

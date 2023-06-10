@@ -122,7 +122,6 @@
                 axios.get(php_url + 'product_activity.php', {
                     params: { activityId: id }
                 }).then((response => {
-                    console.log(response.data);
                     let data = response.data;
                     this.activityId = data.activityId;
                     this.activityName = data.activityName;
@@ -130,21 +129,8 @@
                 }))
 
 
-                // // 取得商品
-                // axios.get(php_url + 'product_list.php?id=' + id + '&action=activity', {
-                // }).then((response) => {
-                //     console.log(response.data);
-                //     this.goodList = response.data;
-                //     for (let good of this.goodList) {
-                //     }
-                //     this.goodList_copy = response.data;
-                // })
-
-                
-
                 axios.get(php_url + `product_sidebar_function.php?id=${id}`)
                     .then((response => {
-                        console.log(response.data);
                         this.goodListFromDB = response.data;
                         axios.defaults.withCredentials = true;
                         axios.post(php_url + 'login_status.php')
@@ -166,11 +152,6 @@
                                     })
                                 }                             
                             })
-                        
-                        // for (let good of this.goodListFromDB) {
-                        //     good.hovered = false;
-                        //     good.clicked = false;
-                        // }
                         this.goodListFromDB_copy = response.data;
                 }))
             },
@@ -238,7 +219,6 @@
                 },
                 getFilterGoodList(filterlist) {
                     let id = new URL(location.href).searchParams.get('id');
-                    console.log(JSON.stringify(filterlist));
                     const url_filter = php_url + `product_sidebar_function.php?id=${id}`;
                     axios.get(url_filter, {                     
                         params:{
@@ -246,7 +226,6 @@
                         } 
                     }).then((response) => {
                         this.currentPage = 1;
-                        console.log(response.data);
                         this.filterGoodsList = response.data;
                         axios.defaults.withCredentials = true;
                         axios.post(php_url + 'login_status.php')
@@ -268,11 +247,6 @@
                                     })
                                 }                             
                             })
-                        // for (let good of this.filterGoodsList) {
-                        //     good.hovered = false;
-                        //     good.clicked = false;
-                        // }
-
                         if(filterlist.tag_list.length == 0){
                             this.goodListFromDB = this.goodListFromDB_copy;
                         }else{
