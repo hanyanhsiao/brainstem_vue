@@ -111,11 +111,11 @@
                     <p>{{ birthday }}</p>
                 </label>
                 <p class="margin"> 性別 </p>
-                <div for="gender" class="gender" name="gender">
-                    <label><input type="radio" name="gender" value="M" v-model="gender">男性</label>
-                    <label><input type="radio" name="gender" value="F" v-model="gender">女性</label>
-                    <label><input type="radio" name="gender" value="X" v-model="gender">不公開</label>
-                </div>
+                <div class="gender">
+                  <label><input type="radio" id="gender-m" name="gender" value="M" v-model="gender_or" :checked="gender_or === 'M'">男性</label>
+                  <label><input type="radio" id="gender-f" name="gender" value="F" v-model="gender_or" :checked="gender_or === 'F'">女性</label>
+                  <label><input type="radio" id="gender-x" name="gender" value="X" v-model="gender_or" :checked="gender_or === 'X'">不公開</label>
+              </div>              
                 </div>
                 </div>
                 <div class="btn save" @click="showEditForm">儲存</div>
@@ -275,6 +275,7 @@
               phoneError: '',
               selectedImage: './pic/img/member_photo/default.png',
               imageFile: null,
+              gender_or: ''
           },
           mounted() {
             this.getMemberData();
@@ -304,20 +305,20 @@
                 .then((response) => {
                     const memberData = response.data;
                     console.log(memberData);
-                    let gender = memberData.GENDER;
-                    if(gender = 'F'){
-                        gender = '女';
-                    }else if(gender = 'M'){
-                        gender = '男';
-                    }else{
-                        gender = '不公開';
+                    let gender_or = memberData.GENDER;
+                    if (gender_or === 'F') {
+                        this.gender = '女性'; // 與選項的 value 相匹配
+                    } else if (gender_or === 'M') {
+                        this.gender = '男性'; // 與選項的 value 相匹配
+                    } else {
+                        this.gender = '不公開'; // 與選項的 value 相匹配
                     }
 
                     this.name = memberData.USERNAME;
                     this.nickname = memberData.NICKNAME;
                     this.phone = memberData.PHONE;
                     this.birthday = memberData.BIRTHDAY;
-                    this.gender = gender;
+                    this.gender_or = gender_or;
                     this.selectedImage = memberData.MEMBER_PHOTO;
 ;
                 })
@@ -369,7 +370,7 @@
                     formData.append('name', this.name);
                     formData.append('nickname', this.nickname);
                     formData.append('phone', this.phone);
-                    formData.append('gender', this.gender);
+                    formData.append('gender', this.gender_or);
                     formData.append('email', this.email);
                     
                     if (this.imageFile) {
