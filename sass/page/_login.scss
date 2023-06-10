@@ -92,11 +92,23 @@
         font-size: 4rem;
       }
   }
+  @include breakpoint-1280 {
+    .col-4{
+      width: 60%;
+    }
+  }
+  @include breakpoint-860 {
+    .col-4{
+      width: 80%;
+    }
+  }
   @include breakpoint-414 {
     .suceesfully{
       width: 90vw;
     }
   }
+  
+  
 }
 
 .forget{
@@ -158,9 +170,22 @@
         font-size: 4rem;
       }
   }
+  @include breakpoint-1280 {
+    .col-4{
+      width: 60%;
+    }
+  }
+  @include breakpoint-860 {
+    .col-4{
+      width: 80%;
+    }
+  }
   @include breakpoint-414 {
     .suceesfully{
       width: 90vw;
+    }
+    .col-4{
+      width: 100%;
     }
   }
 }
@@ -358,6 +383,38 @@
     }
   
 }
+
+@include breakpoint-1280 {
+  
+  .col-10{
+    width: 100%;
+  }
+  
+  .register_block{
+    margin: 40px auto;
+  }
+}
+
+@include breakpoint-860 {
+  form{
+    @include flex-container(column, wrap, flex-start, flex-start);
+    &::after{
+     content: '';
+     display: none;
+    }
+    .left, .right{
+     width: 100%;
+   }
+   .gender{
+     margin-bottom: 20px;
+   }
+  .col-10{
+    width: 100%;
+  }
+  
+}
+}
+
 @include breakpoint-414 {
   form{
      @include flex-container(column, wrap, flex-start, flex-start);
@@ -376,6 +433,5 @@
     width: 90vw;
   }
 }
-
 
 }

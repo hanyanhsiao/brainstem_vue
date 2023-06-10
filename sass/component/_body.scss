@@ -31,4 +31,6 @@ main {
   width: 80%;
   margin: 0 auto;
   @include breakpoint-414{width: 90%;}
+  @include breakpoint-1280{width: 90%;}
+  
 }
