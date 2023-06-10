@@ -338,18 +338,22 @@
                     this.total = this.price - (-this.discount_price);
                 },
                 discountPrice() {
-                    if (this.discount >= this.price) {
-                        alert('金額未到達優惠券使用金額，優惠券不可適用');
-                        this.discount_price = 0;
-                        this.discount = 0;
-                        this.coupon = '請選擇優惠券';
-                    } else {
-                        if (this.discount === 0) {
-                            this.discount_price = Math.round(this.price * this.discounts - this.price).toFixed(0);
-                        } else {
-                            this.discount_price = - this.discount;
+                    if(this.price === 0){
+
+                    }else{
+                            if (this.discount >= this.price) {
+                                alert('金額未到達優惠券使用金額，優惠券不可適用');
+                                this.discount_price = 0;
+                                this.discount = 0;
+                                this.coupon = '請選擇優惠券';
+                            } else {
+                                if (this.discount === 0) {
+                                    this.discount_price = Math.round(this.price * this.discounts - this.price).toFixed(0);
+                                } else {
+                                    this.discount_price = - this.discount;
+                                }
+                            }
                         }
-                    }
                 },
                 couponchose() {
                     this.coupon_box = true;
@@ -367,6 +371,7 @@
                     this.mask_box = false;
                     $('body').toggleClass('no-scroll');
 
+                    
                     if (coupon.discounts_or >= 1) {
                         // console.log('-300');
                         if (coupon.discount_or > this.price) {
