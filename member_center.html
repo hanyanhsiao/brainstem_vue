@@ -421,6 +421,7 @@
       },
       methods: {
         async showGameLibiary() {
+            this.games = [];
             try {
             const response = await axios.post(php_url + 'login_status.php');
             this.member_ID = response.data.member_ID;
@@ -523,8 +524,9 @@
                     // 根据服务器返回的结果进行处理
                     console.log(response.data);
                     alert('新增成功');
-                    this.showGameLibiary();
+                    
                     this.$set(this.showReview, gameId, false);
+                    this.showGameLibiary();
                     //   window.location.href = 'member_center.html';
                     })
                     .catch(error => {
