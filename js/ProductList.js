@@ -41,7 +41,7 @@ export default {
                         }, 1500); // 在 1500 毫秒後隱藏，可根據需要進行調整
                     }else{
                         alert("請先登入會員");
-                        window.location.href = '../login.html'
+                        window.location.href = './login.html'
                     }
                     
                 })
