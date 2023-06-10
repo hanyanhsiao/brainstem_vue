@@ -83,7 +83,7 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li class="B_grid_two b_backend_color">
+                            <li class="B_grid_two b_backend_color" style="display: none;">
                                 <h6>活動類型</h6>
                                 <div class="B_type">
                                     <ul>
@@ -95,7 +95,7 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li class="B_grid_four">
+                            <li class="B_grid_four" style="display: none;">
                                 <label for="Event_start_time">
                                     <h6>活動開始時間</h6>
                                 </label>
@@ -107,7 +107,7 @@
                                 </label>
                                 <input type="date" name="" id="Event_end_time" v-model="endTime" placeholder="年/月/日">
                             </li>
-                            <li>
+                            <li style="display: none;">
                                 <label for="Product_discount">
                                     <h6>活動折扣</h6>
                                 </label>
@@ -190,7 +190,7 @@
                     startTime: '', // 活動開始時間
                     endTime: '', // 活動結束時間
                     percentage: '',
-
+                    activityid:'',
 
 
                     imageUrl: '',
@@ -275,14 +275,14 @@
                     });
                     flatpickr("#issue_date", {
                         dateFormat: "Y/m/d",
-                        minDate: "today",
+                        // minDate: "today",
                         theme: "light"
                     });
                 },
                 insertGame(event) {
                     event.preventDefault();
                     const formData = new FormData();
-
+                    alert(this.activityid);
                     const image_file = document.getElementById('fileInput')
                     formData.append('gameName', this.gameName);
                     formData.append('gameCover', image_file.files[0]);
@@ -297,6 +297,7 @@
                     formData.append('totalComments', this.totalComments);
                     formData.append('purchased', this.purchased);
                     formData.append('categoryid', this.categoryid);
+                    formData.append('activityid', this.activityid);
                     console.log(this);
                     // 发送POST请求并插入游戏数据
                     axios.post(php_url + 'B_insert_game.php', formData, {
@@ -307,8 +308,9 @@
                         .then((response) => {
                             console.log(response);
                             // 执行成功后的操作
-                            alert("新增成功");
-                            location.href = "B_games.html";
+                            // alert("新增成功");
+                            // location.href = "B_games.html";
+                            
                         })
                         .catch((error) => {
                             console.error(error);
@@ -324,6 +326,7 @@
                     })
                         .then((response) => {
                             // 更新開始時間和結束時間
+                            this.activityid = activity.ACTIVITY_ID;
                             this.startTime = activity.ACTIVITY_BEGIN;
                             this.endTime = activity.ACTIVITY_END;
                             this.percentage = activity.DISCOUNT_PERCENTAGE;
@@ -342,7 +345,7 @@
                         this.ratings = response.data.rating;
                         this.categorys = response.data.category;
                         this.activitys = response.data.activity;
-                        console.log(this.categorys);
+                        console.log(this.activitys);
                     });
                 this.initializeFlatpickr();
             }

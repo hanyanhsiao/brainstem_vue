@@ -158,8 +158,8 @@
                         }
 
                         .B_grid_four {
-                            grid-template-columns: .8fr 1fr 1fr 1fr;
-                            column-gap: 20px;
+                            grid-template-columns: 0.75fr 1.05fr 1fr 1fr;
+                            // column-gap: 20px;
                         }
                     }
                 }
