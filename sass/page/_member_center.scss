@@ -466,8 +466,17 @@
                 p:first-child{
                     display:inline;
                 }
-                input{
+                textarea{
                     height: 300px;
+                    width: 100%;
+                    background-color: transparent;
+                    border: 1px solid $orange;
+                    border-radius: 3px;
+                    resize: none;
+                    color: $white;
+                    padding: 10px;
+                    outline: none;
+                    margin-bottom: 20px;
                 }
                 .btn{
                     margin: 0 auto;
