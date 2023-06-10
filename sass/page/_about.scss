@@ -150,7 +150,7 @@
                 h2 {
                     font-size: 4rem;
                     padding-left: 36px;
-                    padding-bottom: 10px;
+                    padding-bottom: 30px;
                     padding-top: 20px;
 
                     @include breakpoint-1440 {
@@ -196,6 +196,11 @@
                     border-top-left-radius: 35px;
                     border-bottom-right-radius: 35px;
                     border-bottom-left-radius: 35px;
+
+                    &:hover {
+                        /* background-color: lightseagreen; */
+                        background-color: #FF6300;
+                    }
 
                     @include breakpoint-1440 {
                         font-size: 1rem;
@@ -444,6 +449,7 @@
                 color: white;
                 line-height: 1.6;
                 border-bottom: 2px;
+                text-align: justify;
 
                 /* padding-left: 60px; */
                 @include breakpoint-1440 {
@@ -454,6 +460,7 @@
             h3 {
                 font-size: 3rem;
                 margin-bottom: 10px;
+                text-align: justify;
 
                 @include breakpoint-1440 {
                     font-size: 1.5rem;
@@ -461,10 +468,12 @@
             }
 
             P {
+                text-align: justify;
                 font-size: 2rem;
-
+                                
                 @include breakpoint-1440 {
                     font-size: 1rem;
+                    text-align: justify;
                 }
             }
         }
