@@ -160,10 +160,6 @@
     </main>
     @@include('./layout/js.html')
     <script>
-        //alert密碼
-        // function resetPassword(e) {
-        //     e.preventDefault();
-        // }
         //手風琴
         $(function () {
             $('.B_accordion-content').slideUp();
@@ -174,43 +170,6 @@
                 $(this).next().slideToggle();
             });
         })
-        // 點擊button修改
-        // function toggleEditSave(button) {
-        //     let element1 = document.getElementById("content1");
-        //     let element2 = document.getElementById("content2");
-
-        //     if (button.innerHTML === "修改內容") {
-        //         // name
-        //         let input1 = document.createElement("input");
-        //         input1.type = "text";
-        //         input1.id = "name";
-        //         input1.value = element1.innerHTML;
-        //         element1.innerHTML = "";
-        //         element1.appendChild(input1);
-
-        //         // phone
-        //         let input2 = document.createElement("input");
-        //         input2.type = "text";
-        //         input2.id = "phone";
-        //         input2.value = element2.innerHTML;
-        //         element2.innerHTML = "";
-        //         element2.appendChild(input2);
-
-        //         button.innerHTML = "儲存";
-        //     } else {
-        //         // 取输入框的值
-        //         let input1 = element1.querySelector("input");
-        //         let input2 = element2.querySelector("input");
-        //         let newValue1 = input1.value;
-        //         let newValue2 = input2.value;
-
-        //         // 更新内容
-        //         element1.innerHTML = newValue1;
-        //         element2.innerHTML = newValue2;
-
-        //         button.innerHTML = "修改內容";
-        //     }
-        // }
     </script>
 
     <script>

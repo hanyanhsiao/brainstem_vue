@@ -131,7 +131,7 @@
                     })
                         .then((response) => {
                             this.games = response.data;
-                            console.log(this.games);
+                            // console.log(this.games);
                             // 跳轉到會員資訊頁面
                             // window.location.href = 'B_member_info.html?id=' + memberid;
                             if (this.games.length === 0) {
@@ -158,7 +158,7 @@
                     })
                         .then((response) => {
                             // 处理成功响应
-                            console.log(response);
+                            // console.log(response);
                             // window.location.href = 'B_games.html';
                         })
                         .catch((error) => {
@@ -170,7 +170,7 @@
                     axios.get(php_url + 'B_games.php')
                         .then((response) => {
                             this.games = response.data;
-                            console.log(this.games);
+                            // console.log(this.games);
                             // console.log(memberid);
                         })
                 },
