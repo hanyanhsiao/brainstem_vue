@@ -145,6 +145,143 @@
         </div>
         </div>
 
+        <section class="col-9 right">
+            <div class="order">
+              <h3>訂單記錄</h3>
+              <div class="form_title">
+                <p>訂單編號</p>
+                <p>購買日期</p>
+                <p>購買金額</p>
+                <p>訂單狀態</p>
+              </div>
+              <div class="order_info" v-for="order in orders" :key="order.orderId">
+                <div class="flex_grow">
+                  <i class="bi bi-dash-lg" @click="toggleOrderDetails(order)"></i>
+                  <p class="ID">{{ order.orderId }}</p>
+                </div>
+                <p>{{ order.purchaseDate }}</p>
+                <p>{{ order.purchaseAmount }}</p>
+                <p>{{ order.orderStatus }}</p>
+                <div v-if="order.showDetails" class="detail_order">
+                  <div class="detail_order_title">
+                    <p>訂單內容</p>
+                    <p>商品折扣</p>
+                    <p>購買金額</p>
+                  </div>
+                  <div class="detail_order_info">
+                    <div class="item" v-for="item in order.items" :key="item.itemId">
+                      <div class="item_info">
+                        <img :src="item.image" alt="">
+                        <p>{{ item.name }}</p>
+                      </div>
+                      <div class="dis">
+                        <div class="discount">{{ item.discount }}</div>
+                      </div>
+                      <div class="price_box">
+                        <div class="price">{{ item.price }}</div>
+                        <div class="price_original">{{ item.originalPrice }}</div>
+                      </div>
+                    </div>
+                    <div class="settlement">
+                      <div class="coupon">
+                        <p>優惠券使用</p>
+                        <p class="settlement_right">{{ order.coupon }}</p>
+                      </div>
+                      <div class="dis">
+                        <p>折扣</p>
+                        <p class="settlement_right">{{ order.discount }}</p>
+                      </div>
+                      <div class="sum">
+                        <p>總金額</p>
+                        <p class="settlement_right">{{ order.totalAmount }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="col-9 right">
+        <div class="order">
+            <h3>訂單記錄</h3>
+            <div class="form_title">
+                <p>訂單編號</p>
+                <p>購買日期</p>
+                <p>購買金額</p>
+                <p>訂單狀態</p>
+            </div>
+            <div class="order_info">
+                <div class="flex_grow">
+                    <i class="bi bi-dash-lg open_btn"></i>
+                    <p class="ID">ak4l79e3k68sly</p>
+                 </div>
+                <p>2023/1/15</p>
+                <p>$2,059</p>
+                <p>已完成</p>
+            </div>
+            <div class="detail_order">
+                <div class="detail_order_title">
+                    <p>訂單內容</p>
+                    <p>商品折扣</p>
+                    <p>購買金額</p>
+                </div>
+                <div class="detail_order_info">
+                    <div class="item">
+                        <div class="item_info">
+                        <img src="https://placehold.co/95x125" alt="">
+                        <p>遊戲名稱遊戲名稱遊戲名稱遊戲名稱</p>
+                        </div>
+                        <div class="dis">
+                        <div class="discount">-75%</div>
+                        </div>
+                        <div class="price_box">
+                        <div class="price">$660</div>
+                        <div class="price_original">$1,099</div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item_info">
+                        <img src="https://placehold.co/95x125" alt="">
+                        <p>遊戲名稱遊戲名稱遊戲名稱遊戲名稱</p>
+                        </div>
+                        <div class="dis">
+                        <div class="discount">-75%</div>
+                        </div>
+                        <div class="price_box">
+                        <div class="price">$1,399</div>
+                        </div>
+                    </div>
+                    <div class="settlement">
+                        <div class="coupon">
+                        <p>優惠券使用</p>
+                        <p class="settlement_right">春季特賣優惠商品 -40%</p>
+                        </div>
+                        <div class="dis">
+                            <p>折扣</p>
+                            <p class="settlement_right">-439元</p>
+                        </div>
+                        <div class="sum">
+                            <p>總金額</p>
+                            <p class="settlement_right">2059 元</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="order_info">
+                <div class="flex_grow">
+                    <i class="bi bi-dash-lg"></i>
+                    <p>ak4l79e3k68sly</p>
+                </div>
+                <p>2023/1/15</p>
+                <p>$2,059</p>
+                <p>已完成</p>
+            </div>
+            
+        </div>
+    </section>
+
+
 
 
 

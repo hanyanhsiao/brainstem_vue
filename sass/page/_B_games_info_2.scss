@@ -1,5 +1,6 @@
 .B_games_info_2 {
     display: flex;
+    // height: 1080px;
 
     .right {
         margin-top: 20px;
@@ -44,11 +45,18 @@
                             display: grid;
                             grid-template-columns: .8fr 1.1fr 1.1fr 1fr;
 
+                            select{
+                                width: 50%;
+                                margin: 15px auto;
+                                font-size: 2.4rem;
+                                margin-left: 0;
+                            }
+
                             input[type="submit"] {
                                 width: 40%;
                             }
 
-                            .B_games {
+                            .B_games_type {
                                 width: 100%;
 
                                 ul {
@@ -150,8 +158,8 @@
                         }
 
                         .B_grid_four {
-                            grid-template-columns: .8fr 1fr 1fr 1fr;
-                            column-gap: 20px;
+                            grid-template-columns: 0.75fr 1.05fr 1fr 1fr;
+                            // column-gap: 20px;
                         }
                     }
                 }

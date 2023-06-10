@@ -1,5 +1,6 @@
-.B_games{
+.B_games {
     display: flex;
+    height: 1080px;
 
     .right {
 
@@ -12,12 +13,12 @@
                 display: flex;
                 text-align: center;
                 margin-top: 21px;
-
                 width: 100%;
 
                 label {
                     width: 20%;
-                    margin: auto 10px;
+                    margin: auto 0;
+                    margin-left: 5px;
                 }
 
                 select {
@@ -25,19 +26,31 @@
                     font-size: 1.8rem;
                 }
 
+
                 input {
                     margin: auto;
+                    width: 40%;
                 }
 
                 button {
                     margin: auto 20px;
                     width: 30%;
                 }
+
+                :nth-child(5) {
+                    width: 20%;
+                }
+
+                button::before {
+                    margin-right: 5px;
+                }
             }
         }
 
+
+
         .right-bottom {
-            border: 1px solid #000;
+            // border: 1px solid #000;
 
             // width: 100%;
             table {
@@ -46,7 +59,7 @@
                 line-height: 2.6;
 
                 thead {
-                    border-bottom: 1px solid #000;
+                    border: 1px solid #000;
 
                     tr {
                         th {
@@ -56,6 +69,7 @@
                         th:nth-last-child(1) {
                             border-right: none;
                         }
+
                         th:nth-child(2) {
                             width: 55%;
                         }
@@ -66,31 +80,67 @@
                 tbody {
 
                     tr {
-                        border-bottom: 1px solid #000;
+                        border: 1px solid #000;
                         cursor: pointer;
+
                         td {
                             h6 {
                                 line-height: 4;
                             }
+                            button{
+                                width: 40%;
+                                border-radius: 5px;
+                                font-size: 1.8rem;
+                                margin: -10px auto 10px;
+                            }
                         }
-                        td:nth-child(2){
+
+                        td:nth-child(2) {
                             text-align: left;
                             transform: translateX(2%);
                         }
                     }
-                    tr:hover{
+
+                    tr:hover {
                         background-color: #a289d6;
-                        td{
-                            h6{
+
+                        td {
+                            h6 {
                                 color: $white;
                             }
                         }
                     }
 
                     tr:nth-last-child(1) {
-                        border-bottom: none;
+                        // border-bottom: none;
                     }
 
+                }
+            }
+            .B_pagination{
+                display: flex;
+                // border: 1px solid #000;
+                margin: 50px 0;
+                width: 15%;
+                line-height: 1.4;
+                transform: translateX(599.5%);
+                li{
+                    border: 1px solid #000;
+                    border-right: none;
+                    width: 25px;
+                    text-align: center;
+                    cursor: pointer;
+                    a{
+                        color: #000;
+                        font-size: 2rem;
+                    }
+                }
+                li:last-child {
+                    border-right: 1px solid #000;
+                    // width: 65px;
+                }
+                li:hover{
+                    background: #d3bffb;
                 }
             }
         }

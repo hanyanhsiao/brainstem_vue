@@ -17,25 +17,21 @@
         @@include('./layout/B_nav.html')
 
         <!-- 右側 -->
-        <div class="right col-12">
+        <div class="right col-12" id="B_coupon">
             <!-- 右側上 -->
             <div class="right-top backend_color">
-                <form action="" method="">
-                    <label for="couponID">
-                        <h6>查詢類型：</h6>
-                    </label>
-                    <input type="text" name="" id="couponID" placeholder="優惠券編號">
+                <form @submit.prevent="submitQuery">
                     <label for="coupon">
-                        <h6>查詢優惠券：</h6>
+                        <h6>查詢優惠券編號：</h6>
                     </label>
-                    <input type="text" name="" id="coupon">
+                    <input type="text" v-model="whichcoupon" id="coupon">
                     <button type="submit" class="btn">查詢</button>
-                    <button type="submit" class="btn bi bi-plus-lg" onclick="B_coupon_info_2(event)">增加優惠券</button>
+                    <button type="submit" class="btn bi bi-plus-lg" @click.prevent="B_coupon_info_2">增加優惠券</button>
                 </form>
             </div>
 
             <!-- 右側下 -->
-            <div class="right-bottom" id="B_coupon">
+            <div class="right-bottom">
                 <table>
                     <thead class="backend_color">
                         <tr>
@@ -54,58 +50,135 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(coupon,index) in coupons" :key="index" @click="viewcoupon(coupon.COUPON_ID)">
-                            <td>
+                        <tr v-for="(coupon,index) in displayedCoupons" :key="index">
+                            <td @click="viewcoupon(coupon.COUPON_ID)">
                                 <h6>{{coupon.COUPON_CODE}}</h6>
                             </td>
-                            <td>
+                            <td @click="viewcoupon(coupon.COUPON_ID)">
                                 <h6>{{coupon.COUPON_NAME}}<br>
                                     {{coupon.COUPON_DETAIL}}<br>
                                     使用規則:{{coupon.MINIMUM_LIMIT}}</h6>
                             </td>
-                            <td>
+                            <td @click="viewcoupon(coupon.COUPON_ID)">
                                 <h6>{{coupon.COUPON_BEGIN}}~{{coupon.COUPON_END}}</h6>
                             </td>
                             <td>
-                                <h6 v-if="coupon.COUPON_STATUS == 1">正常</h6>
-                                <h6 v-else>停用</h6>
+                                <button class="btn" @click="togglecouponstatus(coupon)">{{ coupon.COUPON_STATUS === 1 ?
+                                    '正常' : '停用' }}</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+                <!-- 分頁 -->
+                <ul class="B_pagination" v-if="totalPages > 1">
+                    <li class="B_page-item" :class="{ active: currentPage === page }" v-for="page in totalPages"
+                        :key="page">
+                        <a class="B_page-link" href="#" @click="setCurrentPage(page)">{{ page }}</a>
+                    </li>
+                </ul>
             </div>
-            <!-- 分頁 -->
-            @@include('./layout/B_changepage.html')
         </div>
     </main>
     @@include('./layout/js.html')
-    <script>
+    <!-- <script>
         function B_coupon_info_2(e) {
             e.preventDefault();
             window.location.href = "B_coupon_info_2.html"
         }
-    </script>
+    </script> -->
 
     <script>
         //渲染全部訂單資料
         Vue.createApp({
             data() {
                 return {
-                    coupons: []
+                    coupons: [],
+                    whichcoupon: '',
+                    currentPage: 1, // 目前顯示的頁面
+                    itemsPerPage: 6, // 每頁顯示的資料筆數
                 }
+            },
+            computed: {
+                displayedCoupons() {
+                    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+                    const endIndex = startIndex + this.itemsPerPage;
+                    return this.coupons.slice(startIndex, endIndex);
+                },
+                totalPages() {
+                    return Math.ceil(this.coupons.length / this.itemsPerPage);
+                },
             },
             methods: {
                 viewcoupon(couponsid) {
                     //跳轉info
                     location.href = 'B_coupon_info.html?id=' + couponsid;
-                }
+                },
+                B_coupon_info_2() {
+                    // e.preventDefault();
+                    window.location.href = "B_coupon_info_2.html"
+                },
+                submitQuery() {
+                    if (!this.whichcoupon) {
+                        this.fetchAllcoupons();
+                        return;
+                    }
+                    const formData = new FormData();
+                    formData.append('whichcoupon', this.whichcoupon);
+
+                    axios.post(php_url + 'B_search_coupons.php', formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
+                    })
+                        .then((response) => {
+                            this.coupons = response.data;
+                            // console.log(this.coupons);
+                            // 跳轉到會員資訊頁面
+                            // window.location.href = 'B_member_info.html?id=' + memberid;
+                            if (this.coupons.length === 0) {
+                                alert('查無資料');
+                                this.fetchAllcoupons();
+                            }
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        });
+                },
+                togglecouponstatus(coupon) {
+                    coupon.COUPON_STATUS = coupon.COUPON_STATUS === 1 ? 0 : 1;
+
+                    // 将数据发送到服务器进行修改
+                    const formData = new FormData();
+                    formData.append('couponId', coupon.COUPON_ID);
+                    formData.append('couponStatus', coupon.COUPON_STATUS);
+
+                    axios.post(php_url + 'B_update_coupon_status.php', formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
+                    })
+                        .then((response) => {
+                            // 处理成功响应
+                            // console.log(response);
+                        })
+                        .catch((error) => {
+                            // 处理错误响应
+                            console.error(error);
+                        });
+                },
+                fetchAllcoupons() {
+                    axios.get(php_url + 'B_coupon.php')
+                        .then((response) => {
+                            // console.log(response);
+                            this.coupons = response.data;
+                        })
+                },
+                setCurrentPage(page) {
+                    this.currentPage = page;
+                },
             },
             mounted() {
-                axios.get(php_url + 'B_coupon.php')
-                    .then((response) => {
-                        console.log(response);
-                        this.coupons = response.data;
-                    })
+                this.fetchAllcoupons();
             }
 
         }).mount('#B_coupon')

@@ -80,7 +80,6 @@ export default{
         },
         //移除標籤
         removeTag(tag){
-            console.log(tag)
             const index = this.selectedTags.indexOf(tag);
             if(index > -1){
                 this.selectedTags.splice(index, 1);
@@ -166,7 +165,6 @@ export default{
                 "maxPrice":this.inputMaxPrice,
                 "tag_list":this.selectedTags
             }
-            console.log(this.selectedTags)
             this.$emit('filter-list', filterList);
         },
         applySelection() {
@@ -240,7 +238,7 @@ export default{
                 </ul>
             </li>
         </ul>
-        <button class="apply_choose">套用</button>
+        <button class="apply_choose" @click="updateSelectedTags">套用</button>
     </nav>
     `
     

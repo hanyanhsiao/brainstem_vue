@@ -55,8 +55,8 @@
                             </label>
                             <h6 v-if="!editMode" id="content2">{{ member.PHONE }}</h6>
                             <input v-else type="text" v-model="member.PHONE" placeholder="{{member.PHONE}}">
-                            <h6>電話號碼是否驗證通過：是</h6>
-                            <button class="btn" onclick="">重新送驗證碼</button>
+                            <!-- <h6>電話號碼是否驗證通過：是</h6>
+                            <button class="btn" onclick="">重新送驗證碼</button> -->
                         </li>
                         <li>
                             <h6>註冊日期</h6>
@@ -160,10 +160,6 @@
     </main>
     @@include('./layout/js.html')
     <script>
-        //alert密碼
-        // function resetPassword(e) {
-        //     e.preventDefault();
-        // }
         //手風琴
         $(function () {
             $('.B_accordion-content').slideUp();
@@ -174,43 +170,6 @@
                 $(this).next().slideToggle();
             });
         })
-        // 點擊button修改
-        // function toggleEditSave(button) {
-        //     let element1 = document.getElementById("content1");
-        //     let element2 = document.getElementById("content2");
-
-        //     if (button.innerHTML === "修改內容") {
-        //         // name
-        //         let input1 = document.createElement("input");
-        //         input1.type = "text";
-        //         input1.id = "name";
-        //         input1.value = element1.innerHTML;
-        //         element1.innerHTML = "";
-        //         element1.appendChild(input1);
-
-        //         // phone
-        //         let input2 = document.createElement("input");
-        //         input2.type = "text";
-        //         input2.id = "phone";
-        //         input2.value = element2.innerHTML;
-        //         element2.innerHTML = "";
-        //         element2.appendChild(input2);
-
-        //         button.innerHTML = "儲存";
-        //     } else {
-        //         // 取输入框的值
-        //         let input1 = element1.querySelector("input");
-        //         let input2 = element2.querySelector("input");
-        //         let newValue1 = input1.value;
-        //         let newValue2 = input2.value;
-
-        //         // 更新内容
-        //         element1.innerHTML = newValue1;
-        //         element2.innerHTML = newValue2;
-
-        //         button.innerHTML = "修改內容";
-        //     }
-        // }
     </script>
 
     <script>
@@ -248,6 +207,7 @@
                             // 可以在这里重置输入框和相关数据
                             this.showResetPassword = false;
                             this.newPassword = '';
+                            this.member.MEMBER_STATUS = 1;
                             alert("密碼已重置");
                         })
                         .catch((error) => {

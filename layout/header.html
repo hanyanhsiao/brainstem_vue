@@ -68,7 +68,7 @@
                             </a>
                         </li>
                         <li data-index="7">
-                            <a href="#" @click.passive="logout">登出</a>
+                            <a href="#" @click.passive="logout" class="header_logout">登出</a>
                         </li>
                     </template>
 
@@ -183,9 +183,9 @@
                     this.isLogin = response.data.isLogin;
                     this.photo = response.data.photo;
                     // console.log(response.data.nickname)
-                    if (response.data.nickname && response.data.nickname.length > 0) {
-                        this.nickname = response.data.nickname.substring(0, 1);
-                    }
+                    // if (response.data.nickname && response.data.nickname.length > 0) {
+                    //     this.nickname = response.data.nickname.substring(0, 1);
+                    // }
                 })
         },
         created() {
@@ -204,11 +204,13 @@
         lis.forEach(function (li, index) {
             const anchor = li.querySelector("a");
             anchor.addEventListener("click", function (event) {
-                event.preventDefault();
-                const href = anchor.getAttribute("href");
-                const url = new URL(href, window.location.href);
-                url.searchParams.set("activeTab", index);
-                window.location.href = url.toString();
+                if (!event.currentTarget.classList.contains("header_logout")) {
+                    event.preventDefault();
+                    const href = anchor.getAttribute("href");
+                    const url = new URL(href, window.location.href);
+                    url.searchParams.set("activeTab", index);
+                    window.location.href = url.toString();
+                }
             });
         });
     });

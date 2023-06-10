@@ -70,7 +70,8 @@
                         <div class="coupon_number_block">
                             <h1 class="coupon_number">TK666</h1>
                         </div>
-                        <h3 class="coupon_block_text"> 請至 <a href="./member_center.html">會員中心-會員優惠券</a> 輸入代碼
+                        <h3 class="coupon_block_text"> 請至 <a href="#" @click="toMember">會員中心-會員優惠券</a>
+                            輸入代碼
                         </h3>
                         <h3 class="coupon_block_text"> (一位會員限領取一次) </h3>
                     </div>
@@ -109,6 +110,15 @@
                 getGameType() {
                     this.gameType = JSON.parse(localStorage.getItem("gameType"));
                     this.gameTypeContent = JSON.parse(localStorage.getItem("gameTypeContent"));
+                },
+                toMember() {
+                    let loging = document.querySelector(".header_logout");
+                    if (!loging) {
+                        alert("請先登入會員");
+                        location.href = "./login.html";
+                    } else {
+                        location.href = "./member_center.html";
+                    }
                 }
             },
             mounted() {

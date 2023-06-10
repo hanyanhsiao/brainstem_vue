@@ -25,15 +25,15 @@
         <!-- banner輪播 -->
         <div id="banner" class="swiper productBanner col-12">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><a href="./product_information.html"><img src="./pic/img/banner/bannr6.jpg"
+                <div class="swiper-slide"><a href="./product_information.html?id=53"><img src="./pic/img/banner/bannr6.jpg"
                             alt="圖片說明"></a></div>
-                <div class="swiper-slide"><a href="./product_information.html"><img src="./pic/img/banner/banner7.jpg"
+                <div class="swiper-slide"><a href="./product_information.html?id=46"><img src="./pic/img/banner/banner7.jpg"
                             alt="圖片說明"></a></div>
-                <div class="swiper-slide"><a href="./product_information.html"><img src="./pic/img/banner/banner8.jpg"
+                <div class="swiper-slide"><a href="./product_information.html?id=27"><img src="./pic/img/banner/banner8.jpg"
                             alt="圖片說明"></a></div>
-                <div class="swiper-slide"><a href="./product_information.html"><img src="./pic/img/banner/banner9.jpg"
+                <div class="swiper-slide"><a href="./product_information.html?id=57"><img src="./pic/img/banner/banner9.jpg"
                             alt="圖片說明"></a></div>
-                <div class="swiper-slide"><a href="./product_activity.html"><img src="./pic/img/banner/banner10.jpg"
+                <div class="swiper-slide"><a href="./product_information.html?id=45"><img src="./pic/img/banner/banner10.jpg"
                             alt="圖片說明"></a></div>
             </div>
             <div class="product_banner_next"><i class="bi bi-chevron-right"></i></div>
@@ -100,7 +100,7 @@
 
                     <!-- 商品陳列區 -->
 
-                    <div class="product_goods">
+                    <div class="product_goods" id="product-list">
                         <product-list :goods="displayedGoods()"></product-list>
                     </div>
 
@@ -207,12 +207,36 @@
                 axios.get(php_url + 'product_list.php')
                     .then((response) => {
                         this.goodListFromDB = response.data;
-                        for (let good of this.goodListFromDB) {
-                            good.hovered = false;
-                            good.clicked = false;
-                        }
 
-                        this.goodListFromDB_copy = response.data;
+                        // 判斷是否有登入，撈取登入的資料
+                        axios.defaults.withCredentials = true;
+                        axios.post(php_url + 'login_status.php')
+                            .then((response) => {
+                                let isLogin = response.data.isLogin;
+                                axios.defaults.withCredentials = true;
+                                axios.post(php_url + 'login_status.php')
+                                    .then((response) => {
+                                        let isLogin = response.data.isLogin;
+                                        if(isLogin){
+                                            let id = response.data.member_ID;
+                                            axios.get(php_url + `member_wishlist.php?id=${id}`)
+                                            .then((response)=>{
+                                                let collectedGoodsList = response.data;
+                                                for(let goodList of this.goodListFromDB){
+                                                    for(let collectedGood of collectedGoodsList){
+                                                        if(goodList.GAME_ID == collectedGood.GAME_ID){
+                                                            goodList.clicked = true;
+                                                            goodList.hovered = true;
+                                                        }                                                    
+                                                    }                                                                             
+                                                }
+                                            })
+                                        }                             
+                                    })
+                             
+                            })                      
+                        this.goodListFromDB_copy = this.goodListFromDB;
+
                     })
 
                     .catch((error) => {
@@ -266,6 +290,15 @@
                     if (page >= 1 && page <= this.totalPages()) {
                         this.currentPage = page; // 跳轉到指定頁碼
                     }
+                    this.$nextTick(() => {
+                        const productList = document.getElementById('product-list');
+                        if (productList) {
+                        window.scrollTo({
+                            top: productList.offsetTop,
+                            behavior: 'smooth', // 使用平滑滾動效果
+                        });
+                        }
+                    });
                 },
                 totalPages() {
                     return Math.ceil(this.goodListFromDB.length / this.itemsPerPage); // 總頁數
@@ -288,7 +321,6 @@
                 },
 
                 getFilterGoodList(filterlist) {
-                    console.log(JSON.stringify(filterlist))
                     const url_filter = php_url + 'product_sidebar_function.php';
                     axios.get(url_filter, {                     
                         params:{
@@ -297,10 +329,30 @@
                     }).then((response) => {
                         this.currentPage = 1;
                         this.filterGoodsList = response.data;
-                        for (let good of this.filterGoodsList) {
-                            good.hovered = false;
-                            good.clicked = false;
-                        }
+                        axios.defaults.withCredentials = true;
+                        axios.post(php_url + 'login_status.php')
+                            .then((response) => {
+                                let isLogin = response.data.isLogin;
+                                if(isLogin){
+                                    let id = response.data.member_ID;
+                                    axios.get(php_url + `member_wishlist.php?id=${id}`)
+                                    .then((response)=>{
+                                        let collectedGoodsList = response.data;
+                                        for(let goodList of this.goodListFromDB){
+                                            for(let collectedGood of collectedGoodsList){
+                                                if(goodList.GAME_ID == collectedGood.GAME_ID){
+                                                    goodList.clicked = true;
+                                                    goodList.hovered = true;
+                                                }                                                    
+                                            }                                                                             
+                                        }
+                                    })
+                                }                             
+                            })
+                        // for (let good of this.filterGoodsList) {
+                        //     good.hovered = false;
+                        //     good.clicked = false;
+                        // }
 
                         if(filterlist.tag_list.length == 0){
                             this.goodListFromDB = this.goodListFromDB_copy;

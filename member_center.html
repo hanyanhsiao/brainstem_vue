@@ -126,177 +126,99 @@
 </div>
     <!-- 訂單記錄 -->
     <section class="col-9 right">
-        <div class="order">
-            <h3>訂單記錄</h3>
-            <div class="form_title">
-                <p>訂單編號</p>
-                <p>購買日期</p>
+        <div class="order" id="order">
+          <h3>訂單記錄</h3>
+          <div class="form_title">
+            <p>訂單編號</p>
+            <p>購買日期</p>
+            <p>購買金額</p>
+            <p>訂單狀態</p>
+          </div>
+          <div class="order_in" v-for="(order, index) in orders" :key="order.orderId">
+            <div class="order_info">
+              <div class="flex_grow">
+                <i :class="{'bi bi-dash-lg open_btn': order.showDetails, 'bi bi-plus-lg open_btn': !order.showDetails}" @click="toggleOrderDetails(index)"></i>
+                <p class="ID">{{ order.orderId }}</p>
+              </div>
+              <p>{{ order.purchaseDate }}</p>
+              <p>$ {{ order.purchaseAmount }}</p>
+              <p>{{ order.orderStatus }}</p>
+            </div>
+            <div v-if="order.showDetails" class="detail_order">
+              <div class="detail_order_title">
+                <p>訂單內容</p>
+                <p>商品折扣</p>
                 <p>購買金額</p>
-                <p>訂單狀態</p>
-            </div>
-            <div class="order_info">
-                <div class="flex_grow">
-                    <i class="bi bi-dash-lg open_btn"></i>
-                    <p class="ID">ak4l79e3k68sly</p>
-                 </div>
-                <p>2023/1/15</p>
-                <p>$2,059</p>
-                <p>已完成</p>
-            </div>
-            <div class="detail_order">
-                <div class="detail_order_title">
-                    <p>訂單內容</p>
-                    <p>商品折扣</p>
-                    <p>購買金額</p>
+              </div>
+              <div class="detail_order_info">
+                <div class="item" v-for="item in order.items" :key="item.itemId">
+                  <div class="item_info">
+                    <img :src="item.image" alt="">
+                    <p>{{ item.name }}</p>
+                  </div>
+                  <div class="dis" :class="{'closed': item.discount === 'None' || item.item_discounts_or === ''}">
+                    <div class="discount">{{ item.discount }}</div>
+                  </div>
+                  <div class="price_box" >
+                    <div class="price">$ {{ item.price }}</div>
+                    <div class="price_original">{{ item.originalPrice }}</div>
+                  </div>
                 </div>
-                <div class="detail_order_info">
-                    <div class="item">
-                        <div class="item_info">
-                        <img src="https://placehold.co/95x125" alt="">
-                        <p>遊戲名稱遊戲名稱遊戲名稱遊戲名稱</p>
-                        </div>
-                        <div class="dis">
-                        <div class="discount">-75%</div>
-                        </div>
-                        <div class="price_box">
-                        <div class="price">$660</div>
-                        <div class="price_original">$1,099</div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item_info">
-                        <img src="https://placehold.co/95x125" alt="">
-                        <p>遊戲名稱遊戲名稱遊戲名稱遊戲名稱</p>
-                        </div>
-                        <div class="dis">
-                        <div class="discount">-75%</div>
-                        </div>
-                        <div class="price_box">
-                        <div class="price">$1,399</div>
-                        </div>
-                    </div>
-                    <div class="settlement">
-                        <div class="coupon">
-                        <p>優惠券使用</p>
-                        <p class="settlement_right">春季特賣優惠商品 -40%</p>
-                        </div>
-                        <div class="dis">
-                            <p>折扣</p>
-                            <p class="settlement_right">-439元</p>
-                        </div>
-                        <div class="sum">
-                            <p>總金額</p>
-                            <p class="settlement_right">2059 元</p>
-                        </div>
-                    </div>
+                <div class="settlement">
+                  <div class="coupon">
+                    <p>優惠券使用</p>
+                    <p class="settlement_right">{{ order.coupon }}</p>
+                  </div>
+                  <div class="dis">
+                    <p>折扣</p>
+                    <p class="settlement_right">{{ order.discount }}</p>
+                  </div>
+                  <div class="sum">
+                    <p>總金額</p>
+                    <p class="settlement_right">$ {{ order.totalAmount }}</p>
+                  </div>
                 </div>
+              </div>
             </div>
-            <div class="order_info">
-                <div class="flex_grow">
-                    <i class="bi bi-dash-lg"></i>
-                    <p>ak4l79e3k68sly</p>
-                </div>
-                <p>2023/1/15</p>
-                <p>$2,059</p>
-                <p>已完成</p>
-            </div>
-            
         </div>
-    </section>
+        </div>
+      </section>
+         
+      
     <!-- 遊戲庫 -->
-    <section class="col-9 right">
-        <div class="game_library">
+    <div id="game_library">
+        <section class="col-9 right">
+          <div class="game_library">
             <h3>遊戲庫</h3>
             <div class="game_box">
+              <div class="game_flex" v-for="game in games" :key="game.id">
                 <div class="game_info">
-                    <img src="https://placehold.co/180x240" alt="">
-                    <div class="game_text">
-                        <p class="name">遊戲名稱遊戲名稱遊戲名稱遊戲名稱</p>
-                        <div class="flex">
-                            <p>遊玩時數：0.6小時</p>
-                            <p>上次遊玩日期：2023/06/01</p>
-                            <div class="ach">
-                                <p>成就</p> 
-                                <div class="line_box"><div class="line"></div></div>
-                                <p>24/30</p>
-                            </div>
-                        </div>
+                  <img :src="game.imageUrl" alt="">
+                  <div class="game_text">
+                    <p class="name">{{ game.name }}</p>
+                    <div class="flex">
+                      <p>遊玩時數：{{ game.playTime }}小時</p>
+                      <p>上次遊玩日期：{{ game.lastPlayDate }}</p>
+                      <div class="ach">
+                        <p>成就</p> 
+                        <div class="line_box"><div class="line" :style="{ width: game.lineBoxWidth }"></div></div>
+                        <p>{{ game.achievements }}</p>
+                      </div>
                     </div>
-                    <div class="btn">開始遊戲</div>
-                    <p class="review">新增評論</p>
-                    <i class="bi bi-three-dots po_icon"></i>
+                  </div>
+                  <div class="btn" @click="startGame(game)">開始遊戲</div>
+                  <p class="review" @click="showReviewForm(game.id)">{{ game.addComment }}</p>
                 </div>
-                <div class="game_info">
-                    <img src="https://placehold.co/180x240" alt="">
-                    <div class="game_text">
-                        <p class="name">遊戲名稱遊戲名稱遊戲名稱遊戲名稱</p>
-                        <div class="flex">
-                            <p>遊玩時數：0.6小時</p>
-                            <p>上次遊玩日期：2023/06/01</p>
-                            <div class="ach">
-                                <p>成就</p> 
-                                <div class="line_box"><div class="line"></div></div>
-                                <p>24/30</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="btn">開始遊戲</div>
-                    <p class="review">新增評論</p>
-                    <i class="bi bi-three-dots po_icon"></i>
+                <div class="review_box" v-if="showReview[game.id]">
+                  <!-- 評論表单代码 -->
                 </div>
-                <div class="game_info">
-                    <img src="https://placehold.co/180x240" alt="">
-                    <div class="game_text">
-                        <p class="name">遊戲名稱遊戲名稱遊戲名稱遊戲名稱</p>
-                        <div class="flex">
-                            <p>遊玩時數：0.6小時</p>
-                            <p>上次遊玩日期：2023/06/01</p>
-                            <div class="ach">
-                                <p>成就</p> 
-                                <div class="line_box"><div class="line"></div></div>
-                                <p>24/30</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="btn">開始遊戲</div>
-                    <p class="review">新增評論</p>
-                    <i class="bi bi-three-dots po_icon"></i>
-                </div>
-                <div class="game_info">
-                    <img src="https://placehold.co/180x240" alt="">
-                    <div class="game_text">
-                        <p class="name">遊戲名稱遊戲名稱遊戲名稱遊戲名稱</p>
-                        <div class="flex">
-                            <p>遊玩時數：0.6小時</p>
-                            <p>上次遊玩日期：2023/06/01</p>
-                            <div class="ach">
-                                <p>成就</p> 
-                                <div class="line_box"><div class="line"></div></div>
-                                <p>24/30</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="btn">開始遊戲</div>
-                    <p class="review">新增評論</p>
-                    <i class="bi bi-three-dots po_icon"></i>
-                </div>
-                <div class="review_box">
-                    <p>遊戲整理滿意度：</p>
-                    <i class="bi bi-star"></i>
-                    <i class="bi bi-star"></i>
-                    <i class="bi bi-star"></i>
-                    <i class="bi bi-star"></i>
-                    <i class="bi bi-star"></i>
-                    <br>
-                    <br>
-                    <p>評論：</p>
-                    <br>
-                    <input type="textarea">
-                    <button class="btn">送出</button>
-                </div>
+              </div>
             </div>
-        </div>
-    </section>
+          </div>
+        </section>
+      </div>
+      
+      
     <!-- 優惠券 -->
     <section class="col-9 right">
         <div class="coupon">
@@ -381,13 +303,23 @@
                 axios.post(php_url + 'member_center_get.php', formData )
                 .then((response) => {
                     const memberData = response.data;
-                    // 更新组件的数据
                     console.log(memberData);
+                    let gender = memberData.GENDER;
+                    if(gender = 'F'){
+                        gender = '女';
+                    }else if(gender = 'M'){
+                        gender = '男';
+                    }else{
+                        gender = '不公開';
+                    }
+
                     this.name = memberData.USERNAME;
                     this.nickname = memberData.NICKNAME;
                     this.phone = memberData.PHONE;
                     this.birthday = memberData.BIRTHDAY;
-                    this.gender = memberData.GENDER;
+                    this.gender = gender;
+                    this.selectedImage = memberData.MEMBER_PHOTO;
+;
                 })
                 .catch((error) => {
                     console.error(error);
@@ -439,23 +371,157 @@
                     formData.append('phone', this.phone);
                     formData.append('gender', this.gender);
                     formData.append('email', this.email);
-                    formData.append('image', this.imageFile);
-                    formData.append('image_name', this.imageFile.name);
-
+                    
+                    if (this.imageFile) {
+                        formData.append('image', this.imageFile);
+                        formData.append('image_name', this.imageFile.name);
+                    }
+                    
                     axios
-                    .post(php_url + 'member_center_edit.php', formData, {
-                        headers: { 'Content-Type': 'multipart/form-data' }, // 设置请求头
-                    })
+                        .post(php_url + 'member_center_edit.php', formData, {
+                            headers: { 'Content-Type': 'multipart/form-data' },
+                        })
+                        .then(response => {
+                            console.log('更改成功');
+                            window.location.href = 'member_center.html';
+                        })
+                        .catch(error => {
+                            console.error(error);
+                        });
+                }
+            }}       
+        });
+        </script>
+
+<script>
+    const game_library = new Vue({
+      el: '#game_library',
+      data: {
+        games: [], // 游戏数据从PHP传递过来
+        showReview: {}, // 控制是否显示新增評論表单
+        reviewRating: {}, // 評分，根据游戏ID维护
+        reviewContent: {}, // 評論內容，根据游戏ID维护
+        achievements_max: 30,
+        lineBoxWidth: '0%',
+        member_ID: '',
+      },
+      mounted() {
+            this.showGameLibiary();
+      },
+      methods: {
+        async showGameLibiary() {
+            try {
+            const response = await axios.post(php_url + 'login_status.php');
+            this.member_ID = response.data.member_ID;
+            const formData = new FormData();
+            formData.append('member_ID', this.member_ID);
+            const response2 = await axios.post(php_url + 'getGameLibrary_2.php', formData);
+            const games = response2.data;
+
+            for (const item of games) {
+                const gameId = item.GAME_ID;
+                const formData = new FormData();
+                formData.append('member_ID', this.member_ID);
+                formData.append('gameId', gameId);
+                const response3 = await axios.post(php_url + 'member_check_game.php', formData);
+
+                if (response3.data.match === false) {
+                item.addComment = '新增評論';
+                } else {
+                item.addComment = '';
+                }
+
+                let achievement_num = item.ACHIEVEMENT;
+                const game = {
+                id: item.GAME_ID,
+                imageUrl: item.GAME_COVER,
+                name: item.GAME_NAME,
+                playTime: item.GAME_TIME,
+                lastPlayDate: item.LAST_PLAYED,
+                achievement_num: item.ACHIEVEMENT,
+                achievements: achievement_num + ' / ' + this.achievements_max,
+                addComment: item.addComment,
+                };
+                game.lineBoxWidth = this.achievementsWidth(game);
+                this.games.push(game);
+            }
+            } catch (error) {
+            console.error(error);
+            }
+        },
+            startGame(game) {
+                // 随机更改游戏时长、上次游玩时间和成就数量
+                this.$set(game, 'playTime', Math.floor(Math.random() * 100)); // 使用随机数生成游戏时长
+                const currentDateTime = new Date().toISOString();
+                const [date, time] = currentDateTime.split('T');
+                
+                this.$set(game, 'lastPlayDate', `${date} ${time.slice(0, 8)}`); // 将日期和时间部分分别保存到游戏对象的属性中
+                const achievement_num = (Math.floor(Math.random() * (this.achievements_max - 1)) + 1);
+                this.$set(game, 'achievement_num', achievement_num);
+                this.$set(game, 'achievements', `${achievement_num} / ${this.achievements_max}`);
+                
+                // console.log(game.achievement_num);
+                // 更新进度条的宽度
+                game.lineBoxWidth = this.achievementsWidth(game);
+                // 更新数据库中的游戏数据
+                const formData = new FormData();
+                formData.append("member_ID", this.member_ID);
+                formData.append("gameId", game.id);
+                formData.append("playTime", game.playTime);
+                formData.append("lastPlayDate", game.lastPlayDate);
+                formData.append("achievement_num", game.achievement_num);
+                
+                axios.post(php_url + 'update_game_data.php', formData)
                     .then(response => {
-                        console.log('更改成功');
+                    // 根据服务器返回的结果进行处理
+                    console.log(response.data);
                     })
                     .catch(error => {
-                        console.error(error);
+                    console.error(error);
+                    });
+                },
+                achievementsWidth(game) {
+                    return `${(game.achievement_num / this.achievements_max) * 100 }%`;
+                },
+                showReviewForm(gameId) {
+                // 根据游戏ID显示/隐藏新增評論表单
+                this.$set(this.showReview, gameId, !this.showReview[gameId]);
+                this.$set(this.reviewRating, gameId, 0);
+                this.$set(this.reviewContent, gameId, '');
+                },
+                setRating(rating, gameId) {
+                // 设置評分
+                this.$set(this.reviewRating, gameId, rating);
+                console.log(this.rating);
+                },
+                submitReview(gameId) {
+                // 提交評論
+                const rating = this.reviewRating[gameId];
+                const content = this.reviewContent[gameId];
+
+                console.log(rating, content, gameId);
+            
+                const formData = new FormData();
+                formData.append("rating", rating);
+                formData.append("content", content);
+                formData.append("gameId", gameId);
+                formData.append("member_ID", this.member_ID);
+            
+                axios.post(php_url + 'member_add_commentList.php', formData)
+                    .then(response => {
+                    // 根据服务器返回的结果进行处理
+                    console.log(response.data);
+                    alert('新增成功');
+                    this.showGameLibiary();
+                    this.$set(this.showReview, gameId, false);
+                    //   window.location.href = 'member_center.html';
+                    })
+                    .catch(error => {
+                    console.error(error);
                     });
                 }
             }
-        }       
-        });
+            });
         </script>
 
         <script>
@@ -529,6 +595,7 @@
                             if(response.data.success === true){
                             this.couponsFunction();
                             alert('新增成功');
+                            
                             }else{
                                 alert('此代碼無效，請輸入正確優惠券代碼');
                             }
@@ -542,6 +609,91 @@
                 }
             });
         </script>
+        <script>
+            const order = new Vue({
+              el: '#order',
+          
+              data: {
+                orders: [],
+                member_ID: '',
+                activeOrder: null,
+              },
+          
+              mounted() {
+                axios.defaults.withCredentials = true;
+                axios.post(php_url + 'login_status.php')
+                  .then((response) => {
+                    this.member_ID = response.data.member_ID;
+          
+                    const formData = new FormData();
+                    formData.append("member_ID", this.member_ID);
+          
+                    axios.post(php_url + 'getOrderList.php', formData)
+                      .then(response => {
+                        let order_length = response.data.length;
+          
+                        if (order_length > 0) {
+                          if (response.data && response.data.length > 0) {
+                            this.orders = response.data.map(item => {
+                              let items = item.items.map(detail => {
+                                let discounts = detail.discount !== '0.00' ? "-" + Math.round((1 - detail.discount) * 100) + '%' : 'None';
+                                let price = detail.discount !== '0.00' ? Math.floor(detail.price * detail.discount) : detail.price;
+                                let originalPrice = detail.discount !== '0.00' ? "$" + detail.price : '';
+          
+                                return {
+                                  itemId: detail.itemId,
+                                  name: detail.name,
+                                  image: detail.image,
+                                  discount: discounts,
+                                  price: price,
+                                  originalPrice: originalPrice,
+                                  showDetails: false, // 添加showDetails属性并初始化为false
+                                };
+                              });
+          
+                              let coupon = item.coupon !== null ? item.coupon : '未使用優惠券';
+          
+                              return {
+                                orderId: item.orderId,
+                                purchaseDate: item.purchaseDate,
+                                purchaseAmount: item.purchaseAmount,
+                                orderStatus: '已完成',
+                                items: items,
+                                coupon: coupon,
+                                discount: item.discount + '元',
+                                totalAmount: item.totalAmount + '元',
+                                showDetails: false,
+                              };
+                            });
+                          }
+                        }
+          
+                        this.activeOrder = this.orders[0];
+                        this.activeOrder.showDetails = true;
+                      })
+                      .catch(error => {
+                        console.error(error);
+                      });
+                  })
+                  .catch(error => {
+                    console.log(error);
+                  });
+              },
+          
+              methods: {
+                toggleOrderDetails(index) {
+                  this.orders.forEach((order, i) => {
+                    if (i === index) {
+                      order.showDetails = !order.showDetails;
+                    } else {
+                      order.showDetails = false;
+                    }
+                  });
+                },
+              }
+            });
+          </script>
+          
 
     <script>
         let nav = $(".select li");
@@ -581,11 +733,11 @@
     </script>
 
     <!-- 購買清單的展開 -->
-    <script>
+    <!-- <script>
         $('.open_btn').click(function() {
             $('.detail_order').slideToggle();
         });
-    </script>
+    </script> -->
 
     <!-- RWD的NAV -->
     <script>

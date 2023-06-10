@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brainstem | 遊戲資訊</title>
     @@include('./layout/style.html')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 
 <body class="B">
@@ -23,137 +24,157 @@
             </a>
             <div class="right_main">
                 <form action="" method="">
-                    <div class="B_button">
-                        <h4>遊戲內容</h4>
-                        <button class="btn" onclick="B_games_info_2(event)">修改內容</button>
-                    </div>
-                    <div class="right_main_top" id="B_game_info">
-                        <ul>
-                            <li>
-                                <h6>遊戲名稱</h6>
-                                <h6>王國之心3</h6>
-                            </li>
-                            <li>
-                                <h6>遊戲編號</h6>
-                                <h6>123456789000</h6>
-                            </li>
-                            <li class="B_grid_four">
-                                <h6>遊戲類型</h6>
-                                <h6>單人</h6>
-                                <h6>冒險</h6>
-                                <h6>開放世界</h6>
-                            </li>
-                            <li>
-                                <h6>活動類型</h6>
-                                <h6>夏季特賣</h6>
-                                <h6>活動時間：2023/04/01 ~ 2023/04/30</h6>
-                            </li>
-                            <li>
-                                <h6>開發商</h6>
-                                <h6>SQUARE ENIX</h6>
-                            </li>
-                            <li>
-                                <h6>開發人員</h6>
-                                <h6>LBJ</h6>
-                            </li>
-                            <li>
-                                <h6>遊戲級別</h6>
-                                <h6>保護級</h6>
-                            </li>
-                            <li>
-                                <h6>商品金額</h6>
-                                <h6>$1,399</h6>
-                            </li>
-                            <li>
-                                <h6>商品折扣</h6>
-                                <h6>-30%</h6>
-                                <h6>折扣時間：2023/04/01 ~ 2023/04/30 </h6>
-                            </li>
-                            <li>
-                                <h6>商品折扣後金額</h6>
-                                <h6>$979</h6>
-                            </li>
-                        </ul>
-                        <div class="right_main_text">
+                    <div id="B_game_info">
+                        <div class="B_button">
+                            <h4>遊戲內容</h4>
+                            <button class="btn" v-if="!isEditing" @click="editgame">修改內容</button>
+                            <button class="btn" v-else @click="savegame($event)">儲存</button>
+                        </div>
+                        <div class="right_main_top">
                             <ul>
                                 <li>
-                                    <h6>遊戲說明</h6>
+                                    <h6>遊戲名稱</h6>
+                                    <h6 v-if="!isEditing">{{game.GAME_NAME}}</h6>
+                                    <input v-else type="text" v-model="game.GAME_NAME" name="" id=""
+                                        placeholder="{{game.GAME_NAME}}">
                                 </li>
                                 <li>
-                                    <h6>《王國之心》系列是迪士尼與 SQUARE ENIX 聯手打造的角色扮演遊戲。自從 2002 年 3 月推出第 1
-                                        部作品《王國之心》（支援平台：PlayStation
-                                        2）以來，已公開 13 部作品（包含 Final Mix 版則為 20 部作品），是全球出貨、銷售量超過 3,500 萬套（※）的熱門系列遊戲。</h6>
+                                    <h6>遊戲編號</h6>
+                                    <h6>{{game.GAME_ID}}</h6>
+                                </li>
+                                <li>
+                                    <h6>遊戲封面</h6>
+                                    <img :src="game.GAME_COVER" alt="">
+                                </li>
+                                <li class="B_grid_two">
+                                    <h6>遊戲類型</h6>
+                                    <div class="B_games_type">
+                                        <ul>
+                                            <!-- <li v-if="!isEditing">
+                                                <h6>{{ new_select.length > 0 ? new_select : game.CATEGORY_NAMES }}</h6>
+                                            </li>
+                                            <li v-else v-for="(category, index) in categorys" :key="index">
+                                                <input type="checkbox" :name="category.CATEGORY_NAME"
+                                                @change="changeName(category.CATEGORY_NAME)"
+                                                    id="category.CATEGORY_NAME" v-model="new_select" :value="category.CATEGORY_ID">
+                                                <label :for="category.CATEGORY_NAME">{{category.CATEGORY_NAME}}</label>
+                                            </li> -->
+
+
+                                            <li v-if="!isEditing">
+                                                <h6>{{ select.length > 0 ? selectedCategoryName : game.CATEGORY_NAMES }}
+                                                </h6>
+                                            </li>
+                                            <li v-else v-for="(category, index) in categorys" :key="index">
+                                                <input type="checkbox" :name="category.CATEGORY_NAME"
+                                                    id="category.CATEGORY_NAME" v-model="select" :value="category"
+                                                    @change="updateSelectedCategory">
+                                                <label :for="category.CATEGORY_NAME">{{category.CATEGORY_NAME}}</label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="B_grid_three">
+                                    <h6>活動類型</h6>
+                                    <template v-if="!isEditing">
+                                        <template v-if="!isEditing && game.ACTIVITY_NAME">
+                                            <h6>{{game.ACTIVITY_NAME}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;活動時間：{{game.ACTIVITY_BEGIN}} ~ {{game.ACTIVITY_END}}</h6>
+                                        </template>  
+                                        <template v-else>
+                                            <h6>目前無活動</h6>
+                                        </template>
+                                    </template>
+                                    <div v-else class="B_activity">
+                                        <div v-for="(activity, index) in activitys" :key="index"
+                                            class="B_activity_main">
+                                            <input type="radio" name="type" :id="activity.ACTIVITY_NAME"
+                                                @click="selectActivity(activity)" v-model="selectactivity"
+                                                :value="activity">
+                                            <label :for="activity.ACTIVITY_NAME">{{activity.ACTIVITY_NAME}}</label>
+                                        </div>
+                                        <input type="text" name="" id="Event_start_time" v-model="startTime"
+                                            placeholder="年/月/日">
+                                        <input type="text" name="" id="Event_end_time" v-model="endTime"
+                                            placeholder="年/月/日">
+                                    </div>
+                                </li>
+                                <li>
+                                    <h6>開發商</h6>
+                                    <h6 v-if="!isEditing">{{game.PUBLISHER}}</h6>
+                                    <input v-else type="text" v-model="game.PUBLISHER" name="" id=""
+                                        placeholder="{{game.PUBLISHER}}">
+                                </li>
+                                <li>
+                                    <h6>開發人員</h6>
+                                    <h6 v-if="!isEditing">{{game.DEVELOPER}}</h6>
+                                    <input v-else type="text" v-model="game.DEVELOPER" name="" id=""
+                                        placeholder="{{game.DEVELOPER}}">
+                                </li>
+                                <li>
+                                    <h6>遊戲級別</h6>
+                                    <h6 v-if="!isEditing">{{game.RATING_NAME}}</h6>
+
+                                    <select v-else name="game_level" id="game_level" v-model="ratingID">
+                                        <option v-for="(rating, index) in ratings" :key="index"
+                                            :value="rating.RATING_ID">
+                                            {{ rating.RATING_NAME }}
+                                        </option>
+                                    </select>
+                                </li>
+                                <li>
+                                    <h6>商品金額</h6>
+                                    <h6 v-if="!isEditing">${{game.ORIGINAL_PRICE}}</h6>
+                                    <input v-else type="text" v-model="game.ORIGINAL_PRICE" name="" id=""
+                                        placeholder="{{game.ORIGINAL_PRICE}}">
+                                </li>
+                                <li>
+                                    <h6>商品折扣</h6>
+                                    <h6 v-if="!isEditing">{{game.DISCOUNT_PERCENTAGE ? game.DISCOUNT_PERCENTAGE + '折' :
+                                        '目前無折扣'}}</h6>
+                                    <input v-else type="text" v-model="game.DISCOUNT_PERCENTAGE" name="" id=""
+                                        placeholder="{{game.DISCOUNT_PERCENTAGE}}">
+                                </li>
+                                <li v-if="!isEditing && game.DISCOUNT_PERCENTAGE">
+                                    <h6>商品折扣後金額</h6>
+                                    <h6>${{game.DISCOUNTED_PRICE}}</h6>
+                                </li>
+                                <li>
+                                    <h6>遊戲狀態</h6>
+                                    <h6>{{ game.GAME_STATUS === 1 ? '上架中' : '下架' }}</h6>
                                 </li>
                             </ul>
-                            <ul>
-                                <li>
-                                    <h6>系統需求</h6>
-                                </li>
-                                <li>
-                                    <h6>
-                                        最低配備:<br>
-                                        <span>需要 64 位元的處理器及作業系統<br></span>
-                                        <span>作業系統: Windows 10<br></span>
-                                        <span>處理器: Intel Core i3-4160T<br></span>
-                                        <span>記憶體: 8 GB 記憶體<br></span>
-                                        <span>顯示卡: NVIDIA GeForce GT 740<br></span>
-                                        <span>VR 支援: SteamVR<br></span>
-                                        <span>備註: Not for VR. For PC only.<br></span>
-                                        建議配備:<br>
-                                        <span>需要 64 位元的處理器及作業系統<br></span>
-                                        <span>作業系統: Windows 10<br></span>
-                                        <span>處理器: Intel Core i5-4590、AMD FX 8350<br></span>
-                                        <span>記憶體: 8 GB 記憶體<br></span>
-                                        <span>顯示卡: NVIDIA GeForce GTX 1060、AMD Radeon RX 480<br></span>
-                                        <span>備註: For VR.<br></span>
-                                    </h6>
-                                </li>
-                            </ul>
+                            <div class="right_main_text">
+                                <ul>
+                                    <li>
+                                        <h6>遊戲說明</h6>
+                                    </li>
+                                    <li>
+                                        <div v-if="!isEditing" v-html="game.GAME_INTRO"></div>
+                                        <textarea v-else name="" id="game_instructions" v-model="game.GAME_INTRO"
+                                            cols="130" rows="20" placeholder="{{game.GAME_INTRO}}"></textarea>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <h6>系統需求</h6>
+                                    </li>
+                                    <li class="B_none">
+                                        <div v-if="!isEditing" v-html="game.SYSTEM_REQUIREMENT"></div>
+                                        <textarea v-else name="" id="system_requirement"
+                                            v-model="game.SYSTEM_REQUIREMENT" cols="130" rows="30"
+                                            placeholder="{{game.SYSTEM_REQUIREMENT}}"></textarea>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    <div class="games_info_down">
+                    <div class="games_info_down" id="B_game_info_img">
                         <h6>遊戲圖片</h6>
                         <ul>
-                            <li>
-                                <img src="./pic/img/cover/9.jpg" alt="">
+                            <li v-for="(img,index) in imgs" :key="index">
+                                <img :src="img.IMG_PATH" alt="">
                                 <h6>
-                                    圖片說明說明
-                                </h6>
-                            </li>
-                            <li>
-                                <img src="./pic/img/cover/9.jpg" alt="">
-                                <h6>
-                                    圖片說明說明
-                                </h6>
-                            </li>
-                            <li>
-                                <img src="./pic/img/cover/9.jpg" alt="">
-                                <h6>
-                                    圖片說明說明
-                                </h6>
-                            </li>
-                            <li>
-                                <img src="./pic/img/cover/9.jpg" alt="">
-                                <h6>
-                                    圖片說明說明
-                                </h6>
-                            </li>
-                            <li>
-                                <img src="./pic/img/cover/9.jpg" alt="">
-                                <h6>
-                                    圖片說明說明
-                                </h6>
-                            </li>
-                            <li>
-                                <img src="./pic/img/cover/9.jpg" alt="">
-                                <h6>
-                                    圖片說明說明
-                                </h6>
-                            </li>
-                            <li>
-                                <img src="./pic/img/cover/9.jpg" alt="">
-                                <h6>
-                                    圖片說明說明
+                                    {{img.IMG_DESCRIPTION}}
                                 </h6>
                             </li>
                         </ul>
@@ -162,27 +183,119 @@
             </div>
         </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     @@include('./layout/js.html')
-    <script>
-        function B_games_info_2(e) {
-            e.preventDefault();
-            window.location.href = "./B_games_info_2.html";
-        }
-    </script>
+
 
 
     <script>
         Vue.createApp({
             data() {
                 return {
-                    game: []
+                    game: {
+                        GAME_NAME: ''
+                    },
+                    isEditing: false,
+                    categorys: [],
+
+                    new_select: [],//要放CATEGORY_NAMES
+
+                    select: [],
+                    selectedCategoryName: '',
+                    selectedCategoryID: null,
+                    // selectactivity: this.game,
+                    selectactivity:'',
+
+
+                    startTime: '', // 活動開始時間
+                    endTime: '', // 活動結束時間
+                    ratings: [],
+                    activitys: [],
+                    ratingID: [],
+
                 }
             },
             methods: {
-                viewgame(gameid) {
-                    //跳轉info
-                    // window.location.href = 'B_games_info.html?id=' + gameid;
-                    // console.log(gameid);
+                updateSelectedCategory() {
+                    const selectedCategories = this.select.map(category => category.CATEGORY_NAME);
+                    this.selectedCategoryName = selectedCategories.join(', ');
+                },
+                editgame() {
+                    this.isEditing = true;
+                },
+                savegame(e) {
+                    e.preventDefault();
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const gameId = urlParams.get('id');
+                    // 创建一个FormData对象
+
+                    const formData = new FormData();
+                    formData.append('gameId', gameId)
+                    formData.append('gameName', this.game.GAME_NAME)
+                    formData.append('categorys', this.select)
+                    // console.log(this.game);
+                    // console.log(this.new_select);
+                    console.log(this.selectactivity);
+                    formData.append('startTime', this.startTime)
+                    formData.append('endTime', this.endTime)
+                    formData.append('publisher', this.game.PUBLISHER)
+                    formData.append('developer', this.game.DEVELOPER)
+                    formData.append('ratingID', this.ratingID)
+                    formData.append('originalPrice', this.game.ORIGINAL_PRICE)
+                    formData.append('discountPercentage', this.game.DISCOUNT_PERCENTAGE)
+                    formData.append('discountedPrice', this.game.DISCOUNTED_PRICE)
+                    formData.append('gameIntro', this.game.GAME_INTRO)
+                    formData.append('systemRequirement', this.game.SYSTEM_REQUIREMENT)
+
+
+                    // 将修改后的数据添加到formData
+
+
+                    // 发送修改请求
+                    axios.post(php_url + 'B_update_game_info.php', formData)
+                        .then((response) => {
+                            console.log(response.data);
+                            // 处理修改成功后的逻辑
+
+                            this.editMode = false; // 切换回非编辑模式
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                            // 处理错误
+                        });
+
+                    this.isEditing = false;
+                },
+                initializeFlatpickr() {
+                    flatpickr("#Event_start_time", {
+                        dateFormat: "Y-m-d H:i:S", // 修改日期格式為 "yyyy-MM-dd HH:mm:ss"
+                        minDate: "today",
+                        theme: "light"
+                    });
+                    flatpickr("#Event_end_time", {
+                        dateFormat: "Y-m-d H:i:S", // 修改日期格式為 "yyyy-MM-dd HH:mm:ss"
+                        minDate: "today",
+                        theme: "light"
+                    });
+                },
+                selectActivity(activity) {
+                    // 發送異步請求獲取該活動的時間資料
+                    axios.get(php_url + 'B_insert_game.php', {
+                        params: {
+                            activityId: activity.ACTIVITY_ID
+                        }
+                    })
+                        .then((response) => {
+                            // 更新開始時間和結束時間
+                            this.startTime = activity.ACTIVITY_BEGIN;
+                            this.endTime = activity.ACTIVITY_END;
+                            this.percentage = activity.DISCOUNT_PERCENTAGE;
+
+                            // console.log(this.endTime);
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                        });
                 }
             },
             mounted() {
@@ -191,12 +304,41 @@
 
                 axios.get(php_url + 'B_games_info.php?id=' + gameid)
                     .then((response) => {
-                        this.game = response.data;
-                        console.log(this.game);
+                        this.game = response.data.game;
+                        this.ratings = response.data.rating;
+                        this.categorys = response.data.category;
+                        this.activitys = response.data.activity;
+
+                        // console.log(response.data);
                     });
+                this.initializeFlatpickr();
             }
 
         }).mount('#B_game_info')
+    </script>
+
+    <!-- 圖片 -->
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    imgs: []
+                }
+            },
+            methods: {
+            },
+            mounted() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const gameid = urlParams.get('id');
+
+                axios.get(php_url + 'B_games_info_img.php?id=' + gameid)
+                    .then((response) => {
+                        this.imgs = response.data;
+                        // console.log(this.img);
+                    });
+            }
+
+        }).mount('#B_game_info_img')
     </script>
 </body>
 
