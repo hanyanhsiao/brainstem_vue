@@ -231,10 +231,10 @@
                 <div class="recommend_title">
                     <h2>其他遊戲推薦</h2>
                     <div class="arrow_box">
-                        <div class="arrow_left btn">
+                        <div class="arrow_left btn recommendleft">
                             <i class="bi bi-chevron-left"></i>
                         </div>
-                        <div class="arrow_right btn">
+                        <div class="arrow_right btn recommendright">
                             <i class="bi bi-chevron-right"></i>
                         </div>
                     </div>
@@ -631,12 +631,12 @@
 
 
         //推薦遊戲輪播
-        $(document).ready(function () {
+        // $(document).ready(function () {
             var recommend = new Swiper(".recommend_game", {
                 loop: true,
                 navigation: {
-                    nextEl: ".arrow_right",
-                    prevEl: ".arrow_left",
+                    nextEl: ".recommendright",
+                    prevEl: ".recommendleft",
                 },
                 autoplay: {
                     delay: 5000,
@@ -700,7 +700,7 @@
                     },
                 });
             };
-        });
+        // });
 
     </script>
 </body>
