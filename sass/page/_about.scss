@@ -467,9 +467,10 @@
                 }
             }
 
-            P {
+            p {
                 text-align: justify;
                 font-size: 2rem;
+                line-height: 1.5;
                                 
                 @include breakpoint-1440 {
                     font-size: 1rem;
