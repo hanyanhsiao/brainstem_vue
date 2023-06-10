@@ -121,7 +121,7 @@
                             'bi-suit-heart-clicked': currentGood.clicked
                             }" @mouseenter="hoverHeart(currentGood)" @mouseleave="leaveHeart(currentGood)"
                             @click.stop="toggleHeart(currentGood)"></i>
-                        <i class="bi bi-share-fill share_btn"></i>
+                        <i class="bi bi-share-fill share_btn" @click="sharePage"></i>
                     </div>
                 </div>
             </div>
@@ -418,6 +418,23 @@
             },
 
             methods: {
+                sharePage() {
+                    if (navigator.share) {
+                        navigator
+                        .share({
+                            title: document.title,
+                            url: window.location.href
+                        })
+                        // .then(() => {
+                        //     console.log("页面分享成功");
+                        // })
+                        // .catch((error) => {
+                        //     console.error("页面分享失败:", error);
+                        // });
+                    } else {
+                        console.error("Web Share API 在当前浏览器不可用");
+                    }
+                },
 
                 showCommentsPopup(comment) {
                     this.selectedComment = comment; // 將選中的評論存儲到數據中
