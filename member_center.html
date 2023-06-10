@@ -698,15 +698,17 @@
 
     <script>
         let nav = $(".select li");
+        let revise_box = $('.revise_box');
         let section = document.querySelectorAll("section.right");
         nav.on('click', function(){
             let index = 0;
+            
             if (!$(this).hasClass('-on')) {
                 section = $("section.right");
                 nav.removeClass('-on');
                 $(this).toggleClass('-on');
                 index = $(this).index();
-
+                revise_box.removeClass('-oon');
                 section.removeClass('-oon');
                 section[index].classList.add("-oon");
             }
