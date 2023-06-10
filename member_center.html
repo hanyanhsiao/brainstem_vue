@@ -187,36 +187,46 @@
       
     <!-- 遊戲庫 -->
     <div id="game_library">
-        <section class="col-9 right">
-          <div class="game_library">
-            <h3>遊戲庫</h3>
-            <div class="game_box">
-              <div class="game_flex" v-for="game in games" :key="game.id">
-                <div class="game_info">
-                  <img :src="game.imageUrl" alt="">
-                  <div class="game_text">
-                    <p class="name">{{ game.name }}</p>
-                    <div class="flex">
-                      <p>遊玩時數：{{ game.playTime }}小時</p>
-                      <p>上次遊玩日期：{{ game.lastPlayDate }}</p>
-                      <div class="ach">
-                        <p>成就</p> 
-                        <div class="line_box"><div class="line" :style="{ width: game.lineBoxWidth }"></div></div>
-                        <p>{{ game.achievements }}</p>
-                      </div>
-                    </div>
+      <section class="col-9 right">
+        <div class="game_library">
+          <h3>遊戲庫</h3>
+          <div class="game_box">
+            <div class="game_flex" v-for="game in games" :key="game.id">
+              <div class="game_info">
+              <img :src="game.imageUrl" alt="">
+              <div class="game_text">
+                <p class="name">{{ game.name }}</p>
+                <div class="flex">
+                  <p>遊玩時數：{{ game.playTime }}小時</p>
+                  <p>上次遊玩日期：{{ game.lastPlayDate }}</p>
+                  <div class="ach">
+                    <p>成就</p> 
+                    <div class="line_box"><div class="line" :style="{ width: game.lineBoxWidth }"></div></div>
+                    <p>{{ game.achievements }}</p>
                   </div>
-                  <div class="btn" @click="startGame(game)">開始遊戲</div>
-                  <p class="review" @click="showReviewForm(game.id)">{{ game.addComment }}</p>
                 </div>
-                <div class="review_box" v-if="showReview[game.id]">
-                  <!-- 評論表单代码 -->
-                </div>
+              </div>
+              <div class="btn">開始遊戲</div>
+              <p class="review" @click="showReviewForm(game.id)">{{ game.addComment }}</p>
+              <!-- <i class="bi bi-three-dots po_icon"></i> -->
+          </div>
+              <div class="review_box" v-if="showReview[game.id]">
+                <p>遊戲整理滿意度：</p>
+                <i class="bi" :class="{ 'bi-star-fill': n <= reviewRating[game.id], 'bi-star': n > reviewRating[game.id] }" v-for="n in 5" @click="setRating(n, game.id)"></i>
+                <br>
+                <br>
+                <p>評論：</p>
+                <br>
+                <textarea v-model="reviewContent[game.id]"></textarea>
+                <button class="btn" @click="submitReview(game.id)">送出</button>
               </div>
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+    </div>
+
+
       
       
     <!-- 優惠券 -->
