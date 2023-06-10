@@ -193,38 +193,31 @@
             <div class="game_box">
               <div class="game_flex" v-for="game in games" :key="game.id">
                 <div class="game_info">
-                <img :src="game.imageUrl" alt="">
-                <div class="game_text">
-                  <p class="name">{{ game.name }}</p>
-                  <div class="flex">
-                    <p>遊玩時數：{{ game.playTime }}小時</p>
-                    <p>上次遊玩日期：{{ game.lastPlayDate }}</p>
-                    <div class="ach">
-                      <p>成就</p> 
-                      <div class="line_box"><div class="line"></div></div>
-                      <p>{{ game.achievements }}</p>
+                  <img :src="game.imageUrl" alt="">
+                  <div class="game_text">
+                    <p class="name">{{ game.name }}</p>
+                    <div class="flex">
+                      <p>遊玩時數：{{ game.playTime }}小時</p>
+                      <p>上次遊玩日期：{{ game.lastPlayDate }}</p>
+                      <div class="ach">
+                        <p>成就</p> 
+                        <div class="line_box"><div class="line" :style="{ width: game.lineBoxWidth }"></div></div>
+                        <p>{{ game.achievements }}</p>
+                      </div>
                     </div>
                   </div>
+                  <div class="btn" @click="startGame(game)">開始遊戲</div>
+                  <p class="review" @click="showReviewForm(game.id)">{{ game.addComment }}</p>
                 </div>
-                <div class="btn">開始遊戲</div>
-                <p class="review" @click="showReviewForm(game.id)">{{ game.addComment }}</p>
-                <!-- <i class="bi bi-three-dots po_icon"></i> -->
-            </div>
                 <div class="review_box" v-if="showReview[game.id]">
-                  <p>遊戲整理滿意度：</p>
-                  <i class="bi" :class="{ 'bi-star-fill': n <= reviewRating[game.id], 'bi-star': n > reviewRating[game.id] }" v-for="n in 5" @click="setRating(n, game.id)"></i>
-                  <br>
-                  <br>
-                  <p>評論：</p>
-                  <br>
-                  <textarea v-model="reviewContent[game.id]"></textarea>
-                  <button class="btn" @click="submitReview(game.id)">送出</button>
+                  <!-- 評論表单代码 -->
                 </div>
               </div>
             </div>
           </div>
         </section>
       </div>
+      
       
     <!-- 優惠券 -->
     <section class="col-9 right">
@@ -390,6 +383,7 @@
                         })
                         .then(response => {
                             console.log('更改成功');
+                            window.location.href = 'member_center.html';
                         })
                         .catch(error => {
                             console.error(error);
@@ -407,103 +401,128 @@
         showReview: {}, // 控制是否显示新增評論表单
         reviewRating: {}, // 評分，根据游戏ID维护
         reviewContent: {}, // 評論內容，根据游戏ID维护
+        achievements_max: 30,
+        lineBoxWidth: '0%',
         member_ID: '',
       },
       mounted() {
-  axios.defaults.withCredentials = true;
-  axios.post(php_url + 'login_status.php')
-    .then((response) => {
-      this.member_ID = response.data.member_ID;
-      const formData = new FormData();
-      formData.append("member_ID", this.member_ID);
-
-      axios.post(php_url + 'getGameLibrary_2.php', formData)
-        .then(response => {
-          console.log(response.data);
-          const games = response.data;
-
-          // 构建异步请求的数组
-          const requests = games.map(item => {
-            const gameId = item.GAME_ID;
+            this.showGameLibiary();
+      },
+      methods: {
+        async showGameLibiary() {
+            try {
+            const response = await axios.post(php_url + 'login_status.php');
+            this.member_ID = response.data.member_ID;
             const formData = new FormData();
-            formData.append("member_ID", this.member_ID);
-            formData.append("gameId", gameId);
+            formData.append('member_ID', this.member_ID);
+            const response2 = await axios.post(php_url + 'getGameLibrary_2.php', formData);
+            const games = response2.data;
 
-            return axios.post(php_url + 'member_check_game.php', formData)
-              .then(response => {
-                if (response.data.match === false) {
-                  item.addComment = '新增評論';
+            for (const item of games) {
+                const gameId = item.GAME_ID;
+                const formData = new FormData();
+                formData.append('member_ID', this.member_ID);
+                formData.append('gameId', gameId);
+                const response3 = await axios.post(php_url + 'member_check_game.php', formData);
+
+                if (response3.data.match === false) {
+                item.addComment = '新增評論';
                 } else {
-                  item.addComment = '';
+                item.addComment = '';
                 }
-                console.log(item.addComment);
-              })
-              .catch(error => {
-                console.error(error);
-              });
-          });
 
-          // 等待所有异步请求完成后更新游戏对象的属性
-          Promise.all(requests)
-            .then(() => {
-              this.games = games.map(item => ({
+                let achievement_num = item.ACHIEVEMENT;
+                const game = {
                 id: item.GAME_ID,
                 imageUrl: item.GAME_COVER,
                 name: item.GAME_NAME,
                 playTime: item.GAME_TIME,
                 lastPlayDate: item.LAST_PLAYED,
-                achievements: item.ACHIEVEMENT + ' / 30',
+                achievement_num: item.ACHIEVEMENT,
+                achievements: achievement_num + ' / ' + this.achievements_max,
                 addComment: item.addComment,
-              }));
-            })
-            .catch(error => {
-              console.error(error);
-            });
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    });
-},
-
-      methods: {
-        showReviewForm(gameId) {
-          // 根据游戏ID显示/隐藏新增評論表单
-          this.$set(this.showReview, gameId, !this.showReview[gameId]);
-          this.$set(this.reviewRating, gameId, 0);
-          this.$set(this.reviewContent, gameId, '');
+                };
+                game.lineBoxWidth = this.achievementsWidth(game);
+                this.games.push(game);
+            }
+            } catch (error) {
+            console.error(error);
+            }
         },
-        setRating(rating, gameId) {
-          // 设置評分
-          this.$set(this.reviewRating, gameId, rating);
-          console.log(this.rating);
-        },
-        submitReview(gameId) {
-          // 提交評論
-          const rating = this.reviewRating[gameId];
-          const content = this.reviewContent[gameId];
+            startGame(game) {
+                // 随机更改游戏时长、上次游玩时间和成就数量
+                this.$set(game, 'playTime', Math.floor(Math.random() * 100)); // 使用随机数生成游戏时长
+                const currentDateTime = new Date().toISOString();
+                const [date, time] = currentDateTime.split('T');
+                
+                this.$set(game, 'lastPlayDate', `${date} ${time.slice(0, 8)}`); // 将日期和时间部分分别保存到游戏对象的属性中
+                const achievement_num = (Math.floor(Math.random() * (this.achievements_max - 1)) + 1);
+                this.$set(game, 'achievement_num', achievement_num);
+                this.$set(game, 'achievements', `${achievement_num} / ${this.achievements_max}`);
+                
+                // console.log(game.achievement_num);
+                // 更新进度条的宽度
+                game.lineBoxWidth = this.achievementsWidth(game);
+                // 更新数据库中的游戏数据
+                const formData = new FormData();
+                formData.append("member_ID", this.member_ID);
+                formData.append("gameId", game.id);
+                formData.append("playTime", game.playTime);
+                formData.append("lastPlayDate", game.lastPlayDate);
+                formData.append("achievement_num", game.achievement_num);
+                
+                axios.post(php_url + 'update_game_data.php', formData)
+                    .then(response => {
+                    // 根据服务器返回的结果进行处理
+                    console.log(response.data);
+                    })
+                    .catch(error => {
+                    console.error(error);
+                    });
+                },
+                achievementsWidth(game) {
+                    return `${(game.achievement_num / this.achievements_max) * 100 }%`;
+                },
+                showReviewForm(gameId) {
+                // 根据游戏ID显示/隐藏新增評論表单
+                this.$set(this.showReview, gameId, !this.showReview[gameId]);
+                this.$set(this.reviewRating, gameId, 0);
+                this.$set(this.reviewContent, gameId, '');
+                },
+                setRating(rating, gameId) {
+                // 设置評分
+                this.$set(this.reviewRating, gameId, rating);
+                console.log(this.rating);
+                },
+                submitReview(gameId) {
+                // 提交評論
+                const rating = this.reviewRating[gameId];
+                const content = this.reviewContent[gameId];
 
-          console.log(rating, content, gameId);
-    
-          const formData = new FormData();
-          formData.append("rating", rating);
-          formData.append("content", content);
-          formData.append("gameId", gameId);
-          formData.append("member_ID", this.member_ID);
-    
-          axios.post(php_url + 'member_add_commentList.php', formData)
-            .then(response => {
-              // 根据服务器返回的结果进行处理
-              console.log(response.data);
-              alert('新增成功');
-            })
-            .catch(error => {
-              console.error(error);
+                console.log(rating, content, gameId);
+            
+                const formData = new FormData();
+                formData.append("rating", rating);
+                formData.append("content", content);
+                formData.append("gameId", gameId);
+                formData.append("member_ID", this.member_ID);
+            
+                axios.post(php_url + 'member_add_commentList.php', formData)
+                    .then(response => {
+                    // 根据服务器返回的结果进行处理
+                    console.log(response.data);
+                    alert('新增成功');
+                    this.showGameLibiary();
+                    this.$set(this.showReview, gameId, false);
+                    //   window.location.href = 'member_center.html';
+                    })
+                    .catch(error => {
+                    console.error(error);
+                    });
+                }
+            }
             });
-        }
-      }
-    });
-    </script>
+        </script>
 
         <script>
             const coupons = new Vue({
@@ -576,6 +595,7 @@
                             if(response.data.success === true){
                             this.couponsFunction();
                             alert('新增成功');
+                            
                             }else{
                                 alert('此代碼無效，請輸入正確優惠券代碼');
                             }
