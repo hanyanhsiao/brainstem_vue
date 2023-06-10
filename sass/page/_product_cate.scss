@@ -288,6 +288,9 @@
                     position: relative;
 
                     h3 {
+                        @include breakpoint-1440{
+                            font-size: 18px;
+                          }
                         @include breakpoint-414 {
                             font-size: 14px;
                         }
@@ -300,7 +303,10 @@
                         font-size: 2rem;
                         border: 1px solid transparent;
                         cursor: pointer;
-
+                        @include breakpoint-1440{
+                            width: 180px;
+                            font-size: 18px;
+                          }
                         @include breakpoint-414 {
                             width: 130px;
                             font-size: 14px;
@@ -317,7 +323,9 @@
                             padding: 0;
                             transition: 0.3s;
                             transform: rotate(0deg);
-
+                            @include breakpoint-1440{
+                                font-size: 18px;
+                              }
                             @include breakpoint-414 {
                                 font-size: 14px;
                             }
@@ -339,7 +347,9 @@
                         border-radius: 8px;
                         background: #202020;
                         z-index: 10;
-
+                        @include breakpoint-1440{
+                            width: 160px;
+                          }
                         @include breakpoint-414 {
                             width: 110px;
                             margin-top: 50px;
@@ -358,13 +368,14 @@
                             }
 
                             ;
-
+                            
                             .option_text {
+                                @include breakpoint-1440{
+                                    font-size: 16px;
+                                  }
                                 @include breakpoint-414 {
                                     font-size: 14px;
-                                }
-
-                                ;
+                                };
                             }
 
                             &:hover {
@@ -425,7 +436,10 @@
                                     left: 0;
                                     font-size: $h3;
                                     padding: 10px 20px;
-
+                                    @include breakpoint-1440{
+                                        font-size: 18px;
+                                        padding: 8px 15px;
+                                      }
                                     @include breakpoint-414 {
                                         font-size: 16px;
                                         padding: 5px 10px;
@@ -442,7 +456,9 @@
                                     &:hover{
                                     text-shadow: 1px 1px 2px black;
                                     }
-
+                                    @include breakpoint-1440{
+                                        font-size: 24px;
+                                      }
                                     @include breakpoint-414 {
                                         font-size: 20px;
                                         right: 5px;
@@ -457,7 +473,9 @@
 
                                 h3 {
                                     padding: 20px 0;
-
+                                    @include breakpoint-1440{
+                                        font-size: 18px;
+                                      }
                                     @include breakpoint-414 {
                                         padding: 5px 0;
                                         font-size: 16px;
@@ -466,7 +484,9 @@
 
                                 .price {
                                     padding-right: 20px;
-
+                                    @include breakpoint-1440{
+                                        font-size: 20px;
+                                      }
                                     @include breakpoint-414 {
                                         font-size: 16px;
                                         padding-right: 10px;
@@ -477,6 +497,9 @@
                                     font-size: $h2;
                                     text-decoration: none;
                                     color: $white;
+                                    @include breakpoint-1440{
+                                        font-size: 20px;
+                                      }
                                     @include breakpoint-414 {
                                       font-size: 16px;
                                     }
@@ -485,6 +508,9 @@
                                     text-decoration: line-through;
                                     font-size: $h4;
                                     color: $price_original;
+                                    @include breakpoint-1440{
+                                        font-size: 16px;
+                                      }
                                     @include breakpoint-414 {
                                         font-size: 14px;
                                     }
@@ -559,7 +585,10 @@
                       padding: 5px 10px;
                       font-weight: bold;
                       cursor: pointer;
-        
+                      @include breakpoint-1440{
+                        font-size: 18px;
+                        padding: 2px 7px;
+                      }        
                       @include breakpoint-414 {
                         font-size: 16px;
                         padding: 1px 7px;
