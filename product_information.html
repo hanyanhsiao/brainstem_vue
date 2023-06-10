@@ -552,40 +552,34 @@
                 },
                 addAction(action) {
 
-                    const existingKeys = Object.keys(localStorage).filter((key) => key.startsWith("good_"));
-                    if (existingKeys.includes("good_" + this.currentGood.GAME_ID)) {
-                        
-                        alert("商品已存在於購物車");
-                        console.log("this")
-                        return;
-                    }
+                    const existingKeys = Object.keys(localStorage).filter((key) => key.startsWith("good_"));                    
                     localStorage.setItem("good_" + this.currentGood.GAME_ID, JSON.stringify(this.currentGood));
                     // =============購物車小圖示數量===================
                     const cartItem = document.querySelector('.cart_number');
-                    
-                    if (cartItem) {
-                        cartItem.style.display = 'flex';
-                        let keys = Object.keys(localStorage);
-                        let good_key = keys.filter((key) => { return key.startsWith("good_"); });
-                        cartItem.innerHTML = good_key.length;
-                        this.shopcar_popup = true;
-                        setTimeout(() => {
-                            this.shopcar_popup = false;
-                        }, 1500);
-                        
+                    if (action == "toCar"){
+                        if (cartItem) {
+                            if (existingKeys.includes("good_" + this.currentGood.GAME_ID)) {                        
+                                alert("商品已存在於購物車");
+                                return;                                         
+                            }
+                            cartItem.style.display = 'flex';
+                            let keys = Object.keys(localStorage);
+                            let good_key = keys.filter((key) => { return key.startsWith("good_"); });
+                            cartItem.innerHTML = good_key.length;
+                            this.shopcar_popup = true;
+                            setTimeout(() => {
+                                this.shopcar_popup = false;
+                            }, 1500);
+                        }                        
                     }
+                    
                     // =============購物車小圖示數量===================
                     if (action == "toPay") {
-                        
+                        // const existingKeys = Object.keys(localStorage).filter((key) => key.startsWith("good_"));
                         if (existingKeys.includes("good_" + this.currentGood.GAME_ID)) {
-                            console.log("bbb");
-                            // alert("商品已存在於購物車");
-                            console.log("aaa");
+                            alert("商品已存在於購物車");
                             this.$nextTick(() => {
-                                setTimeout(() => {
-                                    
                                     location.href = "./checkout.html";
-                                }, 0);
                             });
                             
                         }

@@ -337,12 +337,7 @@
         margin: 50px auto 0;
         display: flex;
         align-items: center;
-
-        // display: none;
-
-        @include breakpoint-414 {
-          display: block;
-        }
+        cursor: pointer;
       }
     }
 

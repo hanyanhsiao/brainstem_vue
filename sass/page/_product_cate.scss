@@ -244,14 +244,10 @@
                 padding: 10px 80px;
                 border: 1px solid $orange;
                 border-radius: 8px;
-                margin: 100px auto 0;
-
-                display: none;
-
-                @include breakpoint-414 {
-                    display: block;
-                }
-
+                margin: 50px auto 0;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
                 ;
             }
         }
