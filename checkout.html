@@ -72,7 +72,8 @@
                         </a>
                         <div class="info">
                             <h3 class="title">{{ item.title }}</h3>
-                            <div class="dis_pic">
+                            <div class="dis_pic"
+                                :class="{'closed': item.item_discounts_or === null || item.item_discounts_or === ''}">
                                 <div class="discount">{{ item.discountPercentage }}</div>
                                 <p>{{ item.discountExpiration }}</p>
                             </div>
@@ -235,25 +236,23 @@
             },
             methods: {
                 removeItem(index) {
-                    const item = this.cartItems[index];
-                    const key = `good_${item.ID}`;
-                    this.cartItems.splice(index, 1);
-                    localStorage.removeItem(key);
-                    // =============購物車小圖示數量===================
-                    const cartItem = document.querySelector('.cart_number');
-                    // console.log(cartItem)
-                    if (cartItem) {
-                        cartItem.style.display = 'flex';
-                        let keys = Object.keys(localStorage);
-                        let good_key = keys.filter((key) => { return key.startsWith("good_"); });
-                        cartItem.innerHTML = good_key.length;
-                    }
-                    // =============購物車小圖示數量===================
-                    this.loadFromgetGameLibrary.phpLocalStorage();
-                    this.discountPrice();
-                    this.totalPrice();
-                },
-                loadFromLocalStorage() {
+                const item = this.cartItems[index];
+                const key = `good_${item.ID}`;
+                this.cartItems.splice(index, 1);
+                localStorage.removeItem(key);
+
+                const cartItem = document.querySelector('.cart_number');
+                if (cartItem) {
+                    cartItem.style.display = 'flex';
+                    let keys = Object.keys(localStorage);
+                    let good_key = keys.filter((key) => { return key.startsWith("good_"); });
+                    cartItem.innerHTML = good_key.length;
+                }
+
+                this.loadFromLocalStorage(); // 直接呼叫 loadFromLocalStorage() 方法
+
+            },
+            loadFromLocalStorage() {
                     this.cartItems = []; // 清空陣列
                     let totalPrice = 0;
                     let hasItems = false;
@@ -264,7 +263,7 @@
                             const key = localStorage.key(i);
                             if (key.startsWith("good_")) {
                                 const item = JSON.parse(localStorage.getItem(key));
-                                console.log(this.userGameLibrary);
+                                // console.log(this.userGameLibrary);
                                 if (this.userGameLibrary && this.userGameLibrary.includes(item.GAME_ID.toString())) {
                                     // 使用者已擁有該遊戲，顯示提示訊息並從本地存儲中刪除
                                     alert("您已擁有遊戲：" + item.GAME_NAME);
@@ -296,7 +295,8 @@
 
                         // 更新價格和總計
                         this.price = totalPrice;
-                        this.total = this.price - this.discount_price;
+                        this.discountPrice(); // 在資料處理完後呼叫 discountPrice() 方法
+                        this.totalPrice();
 
                         if (!hasItems) {
                             alert("購物車是空的，請選購商品");
@@ -320,7 +320,7 @@
                                 axios.post(php_url + 'getGameLibrary.php', formData)
                                     .then(response => {
                                         this.userGameLibrary = response.data; // 將資料存入 userGameLibrary 屬性
-                                        console.log(this.userGameLibrary);
+                                        // console.log(this.userGameLibrary);
                                         processCartItems();
                                     })
                                     .catch(error => {
@@ -395,7 +395,7 @@
                                 this.coupon_hint = '請登入會員，瀏覽優惠券';
                             } else {
                                 this.member_ID = response.data.member_ID;
-                                console.log(response);
+                                // console.log(response);
 
                                 const formData = new FormData();
                                 formData.append("member_ID", this.member_ID);
@@ -591,7 +591,7 @@
             let section = $('section');
             // console.log(section);
             next.on('click', function () {
-                console.log('aaa');
+                // console.log('aaa');
                 // console.log(index);
                 section.removeClass('-on');
                 section[2]
