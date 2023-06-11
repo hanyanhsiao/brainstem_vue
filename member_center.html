@@ -206,7 +206,7 @@
                   </div>
                 </div>
               </div>
-              <div class="btn">開始遊戲</div>
+              <div class="btn" @click="startGame(game)">開始遊戲</div>
               <p class="review" @click="showReviewForm(game.id)">{{ game.addComment }}</p>
               <!-- <i class="bi bi-three-dots po_icon"></i> -->
           </div>
