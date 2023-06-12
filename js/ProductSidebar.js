@@ -108,9 +108,11 @@ export default{
 
         //價格選擇推上標籤
         updateSelectedTags(tag) {
-            if(this.inputMinPrice >= this.inputMaxPrice){
-                alert("最低金額應小於最高金額!");
-                return 
+            if (this.inputMinPrice !== null && this.inputMaxPrice !== null) {
+                if (this.inputMinPrice >= this.inputMaxPrice) {
+                  alert("最低金額應小於最高金額!");
+                  return;
+                }
             }
 
             let minTagIdx = 0
@@ -167,79 +169,88 @@ export default{
             }
             this.$emit('filter-list', filterList);
         },
-        applySelection() {
-        // 執行篩選邏輯
-        }
+        
+        closeSidebar() {
+            const sidebarhide = document.querySelector('.product_sidebar');
+            sidebarhide.style.left = "-414px";
+            
+            // 关闭侧边栏的逻辑
+            // 例如：修改相关数据或调用适当的方法
+        },
+               
+        
     },
     template:`
-    <nav class="product_sidebar col-3">
-        <div class="tag_choose" :class="{'show':selectedTags.length > 0}">已選擇的標籤 <span class="clear" @click="clearTags">清除全部</span></div>
-        <div id="tags_container">
-            <span class="tag" v-for="(tag, index) in selectedTags" :key="index">
-                {{tag}}
-                <i class="bi bi-x-lg" @click="removeTag(tag)"></i>
-            </span>
-        </div>
-        <ul>
-            <li v-show="!hasActivityId">
-                <div class="button" @click="toggleList('saleList')" :class="{'active':listVisible === 'saleList'}">限時促銷活動
-                    <i class="bi bi-chevron-down arrow" :class="{'rotate':listVisible === 'saleList'}"></i>
-                </div>
-                <ul class="sale_list" v-show="listVisible === 'saleList'">
-                    <li class="item" 
-                        v-for="activity in activityType" 
-                        :key="activity.id" 
-                        @click="toggleTag(activity.ACTIVITY_NAME, 'sale')" 
-                        :class="{'checked':selectedTags.includes(activity.ACTIVITY_NAME)}">
-                        <span>{{activity.ACTIVITY_NAME}}</span>
-                        <i class="bi bi-check-lg check-icon" ></i>
-                    </li>
-                </ul>
-            </li>
+    <div @click="closeSidebar">
+        <nav class="product_sidebar col-3">
+            <div class="tag_choose" :class="{'show':selectedTags.length > 0}">已選擇的標籤 <span class="clear" @click="clearTags">清除全部</span></div>
+            <div id="tags_container">
+                <span class="tag" v-for="(tag, index) in selectedTags" :key="index">
+                    {{tag}}
+                    <i class="bi bi-x-lg" @click="removeTag(tag)"></i>
+                </span>
+            </div>
+            <ul>
+                <li v-show="!hasActivityId">
+                    <div class="button" @click.stop="toggleList('saleList')" :class="{'active':listVisible === 'saleList'}">限時促銷活動
+                        <i class="bi bi-chevron-down arrow" :class="{'rotate':listVisible === 'saleList'}"></i>
+                    </div>
+                    <ul class="sale_list" v-show="listVisible === 'saleList'">
+                        <li class="item" 
+                            v-for="activity in activityType" 
+                            :key="activity.id" 
+                            @click.stop="toggleTag(activity.ACTIVITY_NAME, 'sale')" 
+                            :class="{'checked':selectedTags.includes(activity.ACTIVITY_NAME)}">
+                            <span>{{activity.ACTIVITY_NAME}}</span>
+                            <i class="bi bi-check-lg check-icon" ></i>
+                        </li>
+                    </ul>
+                </li>
 
-            <li v-show="!hasCateId">
-                <div class="button" @click="toggleList('cateList')" :class="{'active':listVisible === 'cateList'}">遊戲類型
-                    <i class="bi bi-chevron-down arrow" :class="{'rotate':listVisible === 'cateList'}"></i>
-                </div>
-                <ul class="cate_list" v-show="listVisible === 'cateList'">
-                    <li class="item" 
-                        v-for="category in categoryType" 
-                        :key="category.id" 
-                        @click="toggleTag(category.CATEGORY_NAME, 'cate')" 
-                        :class="{'checked':selectedTags.includes(category.CATEGORY_NAME)}">
-                        <span>{{category.CATEGORY_NAME}}</span>
-                        <i class="bi bi-check-lg check-icon"></i>
-                    </li>
-                </ul>
-            </li>
+                <li v-show="!hasCateId">
+                    <div class="button" @click.stop="toggleList('cateList')" :class="{'active':listVisible === 'cateList'}">遊戲類型
+                        <i class="bi bi-chevron-down arrow" :class="{'rotate':listVisible === 'cateList'}"></i>
+                    </div>
+                    <ul class="cate_list" v-show="listVisible === 'cateList'">
+                        <li class="item" 
+                            v-for="category in categoryType" 
+                            :key="category.id" 
+                            @click.stop="toggleTag(category.CATEGORY_NAME, 'cate')" 
+                            :class="{'checked':selectedTags.includes(category.CATEGORY_NAME)}">
+                            <span>{{category.CATEGORY_NAME}}</span>
+                            <i class="bi bi-check-lg check-icon"></i>
+                        </li>
+                    </ul>
+                </li>
 
-            <li>
-                <div class="button" @click="toggleList('priceList');toggleRotate" :class="{'active':listVisible === 'priceList'}">金額
-                    <i class="bi bi-chevron-down arrow" :class="{'rotate':listVisible === 'priceList'}"></i>
-                </div>
-                <ul class="price_list" v-show="listVisible === 'priceList'">
-                    <li class="item price_range" :class="{'checked':selectedTags.includes(minPriceTag)}">
-                        <span for="minPrice">最低金額</span>
-                        <input 
-                            type="number" oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="請輸入正整數"
-                            class="form-control" id="minPrice" 
-                            v-model="inputMinPrice" 
-                            @keyup.enter="updateSelectedTags('min')">
-                    </li>
-                    <li class="item price_range" :class="{'checked':selectedTags.includes(maxPriceTag)}">
-                        <span for="maxPrice">最高金額</span>
-                        <input 
-                            type="number" oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="請輸入正整數"
-                            class="form-control" id="maxPrice" 
-                            v-model="inputMaxPrice" 
-                            @keyup.enter="updateSelectedTags('max')"
-                            >
-                    </li>
-                </ul>
-            </li>
-        </ul>
-        <button class="apply_choose" @click="updateSelectedTags">套用</button>
-    </nav>
+                <li>
+                    <div class="button" @click.stop="toggleList('priceList');toggleRotate" :class="{'active':listVisible === 'priceList'}">金額
+                        <i class="bi bi-chevron-down arrow" :class="{'rotate':listVisible === 'priceList'}"></i>
+                    </div>
+                    <ul class="price_list" v-show="listVisible === 'priceList'">
+                        <li class="item price_range" :class="{'checked':selectedTags.includes(minPriceTag)}" @click.stop>
+                            <span for="minPrice">最低金額</span>
+                            <input 
+                                type="number" oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="請輸入正整數"
+                                class="form-control" id="minPrice" 
+                                v-model="inputMinPrice" 
+                                @keyup.enter="updateSelectedTags('min')">
+                        </li>
+                        <li class="item price_range" :class="{'checked':selectedTags.includes(maxPriceTag)}" @click.stop>
+                            <span for="maxPrice">最高金額</span>
+                            <input 
+                                type="number" oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="請輸入正整數"
+                                class="form-control" id="maxPrice" 
+                                v-model="inputMaxPrice" 
+                                @keyup.enter="updateSelectedTags('max')"
+                                >
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <button class="apply_choose" @click="() => { updateSelectedTags(); closeSidebar(); }">套用</button>
+        </nav>
+    </div>
     `
     
 }
