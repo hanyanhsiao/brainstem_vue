@@ -450,6 +450,7 @@
       }
 
       .products {
+        display: flex;
         .add_filter {
           @include flex-container(row, wrap, space-between, center);
           vertical-align: middle;

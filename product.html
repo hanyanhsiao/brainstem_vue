@@ -44,11 +44,10 @@
 
         <div class="product_main" id="productIndex">
 
-            <!--側邊欄 -->
-            <product-sidebar @filter-list="getFilterGoodList"></product-sidebar>
+            
 
             <!--遊戲區 -->
-            <div class="game_part col-9">
+            <div class="game_part col-12">
                 <!-- 熱門遊戲區 8種 -->
                 <div class="hot_game">
                     <div class="hot_game_title">
@@ -75,39 +74,43 @@
                     </div>
                 </div>
 
-                <div class="products" id="goodsIn">
+                <div class="products col-12" id="goodsIn">
 
-                    <!-- 商品排序選擇 -->
-                    <div class="add_filter">
-                        <div class="sidebar_btn">
-                            <span>篩選器</span>
-                            <i class="bi bi-filter"></i>
-                        </div>
-                        <div class="product_order">
-                            <h3>排序：</h3>
-                            <div class="order_btn" @click="toggleOptions" :class="{'active': isOpen}">
-                                <span class="option_text">{{ selectedOption }}</span>
-                                <i class="bi bi-chevron-down"></i>
+                    <!--側邊欄 -->
+                    <product-sidebar @filter-list="getFilterGoodList"></product-sidebar>
+                    <div class="col-9">    
+                        <!-- 商品排序選擇 -->
+                        <div class="add_filter" >
+                            <div class="sidebar_btn">
+                                <span>篩選器</span>
+                                <i class="bi bi-filter"></i>
                             </div>
-                            <ul class="order_options" v-show="isOpen === true">
-                                <li class="option" v-for="option in options" :key="option.text"
-                                    @click="selectOption(option);sortedGoods()">
-                                    <span class="option_text">{{ option.text }}</span>
-                                </li>
-                            </ul>
+                            <div class="product_order">
+                                <h3>排序：</h3>
+                                <div class="order_btn" @click="toggleOptions" :class="{'active': isOpen}">
+                                    <span class="option_text">{{ selectedOption }}</span>
+                                    <i class="bi bi-chevron-down"></i>
+                                </div>
+                                <ul class="order_options" v-show="isOpen === true">
+                                    <li class="option" v-for="option in options" :key="option.text"
+                                        @click="selectOption(option);sortedGoods()">
+                                        <span class="option_text">{{ option.text }}</span>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
+
+                        <!-- 商品陳列區 -->
+
+                        <div class="product_goods" id="product-list">
+                            <product-list :goods="displayedGoods()"></product-list>
+                        </div>
+
+                        <!-- 分頁器 -->
+
+                        <paginator :total-pages="totalPages()" :current-page="currentPage" @page-change="goToPage"
+                            @previous-page="previousPage" @next-page="nextPage"></paginator>
                     </div>
-
-                    <!-- 商品陳列區 -->
-
-                    <div class="product_goods" id="product-list">
-                        <product-list :goods="displayedGoods()"></product-list>
-                    </div>
-
-                    <!-- 分頁器 -->
-
-                    <paginator :total-pages="totalPages()" :current-page="currentPage" @page-change="goToPage"
-                        @previous-page="previousPage" @next-page="nextPage"></paginator>
                 </div>
             </div>
         </div>
@@ -306,7 +309,7 @@
                 previousPage() {
                     if (this.currentPage > 1) {
                         this.currentPage--; //上一頁
-                    }
+                    }                    
                 },
                 nextPage() {
                     if (this.currentPage < this.totalPages()) {
@@ -406,7 +409,7 @@
             },
             breakpoints: {
                 1920: {
-                    slidesPerView: 3,
+                    slidesPerView: 4,
                     spaceBetween: 30,
                 },
 
@@ -432,6 +435,7 @@
         $('.apply_choose').click(function () {
             $('.product_sidebar').css("left", "-414px");
         })
+        
 
     </script>
 </body>

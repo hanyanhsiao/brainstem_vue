@@ -11,10 +11,29 @@ export default{
         },
         previousPage() {
             this.$emit('previous-page'); // 触发父组件的倒退一页事件
+            this.$nextTick(() => {
+                const productList = document.getElementById('product-list');
+                if (productList) {
+                window.scrollTo({
+                    top: productList.offsetTop,
+                    behavior: 'smooth', // 使用平滑滾動效果
+                });
+                }
+            });
         },
         nextPage() {
             this.$emit('next-page'); // 触发父组件的倒退一页事件
+            this.$nextTick(() => {
+                const productList = document.getElementById('product-list');
+                if (productList) {
+                window.scrollTo({
+                    top: productList.offsetTop,
+                    behavior: 'smooth', // 使用平滑滾動效果
+                });
+                }
+            });
         },
+        
         
     },
     template:`
