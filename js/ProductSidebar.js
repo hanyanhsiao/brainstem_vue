@@ -181,8 +181,8 @@ export default{
         
     },
     template:`
-    <div @click="closeSidebar">
-        <nav class="product_sidebar col-3">
+    <div @click="closeSidebar" class="col-3">
+        <nav class="product_sidebar ">
             <div class="tag_choose" :class="{'show':selectedTags.length > 0}">已選擇的標籤 <span class="clear" @click="clearTags">清除全部</span></div>
             <div id="tags_container">
                 <span class="tag" v-for="(tag, index) in selectedTags" :key="index">
