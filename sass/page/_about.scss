@@ -31,6 +31,10 @@
                 background-color: #FF6300;
                 /* color: #ccc; */
             }
+
+            @include breakpoint-1440 {
+                font-size: 1.2rem;
+            }
         }
 
         .tablinks1 {
@@ -49,10 +53,42 @@
             flex-basis: 0;
             flex-grow: 1;
 
+
+
             &:hover {
                 background-color: #FF6300;
             }
+
+            @include breakpoint-1440 {
+                font-size: 1.2rem;
+            }
+
         }
+
+
+
+        .bi-controller {
+
+            @include breakpoint-1440 {
+                font-size: 1rem;
+            }
+        }
+
+
+        .bi-shield-lock{
+            @include breakpoint-1440 {
+                font-size: 1rem;
+            }
+        }
+
+
+
+        .bi-chat{
+            @include breakpoint-1440 {
+                font-size: 1rem;
+            }
+        }
+
 
     }
 
@@ -353,7 +389,7 @@
                     overflow: scroll;
                 }
 
-               
+
 
                 li {
                     width: 50%;
@@ -402,6 +438,7 @@
 
                     p {
                         font-size: 1.8rem;
+
                         @include breakpoint-414 {
                             width: 45vw;
                             font-size: 1.5rem;
@@ -418,9 +455,9 @@
                         }
                     }
                 }
-                
+
             }
-           
+
         }
     }
 
@@ -471,7 +508,7 @@
                 text-align: justify;
                 font-size: 2rem;
                 line-height: 1.5;
-                                
+
                 @include breakpoint-1440 {
                     font-size: 1rem;
                     text-align: justify;
