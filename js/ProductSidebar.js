@@ -182,11 +182,11 @@ export default{
     },
     template:`
     <nav class="product_sidebar col-3" @click="closeSidebar">
-        <div class="tag_choose" :class="{'show':selectedTags.length > 0}">已選擇的標籤 <span class="clear" @click="clearTags">清除全部</span></div>
+        <div class="tag_choose" :class="{'show':selectedTags.length > 0}">已選擇的標籤 <span class="clear" @click.stop="clearTags">清除全部</span></div>
         <div id="tags_container">
             <span class="tag" v-for="(tag, index) in selectedTags" :key="index">
                 {{tag}}
-                <i class="bi bi-x-lg" @click="removeTag(tag)"></i>
+                <i class="bi bi-x-lg" @click.stop="removeTag(tag)"></i>
             </span>
         </div>
         <ul>
