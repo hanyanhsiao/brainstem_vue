@@ -52,6 +52,9 @@
           cursor: pointer;
           color: black;
           line-height: 1.2;
+          &:hover {
+            color: $orange;
+          }
           i {
             font-size: 3rem;
             padding: 0;
