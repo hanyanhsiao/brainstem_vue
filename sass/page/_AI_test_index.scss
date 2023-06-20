@@ -250,6 +250,7 @@
           width: 150px;
           height: 50px;
           font-size: $h3;
+          // 使用linear-gradient() 函數來創建一個線性漸變背景。
           background: linear-gradient(45deg, transparent 5%, $test_button 5%);
           border: 0;
           color: $white;
@@ -262,6 +263,8 @@
         }
 
         button::after {
+          // 自定義的 CSS 變量
+          // inset() 是一個 CSS 函數，用於定義元素的內邊距
           --slice-0: inset(50% 50% 50% 50%);
           --slice-1: inset(80% -6px 0 0);
           --slice-2: inset(50% -6px 30% 0);
@@ -282,11 +285,13 @@
             $test_button 5%
           );
           text-shadow: -3px -3px 0px #f8f005, 3px 3px 0px $test_button_shadow;
+          // 元素的剪裁路徑
           clip-path: var(--slice-0);
         }
 
         button:hover::after {
           animation: glitch 1s steps(2, end) infinite;
+          // steps(2, end) 表示在動畫過程中將分成 2 步，並在結束時停留在最後一步
         }
 
         @keyframes glitch {

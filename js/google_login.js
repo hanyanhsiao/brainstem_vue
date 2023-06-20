@@ -31,13 +31,13 @@ function handleCredentialResponse(response) {
     let token = response.credential.split(".");
     // console.log(token);
 
-    // 拿到第二段token也就是负载的那段，
+    // 拿到第二段token也就是負載的那段，
     // google這個回傳的token是用base64URL編碼
     // window.atob是base64解碼，有的帳號會不行所以需要先用正則取代
-    // base64URL跟base64差在- +  和   _ /
-    // 进行window.atob方法的 base64的解算，
-    // 由于atob()方法解码无法对中文解析，所以要再用escape()方法对其重新编码 
-    // 然后再用decodeURIComponent字符串解码方法，解析出字符串，然后再转成JSON对象
+    // base64URL跟base64差在- +  和  _ /
+    // 進行window.atob方法的base64的解算
+    // 由於atob()方法解碼無法對中文解析，所以要再用escape()方法對其重編碼
+    // 然後再用decodeURIComponent字符串解碼方法，解析出字符串，然後再轉成JSON
 
     let str = token[1];
     let new_str = str.replace(/\-/g, "+").replace(/\_/g, "/"); //g為全域
